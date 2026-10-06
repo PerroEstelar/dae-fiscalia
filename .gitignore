@@ -1,0 +1,41 @@
+# Media: nunca entra al repo. Vive en E:\DAE MASTER y en D:\DAE.
+*.mov
+*.mp4
+*.mxf
+*.avi
+*.mp3
+*.wav
+*.m4a
+*.aac
+*.flac
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.psd
+*.ai
+*.exr
+*.dpx
+
+# Instaladores, comprimidos, binarios
+*.exe
+*.msi
+*.zip
+*.rar
+*.7z
+
+# Ofimática pesada (los guiones van en .md)
+*.pptx
+*.docx
+*.xlsx
+
+# Basura del sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+__pycache__/
+*.pyc
+
+# El .drp SÍ entra: pesa 150 KB y es el proyecto entero.
+!proyecto-resolve/*.drp
