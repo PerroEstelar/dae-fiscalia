@@ -250,6 +250,50 @@ Lo que más importa:
 
 ---
 
+## Cartones: la retícula de verdad
+
+Medida sobre los cartones del profe Edwin (`A_carton_pausa1.mov`, `A_carton_cierre.mov`,
+`U1-PROFE EDWIN - CASO A - carton de caso.mp4`), que es la escala de la serie de Terminaciones
+Anticipadas:
+
+```
+barra    #FCB500 - 28 px de ancho - borde izquierdo en x=176
+texto    Montserrat - x=249 - ancho máximo 1250
+centro   óptico del bloque en y=583
+tinte    #03398B al 46 % (alpha 117) sobre todo el cuadro
+blanco   fondo #FCFCFC - texto azul noche #07224B
+marca    APRENDE CON LA DAE - 408 px de ancho - en (1351, 131) - al 10 %
+tamaños  antetítulo SemiBold 30 - título Bold 54 - cuerpo Medium 44 - suelta Bold 72
+```
+
+La nota vieja de la serie JEP decía barra de 14 px en x=175: esa es otra escala. Si un cartón de
+Terminaciones Anticipadas se ve flaco, se hizo con la retícula vieja.
+Generador: `herramientas/cartones/cartones_ta.py`.
+
+## Bajar de Magnific
+
+El contenedor en la nube **no alcanza** `pikaso.cdnpk.net`: el proxy de salida responde 403. La
+máquina de Sebastián sí. Entonces se arma un manifiesto JSON y se corre
+`herramientas/magnific/bajar_de_magnific.py` con `script_plugin run_inline`, que es un Python
+completo sobre esa máquina y ve E: y D:. Las URL llevan token con vencimiento: ante un 403 o 410
+hay que volver a pedir la URL con `creations_wait`, no reintentar.
+
+## Dos trampas más de la API, medidas
+
+- **`endFrame` en `AppendToTimeline` es exclusivo.** Para un clip de N frames se pasa
+  `endFrame = N`, no `N-1`. Con `N-1` todo queda un frame corto y la línea se llena de huecos de
+  un frame que no se ven en el timeline pero sí en el render.
+- **Al outro no se le pasa rango de origen.** Está a 30 fps; apendizado sin `startFrame`/`endFrame`
+  Resolve lo conforma solo (150 f a 30 -> 119 f a 23,976). Pedirle un rango es lo que rompe los
+  clips de otra velocidad.
+- Hay una carpeta del pool que se llama ` 00 COMUNES` **con espacio adelante**: comparar nombres
+  de carpeta con `.strip().upper()`.
+
+## Intro y outro, medidos
+
+`FGN_intro_version7.mp4` son **222 frames** a 23,976 (no 194, que era de una versión anterior).
+El outro institucional entra como **119 frames** ya conformado.
+
 ## Planos como `.mov`, no como `.png`
 
 Por la limitación de los stills descrita arriba, los planos van como **sostenidos `.mov` de
