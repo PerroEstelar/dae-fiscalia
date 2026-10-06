@@ -55,6 +55,16 @@ D:\DAE\_repo            este repositorio
 Proyecto de Resolve activo: **`DAE MASTER - CURSOS`**. El viejo se llama `DAE` y sigue existiendo
 con el trabajo de JEP; no se toca.
 
+**Qué entra al repo y qué no.** Todo lo que sea **solo texto** —guiones, bloques de voz, prompts,
+rejillas, scripts, decisiones, selecciones— se empuja a GitHub de una, sin preguntar y sin esperar
+a que termine la tarea. Regla fijada por Sebastian. Las imágenes, los audios y los renders se
+quedan en `E:\DAE MASTER` y se referencian por ruta desde el documento que los usa: un PNG de
+2560 x 1440 pesa ~8 MB y git no es el lugar para eso.
+
+Estructura por serie: `cursos/<curso>/README.md` con el indice y el estado, `fuentes/` con el
+material del profesor, y `casos/<caso>/` con `00_preproduccion.md`, `01_guion_y_prompts.md`,
+`02_seleccion_keyframes.md`.
+
 ---
 
 ## El formato de las piezas
