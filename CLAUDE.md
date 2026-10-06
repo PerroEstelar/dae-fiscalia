@@ -289,10 +289,33 @@ hay que volver a pedir la URL con `creations_wait`, no reintentar.
 - Hay una carpeta del pool que se llama ` 00 COMUNES` **con espacio adelante**: comparar nombres
   de carpeta con `.strip().upper()`.
 
-## Intro y outro, medidos
+## Intro y outro: son el mismo archivo, y traen audio
 
-`FGN_intro_version7.mp4` son **222 frames** a 23,976 (no 194, que era de una versión anterior).
-El outro institucional entra como **119 frames** ya conformado.
+`FGN_intro_version7.mp4` dura 222 frames en disco, pero la serie lo usa **recortado a 194**,
+origen 0..193, y el **mismo clip va al principio y al final**. Así están `MA - U1 - INTRODUCCION`
+y `TA - CASO 01 - PLANTILLA`.
+
+**Trae audio** (estéreo AAC 48 kHz) y va en **A1 · VIDEO**, en los dos extremos. Un clip
+apendizado con `mediaType: 1` entra **mudo**: hay que apendizar el mismo clip otra vez con
+`mediaType: 2` sobre la pista de audio. Es el error fácil de cometer y el que Sebastián nota.
+
+El `.mp4` de criptoactivos que está en la carpeta OUTRO **no tiene pista de audio**
+(`Audio Ch = 0`) y no es el outro de la serie.
+
+## La estructura de pistas de la serie
+
+Sale de `TA - CASO 01 - PLANTILLA`. Toda línea nueva de Terminaciones Anticipadas se arma así,
+no con nombres propios:
+
+```
+V1 VIDEO   V2 CARTONES   V3 APOYO / B-ROLL   V4 MARCA DE AGUA
+V5 EFECTOS V6 LOWER THIRD V7 LOWER THIRD 2
+A1 VIDEO   A2 NARRADOR   A3 FACILITADOR   A4 DIALOGO   A5 MUSICA
+```
+
+La marca de agua (`MARCA_DE_AGUA_DAE_100s.mov`, 2400 f) va en V4 desde el cartón de entrada
+hasta el de cierre; si el cuerpo pasa de 2400 f se ponen dos instancias, que no se nota la
+costura porque la marca es estática. La música va en A5.
 
 ## Planos como `.mov`, no como `.png`
 
