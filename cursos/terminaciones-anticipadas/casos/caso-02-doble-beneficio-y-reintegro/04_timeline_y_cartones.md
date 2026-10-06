@@ -3,78 +3,91 @@
 Línea **`TA CASO 02 - doble beneficio y reintegro`**, en el proyecto
 `DAE MASTER - CURSOS`, dentro de la carpeta del caso.
 23,976 fps · 1920 × 1080 · inicio 01:00:00:00 (frame absoluto 86400).
-**4899 frames · 3:24**, sin un solo hueco en V1.
+**4946 frames · 3:26**, sin un solo hueco en V1.
 
 Los frames de abajo son relativos al inicio de la línea.
 
-## Las pistas
+## Las pistas — las de la plantilla, no otras
+
+Esta línea sigue la estructura de `TA - CASO 01 - PLANTILLA`. Quien abra
+cualquier caso de la serie encuentra lo mismo en el mismo lugar.
 
 ```
-V2 · CARTONES   los seis cartones alfa con tinte
-V1 · PLANOS     intro, cartones de entrada/pausa/cierre, los once planos, outro
-A1 · VOZ        los cinco bloques de locución
+V1 VIDEO            intro, cartones de cuadro completo, los once planos, outro
+V2 CARTONES         los seis cartones alfa con tinte
+V3 APOYO / B-ROLL   libre
+V4 MARCA DE AGUA    APRENDE CON LA DAE sobre el cuerpo
+V5 EFECTOS          libre
+V6 LOWER THIRD      libre
+V7 LOWER THIRD 2    libre
+
+A1 VIDEO            el audio del intro y del outro
+A2 NARRADOR         los tres bloques del narrador
+A3 FACILITADOR      el bloque del facilitador
+A4 DIALOGO          el abogado defensor
+A5 MUSICA           vacía — falta elegir la pieza
 ```
 
-## El orden de los planos — por qué este y no el de la v2
+## El intro y el outro son el mismo archivo
 
-El reparto anterior dividía cada bloque en partes iguales. Este está cortado
-contra los silencios reales de la locución, medidos con `silencedetect` sobre
-los cinco WAV. **Ningún corte parte una palabra**, y cada plano cae donde la voz
-dice lo que el plano muestra. Eso cambió tres cosas:
+`FGN_intro_version7.mp4` dura 222 frames en disco pero **la serie lo usa
+recortado a 194**, origen 0..193, y el mismo clip va al principio y al final.
+Eso es lo que hacen `MA - U1 - INTRODUCCION` y la plantilla del Caso 01.
 
-- **El bloque 1 cambió de orden.** Queda `BR02 corredor → KF01 oficina →
-  KF03 bodega → KF02 la entrega → BR01 expediente → BR03 cajas`. La bodega entra
-  en «el suministro de equipos médicos» y el sobre entra en «Andrés le entregó a
-  Carlos ciento veinte millones», que es donde tenían que estar. Antes el sobre
-  caía doce segundos antes de que se mencionara la plata.
-  *(Este orden está en la hoja de montaje; en la línea armada el bloque 1 va con
-  los planos KF01–KF03 en el reparto de abajo, que es el que se montó.)*
-- **El KF 06 se partió del KF 07 en otro punto**: el gráfico se queda con toda
-  la aritmética del 349, incluida la frase del cincuenta por ciento, y el KF 07
-  entra en «no es un requisito de trámite».
+**Y trae audio** — estéreo AAC a 48 kHz —, que va en **A1 · VIDEO**, en los dos
+extremos. Un plano de video apendizado con `mediaType: 1` entra mudo: hay que
+apendizar el mismo clip otra vez con `mediaType: 2` sobre la pista de audio.
+
+El `.mp4` de criptoactivos que está en la carpeta OUTRO **no tiene pista de
+audio** (`Audio Ch = 0`) y no es el outro de esta serie.
+
+## El orden de los planos — por qué este
+
+Está cortado contra los silencios reales de la locución, medidos con
+`silencedetect` sobre los cinco WAV. **Ningún corte parte una palabra**, y cada
+plano cae donde la voz dice lo que el plano muestra. Dos consecuencias:
+
+- **El KF 06 se queda con toda la aritmética del 349**, incluida la frase del
+  cincuenta por ciento, y el KF 07 entra en «no es un requisito de trámite».
 - **El KF 08 se alargó** hasta cubrir «el fiscal verifica las condiciones
   patrimoniales antes de sentarse a negociar, no durante», que es exactamente lo
-  que muestra el plano. El KF 09 quedó corto y solo para «no puede convertirse en
-  moneda de cambio».
+  que muestra el plano. El KF 09 quedó corto y solo para «no puede convertirse
+  en moneda de cambio».
 
-## V1 · los planos
+## V1 · VIDEO
 
 | Entra | Sale | Frames | Qué |
 |---|---|---|---|
-| 0 | 222 | 222 | Intro institucional `FGN_intro_version7.mp4` |
-| 222 | 341 | 119 | **Cartón de entrada** |
-| 341 | 668 | 327 | KF 01 · la oficina de contratación |
-| 668 | 968 | 300 | KF 02 · la entrega |
-| 968 | 1248 | 280 | KF 03 · la bodega |
-| 1248 | 1438 | 190 | KF 04 · el abogado propone |
-| 1438 | 1622 | 184 | KF 05 · Andrés escucha |
-| 1622 | 2278 | 656 | **KF 06 · el gráfico del artículo 349** |
-| 2278 | 2673 | 395 | KF 07 · el código abierto |
-| 2673 | 3188 | 515 | KF 08 · antes de sentarse |
-| 3188 | 3340 | 152 | KF 09 · la carpeta cerrada |
-| 3340 | 3484 | 144 | **Cartón de pausa** |
-| 3484 | 4178 | 694 | KF 10 · el facilitador |
-| 4178 | 4661 | 483 | KF 11 · el acta sin firmar |
-| 4661 | 4780 | 119 | **Cartón de cierre** |
-| 4780 | 4899 | 119 | Outro institucional |
+| 0 | 194 | 194 | Intro institucional |
+| 194 | 313 | 119 | **Cartón de entrada** |
+| 313 | 640 | 327 | KF 01 · la oficina de contratación |
+| 640 | 940 | 300 | KF 02 · la entrega |
+| 940 | 1220 | 280 | KF 03 · la bodega |
+| 1220 | 1410 | 190 | KF 04 · el abogado propone |
+| 1410 | 1594 | 184 | KF 05 · Andrés escucha |
+| 1594 | 2250 | 656 | **KF 06 · el gráfico del artículo 349** |
+| 2250 | 2645 | 395 | KF 07 · el código abierto |
+| 2645 | 3160 | 515 | KF 08 · antes de sentarse |
+| 3160 | 3312 | 152 | KF 09 · la carpeta cerrada |
+| 3312 | 3456 | 144 | **Cartón de pausa** |
+| 3456 | 4150 | 694 | KF 10 · el facilitador |
+| 4150 | 4633 | 483 | KF 11 · el acta sin firmar |
+| 4633 | 4752 | 119 | **Cartón de cierre** |
+| 4752 | 4946 | 194 | Outro — el mismo intro |
 
-El outro está a 30 fps y Resolve lo conforma solo a 119 frames. No hay que
-tocarle el rango de origen: pedirle uno es lo que rompe los clips de otra
-velocidad.
+## V2 · CARTONES
 
-## V2 · los cartones alfa
-
-Seis en 3:24 — uno cada 34 segundos, que es el ritmo al que un cartón subraya
+Seis en 3:26 — uno cada 34 segundos, que es el ritmo al que un cartón subraya
 sin volverse ruido. Cada uno cae donde la voz está diciendo eso.
 
 | Entra | Sale | Frames | Sobre | Dice |
 |---|---|---|---|---|
-| 836 | 968 | 132 | KF 02 | **Ciento veinte millones** · Lo que Andrés le entregó a Carlos a cambio de la intervención. |
-| 1078 | 1238 | 160 | KF 03 | **Cuatrocientos millones** · El incremento patrimonial ilícito que obtuvo la empresa contratista. |
-| 1471 | 1622 | 151 | KF 05 | **La propuesta de la defensa** · Cien millones ahora. Los trescientos restantes, en un plazo de cinco años. |
-| 2298 | 2598 | 300 | KF 07 | **No es un requisito de trámite** · Impide que la justicia premial beneficie a quien no hizo esfuerzos suficientes para restablecer el patrimonio afectado. |
-| 3054 | 3168 | 114 | KF 08 | **Antes, no durante.** *(suelta)* |
-| 3188 | 3340 | 152 | KF 09 | **No es moneda de cambio** · El reintegro patrimonial es una condición que no puede convertirse en moneda de cambio. |
+| 808 | 940 | 132 | KF 02 | **Ciento veinte millones** · Lo que Andrés le entregó a Carlos a cambio de la intervención. |
+| 1050 | 1210 | 160 | KF 03 | **Cuatrocientos millones** · El incremento patrimonial ilícito que obtuvo la empresa contratista. |
+| 1443 | 1594 | 151 | KF 05 | **La propuesta de la defensa** · Cien millones ahora. Los trescientos restantes, en un plazo de cinco años. |
+| 2270 | 2570 | 300 | KF 07 | **No es un requisito de trámite** · Impide que la justicia premial beneficie a quien no hizo esfuerzos suficientes para restablecer el patrimonio afectado. |
+| 3026 | 3140 | 114 | KF 08 | **Antes, no durante.** *(suelta)* |
+| 3160 | 3312 | 152 | KF 09 | **No es moneda de cambio** · El reintegro patrimonial es una condición que no puede convertirse en moneda de cambio. |
 
 Los dos últimos son del profesor casi literal. Tres de los seis salen y entran
 con el corte del plano, que es como se comportan los de la serie JEP.
@@ -84,15 +97,24 @@ cámara y hace cuatro preguntas; un cartón encima de una cara que pregunta
 compite con la cara. Y el acta sin firmar: la ausencia es la pregunta, y un
 texto la contesta.
 
-## A1 · la voz
+## V4 · MARCA DE AGUA
 
-| Entra | Sale | Frames | Archivo |
-|---|---|---|---|
-| 359 | 1230 | 871 | `TA02_NARRADOR_B1.wav` |
-| 1272 | 1598 | 326 | `TA02_DEFENSA.wav` |
-| 1640 | 2655 | 1015 | `TA02_NARRADOR_B2.wav` |
-| 2691 | 3322 | 631 | `TA02_NARRADOR_B3.wav` |
-| 3502 | 4643 | 1141 | `TA02_FACILITADOR.wav` |
+`MARCA_DE_AGUA_DAE_100s.mov` dura 2400 frames y el cuerpo son 4320, así que van
+dos instancias: **313 → 2713** y **2713 → 4633**. La marca es estática, así que
+la costura no se ve. Entra con el cartón de entrada y sale con el de cierre,
+igual que en la plantilla.
+
+## El audio
+
+| Pista | Entra | Sale | Frames | Archivo |
+|---|---|---|---|---|
+| A1 VIDEO | 0 | 194 | 194 | intro |
+| A2 NARRADOR | 331 | 1202 | 871 | `TA02_NARRADOR_B1.wav` |
+| A4 DIALOGO | 1244 | 1570 | 326 | `TA02_DEFENSA.wav` |
+| A2 NARRADOR | 1612 | 2627 | 1015 | `TA02_NARRADOR_B2.wav` |
+| A2 NARRADOR | 2663 | 3294 | 631 | `TA02_NARRADOR_B3.wav` |
+| A3 FACILITADOR | 3474 | 4615 | 1141 | `TA02_FACILITADOR.wav` |
+| A1 VIDEO | 4752 | 4946 | 194 | outro |
 
 Cada bloque entra 18 frames después del inicio de su tramo y sale antes del
 corte siguiente. El diálogo de la defensa lleva 24 de aire a cada lado, para
@@ -120,8 +142,7 @@ tamaños  antetítulo SemiBold 30 · título Bold 54 · cuerpo Medium 44 · suel
 **Ojo con la escala.** La nota vieja de la serie JEP decía barra de 14 px en
 x=175. Eso es de otra escala. Medida sobre los cartones de Edwin —que es la
 serie con la que se alinean estos videos— la barra son **28 px en x=176**, y el
-texto arranca en **x=249**. Si un cartón de esta serie se ve flaco, es que se
-hizo con la retícula vieja.
+texto arranca en **x=249**.
 
 ### El movimiento
 
@@ -154,9 +175,6 @@ familia tipográfica, 656 frames, con cuatro entradas escalonadas:
    que la voz dice la cifra, no mientras la dice. Ese desfase es lo que la hace
    leerse como conclusión y no como subtítulo.
 
-Si se prefiere hacerlo en After Effects, el archivo actual sirve de guía de
-tiempos y de posición.
-
 ---
 
 ## Bajar de Magnific sin intermediarios
@@ -180,8 +198,8 @@ que volver a pedirla con `creations_wait`, no reintentar.
 
 ## Lo que queda
 
+- **A5 · MUSICA está vacía.** Falta elegir la pieza y montarla a −32 dB bajo la
+  voz y −26 en los huecos, que es el nivel de la serie.
 - Los **prompts de movimiento**, ahora sí contra la imagen real.
-- Revisar en pantalla el KF 06: es el único elemento de la pieza que no salió ni
-  de Magnific ni del profesor.
 - Confirmar con la DAE si el cartón de pausa de esta serie lleva pregunta con
   opciones, como los de Edwin, o enunciado, como quedó.
