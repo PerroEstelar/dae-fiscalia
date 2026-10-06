@@ -1,0 +1,268 @@
+# CLAUDE.md
+
+Memoria de trabajo de este repositorio. Léela entera antes de hacer nada: contiene decisiones ya
+tomadas, medidas reales y trampas técnicas que costaron horas de descubrir. **Nada de lo que está
+acá es una suposición; todo salió de medir.**
+
+---
+
+## Quién y qué
+
+**Sebastián** (Joan Sebastián Realpe Rojas) produce la serie audiovisual de la **Dirección de Altos
+Estudios de la Fiscalía General de la Nación, Colombia**. Monta en DaVinci Resolve, genera los
+planos con IA, y hace los gráficos en After Effects.
+
+Son piezas de formación para fiscales: estudios de caso de tres a nueve minutos, narradas, con
+planos ilustrados, cartones de texto y voz sintetizada en ElevenLabs.
+
+### Cómo trabaja, y cómo hay que trabajar con él
+
+- **Medir, no asumir.** Cada vez que se estimó algo a ojo —duraciones, posiciones, niveles— salió
+  mal. Cada número de este archivo salió de leer el archivo real, la línea de tiempo real o el
+  render real. Si hace falta un dato, se va y se mide.
+- **Verificar el resultado, no el comando.** Después de cada mutación en Resolve, leer de vuelta.
+  La API dice que sí y hace otra cosa más seguido de lo que parece.
+- **Él edita entre llamadas.** Mueve clips, apaga pistas, escala cartones a mano. Nunca confiar en
+  un número de frame anotado hace diez minutos: releer la línea de tiempo y anclarse a los clips de
+  voz, no a posiciones recordadas.
+- **Nada se borra.** Si algo sobra, va a una carpeta `_descartes`. Él decide.
+- **Se responde en español**, en su registro. Él escribe mezclando inglés y español; la respuesta
+  va en español rioplatense-neutro, directa, sin relleno.
+
+---
+
+## Los cuatro cursos
+
+| | curso | estado |
+|---|---|---|
+| 1 | **SRPA** — Sistema de Responsabilidad Penal para Adolescentes | terminado. Profes Edwin (casos A y B), Carlos Humberto (casos 5 y 6), Hugo Ascencio (caso Ipanema) |
+| 2 | **Delitos contra el medio ambiente** — 5 unidades | introducciones en montaje. La U1 tiene 17 cartones colocados |
+| 3 | **Bernardo JEP** — 5 videos | videos 2, 3 y 4 terminados |
+| 4 | **Terminaciones Anticipadas** — 8 casos elegidos | en guion. El caso 02 tiene preproducción completa |
+
+### Dónde vive cada cosa
+
+```
+E:\DAE MASTER\          el máster. Un curso por carpeta, unidad/caso adentro,
+                        y dentro de cada uno: 01 PLANOS · 02 CARTONES · 03 VOCES ·
+                        04 B-ROLL · 05 EXPORTS · 06 GUION Y STORYBOARD · 07 MUSICA
+E:\DAE MASTER\00 COMUNES\   intro, outro, marca de agua, cartones alfa de referencia, música
+E:\DAE MASTER\_PROYECTO RESOLVE\   el .drp exportado
+D:\DAE  ·  D:\FISCALIA  los originales de trabajo (respaldados en E:\...\respaldo de d)
+D:\DAE\_repo            este repositorio
+```
+
+Proyecto de Resolve activo: **`DAE MASTER - CURSOS`**. El viejo se llama `DAE` y sigue existiendo
+con el trabajo de JEP; no se toca.
+
+---
+
+## El formato de las piezas
+
+**23,976 fps · 1920 × 1080 · DaVinci YRGB · Rec.709 (Scene) · scaleToFit.**
+
+Estructura fija, en frames relativos al inicio de la línea de tiempo:
+
+| | qué | duración |
+|---|---|---|
+| 0 | intro institucional (`FGN_intro_version7.mp4`) | **194 f** |
+| 194 | cartón de caso / de título | **119 f** |
+| 313 | el cuerpo | variable |
+| fin | cartón de cierre | 119 f |
+| | outro institucional | 194 f |
+
+Los cartones de pausa dentro del cuerpo son de **144 f** (6 s).
+
+### Duración
+
+**La locución va a 150 palabras por minuto.** Medido contra el narrador real del caso A. La fórmula
+vieja de 142 subestimaba, y el multiplicador 1,22 sobreestimaba un 20 %.
+
+Para estimar una pieza terminada: `palabras ÷ 150 × 60 × 1,10 + 30 s`. El 1,10 son las pausas
+internas (medido en JEP: 6,60 sílabas/s hablando contra 6,07 overall); los 30 s son intro, cartón
+de entrada y cierre.
+
+Cuidado con una trampa: estimar sobre el **texto crudo del guion del profesor** da un número muy
+bajo, porque un guion de producción siempre lo desarrolla. El caso 02 pasó de 150 palabras crudas
+a 274 escritas — de 1:33 estimados a 2:21 reales.
+
+### Pistas
+
+Nombres fijos. Vídeo: `VIDEO · CARTONES · APOYO / B-ROLL · MARCA DE AGUA · EFECTOS · LOWER THIRD ·
+LOWER THIRD 2`. Audio: `VIDEO · NARRADOR · FACILITADOR (mono) · DIALOGO · MUSICA`.
+
+**El facilitador va en su propia pista aunque sea la misma voz y el mismo archivo** que el
+narrador: dramáticamente es otro personaje —el único que mira al lente— y así se le puede dar su
+propia mezcla, un poco más cerca y con sala más seca, sin tocar la narración.
+
+---
+
+## Los cartones
+
+Hay **dos rejillas conviviendo**, por pedido distinto de cada área. No mezclarlas.
+
+### Rejilla A — serie JEP y casos SRPA (con tinte)
+
+Barra `#FEB900`, 14 px, borde izquierdo **x=175** · texto Montserrat blanco desde **x=243** ·
+centro óptico **y=590** · ancho máximo **1330** · sangría 62 · aire de barra 64.
+Título Bold 58 · cuerpo Medium 48 · frase suelta Bold 64.
+Tinte `#03398B` al **46 %** (alfa 117/255), que es la fórmula medida del render del video 3:
+`out = img × 0,539 + (1,3 / 26,2 / 63,8)`.
+Fundidos planos de 12 f de entrada y 10 f de salida.
+
+### Rejilla B — introducciones de medio ambiente (en caja, sin tinte)
+
+La DAE marcó un recuadro: el texto vive dentro de **x 62–790, y 250–720**. Medido además contra la
+locutora en cuadro: ella ocupa de x≈790 a la derecha entre y 240 y 720, y por debajo de y 720 el
+hombro se abre hacia la izquierda.
+
+Barra 14 px en **x=86** · texto desde **x=170** · ancho máximo **615** · el bloque se ancla **abajo
+en y=690 y crece hacia arriba**, para que los cartones cortos queden lejos de su cara.
+Antetítulo Medium 29 · título Bold 46 · cuerpo Medium 37 · frase suelta Bold 54.
+
+**Sin tinte.** La legibilidad la resuelven tres sombras bajo el texto y bajo la barra:
+
+| capa | difuminado | opacidad | desplazamiento |
+|---|---|---|---|
+| núcleo | 3 px | 85 % | — |
+| ambiental | 22 px | 70 % | — |
+| contacto | 7 px | 70 % | 0, +4 |
+
+Sin contorno ni borde duro: sobre cielo claro y sobre edificio se sostiene igual.
+
+**Animación.** La barra crece desde arriba en 10 f con desaceleración cúbica. El texto entra desde
+el frame 6, línea por línea: cada una sube 14 px mientras aparece en 14 f, escalonada 3 f. A la
+salida se van en el mismo orden —10 f cada una, subiendo 8 px, escalonadas 2 f— y la barra se
+retrae hacia arriba en los últimos 10 f.
+
+El generador es `herramientas/cartones/cartones_v3.py`. Rinde cuadro a cuadro con Pillow y
+canaliza a ffmpeg. Necesita Montserrat instalada y ffmpeg en el PATH.
+
+### Códec
+
+**QuickTime Animation (qtrle, `-pix_fmt argb`).** PNG-in-MOV **falla** la decodificación a
+resolución completa de Resolve al exportar. No usarlo.
+
+---
+
+## Audio
+
+- Voz: **−19 LUFS**, techo **−1,0 dBTP**, **estéreo dual-mono** 48 kHz.
+- Música bajo voz: **−32 dB**; en los huecos **−26 dB**. Ataque 0,25 s · relevo 0,70 s ·
+  retención 0,30 s.
+- **La trampa del √2.** `ffmpeg -ac 1` sobre un archivo estéreo suma los canales con factor √2,
+  o sea **+3,01 dB**. Medir siempre con `mean(L,R)` o por canal.
+- **Un clip mono en una línea estéreo suena sólo por la izquierda.** La solución es entregar
+  dual-mono, no el Stereo Fixer.
+- En ElevenLabs las cifras van **en letras**: «ciento veinte millones», no «$120 millones». Los
+  sintetizadores leen los símbolos de forma impredecible y en español latino suelen agregar
+  moneda equivocada. Los números van a los cartones, no a la voz.
+
+---
+
+## Las trampas de la API de Resolve
+
+Todas descubiertas rompiendo cosas. Respetarlas.
+
+- **`move_clips` y `duplicate_clips` reinterpretan los rangos de origen entre frame rates.** Un
+  clip de 30 fps pasó de 117 a 93 frames; un clip con retime perdió el retime. **No usarlos para
+  nada que no sea 23,976 a 1:1.**
+- `move_clips` **no mueve audio** y **recorta** los items cuyo destino pisa a un vecino que todavía
+  no se movió. Hay que pasar los ids en orden, de derecha a izquierda cuando se mueve a la derecha.
+- **El método bueno para reposicionar:** borrar el item y volver a añadirlo en su posición exacta
+  con el rango de origen completo. Es lo que funciona.
+- `delete_clips(ripple=True)` **rippleó A1 pero no V1**: desincroniza imagen y sonido. No usar.
+- `insert_generator` sí hace un ripple de verdad y conserva retimes, transiciones, compound clips y
+  glows — pero está **fijo en 120 frames** y `timelineDefaultStillDuration` **no es escribible**.
+  Y **no ripplea V3 ni V4**: los cartones hay que reposicionarlos a mano después.
+- **Un still no se puede estirar por API.** `AppendToTimeline` ignora `endFrame` para imágenes fijas
+  y usa la duración por defecto, 24 f. `SetClipProperty` sobre Duration/Frames/End devuelve False.
+  La solución fue rendir la marca de agua como **clip de video con alfa** y repetirlo.
+- **El media pool cachea la duración del archivo.** Si se sobrescribe un archivo en su sitio, queda
+  la duración vieja. Hay que guardar con **nombre nuevo** y reimportar.
+- `get_property` devuelve `null`; `GetTrackEnabled` y `GetEndTimecode` no existen en esta build;
+  la API de keyframes lanza `'NoneType' object is not callable`. `get_transform` sí funciona.
+- `endFrame` en `AppendToTimeline` es **exclusivo**: `endFrame: 194` da 194 frames desde 0.
+- **`script_plugin run_inline` da un shell de Python completo en la máquina de Sebastián.** Es la
+  herramienta más potente de todas: llega a E: y a D:, mueve archivos, corre git. Las herramientas
+  de dispositivo no alcanzan E:.
+- La transcripción de Resolve funciona bien: `folder.transcribe_audio(background=True)` → sondear
+  `job_status` → `timeline.subtitle_generation_probe({allow_generate: true})` → leer los items de
+  la pista de subtítulos. `CreateSubtitlesFromAudio` directo devuelve False.
+
+---
+
+## Reglas duras de contenido
+
+- **No se inventa derecho.** Si la lección del profesor no enuncia una regla, el guion no la
+  afirma. Las preguntas del documento cargan la tesis; el narrador narra hechos. Los profesores
+  son difíciles de localizar y la institución exige apegarse a lo escrito por ellos.
+- **No se inventa lo que el expediente no dice.** Ni precariedad, ni conflicto, ni emoción no
+  atribuida. Verificar la geografía real antes de describir un entorno.
+- **Ningún texto legible en las imágenes.** Ni placas, ni marcas, ni escudos, ni banderas, ni
+  membretes, ni firmas. Todo lo institucional entra en After Effects.
+- **Placa limpia siempre.** El texto, la barra amarilla y el tinte son capas de DaVinci; nunca se
+  le piden a la imagen generada. Todo prompt lo declara y todo negativo lo bloquea.
+- La paleta: entorno **enteramente en grises**, 80/20, un solo saturado por composición. Un matiz
+  por personaje. Ladrillo siempre desaturado. Luz **neutra siempre** — ninguna hora dorada, ningún
+  cielo naranja, ningún sodio, ningún azul lunar. Sin god rays, sin destellos, sin cámara inclinada.
+- Piel cálida y natural, rostros completos con iris, pupila y brillo. Lo que va en grises es el
+  entorno y el reparto anónimo, no la gente.
+
+---
+
+## El método de prompts hero
+
+Está completo en el proyecto de claude.ai (`Metodo_Prompts_Hero_DAE.md`). El resumen operativo:
+
+Antes de escribir un prompt, en este orden: **releer qué dice el expediente y qué se estaría
+inventando · encontrar el gesto · buscar la referencia fotográfica y leer su geometría · decidir
+dónde se para la cámara y qué afirma eso · darle a cada persona una acción y una dirección de
+mirada distintas · escribir el bloque · escribir el negativo contra los fallos de ese plano.**
+
+Lo que más importa:
+
+- **La posición de la cámara es el argumento.** Si la respuesta a «¿qué afirma la cámara por estar
+  parada ahí?» es «para que se vea bien», el plano todavía no existe.
+- **El gesto único antes que la cara.** Una escena se sostiene sobre un objeto en una posición en
+  un instante. El plano canónico es el mostrador del Caso 5: *el papel devuelto sobre el laminado,
+  y ninguna de las dos lo tiene*. Ese medio segundo es el «no» completo.
+- **La emoción va en las manos.** Las caras salen genéricas; las manos no.
+- **Media acción, nunca el pico.** Boca abierta a media palabra, pie de atrás todavía levantado.
+  Congelado, no borroso: el movimiento lo dan las poses, no las estelas.
+- **Bloquear las dos versiones opuestas del cliché.** Ni cruel ni bondadosa. Ni heroica ni rota.
+- **Una instrucción de cámara o de foco se repite dentro del párrafo del plano.** El bloque de
+  estilo no basta.
+- **Un objeto crítico se describe por sus efectos, no por su nombre.** «Una silla pequeña» no
+  produjo una silla pequeña; «claramente construida para un niño, el espaldar llegando sólo a la
+  altura de la mesa» sí.
+- Desenfoque **pintado, no fotográfico**: forma simplificada y borde suave, nunca discos de bokeh.
+
+---
+
+## Planos como `.mov`, no como `.png`
+
+Por la limitación de los stills descrita arriba, los planos van como **sostenidos `.mov` de
+dieciséis segundos**, generados con ffmpeg a **2560 × 1440** — la línea es 1080, así que sobra un
+33 % de margen para los empujes de cámara — y se colocan con rango de origen. Los PNG originales
+no se tocan: siguen siendo la fuente para Magnific cuando toque animar.
+
+---
+
+## Estado al día de hoy
+
+- **Medio ambiente U1**: 17 cartones v3 colocados en `MA - U1 - INTRODUCCION`, a zoom 1.0 y pan 0
+  (el tamaño está horneado en los archivos). Sin marca de agua: ese video ya tiene bastantes logos.
+  Pendiente: replicar en U2–U5, que todavía tienen el montaje de la primera pasada.
+- **Terminaciones Anticipadas**: ocho casos elegidos, cinco de la Unidad 4 y tres de la Unidad 1.
+  El caso 02 tiene guion, bloques de voz, rejilla, cartones y desglose de los ocho planos.
+  Siguiente paso: referencias fotográficas de los KF 02, 04 y 07, y después los prompts.
+- **Plantilla**: `TA - CASO 01 - PLANTILLA` en el proyecto de Resolve, con intro, cartón de
+  entrada, marca de agua, música y las doce pistas nombradas.
+
+### Dos cosas abiertas
+
+1. **¿Esta serie lleva tinte azul en los cartones?** Los casos de Edwin sí; medio ambiente pidió
+   sin tinte y en caja fija. Son dos criterios conviviendo y hay que confirmar cuál aplica.
+2. **La voz del abogado defensor.** Si es nueva en ElevenLabs hay que reservarla: la defensa
+   aparece en casi todos los casos de Terminaciones Anticipadas.
