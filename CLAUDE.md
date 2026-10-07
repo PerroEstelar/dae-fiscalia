@@ -604,3 +604,42 @@ dentro del parrafo del plano: "su boca es una linea recta, ni una sonrisa leve,
 las comisuras no suben" y "no hay discos de bokeh, ni orbes, ni circulos de
 desenfoque, ni en las esquinas ni en ningun lado". Es la regla 8 otra vez: lo
 que importa se repite donde importa.
+
+## El pool tenia dos arboles con numeracion distinta
+
+Dentro de `CURSO 4 - TERMINACIONES ANTICIPADAS` convivian un arbol viejo
+`UNIDAD 4 / LECCION 4.x / CASO 01..09`, con la numeracion del documento del
+profesor, y un arbol plano `CASO 01..08` con la numeracion definitiva de la
+seleccion de ocho. Las timelines terminadas estaban en el viejo, dentro de un
+«CASO 01» que no es el caso 01. Si el usuario dice que no encuentra una timeline
+o que abre la equivocada, lo primero es mirar si hay dos arboles, no asumir que
+se perdio.
+
+Ahora: las ocho carpetas de caso viven bajo `UNIDAD 1 - ARCHIVO DE LA
+INDAGACION` (06, 07, 08) o `UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES` (01 a 05),
+en disco y en el pool, con el mismo nombre en los dos lados. El numero del caso
+no cambia al entrar en su unidad.
+
+## La timeline definitiva de cada caso va en `09 TIMELINE SEBASTIAN`
+
+Una carpeta por caso, con una sola timeline dentro: la buena. En disco la misma
+carpeta lleva el `.drt` exportado y un `LEER - esta es la buena.txt`. Cualquier
+version anterior va a `_ARCHIVO versiones sin voz` con ese prefijo en el nombre.
+Renombrar con prefijo no basta cuando los nombres se parecen; lo que resuelve es
+que haya un solo sitio donde buscar.
+
+## `Folder.SetName` existe pero no se puede llamar
+
+En Studio 20.0.0b.47, `hasattr(folder, 'SetName')` da True y llamarlo lanza
+`TypeError: 'NoneType' object is not callable`. No hay forma de renombrar una
+carpeta del pool por API. Para apartar una carpeta hay que crear la nueva y
+`MoveFolders([vieja], nueva)`. `MoveFolders` y `MoveClips` si funcionan.
+
+## Mover carpetas en disco rompe los enlaces, y `RelinkClips` los arregla
+
+`mp.RelinkClips(clips, ruta_de_carpeta)` busca **recursivamente** dentro de la
+ruta que se le pasa, asi que basta darle la raiz del caso: encuentra los
+`01 PLANOS`, `07 MOVIMIENTO` y demas por su cuenta. Una llamada por caso, 240
+clips en cuatro llamadas, 0 sin resolver. Verificar despues recorriendo las
+timelines con `GetMediaPoolItem().GetClipProperty('File Path')` y
+`os.path.exists`, no fiarse del True que devuelve.
