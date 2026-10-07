@@ -221,6 +221,54 @@ Todas descubiertas rompiendo cosas. Respetarlas.
 
 ---
 
+## La regla verbatim, en concreto
+
+«Apegarse al material escrito por los profesores» significa, medido contra el Caso 02 donde me fui:
+
+- **No se inventan personajes ni parlamentos.** Si el profesor narra en tercera persona —«la defensa
+  manifiesta su interés»— eso NO se convierte en un abogado hablando en primera persona.
+- **No se trae doctrina de otra lección al ejemplo.** El texto expositivo de la lección sirve para
+  entender, no para meterle párrafos al caso.
+- **Si la pieza queda más corta, mejor.** La duración no es un objetivo.
+
+La forma de cada caso de Terminaciones Anticipadas es la que el profesor ya escribió:
+
+```
+1 - «Veamos un ejemplo...»
+2 - La narración, literal, una sola voz de narrador sobre los planos
+3 - Las preguntas del guion, literales, en cartón sostenido con música
+```
+
+Las preguntas NO las dice un personaje a cámara: el profesor las escribió como lista, y una lista
+dicha mirando al lente son preguntas que nadie escuchó.
+
+## Voces
+
+Las voces las pide Sebastián desde SU cuenta de ElevenLabs, con sus propias voces. El catálogo de
+Magnific no sirve: casi no tiene colombianas y las que tiene no suenan al acento que la DAE pide.
+**Acento latino neutro** — ni español, ni argentino, ni mexicano. En el registro de conectores no hay
+MCP de TTS de ElevenLabs (el único es de agentes de voz).
+
+Yo entrego los bloques de texto, él genera, y yo masterizo, nombro, ubico e importo.
+
+**Masterización: `loudnorm` en UNA pasada estima mal** — pedí −19 LUFS y salió −16. Hay que hacer
+las dos pasadas (medir primero, aplicar con los valores medidos después). Destino: −19 LUFS,
+−1,0 dBTP, dual-mono estéreo, 48 kHz. Un MP3 mono a 44,1 kHz suena solo por el canal izquierdo.
+
+## Kling completa el gesto
+
+Medido con tres pruebas del Caso 02 (Kling 2.5, 720p, 5 y 10 s): si en cuadro hay dos manos y un
+objeto, el modelo hace que alguien lo agarre, por más que el negativo lo prohiba tres veces.
+
+**Los planos cuyo sentido es un gesto que NO se completa no van a Kling** — el sobre que nadie
+tiene, la mano plana sobre la carpeta cerrada. Esos se quedan quietos con un push lentísimo hecho
+en Resolve, que además no cuesta créditos. Lo que sí funciona: una acción que se completa sola
+(una página que termina de voltear) y una figura quieta que respira y sostiene la mirada.
+
+Costos medidos (video_generate, desde keyframe de entrada): Kling 2.5 720p 5 s = **140 créditos**,
+10 s = 280, 1080p 5 s = 325. Es de lejos el más barato del catálogo; el siguiente es MiniMax H3 Max
+Turbo a 200 y de ahí salta a 1050.
+
 ## El método de prompts hero
 
 Está completo en el proyecto de claude.ai (`Metodo_Prompts_Hero_DAE.md`). El resumen operativo:
