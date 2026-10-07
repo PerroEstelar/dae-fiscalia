@@ -750,3 +750,23 @@ los que uno daria por estaticos.
 
 Al reves que `folder.SetName()`, que existe pero no se puede llamar. Para dejar
 sitio a una version nueva con el mismo nombre, se renombra la vieja y listo.
+
+## Correccion: alargar el carton y solaparlo NO sirve
+
+Quedo escrito mas arriba que los cartones se renderizan con margen y se solapan
+22 cuadros en dos pistas. Se probo y esta mal: el carton que sale se queda a
+opacidad plena durante 15 de los 22 cuadros del solape, asi que durante medio
+segundo se ven DOS textos completos encima del otro. Un texto sobre otro no se
+lee como disolvencia, se lee como error, y Sebastian lo vio de inmediato.
+
+Lo correcto: los cartones van PEGADOS, uno por pista, cada uno exactamente lo
+que dura su frase, y lo que se acorta es la animacion. Con entrada de 11 cuadros
+y salida de 5 quedan 16 cuadros muertos por carton -medio segundo escaso- contra
+los 55 de la version original. Cero solape.
+
+La leccion general: cuando dos elementos del mismo tipo tienen que turnarse en
+el mismo sitio de la pantalla y no hay hueco entre ellos, no se busca espacio
+alargandolos; se acorta la transicion.
+
+Lo que si se queda del intento anterior es separar el tinte: ese arreglo es
+independiente y resuelve un problema real.
