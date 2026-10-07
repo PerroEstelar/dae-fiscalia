@@ -249,6 +249,25 @@ La forma de cada caso de Terminaciones Anticipadas es la que el profesor ya escr
 Las preguntas NO las dice un personaje a cámara: el profesor las escribió como lista, y una lista
 dicha mirando al lente son preguntas que nadie escuchó.
 
+## Música
+
+Se reusa la de la serie — hay trece pistas repartidas entre `E:\DAE MASTER`, `D:\DAE` y
+`D:\FISCALIA`. La cama se arma con `herramientas/musica/cama_musica.py`, que entrega un MP3 320
+a 48 kHz con **el ducking ya horneado**, porque la API de este build no deja escribir niveles ni
+keyframes de audio. El clip entra a A5 con la ganancia en cero.
+
+```
+voz       −19 LUFS
+música    −32 LUFS bajo la narración  (13 dB por debajo de la voz)
+música    −26 LUFS en los huecos y bajo el bloque de preguntas
+```
+
+Se normaliza a −26 y se bajan 6 dB donde hay voz, con rampas de 1 s. El bloque de preguntas no se
+duckea. La cama entra con el cartón de entrada y sale con el de cierre.
+
+**Hay que rehacerla cuando cambien las voces**: el ducking se calcula contra tramos concretos, así
+que si la locución se mueve, la música baja donde no habla nadie.
+
 ## Voces
 
 Las voces las pide Sebastián desde SU cuenta de ElevenLabs, con sus propias voces. El catálogo de
