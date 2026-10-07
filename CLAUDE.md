@@ -518,3 +518,23 @@ creditos cada vez que se olvida.
 es tiempo de pantalla real. El Caso 08 da 57 s por formula y quedo en 1:35. Para
 estimar de verdad: narracion por formula, mas el bloque de preguntas calculado
 aparte a 142 palabras por minuto con aire.
+
+## Medio punto menos de color en el entorno
+
+Dicho por Sebastian sobre el Caso 08: la composicion grafica mejoro, y la mezcla
+de colores alrededor esta bien, pero el ENTORNO necesita medio punto menos de
+saturacion. No la piel, no el acento de color del personaje: el entorno.
+
+En el prompt se escribe como "environment almost fully desaturated, only the
+faintest trace of colour left in the greys, close to neutral grey but not quite
+monochrome", en vez del "entirely desaturated greys" que se venia usando. La piel
+sigue calida y natural y el unico saturado por composicion no cambia.
+
+## Cartones de narracion
+
+La primera mitad de cada pieza tambien lleva cartones de tinte azul, no solo el
+bloque de preguntas. Tres por video, de 91 a 142 cuadros, en V2, puestos donde la
+narracion dice el dato. Menos que en el bloque de preguntas, pero algunos.
+El texto es literal del guion del profesor: nombres, cifras y frases suyas. Un
+carton que inventa una sintesis ya no es el texto del profesor.
+Generador: `herramientas/cartones/cartones_narracion.py`.
