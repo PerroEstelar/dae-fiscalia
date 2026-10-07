@@ -686,3 +686,67 @@ dentro de la caja». El KF14 salio caricatura de chismoso pese a tenerlo prohibi
 sirvio «la espalda recta, la cintura sin doblar, las dos manos colgando a los
 lados, la boca apenas abierta, la separacion entre los labios no mas gruesa que un
 lapiz». Es la regla 9 aplicada a las personas, no solo a los objetos.
+
+## El carton tiene que estar completo mientras se dicen las palabras
+
+Era el fallo mas repetido de la serie y estaba en la animacion. El texto tardaba
+35 cuadros en terminar de entrar -arranque en el 6, 14 de fundido, escalonado 3
+por linea- y empezaba a irse 20 cuadros antes del final, tambien escalonado. Como
+cada carton dura exactamente lo que dura su frase, se comia segundo y medio por
+delante y casi uno por detras: el texto se iba mientras todavia se oian las
+ultimas palabras.
+
+Ahora: entrada en 15 cuadros (arranque 2, fundido 8, escalon 1) y salida de 7 sin
+escalonar. Y sobre todo, **el carton se renderiza con `tramo + CABEZA + COLA` y
+se coloca CABEZA cuadros ANTES de que empiece la frase** (15 y 7). Asi las dos
+animaciones caen fuera de las palabras. Verificado midiendo la opacidad cuadro a
+cuadro: completo del 14 al 150 en un carton de 157.
+
+## El tinte va aparte, no viaja con cada carton
+
+Al crecer, los cartones del bloque de preguntas se solapan 22 cuadros. Si cada
+uno trae su propio tinte al 46 %, en el solape se apilan dos capas y el azul
+salta a **71 %**: un parpadeo oscuro entre pregunta y pregunta, ocho veces por
+pieza. Medido: 0,459 -> 0,707 de alfa.
+
+La solucion es un panel de tinte sostenido -`render_tinte()`- que entra una vez,
+dura todo el bloque y sale una vez, con los cartones de texto SIN tinte encima.
+Los de narracion van sueltos y si conservan el suyo.
+
+Mapa de pistas nuevo de la serie:
+    V1 VIDEO · V2 TINTE · V3 CARTONES · V4 CARTONES 2
+    V5 MARCA DE AGUA · V6 EFECTOS · V7 LOWER THIRD
+El texto necesita dos pistas porque se solapa. El tinte va DEBAJO del texto.
+
+## El escalon de volumen no era la voz
+
+Sebastian oyo un salto brusco entre la voz del narrador y la de las preguntas.
+Medidas las diez pistas por ventanas de 8 s -este build de ffmpeg no imprime el
+short-term por cuadro, hay que medir el integrado por ventanas- las dos voces de
+cada caso quedan dentro de 1 LU. El salto era la cama: -31,6 bajo la narracion y
+-26,0 bajo las preguntas, 5,6 dB de subida en el cuadro donde cambia de locutor.
+La voz no se mueve pero pierde ese aire de golpe.
+
+El bloque de preguntas se habia pensado sin voz y entro como «hueco». Ahora
+`cama_musica.py` acepta una profundidad por tramo: -6 dB bajo narracion, -3 bajo
+preguntas, 0 en los huecos.
+
+## Un plano de detalle sale mas barato que repetir un loop
+
+Idea de Sebastian y queda como metodo. Cuando Kling arruina el final de un loop
+-una figura que se va, algo que se cierra solo- en vez de pedir el loop otra vez
+por 280 creditos se corta a un plano de detalle del mismo sitio: una imagen de
+100 y, si se quiere, un loop corto. Ademas suma, porque el detalle agrega
+material en vez de reemplazarlo. El Caso 06 estrena el BR04 de la vitrina
+abierta, que tapa los 60 cuadros donde el KF01 pierde a la figura.
+
+## Un still tambien pide movimiento
+
+Los planos que quedaron como `_hold` se notan muertos al lado de los que tienen
+loop. Cuando se pidan los loops de un caso, se piden TODOS los planos, incluidos
+los que uno daria por estaticos.
+
+## `timeline.SetName()` si funciona
+
+Al reves que `folder.SetName()`, que existe pero no se puede llamar. Para dejar
+sitio a una version nueva con el mismo nombre, se renombra la vieja y listo.

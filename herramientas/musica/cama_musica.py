@@ -10,9 +10,19 @@ POR QUÉ HORNEADO Y NO AUTOMATIZADO EN RESOLVE
 
 LOS NIVELES DE LA SERIE
     voz           −19 LUFS
-    música        −32 LUFS bajo la narración   (13 dB por debajo de la voz)
-    música        −26 LUFS en los huecos y bajo el bloque de preguntas
-    Se normaliza a −26 y se baja 6 dB donde hay narración, con rampas de 1 s.
+    música        −32 LUFS bajo la narración      (6 dB de ducking)
+    música        −29 LUFS bajo el bloque de preguntas (3 dB de ducking)
+    música        −26 LUFS en los huecos
+    Se normaliza a −26 y se agacha donde hay voz, con rampas de 1 s.
+
+    POR QUÉ EL BLOQUE DE PREGUNTAS TAMBIÉN SE AGACHA
+    Antes las preguntas entraban como «hueco», a −26, porque el bloque se había
+    pensado sin voz. Con voz encima eso deja un escalón de 5,6 dB justo en el
+    cuadro donde cambia de narrador: la voz no se mueve pero pierde ese aire de
+    golpe, y se oye como si el segundo locutor hablara más bajo. Medidas las dos
+    pistas por ventanas, narrador y preguntas quedan dentro de 1 LU en los cinco
+    casos: el escalón era la cama, no la voz. Con 3 dB el bloque sigue
+    levantando sobre la narración sin comerse al locutor.
 """
 import json, os, subprocess, sys
 import numpy as np
@@ -21,7 +31,8 @@ SR = 48000
 RAMPA = 1.0          # segundos de subida y bajada del ducking
 ENTRADA = 1.5        # fade in
 SALIDA = 2.5         # fade out
-DUCK_DB = -6.0
+DUCK_DB = -6.0       # narración
+DUCK_PREGUNTAS = -3.0
 
 
 def _decodificar(ruta, dur):
@@ -51,12 +62,17 @@ def _decodificar(ruta, dur):
 
 
 def _envolvente(dur, tramos_voz):
-    """1.0 en los huecos, DUCK_DB donde hay voz, con rampas lineales."""
+    """1.0 en los huecos y el ducking que pida cada tramo, con rampas lineales.
+
+    Un tramo es (a, b) —y usa DUCK_DB— o (a, b, db) para pedir otra
+    profundidad; así la narración baja 6 dB y el bloque de preguntas 3.
+    """
     n = int(round(dur * SR))
     g = np.ones(n, dtype=np.float32)
-    duck = float(10 ** (DUCK_DB / 20))
     r = int(RAMPA * SR)
-    for a, b in tramos_voz:
+    for tramo in tramos_voz:
+        a, b = tramo[0], tramo[1]
+        duck = float(10 ** ((tramo[2] if len(tramo) > 2 else DUCK_DB) / 20))
         ia, ib = int(a * SR), int(b * SR)
         i0, i1 = max(0, ia - r), min(n, ib + r)
         if ia > i0:

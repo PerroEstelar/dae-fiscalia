@@ -14,13 +14,21 @@ A_carton_cierre.mov del Caso A, y el cartón de entrada de
     blanco  fondo #FCFCFC, texto azul noche #07224B
     marca   APRENDE CON LA DAE, 408 px de ancho, en (1351, 131), al 12,5 %
 
-Animación (la misma de la v3 de medio ambiente, que ya pasó revisión):
-    la barra crece desde arriba en 10 f con easeOutCubic
-    el texto entra desde el frame 6, línea por línea, subiendo 14 px en 14 f,
-        escalonado 3 f
-    salida: 10 f, bajando 8 px, escalonada 2 f; la barra se retrae en los
-        últimos 10 f
-    el tinte entra en 12 f y sale en 10 f
+Animación. El texto tiene que estar COMPLETO mientras se dicen las palabras:
+    ese es el requisito, y la animación se acomoda a él, no al revés.
+
+    la barra crece desde arriba en 8 f con easeOutCubic
+    el texto entra desde el frame 2, línea por línea, subiendo 12 px en 8 f,
+        escalonado 1 f  -> un bloque de seis líneas está completo en el f 15
+    salida: 7 f, bajando 6 px, SIN escalonar, para que todas las líneas se
+        vayan juntas y ninguna se adelante a la voz
+    el tinte entra en 8 f y sale en 7 f
+
+    La versión anterior tardaba 35 f en terminar de entrar y empezaba a irse
+    20 f antes del final (escalonada), así que en un cartón calzado a la frase
+    el texto se iba mientras todavía se oían las últimas palabras. CABEZA y
+    COLA, más abajo, son el margen que hay que dejar alrededor del tramo de voz
+    para que el texto esté entero justo donde se habla.
 """
 import os, subprocess, sys
 from PIL import Image, ImageDraw, ImageFont
@@ -44,12 +52,19 @@ TIT, CUE, SUELTA, ANTE = 54, 44, 72, 30
 INTERLINEA = 1.34
 GAP_TIT, GAP_CUE, GAP_ANTE = 26, 12, 18
 
-BARRA_IN, BARRA_OUT = 10, 10
-TXT_IN, TXT_OUT = 14, 10
-RETARDO_IN, RETARDO_OUT = 3, 2
-SUBE_IN, SUBE_OUT = 14, 8
-ARRANQUE_TXT = 6
-TINTE_IN, TINTE_OUT = 12, 10
+BARRA_IN, BARRA_OUT = 8, 7
+TXT_IN, TXT_OUT = 8, 7
+RETARDO_IN, RETARDO_OUT = 1, 0
+SUBE_IN, SUBE_OUT = 12, 6
+ARRANQUE_TXT = 2
+TINTE_IN, TINTE_OUT = 8, 7
+
+# Margen alrededor del tramo de voz. Un cartón que acompaña una frase se
+# renderiza con `span + CABEZA + COLA` cuadros y se coloca `CABEZA` cuadros
+# antes de que empiece la frase; así el texto está completo exactamente
+# durante las palabras. CABEZA cubre la entrada escalonada del bloque más
+# largo que usamos (seis líneas: 2 + 5 + 8 = 15).
+CABEZA, COLA = 15, 7
 
 FDIR = "/usr/share/fonts/truetype/montserrat/"
 F_BOLD = FDIR + "Montserrat-Bold.ttf"
@@ -110,6 +125,36 @@ def ease_out_cubic(t):
 
 def ease_out(t):
     return 1 - (1 - t) ** 2
+
+
+def render_tinte(nframes, salida):
+    """El panel de tinte solo, sin texto, para sostener todo el bloque de preguntas.
+
+    POR QUÉ EXISTE
+        Los cartones de pregunta se solapan 22 cuadros para que el texto esté
+        completo mientras se dicen las palabras. Si cada uno trae su propio
+        tinte, en el solape se apilan dos capas al 46 % y el azul salta al 71 %:
+        un parpadeo oscuro entre pregunta y pregunta. Con el tinte aparte, el
+        panel entra una vez, se sostiene todo el bloque y sale una vez, y
+        encima solo cambian las letras.
+    """
+    cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "argb",
+           "-s", "%dx%d" % (W, H), "-r", "24000/1001", "-i", "-",
+           "-c:v", "qtrle", "-pix_fmt", "argb", salida]
+    pr = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+    for f in range(nframes):
+        if f < TINTE_IN:
+            ta = TINTE_A * ease_out(f / TINTE_IN)
+        elif f >= nframes - TINTE_OUT:
+            ta = TINTE_A * (1 - (f - (nframes - TINTE_OUT)) / TINTE_OUT)
+        else:
+            ta = TINTE_A
+        capa = Image.new("RGBA", (W, H), TINTE + (int(ta),))
+        r, g, b, al = capa.split()
+        pr.stdin.write(Image.merge("RGBA", (al, r, g, b)).tobytes())
+    pr.stdin.close()
+    pr.wait()
+    print(os.path.basename(salida), nframes, "f", os.path.getsize(salida) // 1024, "KB")
 
 
 def render_carton(spec, nframes, fondo, alfa, salida, con_marca=False, con_tinte=False):
