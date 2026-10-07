@@ -643,3 +643,46 @@ ruta que se le pasa, asi que basta darle la raiz del caso: encuentra los
 clips en cuatro llamadas, 0 sin resolver. Verificar despues recorriendo las
 timelines con `GetMediaPoolItem().GetClipProperty('File Path')` y
 `os.path.exists`, no fiarse del True que devuelve.
+
+## Kling no deja a nadie quieto si la toma dura diez segundos
+
+El KF06 y el KF09 del Caso 01 son la misma camara de seguridad y tenian que
+mostrar, uno, a un hombre identificable y, el otro, a una figura que se ve pero
+no se identifica. Las dos veces Kling resolvio la situacion: en el A el hombre
+camina y termina de espaldas hacia el cuadro 120; en el B la figura se va del
+pasillo y la pantalla queda vacia, igual que el escenario 3. Se repitieron con
+«no camina, se queda exactamente donde esta, del mismo tamaño del primer cuadro
+al ultimo, nunca de espaldas» escrito tres veces, y volvio a hacer lo mismo.
+
+La salida no fue un tercer intento: fue dejarlos como **still**. Una grabacion de
+camara de seguridad congelada se lee bien, y el plano que si tiene loop en esa
+serie de tres es casi estatico de todos modos, asi que los tres monitores se leen
+igual. Antes de gastar un tercer loop de 280 creditos en un plano donde la
+persona tiene que quedarse quieta, considerar el hold.
+
+## El ducking se calcula solo contra la narracion
+
+En la cama del Caso 01 se pasaron a `cama_musica.py` los DOS tramos de voz
+-narracion y preguntas- como tramos a agachar, y el bloque de preguntas salio en
+-31 LUFS cuando tiene que estar en -26. La serie agacha la musica bajo la
+narracion y la deja arriba bajo las preguntas. En el JSON va un solo tramo.
+Verificar siempre por regiones, nunca por el integrado.
+
+## El plano gemelo se pide con el primero como referencia
+
+Cuando dos planos tienen que leerse como el mismo sitio en dos momentos -el KF03
+y el KF15 del Caso 01, o las tres camaras de seguridad- el segundo NO se pide con
+un prompt nuevo. Se pide con el primero en `references` tipo `image` y un prompt
+que empieza diciendo que se conserven camara, encuadre, muebles, luz y personajes,
+y que solo cambia tal cosa. Con prompt nuevo salen dos bodegas distintas.
+
+## Mirada y gesto se bloquean en positivo, dentro del parrafo del plano
+
+Dos fallos del Caso 01, los dos contra cosas que el negativo ya prohibia. El KF01
+miraba a camara pese a «nobody looks at the camera»; lo que sirvio fue describir
+la mirada por sus efectos: «la cabeza inclinada unos veinte grados, las pupilas
+abajo en los ojos, se ve casi todo el parpado superior, la linea de la mirada cae
+dentro de la caja». El KF14 salio caricatura de chismoso pese a tenerlo prohibido;
+sirvio «la espalda recta, la cintura sin doblar, las dos manos colgando a los
+lados, la boca apenas abierta, la separacion entre los labios no mas gruesa que un
+lapiz». Es la regla 9 aplicada a las personas, no solo a los objetos.

@@ -1,0 +1,163 @@
+[
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF01_loop10s.mp4",
+  "modo": "loop",
+  "frames": 308,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF01_v308.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF02_loop10s.mp4",
+  "modo": "loop",
+  "frames": 267,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF02_v267.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF03_loop10s.mp4",
+  "modo": "loop",
+  "frames": 319,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF03_v319.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF04_loop10s.mp4",
+  "modo": "loop_congela",
+  "frames": 249,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF04_v249.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF05_loop5s.mp4",
+  "modo": "loop",
+  "frames": 116,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF05_v116.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\01 PLANOS\\TA01_KF06_camara_A_identifica.png",
+  "modo": "hold",
+  "frames": 196,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF06_v196.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF07_loop10s.mp4",
+  "modo": "loop",
+  "frames": 217,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF07_v217.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF08_loop10s.mp4",
+  "modo": "loop_congela",
+  "frames": 326,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF08_v326.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\01 PLANOS\\TA01_KF09_camara_B_insinua.png",
+  "modo": "hold",
+  "frames": 187,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF09_v187.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF10_loop10s.mp4",
+  "modo": "loop",
+  "frames": 309,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF10_v309.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF11_loop10s.mp4",
+  "modo": "loop",
+  "frames": 294,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF11_v294.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF12_loop10s.mp4",
+  "modo": "loop",
+  "frames": 191,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF12_v191.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF13_loop10s.mp4",
+  "modo": "loop",
+  "frames": 171,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF13_v171.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF14_loop10s.mp4",
+  "modo": "loop_congela",
+  "frames": 334,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF14_v334.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF15_loop10s.mp4",
+  "modo": "loop_congela",
+  "frames": 349,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF15_v349.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF04_loop10s.mp4",
+  "modo": "loop",
+  "frames": 137,
+  "inicio": 90,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF04_v137.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF05_loop5s.mp4",
+  "modo": "loop_congela",
+  "frames": 157,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF05_v157.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF03_loop10s.mp4",
+  "modo": "loop",
+  "frames": 237,
+  "inicio": 4,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF03_v237.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\01 PLANOS\\TA01_KF06_camara_A_identifica.png",
+  "modo": "hold",
+  "frames": 128,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF06_v128.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\01 PLANOS\\TA01_KF09_camara_B_insinua.png",
+  "modo": "hold",
+  "frames": 128,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF09_v128.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF12_loop10s.mp4",
+  "modo": "loop",
+  "frames": 129,
+  "inicio": 100,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF12_v129.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF13_loop10s.mp4",
+  "modo": "loop",
+  "frames": 151,
+  "inicio": 70,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF13_v151.mp4"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\07 MOVIMIENTO\\TA01_KF14_loop10s.mp4",
+  "modo": "loop_congela",
+  "frames": 188,
+  "inicio": 80,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 01 - tres escenarios probatorios\\08 A LA VOZ\\TA01_KF14_v188.mp4"
+ }
+]
