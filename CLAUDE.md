@@ -225,8 +225,15 @@ Todas descubiertas rompiendo cosas. Respetarlas.
 
 «Apegarse al material escrito por los profesores» significa, medido contra el Caso 02 donde me fui:
 
-- **No se inventan personajes ni parlamentos.** Si el profesor narra en tercera persona —«la defensa
-  manifiesta su interés»— eso NO se convierte en un abogado hablando en primera persona.
+- **Lo literal es la LOCUCIÓN, no la imagen.** No se inventan parlamentos: si el profesor narra en
+  tercera persona —«la defensa manifiesta su interés»— eso NO se convierte en un abogado hablando
+  en primera persona. Pero **a quien el narrador nombra hay que verlo**: si dice «el fiscal», hay
+  un fiscal en cuadro, con cara, el mismo en toda la pieza. Dibujar al abogado está bien; ponerlo
+  a hablar, no.
+- **Un personaje que el texto no nombra no existe**, ni hablando ni en imagen. El «facilitador» del
+  Caso 02 fue invención mía: las preguntas las hace «el o la fiscal», que sí está nombrada.
+- **Si el texto dice que algo no se puede identificar, no se dibuja.** Los dos del hurto del Caso 06
+  van sin cara porque el caso existe por eso.
 - **No se trae doctrina de otra lección al ejemplo.** El texto expositivo de la lección sirve para
   entender, no para meterle párrafos al caso.
 - **Si la pieza queda más corta, mejor.** La duración no es un objetivo.
