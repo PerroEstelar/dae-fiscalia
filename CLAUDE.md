@@ -581,3 +581,26 @@ movimiento a 1.7x se ve mucho peor que dejarlo reposar.
 
 La plantilla de la serie llama A3 "FACILITADOR". En las lineas "a la voz" se
 renombro a PREGUNTAS, que es lo que lleva. A4 sigue vacia.
+
+## El orden nuevo: la voz va PRIMERO
+
+Desde el Caso 07 el caso se construye asi, y en este orden:
+
+1. Escribir los dos textos de voz (narracion y preguntas) desde el guion.
+2. Generarlos en ElevenLabs y masterizarlos.
+3. Medir los silencios y derivar la rejilla: cuantos planos, cuanto dura cada
+   uno, cuanto dura cada carton de pregunta.
+4. SOLO ENTONCES pedir las imagenes, ya sabiendo la duracion de cada ranura.
+5. Loops, cartones a la duracion medida, musica, linea.
+
+Asi no hay que re-renderizar nada: antes se hacia al reves y toco rehacer 22
+cartones y 38 planos de los tres primeros casos.
+
+## Un negativo generico no basta contra la sonrisa ni contra el bokeh
+
+El KF08 del Caso 07 salio sonriendo a camara y con discos de bokeh, con las dos
+cosas ya bloqueadas en el negativo. Lo que si funciono fue decirlo en POSITIVO
+dentro del parrafo del plano: "su boca es una linea recta, ni una sonrisa leve,
+las comisuras no suben" y "no hay discos de bokeh, ni orbes, ni circulos de
+desenfoque, ni en las esquinas ni en ningun lado". Es la regla 8 otra vez: lo
+que importa se repite donde importa.
