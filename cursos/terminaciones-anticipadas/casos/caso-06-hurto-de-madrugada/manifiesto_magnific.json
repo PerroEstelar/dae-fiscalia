@@ -1,0 +1,24 @@
+{
+  "destino": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\CASO 06 - hurto de madrugada\\01 PLANOS",
+  "carpeta_pool": ["CURSO 4 - TERMINACIONES ANTICIPADAS", "CASO 06 - hurto de madrugada", "01 PLANOS"],
+  "archivos": [
+    {"nombre": "KF01_local_madrugada_vA.png", "url": "https://pikaso.cdnpk.net/private/production/5657603754/render.png?token=exp=1791590400~hmac=d40f65a40cc44234402e2b3ae3875c50404e0238f4a8a622746121a2dc201be1"},
+    {"nombre": "KF01_local_madrugada_vB.png", "url": "https://pikaso.cdnpk.net/private/production/5657604819/render.png?token=exp=1791590400~hmac=0238538298dff0fb3b7af126279569cd32d6d6a9ed1fd7e37238bfb4028fe199"},
+    {"nombre": "KF02_lo_que_muestra_la_camara_vA.png", "url": "https://pikaso.cdnpk.net/private/production/5657605386/render.png?token=exp=1791590400~hmac=26c469b3762dfb0b58b3d06d92837cc2571f6ea17a59dec79eaa897197a3f092"},
+    {"nombre": "KF02_lo_que_muestra_la_camara_vB.png", "url": "https://pikaso.cdnpk.net/private/production/5657606210/render.png?token=exp=1791590400~hmac=dffb85020bf1828b041968f25f52c5bc19c150aa1d914f648b132b412ae248fc"},
+    {"nombre": "KF03_fiscal_ordena_grabaciones_vA.png", "url": "https://pikaso.cdnpk.net/private/production/5657607490/render.png?token=exp=1791590400~hmac=a78c5b607de4ba9834763acd7d79d935288eacd6b17b18e431db4aac8ae4d271"},
+    {"nombre": "KF03_fiscal_ordena_grabaciones_vB.png", "url": "https://pikaso.cdnpk.net/private/production/5657604641/render.png?token=exp=1791590400~hmac=40518f15913bb9b0cb9358b8c2717e1b99f2266d77072b5e6e8b9f6b7ad79205"},
+    {"nombre": "KF04_imagenes_que_no_resuelven_vA.png", "url": "https://pikaso.cdnpk.net/private/production/5657608278/render.png?token=exp=1791590400~hmac=2cb82b42f3caf1c6000485e6e6c033ea2420fc54639bd99e956f8e607576bcde"},
+    {"nombre": "KF04_imagenes_que_no_resuelven_vB.png", "url": "https://pikaso.cdnpk.net/private/production/5657606937/render.png?token=exp=1791590400~hmac=e7cb96a1e22f78a97f8523bc82ab8c639fbbdf4432f6316e0de94bb7db9d0e90"},
+    {"nombre": "KF05_los_meses_vA.png", "url": "https://pikaso.cdnpk.net/private/production/5657608929/render.png?token=exp=1791590400~hmac=119eb1fdefa74c1570f56b6c6edcd8e16b9160fbb873bfdda53e6b5cb980a467"},
+    {"nombre": "KF05_los_meses_vB.png", "url": "https://pikaso.cdnpk.net/private/production/5657610775/render.png?token=exp=1791590400~hmac=917c0352ffd72b0563a2a0fac33deb5eff0205a796381e80af3917c66cf87e9b"},
+    {"nombre": "KF06_camaras_de_la_calle_vA.png", "url": "https://pikaso.cdnpk.net/private/production/5657610703/render.png?token=exp=1791590400~hmac=1915fe45eb39cae741d6a0f390681f69d2f00d4cdb39cc55af310786d35169c8"},
+    {"nombre": "KF06_camaras_de_la_calle_vB.png", "url": "https://pikaso.cdnpk.net/private/production/5657611020/render.png?token=exp=1791590400~hmac=4563466a2dd442b5f3a3c75e2707559e586d86f0867fe5af982b71ef0a670f5b"},
+    {"nombre": "KF07_los_otros_casos_vA.png", "url": "https://pikaso.cdnpk.net/private/production/5657611053/render.png?token=exp=1791590400~hmac=aba17f453d6fc53a26590e28199b6e0abb6e16790796f5e09c96748ed0d5e450"},
+    {"nombre": "KF07_los_otros_casos_vB.png", "url": "https://pikaso.cdnpk.net/private/production/5657615011/render.png?token=exp=1791590400~hmac=d1b1bd6e9f4c17bdda73b9604ba1e83e289128df00640ef88f852a80f1b9fe53"},
+    {"nombre": "KF08_fiscal_y_el_mapa_vA.png", "url": "https://pikaso.cdnpk.net/private/production/5657613762/render.png?token=exp=1791590400~hmac=ca04683ad373e6511cbd27d0fcab4926d1fa76361411a45de879503d1db2e5bc"},
+    {"nombre": "KF08_fiscal_y_el_mapa_vB.png", "url": "https://pikaso.cdnpk.net/private/production/5657613609/render.png?token=exp=1791590400~hmac=26b2c7e4c1b25fdaa16725bc3fcd5bfef21b9e7a7e0b85adf6f99f97542745f4"},
+    {"nombre": "BR03_reja_cerrada_de_dia_vA.png", "destino": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\CASO 06 - hurto de madrugada\\04 B-ROLL", "url": "https://pikaso.cdnpk.net/private/production/5657613848/render.png?token=exp=1791590400~hmac=c2933a62838848c5ce9a1f5a242ede6e2309570e2c43408b0733dd7d15156e0d"},
+    {"nombre": "BR03_reja_cerrada_de_dia_vB.png", "destino": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\CASO 06 - hurto de madrugada\\04 B-ROLL", "url": "https://pikaso.cdnpk.net/private/production/5657614351/render.png?token=exp=1791590400~hmac=84bb53aab6d154e40a3cb0fe26cb92b6b4f59677e2d55a5b1a94b991c6dfd83a"}
+  ]
+}

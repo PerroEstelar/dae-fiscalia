@@ -55,8 +55,11 @@ MAGIA = {
 }
 
 
-def _parece_lo_que_dice(ruta):
-    ext = os.path.splitext(ruta)[1].lower()
+def _parece_lo_que_dice(ruta, ext=None):
+    """ext: la extensión del DESTINO. Se pasa a mano porque el archivo que se
+    revisa es el temporal `.parcial`, y mirarle la extensión a él hacía que
+    todo fallara."""
+    ext = (ext or os.path.splitext(ruta)[1]).lower()
     with open(ruta, "rb") as fh:
         cab = fh.read(12)
     if ext in (".mov", ".mp4", ".m4a"):
@@ -90,7 +93,7 @@ def _bajar_uno(url, destino, intentos=3):
     if os.path.getsize(tmp) < 1024:
         os.remove(tmp)
         raise RuntimeError("lo que bajó pesa menos de 1 KB — probablemente es una página de error")
-    if not _parece_lo_que_dice(tmp):
+    if not _parece_lo_que_dice(tmp, os.path.splitext(destino)[1]):
         os.remove(tmp)
         raise RuntimeError("lo que bajó no tiene el encabezado del formato que dice la extensión")
 

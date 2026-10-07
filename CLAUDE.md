@@ -327,6 +327,12 @@ Generador: `herramientas/cartones/cartones_ta.py`.
 
 ## Bajar de Magnific
 
+**Trampa del verificador (ya corregida):** `bajar_de_magnific.py` revisaba la extensión del archivo
+temporal `.parcial` en vez de la del destino, y rechazaba absolutamente todo con «no tiene el
+encabezado del formato que dice la extensión». Si vuelve a fallar en bloque, mirar ahí primero.
+
+### Cómo funciona
+
 El contenedor en la nube **no alcanza** `pikaso.cdnpk.net`: el proxy de salida responde 403. La
 máquina de Sebastián sí. Entonces se arma un manifiesto JSON y se corre
 `herramientas/magnific/bajar_de_magnific.py` con `script_plugin run_inline`, que es un Python
