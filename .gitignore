@@ -39,3 +39,9 @@ __pycache__/
 
 # El .drp SÍ entra: pesa 150 KB y es el proyecto entero.
 !proyecto-resolve/*.drp
+
+# llaves, nunca
+_secretos/
+*.key
+.env
+elevenlabs.txt
