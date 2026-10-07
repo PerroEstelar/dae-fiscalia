@@ -1,0 +1,79 @@
+[
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\07 MOVIMIENTO\\\\TA08_KF01_loop10s.mp4",
+  "modo": "loop",
+  "frames": 114,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\08 A LA VOZ\\\\TA08_KF01_v114.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\07 MOVIMIENTO\\\\TA08_KF02_loop10s.mp4",
+  "modo": "loop",
+  "frames": 136,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\08 A LA VOZ\\\\TA08_KF02_v136.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\07 MOVIMIENTO\\\\TA08_KF03_loop10s.mp4",
+  "modo": "loop",
+  "frames": 110,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\08 A LA VOZ\\\\TA08_KF03_v110.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\07 MOVIMIENTO\\\\TA08_KF04_loop10s.mp4",
+  "modo": "loop",
+  "frames": 95,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\08 A LA VOZ\\\\TA08_KF04_v95.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\07 MOVIMIENTO\\\\TA08_KF05_loop10s.mp4",
+  "modo": "loop",
+  "frames": 103,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\08 A LA VOZ\\\\TA08_KF05_v103.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\07 MOVIMIENTO\\\\TA08_KF06_loop10s.mp4",
+  "modo": "loop",
+  "frames": 149,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\08 A LA VOZ\\\\TA08_KF06_v149.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\07 MOVIMIENTO\\\\TA08_KF02_loop10s.mp4",
+  "modo": "loop",
+  "frames": 175,
+  "inicio": 66,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\08 A LA VOZ\\\\TA08_KF02_v175.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\07 MOVIMIENTO\\\\TA08_KF01_loop10s.mp4",
+  "modo": "loop",
+  "frames": 66,
+  "inicio": 175,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\08 A LA VOZ\\\\TA08_KF01_v66.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\07 MOVIMIENTO\\\\TA08_KF05_loop10s.mp4",
+  "modo": "loop",
+  "frames": 123,
+  "inicio": 118,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\08 A LA VOZ\\\\TA08_KF05_v123.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\07 MOVIMIENTO\\\\TA08_KF04_loop10s.mp4",
+  "modo": "loop",
+  "frames": 164,
+  "inicio": 77,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\08 A LA VOZ\\\\TA08_KF04_v164.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\07 MOVIMIENTO\\\\TA08_KF06_loop10s.mp4",
+  "modo": "loop",
+  "frames": 171,
+  "inicio": 70,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 08 - video seis meses despues\\\\08 A LA VOZ\\\\TA08_KF06_v171.mp4"
+ }
+]

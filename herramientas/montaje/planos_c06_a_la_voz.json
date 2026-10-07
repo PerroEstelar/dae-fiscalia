@@ -1,0 +1,107 @@
+[
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\07 MOVIMIENTO\\\\TA06_KF01_local_madrugada_loop10s.mp4",
+  "modo": "loop",
+  "frames": 208,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_KF01_v208.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\07 MOVIMIENTO\\\\TA06_KF02_lo_que_muestra_la_camara_loop10s.mp4",
+  "modo": "loop",
+  "frames": 160,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_KF02_v160.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\07 MOVIMIENTO\\\\TA06_KF03_fiscal_ordena_loop5s.mp4",
+  "modo": "loop",
+  "frames": 115,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_KF03_v115.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\07 MOVIMIENTO\\\\TA06_KF04_imagenes_que_no_resuelven_loop10s.mp4",
+  "modo": "loop",
+  "frames": 143,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_KF04_v143.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\01 PLANOS\\\\KF05_los_meses_vA.png",
+  "modo": "hold",
+  "frames": 248,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_KF05_v248.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\07 MOVIMIENTO\\\\TA06_KF06_camaras_de_la_calle_loop10s.mp4",
+  "modo": "loop",
+  "frames": 177,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_KF06_v177.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\01 PLANOS\\\\KF07_los_otros_casos_vA.png",
+  "modo": "hold",
+  "frames": 183,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_KF07_v183.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\01 PLANOS\\\\KF08_fiscal_y_el_mapa_vA.png",
+  "modo": "hold",
+  "frames": 324,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_KF08_v324.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\01 PLANOS\\\\KF05_los_meses_vB.png",
+  "modo": "hold",
+  "frames": 122,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_KF05_v122.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\07 MOVIMIENTO\\\\TA06_KF04_imagenes_que_no_resuelven_loop10s.mp4",
+  "modo": "loop",
+  "frames": 218,
+  "inicio": 23,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_KF04_v218.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\07 MOVIMIENTO\\\\TA06_KF03_fiscal_ordena_loop5s.mp4",
+  "modo": "loop",
+  "frames": 94,
+  "inicio": 27,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_KF03_v94.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\07 MOVIMIENTO\\\\TA06_KF06_camaras_de_la_calle_loop10s.mp4",
+  "modo": "loop",
+  "frames": 149,
+  "inicio": 92,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_KF06_v149.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\07 MOVIMIENTO\\\\TA06_KF02_lo_que_muestra_la_camara_loop10s.mp4",
+  "modo": "loop",
+  "frames": 128,
+  "inicio": 113,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_KF02_v128.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\01 PLANOS\\\\KF07_los_otros_casos_vB.png",
+  "modo": "hold",
+  "frames": 104,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_KF07_v104.mp4"
+ },
+ {
+  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\07 MOVIMIENTO\\\\TA06_BR03_reja_cerrada_loop10s.mp4",
+  "modo": "loop",
+  "frames": 284,
+  "inicio": 0,
+  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 06 - hurto de madrugada\\\\08 A LA VOZ\\\\TA06_BR03_v284.mp4"
+ }
+]

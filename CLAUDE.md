@@ -538,3 +538,46 @@ narracion dice el dato. Menos que en el bloque de preguntas, pero algunos.
 El texto es literal del guion del profesor: nombres, cifras y frases suyas. Un
 carton que inventa una sintesis ya no es el texto del profesor.
 Generador: `herramientas/cartones/cartones_narracion.py`.
+
+## El bug de los -16 NO era loudnorm
+
+Estaba mal escrito aqui y hay que corregirlo. Pedir -19 y obtener -16 no era
+porque loudnorm estimara mal en una pasada. Era el ORDEN del master: se
+normalizaba y DESPUES se convertia a estereo dual-mono, y duplicar un canal mono
+en L y R suma 3 dB a la medida EBU R128. Exactamente los 3 dB que faltaban.
+
+Orden correcto:
+  1. aresample a 48000
+  2. pan=stereo|c0=c0|c1=c0   (se arma el dual-mono)
+  3. y SOLO ENTONCES medir y normalizar
+
+Con ese orden una sola pasada ya daria bien; se dejan las dos por seguridad.
+
+## La rejilla sale de la voz, no de la formula
+
+La formula sirve para presupuestar, no para montar. El procedimiento real:
+
+1. Generar la voz.
+2. `silencedetect` sobre cada pista (noise=-34dB, d=0.30).
+3. Separar las pausas de parrafo de las intra-frase CONTRASTANDO cada candidata
+   contra el conteo de caracteres de su frase, a ~1.55 cuadros por caracter. Las
+   que cuadran son fronteras; el resto son comas.
+4. Re-renderizar cada carton de pregunta a la duracion medida de SU pregunta.
+5. Re-ajustar cada plano a su ranura nueva.
+6. Volver a hornear la cama de musica contra los tramos medidos.
+
+Entre el bloque de narracion y el de preguntas van 36 cuadros de respiro, y el
+ultimo plano del tramo se extiende sobre ellos para que V1 no tenga corte.
+
+## ajustar_planos.py y el modo loop_congela
+
+`herramientas/montaje/ajustar_planos.py` tiene tres modos: hold, loop (ventana a
+velocidad nativa, el default) y **loop_congela**: el loop entero a velocidad
+nativa y despues su ultimo cuadro quieto hasta completar la ranura. Es para
+cuando la ranura es mas larga que el loop Y EL GESTO YA TERMINO; arrastrar el
+movimiento a 1.7x se ve mucho peor que dejarlo reposar.
+
+## A3 en estas tres lineas es PREGUNTAS
+
+La plantilla de la serie llama A3 "FACILITADOR". En las lineas "a la voz" se
+renombro a PREGUNTAS, que es lo que lleva. A4 sigue vacia.
