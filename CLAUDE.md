@@ -281,7 +281,36 @@ Yo entrego los bloques de texto, él genera, y yo masterizo, nombro, ubico e imp
 las dos pasadas (medir primero, aplicar con los valores medidos después). Destino: −19 LUFS,
 −1,0 dBTP, dual-mono estéreo, 48 kHz. Un MP3 mono a 44,1 kHz suena solo por el canal izquierdo.
 
-## Kling completa el gesto
+## Kling: completa el gesto, y resuelve la situación
+
+Dos tandas medidas (Caso 02 y Caso 06, Kling 2.5 a 720p desde keyframe de entrada):
+
+**A 5 s completa el gesto.** Si en cuadro hay dos manos y un objeto, alguien lo agarra, por más
+que el negativo lo prohiba tres veces.
+
+**A 10 s resuelve la situación entera.** No sostiene un estado durante diez segundos: las figuras
+salen del cuadro y el local queda vacío, la reja baja sola aunque se diga tres veces que no se
+mueve, y el que firma levanta el bolígrafo y **sonríe a cámara**. De seis loops de 10 s, tres
+sirvieron enteros, dos sirvieron recortando el primer tercio y uno se descartó.
+
+**Entonces: pedir 5 s por defecto**, y para un hueco más largo estirar el loop con `setpts` en
+vez de pedir más segundos — en un plano casi quieto un 20 % de ralentí no se ve, y una acción
+que se completa sí.
+
+**Los planos cuyo sentido es que algo NO pasa no van a Kling** — el sobre que nadie tiene, la mano
+plana sobre la carpeta cerrada, las cuatro carpetas con el hueco, el mapa sin marcas. Esos se
+quedan quietos con un push lentísimo hecho en Resolve, que además no cuesta créditos.
+
+Lo que sí funciona: una acción que se completa sola (una página que termina de voltear), una
+figura quieta que respira y sostiene la mirada, una calle que vive mientras el objeto del plano
+se queda inmóvil, y alguien que cruza y sale de cuadro.
+
+**Ajustar el loop al hueco antes de montarlo.** Se re-encodea con `setpts=<n/orig>*PTS,fps=...` y
+`-frames:v <n>`, así el clip entra con el número exacto de frames y no hay que retimarlo en
+Resolve, donde la API no ayuda. Ojo: los loops salen a **1280x720** y suben a 1080 en la línea,
+mientras los sostenidos son 2560x1440.
+
+### Lo medido antes
 
 Medido con tres pruebas del Caso 02 (Kling 2.5, 720p, 5 y 10 s): si en cuadro hay dos manos y un
 objeto, el modelo hace que alguien lo agarre, por más que el negativo lo prohiba tres veces.
