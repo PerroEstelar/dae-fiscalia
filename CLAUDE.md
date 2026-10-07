@@ -495,3 +495,26 @@ Los loops salen 1280x720, 241 cuadros, 24/1. La serie va a 1920x1080 y 24000/100
 Confirmar que el identificador corresponde al PLANO y no solo a la variante antes
 de mandar a generar. Pedir el KF05 con el id de la variante B del KF04 costo 280
 creditos y un plano equivocado.
+
+## El outro NO se conforma solo
+
+Estaba mal escrito aqui. `FGN_intro_version7.mp4` dura 222 cuadros en disco.
+Si se agrega sin startFrame/endFrame entra con sus 222, no conformado a 194.
+La serie lo usa SIEMPRE recortado: `startFrame 0, endFrame 194`, tanto en el
+intro como en el outro, y en video y en audio por separado.
+
+## Nombrar un objeto critico no basta, hay que medirlo
+
+El KF05 del Caso 08 pedia "su rostro legible" y salio un plano general con el
+hombre al fondo. Lo que si funciono fue describirlo por efectos y por comparacion
+de tamano: "la grabacion tiene zoom fuerte, la cabeza ocupa un tercio del alto de
+la pantalla, es mas grande que el dedo que se acerca desde abajo, las cejas y las
+comisuras se ven una por una". Es la regla 9 del metodo de prompts, y cuesta 100
+creditos cada vez que se olvida.
+
+## La formula de duracion estima la narracion, no la pieza
+
+`palabras / 142 * 60 + 26 s` no cuenta el bloque de preguntas, que en esta serie
+es tiempo de pantalla real. El Caso 08 da 57 s por formula y quedo en 1:35. Para
+estimar de verdad: narracion por formula, mas el bloque de preguntas calculado
+aparte a 142 palabras por minuto con aire.
