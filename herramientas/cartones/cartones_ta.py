@@ -88,8 +88,10 @@ def armar_lineas(spec, draw):
             out.append((l, f, SUELTA, 0 if i == 0 else 0))
         return out
     if spec.get("ante"):
+        # NUNCA en versalitas: la identidad de la entidad no usa may\u00fasculas sostenidas.
+        # La \u00fanica excepci\u00f3n es la marca de agua, que es un logotipo, no texto.
         f = fuente(F_SEMI, ANTE)
-        for i, l in enumerate(partir(spec["ante"].upper(), f, MAXW, draw)):
+        for i, l in enumerate(partir(spec["ante"], f, MAXW, draw)):
             out.append((l, f, ANTE, 0))
     if spec.get("titulo"):
         f = fuente(F_BOLD, TIT)
@@ -313,7 +315,7 @@ def render_grafico_349(nframes, salida):
 
         a = ap(f, f_ante)
         if a > 0:
-            d.text((X0, 334), "ARTÍCULO 349 · CÓDIGO DE PROCEDIMIENTO PENAL",
+            d.text((X0, 334), "Artículo 349 · Código de Procedimiento Penal",
                    font=f_ante_b, fill=c(NAVY, a * 0.75))
             d.text((X0, 386), "El reintegro mínimo para poder preacordar",
                    font=f_tit_b, fill=c(NAVY, a))

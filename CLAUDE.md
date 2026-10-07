@@ -452,3 +452,46 @@ no se tocan: siguen siendo la fuente para Magnific cuando toque animar.
    sin tinte y en caja fija. Son dos criterios conviviendo y hay que confirmar cuál aplica.
 2. **La voz del abogado defensor.** Si es nueva en ElevenLabs hay que reservarla: la defensa
    aparece en casi todos los casos de Terminaciones Anticipadas.
+
+## Mayusculas sostenidas: nunca
+
+Ni versalitas ni mayusculas sostenidas en ningun carton de la serie. La unica
+excepcion es la marca de agua APRENDE CON LA DAE, y ahi las mayusculas son parte
+del logotipo. El generador no llama `.upper()` en ninguna parte y asi debe quedar.
+El carton de entrada es `Caso:` arriba (SemiBold 30) y el nombre entre comillas
+angulares abajo (Bold 54). Ver `identidad_cartones.md`.
+
+## ffmpeg en esta maquina
+
+No esta en el PATH del subproceso que abre `run_inline`. Esta en:
+
+    C:\Users\call_\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-9.0-full_build\bin
+
+Siempre invocar ffmpeg y ffprobe por ruta completa desde `run_inline`.
+
+## El puente corta a los 60 s
+
+`script_plugin run_inline` acepta un `timeout` grande, pero el puente al equipo
+responde "did not respond within 60s" y se pierde la respuesta. El script sigue
+corriendo y termina bien: antes de repetirlo hay que mirar el disco y `tasklist`,
+porque relanzarlo encima de un ffmpeg vivo es lo que dejo medios corruptos en el
+Caso 06. Partir los trabajos largos en pasos de menos de un minuto.
+
+## Ajustar un loop de Kling a su ranura
+
+Los loops salen 1280x720, 241 cuadros, 24/1. La serie va a 1920x1080 y 24000/1001.
+
+- Ranura mas corta que el loop: ventana a velocidad nativa. Acelerar un Kling se
+  nota mucho mas que frenarlo.
+- Ranura mas larga: `setpts` con `k = n * 1.001 / 241`. El 1.001 es el paso de 24
+  a 23.976; sin el se pierde un cuadro.
+- Escalar a 1920x1080 con lanczos en el encode, no en la linea.
+- Revisar el arranque del loop antes de cortar: a 10 s Kling resuelve la situacion
+  entera y suele sacar figuras de cuadro en los primeros segundos. Si eso pasa, se
+  entra despues (en el KF05 del Caso 02, desde el cuadro 40).
+
+## Identificadores de Magnific
+
+Confirmar que el identificador corresponde al PLANO y no solo a la variante antes
+de mandar a generar. Pedir el KF05 con el id de la variante B del KF04 costo 280
+creditos y un plano equivocado.
