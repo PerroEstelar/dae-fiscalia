@@ -34,6 +34,13 @@ TRAMOS = {
            "p0_el_fiscal_responde": 137, "p1_de_la_misma_manera": 157,
            "p2_la_contraprestacion": 237, "p3_en_cual_de_los_escenarios": 385,
            "p4_debe_negociar_necesariamente": 303},
+    "04": {"n1_el_hurto": 111, "n2_dieciocho_millones": 91,
+           "n3_tecnico_de_sistemas": 142, "n4_no_existen_elementos": 142,
+           "n5_la_defensa_propone": 111, "n6_dificultades": 91, "n7_la_rebaja": 142,
+           "p0_el_fiscal_determina": 195, "p1_reconocer_marginalidad": 197,
+           "p2_fundamento_factico": 97, "p3_elementos_probatorios": 88,
+           "p4_relacion_con_la_conducta": 96, "p5_creando_o_reconociendo": 214,
+           "p6_moneda_de_cambio": 204},
     "06": {"n1_el_hurto": 111, "n2_varios_meses": 111, "n3_las_camaras": 142,
            "p0_el_fiscal_deberia": 164, "p1_archivar_por_imposibilidad": 122,
            "p2_causal_suficiente": 218, "p3_hasta_que_punto": 94,
@@ -68,7 +75,7 @@ def specs(caso):
 
 # El panel de tinte del bloque de preguntas: (primer cuadro, último cuadro) del
 # bloque ya con los márgenes puestos.
-PANEL = {"01": (4131, 5380), "06": (1692, 2941),
+PANEL = {"01": (4131, 5380), "04": (2289, 3410), "06": (1692, 2941),
          "07": (1748, 2734), "08": (1041, 1698)}
 
 if __name__ == "__main__":

@@ -810,3 +810,15 @@ El KF10 pedia «varios empleados autorizados» y se habia resuelto con tres mano
 convergiendo sobre el lector: ilegible. Con tres personas en fila ante la misma
 puerta, cada una a distinta distancia, se entiende en un cuadro. Cuando algo no
 se lee, cambiar la puesta en escena antes que afinar el texto.
+
+## Recortar el loop sale gratis y hay que hacerlo por defecto
+
+En el Caso 04, tres de los ocho loops se fueron de rango: dos levantaban una
+hoja a mitad del clip y el tercero empezaba a sonreir hacia el cuadro 60.
+Ninguno se volvio a pedir. Se recortan a la ventana util con
+`ffmpeg -i loop.mp4 -frames:v N util.mp4` y la ranura se completa con
+`loop_congela`. Tres loops salvados, cero creditos.
+
+Conviene revisar la tira de cinco cuadros ANTES de cortar, siempre, y asumir
+que de cada ocho loops dos o tres van a necesitar recorte. No es un fallo del
+prompt: es que Kling, con diez segundos por delante, inventa algo.
