@@ -770,3 +770,43 @@ alargandolos; se acorta la transicion.
 
 Lo que si se queda del intento anterior es separar el tinte: ese arreglo es
 independiente y resuelve un problema real.
+
+## Un video se siente hueco cuando la primera mitad no tiene cartones
+
+El Caso 01 tenia tres cartones de narracion y los tres caian en la segunda
+mitad: los primeros cincuenta segundos iban sin un solo carton. Sebastian lo
+describio como «vacio» y tenia razon. Subieron a nueve, cinco de ellos en la
+primera mitad, y el hecho se va fijando en pantalla a medida que se cuenta.
+
+Regla: en la narracion, un carton cada 300 o 400 cuadros, con texto literal del
+guion -nombres, cifras, la frase que define el giro-. Tres por pieza es poco.
+
+## Un plano de 267 cuadros donde no pasa nada se parte
+
+No se arregla pidiendo mas movimiento: se corta y entra un plano de detalle del
+mismo sitio. El KF02 del Caso 01 paso de 267 a 159 cuadros y los 108 restantes
+se los lleva la franja de luz en el piso.
+
+## Kling alucina objetos y levanta manos cuando le sobran segundos
+
+En el KF04 del Caso 01 la mano se despegaba de la mesa y aparecian unas gafas y
+un lapiz que no estaban en la imagen; en el KF10 la puerta se abria sola al
+final. En los dos la ventana util eran los primeros segundos.
+
+El remedio no es volver a pedir el loop: se recorta a la ventana buena con
+ffmpeg -un `-frames:v N` y listo- y se completa la ranura con `loop_congela`.
+Sale gratis y es mas predecible que una segunda tirada.
+
+## Describir las manos en el prompt, no solo la accion
+
+El KF04 original traia una manga sin mano delante de la mano principal. Lo que
+lo arreglo fue decirlo como cuenta: «hay exactamente UN brazo en el cuadro»,
+«no hay manga ni tela que no tenga una mano visible». Lo mismo con los papeles:
+«todo el papel esta plano sobre la mesa, nada flota».
+
+## Si un concepto no se lee, el problema es el encuadre, no el prompt
+
+El KF10 pedia «varios empleados autorizados» y se habia resuelto con tres manos
+convergiendo sobre el lector: ilegible. Con tres personas en fila ante la misma
+puerta, cada una a distinta distancia, se entiende en un cuadro. Cuando algo no
+se lee, cambiar la puesta en escena antes que afinar el texto.

@@ -27,11 +27,27 @@ import cartones_ta as C
 
 # tramo medido de voz de cada cartón, tal como está hoy en la línea de tiempo
 TRAMOS = {
+    "01": {"n1_alejandro": 111, "n2_ochenta_millones": 91, "n3_la_madrugada": 111,
+           "n4_el_abogado": 142, "n5_valorar": 91, "n6_escenario_1": 111,
+           "n7_escenario_2": 111, "n8_escenario_3": 111,
+           "n9_la_misma_propuesta": 142,
+           "p0_el_fiscal_responde": 137, "p1_de_la_misma_manera": 157,
+           "p2_la_contraprestacion": 237, "p3_en_cual_de_los_escenarios": 385,
+           "p4_debe_negociar_necesariamente": 303},
     "06": {"n1_el_hurto": 111, "n2_varios_meses": 111, "n3_las_camaras": 142,
            "p0_el_fiscal_deberia": 164, "p1_archivar_por_imposibilidad": 122,
            "p2_causal_suficiente": 218, "p3_hasta_que_punto": 94,
            "p4_actividades_exigibles": 149, "p5_preservacion_temprana": 128,
            "p6_asociacion": 104, "p7_que_se_hizo": 248},
+    "07": {"n1_ocho_millones": 91, "n2_reconoce": 111, "n3_incumplimiento": 111,
+           "p0_el_fiscal_podria": 218, "p1_tipos_penales": 123,
+           "p2_elementos_objetivos": 95, "p3_conducta_tipica": 110,
+           "p4_ausencia_de_elementos": 128, "p5_actos_de_investigacion": 101,
+           "p6_por_que_archivo": 181},
+    "08": {"n1_fue_archivada": 111, "n2_seis_meses": 111, "n3_el_rostro": 91,
+           "p0_el_fiscal_deberia": 139, "p1_razon_del_archivo": 66,
+           "p2_que_nueva_evidencia": 123, "p3_capacidad_de_modificar": 164,
+           "p4_que_actuaciones": 135},
 }
 
 
@@ -52,7 +68,8 @@ def specs(caso):
 
 # El panel de tinte del bloque de preguntas: (primer cuadro, último cuadro) del
 # bloque ya con los márgenes puestos.
-PANEL = {"06": (1692, 2941)}
+PANEL = {"01": (4131, 5380), "06": (1692, 2941),
+         "07": (1748, 2734), "08": (1041, 1698)}
 
 if __name__ == "__main__":
     caso = sys.argv[1]

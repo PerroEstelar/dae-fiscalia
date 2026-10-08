@@ -36,17 +36,32 @@ PREGUNTAS = [
         "titulo": "En el tercer escenario, ¿la debilidad probatoria significa que la Fiscalía debe negociar necesariamente, o debe valorar primero si el preacuerdo constituye realmente una alternativa adecuada?"}),
 ]
 
-# los tres rótulos de escenario, sobre la narración
+# Cartones sobre la narración. La primera mitad iba vacía —cincuenta segundos
+# sin un solo cartón— y la pieza se sentía hueca. Ahora el hecho se va fijando
+# en pantalla a medida que se cuenta, y los tres rótulos de escenario ordenan la
+# segunda mitad. Todo el texto es literal del guion del profesor.
 NARRACION = [
-    ("n1_escenario_1", 111, {
+    ("n1_alejandro", 111, {
+        "titulo": "Alejandro, empleado de una empresa de transporte"}),
+    ("n2_ochenta_millones", 91, {
+        "suelta": "$80 millones"}),
+    ("n3_la_madrugada", 111, {
+        "titulo": "Retirar el dinero durante la madrugada"}),
+    ("n4_el_abogado", 142, {
+        "titulo": "El abogado manifiesta que su defendido está dispuesto a aceptar responsabilidad mediante un preacuerdo"}),
+    ("n5_valorar", 91, {
+        "titulo": "El fiscal debe valorar integralmente los medios probatorios"}),
+    ("n6_escenario_1", 111, {
         "ante": "Escenario 1",
         "titulo": "Se identifica claramente a Alejandro retirando el dinero"}),
-    ("n2_escenario_2", 111, {
+    ("n7_escenario_2", 111, {
         "ante": "Escenario 2",
         "titulo": "No permiten identificarlo plenamente"}),
-    ("n3_escenario_3", 111, {
+    ("n8_escenario_3", 111, {
         "ante": "Escenario 3",
         "titulo": "Las cámaras no permiten identificar al autor"}),
+    ("n9_la_misma_propuesta", 142, {
+        "titulo": "En los tres escenarios, la propuesta de la defensa es exactamente la misma"}),
 ]
 
 if __name__ == "__main__":
