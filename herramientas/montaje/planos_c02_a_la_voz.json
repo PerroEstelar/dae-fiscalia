@@ -1,86 +1,86 @@
 [
- {
-  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\01 PLANOS\\\\KF01_oficina_contratacion_vA.png",
-  "modo": "hold",
-  "frames": 346,
-  "inicio": 0,
-  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\08 A LA VOZ\\\\TA02_KF01_v346.mp4"
- },
- {
-  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\07 MOVIMIENTO\\\\TA02_KF03_bodega_loop10s.mp4",
-  "modo": "loop",
-  "frames": 195,
-  "inicio": 0,
-  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\08 A LA VOZ\\\\TA02_KF03_v195.mp4"
- },
- {
-  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\07 MOVIMIENTO\\\\TA02_KF02_la_entrega_loop5s.mp4",
-  "modo": "loop_congela",
-  "frames": 204,
-  "inicio": 0,
-  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\08 A LA VOZ\\\\TA02_KF02_v204.mp4"
- },
- {
-  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\07 MOVIMIENTO\\\\TA02_BR03_cajas_loop10s.mp4",
-  "modo": "loop",
-  "frames": 245,
-  "inicio": 0,
-  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\08 A LA VOZ\\\\TA02_BR03_v245.mp4"
- },
- {
-  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\07 MOVIMIENTO\\\\TA02_KF04_abogado_propone_loop10s.mp4",
-  "modo": "loop",
-  "frames": 176,
-  "inicio": 0,
-  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\08 A LA VOZ\\\\TA02_KF04_v176.mp4"
- },
- {
-  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\07 MOVIMIENTO\\\\TA02_KF05_andres_escucha_loop10s.mp4",
-  "modo": "loop",
-  "frames": 186,
-  "inicio": 40,
-  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\08 A LA VOZ\\\\TA02_KF05_v186a.mp4"
- },
- {
-  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\01 PLANOS\\\\KF07_codigo_abierto_vA.png",
-  "modo": "hold",
-  "frames": 266,
-  "inicio": 0,
-  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\08 A LA VOZ\\\\TA02_KF07_v266.mp4"
- },
- {
-  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\01 PLANOS\\\\KF08_antes_de_sentarse_vA.png",
-  "modo": "hold",
-  "frames": 137,
-  "inicio": 0,
-  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\08 A LA VOZ\\\\TA02_KF08_v137.mp4"
- },
- {
-  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\07 MOVIMIENTO\\\\TA02_BR03_cajas_loop10s.mp4",
-  "modo": "loop",
-  "frames": 106,
-  "inicio": 135,
-  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\08 A LA VOZ\\\\TA02_BR03_v106.mp4"
- },
- {
-  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\01 PLANOS\\\\KF09_carpeta_cerrada_vA.png",
-  "modo": "hold",
-  "frames": 137,
-  "inicio": 0,
-  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\08 A LA VOZ\\\\TA02_KF09_v137.mp4"
- },
- {
-  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\07 MOVIMIENTO\\\\TA02_KF05_andres_escucha_loop10s.mp4",
-  "modo": "loop",
-  "frames": 186,
-  "inicio": 55,
-  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\08 A LA VOZ\\\\TA02_KF05_v186b.mp4"
- },
- {
-  "fuente": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\01 PLANOS\\\\KF11_acta_sin_firmar_vA.png",
-  "modo": "hold",
-  "frames": 222,
-  "inicio": 0,
-  "salida": "E:\\\\DAE MASTER\\\\CURSO 4 - Curso Terminaciones Anticipadas\\\\CASO 02 - doble beneficio y reintegro\\\\08 A LA VOZ\\\\TA02_KF11_v222.mp4"
- }
+  {
+    "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\01 PLANOS\\KF01_oficina_contratacion_vA.png",
+    "modo": "hold",
+    "frames": 346,
+    "inicio": 0,
+    "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\08 A LA VOZ\\TA02_KF01_v346.mp4"
+  },
+  {
+    "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\07 MOVIMIENTO\\TA02_KF03_bodega_loop10s.mp4",
+    "modo": "loop",
+    "frames": 195,
+    "inicio": 0,
+    "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\08 A LA VOZ\\TA02_KF03_v195.mp4"
+  },
+  {
+    "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\07 MOVIMIENTO\\TA02_KF02_la_entrega_loop5s.mp4",
+    "modo": "loop_congela",
+    "frames": 204,
+    "inicio": 0,
+    "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\08 A LA VOZ\\TA02_KF02_v204.mp4"
+  },
+  {
+    "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\07 MOVIMIENTO\\TA02_BR03_cajas_loop10s.mp4",
+    "modo": "loop",
+    "frames": 245,
+    "inicio": 0,
+    "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\08 A LA VOZ\\TA02_BR03_v245.mp4"
+  },
+  {
+    "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\07 MOVIMIENTO\\TA02_KF04_abogado_propone_loop10s.mp4",
+    "modo": "loop",
+    "frames": 176,
+    "inicio": 0,
+    "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\08 A LA VOZ\\TA02_KF04_v176.mp4"
+  },
+  {
+    "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\07 MOVIMIENTO\\TA02_KF05_andres_escucha_loop10s.mp4",
+    "modo": "loop",
+    "frames": 186,
+    "inicio": 40,
+    "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\08 A LA VOZ\\TA02_KF05_v186a.mp4"
+  },
+  {
+    "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\01 PLANOS\\KF07_codigo_abierto_vA.png",
+    "modo": "hold",
+    "frames": 266,
+    "inicio": 0,
+    "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\08 A LA VOZ\\TA02_KF07_v266.mp4"
+  },
+  {
+    "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\01 PLANOS\\KF08_antes_de_sentarse_vA.png",
+    "modo": "hold",
+    "frames": 137,
+    "inicio": 0,
+    "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\08 A LA VOZ\\TA02_KF08_v137.mp4"
+  },
+  {
+    "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\07 MOVIMIENTO\\TA02_BR03_cajas_loop10s.mp4",
+    "modo": "loop",
+    "frames": 106,
+    "inicio": 135,
+    "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\08 A LA VOZ\\TA02_BR03_v106.mp4"
+  },
+  {
+    "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\01 PLANOS\\KF09_carpeta_cerrada_vA.png",
+    "modo": "hold",
+    "frames": 137,
+    "inicio": 0,
+    "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\08 A LA VOZ\\TA02_KF09_v137.mp4"
+  },
+  {
+    "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\07 MOVIMIENTO\\TA02_KF05_andres_escucha_loop10s.mp4",
+    "modo": "loop",
+    "frames": 186,
+    "inicio": 55,
+    "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\08 A LA VOZ\\TA02_KF05_v186b.mp4"
+  },
+  {
+    "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\01 PLANOS\\KF11_acta_sin_firmar_vA.png",
+    "modo": "hold",
+    "frames": 222,
+    "inicio": 0,
+    "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 02 - doble beneficio y reintegro\\08 A LA VOZ\\TA02_KF11_v222.mp4"
+  }
 ]

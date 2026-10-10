@@ -992,3 +992,45 @@ compartida, porque eso va por el conector y no por la máquina.
 
 Borrar el archivo anterior antes de renderizar: si el render falla a medias,
 ffprobe mide el viejo y todo parece bien.
+
+## Medir la vacilación: cómo se hace y qué NO es
+
+La primera versión del detector promediaba el cuadro entero y daba «limpio»
+sobre el propio KF06 del Caso 08, que es el caso conocido. El defecto es
+**local** —una mano, un brazo— y en un promedio de 1920×1080 desaparece.
+
+`herramientas/montaje/vacilacion.py` mide por bloques: parte el cuadro en una
+rejilla de 8×6, busca el bloque que más se aleja del cuadro 0 en los primeros
+45 cuadros, y mira **su** curva. La firma, medida sobre el KF06:
+
+```
+cuadro   0   5  10  15  20  25  30  40  60  90 120
+dist   0.0 10.0 24.4 26.5 24.4 17.8 16.6 16.5 18.9 17.2 17.0
+         \________ sube ________/\__ se deshace __/\___ se queda abajo ___/
+```
+
+Sube a 26,5 en quince cuadros, se deshace un 37 % y después se queda plana cien
+cuadros. Lo último es lo que la separa de un loop cíclico, que también sube y
+baja pero **vuelve** al mismo sitio. Umbrales: pico ≥ 12, caída ≥ 25 %, y que no
+regrese al 85 % del pico en los 70 cuadros siguientes.
+
+**Tres cosas que el detector marca y no son el defecto.** Hay que mirar las
+tiras de contacto antes de cortar nada:
+
+- **Una cara que habla.** La boca se abre y se cierra: sube y vuelve. El KF10
+  del Caso 05 es Laura hablando, y marcó 82 %.
+- **Gente que cruza el fondo.** Entran y salen del bloque. El KF01 del Caso 09.
+- **Una mano que está congelada en TODOS los cuadros.** Ahí el problema está en
+  la placa, no en la ventana: mover el `inicio` no arregla nada. El KF02 del
+  Caso 05 tiene una mano en primer plano tendida hacia la carpeta que nunca la
+  toma, en los 241 cuadros.
+
+De 38 loops de los casos 02, 03, 05 y 09, uno solo tenía el defecto de verdad:
+el **KF07 del Caso 05**, la mano que se acerca a la hoja. Se recortó la ventana
+50-148 (`TA05_KF07_util2.mp4`): empieza con la mano ya apoyada, desliza la hoja
+y se retira al montón. Un gesto entero, sin el titubeo de la entrada.
+
+La conclusión es la que vale para la próxima: **no se adivina por el texto del
+prompt qué plano vacila.** Los cuatro que yo había señalado leyendo las
+descripciones —KF10 del 03, KF08 y KF11 del 05, KF02 del 09— salieron limpios.
+Se mide y se mira.
