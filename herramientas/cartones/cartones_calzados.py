@@ -80,6 +80,9 @@ TRAMOS = {
            "p0_el_fiscal_deberia": 139, "p1_razon_del_archivo": 66,
            "p2_que_nueva_evidencia": 123, "p3_capacidad_de_modificar": 164,
            "p4_que_actuaciones": 135},
+    "09": {"n1_lesiones": 107, "n2_maniobra_brusca": 110, "n3_el_nino": 83,
+           "n4_el_fiscal_propone": 165, "p0_reflexionar": 152, "p1_conducta_tipica": 64,
+           "p2_circunstancia": 163, "p3_mediante_archivo": 146, "p4_el_mecanismo": 164}
 }
 
 
@@ -100,7 +103,7 @@ def specs(caso):
 
 # El panel de tinte del bloque de preguntas: (primer cuadro, último cuadro) del
 # bloque ya con los márgenes puestos.
-PANEL = {"01": (4131, 5380), "02": (1971, 3066), "03": (5145, 6375), "05": (6098, 6837), "04": (2289, 3410), "06": (1692, 2941),
+PANEL = {"01": (4131, 5380), "02": (1971, 3066), "03": (5145, 6375), "05": (6098, 6837), "09": (895, 1696), "04": (2289, 3410), "06": (1692, 2941),
          "07": (1748, 2734), "08": (1041, 1698)}
 
 if __name__ == "__main__":
