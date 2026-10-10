@@ -1034,3 +1034,43 @@ La conclusión es la que vale para la próxima: **no se adivina por el texto del
 prompt qué plano vacila.** Los cuatro que yo había señalado leyendo las
 descripciones —KF10 del 03, KF08 y KF11 del 05, KF02 del 09— salieron limpios.
 Se mide y se mira.
+
+## El encuadre es colombiano, y hay que decirlo en el prompt
+
+La serie es para la Dirección de Altos Estudios de la Fiscalía General de la
+Nación y la ve público colombiano. Si el prompt dice solo «a grey street of low
+buildings», Seedream rellena el hueco con un pueblo inglés: casas pareadas de
+ladrillo con techo a dos aguas, chimeneas, setos, antejardines, adoquines.
+Pasó con el KF03 y el KF04 del Caso 09 y lo cazó Sebastian de inmediato.
+
+El bloque que sí funciona, para pegar en cualquier exterior:
+
+> SETTING — this is a residential street in a Colombian city, and the
+> architecture must say so unmistakably. Two and three storey houses built flush
+> to the pavement with no front gardens and no hedges, in exposed clay brick and
+> plain rendered concrete, with FLAT concrete roofs — never pitched roofs, never
+> tiled roofs, never chimneys. Several houses have an unfinished top floor with
+> short steel reinforcing bars standing up from the concrete slab. Every
+> ground-floor window and door has a plain metal security grille. One corner shop
+> with a roll-down metal shutter. Square concrete utility poles along the kerb
+> carrying thick untidy bundles of black cables, with a street lamp on a bracket.
+> The pavement is a raised concrete kerb with plain square concrete slabs. Small
+> motorcycles parked up on the pavement. The parked cars are small hatchbacks and
+> compact sedans. At the far end of the street, hazy mountains behind the rooftops.
+
+Y al negativo: `no England, no English village, no British terraced houses, no
+pebbledash, no pitched slate roof, no chimney stack, no sash windows, no front
+garden, no hedge, no stone cottage, no cobblestones, no European number plates`.
+
+Las señas que hacen el trabajo son seis: **ladrillo a la vista, cubierta plana
+con varillas, rejas en todas las ventanas, poste de concreto con el nudo de
+cables, andén elevado de losas, y motos parqueadas en el andén.** Con esas seis
+la calle se lee de inmediato; sin ellas, el modelo se va a Inglaterra.
+
+Un efecto secundario que hay que vigilar: el ladrillo sube el croma. El KF03
+colombiano midió 0,070 de croma y +0,070 de calidez, contra un máximo de 0,056
+en el resto del caso. Se baja en el grado, pero hay que medirlo.
+
+**No todo estaba mal.** El KF01 y el KF02 del mismo caso, que no se tocaron,
+salieron en una calle latinoamericana neutra y funcionan. El problema aparece
+cuando el prompt deja el entorno sin describir.
