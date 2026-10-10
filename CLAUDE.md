@@ -822,3 +822,73 @@ Ninguno se volvio a pedir. Se recortan a la ventana util con
 Conviene revisar la tira de cinco cuadros ANTES de cortar, siempre, y asumir
 que de cada ocho loops dos o tres van a necesitar recorte. No es un fallo del
 prompt: es que Kling, con diez segundos por delante, inventa algo.
+
+## La rejilla sale de la proporción de caracteres, no de contar silencios
+
+`silencedetect` da los tramos de voz, pero el locutor no hace una pausa en cada
+frase: un tramo puede llevar tres frases y una frase puede partirse en dos
+tramos. Lo que sí se cumple con precisión es que **el tiempo hablado es
+proporcional a los caracteres**. Medido en las ocho piezas: 1,2 a 1,4 cuadros
+por carácter, y constante dentro de una misma locución.
+
+`herramientas/rejilla/calzar.py` acumula caracteres y acumula cuadros hablados y
+corta cada frase donde coinciden. Devuelve «esta frase va del cuadro A al B», y
+de ahí salen a la vez la rejilla de planos y la de cartones. Con 4.811 cuadros
+de narración —el Caso 03— hacerlo a ojo no es viable.
+
+Lo único que hay que corregir a mano es la primera frase: el mapa la hace
+empezar dentro del «Veamos un ejemplo…», y hay que empujarla al arranque del
+tramo siguiente.
+
+## Densidad de cartones: 60–70 % en las piezas largas
+
+En el Caso 07 (59 s de narración) se cubrió el 86 % del tiempo y queda demasiado
+lleno: la imagen no respira nunca. En el 03 y el 05, que son de tres y cuatro
+minutos, se bajó a 60–65 % y ahí funciona. La regla: un cartón por cada momento
+que el profesor subraya, no un cartón por frase.
+
+## El modo `loop` estira, y en un plano que solo respira eso no se nota
+
+`ajustar_planos.py` en modo `loop` hace `setpts` cuando la ranura es más larga
+que el clip. Con el movimiento que pide esta serie —respiración y poco más—
+estirar 2x es invisible. Eso cambia la economía: la ventana útil de un loop
+puede ser de 100 cuadros y aun así servir para una ranura de 240. No hay que
+regenerar por falta de metraje.
+
+## Cuándo sí hay que volver a pedir el loop
+
+Recortar resuelve casi todo. Las dos excepciones medidas:
+- **Aparece un objeto nuevo** que no estaba en la placa (unas gafas flotando en
+  el borde superior del KF03 del Caso 05, desde el cuadro 60).
+- **Se borra gente** (el KF12 del Caso 03: a los cinco segundos sale humo de la
+  mano y al final no queda nadie en el cuadro).
+En los dos casos la ventana útil quedaba por debajo de 60 cuadros, y ahí sí sale
+más barato pagar los 280 créditos que inventarse el plano.
+
+El prompt que lo arregló dice lo prohibido por su nombre y por su sitio: «NO new
+object of any kind ever appears anywhere in the image — not at the top edge, not
+at the sides, not on the desk. No glasses, no pen, no cup».
+
+## Trampas de la API de Resolve encontradas en esta tanda
+
+- `project.ExportTimeline` **no existe**. Es `timeline.Export(ruta, resolve.EXPORT_DRT)`.
+- `mp.CreateEmptyTimeline(nombre)` + `SetStartTimecode('01:00:00:00')` + `AddTrack`
+  da la línea canónica desde cero, y es el camino bueno cuando no hay nada hecho
+  a mano que preservar.
+- **No se puede insertar una pista en medio.** Si la línea vieja tiene trabajo de
+  Fusion en V3/V4 —como el lower third del Caso 07— hay que duplicarla y parchear
+  dentro, y los CARTONES terminan en V6 en vez de V3. Se documenta en el LEER y
+  listo: es peor borrarle el trabajo.
+- Al reimportar con nombres repetidos, filtrar el pool por `File Path`: después
+  de archivar una versión vieja quedan dos ítems con el mismo nombre y
+  `pool.setdefault` se queda con el equivocado.
+
+## Dos cosas del puente
+
+- `device_commit_files` solo acepta rutas bajo `/mnt/user-data/outputs/`. Un
+  archivo del directorio de trabajo hay que copiarlo ahí primero.
+- El contenedor **no puede descargar de `pikaso.cdnpk.net`** (el proxy devuelve
+  403). Todo lo que sale de Magnific se baja con `urllib` corriendo en la máquina
+  de Sebastian, que además es donde tiene que quedar.
+- Las voces nuevas salen con el nombre del texto (`TA0x_NARRACION.mp3`) y la
+  serie las llama `NARRADOR`. Renombrar antes de importar.

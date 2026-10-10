@@ -41,6 +41,14 @@ TRAMOS = {
            "p2_esta_acreditado": 106, "p3_reintegro_minimo": 83,
            "p4_la_garantia": 137, "p5_puede_negociar": 186,
            "p6_reintegro_inferior": 186},
+    "03": {"n1_ambos_participan": 228, "n2_el_arma": 184, "n3_como_autor": 250,
+           "n4_la_defensa_propone": 216, "n5_no_seria_admisible": 244,
+           "n6_calificacion_que_no_corresponde": 246, "n7_segunda_propuesta": 250,
+           "n8_solo_la_sancion": 196, "n9_ira_e_intenso_dolor": 202,
+           "n10_no_existe_informacion": 250, "n11_el_juez_distingue": 160,
+           "n12_domiciliaria": 213, "n13_los_subrogados": 250, "p0_con_base": 96,
+           "p1_por_que_no_puede": 219, "p2_la_diferencia": 274, "p3_sin_respaldo": 284,
+           "p4_los_subrogados": 327},
     "04": {"n1_el_hurto": 111, "n2_dieciocho_millones": 91,
            "n3_tecnico_de_sistemas": 142, "n4_no_existen_elementos": 142,
            "n5_la_defensa_propone": 111, "n6_dificultades": 91, "n7_la_rebaja": 142,
@@ -48,6 +56,13 @@ TRAMOS = {
            "p2_fundamento_factico": 97, "p3_elementos_probatorios": 88,
            "p4_relacion_con_la_conducta": 96, "p5_creando_o_reconociendo": 214,
            "p6_moneda_de_cambio": 204},
+    "05": {"n1_laura": 207, "n2_coordino": 160, "n3_doscientos_cincuenta": 137,
+           "n4_se_recaudaron": 250, "n5_base_probatoria": 250, "n6_la_defensa": 250,
+           "n7_apertura": 250, "n8_lo_que_no": 250, "n9_precisa_los_hechos": 220,
+           "n10_intercambio": 265, "n11_sin_respaldo": 250, "n12_nueva_propuesta": 250,
+           "n13_que_recibe": 246, "n14_cierre": 250, "n15_el_beneficio": 250,
+           "n16_la_victima": 278, "p0_en_el_marco": 80, "p1_la_apertura": 241,
+           "p2_el_intercambio": 134, "p3_el_cierre": 254},
     "06": {"n1_el_hurto": 111, "n2_varios_meses": 111, "n3_las_camaras": 142,
            "p0_el_fiscal_deberia": 164, "p1_archivar_por_imposibilidad": 122,
            "p2_causal_suficiente": 218, "p3_hasta_que_punto": 94,
@@ -85,7 +100,7 @@ def specs(caso):
 
 # El panel de tinte del bloque de preguntas: (primer cuadro, último cuadro) del
 # bloque ya con los márgenes puestos.
-PANEL = {"01": (4131, 5380), "02": (1971, 3066), "04": (2289, 3410), "06": (1692, 2941),
+PANEL = {"01": (4131, 5380), "02": (1971, 3066), "03": (5145, 6375), "05": (6098, 6837), "04": (2289, 3410), "06": (1692, 2941),
          "07": (1748, 2734), "08": (1041, 1698)}
 
 if __name__ == "__main__":
