@@ -31,7 +31,7 @@ PREGUNTAS = [
     ("p2_la_contraprestacion", 237, {
         "titulo": "¿Cómo debería valorar el fiscal la contraprestación que está recibiendo a cambio de la concesión, teniendo en cuenta la fortaleza o debilidad de su teoría del caso?"}),
     ("p3_en_cual_de_los_escenarios", 385, {
-        "titulo": "En cuál de los escenarios la negociación puede servir para obtener una contraprestación procesal frente a una alta probabilidad de éxito en juicio, y en cuál para reducir la incertidumbre propia de un caso con riesgos probatorios"}),
+        "titulo": "¿En cuál de los escenarios la negociación puede servir para obtener una contraprestación procesal frente a una alta probabilidad de éxito en juicio, y en cuál para reducir la incertidumbre propia de un caso con riesgos probatorios?"}),
     ("p4_debe_negociar_necesariamente", 303, {
         "titulo": "En el tercer escenario, ¿la debilidad probatoria significa que la Fiscalía debe negociar necesariamente, o debe valorar primero si el preacuerdo constituye realmente una alternativa adecuada?"}),
 ]
