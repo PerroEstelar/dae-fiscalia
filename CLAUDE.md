@@ -892,3 +892,103 @@ at the sides, not on the desk. No glasses, no pen, no cup».
   de Sebastian, que además es donde tiene que quedar.
 - Las voces nuevas salen con el nombre del texto (`TA0x_NARRACION.mp3`) y la
   serie las llama `NARRADOR`. Renombrar antes de importar.
+
+## La vacilación del loop está al principio, no al final
+
+Hasta aquí la regla era «lo que alucina es la cola: se recorta el final». El
+Caso 08 mostró la mitad que faltaba. **Cuando la placa tiene una mano a punto de
+alcanzar algo, el modelo vacila al principio**: se queda congelado en el gesto
+de alcanzar y después la mano va y viene. Se lee como falso al instante. Hacia
+el cuadro 60 o 70 el movimiento ya se asentó y se vuelve consistente.
+
+Lo encontró Sebastian comparando dos ventanas del mismo loop. El KF06 del Caso
+08 sale dos veces: `TA08_KF06_v149` con `inicio: 0` —vacila— y
+`TA08_KF06_v171` con `inicio: 70` —«acts way better», en sus palabras—. Su
+arreglo fue quedarse con la ventana buena y estirarla.
+
+Dos consecuencias, una por etapa:
+
+- **En el montaje.** Si el plano tiene una mano acercándose a un objeto, la
+  ventana útil empieza en 60–70, no en 0: `"inicio": 60` en el manifiesto, y se
+  estira para llenar la ranura. Como el movimiento es solo respiración, estirar
+  no se nota. La regla vieja —recortar la cola— sigue valiendo; ahora hay que
+  recortar por los dos lados.
+
+- **En el prompt.** No se pone a nadie **a punto de** tocar algo. O la mano ya
+  está apoyada sobre el objeto, o está claramente lejos de él. El «a punto de»
+  es exactamente la pose que el modelo intenta completar y después deshace.
+
+  Esto matiza el movimiento 3 del método de prompts, «el gesto único a media
+  acción». La media acción vale para el fotograma fijo, pero si ese plano se va
+  a animar, la media acción tiene que ser una que **no pida completarse**: un
+  peso apoyado, una mirada, una tela a medio caer, un pie que todavía no
+  aterriza. Una mano en camino hacia un objeto sí pide completarse, y el modelo
+  la completa y la devuelve.
+
+El mismo mecanismo explica el KF04 del Caso 09 —un niño a media zancada— y el
+KF11 del Caso 05, donde cuatro manos quedaban cortas de dos objetos. Es la misma
+pose, en manos y en piernas.
+
+## El puente a Google Drive
+
+La carpeta de entregas vive en el Drive de `adminproyectos@jpsolucionesdigitales.com`
+y está compartida con Sebastian, así que **Drive para escritorio no la
+sincroniza**: solo sincroniza «Mi unidad» y las unidades compartidas.
+
+El camino que sí funciona, y que no necesita que él haga nada:
+
+1. Se copia el render a una carpeta dentro de `G:\My Drive\`, que sí sincroniza.
+2. Drive lo sube solo. Se espera buscándolo por título con el conector.
+3. Se mueve con `update_file(fileId, parentId=<carpeta de la unidad>)`. El
+   archivo sigue siendo de Sebastian, igual que cuando él los arrastra, y
+   desaparece solo de la carpeta local porque ya no está en «Mi unidad».
+
+El conector de Drive **no sirve para subir** estos archivos: `create_file` solo
+recibe el contenido incrustado en la llamada y los renders pesan de 50 a 190 MB.
+
+## Los ajustes de render de la serie
+
+QuickTime `.mov`, H.264 **High**, 1920×1080, 23,976, tope de **6.000 kb/s** de
+video, audio AAC 48 kHz estéreo. Medidos sobre los exports que hizo él a mano.
+
+```python
+pr.LoadRenderPreset('H.264 Master')
+pr.SetCurrentRenderFormatAndCodec('mov', 'H264')
+pr.SetRenderSettings({
+    'TargetDir': destino, 'CustomName': nombre,
+    'FormatWidth': 1920, 'FormatHeight': 1080, 'FrameRate': 23.976,
+    'VideoQuality': 6000,        # tope en kb/s, el codificador va en VBR debajo
+    'EncodingProfile': 'High',   # sin esta clave sale Main
+    'AudioCodec': 'aac', 'AudioSampleRate': 48000,
+    'ExportVideo': True, 'ExportAudio': True, 'SelectAllFrames': True,
+})
+```
+
+Dos cosas que hubo que medir, porque no están documentadas:
+
+- **Sin `EncodingProfile: 'High'` sale perfil Main.** El preset «H.264 Master»
+  no lo fija y la clave no da error si falta: simplemente baja el perfil. El
+  primer render del Caso 08 salió Main y hubo que repetirlo.
+- **`VideoQuality` es un tope, no un caudal fijo.** Probado con dos renders de
+  241 cuadros de la misma línea: con 6000 el archivo salió a 3,13 Mb/s y con
+  20000 a 8,12 Mb/s. O sea que el codificador va en VBR por debajo del tope. Los
+  exports de Sebastian marcan 6.000.578 b/s clavados, que es CBR de la interfaz;
+  el render por API da el mismo techo con archivos más chicos y sin pérdida
+  visible. El Caso 08 completo: 2.032 cuadros, 84,757 s, 38,3 MB a 3,6 Mb/s.
+
+Nombre de archivo: `TA - U1 - CASO 08 - V1.mov` — `TA - U{unidad} - CASO {NN} - V{n}`.
+
+## El guion de entrega
+
+`herramientas/entrega/exportar_y_subir.py` junta las tres cosas: renderiza con
+los ajustes de arriba, verifica el archivo con ffprobe contra el patrón de la
+serie (códec, perfil, tamaño, cadencia, audio y número de cuadros contra el
+largo de la línea) y solo entonces lo copia a la carpeta de paso del Drive. Si
+la verificación falla no sube nada.
+
+`entregar(resolve, timeline, unidad, caso, destino)` devuelve el informe. Lo
+único que queda por fuera es el `update_file` que mueve el archivo a la carpeta
+compartida, porque eso va por el conector y no por la máquina.
+
+Borrar el archivo anterior antes de renderizar: si el render falla a medias,
+ffprobe mide el viejo y todo parece bien.
