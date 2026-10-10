@@ -10,7 +10,7 @@ POR QUÉ HORNEADO Y NO AUTOMATIZADO EN RESOLVE
 
 LOS NIVELES DE LA SERIE
     voz           −19 LUFS
-    música        −32 LUFS bajo la narración      (6 dB de ducking)
+    música        −31 LUFS bajo la narración      (5 dB de ducking)
     música        −29 LUFS bajo el bloque de preguntas (3 dB de ducking)
     música        −26 LUFS en los huecos
     Se normaliza a −26 y se agacha donde hay voz, con rampas de 1 s.
@@ -116,8 +116,12 @@ def cama(pista, salida, dur, tramos_voz, objetivo=-26.0):
 
 
 def _escribir(ruta, a):
+    # .wav sale en 24 bits; .mp3 sale a 320 kbps, que es lo que pesa poco
+    # suficiente para cruzar el puente al disco de Sebastian.
+    cod = ["-c:a", "libmp3lame", "-b:a", "320k"] if ruta.lower().endswith(".mp3") \
+        else ["-c:a", "pcm_s24le"]
     p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ar", str(SR),
-                          "-ac", "2", "-i", "-", "-c:a", "pcm_s24le", ruta],
+                          "-ac", "2", "-i", "-"] + cod + [ruta],
                          stdin=subprocess.PIPE)
     p.stdin.write(np.clip(a, -1, 1).astype(np.float32).tobytes())
     p.stdin.close()

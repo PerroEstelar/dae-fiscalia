@@ -34,6 +34,13 @@ TRAMOS = {
            "p0_el_fiscal_responde": 137, "p1_de_la_misma_manera": 157,
            "p2_la_contraprestacion": 237, "p3_en_cual_de_los_escenarios": 385,
            "p4_debe_negociar_necesariamente": 303},
+    "02": {"n1_los_dos": 132, "n2_medios": 91, "n3_la_posicion": 179,
+           "n4_120_millones": 112, "n5_concertada": 166, "n6_400_millones": 82,
+           "n7_la_defensa": 147, "n8_propone": 160,
+           "p0_el_fiscal_determina": 230, "p1_es_viable": 137,
+           "p2_esta_acreditado": 106, "p3_reintegro_minimo": 83,
+           "p4_la_garantia": 137, "p5_puede_negociar": 186,
+           "p6_reintegro_inferior": 186},
     "04": {"n1_el_hurto": 111, "n2_dieciocho_millones": 91,
            "n3_tecnico_de_sistemas": 142, "n4_no_existen_elementos": 142,
            "n5_la_defensa_propone": 111, "n6_dificultades": 91, "n7_la_rebaja": 142,
@@ -46,12 +53,15 @@ TRAMOS = {
            "p2_causal_suficiente": 218, "p3_hasta_que_punto": 94,
            "p4_actividades_exigibles": 149, "p5_preservacion_temprana": 128,
            "p6_asociacion": 104, "p7_que_se_hizo": 248},
-    "07": {"n1_ocho_millones": 91, "n2_reconoce": 111, "n3_incumplimiento": 111,
+    "07": {"n1_la_denuncia": 96, "n2_ocho_millones": 91, "n3_materiales": 86,
+           "n4_se_robo": 85, "n5_el_contrato": 140, "n6_reconoce": 173,
+           "n7_incumplimiento": 166, "n8_apropiarselo": 159,
            "p0_el_fiscal_podria": 218, "p1_tipos_penales": 123,
            "p2_elementos_objetivos": 95, "p3_conducta_tipica": 110,
            "p4_ausencia_de_elementos": 128, "p5_actos_de_investigacion": 101,
            "p6_por_que_archivo": 181},
-    "08": {"n1_fue_archivada": 111, "n2_seis_meses": 111, "n3_el_rostro": 91,
+    "08": {"n1_lesiones": 63, "n2_no_permitian": 118, "n3_seis_meses": 50,
+           "n4_otro_video": 72, "n5_el_rostro": 142, "n6_el_abogado": 129,
            "p0_el_fiscal_deberia": 139, "p1_razon_del_archivo": 66,
            "p2_que_nueva_evidencia": 123, "p3_capacidad_de_modificar": 164,
            "p4_que_actuaciones": 135},
@@ -75,7 +85,7 @@ def specs(caso):
 
 # El panel de tinte del bloque de preguntas: (primer cuadro, último cuadro) del
 # bloque ya con los márgenes puestos.
-PANEL = {"01": (4131, 5380), "04": (2289, 3410), "06": (1692, 2941),
+PANEL = {"01": (4131, 5380), "02": (1971, 3066), "04": (2289, 3410), "06": (1692, 2941),
          "07": (1748, 2734), "08": (1041, 1698)}
 
 if __name__ == "__main__":

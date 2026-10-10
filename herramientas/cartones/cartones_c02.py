@@ -32,6 +32,31 @@ PREGUNTAS = [
 ]
 
 
+# Cartones sobre la narración, calzados al tramo de voz medido con
+# `silencedetect` sobre TA02_NARRADOR.wav. Eran tres y los alargaste a mano
+# cortándolos en pedazos porque la animación vieja se comía los extremos; con
+# la animación corta ya no hace falta: cada cartón mide lo que mide su frase.
+# Los dos cartones de cifra entran en el cuadro en que se dice la cifra, no al
+# principio de la frase —eso lo tomé de cómo colocaste tú el de $120 millones.
+# El último párrafo no lleva cartón: ahí va el gráfico de la propuesta en V1.
+NARRACION = [
+    ("n1_los_dos", 132, {
+        "titulo": "Carlos, funcionario de una entidad pública",
+        "cuerpo": "Andrés, representante de una empresa contratista"}),
+    ("n2_medios", 91, {
+        "titulo": "De acuerdo con los medios cognoscitivos recaudados"}),
+    ("n3_la_posicion", 179, {
+        "titulo": "Carlos habría utilizado su posición para favorecer la adjudicación de un contrato de suministro de equipos médicos"}),
+    ("n4_120_millones", 112, {"suelta": "$120 millones"}),
+    ("n5_concertada", 166, {
+        "titulo": "Como consecuencia de la actuación concertada, la empresa contratista obtuvo un incremento patrimonial ilícito"}),
+    ("n6_400_millones", 82, {"suelta": "$400 millones"}),
+    ("n7_la_defensa", 147, {
+        "titulo": "La defensa de Andrés manifiesta a la Fiscalía su interés en celebrar un preacuerdo"}),
+    ("n8_propone", 160, {
+        "titulo": "Propone aceptar responsabilidad a cambio de negociar una consecuencia jurídica más favorable"}),
+]
+
 def grafico(nframes, salida, con_marca_50, entradas):
     """La aritmética de la propuesta. Solo cifras que están en el texto del profesor.
 

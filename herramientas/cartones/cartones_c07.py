@@ -31,12 +31,30 @@ PREGUNTAS = [
         "titulo": "¿Estoy archivando porque objetivamente no existe delito o porque todavía no he podido establecer cómo actuó una persona determinada?"}),
 ]
 
+# Cartones sobre la narración. Eran tres y la primera mitad se sentía hueca.
+# Ahora son ocho, calzados al tramo de voz medido con `silencedetect` sobre
+# TA07_NARRADOR.wav: cada cartón empieza en el cuadro en que empieza su frase y
+# dura exactamente lo que dura. Todo el texto es literal del guion del profesor.
+#
+# El hueco entre el cuadro 469 y el 625 de la narración queda LIBRE a propósito:
+# ahí va el lower third que Sebastian armó a mano en Fusion —«No podía continuar
+# con la obra, debido a dificultades económicas»— y no se le pone nada encima.
 NARRACION = [
-    ("n1_ocho_millones", 91, {"suelta": "$8.000.000"}),
-    ("n2_reconoce", 111, {
-        "titulo": "Carlos reconoce haber recibido el dinero y explica las dificultades que tuvo"}),
-    ("n3_incumplimiento", 111, {
-        "titulo": "Un incumplimiento de las obligaciones contractuales"}),
+    ("n1_la_denuncia", 96, {
+        "titulo": "María formula una denuncia contra Carlos por el delito de abuso de confianza"}),
+    ("n2_ocho_millones", 91, {"suelta": "$8.000.000"}),
+    ("n3_materiales", 86, {
+        "titulo": "Para que comprara materiales destinados a la remodelación de su vivienda"}),
+    ("n4_se_robo", 85, {
+        "titulo": "María sostiene que Carlos se robó su dinero y solicita que sea procesado penalmente"}),
+    ("n5_el_contrato", 140, {
+        "titulo": "Se recauda el contrato celebrado entre las partes y los comprobantes de pago"}),
+    ("n6_reconoce", 173, {
+        "titulo": "Carlos reconoce haber recibido el dinero y explica las dificultades que tuvo para terminar la obra"}),
+    ("n7_incumplimiento", 166, {
+        "titulo": "Se produjo un incumplimiento de las obligaciones contractuales"}),
+    ("n8_apropiarselo", 159, {
+        "titulo": "No encuentra elementos que permitan afirmar que Carlos recibió el dinero con la finalidad de apropiárselo"}),
 ]
 
 if __name__ == "__main__":

@@ -28,11 +28,33 @@ PREGUNTAS = [
         "titulo": "¿Qué actuaciones investigativas podrían adelantarse a partir de ese elemento conocido?"}),
 ]
 
+# Cartones sobre la narración. Eran tres —los de `cartones_narracion.py`— y la
+# pieza se sentía hueca. Ahora son seis, calzados al tramo de voz medido con
+# `silencedetect` sobre TA08_NARRADOR.wav: cada uno empieza en el cuadro en que
+# empieza su frase y dura exactamente lo que dura. Texto literal del guion.
+NARRACION = [
+    ("n1_lesiones", 63, {
+        "titulo": "Una indagación por lesiones personales fue archivada"}),
+    ("n2_no_permitian", 118, {
+        "titulo": "Las grabaciones disponibles no permitían establecer quién había agredido a la víctima"}),
+    ("n3_seis_meses", 50, {"suelta": "Seis meses después"}),
+    ("n4_otro_video", 72, {
+        "titulo": "La víctima encuentra un video tomado desde otro establecimiento comercial"}),
+    ("n5_el_rostro", 142, {
+        "titulo": "Se observa con mayor claridad el rostro de uno de los hombres que participó en los hechos"}),
+    ("n6_el_abogado", 129, {
+        "titulo": "El abogado informa del video a la Fiscalía y solicita que se continúe con la actuación"}),
+]
+
 if __name__ == "__main__":
     modo = sys.argv[1] if len(sys.argv) > 1 else "todo"
 
     if modo in ("todo", "preguntas"):
         for nombre, n, spec in PREGUNTAS:
+            C.render_carton(spec, n, None, True, f"{OUT}/TA08_{nombre}.mov", con_tinte=True)
+
+    if modo in ("todo", "narracion"):
+        for nombre, n, spec in NARRACION:
             C.render_carton(spec, n, None, True, f"{OUT}/TA08_{nombre}.mov", con_tinte=True)
 
     if modo in ("todo", "blancos"):
