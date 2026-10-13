@@ -1117,3 +1117,40 @@ se disuelve. Por eso la vibración no es un adorno, es parte del mecanismo.
 
 Cuando un mismo plano cae en dos ranuras, se le cambia `encuadre`, el signo de
 `empuje`, el `centro` y la `fase`: el mismo plano lee como otro plano.
+
+---
+
+## Por qué un pulso de cámara horneado se siente tieso (Caso 5A, oct 2026)
+
+Sebastián vio el primer corte del 5A y dijo que la vibración se sentía rígida.
+Medido, la causa no era el dibujo del movimiento sino la cuantización.
+
+`zoompan` redondea la posición del recorte a entero. Sobre un plano de 2560 que
+termina en una línea de 1920, **un pixel de fuente son 0.85 px de salida**. El
+pulso viejo eran tres senos con la energía en 0.37, 0.61 y 1.27 Hz y 2 px de
+excursión: el desplazamiento entre cuadro y cuadro daba 0.2 a 0.3 px, por debajo
+del escalón. Resultado: la imagen se queda quieta cuatro cuadros y salta uno. Eso
+no se lee como temblor, se lee como mecanismo.
+
+Las dos correcciones, y las dos hacen falta:
+
+1. **Una banda alta de verdad.** Tres bandas por eje: deriva 0.05–0.16 Hz (peso
+   0.46), meceo 0.40–0.95 Hz (0.20), temblor 2.0–3.6 Hz (0.34). La banda alta es
+   la que se olvida y es la que hace que cada cuadro sea distinto del anterior.
+   Medido sobre seis ranuras: con el temblor en 0.34 se mueve más de medio pixel
+   el 79% de los cuadros; con el temblor en 0.18, el 45%. Ese 45% es lo que se
+   siente tieso.
+2. **El plano se sube a x2 antes del recorte** y se cachea en `_x2/`. Un pixel de
+   fuente pasa a ser 0.43 px de salida y el escalón desaparece. `zoompan` saca a
+   2880x1620 y después un `scale` lanczos a 1920, para que el reescalado bueno
+   quede al final.
+
+Tercera cosa, menor pero real: **la señal se normaliza por su excursión real en la
+ranura, no por la suma teórica de los pesos.** Con componentes lentas, una ranura
+de cuatro segundos no alcanza a recorrer su máximo; sin normalizar, el pulso sale
+a un tercio de lo pedido y las ranuras cortas quedan más quietas que las largas
+sin que nadie lo haya decidido.
+
+La lección general: **antes de rediseñar la forma de un movimiento, medir si el
+movimiento llega a cruzar el pixel.** Un movimiento correcto por debajo de la
+resolución del render se ve peor que uno tosco por encima de ella.

@@ -13,11 +13,10 @@ LOS CUATRO MODOS
                   acelerar un Kling se nota mucho más que frenarlo, y frenarlo
                   se nota más que cortarlo.
     loop_congela  el loop entero a velocidad nativa y después su último cuadro
-                  congelado hasta completar N. Para cuando la ranura es más
-                  larga que el loop y el gesto ya terminó.
+                  congelado hasta completar N.
     camara        una imagen fija con la cámara horneada: empuje o retroceso
-                  lento (zoom dinámico) más una vibración de pulso muy baja.
-                  Para los planos que NO llevan video generado.
+                  lento más un pulso de mano. Para los planos que NO llevan
+                  video generado.
 
 Si la ranura pasa de los cuadros del loop y no se pide `loop_congela`, se usa
 `setpts` con k = N × 1.001 / origen. El 1.001 es el paso de 24 a 23.976; sin él
@@ -34,18 +33,44 @@ EL MODO CAMARA
                 acerca, negativo aleja (0.0)
       deriva    [dx, dy] paneo total, en fracción del cuadro de salida
       centro    [cx, cy] centro de la ventana al entrar (0.5, 0.5)
-      vibra     excursión de la vibración, en px de salida (2.0)
-      fase      corrimiento de la vibración en segundos; sirve para que el
-                mismo plano en dos ranuras distintas no respire igual
+      vibra     excursión máxima del pulso, en px de salida (6.0)
+      semilla   entero; dos ranuras con semillas distintas no respiran igual.
+                Si no se da, sale del nombre del archivo de salida.
+      fase      corrimiento en segundos, por compatibilidad
 
-    La vibración son tres senos de frecuencias sin razón entera sumados, así
-    que no se repite a la vista. Y además resuelve el escalón de zoompan: los
-    recortes se redondean a entero, y un paneo lento sin vibración salta cada
-    cuatro o cinco cuadros. Con la vibración encima, x e y cambian en todos
-    los cuadros y el escalón se disuelve.
+EL PULSO DE MANO
+    Tres bandas por eje, cada una con sus frecuencias sacadas al azar dentro de
+    su rango y con fase propia:
+
+      deriva   0.05 a 0.16 Hz, peso 0.46 — el cuerpo que sostiene la cámara
+      meceo    0.40 a 0.95 Hz, peso 0.20 — la respiración
+      temblor  2.00 a 3.60 Hz, peso 0.34 — el pulso fino
+
+    Las tres hacen falta y la de arriba es la que más se olvida. Una suma de
+    senos lentos da un dibujo bonito en el papel y en pantalla se ve rígida,
+    porque el movimiento entre cuadro y cuadro queda por debajo del pixel: la
+    imagen se queda quieta cuatro cuadros y salta uno. El temblor es lo que
+    hace que cada cuadro sea distinto del anterior. Medido: con el temblor en
+    0.34, el 79% de los cuadros se mueve más de medio pixel; con el temblor en
+    0.18, sólo el 45%, y eso es exactamente lo que se siente tieso.
+
+    Encima va una envolvente lenta, de 17 a 28 segundos de periodo, que sube y
+    baja la amplitud: hay tramos más calmados y tramos más vivos. Sin eso la
+    amplitud es constante y se siente mecánica por más que el dibujo no se
+    repita.
+
+    El eje vertical lleva componentes propias y pesa 0.72 del horizontal, como
+    en una cámara en mano de verdad.
+
+    La señal se normaliza por su excursión REAL en la ranura, no por la suma
+    teórica de los pesos: con componentes lentas, una ranura corta no alcanza a
+    recorrer su máximo y el pulso saldría mucho más chico de lo pedido.
 """
+import hashlib
 import json
+import math
 import os
+import random
 import subprocess
 import sys
 
@@ -60,7 +85,13 @@ COMUNES = ["-an", "-c:v", "libx264", "-preset", "fast", "-crf", "14",
 
 SALIDA_AN, SALIDA_AL = 1920, 1080
 MARGEN = 1.002               # un pelo mas que 1:1, para no ampliar pixel
-PICO_SENOS = 1.9             # el pico de la suma de los tres senos
+ESCALA_FUENTE = 2            # el plano se sube x2 una vez y de ahi sale todo
+INTER_AN, INTER_AL = 2880, 1620
+PESO_VERTICAL = 0.72
+# (f_min, f_max, peso, componentes)
+BANDAS = ((0.05, 0.16, 0.46, 2),   # deriva: el cuerpo que sostiene
+          (0.40, 0.95, 0.20, 2),   # meceo: la respiracion
+          (2.00, 3.60, 0.34, 2))   # temblor: lo que cambia cada cuadro
 
 
 def cuadros(ruta):
@@ -79,16 +110,69 @@ def medida(ruta):
     return int(s["width"]), int(s["height"])
 
 
+def grande(src):
+    """El plano subido x2, cacheado. zoompan redondea el recorte a entero:
+    sobre el plano nativo un pixel de fuente son 0.85 px de salida y el pulso
+    se cuantiza a escalones; sobre el plano x2 son 0.43 y el movimiento vuelve
+    a ser continuo."""
+    d = os.path.join(os.path.dirname(src), "_x%d" % ESCALA_FUENTE)
+    dst = os.path.join(d, os.path.splitext(os.path.basename(src))[0] + ".png")
+    if os.path.exists(dst):
+        return dst
+    os.makedirs(d, exist_ok=True)
+    an, al = medida(src)
+    r = subprocess.run([FFMPEG, "-v", "error", "-y", "-i", src, "-vf",
+                        "scale=%d:%d:flags=lanczos" % (an * ESCALA_FUENTE,
+                                                       al * ESCALA_FUENTE),
+                        "-frames:v", "1", dst], capture_output=True, text=True)
+    if r.returncode:
+        raise RuntimeError("no se pudo subir %s: %s" % (src, r.stderr[:200]))
+    return dst
+
+
+def _componentes(r):
+    """Tres bandas: deriva, meceo y temblor. Cada una con sus propias senos."""
+    comp = []
+    for fa, fb, peso, k in BANDAS:
+        for _ in range(k):
+            f = r.uniform(fa, fb)
+            comp.append((f, peso / k, r.uniform(0, 2 * math.pi)))
+    return comp
+
+
+def _evaluar(comp, fe, pe, n, t0):
+    """La señal cuadro a cuadro, con la envolvente lenta encima."""
+    v = []
+    for i in range(n):
+        t = i / FPS_N + t0
+        env = 0.65 + 0.35 * math.sin(2 * math.pi * fe * t + pe)
+        v.append(env * sum(a * math.sin(2 * math.pi * f * t + p)
+                           for f, a, p in comp))
+    return v
+
+
+def _senos(comp, k, tt, fe, pe, pe_amp):
+    """La misma señal, escrita como expresión de ffmpeg."""
+    senos = "+".join("%.5f*sin(2*PI*%.5f*%s+%.4f)" % (a, f, tt, p)
+                     for f, a, p in comp)
+    env = "(0.65+0.35*sin(2*PI*%.5f*%s+%.4f))" % (fe, tt, pe)
+    return "(%.5f*%s*(%s))" % (k, env, senos)
+
+
 def _vf_camara(t, an, al, n):
     enc = float(t.get("encuadre", 0.88))
     emp = float(t.get("empuje", 0.0))
     dx, dy = t.get("deriva", [0.0, 0.0])
     cx, cy = t.get("centro", [0.5, 0.5])
-    vib = float(t.get("vibra", 2.0)) / PICO_SENOS
+    vib = float(t.get("vibra", 6.0))
     fase = float(t.get("fase", 0.0))
+    sem = t.get("semilla")
+    if sem is None:
+        base = os.path.basename(t.get("salida", "")).encode("utf-8")
+        sem = int(hashlib.md5(base).hexdigest()[:8], 16)
+    r = random.Random(int(sem))
 
-    # la ventana no puede salirse del rango util en ningun punto del barrido
-    piso = SALIDA_AN / float(an) * MARGEN
+    piso = SALIDA_AN * ESCALA_FUENTE / float(an) * MARGEN
     for w in (enc, enc * (1 - emp)):
         if w > 1.0 or w < piso:
             raise ValueError("ventana fuera de riel: %.3f (riel %.3f-1.0)"
@@ -99,11 +183,26 @@ def _vf_camara(t, an, al, n):
     cw = "(%d*%s)" % (an, wf)
     ch = "(%d*%s)" % (al, wf)
     esc = "(%s/%d)" % (cw, SALIDA_AN)          # px de salida -> px de fuente
-    tt = "(on/%.6f+%.4f)" % (FPS_N, fase)
-    sx = ("(%.5f*%s*(sin(2*PI*0.37*%s)+0.6*sin(2*PI*0.61*%s+1.1)"
-          "+0.3*sin(2*PI*1.27*%s+2.3)))" % (vib, esc, tt, tt, tt))
-    sy = ("(%.5f*%s*(sin(2*PI*0.29*%s+0.7)+0.6*sin(2*PI*0.53*%s+2.6)"
-          "+0.3*sin(2*PI*1.09*%s+0.4)))" % (vib, esc, tt, tt, tt))
+    t0 = fase + r.uniform(0, 40)
+    tt = "(on/%.6f+%.4f)" % (FPS_N, t0)
+
+    # envolvente lenta: tramos mas calmados y tramos mas vivos
+    fe = r.uniform(1 / 28.0, 1 / 17.0)
+    pe = r.uniform(0, 2 * math.pi)
+
+    # se normaliza por la excursion REAL de la ranura, no por la suma teorica:
+    # con componentes lentas una ranura corta no alcanza a recorrer su maximo,
+    # y sin esto el pulso sale mucho mas chico de lo pedido
+    cmx = _componentes(r)
+    cmy = _componentes(r)
+    vx = _evaluar(cmx, fe, pe, n, t0)
+    vy = _evaluar(cmy, fe, pe, n, t0)
+    pico = max(max(abs(a) for a in vx), max(abs(b) for b in vy)) or 1.0
+    kx = vib / pico
+    ky = vib * PESO_VERTICAL / pico
+
+    sx = "(%s*%s)" % (esc, _senos(cmx, kx, tt, fe, pe, 0))
+    sy = "(%s*%s)" % (esc, _senos(cmy, ky, tt, fe, pe, 0))
 
     bx = "%.6f*%d-%s/2+%.6f*%s*%s+%s" % (cx, an, cw, dx, cw, f, sx)
     by = "%.6f*%d-%s/2+%.6f*%s*%s+%s" % (cy, al, ch, dy, ch, f, sy)
@@ -111,8 +210,8 @@ def _vf_camara(t, an, al, n):
     y = "max(0,min(%d-%s,%s))" % (al, ch, by)
     z = "1/%s" % wf
 
-    return ("zoompan=z='%s':x='%s':y='%s':d=1:s=%dx%d:fps=%s"
-            % (z, x, y, SALIDA_AN, SALIDA_AL, FPS))
+    return ("zoompan=z='%s':x='%s':y='%s':d=1:s=%dx%d:fps=%s,%s"
+            % (z, x, y, INTER_AN, INTER_AL, FPS, ESCALA))
 
 
 def ajustar(t):
@@ -121,6 +220,7 @@ def ajustar(t):
     os.makedirs(os.path.dirname(salida), exist_ok=True)
 
     if modo == "camara":
+        src = grande(src)
         an, al = medida(src)
         vf = _vf_camara(t, an, al, n)
         cmd = [FFMPEG, "-v", "error", "-y", "-loop", "1", "-i", src,
@@ -135,7 +235,6 @@ def ajustar(t):
             vf = ("trim=start_frame=%d,setpts=PTS-STARTPTS,fps=%s,%s"
                   % (ini, FPS, ESCALA))
         elif modo == "loop_congela":
-            # el loop completo y después su último cuadro quieto
             vf = ("trim=start_frame=%d,setpts=PTS-STARTPTS,fps=%s,%s,"
                   "tpad=stop_mode=clone:stop=%d" % (ini, FPS, ESCALA, n - disponible))
         else:
