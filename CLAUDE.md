@@ -1154,3 +1154,51 @@ sin que nadie lo haya decidido.
 La lección general: **antes de rediseñar la forma de un movimiento, medir si el
 movimiento llega a cruzar el pixel.** Un movimiento correcto por debajo de la
 resolución del render se ve peor que uno tosco por encima de ella.
+
+---
+
+## Prohibir movimiento congela el plano (Caso 5A, oct 2026)
+
+Corrección a la sección anterior. Yo había escrito que Kling deriva la cámara en
+interiores con fuga, y lo había concluido mirando tiras de contactos. **Está mal.**
+
+La prueba: restar el cuadro 3 contra los cuadros 40, 90, 140, 190 y 236 del clip
+de la apertura. La resta sale negra — paredes, ventana, mesa, sillas y sombras
+idénticas píxel a píxel. La cámara nunca se movió. Lo que yo leí como deriva era
+mío.
+
+Lo que sí pasaba, medido como porcentaje de píxeles que cambian en todo el clip:
+
+| clip | prompt | se mueve |
+|---|---|---|
+| hall de atención | una acción concreta en positivo | **14.5%** |
+| apertura | lleno de prohibiciones | 3.8% |
+| sala de audiencias | lleno de prohibiciones | 0.5% |
+| la misma apertura, prompt reescrito | pauta de acciones | **10.0%** |
+| el mismo archivo, "camina todo el pasillo" | acción grande | **47.6%** |
+
+Mis prompts decían «locked-off», «nobody reaches for anything», «hands stay
+exactly where they are», «at most one slow blink», más veinte términos negativos.
+El modelo obedeció y congeló la imagen. No era el modelo ni el `cameraMotion`.
+
+> **Al modelo se le dice qué pasa, no qué no pasa.** El prompt de movimiento es
+> una pauta de acciones concretas con destino: «levanta la hoja, la lee, la baja y
+> la deja sobre la mesa», «camina todo el pasillo hacia la cámara y sale de
+> cuadro». Los negativos se reservan para el estilo —textura, contornos, cambio de
+> paleta, caras que se deforman— y nunca para apagar movimiento. La cámara queda
+> quieta igual: basta «tripod shot, the camera stays where it is» una vez.
+
+La regla que sí sobrevive, y que resuelve el defecto original del Caso 05 (manos
+que se acercan a algo y se quedan colgadas): **todo movimiento llega a destino.**
+Se escribe en positivo, al final del prompt: «every movement travels all the way
+and arrives; nothing stops halfway», y cada acción se redacta con su final — la
+hoja se levanta, se lee *y se deja*; la mano agarra *y se lleva* el lapicero.
+
+Lo que no conviene pedirle: **una mano sola entrando a cuadro**. En el plano
+cenital del expediente salió flotando y con los dedos mal, que es literalmente el
+defecto que Sebastián marcó en el 05 («es solo una mano, sin cuerpo»). Ese plano
+se quedó como imagen fija con el modo `camara`.
+
+Costos de referencia, 1080p: Kling 3.0 son 90 créditos por segundo; Seedance 2.0
+Fast 720p son 235; Seedance 2.5 Pro 1080p son 790. Kling alcanza de sobra cuando
+el prompt está bien escrito.
