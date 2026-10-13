@@ -1298,3 +1298,42 @@ pueda agarrar. `vibra` por defecto bajo de 6,0 a 5,0 px.
 problema esta en la senal o en el muestreo. En el 5A diagnostique la senal y
 puse un parche; el defecto estaba un piso mas abajo, y el parche se volvio el
 defecto siguiente.
+
+## AppendToTimeline: `endFrame` es EXCLUSIVO. Y una comprobacion que no sirve
+
+Arme la linea del U5C1 pasando `endFrame: duracion-1`. `endFrame` es exclusivo,
+asi que cada clip entro **un cuadro corto**. Como ademas iba un `recordFrame`
+explicito por clip, el cuadro que faltaba no corrio el montaje: dejo un hueco.
+**Treinta y un cuadros negros, uno entre cada par de clips.** Los vio Sebastian,
+no yo.
+
+Medido en la linea:
+
+    intro          duracion 193   el archivo tiene 194
+    r01            duracion 174   el archivo tiene 175
+    ...y asi los 32
+
+Comprobado aparte, con dos apendizados del mismo clip de 175 cuadros:
+`endFrame 174` da 174, `endFrame 175` da 175. **Va la duracion entera.**
+
+**Lo grave no es el off-by-one, es la verificacion.** Despues de armar corri un
+chequeo de huecos que decia «problemas: ninguno». Lo decia porque calculaba el
+final de cada clip con `GetEnd()` y lo comparaba con el arranque del siguiente,
+y `GetEnd()` devuelve el ultimo cuadro del clip tal como quedo puesto. Si el
+clip entro corto, su final tambien esta corrido, y los dos numeros cuadran con
+el hueco en medio. **La comprobacion estaba hecha con la misma creencia que el
+error, asi que lo confirmo en vez de encontrarlo.**
+
+**La regla.** Una linea de tiempo se verifica contra algo que no salio de la
+misma aritmetica que la armo: la duracion de cada clip contra el numero de
+cuadros del archivo en disco, medido con ffprobe, y la suma contra el total
+previsto. Si los dos lados del chequeo vienen de mi, el chequeo no es un
+chequeo.
+
+    V1 32 clips | suma 4575 | fin 4575
+    contra los archivos en disco: todo cuadra
+
+**Y un detalle del append:** un clip con video y audio **no entra en V1 cuando
+`recordFrame` es el primer cuadro de la linea** — solo aterriza su audio, y el
+video se va al final o se pierde. Con `mediaType: 1` entra bien. El audio del
+bumper se pone aparte, con `mediaType: 2`.
