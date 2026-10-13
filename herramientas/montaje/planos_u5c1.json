@@ -1,0 +1,352 @@
+[
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf01_avenida.mp4",
+  "modo": "loop",
+  "frames": 175,
+  "inicio": 20,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r01_kf01_avenida_v175.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf02_grupo.mp4",
+  "modo": "loop",
+  "frames": 152,
+  "inicio": 30,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r02_kf02_grupo_v152.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf01_avenida.mp4",
+  "modo": "loop",
+  "frames": 59,
+  "inicio": 150,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r03_kf01_avenida_v59.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf02_grupo.mp4",
+  "modo": "loop",
+  "frames": 72,
+  "inicio": 150,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r04_kf02_grupo_v72.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf03_acera.mp4",
+  "modo": "loop",
+  "frames": 126,
+  "inicio": 40,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r05_kf03_acera_v126.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf04_bolsillo.png",
+  "modo": "camara",
+  "frames": 135,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r06_kf04_bolsillo_v135.mov",
+  "encuadre": 0.9,
+  "empuje": 0.05,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 6.0,
+  "fase": 1.3
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf05_telefono.png",
+  "modo": "camara",
+  "frames": 83,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r07_kf05_telefono_v83.mov",
+  "encuadre": 0.88,
+  "empuje": -0.04,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 6.0,
+  "fase": 4.8
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf06_evidencias.png",
+  "modo": "camara",
+  "frames": 108,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r08_kf06_evidencias_v108.mov",
+  "encuadre": 0.92,
+  "empuje": 0.055,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 6.0,
+  "fase": 7.2
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf07_archivo.png",
+  "modo": "camara",
+  "frames": 135,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r09_kf07_archivo_v135.mov",
+  "encuadre": 0.88,
+  "empuje": 0.035,
+  "deriva": [
+   0.03,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 6.0,
+  "fase": 2.6
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf01_avenida.mp4",
+  "modo": "loop",
+  "frames": 94,
+  "inicio": 60,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r10_kf01_avenida_v94.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf07_archivo.png",
+  "modo": "camara",
+  "frames": 92,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r11_kf07_archivo_v92.mov",
+  "encuadre": 0.82,
+  "empuje": -0.045,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.52,
+   0.5
+  ],
+  "vibra": 6.0,
+  "fase": 11.4
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf08_noche.png",
+  "modo": "camara",
+  "frames": 72,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r12_kf08_noche_v72.mov",
+  "encuadre": 0.9,
+  "empuje": 0.04,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.52
+  ],
+  "vibra": 6.0,
+  "fase": 5.9
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf09_pasaje.png",
+  "modo": "camara",
+  "frames": 191,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r13_kf09_pasaje_v191.mov",
+  "encuadre": 0.86,
+  "empuje": -0.05,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 6.0,
+  "fase": 9.7
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf08_noche.png",
+  "modo": "camara",
+  "frames": 88,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r14_kf08_noche_v88.mov",
+  "encuadre": 0.8,
+  "empuje": 0.035,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.47,
+   0.52
+  ],
+  "vibra": 6.0,
+  "fase": 14.1
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf09_pasaje.png",
+  "modo": "camara",
+  "frames": 162,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r15_kf09_pasaje_v162.mov",
+  "encuadre": 0.92,
+  "empuje": 0.06,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 6.0,
+  "fase": 3.4
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf10_yos.mp4",
+  "modo": "loop",
+  "frames": 145,
+  "inicio": 60,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r16_kf10_yos_v145.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf11_yefry.mp4",
+  "modo": "loop",
+  "frames": 55,
+  "inicio": 120,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r17_kf11_yefry_v55.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf12_juanes.mp4",
+  "modo": "loop",
+  "frames": 51,
+  "inicio": 150,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r18_kf12_juanes_v51.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf13_audiencia.mp4",
+  "modo": "loop",
+  "frames": 173,
+  "inicio": 100,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r19_kf13_audiencia_v173.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf14_expedientes.png",
+  "modo": "camara",
+  "frames": 141,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r20_kf14_expedientes_v141.mov",
+  "encuadre": 0.9,
+  "empuje": 0.045,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 6.0,
+  "fase": 6.5
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf13_audiencia.mp4",
+  "modo": "loop",
+  "frames": 200,
+  "inicio": 20,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r21_kf13_audiencia_v200.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf10_yos.mp4",
+  "modo": "loop",
+  "frames": 242,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r22_kf10_yos_v242.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf14_expedientes.png",
+  "modo": "camara",
+  "frames": 193,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r23_kf14_expedientes_v193.mov",
+  "encuadre": 0.8,
+  "empuje": -0.04,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.53,
+   0.49
+  ],
+  "vibra": 6.0,
+  "fase": 12.8
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf12_juanes.mp4",
+  "modo": "loop",
+  "frames": 202,
+  "inicio": 20,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r24_kf12_juanes_v202.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf15_corredor.png",
+  "modo": "camara",
+  "frames": 97,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r25_kf15_corredor_v97.mov",
+  "encuadre": 0.91,
+  "empuje": 0.05,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 6.0,
+  "fase": 8.3
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf11_yefry.mp4",
+  "modo": "loop",
+  "frames": 196,
+  "inicio": 30,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r26_kf11_yefry_v196.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf15_corredor.png",
+  "modo": "camara",
+  "frames": 126,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r27_kf15_corredor_v126.mov",
+  "encuadre": 0.82,
+  "empuje": -0.055,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 6.0,
+  "fase": 15.6
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf15_corredor.png",
+  "modo": "camara",
+  "frames": 384,
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r28_kf15_pausas_v384.mov",
+  "encuadre": 0.78,
+  "empuje": -0.03,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 6.0,
+  "fase": 22.0
+ }
+]

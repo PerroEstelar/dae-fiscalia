@@ -30,7 +30,7 @@ Animación. El texto tiene que estar COMPLETO mientras se dicen las palabras:
     COLA, más abajo, son el margen que hay que dejar alrededor del tramo de voz
     para que el texto esté entero justo donde se habla.
 """
-import os, subprocess, sys
+import os, re, subprocess, sys
 from PIL import Image, ImageDraw, ImageFont
 
 W, H = 1920, 1080
@@ -81,41 +81,64 @@ def fuente(path, size):
 
 
 def partir(texto, font, maxw, draw):
-    palabras, lineas, cur = texto.split(), [], ""
-    for p in palabras:
-        t = (cur + " " + p).strip()
-        if draw.textlength(t, font=font) <= maxw or not cur:
-            cur = t
-        else:
-            lineas.append(cur)
-            cur = p
-    if cur:
-        lineas.append(cur)
-    return lineas
+    """Reparte el texto en lineas que caben en `maxw`.
+
+    Devuelve pares (linea, sangria). Dos cosas que el reparto simple no hacia:
+
+    - Un salto de linea explicito se respeta: corta ahi y sigue en el renglon
+      siguiente. Asi las opciones de una votacion -a), b), c)- quedan una por
+      renglon en vez de correr como parrafo.
+    - Si un parrafo abre con una marca de lista -"a)", "b)", "1.", "-"- las
+      lineas de continuacion entran sangradas el ancho de esa marca, para que
+      se lean colgando de su opcion y no como una opcion nueva.
+
+    Un texto sin "\n" y sin marca de lista se reparte igual que siempre, con
+    sangria cero en todas sus lineas.
+    """
+    salida = []
+    for parrafo in texto.split("\n"):
+        palabras = parrafo.split()
+        if not palabras:
+            continue
+        sangria = 0
+        if re.match(r"^(?:[a-z0-9]{1,2}[\)\.]|[-\u2013\u2022])$", palabras[0]):
+            sangria = int(draw.textlength(palabras[0] + " ", font=font))
+        cur, primera = "", True
+        for p in palabras:
+            t = (cur + " " + p).strip()
+            ancho = maxw if primera else maxw - sangria
+            if draw.textlength(t, font=font) <= ancho or not cur:
+                cur = t
+            else:
+                salida.append((cur, 0 if primera else sangria))
+                primera, cur = False, p
+        if cur:
+            salida.append((cur, 0 if primera else sangria))
+    return salida
 
 
 def armar_lineas(spec, draw):
-    """spec: {'ante':str?, 'titulo':str?, 'cuerpo':str?, 'suelta':str?} -> [(txt, font, size, gap_antes)]"""
+    """spec: {'ante'?, 'titulo'?, 'cuerpo'?, 'suelta'?} -> [(txt, font, size, gap_antes, sangria)]"""
     out = []
     if spec.get("suelta"):
         f = fuente(F_BOLD, SUELTA)
-        for i, l in enumerate(partir(spec["suelta"], f, MAXW, draw)):
-            out.append((l, f, SUELTA, 0 if i == 0 else 0))
+        for i, (l, sg) in enumerate(partir(spec["suelta"], f, MAXW, draw)):
+            out.append((l, f, SUELTA, 0, sg))
         return out
     if spec.get("ante"):
         # NUNCA en versalitas: la identidad de la entidad no usa may\u00fasculas sostenidas.
         # La \u00fanica excepci\u00f3n es la marca de agua, que es un logotipo, no texto.
         f = fuente(F_SEMI, ANTE)
-        for i, l in enumerate(partir(spec["ante"], f, MAXW, draw)):
-            out.append((l, f, ANTE, 0))
+        for i, (l, sg) in enumerate(partir(spec["ante"], f, MAXW, draw)):
+            out.append((l, f, ANTE, 0, sg))
     if spec.get("titulo"):
         f = fuente(F_BOLD, TIT)
-        for i, l in enumerate(partir(spec["titulo"], f, MAXW, draw)):
-            out.append((l, f, TIT, GAP_ANTE if (i == 0 and out) else 0))
+        for i, (l, sg) in enumerate(partir(spec["titulo"], f, MAXW, draw)):
+            out.append((l, f, TIT, GAP_ANTE if (i == 0 and out) else 0, sg))
     if spec.get("cuerpo"):
         f = fuente(F_MED, CUE)
-        for i, l in enumerate(partir(spec["cuerpo"], f, MAXW, draw)):
-            out.append((l, f, CUE, GAP_TIT if (i == 0 and out) else GAP_CUE if i else 0))
+        for i, (l, sg) in enumerate(partir(spec["cuerpo"], f, MAXW, draw)):
+            out.append((l, f, CUE, GAP_TIT if (i == 0 and out) else GAP_CUE if i else 0, sg))
     return out
 
 
@@ -163,8 +186,8 @@ def render_carton(spec, nframes, fondo, alfa, salida, con_marca=False, con_tinte
     pd = ImageDraw.Draw(probe)
     lineas = armar_lineas(spec, pd)
 
-    alturas = [int(sz * INTERLINEA) for (_, _, sz, _) in lineas]
-    gaps = [g for (_, _, _, g) in lineas]
+    alturas = [int(sz * INTERLINEA) for (_, _, sz, _, _) in lineas]
+    gaps = [g for (_, _, _, g, _) in lineas]
     total = sum(alturas) + sum(gaps)
     top = CENTRO_Y - total // 2
 
@@ -232,7 +255,7 @@ def render_carton(spec, nframes, fondo, alfa, salida, con_marca=False, con_tinte
             d.rectangle([BAR_X, bar_top, BAR_X + BAR_W - 1, bar_top + int(bar_h * k)], fill=BAR_C)
 
         # texto
-        for i, ((txt, font, sz, _), ly) in enumerate(zip(lineas, ys)):
+        for i, ((txt, font, sz, _, sg), ly) in enumerate(zip(lineas, ys)):
             fi = f - ARRANQUE_TXT - i * RETARDO_IN
             if fi < 0:
                 continue
@@ -248,7 +271,7 @@ def render_carton(spec, nframes, fondo, alfa, salida, con_marca=False, con_tinte
                 dy = int(SUBE_OUT * t)
             if a <= 0.004:
                 continue
-            d.text((TEXT_X, ly + dy), txt, font=font, fill=color_txt + (int(255 * a),))
+            d.text((TEXT_X + sg, ly + dy), txt, font=font, fill=color_txt + (int(255 * a),))
 
         out = Image.alpha_composite(base, cap)
         if alfa:

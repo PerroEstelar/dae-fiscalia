@@ -1202,3 +1202,51 @@ se quedó como imagen fija con el modo `camara`.
 Costos de referencia, 1080p: Kling 3.0 son 90 créditos por segundo; Seedance 2.0
 Fast 720p son 235; Seedance 2.5 Pro 1080p son 790. Kling alcanza de sobra cuando
 el prompt está bien escrito.
+
+## Las tildes no son un detalle de codificacion
+
+En el U5C1 escribi los textos de los cartones en ASCII puro -«Votacion»,
+«dieciseis», «Si», sin signo de apertura- por la costumbre de esquivar
+problemas de codificacion al pasar texto entre la maquina y el contenedor. Se
+renderizaron asi y llegaron a la linea de tiempo asi. El render nunca tuvo el
+problema: `cartones_ta.py` lleva tildes desde el caso 01 -«Andrés»,
+«intervención», «años»- y las fuentes Montserrat las traen todas.
+
+**La regla.** El texto que se ve o se oye es castellano institucional de la
+Fiscalia y se escribe completo: tildes, ñ, ¿ y ¡. No hay ningun archivo de
+esta serie que se escriba sin tildes -ni los cartones ni el texto de TTS-. Si
+algo falla al cruzar el puente, se arregla la codificacion, no el castellano.
+
+## El repartidor de lineas: saltos explicitos y sangria francesa
+
+`partir()` hacia `texto.split()`, que se come los saltos de linea. Las tres
+opciones de una votacion -a), b), c)- salian corridas como un parrafo unico y
+se leian como una sola frase larga.
+
+Ahora `partir()` corta en cada `\n` del texto y, si un parrafo abre con una
+marca de lista (`a)`, `b)`, `1.`, `-`), sangra las lineas de continuacion el
+ancho de esa marca. Devuelve pares `(linea, sangria)` y la sangria viaja como
+quinto campo de cada linea hasta el `d.text()`. Un texto sin `\n` y sin marca
+de lista se reparte exactamente igual que antes.
+
+## Cartones de pausa: son transparentes, necesitan lecho
+
+Los cartones de narracion y de pausa se renderizan con alfa y con su propio
+tinte (`con_tinte=True`). **No son pantallas completas**: si se ponen en V1
+sobre nada, el fondo sale negro. Van en V3 y debajo tiene que seguir corriendo
+un plano.
+
+Para el U5C1 eso significo hornear una ranura mas -la 28- de 384 cuadros desde
+la misma placa del plano final, con el retroceso de camara continuado
+(`encuadre` 0,78, `empuje` -0,03, `fase` 22,0 donde la 27 terminaba en 0,82 /
+-0,055 / 15,6). El lecho corre 3878-4262 y encima van la votacion y la tarea
+del foro. Es la misma forma que tiene el bloque de preguntas del caso 5A, donde
+el plano final se sostiene bajo los tres cartones.
+
+## Donde ponen las pausas y donde no
+
+La primera reparticion metia la votacion entre las ranuras 24 y 25, y para eso
+habia partido la locucion en `_a` y `_b`. Partia tambien la enumeracion: los
+cartones «Uno» y «Dos» quedaban antes de la votacion y «Tres» despues. Los dos
+cartones de pausa van al final, despues de la locucion completa, que es como
+quedo la serie. La locucion entra entera y sin cortar.
