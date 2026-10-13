@@ -110,7 +110,7 @@ def medida(ruta):
     return int(s["width"]), int(s["height"])
 
 
-def grande(src):
+def grande(src):   # ya no se usa en modo camara; queda por si vuelve zoompan
     """El plano subido x2, cacheado. zoompan redondea el recorte a entero:
     sobre el plano nativo un pixel de fuente son 0.85 px de salida y el pulso
     se cuantiza a escalones; sobre el plano x2 son 0.43 y el movimiento vuelve
@@ -220,12 +220,21 @@ def ajustar(t):
     os.makedirs(os.path.dirname(salida), exist_ok=True)
 
     if modo == "camara":
-        src = grande(src)
-        an, al = medida(src)
-        vf = _vf_camara(t, an, al, n)
-        cmd = [FFMPEG, "-v", "error", "-y", "-loop", "1", "-i", src,
-               "-vf", vf, "-frames:v", str(n)] + COMUNES + [salida]
-    elif modo == "hold":
+        # El recorte lo hace camara.py con PIL y coordenadas decimales. Antes
+        # lo hacia zoompan, que redondea a pixel entero de la fuente: ese
+        # escalon obligaba a meterle al pulso una banda rapida para que la
+        # imagen cambiara entre cuadro y cuadro, y esa banda era lo que se veia
+        # entrecortado. Sin escalon, el pulso vuelve a ser lento.
+        import camara
+        ok = camara.render(t, FFMPEG)
+        if not ok:
+            print("FALLO %s" % os.path.basename(salida))
+            return False
+        c = cuadros(salida)
+        print("%-34s %4d / %4d  %s" % (os.path.basename(salida), c, n,
+                                       "OK" if c == n else "DESCUADRADO"))
+        return c == n
+    if modo == "hold":
         cmd = [FFMPEG, "-v", "error", "-y", "-loop", "1", "-i", src,
                "-vf", ESCALA, "-frames:v", str(n)] + COMUNES + [salida]
     else:

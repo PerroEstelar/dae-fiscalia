@@ -1250,3 +1250,51 @@ habia partido la locucion en `_a` y `_b`. Partia tambien la enumeracion: los
 cartones «Uno» y «Dos» quedaban antes de la votacion y «Tres» despues. Los dos
 cartones de pausa van al final, despues de la locucion completa, que es como
 quedo la serie. La locucion entra entera y sin cortar.
+
+## El numero que mide «entrecortado» son los cambios de direccion
+
+En el caso 5A el pulso se sentia tieso y le meti una banda de 2 a 3,6 Hz. En el
+U5C1, Sebastian dijo que ahora se veia entrecortado, y tenia razon. Medido sobre
+la misma ranura:
+
+    cambios de direccion por segundo   4,1
+    desplazamiento por cuadro          0,34 px de media, 1,22 de pico
+
+Una camara en mano de verdad hace **alrededor de un cambio de direccion por
+segundo**. La amplitud no es el numero que importa: se puede bajar el pulso a la
+mitad y sigue viendose entrecortado si la senal cambia de signo cuatro veces por
+segundo. Lo que el ojo lee como temblor de camara es la frecuencia, no el
+tamano.
+
+**Y una banda rapida con poco peso igual manda en la derivada.** A 1,2 Hz cada
+unidad de amplitud mueve diez veces mas por cuadro que a 0,12 Hz: bajarle el
+peso no la arregla, hay que quitarla.
+
+## La banda rapida era un parche de un problema que no era de la senal
+
+La habia puesto porque sin ella el movimiento quedaba en 0,09 px por cuadro y se
+congelaba. Pero eso no era culpa del pulso: `zoompan` redondea el recorte a
+pixel entero de la fuente, y sobre la placa x2 un pixel de fuente son 0,44 px de
+salida. Todo lo mas lento que eso se queda quieto varios cuadros y despues
+salta.
+
+La salida no era elegir entre tieso y entrecortado: era quitarle el escalon al
+recorte. `herramientas/montaje/camara.py` hace el recorte con
+`PIL.Image.resize(box=...)`, que acepta coordenadas con decimales y filtra en
+Lanczos. Sin escalon, el pulso vuelve a ser lento:
+
+    cambios de direccion por segundo   0,4 a 1,2
+    desplazamiento por cuadro          0,04 px de media, 0,12 de pico
+    cuadros congelados                 ninguno
+
+Y de paso la imagen quedo 4% mas nitida (laplaciano medio 4,56 contra 4,39),
+porque ahora es **un solo remuestreo y no dos**: ya no hace falta la placa x2.
+
+El pulso ahora es ruido blanco filtrado -dos bandas, 0,12 y 0,40 Hz, tres polos
+cada una, pesos 0,70 y 0,30-, no una pila de senos: no tiene periodo que el ojo
+pueda agarrar. `vibra` por defecto bajo de 6,0 a 5,0 px.
+
+**La leccion general.** Cuando un movimiento se ve mal, medir primero si el
+problema esta en la senal o en el muestreo. En el 5A diagnostique la senal y
+puse un parche; el defecto estaba un piso mas abajo, y el parche se volvio el
+defecto siguiente.
