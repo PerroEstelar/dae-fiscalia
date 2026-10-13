@@ -1,0 +1,574 @@
+[
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n01_laura_oficina.png",
+  "modo": "camara",
+  "frames": 230,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r01_n01_v230.mov",
+  "encuadre": 0.92,
+  "empuje": 0.06,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 0.0
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n02_sala_juntas.png",
+  "modo": "camara",
+  "frames": 160,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r02_n02_v160.mov",
+  "encuadre": 0.84,
+  "empuje": -0.06,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 3.1
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n03_entidad.png",
+  "modo": "camara",
+  "frames": 137,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r03_n03_v137.mov",
+  "encuadre": 0.92,
+  "empuje": 0.035,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 2.2
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n04_archivo.png",
+  "modo": "camara",
+  "frames": 173,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r04_n04_v173.mov",
+  "encuadre": 0.88,
+  "empuje": 0.02,
+  "deriva": [
+   0.05,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 1.7
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n09_expediente.png",
+  "modo": "camara",
+  "frames": 177,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r05_n09_v177.mov",
+  "encuadre": 0.9,
+  "empuje": 0.055,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 5.2
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n05_fiscal.png",
+  "modo": "camara",
+  "frames": 183,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r06_n05_v183.mov",
+  "encuadre": 0.84,
+  "empuje": 0.04,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.44,
+   0.48
+  ],
+  "vibra": 2.0,
+  "fase": 4.1
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n04_archivo.png",
+  "modo": "camara",
+  "frames": 181,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r07_n04_v181.mov",
+  "encuadre": 0.8,
+  "empuje": -0.04,
+  "deriva": [
+   -0.03,
+   0.0
+  ],
+  "centro": [
+   0.54,
+   0.52
+  ],
+  "vibra": 2.0,
+  "fase": 8.4
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n06_defensora.png",
+  "modo": "camara",
+  "frames": 189,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r08_n06_v189.mov",
+  "encuadre": 0.9,
+  "empuje": 0.05,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 2.3
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n11_defensora_medio.png",
+  "modo": "camara",
+  "frames": 190,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r09_n11_v190.mov",
+  "encuadre": 0.86,
+  "empuje": -0.035,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 6.1
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n07_apertura.png",
+  "modo": "camara",
+  "frames": 210,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r10_n07_v210.mov",
+  "encuadre": 0.9,
+  "empuje": 0.05,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 6.9
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n02_sala_juntas.png",
+  "modo": "camara",
+  "frames": 203,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r11_n02_v203.mov",
+  "encuadre": 0.8,
+  "empuje": 0.045,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.46,
+   0.48
+  ],
+  "vibra": 2.0,
+  "fase": 11.2
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n08_fiscal_medio.png",
+  "modo": "camara",
+  "frames": 230,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r12_n08_v230.mov",
+  "encuadre": 0.89,
+  "empuje": 0.05,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 4.4
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n05_fiscal.png",
+  "modo": "camara",
+  "frames": 201,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r13_n05_v201.mov",
+  "encuadre": 0.8,
+  "empuje": -0.07,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.46,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 11.7
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n09_expediente.png",
+  "modo": "camara",
+  "frames": 220,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r14_n09_v220.mov",
+  "encuadre": 0.79,
+  "empuje": -0.045,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.56,
+   0.57
+  ],
+  "vibra": 2.0,
+  "fase": 9.8
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n10_intercambio.png",
+  "modo": "camara",
+  "frames": 265,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r15_n10_v265.mov",
+  "encuadre": 0.92,
+  "empuje": 0.065,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 0.9
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n11_defensora_medio.png",
+  "modo": "camara",
+  "frames": 148,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r16_n11_v148.mov",
+  "encuadre": 0.81,
+  "empuje": 0.035,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.52,
+   0.47
+  ],
+  "vibra": 2.0,
+  "fase": 13.5
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n04_archivo.png",
+  "modo": "camara",
+  "frames": 148,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r17_n04_v148.mov",
+  "encuadre": 0.86,
+  "empuje": -0.055,
+  "deriva": [
+   0.03,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 7.0
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n03_entidad.png",
+  "modo": "camara",
+  "frames": 170,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r18_n03_v170.mov",
+  "encuadre": 0.84,
+  "empuje": -0.045,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 9.1
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n12_laura_medio.png",
+  "modo": "camara",
+  "frames": 160,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r19_n12_v160.mov",
+  "encuadre": 0.88,
+  "empuje": 0.045,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 3.6
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n10_intercambio.png",
+  "modo": "camara",
+  "frames": 144,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r20_n10_v144.mov",
+  "encuadre": 0.8,
+  "empuje": -0.035,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.54,
+   0.53
+  ],
+  "vibra": 2.0,
+  "fase": 10.4
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n06_defensora.png",
+  "modo": "camara",
+  "frames": 142,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r21_n06_v142.mov",
+  "encuadre": 0.85,
+  "empuje": 0.02,
+  "deriva": [
+   -0.05,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 5.8
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n13_sala_vacia.png",
+  "modo": "camara",
+  "frames": 246,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r22_n13_v246.mov",
+  "encuadre": 0.82,
+  "empuje": -0.06,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 2.7
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n12_laura_medio.png",
+  "modo": "camara",
+  "frames": 194,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r23_n12_v194.mov",
+  "encuadre": 0.8,
+  "empuje": -0.04,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.48,
+   0.52
+  ],
+  "vibra": 2.0,
+  "fase": 12.1
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n14_fiscal_escritorio.png",
+  "modo": "camara",
+  "frames": 125,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r24_n14_v125.mov",
+  "encuadre": 0.9,
+  "empuje": 0.035,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 1.3
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n09_expediente.png",
+  "modo": "camara",
+  "frames": 273,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r25_n09_v273.mov",
+  "encuadre": 0.93,
+  "empuje": 0.07,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.48
+  ],
+  "vibra": 2.0,
+  "fase": 6.6
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n01_laura_oficina.png",
+  "modo": "camara",
+  "frames": 312,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r26_n01_v312.mov",
+  "encuadre": 0.8,
+  "empuje": -0.07,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.52,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 4.9
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\MOVIMIENTO\\TA5A_n15_hall.mp4",
+  "modo": "loop",
+  "frames": 304,
+  "inicio": 6,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r27_n15_v304.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\MOVIMIENTO\\TA5A_n16_audiencias.mp4",
+  "modo": "loop",
+  "frames": 278,
+  "inicio": 8,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r28_n16_v278.mov"
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n03_entidad.png",
+  "modo": "camara",
+  "frames": 207,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r29_n03_v207.mov",
+  "encuadre": 0.8,
+  "empuje": 0.04,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.54
+  ],
+  "vibra": 2.0,
+  "fase": 16.3
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n02_sala_juntas.png",
+  "modo": "camara",
+  "frames": 80,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r30_n02_v80.mov",
+  "encuadre": 0.86,
+  "empuje": 0.015,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 14.3
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n07_apertura.png",
+  "modo": "camara",
+  "frames": 241,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r31_n07_v241.mov",
+  "encuadre": 0.8,
+  "empuje": -0.055,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.46,
+   0.52
+  ],
+  "vibra": 2.0,
+  "fase": 17.6
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n10_intercambio.png",
+  "modo": "camara",
+  "frames": 134,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r32_n10_v134.mov",
+  "encuadre": 0.87,
+  "empuje": 0.03,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.52
+  ],
+  "vibra": 2.0,
+  "fase": 15.0
+ },
+ {
+  "fuente": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\01 PLANOS v2\\TA05_n14_fiscal_escritorio.png",
+  "modo": "camara",
+  "frames": 300,
+  "salida": "E:\\DAE MASTER\\CURSO 4 - Curso Terminaciones Anticipadas\\UNIDAD 4 - PREACUERDOS Y NEGOCIACIONES\\CASO 05 - negociacion paso a paso\\09 TIMELINE SEBASTIAN\\CASO 5A\\RANURAS\\TA5A_r33_n14_v300.mov",
+  "encuadre": 0.82,
+  "empuje": -0.055,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 2.0,
+  "fase": 7.4
+ }
+]

@@ -1074,3 +1074,46 @@ en el resto del caso. Se baja en el grado, pero hay que medirlo.
 **No todo estaba mal.** El KF01 y el KF02 del mismo caso, que no se tocaron,
 salieron en una calle latinoamericana neutra y funcionan. El problema aparece
 cuando el prompt deja el entorno sin describir.
+
+---
+
+## Kling no sostiene la cámara quieta en interiores con perspectiva (Caso 5A, oct 2026)
+
+Medido, no supuesto. Tres planos del Caso 5A se mandaron a Kling con la misma
+instrucción de cámara bloqueada, repetida hasta el ridículo en el prompt y en el
+negativo ("locked-off tripod", "the framing at the last frame must be identical
+to the framing at the first frame", "camera push in", "parallax", etc.):
+
+| plano | composición | modelo | resultado |
+|---|---|---|---|
+| n15 hall de atención | frontal, plana, sin fuga marcada | kling-30 13 s | **cámara quieta**, estilo intacto, la figura lejana camina como se pidió |
+| n16 sala de audiencias | perspectiva central, fuga profunda | kling-30 12 s | deriva lenta de empuje y retroceso; aceptable, no bloqueada |
+| n07 apertura, plano alto | tres cuartos, fuga fuerte, mesa en diagonal | kling-30 10 s | **deriva clara** de encuadre y las caras se ablandan y oscurecen |
+| n07, segundo intento | igual | kling-25 10 s | **la misma deriva**; no es cosa del modelo |
+
+La regla que sale de ahí, y que vale para pedir movimiento en el resto de la serie:
+
+> Kling sostiene el encuadre cuando la composición es frontal y plana. Cuando el
+> plano tiene profundidad implícita —punto de fuga, mesa en diagonal, piso que se
+> aleja— el modelo quiere mover la cámara y la mueve, se le pida o no. En esos
+> planos no se pide movimiento generado: se hornea la cámara con el modo `camara`
+> de `ajustar_planos.py`, que sí obedece.
+
+El segundo intento costó 650 créditos y sirvió para descartar que fuera el modelo.
+Queda escrito para no volver a pagarlo.
+
+## El modo `camara` de ajustar_planos.py
+
+Para los planos que no llevan video generado. El plano se genera a 2560 de ancho y
+la línea es de 1920: ese 33% que sobra es el riel de la cámara, y la ventana nunca
+baja de 1920 px de fuente, así que nunca se amplía un pixel.
+
+Zoom lento (`encuadre` + `empuje`) más vibración de pulso de unos 2 px de salida,
+armada con tres senos de frecuencias sin razón entera para que no se repita a la
+vista. La vibración además resuelve el escalón de `zoompan`: los recortes se
+redondean a entero y un paneo lento sin vibración salta cada cuatro o cinco
+cuadros; con la vibración encima, x e y cambian en todos los cuadros y el escalón
+se disuelve. Por eso la vibración no es un adorno, es parte del mecanismo.
+
+Cuando un mismo plano cae en dos ranuras, se le cambia `encuadre`, el signo de
+`empuje`, el `centro` y la `fase`: el mismo plano lee como otro plano.
