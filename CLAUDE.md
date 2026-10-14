@@ -1373,3 +1373,20 @@ generacion.
 del video de referencia del Caso 6. Para el U5C1 el plano que manda es el
 `kf08_noche`: se sube como creacion y se usa como referencia de estilo. Pedir
 «mismo estilo» con palabras no acerca ni la mitad de lo que acerca la imagen.
+
+## El puente puede decir «escrito» y dejar los bytes viejos
+
+Cambie el carton de titulo y mande el .py al repo por `device_commit_files`. La
+respuesta dijo escrito y la fecha del archivo era de hace un minuto, **pero el
+contenido era el anterior**. El archivo que estaba en el contenedor si tenia el
+cambio -mismo md5 que el original editado-, asi que lo viejo salio del puente,
+no de mi copia.
+
+**Para un archivo de texto no hay que cruzar el puente.** Se edita en la maquina
+con `run_inline`, leyendo el archivo y reemplazando el fragmento ahi mismo. Es
+mas rapido, no deja dos copias y no se puede quedar pegado.
+
+**Y si algo si tuvo que cruzar, se verifica leyendolo del otro lado**, no por lo
+que devuelve la llamada. El commit de git lo delato de casualidad -dijo «nothing
+to commit»- y sin eso el repo se habria quedado con el fuente viejo mientras los
+.mov si tenian el cambio.
