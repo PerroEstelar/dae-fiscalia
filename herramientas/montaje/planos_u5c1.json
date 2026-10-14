@@ -132,22 +132,11 @@
   "fase": 11.4
  },
  {
-  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf08_noche.png",
-  "modo": "camara",
+  "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\07 MOVIMIENTO\\U5C1_mov_kf02b_banda.mp4",
+  "modo": "loop",
   "frames": 72,
-  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r12_kf08_noche_v72.mov",
-  "encuadre": 0.9,
-  "empuje": 0.04,
-  "deriva": [
-   0.0,
-   0.0
-  ],
-  "centro": [
-   0.5,
-   0.52
-  ],
-  "vibra": 6.0,
-  "fase": 5.9
+  "salida": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\10 TIMELINE SEBASTIAN\\RANURAS\\U5C1_r12_kf02b_banda_v72.mov",
+  "inicio": 55
  },
  {
   "fuente": "E:\\DAE MASTER\\CURSO 1 - SRPA\\UNIDAD 1 - PROFE CARLOS HUMBERTO\\UNIDAD 5\\cASO 1\\01 PLANOS\\U5C1_kf09_pasaje.png",
