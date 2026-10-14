@@ -1337,3 +1337,39 @@ chequeo.
 `recordFrame` es el primer cuadro de la linea** — solo aterriza su audio, y el
 video se va al final o se pierde. Con `mediaType: 1` entra bien. El audio del
 bumper se pone aparte, con `mediaType: 2`.
+
+## Dos numeros separan «se ve distinto» de «hay que rehacerlo»
+
+Sebastian dijo que el KF01 estaba «muy lejos en estilo» del plano hero. Medido
+sobre las placas bajadas a 640x360, en gris:
+
+    estructura de valores   p2 / p50 / p98 del histograma, y que porcentaje
+                            cae bajo 60 y sobre 200
+    dureza de borde         media del FIND_EDGES de PIL
+
+    kf08_noche (hero)   23 / 45 / 181   69,3% bajo 60   0,0% sobre 200   5,63
+    kf01_avenida        79 /199 / 241    0,2% bajo 60  48,7% sobre 200  15,67
+
+Tres veces la energia de borde y ni un uno por ciento de la imagen por debajo de
+60. El resto del conjunto vive entre 4,5 y 7,2 de dureza: los que se salen son
+kf01 (15,67), kf02_grupo (14,88), kf02b_banda (13,81) y kf07_archivo (13,55).
+
+**Las dos cosas se arreglan distinto y conviene saber cual es cual antes de
+gastar.** Probe una correccion de color sobre el KF01 -curva que baja la clave,
+contraste, un pelo de desenfoque-:
+
+    kf01 original   79 /199 / 241    0,2% bajo 60   dureza 15,67
+    kf01 gradeado   20 /164 / 221   11,5% bajo 60   dureza 15,94
+
+La estructura de valores se arregla sola con la curva. **La dureza de borde no se
+movio.** Eso es lo que hace que una placa se lea como render 3D y no como cuadro
+pintado, y no hay grade que lo quite: hay que regenerar.
+
+**La regla.** Antes de pedir una placa de nuevo, medir las dos cosas. Si solo esta
+mal el histograma, es una correccion de color y es gratis. Si esta dura, es
+generacion.
+
+**Y el ancla de estilo es por caso, no por serie.** El ancla vieja es un cuadro
+del video de referencia del Caso 6. Para el U5C1 el plano que manda es el
+`kf08_noche`: se sube como creacion y se usa como referencia de estilo. Pedir
+«mismo estilo» con palabras no acerca ni la mitad de lo que acerca la imagen.
