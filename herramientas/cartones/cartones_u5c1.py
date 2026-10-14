@@ -67,9 +67,9 @@ if __name__ == "__main__":
                             con_tinte=True)
 
     if modo in ("todo", "blancos"):
-        C.render_carton({"ante": "Caso", "titulo": "(Los Chapulines)"},
+        C.render_carton({"ante": "Caso", "titulo": "«Los Chapulines»"},
                         119, C.BLANCO_FONDO, False,
                         "%s/U5C1_carton_entrada.mov" % OUT, con_marca=True)
-        C.render_carton({"ante": "Caso", "titulo": "(Los Chapulines)"},
+        C.render_carton({"ante": "Caso", "titulo": "«Los Chapulines»"},
                         119, C.BLANCO_FONDO, False,
                         "%s/U5C1_carton_cierre.mov" % OUT, con_marca=True)
