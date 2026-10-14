@@ -1390,3 +1390,34 @@ mas rapido, no deja dos copias y no se puede quedar pegado.
 que devuelve la llamada. El commit de git lo delato de casualidad -dijo «nothing
 to commit»- y sin eso el repo se habria quedado con el fuente viejo mientras los
 .mov si tenian el cambio.
+
+## El still en pista aparte: como se prueba un cambio de factura sin romper nada
+
+Cuando una placa esta renderizada en 3D y no hay creditos para rehacerla, el
+arreglo que si funciona es **quitarle el movimiento generado y dejarla quieta
+con la camara de la casa**. El movimiento de Kling conserva la factura de su
+placa -medido: la placa marca 15,67 de dureza y sus cuadros 14,9 a 15,4- asi que
+un still del clip no cambia el estilo. Lo que cambia es que, en movimiento, la
+geometria del render se delata; quieta, se lee mas como ilustracion.
+
+El tono si se arregla, y con la curva sola:
+
+    kf01 original   p2 79  p50 199  <60  0,2%  >200 48,7%
+    kf01 con tono   p2 45  p50 168  <60  5,0%  >200 18,2%
+
+**Sin suavizado y sin bandas.** Esa es la leccion del intento anterior: la
+cuantizacion bajaba la dureza a 6,33 -dentro del rango del conjunto- y dejaba
+manchones en las paredes, el cielo hecho amebas y la gente de la acera borrada.
+El numero mejoraba y el cuadro empeoraba. **Una sola metrica no sabe si la
+suavidad vino de pintar o de embarrar.**
+
+**Y va en pista aparte.** Los stills se ponen en la V4 tapando exactamente los
+clips de la V1 -mismo cuadro de entrada, misma duracion, verificado contra los
+archivos-, con la pista renombrada para que se entienda. Apagar la V4 devuelve
+la version anterior sin tocar nada. Un cambio de factura es una decision de
+Sebastian, no mia, y asi la puede tomar mirando en vez de discutiendo.
+
+**Nota de verificacion:** el PNG que cruzo el puente llego con otro md5 que el
+del contenedor. No estaba corrupto: era recompresion. **Un archivo de imagen se
+verifica por su contenido -las mismas metricas a los dos lados-, no por el
+hash.**
