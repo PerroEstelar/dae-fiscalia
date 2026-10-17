@@ -1421,3 +1421,32 @@ Sebastian, no mia, y asi la puede tomar mirando en vez de discutiendo.
 del contenedor. No estaba corrupto: era recompresion. **Un archivo de imagen se
 verifica por su contenido -las mismas metricas a los dos lados-, no por el
 hash.**
+
+## Hay pistas que no son camas, y se nota en el RMS
+
+La pista del Curso 5 no da la vuelta, y no es cuestion de buscar mejor el punto
+de corte. El RMS por segundo lo dice de una: **-16 dB al empezar, -7 en el
+cuerpo, -34 en el ultimo compas.** Es una pieza compuesta, con intro y cierre.
+El final no se parece al principio porque nunca se penso para eso, asi que
+ninguna costura de vuelta completa pasa de 0,50 de correlacion por mas que uno
+la busque.
+
+**La salida es repetir solo el cuerpo.** Costura interna: salir del cuerpo y
+volver al cuerpo. La cabeza de la pista entra una vez, el tramo parejo del medio
+se repite, y la cola cierra con el final real. **La pieza entra con la entrada
+de la musica y termina con su cadencia, no con un fundido.** En esta pista:
+corta en 87,50 y retoma en 54,62, bucle de 32,9 s, correlacion 0,525.
+
+**El final cae siempre en el ultimo cuadro.** La primera version rellenaba con
+silencio cuando la cama quedaba corta -5 s en la prueba- y eso tiraba a la
+basura justo el final que se estaba tratando de conservar. Ahora el sobrante o
+el faltante se ajusta en el BUCLE y la cola es intocable.
+
+**Como se comprueba que las costuras no suenan:** contar saltos de muestra a
+muestra por encima de la media mas doce sigmas, y mirar donde caen. En la cama
+armada salieron 1810, todos en el mismo sitio que los 1476 de la pista original
+-un elemento percusivo desde 43,6 s, que el bucle repite- y **cero en los siete
+empalmes**. Si hubiera un clic de costura, apareceria ahi.
+
+`herramientas/musica/costura.py` mira el perfil de RMS, decide solo si la pista
+es cama o pieza, y busca la costura que corresponda.
