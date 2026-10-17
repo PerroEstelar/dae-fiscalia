@@ -30,7 +30,12 @@ import urllib.error
 import urllib.request
 
 BASE = "https://api.elevenlabs.io/v1"
-LLAVE_ARCHIVO = r"D:\DAE\_secretos\elevenlabs.txt"
+# Por defecto la cuenta que viene con Magnific. El Curso 5 usa la otra
+# cuenta de Sebastian: se le pasa la ruta por la variable de entorno
+# DAE_LLAVE, para no tener dos copias del script ni tocar los cursos
+# anteriores. La llave nunca va en el codigo ni en el repositorio.
+LLAVE_ARCHIVO = os.environ.get("DAE_LLAVE",
+                               r"D:\DAE\_secretos\elevenlabs.txt")
 
 # El multilingüe v2 es el que sostiene el acento latino neutro sin derivar a
 # español peninsular. Si se cambia de modelo hay que volver a oír una pista
