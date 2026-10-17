@@ -52,6 +52,13 @@ AJUSTES = {
     "use_speaker_boost": True,
 }
 
+# La serie locuta entre 130 y 145 palabras por minuto. Varias voces salen por
+# encima de eso y hay que frenarlas: se pasa la velocidad por DAE_SPEED, que
+# ElevenLabs admite entre 0,7 y 1,2. Sin la variable no se manda el campo y la
+# voz sale a su ritmo natural, que es como quedaron los cursos anteriores.
+if os.environ.get("DAE_SPEED"):
+    AJUSTES["speed"] = float(os.environ["DAE_SPEED"])
+
 
 def llave():
     k = os.environ.get("ELEVENLABS_API_KEY")

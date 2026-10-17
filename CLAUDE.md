@@ -1450,3 +1450,42 @@ empalmes**. Si hubiera un clic de costura, apareceria ahi.
 
 `herramientas/musica/costura.py` mira el perfil de RMS, decide solo si la pista
 es cama o pieza, y busca la costura que corresponda.
+
+## Alternar locutores: el integrado no mide lo que el oido sigue
+
+El Curso 5 alterna voz femenina y masculina. Las dos salieron de ElevenLabs con
+el mismo ajuste y **los bloques de Carlos quedaron entre 6 y 10 LU por debajo de
+los de Pilar** -el de los giros en -31,5 contra -20,6 del cierre-. Eso no es un
+matiz: es mas del doble de sonoridad percibida, y cada cambio de voz se oiria
+como un bajon.
+
+**No se arregla igualando LUFS integrados.** El integrado promedia toda la pista,
+silencios incluidos, y castiga al bloque que calla mas: dos bloques con el mismo
+integrado pueden sonar distinto y al reves. Lo que el oido sigue es el nivel
+DURANTE el habla.
+
+**Lo que si funciona:** la MEDIANA del short-term -ventana de 3 s, paso de 0,1 s-
+contando solo las ventanas con voz, descartando las que estan mas de 20 LU bajo
+el pico. Se iguala eso a -19 LUFS y despues **se mide el salto entre bloques
+consecutivos**, que es la comprobacion que de verdad importa:
+
+    peor salto 0,06 LU   (por debajo de 1,0 LU no se percibe)
+
+Verificado despues con ebur128 en la maquina de Sebastian, que es un medidor
+distinto del mio: los nueve bloques entre -18,3 y -19,2, dispersion 0,90 LU.
+
+**Y la ventana manda sobre el umbral.** El primer detector de pausas devolvio
+cero silencios en una locucion que tiene veintiuno: usaba la ventana de 3 s del
+short-term, y una pausa de 0,8 s no alcanza a bajar esa ventana. Para encontrar
+PAUSAS hace falta una ventana del orden de la pausa: RMS de 50 ms.
+
+## La suma de voz y musica se pasa, aunque las dos esten en su sitio
+
+Voz a -19 LUFS con pico -1,5 dBTP mas la cama a -33 bajo voz: **la suma cruda da
++1,54 dBFS.** Cada una cumple su especificacion por separado y juntas revientan.
+Hacen falta 2,5 dB de aire, que es el paso de masterizacion, no un error de la
+voz. Medido en la mezcla de prueba: con -2,5 dB el pico queda en -0,96 dBFS.
+
+Es lo mismo que quedo pendiente en el U5C1, donde el master salio a -0,5 dBTP
+contra un techo de -1,0. Mejor dejarlo resuelto desde el principio que
+descubrirlo al final.
