@@ -1,0 +1,53 @@
+{
+ "dur": 159.54808333333332,
+ "tramos": [
+  {
+   "bloque": "b1_entramado",
+   "entra": 0.0,
+   "sale": 21.316,
+   "dur": 21.316
+  },
+  {
+   "bloque": "b2_resolucion",
+   "entra": 22.116,
+   "sale": 36.187,
+   "dur": 14.071
+  },
+  {
+   "bloque": "b3_comprador",
+   "entra": 37.187,
+   "sale": 62.636,
+   "dur": 25.449
+  },
+  {
+   "bloque": "b4_socios",
+   "entra": 63.436,
+   "sale": 86.145,
+   "dur": 22.709
+  },
+  {
+   "bloque": "b5_finca",
+   "entra": 86.945,
+   "sale": 103.292,
+   "dur": 16.347
+  },
+  {
+   "bloque": "b6_antes",
+   "entra": 104.092,
+   "sale": 123.04,
+   "dur": 18.948
+  },
+  {
+   "bloque": "b7_oferta",
+   "entra": 123.84,
+   "sale": 140.837,
+   "dur": 16.997
+  },
+  {
+   "bloque": "b8_cierre",
+   "entra": 142.137,
+   "sale": 158.948,
+   "dur": 16.811
+  }
+ ]
+}
