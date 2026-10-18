@@ -1,0 +1,170 @@
+[
+ {
+  "n": 1,
+  "fuente": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\07 MOVIMIENTO\\C5U1_mov_kf01_patio.mp4",
+  "modo": "loop",
+  "frames": 204,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\10 TIMELINE SEBASTIAN\\RANURAS\\C5U1_r01_kf01_patio_v204.mov"
+ },
+ {
+  "n": 2,
+  "fuente": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\01 PLANOS\\C5U1_kf02_fachada.png",
+  "modo": "camara",
+  "frames": 233,
+  "salida": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\10 TIMELINE SEBASTIAN\\RANURAS\\C5U1_r02_kf02_fachada_v233.mov",
+  "encuadre": 0.9,
+  "empuje": 0.045,
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 5.0,
+  "fase": 2.0
+ },
+ {
+  "n": 3,
+  "fuente": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\07 MOVIMIENTO\\C5U1_mov_kf03_entrada.mp4",
+  "modo": "loop",
+  "frames": 181,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\10 TIMELINE SEBASTIAN\\RANURAS\\C5U1_r03_kf03_entrada_v181.mov"
+ },
+ {
+  "n": 4,
+  "fuente": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\07 MOVIMIENTO\\C5U1_mov_kf04_actas.mp4",
+  "modo": "loop",
+  "frames": 201,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\10 TIMELINE SEBASTIAN\\RANURAS\\C5U1_r04_kf04_actas_v201.mov"
+ },
+ {
+  "n": 5,
+  "fuente": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\07 MOVIMIENTO\\C5U1_mov_kf05_tractocamiones.mp4",
+  "modo": "loop",
+  "frames": 148,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\10 TIMELINE SEBASTIAN\\RANURAS\\C5U1_r05_kf05_tracto_v148.mov"
+ },
+ {
+  "n": 6,
+  "fuente": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\01 PLANOS\\C5U1_kf06_caleta.png",
+  "modo": "camara",
+  "frames": 218,
+  "salida": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\10 TIMELINE SEBASTIAN\\RANURAS\\C5U1_r06_kf06_caleta_v218.mov",
+  "encuadre": 0.88,
+  "empuje": 0.05,
+  "centro": [
+   0.52,
+   0.52
+  ],
+  "vibra": 4.5,
+  "fase": 7.0
+ },
+ {
+  "n": 7,
+  "fuente": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\07 MOVIMIENTO\\C5U1_mov_kf05_tractocamiones.mp4",
+  "modo": "loop",
+  "frames": 134,
+  "inicio": 59,
+  "salida": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\10 TIMELINE SEBASTIAN\\RANURAS\\C5U1_r07_kf05_tracto_v134.mov"
+ },
+ {
+  "n": 8,
+  "fuente": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\01 PLANOS\\C5U1_kf07_bodega.png",
+  "modo": "camara",
+  "frames": 249,
+  "salida": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\10 TIMELINE SEBASTIAN\\RANURAS\\C5U1_r08_kf07_bodega_v249.mov",
+  "encuadre": 0.92,
+  "empuje": 0.05,
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 5.0,
+  "fase": 12.0
+ },
+ {
+  "n": 10,
+  "fuente": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\01 PLANOS\\C5U1_kf09_libros.png",
+  "modo": "camara",
+  "frames": 175,
+  "salida": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\10 TIMELINE SEBASTIAN\\RANURAS\\C5U1_r10_kf09_libros_v175.mov",
+  "encuadre": 0.86,
+  "empuje": 0.04,
+  "centro": [
+   0.48,
+   0.5
+  ],
+  "vibra": 4.5,
+  "fase": 18.0
+ },
+ {
+  "n": 11,
+  "fuente": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\01 PLANOS\\C5U1_kf10_sellos.png",
+  "modo": "camara",
+  "frames": 106,
+  "salida": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\10 TIMELINE SEBASTIAN\\RANURAS\\C5U1_r11_kf10_sellos_v106.mov",
+  "encuadre": 0.84,
+  "empuje": -0.035,
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 4.5,
+  "fase": 23.0
+ },
+ {
+  "n": 15,
+  "fuente": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\07 MOVIMIENTO\\C5U1_mov_kf14_carretera.mp4",
+  "modo": "loop",
+  "frames": 137,
+  "inicio": 0,
+  "salida": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\10 TIMELINE SEBASTIAN\\RANURAS\\C5U1_r15_kf14_carretera_v137.mov"
+ },
+ {
+  "n": 16,
+  "fuente": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\01 PLANOS\\C5U1_kf15_fusiles.png",
+  "modo": "camara",
+  "frames": 138,
+  "salida": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\10 TIMELINE SEBASTIAN\\RANURAS\\C5U1_r16_kf15_fusiles_v138.mov",
+  "encuadre": 0.87,
+  "empuje": 0.04,
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 4.0,
+  "fase": 29.0
+ },
+ {
+  "n": 18,
+  "fuente": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\01 PLANOS\\C5U1_kf06b_caleta.png",
+  "modo": "camara",
+  "frames": 185,
+  "salida": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\10 TIMELINE SEBASTIAN\\RANURAS\\C5U1_r18_kf06b_caleta_v185.mov",
+  "encuadre": 0.88,
+  "empuje": -0.04,
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 4.5,
+  "fase": 34.0
+ },
+ {
+  "n": 19,
+  "fuente": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\01 PLANOS\\C5U1_kf07b_bodega.png",
+  "modo": "camara",
+  "frames": 130,
+  "salida": "E:\\DAE MASTER\\CURSO 5 - Bienes en el proceso penal\\UNIDAD 1\\CASO 01 - logistica CMR del norte\\10 TIMELINE SEBASTIAN\\RANURAS\\C5U1_r19_kf07b_bodega_v130.mov",
+  "encuadre": 0.9,
+  "empuje": -0.035,
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 5.0,
+  "fase": 41.0
+ }
+]

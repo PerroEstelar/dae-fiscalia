@@ -1,0 +1,53 @@
+{
+ "dur": 153.27866666666668,
+ "tramos": [
+  {
+   "bloque": "b1_hipotesis",
+   "entra": 0.0,
+   "sale": 22.57,
+   "dur": 22.57
+  },
+  {
+   "bloque": "b2_diligencia",
+   "entra": 23.37,
+   "sale": 44.128,
+   "dur": 20.759
+  },
+  {
+   "bloque": "b3_vehiculos",
+   "entra": 45.128,
+   "sale": 59.943,
+   "dur": 14.814
+  },
+  {
+   "bloque": "b4_bodega",
+   "entra": 60.743,
+   "sale": 80.108,
+   "dur": 19.365
+  },
+  {
+   "bloque": "b5_servidores",
+   "entra": 80.908,
+   "sale": 96.048,
+   "dur": 15.139
+  },
+  {
+   "bloque": "b6_caja",
+   "entra": 96.848,
+   "sale": 116.213,
+   "dur": 19.365
+  },
+  {
+   "bloque": "b7_apartamentos",
+   "entra": 117.013,
+   "sale": 130.992,
+   "dur": 13.978
+  },
+  {
+   "bloque": "b8_cierre",
+   "entra": 132.292,
+   "sale": 152.679,
+   "dur": 20.387
+  }
+ ]
+}

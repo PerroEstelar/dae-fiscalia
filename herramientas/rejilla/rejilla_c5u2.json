@@ -1,0 +1,54 @@
+{
+ "dur": 158.2369375,
+ "tramos": [
+  {
+   "bloque": "b1_siniestro",
+   "entra": 0.0,
+   "sale": 20.201,
+   "dur": 20.201
+  },
+  {
+   "bloque": "b2_pretension",
+   "entra": 21.001,
+   "sale": 44.082,
+   "dur": 23.081
+  },
+  {
+   "bloque": "b3_patrimonio",
+   "entra": 45.282,
+   "sale": 54.245,
+   "dur": 8.963
+  },
+  {
+   "bloque": "b4_inventario",
+   "entra": 55.245,
+   "sale": 84.641,
+   "dur": 29.396
+  },
+  {
+   "bloque": "b5_victimas",
+   "entra": 85.441,
+   "sale": 103.599,
+   "dur": 18.158
+  },
+  {
+   "bloque": "b6_reloj",
+   "entra": 104.399,
+   "sale": 123.718,
+   "dur": 19.319
+  },
+  {
+   "bloque": "b7_caucion",
+   "entra": 124.518,
+   "sale": 136.314,
+   "dur": 11.796
+  },
+  {
+   "bloque": "b8_cierre",
+   "entra": 137.714,
+   "sale": 157.637,
+   "dur": 19.923
+  }
+ ],
+ "silencios": []
+}
