@@ -1,0 +1,77 @@
+{
+ "dur": 223.1095625,
+ "tramos": [
+  {
+   "bloque": "b1_llegada",
+   "entra": 0.0,
+   "sale": 17.043,
+   "dur": 17.043
+  },
+  {
+   "bloque": "b2_seis",
+   "entra": 17.843,
+   "sale": 42.224,
+   "dur": 24.381
+  },
+  {
+   "bloque": "b3_mara",
+   "entra": 43.224,
+   "sale": 55.763,
+   "dur": 12.539
+  },
+  {
+   "bloque": "b4_mara_sale",
+   "entra": 56.563,
+   "sale": 77.368,
+   "dur": 20.805
+  },
+  {
+   "bloque": "b5_propuesta_mara",
+   "entra": 78.168,
+   "sale": 86.063,
+   "dur": 7.895
+  },
+  {
+   "bloque": "b6_samuel",
+   "entra": 87.063,
+   "sale": 105.175,
+   "dur": 18.112
+  },
+  {
+   "bloque": "b7_dario",
+   "entra": 105.975,
+   "sale": 122.043,
+   "dur": 16.068
+  },
+  {
+   "bloque": "b8_propuesta_samuel",
+   "entra": 122.843,
+   "sale": 135.985,
+   "dur": 13.143
+  },
+  {
+   "bloque": "b9_elisa",
+   "entra": 136.985,
+   "sale": 156.258,
+   "dur": 19.273
+  },
+  {
+   "bloque": "b10_propuesta_elisa",
+   "entra": 157.058,
+   "sale": 172.198,
+   "dur": 15.139
+  },
+  {
+   "bloque": "b11_patricia",
+   "entra": 173.198,
+   "sale": 197.718,
+   "dur": 24.52
+  },
+  {
+   "bloque": "b12_cierre",
+   "entra": 198.918,
+   "sale": 222.51,
+   "dur": 23.591
+  }
+ ]
+}

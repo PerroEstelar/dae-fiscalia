@@ -1,0 +1,226 @@
+[
+ {
+  "plano": "ae01_primer_contacto",
+  "bloque": "b1_llegada",
+  "ini": 0.0,
+  "fin": 6.875,
+  "n": 1,
+  "frames": 165
+ },
+ {
+  "plano": "kf01_fachada_taller",
+  "bloque": "b1_llegada",
+  "ini": 6.875,
+  "fin": 17.843,
+  "n": 2,
+  "frames": 263
+ },
+ {
+  "plano": "ae02_seis_personas",
+  "bloque": "b2_seis",
+  "ini": 17.843,
+  "fin": 26.875,
+  "n": 3,
+  "frames": 217
+ },
+ {
+  "plano": "kf02_taller_interior",
+  "bloque": "b2_seis",
+  "ini": 26.875,
+  "fin": 36.8,
+  "n": 4,
+  "frames": 238
+ },
+ {
+  "plano": "kf03_puerta_sin_candado",
+  "bloque": "b2_seis",
+  "ini": 36.8,
+  "fin": 43.224,
+  "n": 5,
+  "frames": 154
+ },
+ {
+  "plano": "kf04_mara_cu",
+  "bloque": "b3_mara",
+  "ini": 43.224,
+  "fin": 49.075,
+  "n": 6,
+  "frames": 140
+ },
+ {
+  "plano": "ae03_pasaporte",
+  "bloque": "b3_mara",
+  "ini": 49.075,
+  "fin": 56.563,
+  "n": 7,
+  "frames": 180
+ },
+ {
+  "plano": "kf05_escalera_domingo",
+  "bloque": "b4_mara_sale",
+  "ini": 56.563,
+  "fin": 61.975,
+  "n": 8,
+  "frames": 130
+ },
+ {
+  "plano": "kf06_mara_entera",
+  "bloque": "b4_mara_sale",
+  "ini": 61.975,
+  "fin": 70.433,
+  "n": 9,
+  "frames": 203
+ },
+ {
+  "plano": "ae04_pide",
+  "bloque": "b4_mara_sale",
+  "ini": 70.433,
+  "fin": 78.168,
+  "n": 10,
+  "frames": 185
+ },
+ {
+  "plano": "ae05_la_propuesta",
+  "bloque": "b5_propuesta_mara",
+  "ini": 78.168,
+  "fin": 87.063,
+  "n": 11,
+  "frames": 213
+ },
+ {
+  "plano": "kf07_samuel_cu",
+  "bloque": "b6_samuel",
+  "ini": 87.063,
+  "fin": 99.025,
+  "n": 12,
+  "frames": 287
+ },
+ {
+  "plano": "ae06_lo_que_vio",
+  "bloque": "b6_samuel",
+  "ini": 99.025,
+  "fin": 105.975,
+  "n": 13,
+  "frames": 167
+ },
+ {
+  "plano": "kf08_dario_traduce",
+  "bloque": "b7_dario",
+  "ini": 105.975,
+  "fin": 111.725,
+  "n": 14,
+  "frames": 138
+ },
+ {
+  "plano": "kf09_samuel_aparte",
+  "bloque": "b7_dario",
+  "ini": 111.725,
+  "fin": 122.843,
+  "n": 15,
+  "frames": 267
+ },
+ {
+  "plano": "ae07_suplir",
+  "bloque": "b8_propuesta_samuel",
+  "ini": 122.843,
+  "fin": 128.15,
+  "n": 16,
+  "frames": 127
+ },
+ {
+  "plano": "ae08_descartarse",
+  "bloque": "b8_propuesta_samuel",
+  "ini": 128.15,
+  "fin": 136.985,
+  "n": 17,
+  "frames": 212
+ },
+ {
+  "plano": "kf10_elisa_entera",
+  "bloque": "b9_elisa",
+  "ini": 136.985,
+  "fin": 143.975,
+  "n": 18,
+  "frames": 168
+ },
+ {
+  "plano": "ae09_por_la_tia",
+  "bloque": "b9_elisa",
+  "ini": 143.975,
+  "fin": 150.525,
+  "n": 19,
+  "frames": 157
+ },
+ {
+  "plano": "ae10_ya_escuchada",
+  "bloque": "b9_elisa",
+  "ini": 150.525,
+  "fin": 157.058,
+  "n": 20,
+  "frames": 157
+ },
+ {
+  "plano": "ae11_repetir",
+  "bloque": "b10_propuesta_elisa",
+  "ini": 157.058,
+  "fin": 166.4,
+  "n": 21,
+  "frames": 224
+ },
+ {
+  "plano": "kf11_elisa_cu",
+  "bloque": "b10_propuesta_elisa",
+  "ini": 166.4,
+  "fin": 173.198,
+  "n": 22,
+  "frames": 163
+ },
+ {
+  "plano": "kf12_patricia_cu",
+  "bloque": "b11_patricia",
+  "ini": 173.198,
+  "fin": 180.025,
+  "n": 23,
+  "frames": 164
+ },
+ {
+  "plano": "kf13_mensajes",
+  "bloque": "b11_patricia",
+  "ini": 180.025,
+  "fin": 190.65,
+  "n": 24,
+  "frames": 255
+ },
+ {
+  "plano": "ae12_no_verificado",
+  "bloque": "b11_patricia",
+  "ini": 190.65,
+  "fin": 198.918,
+  "n": 25,
+  "frames": 198
+ },
+ {
+  "plano": "ae13_cinco_decisiones",
+  "bloque": "b12_cierre",
+  "ini": 198.918,
+  "fin": 207.9,
+  "n": 26,
+  "frames": 215
+ },
+ {
+  "plano": "kf14_taller_vacio",
+  "bloque": "b12_cierre",
+  "ini": 207.9,
+  "fin": 213.65,
+  "n": 27,
+  "frames": 138
+ },
+ {
+  "plano": "ae14_hipotesis",
+  "bloque": "b12_cierre",
+  "ini": 213.65,
+  "fin": 223.1095625,
+  "n": 28,
+  "frames": 227
+ }
+]
