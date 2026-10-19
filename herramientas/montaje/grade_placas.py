@@ -20,6 +20,20 @@ EL TOPE DE DUREZA
     detalle la sube- se limita el AUMENTO: si la placa graduada endurece mas
     de TOPE_DUREZA, se mezcla con la original hasta bajar de ahi.
 
+EL CROMA OBJETIVO ES DEL ENTORNO, NO DEL CUADRO ENTERO
+    CROMA_OBJETIVO salio del ancla del C5U1, una placa sin acento: es el croma
+    que debe tener el GRIS. Medirlo sobre el cuadro entero en una placa con
+    acento mete la prenda en el promedio y obliga a una mezcla con gris que
+    existe solo para compensar el acento. Medido el 19 oct 2026: la camisa
+    azul de Victor ocupaba lo bastante como para subir el croma medio a 25,2 y
+    la neutralizacion bajaba a 0,17, o sea 83 % de gris sobre TODA la placa.
+
+    Por eso `croma(..., solo_fondo=True)` promedia unicamente los pixeles de
+    croma <= 40 -el entorno- y deja el acento fuera de la cuenta. Si el entorno
+    ya esta en objetivo, la mezcla queda en 1,00 y el acento llega intacto a
+    `acentos.py`. El salvavidas: si el acento ocupara mas del 80 % del cuadro
+    no quedarian pixeles de fondo que promediar y se vuelve a medir sobre todo.
+
 LA CURVA SUBE EL CROMA, Y HAY QUE BAJARLO DESPUES
     Medido en el C5U4: el set entraba con croma medio 4,91 y salia de la curva
     en 7,50. No es un error de la curva: comprimir una placa clara y plana
@@ -32,6 +46,24 @@ LA CURVA SUBE EL CROMA, Y HAY QUE BAJARLO DESPUES
     fuera de objetivo igual. Se mezcla con la version en gris lo justo para
     aterrizar en CROMA_OBJETIVO, que es el del ancla. Es gratis y no toca ni
     el contenido ni la luma: mezclar con el gris conserva la luminancia.
+
+UNA CURVA POR CANAL CUANDO LA PLACA TRAE DOMINANTE (`por_canal=True`)
+    Con una sola curva compartida, el dominante del modelo sobrevive a la
+    curva y la neutralizacion tiene que llevarselo mezclando con el gris. Esa
+    mezcla es global y no distingue un dominante de un acento: medido el 19
+    oct 2026 en el PRIORIDAD 03, la placa de la tienda entraba con croma 36,5
+    y salia mezclada al 0,11 -es decir, 89 % de gris-, y la camisa azul de
+    Victor al 0,16. El acento institucional moria con el dominante.
+
+    Es el mismo hallazgo que ya estaba en `grade_clips.py` para los clips de
+    Kling: tres curvas, una por canal, llevan cada canal a su percentil y el
+    dominante desaparece por alineacion y no por desaturacion. La
+    neutralizacion queda entonces casi en 1,00 y el acento sobrevive para que
+    `acentos.py` lo clave despues en el hexadecimal del Manual.
+
+    Se usa en toda placa con acento o con dominante visible. El modo de una
+    sola curva se conserva porque es el que graduo los sets del CURSO 5 y
+    cambiarlo retroactivamente desalinearia esas piezas.
 
 NO ARREGLA TODO
     Lo tonal y lo cromatico son gradeables. El contenido, la textura y el
@@ -97,35 +129,57 @@ def perfiles(im):
     return lum[int(n * 0.02)], lum[int(n * 0.50)], lum[int(n * 0.98)], dureza
 
 
-def croma(im):
+def croma(im, solo_fondo=False):
     c = im.resize((400, 225), Image.BOX)
     v = [max(q) - min(q) for q in c.getdata()]
-    return sum(v) / len(v), 100.0 * sum(1 for x in v if x > 40) / len(v)
+    alto = 100.0 * sum(1 for x in v if x > 40) / len(v)
+    if solo_fondo:
+        fondo = [x for x in v if x <= 40]
+        if len(fondo) >= 0.2 * len(v):
+            v = fondo
+    return sum(v) / len(v), alto
 
 
 def neutralizar(im, objetivo=CROMA_OBJETIVO):
-    """Mezcla con la version en gris hasta aterrizar en el croma del ancla.
+    # Mezcla con la version en gris hasta aterrizar en el croma del ENTORNO.
+    #
+    # EL CONJUNTO DE PIXELES SE FIJA UNA SOLA VEZ, Y ES CRITICO
+    #   Si en cada vuelta se vuelve a preguntar cuales pixeles son entorno, la
+    #   propia mezcla mete pixeles de acento en el conjunto -uno de croma 45
+    #   baja de 40 en cuanto se mezcla- y el promedio sube en vez de bajar. El
+    #   bucle responde bajando mas la mezcla, y asi hasta destenir la placa
+    #   entera. Medido el 19 oct 2026 en el PRIORIDAD 03: el entorno de la
+    #   placa del telefono estaba en 5,81 contra un objetivo de 4,20 -un ajuste
+    #   de nada- y el bucle terminaba en 0,35, o sea 65 % de gris sobre todo.
+    #
+    #   Por eso la mascara se toma del ORIGINAL y se mide siempre sobre esos
+    #   mismos indices. Con el conjunto fijo el croma si es lineal en la mezcla
+    #   y la correccion converge en una o dos vueltas.
+    base = im.resize((400, 225), Image.BOX)
+    v = [max(q) - min(q) for q in base.getdata()]
+    idx = [i for i, x in enumerate(v) if x <= 40]
+    if len(idx) < 0.2 * len(v):
+        idx = list(range(len(v)))
 
-    El croma es lineal en la mezcla -mezclar al 50 % con el gris deja la mitad
-    del croma-, asi que el factor sale de una division y no hace falta buscar.
-    Se comprueba despues, porque el redondeo a 8 bits desvia un poco.
-    """
-    cr, _ = croma(im)
+    def _medir(img):
+        d = list(img.resize((400, 225), Image.BOX).getdata())
+        return sum(max(d[i]) - min(d[i]) for i in idx) / float(len(idx))
+
+    cr = _medir(im)
     if cr <= objetivo:
         return im, 1.0
     gris = im.convert('L').convert('RGB')
     k = objetivo / cr
     out = Image.blend(gris, im, k)
-    for _ in range(8):                      # ajuste fino por el redondeo
-        c2, _a = croma(out)
+    for _ in range(8):
+        c2 = _medir(out)
         if abs(c2 - objetivo) <= 0.05 or k <= 0.02:
             break
         k = max(0.02, min(1.0, k * objetivo / max(c2, 0.01)))
         out = Image.blend(gris, im, k)
     return out, k
 
-
-def graduar(origen, destino, forzar=None):
+def graduar(origen, destino, forzar=None, por_canal=False):
     """`forzar` salta el tope de dureza y aplica esa mezcla tal cual.
 
     LA RAZON DE DUREZA ES LA QUE AVISA DEL GRANO, Y EL TOPE TIENE RAZON
@@ -161,8 +215,31 @@ def graduar(origen, destino, forzar=None):
     """
     im = Image.open(origen).convert('RGB')
     p2, p50, p98, d0 = perfiles(im)
-    lut = curva(p2, p50, p98)
-    out = im.point(lut * 3)
+    if por_canal:
+        # Los percentiles por canal salen SOLO de los grises.
+        #
+        #   Tomarlos del cuadro entero deja que una prenda de acento grande
+        #   arrastre su canal: medido el 19 oct 2026, la camisa azul de Victor
+        #   ocupaba el 19 % del cuadro, subia el percentil del canal B y la curva
+        #   resultante rotaba el tono de TODO lo demas. La piel salio violeta y
+        #   el pelo rojizo. El dominante que se quiere quitar vive en los grises,
+        #   asi que es ahi donde hay que medirlo: alineando los tres canales
+        #   sobre la poblacion neutra, el gris queda neutro y el acento conserva
+        #   su posicion relativa.
+        ch = im.resize((640, 360), Image.BOX)
+        datos = list(ch.getdata())
+        gris = [q for q in datos if max(q) - min(q) <= 40]
+        if len(gris) < 0.2 * len(datos):
+            gris = datos
+        lut = []
+        for c in range(3):
+            dd = sorted(q[c] for q in gris)
+            n = len(dd)
+            lut += curva(dd[int(n * 0.02)], dd[int(n * 0.50)], dd[int(n * 0.98)])
+        out = im.point(lut)
+    else:
+        lut = curva(p2, p50, p98)
+        out = im.point(lut * 3)
     # tope de dureza: se mezcla con la original lo justo para bajar del tope
     mezcla = 1.0 if forzar is None else float(forzar)
     for _ in range(0 if forzar is not None else 12):
@@ -172,10 +249,10 @@ def graduar(origen, destino, forzar=None):
             break
         mezcla -= 0.05
     final = Image.blend(im, out, mezcla) if mezcla < 1.0 else out
-    cr0, _ = croma(final)
+    cr0, _ = croma(final, solo_fondo=True)
     final, color = neutralizar(final)
     a2, a50, a98, d1 = perfiles(final)
-    cr, alto = croma(final)
+    cr, alto = croma(final, solo_fondo=True)
     final.save(destino)
     return dict(placa=os.path.basename(origen), antes=(p2, p50, p98), despues=(a2, a50, a98),
                 dureza=(d0, d1), mezcla=mezcla, croma=cr, croma0=cr0, color=color, alto=alto)

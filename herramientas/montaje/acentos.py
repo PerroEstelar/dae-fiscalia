@@ -50,16 +50,46 @@ INSTITUCIONAL = {
 
 RAMPA_BAJA, RAMPA_ALTA = 25, 55      # croma donde la correccion entra y satura
 
+# Ventana de TONO, en grados, alrededor del acento medido. Fuera de ella no se
+# toca nada.
+#
+# POR QUE HACE FALTA, MEDIDO EL 19 OCT 2026
+#   Corriendo acentos DESPUES del grade, la camisa azul de Victor pedia un giro
+#   de -26,6 grados. Sin ventana ese giro se aplicaba a TODO pixel con croma
+#   sobre 25, y despues del grade la piel y el pelo ya pasaban ese umbral: la
+#   piel, que esta en tono ~30, salia rotada a ~3 y la placa quedo con la cara
+#   magenta y el pelo rojo. El umbral de croma solo no basta.
+#
+#   La ventana del azul es ancha porque no hay nada del sistema cerca de 210.
+#   La del amarillo es estrecha a proposito: la piel vive en 25-35 y el acento
+#   en 46, y si la ventana se abre mas de ~15 grados la piel entra.
+VENTANA = {
+    'azul': 45.0,
+    'amarillo': 14.0,
+    'rojo': 16.0,
+    'neon': 14.0,
+}
+
 
 def _croma(p):
     return max(p) - min(p)
 
 
-def medir(im, umbral=45):
-    """Tono, saturacion y valor medios de los pixeles con color, y cuantos son."""
+def medir(im, umbral=45, centro=None, ventana=None):
+    """Tono, saturacion y valor medios de los pixeles con color, y cuantos son.
+
+    Con `centro` y `ventana` solo entran los pixeles cuyo tono esta a menos de
+    `ventana` grados de `centro`: asi la medida del acento no se contamina con
+    la piel ni con ningun otro color que haya cruzado el umbral de croma.
+    """
     ch = im.resize((640, 360)) if im.width > 640 else im
     px = list(ch.getdata())
     sel = [p for p in px if _croma(p) > umbral]
+    if centro is not None:
+        def _cerca(p):
+            h = colorsys.rgb_to_hsv(p[0] / 255.0, p[1] / 255.0, p[2] / 255.0)[0] * 360
+            return abs(((h - centro + 180) % 360) - 180) <= ventana
+        sel = [p for p in sel if _cerca(p)]
     if not sel:
         return None
     m = tuple(sum(c[i] for c in sel) / float(len(sel)) for i in range(3))
@@ -69,18 +99,24 @@ def medir(im, umbral=45):
 
 
 def fijar(origen, destino, color):
-    """Lleva el acento de la placa al hexadecimal institucional."""
+    """Lleva el acento de la placa al hexadecimal institucional.
+
+    Solo se tocan los pixeles que cumplen las DOS condiciones: croma por
+    encima de RAMPA_BAJA y tono dentro de VENTANA[color] del acento medido.
+    """
     obj = INSTITUCIONAL[color]
     ho, so, _vo = colorsys.rgb_to_hsv(obj[0] / 255.0, obj[1] / 255.0, obj[2] / 255.0)
+    vent = VENTANA[color]
 
-    im = Image.open(origen).convert('RGB')
-    antes = medir(im)
+    im = Image.open(origen).convert("RGB")
+    antes = medir(im, centro=ho * 360, ventana=vent)
     if antes is None:
         im.save(destino)
-        return dict(placa=os.path.basename(origen), aviso='sin pixeles de color')
+        return dict(placa=os.path.basename(origen), aviso="sin pixeles del acento")
 
-    giro = ho - antes['tono'] / 360.0
-    escala = so / max(antes['satur'], 0.01)
+    giro = ho - antes["tono"] / 360.0
+    escala = so / max(antes["satur"], 0.01)
+    centro = antes["tono"]
 
     px = im.load()
     an, al = im.size
@@ -90,18 +126,19 @@ def fijar(origen, destino, color):
             c = max(r, g, b) - min(r, g, b)
             if c <= RAMPA_BAJA:
                 continue
+            h, sa, v = colorsys.rgb_to_hsv(r / 255.0, g / 255.0, b / 255.0)
+            if abs(((h * 360 - centro + 180) % 360) - 180) > vent:
+                continue
             k = min(1.0, (c - RAMPA_BAJA) / float(RAMPA_ALTA - RAMPA_BAJA))
-            h, s, v = colorsys.rgb_to_hsv(r / 255.0, g / 255.0, b / 255.0)
             h2 = (h + giro * k) % 1.0
-            s2 = min(1.0, s * (1.0 + (escala - 1.0) * k))
+            s2 = min(1.0, sa * (1.0 + (escala - 1.0) * k))
             nr, ng, nb = colorsys.hsv_to_rgb(h2, s2, v)
             px[x, y] = (int(round(nr * 255)), int(round(ng * 255)), int(round(nb * 255)))
 
     im.save(destino)
-    despues = medir(im)
+    despues = medir(im, centro=ho * 360, ventana=vent)
     return dict(placa=os.path.basename(origen), color=color,
                 antes=antes, despues=despues, giro=giro * 360, escala=escala)
-
 
 if __name__ == '__main__':
     # acentos.py <entrada> <salida> <azul|amarillo|rojo|neon>
