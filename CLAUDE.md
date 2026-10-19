@@ -1489,3 +1489,66 @@ voz. Medido en la mezcla de prueba: con -2,5 dB el pico queda en -0,96 dBFS.
 Es lo mismo que quedo pendiente en el U5C1, donde el master salio a -0,5 dBTP
 contra un techo de -1,0. Mejor dejarlo resuelto desde el principio que
 descubrirlo al final.
+
+## El bin del caso se resuelve con `bins.py`, nunca con `AddSubFolder(raiz, …)`
+
+*19 oct 2026, cuando Sebastián no encontró la línea del Caso 03.*
+
+Los montajes del C5U2 v2, C5U3 y C5U4 hacían `mp.AddSubFolder(raiz, CARPETA)`
+y volcaban los ~45 medios **sueltos** en un bin nuevo de la **raíz** del media
+pool. La estructura buena del proyecto es:
+
+```
+C5 BIENES EN EL PROCESO PENAL > U<n> > CASO <n> >
+    RANURAS | CARTONES | VOCES | MUSICA | B-ROLL | COMUNES
+```
+
+La línea de tiempo va en la **raíz del caso**, al lado de sus subbins. Al
+crear el bin en la raíz del Master, las tres líneas quedaron en bins paralelos
+al final de la lista: estaban, pero no donde se buscan.
+
+`herramientas/montaje/bins.py` es lo que hay que usar:
+
+| función | qué hace |
+|---|---|
+| `carpeta(mp, ruta)` | resuelve y crea el camino anidado, con sus subbins |
+| `clasificar(nombre)` | el subbin que le toca a un archivo, por su nombre |
+| `importar(mp, ruta, rutas)` | importa cada archivo a su subbin; idempotente; **falla** si algo no entró |
+| `clips(mp, ruta)` | los medios del subárbol, salteando los subbins de archivo |
+| `archivar(mp, ruta, clips)` | manda una tanda a `_v1 ARCHIVO` dentro del caso |
+
+En el `montar_*.py` son tres líneas:
+
+```python
+import bins
+CASO_BIN = ['C5 BIENES EN EL PROCESO PENAL', 'U4', 'CASO 04 - los ilustres']
+
+def _carpeta(mp):
+    return bins.carpeta(mp, CASO_BIN)
+
+def _clips(mp):
+    return bins.clips(mp, CASO_BIN)
+
+def medios(mp):
+    bins.importar(mp, CASO_BIN, rutas)
+```
+
+Tres cosas que la hoja dejó claras al escribirla:
+
+- **La clasificación es el nombre del archivo**, no una tabla aparte. Una tabla
+  se desincroniza; el nombre ya lo imponen los renders. Lo que no clasifica
+  **no se esconde**: queda en la raíz del caso con un aviso por consola, para
+  que un archivo mal nombrado se vea en el momento.
+- **`clips()` saltea los subbins que empiezan por `_`.** Cuando un caso se
+  rehace conviven dos juegos de medios con los mismos nombres; sin ese filtro
+  una versión vieja le gana a la vigente en el diccionario y el montaje sale
+  con el clip equivocado sin avisar.
+- **Se chequeó contra los 183 medios de los cuatro casos ya montados**, y el
+  chequeo encontró el único caso raro: el C5U1 numeraba los cartones con un
+  dígito (`_n5_`) y del C5U2 en adelante van con dos (`_n05_`). La regla acepta
+  los dos. Ese es el valor de medir contra lo que ya existe en vez de confiar
+  en la convención que uno cree que hay.
+
+El Caso 02 quedó con los dos juegos separados: la v2 en los subbins normales y
+los 41 medios de la v1 en `_v1 ARCHIVO`, con las dos líneas de tiempo juntas en
+la raíz del caso.
