@@ -125,14 +125,47 @@ def neutralizar(im, objetivo=CROMA_OBJETIVO):
     return out, k
 
 
-def graduar(origen, destino):
+def graduar(origen, destino, forzar=None):
+    """`forzar` salta el tope de dureza y aplica esa mezcla tal cual.
+
+    LA RAZON DE DUREZA ES LA QUE AVISA DEL GRANO, Y EL TOPE TIENE RAZON
+        El 19 oct 2026 forcé 1,00 en las tres placas nuevas del C5U3
+        argumentando que la dureza aterrizaba dentro del rango del set ya
+        conformado (9,3 a 31,0) y que el tope protegia de nada. Era un
+        argumento equivocado y se vio en pantalla: el cenital y el folio
+        salieron oscuros y con grano visible en el concreto y en el papel.
+
+        Lo que crea el grano no es DONDE aterriza la dureza sino CUANTO
+        sube, porque el grano es textura fina de la placa multiplicada por
+        la pendiente de la curva. Medido:
+
+            kf11_deposito   19,1 -> 23,9   razon 1,26   bien
+            kf03c_cenital   17,1 -> 27,5   razon 1,61   con grano
+            kf10_folio       9,9 -> 25,7   razon 2,58   con grano
+
+        Las dos de razon alta se rehicieron a 0,50 -el piso del tope- y
+        quedaron limpias. Es decir: el tope relativo estaba haciendo
+        exactamente su trabajo y el que se equivoco fui yo al anularlo.
+
+        El caso del C5U4 (`kf05_escritura`) sigue siendo valido pero es otra
+        cosa: alli el barrido mostro que la dureza NO se movia -18,71 a 0,90
+        contra 18,98 a 1,00, razon 1,01- y el tope saltaba por la densidad
+        del tema, no por un estiron real. Ese es el unico caso en que se
+        fuerza: cuando el barrido demuestra que la razon es ~1.
+
+        Regla: barrer SIEMPRE, mirar la razon, y forzar solo si es cercana a
+        1. Si la razon pasa de ~1,3 hay grano, aunque los percentiles no
+        lleguen al objetivo. Una placa que de verdad nace muy clara -un
+        folio sobre un escritorio- no se arregla con curva: se vuelve a
+        generar mas oscura, o se acepta mas clara que el set.
+    """
     im = Image.open(origen).convert('RGB')
     p2, p50, p98, d0 = perfiles(im)
     lut = curva(p2, p50, p98)
     out = im.point(lut * 3)
     # tope de dureza: se mezcla con la original lo justo para bajar del tope
-    mezcla = 1.0
-    for _ in range(12):
+    mezcla = 1.0 if forzar is None else float(forzar)
+    for _ in range(0 if forzar is not None else 12):
         prueba = Image.blend(im, out, mezcla) if mezcla < 1.0 else out
         _, _, _, d1 = perfiles(prueba)
         if d1 <= d0 * TOPE_DUREZA or mezcla <= 0.5:
@@ -150,6 +183,7 @@ def graduar(origen, destino):
 
 if __name__ == '__main__':
     ent, sal = sys.argv[1], sys.argv[2]
+    forzar = float(sys.argv[3]) if len(sys.argv) > 3 else None
     os.makedirs(sal, exist_ok=True)
     print('%-26s %14s %14s %13s %6s %6s %13s' % (
         'placa', 'antes', 'despues', 'dureza', 'mezcl', 'color', 'croma'))
@@ -157,7 +191,7 @@ if __name__ == '__main__':
     for f in sorted(os.listdir(ent)):
         if not f.endswith('.png') or f.startswith('_v'):
             continue
-        r = graduar(os.path.join(ent, f), os.path.join(sal, f[:-4] + '_grade.png'))
+        r = graduar(os.path.join(ent, f), os.path.join(sal, f[:-4] + '_grade.png'), forzar)
         filas.append(r)
         print('%-26s %14s %14s %5.1f->%5.1f %6.2f %6.2f %5.2f->%5.2f' % (
             r['placa'][5:-4], '%d/%d/%d' % r['antes'], '%d/%d/%d' % r['despues'],

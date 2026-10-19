@@ -25,7 +25,7 @@ import sys
 
 import bins
 
-NOM = 'C5U3 ESLABON FINANCIERO - a la voz'
+NOM = 'C5U3 ESLABON FINANCIERO - a la voz v2'
 CASO_BIN = ['C5 BIENES EN EL PROCESO PENAL', 'U3',
             'CASO 03 - eslabon financiero']
 T0 = 86400                     # arranque de linea, 01:00:00:00 a 23,976
@@ -153,7 +153,12 @@ def v1(pr, mp):
         print('V1 ya tiene clips, no se toca')
         return
     IT = _clips(mp)
-    ran = [f for f in sorted(os.listdir(R)) if 'lecho' not in f]
+    # las versiones archivadas llevan prefijo _v1_, _v2_, ... y hay que
+    # excluirlas TODAS: el filtro estrecho dejaba pasar la version vieja
+    # junto a la nueva y la linea sumaba de mas.
+    ran = [f for f in sorted(os.listdir(R))
+           if f.endswith('.mov') and not f.startswith('_v')
+           and 'lecho' not in f]
     sec = [('FGN_intro_version7.mp4', N_INTRO),
            ('C5U3_carton_entrada.mov', N_BLANCO)]
     sec += [(f, int(f.rsplit('_v', 1)[1].split('.')[0])) for f in ran]

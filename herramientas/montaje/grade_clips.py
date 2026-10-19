@@ -9,10 +9,22 @@ POR QUE LOS CLIPS LLEVAN SU PROPIO GRADE
     que el resto del set. La curva se calcula sobre un cuadro del clip, no
     sobre la placa: Kling vuelve a renderizar y mueve el histograma.
 
+UNA CURVA POR CANAL, NO UNA COMPARTIDA
+    Kling devuelve el clip con un cast -el cuadro del C5U3 r03 salio con
+    mediana R 128 contra B 113-. Con UNA curva compartida ese cast sobrevive
+    entero: el croma del cuadro quedaba en 12,60 y para bajarlo a 4,2 hacia
+    falta hue=s=0,33, que no distingue un cast de un acento y se llevaba por
+    delante la lampara amarilla, que era justo lo que la placa queria decir.
+
+    Con TRES curvas, una por canal, cada canal aterriza en 23/84/205 y el cast
+    se va por construccion: el mismo cuadro queda en croma 2,49 y la
+    saturacion necesaria es 1,000. El acento sobrevive y los percentiles caen
+    mejor que antes. Medido el 19 oct 2026.
+
 LA SATURACION SE CALCULA, NO SE ADIVINA
-    El C5U3 uso un hue=s=0,72 fijo para los cuatro clips. Aqui se mide: se
-    aplica la curva a un cuadro con la misma LUT, se mide el croma que queda y
-    el factor sale de dividir. Un solo paso de ffmpeg con las dos cosas.
+    El C5U3 v1 uso un hue=s=0,72 fijo para los cuatro clips. Aqui se mide
+    DESPUES de las tres curvas: casi siempre da 1,0 y no se toca nada. Queda
+    como red de seguridad para un clip con color local de verdad excesivo.
 
 EL RECORTE
     El clip rinde mas cuadros que la ranura por diseno -se pidieron los
@@ -44,16 +56,29 @@ def graduar(ffmpeg, clip, cuadros, salida, tmp):
     _cuadro(ffmpeg, clip, 1, tmp)
     im = Image.open(tmp).convert('RGB')
     p2, p50, p98, d0 = perfiles(im)
-    lut = curva(p2, p50, p98)
 
-    # la misma LUT sobre el cuadro, para saber que croma queda DESPUES
-    prueba = im.point(lut * 3)
+    # una curva por canal: cada uno a OBJETIVO, y el cast se va solo
+    luts, qs = [], []
+    for canal in im.split():
+        d = sorted(canal.getdata())
+        n = len(d)
+        q = (d[int(0.02 * n)], d[int(0.50 * n)], d[int(0.98 * n)])
+        qs.append(q)
+        luts.append(curva(*q))
+
+    # las tres LUT sobre el cuadro, para saber que croma queda DESPUES
+    prueba = im.point(luts[0] + luts[1] + luts[2])
     cr, _ = croma(prueba)
     s = min(1.0, CROMA_OBJETIVO / cr) if cr > CROMA_OBJETIVO else 1.0
 
-    pts = ' '.join('%.6f/%.6f' % (x / 255.0, lut[x] / 255.0)
-                   for x in (0, p2, p50, p98, 255))
-    vf = "curves=all='%s',hue=s=%.4f" % (pts, s)
+    def _pts(lut, q):
+        return ' '.join('%.6f/%.6f' % (x / 255.0, lut[x] / 255.0)
+                        for x in (0, q[0], q[1], q[2], 255))
+    vf = "curves=r='%s':g='%s':b='%s'" % (_pts(luts[0], qs[0]),
+                                          _pts(luts[1], qs[1]),
+                                          _pts(luts[2], qs[2]))
+    if s < 0.999:
+        vf += ',hue=s=%.4f' % s
     subprocess.run([ffmpeg, '-v', 'error', '-y', '-i', clip, '-vf', vf,
                     '-frames:v', str(cuadros), '-an', '-c:v', 'libx264',
                     '-preset', 'slow', '-crf', '14', '-pix_fmt', 'yuv420p',
