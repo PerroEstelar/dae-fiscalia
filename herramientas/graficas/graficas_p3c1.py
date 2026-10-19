@@ -28,6 +28,16 @@ LAS POSICIONES SON APROXIMADAS Y ASÍ ESTÁ DICHO
     por latitud y longitud sobre la caja de la silueta, lo que es exacto
     para leer «noreste, cerca de la frontera» y no para medir distancias.
     Para lo que la gráfica tiene que decir, alcanza.
+
+LOS NUMEROS VAN EN DIGITOS, NO EN LETRAS
+    Peticion de Sebastian: en PANTALLA todo numero -el ano, la edad, el dia,
+    las horas, la suma- va en digitos. «2025», no «dos mil veinticinco»;
+    «23 anos», no «veintitres anos». Se lee de un vistazo, que es justo lo que
+    un carton tiene que permitir.
+
+    La LOCUCION no cambia: ahi el numero sigue escrito en letras, porque el
+    texto de voz es lo que el sintetizador pronuncia y en digitos lo lee mal.
+    Son dos escrituras del mismo dato y cada una sirve a su medio.
 """
 import os
 import subprocess
@@ -136,7 +146,7 @@ def _bloque(spec, x, centro_y, maxw):
 def linea_tiempo(n=124, salida=None):
     salida = salida or "%s/P3C1_ae07_linea_tiempo.mov" % OUT
     spec = {"ante": "Sin interrupción",
-            "titulo": "Enero de dos mil veinticinco · septiembre de dos mil veintiséis"}
+            "titulo": "Enero de 2025 · septiembre de 2026"}
     lineas, ys, (bt, bb_) = _bloque(spec, C.TEXT_X, 430, 1250)
 
     EJE_Y, EJE_X0, EJE_X1 = 740, C.TEXT_X, 1671
@@ -185,7 +195,7 @@ def linea_tiempo(n=124, salida=None):
 # ------------------------------------------------------------------ ae11
 def mapa(n=221, salida=None):
     salida = salida or "%s/P3C1_ae11_las_nueve.mov" % OUT
-    spec = {"ante": "Nueve personas",
+    spec = {"ante": "9 personas",
             "titulo": "Un solo hospedaje",
             "cuerpo": "Y ninguna en la misma situación"}
     lineas, ys, (bt, bb_) = _bloque(spec, C.TEXT_X, 560, 700)

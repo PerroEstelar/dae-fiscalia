@@ -27,6 +27,16 @@ LAS FECHAS QUE SE FUNDEN CON UN NOMBRE
     Juliana y Yeimi entran en la misma frase que su fecha. En vez de dos
     piezas seguidas, la fecha baja al renglon del dato. Es lo que hace el
     documental y se lee de una sola pasada.
+
+LOS NUMEROS VAN EN DIGITOS, NO EN LETRAS
+    Peticion de Sebastian: en PANTALLA todo numero -el ano, la edad, el dia,
+    las horas, la suma- va en digitos. «2025», no «dos mil veinticinco»;
+    «23 anos», no «veintitres anos». Se lee de un vistazo, que es justo lo que
+    un carton tiene que permitir.
+
+    La LOCUCION no cambia: ahi el numero sigue escrito en letras, porque el
+    texto de voz es lo que el sintetizador pronuncia y en digitos lo lee mal.
+    Son dos escrituras del mismo dato y cada una sirve a su medio.
 """
 import os
 import sys
@@ -42,7 +52,7 @@ N = 96   # el piso de comodidad de la serie; un lower third nunca pasa de ahi
 #  (nombre de archivo, ranura, cuadro de entrada DENTRO de la ranura, spec)
 LOWERS = [
     ("lt01_fecha_enero_mayo", "r02", 10, {
-        "nombre": "Entre enero y mayo de dos mil veinticinco"}),
+        "nombre": "Entre enero y mayo de 2025"}),
     ("lt02_cristina", "r03", 8, {
         "nombre": "Cristina",
         "dato": "Publicaba las ofertas y organizaba la llegada"}),
@@ -51,27 +61,27 @@ LOWERS = [
         "dato": "Las recibía y disponía las condiciones"}),
     ("lt04_daniela", "r08", 4, {
         "nombre": "Daniela",
-        "dato": "Veintitrés años · desde Cúcuta"}),
+        "dato": "23 años · desde Cúcuta"}),
     ("lt05_camilo", "r12", 8, {
         "nombre": "Camilo",
         "dato": "Conductor particular"}),
     ("lt06_paula", "r13", 30, {
         "nombre": "Paula",
-        "dato": "Veintinueve años · trabajo sexual autónomo"}),
+        "dato": "29 años · trabajo sexual autónomo"}),
     ("lt07_elena", "r16", 20, {
         "nombre": "Elena",
-        "dato": "Treinta y cinco años · trabajo de limpieza"}),
+        "dato": "35 años · trabajo de limpieza"}),
     ("lt08_fecha_diez_mayo", "r22", 22, {
-        "nombre": "El diez de mayo"}),
+        "nombre": "El 10 de mayo"}),
     ("lt09_diana", "r25", 30, {
         "nombre": "Diana",
         "dato": "Agencia de viajes · el precio ordinario y la comisión habitual"}),
     ("lt10_juliana", "r26", 4, {
         "nombre": "Juliana",
-        "dato": "El veinticinco de mayo · diecinueve años"}),
+        "dato": "El 25 de mayo · 19 años"}),
     ("lt11_yeimi", "r28", 24, {
         "nombre": "Yeimi",
-        "dato": "En agosto de dos mil veintiséis"}),
+        "dato": "En agosto de 2026"}),
 ]
 
 if __name__ == "__main__":

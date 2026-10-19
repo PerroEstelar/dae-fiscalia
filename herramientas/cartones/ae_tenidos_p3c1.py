@@ -24,6 +24,16 @@ LAS CAMAS, Y POR QUE CADA UNA
     r18  elena trapea     el trabajo de limpieza que cambio de condiciones
     r27  juliana umbral   entra y la interrumpen el mismo dia
     r29  manos y telefono los mensajes de Yeimi, otro horneado
+
+LOS NUMEROS VAN EN DIGITOS, NO EN LETRAS
+    Peticion de Sebastian: en PANTALLA todo numero -el ano, la edad, el dia,
+    las horas, la suma- va en digitos. «2025», no «dos mil veinticinco»;
+    «23 anos», no «veintitres anos». Se lee de un vistazo, que es justo lo que
+    un carton tiene que permitir.
+
+    La LOCUCION no cambia: ahi el numero sigue escrito en letras, porque el
+    texto de voz es lo que el sintetizador pronuncia y en digitos lo lee mal.
+    Son dos escrituras del mismo dato y cada una sirve a su medio.
 """
 import os
 import sys
@@ -46,7 +56,7 @@ TENIDOS = [
         "suelta": "No todas estaban sometidas a las mismas condiciones"}),
     ("ae04_deuda", "r10", 181, {
         "ante": "Daniela",
-        "titulo": "Documento retenido, deuda de tres millones",
+        "titulo": "Documento retenido, deuda de $3.000.000",
         "cuerpo": "Y una amenaza contra su hermano"}),
     ("ae05_paula", "r15", 195, {
         "ante": "Paula",
@@ -54,7 +64,7 @@ TENIDOS = [
         "cuerpo": "Podía rechazar personas, no trabajar o retirarse sin penalidad"}),
     ("ae06_cambio", "r18", 154, {
         "ante": "Elena · abril",
-        "titulo": "Dieciséis horas, sin descansos",
+        "titulo": "16 horas, sin descansos",
         "cuerpo": "La remuneración entera a una deuda sin término explicado"}),
     ("ae09_interrumpido", "r27", 226, {
         "ante": "Juliana",

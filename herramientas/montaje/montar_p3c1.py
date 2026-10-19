@@ -62,13 +62,18 @@ T0 = 86400                     # arranque de linea, 01:00:00:00 a 23,976
 C = 'E:/DAE MASTER/PRIORIDAD 03/CASO 01 - El hospedaje El Mirador'
 R = C + '/10 TIMELINE SEBASTIAN/RANURAS'
 K = C + '/02 CARTONES'
+MV = C + '/07 MOVIMIENTO/CAPA V2'
 A = C + '/06 AUDIO'
 MU = C + '/08 MUSICA'
 COMUNES = 'E:/DAE MASTER/00 COMUNES'
 INTRO = COMUNES + '/INTRO/FGN_intro_version7.mp4'
 MARCA = COMUNES + '/MARCA DE AGUA/MARCA_DE_AGUA_DAE_100s.mov'
 
-PISTAS_V = ['VIDEO', 'TINTE', 'CARTONES', 'APOYO',
+# V2 se llama MOVIMIENTO en este caso, no TINTE. Lleva la capa opcional de
+# clips animados, encima de la placa quieta y debajo de los cartones: apagar la
+# pista devuelve la pieza a su version de placas sostenidas, sin tocar nada mas.
+# Si alguna vez hace falta el tinte de pista, se vuelve a 'TINTE' y se quita v2.
+PISTAS_V = ['VIDEO', 'MOVIMIENTO', 'CARTONES', 'APOYO',
             'MARCA DE AGUA', 'EFECTOS', 'LOWER THIRD']
 PISTAS_A = ['VIDEO', 'NARRADOR', 'PREGUNTAS', 'DIALOGO', 'MUSICA']
 
@@ -131,6 +136,35 @@ LOWERS = [('P3C1_lt01_fecha_enero_mayo.mov', 'r02', 10),
           ('P3C1_lt10_juliana.mov', 'r26', 4),
           ('P3C1_lt11_yeimi.mov', 'r28', 24)]
 
+# ------------------------------------------------------------------- V2
+# La capa de movimiento. Cada clip cubre su ranura ENTERA, asi que apagar la
+# pista no deja huecos ni saltos de encuadre: debajo sigue la placa con su
+# camara horneada, intacta.
+#
+# Se arman por IDA Y VUELTA -el clip hacia adelante y luego al reves- hasta
+# llenar la ranura. Es lo unico que empalma siempre: el modelo entrega cuatro
+# segundos y varios no vuelven exactamente a la pose inicial, asi que un bucle
+# simple daria un salto en cada vuelta. En movimiento de reposo -parpadeo, giro
+# de cabeza, peso de un pie al otro- el reverso no se nota. En los tres planos
+# donde la persona camina -Paula llegando, Elena trapeando, Juliana llegando-
+# si se puede notar, y queda dicho.
+IDLE = [('P3C1_r03_idle_cristina_telefono_v239.mp4', 'r03'),
+        ('P3C1_r05_idle_victor_recepcion_v209.mp4', 'r05'),
+        ('P3C1_r08_idle_terminal_v214.mp4', 'r08'),
+        ('P3C1_r09_idle_daniela_cu_v109.mp4', 'r09'),
+        ('P3C1_r12_idle_camilo_carro_v224.mp4', 'r12'),
+        ('P3C1_r13_idle_paula_llega_v243.mp4', 'r13'),
+        ('P3C1_r14_idle_paula_cu_v109.mp4', 'r14'),
+        ('P3C1_r16_idle_elena_limpieza_v167.mp4', 'r16'),
+        ('P3C1_r17_idle_elena_cu_v253.mp4', 'r17'),
+        ('P3C1_r21_idle_cristina_lejos_v152.mp4', 'r21'),
+        ('P3C1_r23_idle_camilo_cu_v206.mp4', 'r23'),
+        ('P3C1_r24_idle_daniela_ventanilla_v210.mp4', 'r24'),
+        ('P3C1_r25_idle_agencia_diana_v156.mp4', 'r25'),
+        ('P3C1_r26_idle_juliana_llega_v104.mp4', 'r26'),
+        ('P3C1_r28_idle_yeimi_llega_v145.mp4', 'r28'),
+        ('P3C1_r30_idle_yeimi_cu_v233.mp4', 'r30')]
+
 REAL = {'FGN_intro_version7.mp4': 222, 'MARCA_DE_AGUA_DAE_100s.mov': 2400,
         'P3C1_carton_entrada.mov': 119, 'P3C1_carton_cierre.mov': 119,
         'P3C1_lecho_votacion_v1016.mp4': 1016,
@@ -145,6 +179,7 @@ REAL = {'FGN_intro_version7.mp4': 222, 'MARCA_DE_AGUA_DAE_100s.mov': 2400,
         'P3C1_p1a_votacion.mov': 365, 'P3C1_p1b_opciones.mov': 385,
         'P3C1_p2_foro.mov': 266}
 REAL.update({f: 96 for f, _, _ in LOWERS})
+REAL.update({f: int(f.rsplit('_v', 1)[1].split('.')[0]) for f, _ in IDLE})
 
 
 def _handles():
@@ -183,6 +218,8 @@ def medios(mp):
               if not f.startswith('_v') and f.endswith(('.mov', '.mp4'))]
     rutas += [K + '/' + f for f in sorted(os.listdir(K))
               if not f.startswith('_v') and f.endswith('.mov')]
+    rutas += [MV + '/' + f for f in sorted(os.listdir(MV))
+              if not f.startswith('_v') and f.endswith('.mp4')]
     bins.importar(mp, CASO_BIN, rutas)
 
 
@@ -236,6 +273,23 @@ def v1(pr, mp):
     it = tl.GetItemListInTrack('video', 1)
     print('V1 %d clips, termina en %d (esperado %d)'
           % (len(it), it[-1].GetEnd() - T0, FIN))
+
+
+def v2(pr, mp):
+    tl = _linea(pr)
+    if tl.GetItemListInTrack('video', 2):
+        print('V2 ya tiene clips, no se toca')
+        return
+    IT = _clips(mp)
+    lote = []
+    for nombre, r in IDLE:
+        ini, largo = RAN[r]
+        n = REAL[nombre]
+        assert n == largo, (nombre, r, n, largo)
+        lote.append({'mediaPoolItem': IT[nombre], 'startFrame': 0, 'endFrame': n,
+                     'trackIndex': 2, 'recordFrame': T0 + ini})
+    mp.AppendToTimeline(lote)
+    print('V2 %d clips de movimiento' % len(tl.GetItemListInTrack('video', 2)))
 
 
 def v3(pr, mp):
@@ -362,12 +416,32 @@ def chequeo(pr):
     if malos:
         fallos.append('2: %s' % malos)
 
-    debe_estar_vacia = [('video', 2), ('video', 4), ('video', 6),
-                        ('audio', 3), ('audio', 4)]
+    debe_estar_vacia = [('video', 4), ('video', 6), ('audio', 3), ('audio', 4)]
     ocup = [x for x in debe_estar_vacia if tl.GetItemListInTrack(*x)]
-    print('3) V2/V4/V6/A3/A4 vacias:', 'OK' if not ocup else ocup)
+    print('3) V4/V6/A3/A4 vacias:', 'OK' if not ocup else ocup)
     if ocup:
         fallos.append('3: %s' % ocup)
+
+    # cada clip de movimiento cubre su ranura exacta: ni un cuadro de mas ni de
+    # menos, para que apagar la pista no cambie el encuadre en ningun punto
+    prob2 = []
+    for nombre, r in IDLE:
+        ini, largo = RAN[r]
+        hay = [c for c in tl.GetItemListInTrack('video', 2)
+               if c.GetName() == nombre]
+        if len(hay) != 1:
+            prob2.append((nombre, 'aparece %d veces' % len(hay)))
+            continue
+        c = hay[0]
+        if (c.GetStart() - T0, c.GetEnd() - T0) != (ini, ini + largo):
+            prob2.append((nombre, 'va en %d-%d, deberia %d-%d'
+                          % (c.GetStart() - T0, c.GetEnd() - T0, ini, ini + largo)))
+    n2 = len(tl.GetItemListInTrack('video', 2))
+    if n2 != len(IDLE):
+        prob2.append(('V2', '%d clips, deberian %d' % (n2, len(IDLE))))
+    print('3b) capa de movimiento V2 (%d):' % n2, 'OK' if not prob2 else prob2)
+    if prob2:
+        fallos.append('3b: %s' % prob2)
 
     prob3, p3 = _revisar_pista(tl, 3, cortes, True)
     print('4) cartones V3 (%d):' % len(p3), 'OK' if not prob3 else prob3)
@@ -421,6 +495,8 @@ if __name__ == '__main__':
         linea(pr, mp)
     elif paso == 'v1':
         v1(pr, mp)
+    elif paso == 'v2':
+        v2(pr, mp)
     elif paso == 'v3':
         v3(pr, mp)
     elif paso == 'v7':
