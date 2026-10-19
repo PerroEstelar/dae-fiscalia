@@ -50,13 +50,19 @@ NARRACION = [
     ("n05_licito", "r06", {
         "titulo": "Todo lo que lo compone es de origen lícito",
         "cuerpo": "Frente a esa cifra hay un patrimonio."}),
+    # Sebastian marco el 1:14 como confuso. El carton metia tres ideas en dos
+    # lineas unidas por un punto medio -credito pagado / avaluo / ahi vive- y
+    # "millones" se quedaba huerfano en una linea propia. Ahora el hecho
+    # juridico va en el titulo y el cuerpo lleva una idea por linea.
     ("n06_casa", "r07", {
-        "titulo": "Una casa comprada hace quince años",
-        "cuerpo": "Crédito hipotecario ya pagado · avalúo novecientos millones\n"
-                  "Ahí vive, hoy, su familia."}),
+        "titulo": "Una casa en un sector residencial",
+        "cuerpo": "Crédito hipotecario ya pagado\n"
+                  "Avaluada en novecientos millones de pesos\n"
+                  "Ahí vive, hoy, su familia"}),
+    # "Ciento ochenta millones" a secas, sin verbo, no se leia como frase.
     ("n07_camioneta", "r08", {
         "titulo": "Una camioneta de uso personal",
-        "cuerpo": "Ciento ochenta millones"}),
+        "cuerpo": "Avaluada en ciento ochenta millones de pesos"}),
     ("n08_flota", "r10", {
         "titulo": "No pide el cuarenta por ciento",
         "cuerpo": "Pide embargar las cuentas de la sociedad\n"

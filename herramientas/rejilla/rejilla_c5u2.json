@@ -1,5 +1,5 @@
 {
- "dur": 158.2369375,
+ "dur": 161.9985625,
  "tramos": [
   {
    "bloque": "b1_siniestro",
@@ -22,31 +22,31 @@
   {
    "bloque": "b4_inventario",
    "entra": 55.245,
-   "sale": 84.641,
-   "dur": 29.396
+   "sale": 88.403,
+   "dur": 33.158
   },
   {
    "bloque": "b5_victimas",
-   "entra": 85.441,
-   "sale": 103.599,
+   "entra": 89.203,
+   "sale": 107.361,
    "dur": 18.158
   },
   {
    "bloque": "b6_reloj",
-   "entra": 104.399,
-   "sale": 123.718,
+   "entra": 108.161,
+   "sale": 127.48,
    "dur": 19.319
   },
   {
    "bloque": "b7_caucion",
-   "entra": 124.518,
-   "sale": 136.314,
+   "entra": 128.28,
+   "sale": 140.076,
    "dur": 11.796
   },
   {
    "bloque": "b8_cierre",
-   "entra": 137.714,
-   "sale": 157.637,
+   "entra": 141.476,
+   "sale": 161.399,
    "dur": 19.923
   }
  ],

@@ -1,0 +1,42 @@
+[
+ {
+  "bloque": "b1_siniestro",
+  "voz": "Carlos",
+  "palabras": 46
+ },
+ {
+  "bloque": "b2_pretension",
+  "voz": "Pilar",
+  "palabras": 50
+ },
+ {
+  "bloque": "b3_patrimonio",
+  "voz": "Carlos",
+  "palabras": 23
+ },
+ {
+  "bloque": "b4_inventario",
+  "voz": "Pilar",
+  "palabras": 75
+ },
+ {
+  "bloque": "b5_victimas",
+  "voz": "Carlos",
+  "palabras": 41
+ },
+ {
+  "bloque": "b6_reloj",
+  "voz": "Pilar",
+  "palabras": 45
+ },
+ {
+  "bloque": "b7_caucion",
+  "voz": "Carlos",
+  "palabras": 33
+ },
+ {
+  "bloque": "b8_cierre",
+  "voz": "Pilar",
+  "palabras": 47
+ }
+]

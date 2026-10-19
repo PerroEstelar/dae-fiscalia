@@ -1,0 +1,9 @@
+Una casa en un sector residencial, comprada hace quince años con un crédito hipotecario que ya está pagado, y avaluada hoy en novecientos millones de pesos. Ahí vive su familia.
+
+<break time="0.9s" />
+
+Una camioneta de uso personal, que hoy está avaluada en ciento ochenta millones de pesos.
+
+<break time="0.9s" />
+
+Y el cuarenta por ciento de las acciones de una sociedad de transporte, que tiene su propia flota de diez camiones y mil doscientos millones de pesos en cuentas corporativas.

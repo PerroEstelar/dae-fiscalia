@@ -19,6 +19,10 @@ sys.path.insert(0, '/home/claude/c5/voz')
 from rejilla import FPS, iman
 
 RADIO = 3.0
+# NOTA: el C5U4 introdujo MINIMO_PAUSA = 0,50 para que el iman no se pegue a
+# comas de 0,25 s. Aqui NO se aplica, a proposito: esta pieza ya esta montada
+# y revisada, y el filtro movia los cortes de b6 y b8 -cuyo audio no se toco-
+# y ademas dejaba el corte 14 partiendo frase. Para las piezas nuevas si va.
 
 PLAN = {
     'b1_siniestro':  ['kf01_via', 'kf02_camion'],
