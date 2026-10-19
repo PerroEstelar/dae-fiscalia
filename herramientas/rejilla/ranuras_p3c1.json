@@ -1,0 +1,250 @@
+[
+ {
+  "plano": "ae01_establecidos",
+  "bloque": "b1_encargo",
+  "ini": 0.0,
+  "fin": 3.7,
+  "n": 1,
+  "frames": 89
+ },
+ {
+  "plano": "kf01_fachada",
+  "bloque": "b1_encargo",
+  "ini": 3.7,
+  "fin": 13.246,
+  "n": 2,
+  "frames": 229
+ },
+ {
+  "plano": "kf03_cristina_telefono",
+  "bloque": "b2_acuerdo",
+  "ini": 13.246,
+  "fin": 23.225,
+  "n": 3,
+  "frames": 239
+ },
+ {
+  "plano": "ae02_el_acuerdo",
+  "bloque": "b2_acuerdo",
+  "ini": 23.225,
+  "fin": 29.725,
+  "n": 4,
+  "frames": 156
+ },
+ {
+  "plano": "kf04_victor_recepcion",
+  "bloque": "b2_acuerdo",
+  "ini": 29.725,
+  "fin": 38.427,
+  "n": 5,
+  "frames": 209
+ },
+ {
+  "plano": "kf05_pasillo",
+  "bloque": "b3_bisagra",
+  "ini": 38.427,
+  "fin": 44.325,
+  "n": 6,
+  "frames": 141
+ },
+ {
+  "plano": "ae03_no_todas",
+  "bloque": "b3_bisagra",
+  "ini": 44.325,
+  "fin": 48.715,
+  "n": 7,
+  "frames": 105
+ },
+ {
+  "plano": "kf06_terminal",
+  "bloque": "b4_daniela",
+  "ini": 48.715,
+  "fin": 57.625,
+  "n": 8,
+  "frames": 214
+ },
+ {
+  "plano": "kf07_daniela_cu",
+  "bloque": "b4_daniela",
+  "ini": 57.625,
+  "fin": 62.182,
+  "n": 9,
+  "frames": 109
+ },
+ {
+  "plano": "ae04_deuda",
+  "bloque": "b4_daniela",
+  "ini": 62.182,
+  "fin": 69.716,
+  "n": 10,
+  "frames": 181
+ },
+ {
+  "plano": "kf08_tienda",
+  "bloque": "b5_salir",
+  "ini": 69.716,
+  "fin": 75.975,
+  "n": 11,
+  "frames": 150
+ },
+ {
+  "plano": "kf09_camilo_carro",
+  "bloque": "b5_salir",
+  "ini": 75.975,
+  "fin": 85.331,
+  "n": 12,
+  "frames": 224
+ },
+ {
+  "plano": "kf10_paula_llega",
+  "bloque": "b6_paula",
+  "ini": 85.331,
+  "fin": 95.45,
+  "n": 13,
+  "frames": 243
+ },
+ {
+  "plano": "kf11_paula_cu",
+  "bloque": "b6_paula",
+  "ini": 95.45,
+  "fin": 100.006,
+  "n": 14,
+  "frames": 109
+ },
+ {
+  "plano": "ae05_paula",
+  "bloque": "b6_paula",
+  "ini": 100.006,
+  "fin": 108.143,
+  "n": 15,
+  "frames": 195
+ },
+ {
+  "plano": "kf12_elena_limpieza",
+  "bloque": "b7_elena",
+  "ini": 108.143,
+  "fin": 115.125,
+  "n": 16,
+  "frames": 167
+ },
+ {
+  "plano": "kf13_elena_cu",
+  "bloque": "b7_elena",
+  "ini": 115.125,
+  "fin": 125.675,
+  "n": 17,
+  "frames": 253
+ },
+ {
+  "plano": "ae06_cambio",
+  "bloque": "b7_elena",
+  "ini": 125.675,
+  "fin": 132.1,
+  "n": 18,
+  "frames": 154
+ },
+ {
+  "plano": "kf14_cuaderno",
+  "bloque": "b7_elena",
+  "ini": 132.1,
+  "fin": 140.244,
+  "n": 19,
+  "frames": 195
+ },
+ {
+  "plano": "ae07_linea_tiempo",
+  "bloque": "b8_permanencia",
+  "ini": 140.244,
+  "fin": 145.425,
+  "n": 20,
+  "frames": 124
+ },
+ {
+  "plano": "kf15_cristina_lejos",
+  "bloque": "b8_permanencia",
+  "ini": 145.425,
+  "fin": 151.771,
+  "n": 21,
+  "frames": 152
+ },
+ {
+  "plano": "kf16_carro_noche",
+  "bloque": "b9_camilo",
+  "ini": 151.771,
+  "fin": 157.65,
+  "n": 22,
+  "frames": 141
+ },
+ {
+  "plano": "kf17_camilo_cu",
+  "bloque": "b9_camilo",
+  "ini": 157.65,
+  "fin": 166.25,
+  "n": 23,
+  "frames": 206
+ },
+ {
+  "plano": "kf18_daniela_ventanilla",
+  "bloque": "b9_camilo",
+  "ini": 166.25,
+  "fin": 175.002,
+  "n": 24,
+  "frames": 210
+ },
+ {
+  "plano": "kf19_agencia_diana",
+  "bloque": "b10_juliana",
+  "ini": 175.002,
+  "fin": 181.488,
+  "n": 25,
+  "frames": 156
+ },
+ {
+  "plano": "kf20_juliana_llega",
+  "bloque": "b10_juliana",
+  "ini": 181.488,
+  "fin": 185.825,
+  "n": 26,
+  "frames": 104
+ },
+ {
+  "plano": "ae09_interrumpido",
+  "bloque": "b10_juliana",
+  "ini": 185.825,
+  "fin": 195.26,
+  "n": 27,
+  "frames": 226
+ },
+ {
+  "plano": "kf21_yeimi_llega",
+  "bloque": "b11_yeimi",
+  "ini": 195.26,
+  "fin": 201.3,
+  "n": 28,
+  "frames": 145
+ },
+ {
+  "plano": "ae10_mensajes",
+  "bloque": "b11_yeimi",
+  "ini": 201.3,
+  "fin": 208.375,
+  "n": 29,
+  "frames": 170
+ },
+ {
+  "plano": "kf22_yeimi_cu",
+  "bloque": "b11_yeimi",
+  "ini": 208.375,
+  "fin": 218.101,
+  "n": 30,
+  "frames": 233
+ },
+ {
+  "plano": "ae11_las_nueve",
+  "bloque": "b12_cierre",
+  "ini": 218.101,
+  "fin": 227.33885416666666,
+  "n": 31,
+  "frames": 221
+ }
+]

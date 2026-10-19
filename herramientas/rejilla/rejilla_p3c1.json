@@ -1,0 +1,77 @@
+{
+ "dur": 227.33885416666666,
+ "tramos": [
+  {
+   "bloque": "b1_encargo",
+   "entra": 0.0,
+   "sale": 12.446,
+   "dur": 12.446
+  },
+  {
+   "bloque": "b2_acuerdo",
+   "entra": 13.246,
+   "sale": 37.627,
+   "dur": 24.381
+  },
+  {
+   "bloque": "b3_bisagra",
+   "entra": 38.427,
+   "sale": 47.715,
+   "dur": 9.288
+  },
+  {
+   "bloque": "b4_daniela",
+   "entra": 48.715,
+   "sale": 68.916,
+   "dur": 20.201
+  },
+  {
+   "bloque": "b5_salir",
+   "entra": 69.716,
+   "sale": 84.531,
+   "dur": 14.814
+  },
+  {
+   "bloque": "b6_paula",
+   "entra": 85.331,
+   "sale": 107.343,
+   "dur": 22.013
+  },
+  {
+   "bloque": "b7_elena",
+   "entra": 108.143,
+   "sale": 139.444,
+   "dur": 31.3
+  },
+  {
+   "bloque": "b8_permanencia",
+   "entra": 140.244,
+   "sale": 150.971,
+   "dur": 10.728
+  },
+  {
+   "bloque": "b9_camilo",
+   "entra": 151.771,
+   "sale": 174.202,
+   "dur": 22.43
+  },
+  {
+   "bloque": "b10_juliana",
+   "entra": 175.002,
+   "sale": 194.46,
+   "dur": 19.458
+  },
+  {
+   "bloque": "b11_yeimi",
+   "entra": 195.26,
+   "sale": 216.901,
+   "dur": 21.641
+  },
+  {
+   "bloque": "b12_cierre",
+   "entra": 218.101,
+   "sale": 226.739,
+   "dur": 8.638
+  }
+ ]
+}
