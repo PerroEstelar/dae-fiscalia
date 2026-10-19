@@ -5,29 +5,60 @@ vector** de la biblia SRPA, no el pictórico del curso de Bienes: esta serie
 tiene personajes, y la hoja de dirección de arte del 12 oct 2026 demuestra que
 las formas planas aguantan el movimiento generado y el volumen pintado no.
 
+## El rostro vuelve — decisión de Sebastián, 19 oct 2026
+
+La biblia SRPA trae «sin ninguna línea facial» como regla dura heredada de la
+Guía Audiovisual, justificada en que las piezas tienen adolescentes. Sebastián
+decidió recuperar el rostro para esta serie: son personajes de ficción
+estilizados, y con rostro se puede hacer primer plano, que es lo que convierte
+una ficha en una historia. Queda como decisión suya y fechada.
+
+Lo que **no** cambia con el rostro:
+
+- Ningún hecho se ilustra.
+- Nada sugerente en ninguna figura, ninguna ropa ajustada o reveladora.
+- Yeimi se trata exactamente igual que las otras ocho.
+
+**Y una consecuencia técnica que sí cambia el método.** La hoja de dirección de
+arte del 12 oct documenta que los rostros dibujados se rompen al animarse —«ojos
+grandes y saltones», «un hombre sin cabeza»— porque el modelo repinta el iris en
+cada cuadro. La regla que sale de ahí:
+
+> **Los primeros planos van como placa sostenida con empuje de cámara, nunca
+> como clip generado. Los dos o tres clips generados de cada pieza se reservan
+> para planos sin cara cerca.**
+
+Así se tiene el close-up sin el ojo saltón, y además cuesta cero.
+
+**Medido en la prueba aprobada:** con el rostro dibujado, la piel cayó en
+`#B5B0AC`, croma 9, saturación 0,048 — contra el gris piel de la biblia,
+`#B7B3AC`, croma 11. Es decir que el sistema sostiene el rostro sin que el tono
+de piel haga el trabajo, que es la regla 2 del manifiesto.
+
 ## El bloque de estilo, para pegar al principio de cada prompt
 
 ```
-Soft-volume editorial vector illustration. No outline anywhere: not on figures,
-not on clothing, not on objects, not on the background. Faces carry no lines at
-all — no eyelid, no eyebrow, no nose, no mouth, no eyes: the head is a clean
-flat shape and the hair is a separate flat shape around it. Skin is one single
-flat neutral grey, identical on every figure. Figures are 8 to 8.5 heads tall.
-Volume is suggested only by broad soft tonal planes, never by rendered shading,
-never by texture, never by brush marks. Each figure stands on a large
-soft-edged elliptical shadow. The environment is entirely in greys — no colour
-at all in walls, floor, furniture or props. Flat even light, static camera,
-perfectly level, no tilt, no vignette, no lens flare. Clean plate: no legible
-text, no lettering, no numbers, no signage, no logos, no emblems, no flags.
+Stylized editorial character illustration, flat graphic treatment. No ink
+outline anywhere: forms are built from broad soft tonal planes, never from
+rendered shading, never from texture or brush marks. Faces ARE drawn and
+expressive, but simplified and graphic: clearly defined eyes with brow, a
+simple nose and a simple mouth, readable at a glance, with no photographic
+detail, no skin pores, no individual hair strands, no caricature and no
+exaggerated proportions. Skin stays in a desaturated warm grey range for every
+figure — barely tinted, never a saturated skin tone. Colombian features, varied
+from one person to the next, carried by facial structure, hair and silhouette
+rather than by skin colour. Figures are 8 to 8.5 heads tall. The environment is
+entirely in greys. Flat even light, static camera, perfectly level, no tilt, no
+vignette, no lens flare. Clean plate: no legible text, no lettering, no
+numbers, no signage, no logos.
 ```
 
 Y el negativo:
 
 ```
-Not a photograph, not a 3D render, not painterly. No ink outlines, no facial
-features of any kind, no skin tone other than flat grey, no multicolour
-gradients, no paper grain, no brush texture, no cartoon or childish styling,
-no caricature, no exaggerated proportions.
+Not a photograph, not a 3D render, not painterly. No ink outlines, no
+multicolour gradients, no paper grain, no brush texture, no childish or
+cartoon-mascot styling, no big round anime eyes, no exaggerated features.
 ```
 
 ## La gramática de color de esta serie
@@ -70,7 +101,7 @@ la saturación solo sobre los píxeles que ya llevan color, sin tocar los grises
 sin tocar el valor, de modo que el modelado suave de la prenda sobrevive.
 Resultado: azul a tono 210,3 y saturación 0,93; amarillo a tono 46,0.
 
-Se corre sobre **toda placa que lleve acento**, antes del grade.
+Se corre sobre **toda placa que lleve acento**, antes del grade.\n\nEl sesgo del amarillo esta medido dos veces y es reproducible: **+8,5 y +9,2\ngrados hacia el naranja**, con la saturacion a la mitad. El del azul es solo de\nsaturacion: el tono sale clavado.
 
 ## Los nueve tokens
 
@@ -115,3 +146,24 @@ comparar contexturas. En los planos:
 | Daniela | Guardada | la deuda y la amenaza |
 | Elena | Vacía | dieciséis horas, sin descanso, diecisiete meses |
 | Camilo, Juliana, Yeimi | Distante | Camilo aparta la mirada, Juliana apenas llegó, Yeimi evade la pregunta de su edad |
+
+
+## Las hojas aprobadas
+
+En `E:\\DAE MASTER\\PRIORIDAD 03\\00 PERSONAJES\\`. Cada una trae figura entera y
+estudios de cabeza, y los acentos ya fijados:
+
+| hoja | quiénes |
+|---|---|
+| `P3_hoja1_Cristina_Victor.png` | Cristina y Víctor, cuatro estudios de cabeza |
+| `P3_hoja2_Camilo_Diana.png` | Camilo y Diana, cuatro estudios |
+| `P3_hoja3_Daniela_Paula_Elena.png` | las tres, un estudio cada una |
+| `P3_hoja4_Juliana_Yeimi.png` | las dos, cuatro estudios |
+
+Las versiones sin rostro quedan archivadas con prefijo `_crudo_`.
+
+**La consistencia entre planos es el riesgo abierto.** Dentro de una hoja los
+rostros se sostienen; entre catorce placas distintas es donde se desarma. El
+método de la casa es el token escrito repetido literal, pero con rostro eso ya no
+basta: hay que pasar además la hoja como referencia de imagen en los planos de
+primer plano, y medir si el rostro aguanta antes de generar el set completo.
