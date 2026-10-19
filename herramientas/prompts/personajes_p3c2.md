@@ -37,7 +37,7 @@ quita y va en gris; es un cambio de media hora.
 | **Mara** | a woman of twenty-six, tall, slim, long dark hair worn loose, wearing a plain light grey long-sleeved blouse, plain grey trousers and grey flat shoes, ordinary everyday clothing, nothing tight and nothing revealing, no colour anywhere |
 | **Samuel** | a man of thirty-five, medium build, medium height, short dark hair and a close-trimmed beard, wearing a plain mid-grey work shirt over grey trousers and grey shoes, no colour anywhere |
 | **Elisa** | a girl of seventeen, slim, short, dark hair in a single braid, a plain light grey t-shirt, plain grey jeans and grey trainers, dressed in ordinary everyday clothes exactly like the others, no colour anywhere |
-| **Patricia** | a woman of thirty-two, medium build, medium height, dark hair tied back, a plain mid-grey blouse over plain grey trousers and grey shoes, with a plain institutional yellow hair tie |
+| **Patricia** | a woman of thirty-two, medium build, medium height, dark hair tied back, a plain mid-grey blouse over plain grey trousers and grey shoes, with a plain institutional yellow scarf knotted at the neck (en la hoja lleva una liga amarilla; en el primer plano se cambió por el pañuelo, ver abajo) |
 | **la tía** | a woman of about fifty, heavy build, short, dark hair cut short, a plain mid-grey cardigan over a plain light grey blouse and a grey skirt, with a plain institutional yellow handbag |
 | **las dos** | two workers of about thirty in plain grey work clothes, no colour anywhere, always at a distance and never in close-up |
 
@@ -90,3 +90,30 @@ y sí varias de que reste. Va nombrada en locución y nada más.
 dibujarlo apartado, y sería exactamente el error que el caso denuncia: el
 problema no es que Samuel no se comunique, es que el equipo no lo escucha.
 Entonces Samuel mira de frente, y el que aparta la mirada es Darío.
+
+
+## Dos hallazgos de la producción de este caso
+
+**La planitud se gana en el prompt de la PLACA, no en el de la hoja.** La hoja
+de Mara y Samuel salió con los estudios de cabeza más modelados de la cuenta
+—la barba con degradado, la mejilla suave— y la repetí pidiendo planos duros y
+pasando la propia hoja como referencia. Salió **peor**: más suave todavía. La
+referencia tira hacia lo que ya había. Volví a la primera y endurecí el prompt
+de las catorce placas, que es donde sí funciona: las placas finales están
+planas aunque la hoja no lo esté del todo. Costó cien créditos aprenderlo.
+
+**Un acento pequeño junto a la cara se deforma.** La liga amarilla de Patricia,
+en primer plano, salió como un disco pegado a la oreja —parecía un arete, no
+una liga—. En plano entero funciona; en primer plano no hay sitio para un
+detalle pequeño. Se cambió por un pañuelo anudado al cuello, que es una banda
+limpia en la parte baja del cuadro y se lee como prenda. La regla que queda:
+**para un primer plano, el acento va en una prenda del torso, nunca en el
+pelo ni cerca de la oreja.**
+
+## Y una ausencia deliberada
+
+**Saúl no aparece en ningún plano.** Es el que todos nombran y nadie muestra.
+No es un descuido: su responsabilidad es justamente lo que el caso NO da por
+establecido, y dibujarlo lo convertiría en el culpable de la pieza antes de
+que el participante decida nada. El azul institucional lo lleva Darío, de
+quien sí está establecido que trabaja para él y recibe parte de los pagos.
