@@ -30,8 +30,11 @@ QUE CAMBIO EN LA v2
 import os
 import sys
 
+import bins
+
 NOM = 'C5U2 SINIESTRO VIAL - a la voz v2'
-CARPETA = 'C5U2 SINIESTRO VIAL v2'
+CASO_BIN = ['C5 BIENES EN EL PROCESO PENAL', 'U2',
+            'CASO 02 - el siniestro vial']
 T0 = 86400
 
 C = ('E:/DAE MASTER/CURSO 5 - Bienes en el proceso penal/UNIDAD 2/'
@@ -103,15 +106,13 @@ def _handles():
 
 
 def _carpeta(mp):
-    raiz = mp.GetRootFolder()
-    for f in raiz.GetSubFolderList():
-        if f.GetName() == CARPETA:
-            return f
-    return mp.AddSubFolder(raiz, CARPETA)
+    """La raiz del caso en el media pool. Ahi va la linea de tiempo."""
+    return bins.carpeta(mp, CASO_BIN)
 
 
 def _clips(mp):
-    return {c.GetName(): c for c in _carpeta(mp).GetClipList()}
+    """Los medios del caso, por nombre, de todo el subarbol."""
+    return bins.clips(mp, CASO_BIN)
 
 
 def _linea(pr):
@@ -137,11 +138,7 @@ def medios(mp):
     rutas = [INTRO, MARCA, A + '/C5U2_NARRADOR.wav', A + '/C5U2_MUSICA_cama.wav']
     rutas += [R + '/' + f for f in _ranuras()]
     rutas += [K + '/' + f for f in sorted(os.listdir(K)) if not f.startswith('_v')]
-    mp.SetCurrentFolder(_carpeta(mp))
-    mp.ImportMedia(rutas)
-    hay = _clips(mp)
-    faltan = [os.path.basename(x) for x in rutas if os.path.basename(x) not in hay]
-    print('en carpeta %d; faltan %s' % (len(hay), faltan or 'ninguno'))
+    bins.importar(mp, CASO_BIN, rutas)
 
 
 def linea(pr, mp):

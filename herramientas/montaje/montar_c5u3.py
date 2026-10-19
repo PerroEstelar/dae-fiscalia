@@ -23,8 +23,11 @@ POR QUE EL CHEQUEO NO VUELVE A LLAMAR A ffprobe
 import os
 import sys
 
+import bins
+
 NOM = 'C5U3 ESLABON FINANCIERO - a la voz'
-CARPETA = 'C5U3 ESLABON FINANCIERO'
+CASO_BIN = ['C5 BIENES EN EL PROCESO PENAL', 'U3',
+            'CASO 03 - eslabon financiero']
 T0 = 86400                     # arranque de linea, 01:00:00:00 a 23,976
 
 C = ('E:/DAE MASTER/CURSO 5 - Bienes en el proceso penal/UNIDAD 3/'
@@ -99,15 +102,13 @@ def _handles():
 
 
 def _carpeta(mp):
-    raiz = mp.GetRootFolder()
-    for f in raiz.GetSubFolderList():
-        if f.GetName() == CARPETA:
-            return f
-    return mp.AddSubFolder(raiz, CARPETA)
+    """La raiz del caso en el media pool. Ahi va la linea de tiempo."""
+    return bins.carpeta(mp, CASO_BIN)
 
 
 def _clips(mp):
-    return {c.GetName(): c for c in _carpeta(mp).GetClipList()}
+    """Los medios del caso, por nombre, de todo el subarbol."""
+    return bins.clips(mp, CASO_BIN)
 
 
 def _linea(pr):
@@ -120,13 +121,11 @@ def _linea(pr):
 
 def medios(mp):
     rutas = [INTRO, MARCA, A + '/C5U3_NARRADOR.wav', A + '/C5U3_MUSICA_cama.wav']
-    rutas += [R + '/' + f for f in sorted(os.listdir(R))]
-    rutas += [K + '/' + f for f in sorted(os.listdir(K))]
-    mp.SetCurrentFolder(_carpeta(mp))
-    mp.ImportMedia(rutas)
-    hay = _clips(mp)
-    faltan = [os.path.basename(x) for x in rutas if os.path.basename(x) not in hay]
-    print('en carpeta %d; faltan %s' % (len(hay), faltan or 'ninguno'))
+    rutas += [R + '/' + f for f in sorted(os.listdir(R))
+              if f.endswith('.mov') and not f.startswith('_v')]
+    rutas += [K + '/' + f for f in sorted(os.listdir(K))
+              if f.endswith('.mov') and not f.startswith('_v')]
+    bins.importar(mp, CASO_BIN, rutas)
 
 
 def linea(pr, mp):
