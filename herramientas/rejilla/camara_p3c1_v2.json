@@ -1,0 +1,48 @@
+[
+ {
+  "modo": "camara",
+  "fuente": "E:/DAE MASTER/PRIORIDAD 03\\CASO 01 - El hospedaje El Mirador\\01 PLANOS\\P3C1_br02_manos_teclean.png",
+  "frames": 156,
+  "encuadre": 0.9,
+  "empuje": 0.08,
+  "centro": [
+   0.5,
+   0.46
+  ],
+  "vibra": 4.0,
+  "semilla": 4104,
+  "salida": "E:/DAE MASTER/PRIORIDAD 03\\CASO 01 - El hospedaje El Mirador\\10 TIMELINE SEBASTIAN\\RANURAS\\P3C1_r04_cama_manos_v156.mp4"
+ },
+ {
+  "modo": "camara",
+  "fuente": "E:/DAE MASTER/PRIORIDAD 03\\CASO 01 - El hospedaje El Mirador\\01 PLANOS\\P3C1_kf01_fachada.png",
+  "frames": 105,
+  "encuadre": 0.8,
+  "empuje": 0.0,
+  "deriva": [
+   0.09,
+   0.0
+  ],
+  "centro": [
+   0.6,
+   0.54
+  ],
+  "vibra": 5.0,
+  "semilla": 7107,
+  "salida": "E:/DAE MASTER/PRIORIDAD 03\\CASO 01 - El hospedaje El Mirador\\10 TIMELINE SEBASTIAN\\RANURAS\\P3C1_r07_cama_fachada_v105.mp4"
+ },
+ {
+  "modo": "camara",
+  "fuente": "E:/DAE MASTER/PRIORIDAD 03\\CASO 01 - El hospedaje El Mirador\\01 PLANOS\\P3C1_br02_manos_teclean.png",
+  "frames": 170,
+  "encuadre": 0.8,
+  "empuje": -0.1,
+  "centro": [
+   0.44,
+   0.56
+  ],
+  "vibra": 4.5,
+  "semilla": 2910,
+  "salida": "E:/DAE MASTER/PRIORIDAD 03\\CASO 01 - El hospedaje El Mirador\\10 TIMELINE SEBASTIAN\\RANURAS\\P3C1_r29_cama_manos_v170.mp4"
+ }
+]

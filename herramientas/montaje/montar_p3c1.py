@@ -8,10 +8,38 @@ de ~55 s, y cada paso es idempotente -vuelve a correr sin duplicar nada-.
     python montar_p3c1.py medios     importa a la carpeta del caso
     python montar_p3c1.py linea      crea la linea con el mapa de pistas
     python montar_p3c1.py v1         intro + entrada + 31 ranuras + lecho + cierre + outro
-    python montar_p3c1.py v3         los 8 cartones de narracion + los 3 de pausa
+    python montar_p3c1.py v3         los cartones tenidos y los de narracion
+    python montar_p3c1.py v7         los once lower thirds
     python montar_p3c1.py pegado     V5 marca de agua, A2 narrador, A5 musica
-    python montar_p3c1.py chequeo    el chequeo de cinco puntos
+    python montar_p3c1.py chequeo    el chequeo de seis puntos
     python montar_p3c1.py marcas     los dos marcadores H5P y el .drt
+    python montar_p3c1.py borrar     borra la linea para rehacerla entera
+
+LO QUE CAMBIO EN LA VERSION 2, QUE ES LA REVISION DE SEBASTIAN
+    Las diez losas BLANCAS a cuadro completo se acabaron. El fondo blanco es,
+    casi siempre, solo el titulo general de la pieza. De los diez tramos:
+
+        ocho pasaron a CARTON TENIDO en V3, sobre una cama que corre en V1
+        por la ranura entera -r01 r04 r07 r10 r15 r18 r27 r29-;
+
+        dos pasaron a GRAFICA DE MOTION a cuadro completo en V1, sin carton
+        encima, porque la grafica ES el carton -r20 la linea de tiempo y r31
+        el mapa de Colombia con la trayectoria-.
+
+    Y entro la pista que nunca se habia usado: V7 LOWER THIRD, con once
+    piezas. Toda fecha que el narrador dice va en pantalla, y cada persona
+    que entra al relato lleva su nombre impreso.
+
+LA REGLA DE CONVIVENCIA ENTRE V3 Y V7
+    Un lower third y un carton tenido no pueden coincidir: el tenido cubre el
+    cuadro con 46 % de azul y los dos juntos se leen como dos cartones. Donde
+    la ranura lleva los dos, el lower third va primero, pegado a la cabeza, y
+    el carton despues con holgura. Por eso los cartones de narracion ya no se
+    centran en su ranura: cada uno trae su propio desplazamiento.
+
+    `n07_comision` desaparecio de V3. Decia «cobro el precio ordinario y la
+    comision habitual», que es exactamente un nombre con un dato corto: se
+    volvio el lower third de Diana.
 
 LO QUE CAMBIA RESPECTO DEL C5U3
     Las ranuras de placa son .mp4 -las hornea `camara.py`- y las de grafico
@@ -66,27 +94,57 @@ for _r, _n in [('r01', 89), ('r02', 229), ('r03', 239), ('r04', 156),
     _o += _n
 assert _o == OFF_LECHO, _o
 
-# cartones de narracion: SOLO sobre ranuras de placa, nunca sobre un grafico,
-# que ya es texto.
-CARTONES = [('P3C1_n01_instagram.mov', 'r03'),
-            ('P3C1_n02_mesera.mov', 'r08'),
-            ('P3C1_n03_alimentos.mov', 'r11'),
-            ('P3C1_n04_tarifa.mov', 'r12'),
-            ('P3C1_n05_disponible.mov', 'r17'),
-            ('P3C1_n06_terminal.mov', 'r24'),
-            ('P3C1_n07_comision.mov', 'r25'),
-            ('P3C1_n08_si_pregunto.mov', 'r30')]
+# ------------------------------------------------------------------- V3
+# Cartones TENIDOS: ocupan la ranura entera, sobre la cama que corre en V1.
+TENIDOS = [('P3C1_ae01_establecidos.mov', 'r01'),
+           ('P3C1_ae02_el_acuerdo.mov', 'r04'),
+           ('P3C1_ae03_no_todas.mov', 'r07'),
+           ('P3C1_ae04_deuda.mov', 'r10'),
+           ('P3C1_ae05_paula.mov', 'r15'),
+           ('P3C1_ae06_cambio.mov', 'r18'),
+           ('P3C1_ae09_interrumpido.mov', 'r27'),
+           ('P3C1_ae10_mensajes.mov', 'r29')]
+
+# Cartones de NARRACION: (archivo, ranura, cuadro de entrada en la ranura).
+# Ya no se centran: donde la ranura comparte con un lower third, el carton
+# entra despues de que el lower third haya salido.
+CARTONES = [('P3C1_n01_instagram.mov', 'r03', 120),
+            ('P3C1_n02_mesera.mov', 'r08', 112),
+            ('P3C1_n03_alimentos.mov', 'r11', 27),
+            ('P3C1_n04_tarifa.mov', 'r12', 120),
+            ('P3C1_n05_disponible.mov', 'r17', 132),
+            ('P3C1_n06_terminal.mov', 'r24', 57),
+            ('P3C1_n08_si_pregunto.mov', 'r30', 62)]
 PAUSA = ['P3C1_p1a_votacion.mov', 'P3C1_p1b_opciones.mov', 'P3C1_p2_foro.mov']
+
+# ------------------------------------------------------------------- V7
+# (archivo, ranura, cuadro de entrada en la ranura). Todos miden 96.
+LOWERS = [('P3C1_lt01_fecha_enero_mayo.mov', 'r02', 10),
+          ('P3C1_lt02_cristina.mov', 'r03', 8),
+          ('P3C1_lt03_victor.mov', 'r05', 24),
+          ('P3C1_lt04_daniela.mov', 'r08', 4),
+          ('P3C1_lt05_camilo.mov', 'r12', 8),
+          ('P3C1_lt06_paula.mov', 'r13', 30),
+          ('P3C1_lt07_elena.mov', 'r16', 20),
+          ('P3C1_lt08_fecha_diez_mayo.mov', 'r22', 22),
+          ('P3C1_lt09_diana.mov', 'r25', 30),
+          ('P3C1_lt10_juliana.mov', 'r26', 4),
+          ('P3C1_lt11_yeimi.mov', 'r28', 24)]
 
 REAL = {'FGN_intro_version7.mp4': 222, 'MARCA_DE_AGUA_DAE_100s.mov': 2400,
         'P3C1_carton_entrada.mov': 119, 'P3C1_carton_cierre.mov': 119,
         'P3C1_lecho_votacion_v1016.mp4': 1016,
+        'P3C1_ae01_establecidos.mov': 89, 'P3C1_ae02_el_acuerdo.mov': 156,
+        'P3C1_ae03_no_todas.mov': 105, 'P3C1_ae04_deuda.mov': 181,
+        'P3C1_ae05_paula.mov': 195, 'P3C1_ae06_cambio.mov': 154,
+        'P3C1_ae09_interrumpido.mov': 226, 'P3C1_ae10_mensajes.mov': 170,
         'P3C1_n01_instagram.mov': 96, 'P3C1_n02_mesera.mov': 96,
         'P3C1_n03_alimentos.mov': 96, 'P3C1_n04_tarifa.mov': 96,
         'P3C1_n05_disponible.mov': 96, 'P3C1_n06_terminal.mov': 96,
-        'P3C1_n07_comision.mov': 96, 'P3C1_n08_si_pregunto.mov': 109,
+        'P3C1_n08_si_pregunto.mov': 109,
         'P3C1_p1a_votacion.mov': 365, 'P3C1_p1b_opciones.mov': 385,
         'P3C1_p2_foro.mov': 266}
+REAL.update({f: 96 for f, _, _ in LOWERS})
 
 
 def _handles():
@@ -126,6 +184,15 @@ def medios(mp):
     rutas += [K + '/' + f for f in sorted(os.listdir(K))
               if not f.startswith('_v') and f.endswith('.mov')]
     bins.importar(mp, CASO_BIN, rutas)
+
+
+def borrar(pr, mp):
+    tl = _linea(pr)
+    if not tl:
+        print('no hay linea que borrar')
+        return
+    mp.SetCurrentFolder(_carpeta(mp))
+    print('borrada:', mp.DeleteTimelines([tl]))
 
 
 def linea(pr, mp):
@@ -178,13 +245,18 @@ def v3(pr, mp):
         return
     IT = _clips(mp)
     lote = []
-    for nombre, r in CARTONES:
+    for nombre, r in TENIDOS:
         ini, largo = RAN[r]
         n = REAL[nombre]
-        pos = ini + (largo - n) // 2
-        assert ini <= pos and pos + n <= ini + largo, (nombre, r)
+        assert n == largo, (nombre, r, n, largo)
         lote.append({'mediaPoolItem': IT[nombre], 'startFrame': 0, 'endFrame': n,
-                     'trackIndex': 3, 'recordFrame': T0 + pos})
+                     'trackIndex': 3, 'recordFrame': T0 + ini})
+    for nombre, r, off in CARTONES:
+        ini, largo = RAN[r]
+        n = REAL[nombre]
+        assert 0 <= off and off + n <= largo, (nombre, r, off, n, largo)
+        lote.append({'mediaPoolItem': IT[nombre], 'startFrame': 0, 'endFrame': n,
+                     'trackIndex': 3, 'recordFrame': T0 + ini + off})
     pos = OFF_LECHO
     for nombre in PAUSA:
         n = REAL[nombre]
@@ -193,7 +265,26 @@ def v3(pr, mp):
         pos += n
     assert pos == OFF_CIERRE, pos
     mp.AppendToTimeline(lote)
-    print('V3 %d cartones' % len(tl.GetItemListInTrack('video', 3)))
+    print('V3 %d cartones (%d tenidos, %d narracion, %d pausa)'
+          % (len(tl.GetItemListInTrack('video', 3)), len(TENIDOS),
+             len(CARTONES), len(PAUSA)))
+
+
+def v7(pr, mp):
+    tl = _linea(pr)
+    if tl.GetItemListInTrack('video', 7):
+        print('V7 ya tiene clips, no se toca')
+        return
+    IT = _clips(mp)
+    lote = []
+    for nombre, r, off in LOWERS:
+        ini, largo = RAN[r]
+        n = REAL[nombre]
+        assert 0 <= off and off + n <= largo, (nombre, r, off, n, largo)
+        lote.append({'mediaPoolItem': IT[nombre], 'startFrame': 0, 'endFrame': n,
+                     'trackIndex': 7, 'recordFrame': T0 + ini + off})
+    mp.AppendToTimeline(lote)
+    print('V7 %d lower thirds' % len(tl.GetItemListInTrack('video', 7)))
 
 
 def pegado(pr, mp):
@@ -227,6 +318,24 @@ def pegado(pr, mp):
                          it[0].GetStart() - T0, it[-1].GetEnd() - T0))
 
 
+def _revisar_pista(tl, pista, cortes, permite_cubrir_ranura):
+    """Solapes, duraciones y cruces de corte en una pista de texto."""
+    prob, ant, puestos = [], 0, []
+    for c in sorted(tl.GetItemListInTrack('video', pista),
+                    key=lambda x: x.GetStart()):
+        a, b, n = c.GetStart() - T0, c.GetEnd() - T0, c.GetName()
+        if a < ant:
+            prob.append((n, 'solape'))
+        ant = b
+        if n in REAL and b - a != REAL[n]:
+            prob.append((n, 'recortado %d de %d' % (b - a, REAL[n])))
+        cruza = [x for x in cortes if a < x < b]
+        if cruza:
+            prob.append((n, 'cruza corte en %s' % cruza))
+        puestos.append((a, b, n))
+    return prob, puestos
+
+
 def chequeo(pr):
     tl = _linea(pr)
     fallos = []
@@ -253,27 +362,27 @@ def chequeo(pr):
     if malos:
         fallos.append('2: %s' % malos)
 
-    debe_estar_vacia = [('video', 2), ('video', 4), ('video', 6), ('video', 7),
+    debe_estar_vacia = [('video', 2), ('video', 4), ('video', 6),
                         ('audio', 3), ('audio', 4)]
     ocup = [x for x in debe_estar_vacia if tl.GetItemListInTrack(*x)]
-    print('3) V2/V4/V6/V7/A3/A4 vacias:', 'OK' if not ocup else ocup)
+    print('3) V2/V4/V6/A3/A4 vacias:', 'OK' if not ocup else ocup)
     if ocup:
         fallos.append('3: %s' % ocup)
 
-    prob, ant = [], 0
-    for c in sorted(tl.GetItemListInTrack('video', 3), key=lambda x: x.GetStart()):
-        a, b, n = c.GetStart() - T0, c.GetEnd() - T0, c.GetName()
-        if a < ant:
-            prob.append((n, 'solape'))
-        ant = b
-        if b - a != REAL[n]:
-            prob.append((n, 'recortado %d de %d' % (b - a, REAL[n])))
-        cruza = [x for x in cortes if a < x < b]
-        if cruza:
-            prob.append((n, 'cruza corte en %s' % cruza))
-    print('4) cartones:', 'OK' if not prob else prob)
-    if prob:
-        fallos.append('4: %s' % prob)
+    prob3, p3 = _revisar_pista(tl, 3, cortes, True)
+    print('4) cartones V3 (%d):' % len(p3), 'OK' if not prob3 else prob3)
+    if prob3:
+        fallos.append('4: %s' % prob3)
+
+    prob7, p7 = _revisar_pista(tl, 7, cortes, False)
+    # un lower third no puede estar al tiempo que un carton de V3
+    pisa = [(n7, n3) for a7, b7, n7 in p7 for a3, b3, n3 in p3
+            if a7 < b3 and a3 < b7]
+    if pisa:
+        prob7 += [('V3 encima', pisa)]
+    print('5) lower thirds V7 (%d):' % len(p7), 'OK' if not prob7 else prob7)
+    if prob7:
+        fallos.append('5: %s' % prob7)
 
     esp = {('video', 5): (OFF_RANURAS, OFF_CIERRE, 3),
            ('audio', 1): (0, FIN, 2),
@@ -282,10 +391,10 @@ def chequeo(pr):
     for k, q in esp.items():
         it = tl.GetItemListInTrack(*k)
         g = (it[0].GetStart() - T0, it[-1].GetEnd() - T0, len(it)) if it else None
-        print('5) %s%d %s esperado %s %s'
+        print('6) %s%d %s esperado %s %s'
               % (k[0].upper(), k[1], g, q, 'OK' if g == q else 'FALLA'))
         if g != q:
-            fallos.append('5: %s%d' % (k[0].upper(), k[1]))
+            fallos.append('6: %s%d' % (k[0].upper(), k[1]))
 
     print('\nFALLOS:', fallos if fallos else 'NINGUNO')
     return not fallos
@@ -306,12 +415,16 @@ if __name__ == '__main__':
     resolve, pr, mp = _handles()
     if paso == 'medios':
         medios(mp)
+    elif paso == 'borrar':
+        borrar(pr, mp)
     elif paso == 'linea':
         linea(pr, mp)
     elif paso == 'v1':
         v1(pr, mp)
     elif paso == 'v3':
         v3(pr, mp)
+    elif paso == 'v7':
+        v7(pr, mp)
     elif paso == 'pegado':
         pegado(pr, mp)
     elif paso == 'chequeo':

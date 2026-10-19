@@ -2,12 +2,23 @@
 # -*- coding: utf-8 -*-
 """Cartones del PRIORIDAD 03 · Caso 1 «El hospedaje El Mirador».
 
-TRES FAMILIAS, Y CADA UNA HACE UNA COSA DISTINTA
+LA FAMILIA `GRAFICOS` DE ESTE ARCHIVO YA NO SE USA. QUEDA COMO REGISTRO.
+    En la revision del video 1 Sebastian marco el cambio grande: el fondo
+    blanco es, casi siempre, solo el titulo general de la pieza. Las diez
+    losas blancas que esta lista renderizaba se repartieron asi:
 
-    GRAFICOS (`ae*`)  Fondo blanco, ocupan su propia ranura. Son los diez
-        tramos en que la pieza deja de mostrar y se pone a enunciar: el
-        acuerdo, la bisagra, lo que distingue a cada persona, la linea de
-        tiempo y el cierre.
+        ocho pasaron a CARTON TENIDO sobre una cama, en `ae_tenidos_p3c1.py`
+        dos pasaron a GRAFICA DE MOTION, en `../graficas/graficas_p3c1.py`
+
+    `n07_comision` tambien salio: era un nombre con un dato corto, o sea un
+    lower third, y esta en `lowerthirds_p3c1.py` como el de Diana.
+
+    Correr este archivo vuelve a escribir las losas blancas encima de los
+    cartones tenidos. Por eso su `__main__` ya solo renderiza NARRACION.
+
+TRES FAMILIAS, Y CADA UNA HACIA UNA COSA DISTINTA
+
+    GRAFICOS (`ae*`)  Fondo blanco, ocupaban su propia ranura. HISTORICO.
 
     NARRACION (`n*`)  Transparentes con tinte, van ENCIMA de una ranura de
         placa. Llevan el dato concreto que la imagen no puede decir -una
@@ -130,8 +141,8 @@ NARRACION = [
 if __name__ == "__main__":
     print("%-20s %-5s %6s %6s %7s" % ("carton", "ranura", "cartón", "ranura", "margen"))
     apretados = []
-    for fam, lista, alfa, tinte in (("gráfico", GRAFICOS, False, False),
-                                    ("narración", NARRACION, True, True)):
+    # GRAFICOS queda fuera a proposito: ver la cabecera del archivo.
+    for fam, lista, alfa, tinte in (("narración", NARRACION, True, True),):
         print("--- %s" % fam)
         for n, r, fr, spec in lista:
             f = fr if not alfa else cuadros(spec)
