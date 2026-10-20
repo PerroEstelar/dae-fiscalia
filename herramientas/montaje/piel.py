@@ -26,9 +26,10 @@ QUE TOCA Y QUE NO
     un acento institucional nunca entra aqui, ni siquiera en el borde donde
     la prenda se funde con la mano.
 
-    El VALOR no se toca. La piel del Caso 3 es mas oscura que la del Caso 2,
-    pero eso es la luz de cada plano y corregirlo aplanaria el grado. Lo que
-    se corrige es el color, que es lo que se ve como marron.
+    Se corrigen las tres: tono, saturacion y valor. El tono y la saturacion
+    son lo que se ve como marron; el valor es lo que se ve como oscuro. El
+    valor sube como ganancia y con tope, por las razones escritas junto a
+    VALOR_PIEL.
 
 LA MISMA CORRECCION VA AL CLIP
     La capa de movimiento se genera a partir de la placa, asi que si la placa
@@ -47,6 +48,31 @@ Image.MAX_IMAGE_PIXELS = None
 
 TONO_PIEL = 26.0          # el centro de los dos casos aprobados
 SATUR_PIEL = 0.19
+
+# El VALOR tambien, desde el 20 oct 2026.
+#
+#   La primera version de esta herramienta no tocaba el valor, con el
+#   argumento de que la piel del Caso 3 es mas oscura porque la luz de cada
+#   plano lo es, y que subirla aplanaria el grado. Sebastian vio las placas
+#   ya corregidas de color y pidio la piel MAS CLARA igual.
+#
+#   Tenia razon y los casos aprobados lo respaldan. Valor medio de la piel:
+#
+#       Caso 2, aprobado     0,40 a 0,71   (Mara 0,40 · Elisa 0,47 ·
+#                                            Dario 0,44 · Patricia 0,64)
+#       Caso 3, corregido     0,18 a 0,38
+#
+#   El Caso 3 estaba por debajo de TODO el rango aprobado.
+#
+# La subida va como GANANCIA sobre el valor de cada pixel, no como
+# desplazamiento: asi el modelado propio de la cara -la mejilla iluminada y
+# la que no- se mantiene en proporcion en vez de aplastarse contra el techo.
+#
+# Y va con tope. Sin tope, un plano de verdad oscuro -Marta de lejos, en 0,18-
+# pedia x2,5 y la cara terminaba brillando sobre una habitacion en penumbra,
+# que es exactamente el aspecto de recorte pegado que esta serie no tiene.
+VALOR_PIEL = 0.45
+GANANCIA_MAX = 1.5
 
 SAT_MIN, SAT_MAX = 0.10, 0.42     # 0,42 queda bajo el piso del acento (0,45)
 RAMPA = 0.06                      # suavizado en los dos extremos de la banda
@@ -104,6 +130,7 @@ def _corrector(antes):
     centro = antes["tono"]
     giro = (((TONO_PIEL - centro) + 180) % 360 - 180)
     escala = SATUR_PIEL / max(antes["satur"], 0.01)
+    ganancia = min(GANANCIA_MAX, VALOR_PIEL / max(antes["valor"], 0.01))
 
     def f(r, g, b):
         mx = max(r, g, b)
@@ -118,9 +145,10 @@ def _corrector(antes):
             return None
         h2 = ((h * 360 + giro * k) % 360) / 360.0
         s2 = sa * (1.0 + (escala - 1.0) * k)
-        nr, ng, nb = colorsys.hsv_to_rgb(h2, min(1.0, s2), v)
+        v2 = v * (1.0 + (ganancia - 1.0) * k)
+        nr, ng, nb = colorsys.hsv_to_rgb(h2, min(1.0, s2), min(1.0, v2))
         return (int(round(nr * 255)), int(round(ng * 255)), int(round(nb * 255)))
-    return f, giro, escala
+    return f, giro, escala, ganancia
 
 
 def fijar(origen, destino, cube=None, tam=33):
@@ -129,7 +157,7 @@ def fijar(origen, destino, cube=None, tam=33):
     if antes is None:
         im.save(destino)
         return dict(placa=os.path.basename(origen), aviso="no encuentro piel")
-    f, giro, escala = _corrector(antes)
+    f, giro, escala, ganancia = _corrector(antes)
 
     px = im.load()
     an, al = im.size
@@ -143,7 +171,7 @@ def fijar(origen, destino, cube=None, tam=33):
         escribir_cube(cube, f, tam)
     return dict(placa=os.path.basename(origen), antes=antes,
                 despues=medir(im, antes["tono"] + giro),
-                giro=giro, escala=escala)
+                giro=giro, escala=escala, ganancia=ganancia)
 
 
 def escribir_cube(ruta, f, tam=33):
@@ -173,5 +201,7 @@ if __name__ == '__main__':
               % (a['tono'], a['satur'], a['valor'], a['porcentaje']))
         print('   despues  tono %5.1f  satur %4.2f  valor %4.2f'
               % (d['tono'], d['satur'], d['valor']) if d else '   despues  -')
-        print('   objetivo tono %5.1f  satur %4.2f   giro %+.1f  escala x%.2f'
-              % (TONO_PIEL, SATUR_PIEL, r['giro'], r['escala']))
+        print('   objetivo tono %5.1f  satur %4.2f  valor %4.2f'
+              % (TONO_PIEL, SATUR_PIEL, VALOR_PIEL))
+        print('   giro %+.1f  escala de satur x%.2f  ganancia de valor x%.2f'
+              % (r['giro'], r['escala'], r['ganancia']))

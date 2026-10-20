@@ -112,16 +112,33 @@ Un tono cerca de 0 grados con saturación 0,3 **es** marrón rojizo. Los mismos
 rasgos en tono 26 con saturación 0,19 se leen como gris cálido. No es un
 problema de luz ni de grado: es de cuánto color.
 
-Corregidas con `piel.py` —tono y saturación al objetivo, **el valor sin
-tocar**, porque esas placas son más oscuras por la luz de cada plano y
-aplanarlo rompería el grado—:
+### Y el valor también, porque Sebastián lo pidió y los números lo respaldan
 
-| placa | antes | después |
+La primera corrección dejó el valor sin tocar, con el argumento de que esas
+placas son más oscuras porque la luz de cada plano lo es. Sebastián las vio ya
+corregidas de color y pidió **la piel más clara** igual. Tenía razón otra vez:
+
+| | valor medio de la piel |
+|---|---|
+| Caso 2, aprobado | **0,40 a 0,71** |
+| Caso 3, antes | **0,18 a 0,38** |
+
+Estaba por debajo de **todo** el rango aprobado. La subida va como **ganancia**
+sobre el valor de cada píxel, no como desplazamiento, para que el modelado de
+la cara se mantenga en proporción en vez de aplastarse contra el techo. Y va
+con **tope de ×1,5**: sin tope, un plano de verdad oscuro —Marta de lejos, en
+0,18— pedía ×2,5 y la cara terminaba brillando sobre una habitación en
+penumbra, que es el aspecto de recorte pegado que esta serie no tiene.
+
+| placa | tono · satur · valor, antes | después |
 |---|---|---|
-| `kf03` Luis | 0,1 · 0,31 | 25,0 · 0,19 |
-| `kf04` Marta | 3,4 · 0,28 | 25,8 · 0,19 |
-| `kf06` Teresa | 26,4 · 0,32 | 26,0 · 0,21 |
-| `kf13` Marta de lejos | 5,7 · 0,32 | 23,5 · 0,21 |
+| `kf03` Luis | 0,1 · 0,31 · 0,24 | 25,3 · 0,19 · **0,36** |
+| `kf04` Marta | 3,4 · 0,28 · 0,26 | 25,9 · 0,19 · **0,39** |
+| `kf06` Teresa | 26,4 · 0,32 · 0,38 | 26,1 · 0,20 · **0,44** |
+| `kf13` Marta de lejos | 5,7 · 0,32 · 0,18 | 23,4 · 0,21 · **0,25** |
+
+Ninguna quema: el percentil 98 de la piel queda entre 119 y 142 de 255, y el
+0,00 % de los píxeles llega a 250.
 
 **Las tres hojas de personaje no lo necesitaban: salieron en 0,11 y 0,12.**
 Es la misma lección que costó cien créditos en el Caso 2 —*la planitud se gana
