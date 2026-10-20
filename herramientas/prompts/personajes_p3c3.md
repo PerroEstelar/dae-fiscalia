@@ -93,3 +93,55 @@ esa sonrisa a su primer plano, que es el plano de alguien cuyos giros están en
 discusión.
 
 300 créditos.
+
+## La piel: la hoja salió bien y la placa no, otra vez
+
+Sebastián vio las placas y dijo que **algunos personajes salían demasiado
+marrón oscuro, cuando la serie los quiere en gris cálido**. Tenía razón, y el
+número lo dice sin discusión. Medido sobre la población de píxeles cálidos de
+saturación media —que en este sistema **es** la piel, porque todo lo demás es
+gris o es el acento—:
+
+| | tono | saturación |
+|---|---|---|
+| Caso 1, aprobado | 19 a 37 | **0,18 a 0,23** |
+| Caso 2, aprobado | 12 a 34 | **0,16 a 0,28** |
+| **Caso 3, antes de corregir** | **0 a 26** | **0,29 a 0,33** |
+
+Un tono cerca de 0 grados con saturación 0,3 **es** marrón rojizo. Los mismos
+rasgos en tono 26 con saturación 0,19 se leen como gris cálido. No es un
+problema de luz ni de grado: es de cuánto color.
+
+Corregidas con `piel.py` —tono y saturación al objetivo, **el valor sin
+tocar**, porque esas placas son más oscuras por la luz de cada plano y
+aplanarlo rompería el grado—:
+
+| placa | antes | después |
+|---|---|---|
+| `kf03` Luis | 0,1 · 0,31 | 25,0 · 0,19 |
+| `kf04` Marta | 3,4 · 0,28 | 25,8 · 0,19 |
+| `kf06` Teresa | 26,4 · 0,32 | 26,0 · 0,21 |
+| `kf13` Marta de lejos | 5,7 · 0,32 | 23,5 · 0,21 |
+
+**Las tres hojas de personaje no lo necesitaban: salieron en 0,11 y 0,12.**
+Es la misma lección que costó cien créditos en el Caso 2 —*la planitud se gana
+en el prompt de la PLACA, no en el de la hoja*— con otro parámetro: **la hoja
+y la placa no heredan lo mismo, y la placa es la que manda.**
+
+### Lo que hay que meterle al prompt de la placa, de aquí en adelante
+
+La cláusula que veníamos usando —«skin stays in a desaturated warm grey range,
+barely tinted»— **no alcanzó**. No tiene número, y el modelo la cumple a su
+manera. La que queda:
+
+> *Skin is a desaturated warm grey: hue around 25 degrees and saturation no
+> higher than 0.20. It must read as grey with a faint warm tint, never as
+> brown and never as a saturated skin colour.*
+
+### Y la corrección viaja al clip
+
+La capa de movimiento se genera a partir de la placa, así que corregir la
+placa deja el clip descuadrado. `piel.py` escribe la misma función como **LUT
+3D** y ffmpeg se la aplica al clip: misma corrección, sin volver a generar
+nada y sin gastar un crédito. Los cuatro clips con piel quedaron en 0,20–0,22,
+dentro de la banda de los dos casos aprobados.
