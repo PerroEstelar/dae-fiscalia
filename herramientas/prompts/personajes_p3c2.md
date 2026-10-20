@@ -110,10 +110,37 @@ limpia en la parte baja del cuadro y se lee como prenda. La regla que queda:
 **para un primer plano, el acento va en una prenda del torso, nunca en el
 pelo ni cerca de la oreja.**
 
-## Y una ausencia deliberada
+## Saúl: estaba ausente a propósito, y ahora aparece en sombra
 
-**Saúl no aparece en ningún plano.** Es el que todos nombran y nadie muestra.
-No es un descuido: su responsabilidad es justamente lo que el caso NO da por
-establecido, y dibujarlo lo convertiría en el culpable de la pieza antes de
-que el participante decida nada. El azul institucional lo lleva Darío, de
-quien sí está establecido que trabaja para él y recibe parte de los pagos.
+La primera versión de esta hoja decía que **Saúl no aparece en ningún plano**:
+es el que todos nombran y nadie muestra, su responsabilidad es justamente lo
+que el caso NO da por establecido, y dibujarlo lo convertiría en el culpable
+de la pieza antes de que el participante decida nada.
+
+**Sebastián lo revisó y pidió lo contrario**, con razón: el video lo nombra
+una y otra vez y nunca enseña nada, y eso no se lee como una decisión, se lee
+como un hueco. La regla cambia, pero no se cae:
+
+> **Saúl aparece, y su cara nunca se aclara.**
+
+En todos sus planos la cabeza va en sombra plana, sin facciones dentro del
+contorno: de espaldas, de perfil, de tres cuartos por detrás, o sentado de
+espaldas a la puerta. El perfil puede leerse como borde; dentro no hay nada
+que mirar. Así el participante sabe quién administra el taller sin que el
+dibujo le entregue un rostro al que culpar.
+
+Los ángulos están en `P3C2_hoja5_Saul.png` —cinco estudios: de frente, de
+perfil, de espaldas, sentado al escritorio y tres cuartos por detrás—, y su
+primera aparición es `br15_saul_oficina`, visto a través de la puerta de su
+oficina desde el taller.
+
+**El azul sigue siendo correcto sobre él.** El acento marca lo establecido, y
+que Saúl administra el taller es lo que el enunciado da por establecido; Darío
+lo lleva por lo mismo. Mostrarlo no le añade ninguna afirmación que la hoja
+no hiciera ya con el color.
+
+### Lo que esto deja dicho para los casos que vienen
+
+Un personaje que la locución nombra mucho **necesita cuerpo en pantalla**,
+aunque el caso no quiera atribuirle nada. La forma de no atribuir no es
+esconderlo —esconderlo se nota— sino **mostrarlo sin rostro**.
