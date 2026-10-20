@@ -1,0 +1,56 @@
+[
+ {
+  "modo": "camara",
+  "fuente": "E:/DAE MASTER/PRIORIDAD 03\\CASO 02 - El taller del segundo piso\\01 PLANOS\\P3C2_br10_las_dos_taller.png",
+  "frames": 238,
+  "encuadre": 0.9,
+  "empuje": 0.08,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 5.0,
+  "semilla": 1335,
+  "salida": "E:/DAE MASTER/PRIORIDAD 03\\CASO 02 - El taller del segundo piso\\10 TIMELINE SEBASTIAN\\RANURAS\\P3C2_r04_cama_las_dos_v238.mp4"
+ },
+ {
+  "modo": "camara",
+  "fuente": "E:/DAE MASTER/PRIORIDAD 03\\CASO 02 - El taller del segundo piso\\01 PLANOS\\P3C2_kf11_elisa_cu.png",
+  "frames": 157,
+  "encuadre": 0.88,
+  "empuje": 0.06,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.46
+  ],
+  "vibra": 4.0,
+  "semilla": 6300,
+  "salida": "E:/DAE MASTER/PRIORIDAD 03\\CASO 02 - El taller del segundo piso\\10 TIMELINE SEBASTIAN\\RANURAS\\P3C2_r19_cama_elisa_cu_v157.mp4"
+ },
+ {
+  "modo": "camara",
+  "fuente": "E:/DAE MASTER/PRIORIDAD 03\\CASO 02 - El taller del segundo piso\\01 PLANOS\\P3C2_br11_la_tia.png",
+  "frames": 163,
+  "encuadre": 0.86,
+  "empuje": 0.07,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.48
+  ],
+  "vibra": 4.5,
+  "semilla": 7293,
+  "salida": "E:/DAE MASTER/PRIORIDAD 03\\CASO 02 - El taller del segundo piso\\10 TIMELINE SEBASTIAN\\RANURAS\\P3C2_r22_cama_la_tia_v163.mp4"
+ }
+]

@@ -36,6 +36,21 @@ LAS CUATRO PROPUESTAS, Y SU CAMA
     informe y el esfero, el pasillo, la sala de entrevista-. Cada vez que
     aparece una mala propuesta, la pieza se va a la oficina y no al taller.
 
+LOS TRES PERSONAJES QUE FALTABAN
+    Sebastian pregunto si no habia personajes especificos en este caso, y los
+    hay: la hoja tiene tokens para siete personas mas «las dos» -las que
+    conservan sus documentos-, y la tía y «las dos» no aparecian en ningun
+    plano. Entraron asi, sin tocar la rejilla:
+
+        r04  la cama pasa del taller vacio al taller CON las dos al fondo
+        r19  la cama pasa de la escalera al primer plano de Elisa, que es
+             ademas el anfitrion correcto para su lower third
+        r22  la cama pasa del primer plano de Elisa a la tía, y encima
+             queda `n09` -«Elisa pide no hablar delante de la tia»-, que
+             ahora cae sobre la persona de la que habla
+
+    La escalera queda archivada: era la cama mas generica de las nueve.
+
 LA REGLA DE CONVIVENCIA ENTRE V3 Y V7
     Un tenido cubre el cuadro con 46 % de azul; un lower third encima se lee
     como dos cartones. Donde la ranura lleva los dos -solo r12- el lower third
@@ -91,7 +106,8 @@ assert _o == OFF_LECHO, _o
 # ------------------------------------------------------------------- V2
 # Cada clip cubre su ranura ENTERA: apagar la pista devuelve la pieza a su
 # version de placas sostenidas, sin huecos ni saltos de encuadre.
-IDLE = [('P3C2_r06_idle_mara_cu_v140.mp4', 'r06'),
+IDLE = [('P3C2_r04_idle_las_dos_v238.mp4', 'r04'),
+        ('P3C2_r06_idle_mara_cu_v140.mp4', 'r06'),
         ('P3C2_r09_idle_mara_entera_v203.mp4', 'r09'),
         ('P3C2_r10_idle_maquinas_v185.mp4', 'r10'),
         ('P3C2_r12_idle_samuel_cu_v287.mp4', 'r12'),
@@ -99,8 +115,8 @@ IDLE = [('P3C2_r06_idle_mara_cu_v140.mp4', 'r06'),
         ('P3C2_r15_idle_samuel_aparte_v267.mp4', 'r15'),
         ('P3C2_r16_idle_informe_v127.mp4', 'r16'),
         ('P3C2_r18_idle_elisa_entera_v168.mp4', 'r18'),
-        ('P3C2_r19_idle_escalera_v157.mp4', 'r19'),
-        ('P3C2_r22_idle_elisa_cu_v163.mp4', 'r22'),
+        ('P3C2_r19_idle_elisa_cu_v157.mp4', 'r19'),
+        ('P3C2_r22_idle_la_tia_v163.mp4', 'r22'),
         ('P3C2_r23_idle_patricia_cu_v164.mp4', 'r23'),
         ('P3C2_r24_idle_mensajes_v255.mp4', 'r24')]
 
