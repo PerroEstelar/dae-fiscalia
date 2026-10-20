@@ -1,0 +1,38 @@
+[
+ {
+  "modo": "camara",
+  "fuente": "E:/DAE MASTER/PRIORIDAD 03\\CASO 02 - El taller del segundo piso\\01 PLANOS\\P3C2_kf13_mensajes.png",
+  "frames": 198,
+  "encuadre": 0.86,
+  "empuje": 0.08,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 4.0,
+  "semilla": 5282,
+  "salida": "E:/DAE MASTER/PRIORIDAD 03\\CASO 02 - El taller del segundo piso\\10 TIMELINE SEBASTIAN\\RANURAS\\P3C2_r25_cama_mensajes_v198.mp4"
+ },
+ {
+  "modo": "camara",
+  "fuente": "E:/DAE MASTER/PRIORIDAD 03\\CASO 02 - El taller del segundo piso\\01 PLANOS\\P3C2_kf14_taller_vacio.png",
+  "frames": 227,
+  "encuadre": 0.9,
+  "empuje": 0.1,
+  "deriva": [
+   0.0,
+   0.0
+  ],
+  "centro": [
+   0.5,
+   0.5
+  ],
+  "vibra": 5.0,
+  "semilla": 5915,
+  "salida": "E:/DAE MASTER/PRIORIDAD 03\\CASO 02 - El taller del segundo piso\\10 TIMELINE SEBASTIAN\\RANURAS\\P3C2_r28_cama_taller_vacio_v227.mp4"
+ }
+]

@@ -22,6 +22,28 @@ EL VERBATIM
 
 LO QUE NINGUN CARTON HACE
     Ninguno corrige. El video no dice cual es el error: lo pone donde se vea.
+
+LA FAMILIA `GRAFICOS` DE ESTE ARCHIVO YA NO SE USA. QUEDA COMO REGISTRO.
+    La mitad de la pieza era losa blanca -catorce de veintiocho ranuras- y en
+    la revision de Sebastian eso se acabo. Se repartieron asi:
+
+        once a CARTON TENIDO sobre cama      `ae_tenidos_p3c2.py`
+        dos a GRAFICA DE MOTION              `../graficas/graficas_p3c2.py`
+            ae02, la fila de seis que se abre en 2 y 4
+            ae13, las cinco decisiones renglon a renglon
+        uno a LOWER THIRD                    `lowerthirds_p3c2.py`
+            ae09, que era Elisa y su edad
+
+    Y de NARRACION se fueron cuatro: `n01` la fecha, `n04` Mara y `n07` Dario
+    son lower thirds -un nombre con un dato corto-, y `n02` desaparecio porque
+    decia lo mismo que la grafica de r03, que va justo antes.
+
+    `n05` y `n10` se volvieron a renderizar con los numeros en digitos, en
+    `digitos_p3c2.py`.
+
+    Correr este archivo vuelve a escribir las losas blancas encima de los
+    cartones tenidos. Por eso su `__main__` ya no renderiza nada: esta aqui
+    para leer, no para correr.
 """
 import math
 import os
@@ -122,18 +144,4 @@ NARRACION = [
 ]
 
 if __name__ == "__main__":
-    print("%-24s %-5s %6s %6s %7s" % ("carton", "ranura", "cartón", "ranura", "margen"))
-    apretados = []
-    for fam, lista, alfa, tinte in (("gráfico", GRAFICOS, False, False),
-                                    ("narración", NARRACION, True, True)):
-        print("--- %s" % fam)
-        for n, r, fr, spec in lista:
-            necesita = cuadros(spec)
-            f = fr if not alfa else necesita
-            m = fr - necesita
-            if m < 0:
-                apretados.append((n, m))
-            C.render_carton(spec, f, C.BLANCO_FONDO if not alfa else None, alfa,
-                            "%s/P3C2_%s.mov" % (OUT, n), con_tinte=tinte)
-            print("%-24s %-5s %6d %6d %+7d" % (n, r, f, fr, m))
-    print("\nAPRETADOS:", apretados or "ninguno")
+    print(__doc__)
