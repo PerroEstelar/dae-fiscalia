@@ -32,8 +32,9 @@ QUE HACE, Y QUE NO
 
     La correccion entra con DOS rampas, y pesa la menor de las dos: una sobre
     el croma (RAMPA_BAJA a RAMPA_ALTA) para que no quede borde duro entre la
-    prenda y el fondo, y otra sobre la saturacion (SAT_BAJA a SAT_ALTA), que
-    es la que de verdad deja la piel fuera. El tono no sirve para eso: en las
+    prenda y el fondo, y otra sobre la saturacion -calculada por placa a
+    partir de la del propio acento-, que es la que de verdad deja la piel
+    fuera. El tono no sirve para eso: en las
     placas del Caso 3 el panuelo de Marta y su propia piel estan a doce grados
     uno de otra.
 """
@@ -54,22 +55,33 @@ INSTITUCIONAL = {
 
 RAMPA_BAJA, RAMPA_ALTA = 25, 55      # croma donde la correccion entra y satura
 
-# Rampa de SATURACION. Es lo que de verdad separa el acento de la piel.
+# La SATURACION es lo que de verdad separa el acento de la piel.
 #
 # MEDIDO EL 20 OCT 2026 EN LAS PLACAS DEL CASO 3
 #   El panuelo de Marta salio en tono 25,7 y su piel en tono 13,2: el tono NO
 #   los separa, y en kf13 estan todavia mas cerca. Lo que si los separa, y por
 #   mucho, es la saturacion:
 #
-#       acento    satur 0,80 a 1,00   (panuelo, banda, delantal)
+#       acento    satur 0,50 a 1,00   (panuelo, banda, delantal)
 #       piel      satur 0,30 a 0,40
 #
-#   Entre 0,45 y 0,62 no hay nada en ninguna de las placas del caso, asi que
-#   la rampa cabe entera en tierra de nadie. Va como rampa y no como umbral
-#   duro porque la sombra propia de la prenda baja hasta 0,50 -el delantal de
-#   Teresa vive entre 0,50 y 0,90- y un umbral dejaria una costura visible en
-#   el pliegue.
-SAT_BAJA, SAT_ALTA = 0.45, 0.62
+# POR QUE LA RAMPA ES RELATIVA Y NO FIJA
+#   La primera version de esta rampa era fija, 0,45 a 0,62, con el argumento
+#   de que ahi en medio no habia nada. Lo habia: la banda del kf05 rehecho
+#   salio en 0,50 justo, es decir DENTRO de la rampa, y la herramienta no la
+#   encontro. Un umbral fijo supone que el modelo satura siempre igual, y no
+#   lo hace.
+#
+#   Ahora la rampa se calcula por placa a partir de la saturacion del propio
+#   acento: entra en el 60 % de esa saturacion y satura en el 95 %. Con eso
+#   la sombra propia de la prenda entra en la correccion de forma progresiva
+#   -el delantal de Teresa vive entre 0,50 y 0,90- y la piel se queda fuera
+#   en todas las placas medidas.
+#
+#   SAT_PISO es la unica cifra dura que queda: por debajo de ella NADA es un
+#   acento, pase lo que pase. Esta puesta justo encima de la piel.
+SAT_PISO = 0.45
+RAMPA_SAT_BAJA, RAMPA_SAT_ALTA = 0.60, 0.95
 
 # Cuanto se busca el acento alrededor del hexadecimal objetivo. Es ancho a
 # proposito: sirve para ENCONTRARLO, no para decidir que se toca.
@@ -145,9 +157,15 @@ def localizar(im, color):
     ho = _tono(obj)
     ch = im.resize((640, 360)) if im.width > 640 else im
     px = list(ch.getdata())
-    sel = [p for p in px
-           if _croma(p) > RAMPA_BAJA and _satur(p) >= SAT_ALTA
-           and _dist(_tono(p), ho) <= BUSQUEDA]
+    cand = [p for p in px
+            if _croma(p) > RAMPA_BAJA and _satur(p) >= SAT_PISO
+            and _dist(_tono(p), ho) <= BUSQUEDA]
+    if not cand:
+        return None
+    # El acento es lo MAS saturado que hay por aqui, sea cual sea su cifra.
+    ss = sorted(_satur(p) for p in cand)
+    techo = ss[int(len(ss) * 0.90)]
+    sel = [p for p in cand if _satur(p) >= max(SAT_PISO, techo * 0.85)]
     if not sel:
         return None
     cubos = {}
@@ -155,8 +173,10 @@ def localizar(im, color):
         cubos.setdefault(int(_tono(p) // 5) * 5, []).append(p)
     pico = max(cubos, key=lambda k: len(cubos[k]))
     cerca = [p for p in sel if _dist(_tono(p), pico + 2.5) <= VENTANA[color]]
+    sa = sum(_satur(p) for p in cerca) / float(len(cerca))
     return dict(centro=_media_circular([_tono(p) for p in cerca]),
-                satur=sum(_satur(p) for p in cerca) / float(len(cerca)),
+                satur=sa,
+                rampa=(max(SAT_PISO, sa * RAMPA_SAT_BAJA), sa * RAMPA_SAT_ALTA),
                 porcentaje=100.0 * len(cerca) / len(px),
                 rgb=tuple(int(round(sum(c[i] for c in cerca) / float(len(cerca))))
                           for i in range(3)))
@@ -171,8 +191,9 @@ def fijar(origen, destino, color):
     """Lleva el acento de la placa al hexadecimal institucional.
 
     Un pixel se corrige en la medida en que cumple las TRES condiciones:
-    croma sobre RAMPA_BAJA, saturacion sobre la rampa SAT_BAJA..SAT_ALTA, y
-    tono dentro de VENTANA[color] del acento medido. El peso es el menor de
+    croma sobre RAMPA_BAJA, saturacion sobre la rampa calculada para esta
+    placa a partir de la del propio acento, y tono dentro de VENTANA[color]
+    del acento medido. El peso es el menor de
     las dos rampas, para que ni el borde de la prenda ni su sombra propia
     queden con costura.
     """
@@ -188,6 +209,7 @@ def fijar(origen, destino, color):
                     aviso="no encuentro acento saturado cerca de %s" % color)
 
     centro = antes["centro"]
+    sb, sal = antes["rampa"]
     giro = (((ho * 360 - centro) + 180) % 360 - 180) / 360.0
     escala = so / max(antes["satur"], 0.01)
 
@@ -200,12 +222,12 @@ def fijar(origen, destino, color):
             if c <= RAMPA_BAJA:
                 continue
             h, sa, v = colorsys.rgb_to_hsv(r / 255.0, g / 255.0, b / 255.0)
-            if sa <= SAT_BAJA:
+            if sa <= sb:
                 continue
             if _dist(h * 360, centro) > vent:
                 continue
             k = min((c - RAMPA_BAJA) / float(RAMPA_ALTA - RAMPA_BAJA),
-                    (sa - SAT_BAJA) / float(SAT_ALTA - SAT_BAJA), 1.0)
+                    (sa - sb) / float(max(sal - sb, 0.01)), 1.0)
             h2 = (h + giro * k) % 1.0
             s2 = min(1.0, sa * (1.0 + (escala - 1.0) * k))
             nr, ng, nb = colorsys.hsv_to_rgb(h2, s2, v)
