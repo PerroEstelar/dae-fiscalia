@@ -132,7 +132,18 @@ CASOS = [
          nueva='P3C2 EL TALLER DEL SEGUNDO PISO - SIN PREGUNTAS',
          bin=['PRIORIDAD 03', 'CASO 02 - El taller del segundo piso'],
          carpeta=P3 + '2 - El taller del segundo piso',
-         musica_sub='08 MUSICA', musica_hasta='outro', marca2=None),
+         musica_sub='08 MUSICA', musica_hasta='outro', marca2=None,
+         # Revision de Sebastian del 20 de octubre. La linea nueva ya no
+         # tiene el mismo numero de clips que la vieja, y eso es correcto:
+         #   V1 +1  r02 se parte en r02a fachada y r02b Saul en su oficina
+         #   V2 +2  Sebastian parte r19_idle en 2 y r23_idle en 3 (+3), y
+         #          sale r24_idle_mensajes, el clip del telefono con dedos
+         #          que estaba fallado (-1)
+         #   V3 +1  lt05_elisa pasa de V7 a V3, retimado a 3587
+         #   V4 +1  el parche de Sebastian sobre la palabra ELISA horneada
+         #          en r18_idle (96x54 px en 609..705, 235..289)
+         #   V7 -1  el mismo lt05_elisa que se fue a V3
+         revisiones={'V1': 1, 'V2': 2, 'V3': 1, 'V4': 1, 'V7': -1}),
 ]
 
 PREGUNTAS = ('_p1a_', '_p1b_', '_p2_')
@@ -209,15 +220,21 @@ def leer(tl):
             d[nom].append(tl.GetTrackName(tipo, k))
             it = []
             for x in (tl.GetItemListInTrack(tipo, k) or []):
+                # Un generador de Resolve -un Solid Color, por ejemplo- no
+                # tiene medio en el pool, y eso NO es un error: el parche de
+                # Elisa que Sebastian puso en V4 del Caso 2 es exactamente
+                # eso. El lector lo lee como cualquier otro clip. Lo unico
+                # que no se puede hacer con el es recolocarlo con
+                # AppendToTimeline, y de eso se queja `montar` cuando le
+                # toca mover uno, que es donde el fallo significa algo.
                 mpi = x.GetMediaPoolItem()
-                if mpi is None:
-                    raise RuntimeError('clip sin medio en %s%d: %s'
-                                       % (clave.upper(), k, x.GetName()))
                 it.append({'mpi': mpi, 'nom': x.GetName(),
+                           'generador': mpi is None,
                            'ini': int(x.GetStart()) - t0,
                            'fin': int(x.GetEnd()) - t0,
-                           'off': int(x.GetLeftOffset()),
-                           'dur': int(x.GetDuration())})
+                           'off': int(x.GetLeftOffset() or 0),
+                           'dur': int(x.GetDuration() or
+                                      (int(x.GetEnd()) - int(x.GetStart())))})
             d[clave][k] = it
     return d
 
@@ -269,6 +286,15 @@ def planta(d, c):
     if p['marca2'] < p['marca1'] + N_MARCA:
         raise RuntimeError('las dos marcas se tocan')
     return p
+
+
+def _mover(x, pista):
+    """El medio con el que se recoloca un clip, o un fallo que se entiende."""
+    if x['mpi'] is None:
+        raise RuntimeError(
+            'no puedo recolocar un generador sin medio en %s: %s. '
+            'Hay que rehacerlo a mano en la linea nueva.' % (pista, x['nom']))
+    return x['mpi']
 
 
 def nueva_pos(x, p, pista_v):
@@ -333,7 +359,7 @@ def montar(pr, mp, cods):
                 caidos.append(('V1', x['nom']))
                 continue
             rec, off, dur = n
-            lote.append({'mediaPoolItem': x['mpi'], 'startFrame': off,
+            lote.append({'mediaPoolItem': _mover(x, 'V1'), 'startFrame': off,
                          'endFrame': off + dur, 'trackIndex': 1,
                          'recordFrame': T0 + rec})
         lote.append({'mediaPoolItem': IT['%s_respiro_v48.mp4' % c['cod']],
@@ -363,7 +389,7 @@ def montar(pr, mp, cods):
                     caidos.append(('V%d' % k, x['nom']))
                     continue
                 rec, off, dur = n
-                lote.append({'mediaPoolItem': x['mpi'], 'startFrame': off,
+                lote.append({'mediaPoolItem': _mover(x, 'V%d' % k), 'startFrame': off,
                              'endFrame': off + dur, 'trackIndex': k,
                              'recordFrame': T0 + rec})
             if lote:
@@ -391,7 +417,7 @@ def montar(pr, mp, cods):
                     caidos.append(('A%d' % k, x['nom']))
                     continue
                 rec, off, dur = n
-                lote.append({'mediaPoolItem': x['mpi'], 'startFrame': off,
+                lote.append({'mediaPoolItem': _mover(x, 'A%d' % k), 'startFrame': off,
                              'endFrame': off + dur, 'trackIndex': k,
                              'mediaType': 2, 'recordFrame': T0 + rec})
             if lote:
@@ -517,22 +543,40 @@ def chequeo(pr, mp, cods):
 
         # 7 no se perdio ni un clip que debia quedarse
         for clave in ('v', 'a'):
-            for k, its in vi[clave].items():
+            # Una pista puede existir solo en la linea nueva -V4 APOYO del
+            # Caso 2 nacio con el parche de Elisa-, asi que se recorren las
+            # dos y la que falta cuenta cero.
+            for k in sorted(set(vi[clave]) | set(n[clave])):
+                its = vi[clave].get(k, [])
                 if clave == 'a' and k == 1:
                     continue
-                nom_pista = (vi['nombres_v'] if clave == 'v'
-                             else vi['nombres_a'])[k - 1]
+                nombres = (vi['nombres_v'] if clave == 'v'
+                           else vi['nombres_a'])
+                if k > len(nombres):
+                    nombres = (n['nombres_v'] if clave == 'v'
+                               else n['nombres_a'])
+                nom_pista = nombres[k - 1]
                 if nom_pista in ('MARCA DE AGUA', 'MUSICA'):
                     continue
                 deben = len([x for x in its if not _es_preguntas(x['nom'])])
                 tiene = len([x for x in n[clave].get(k, [])
                              if 'respiro' not in x['nom']])
-                if deben != tiene:
-                    fallos.append('%s%d tenia %d clips utiles y quedaron %d'
-                                  % (clave.upper(), k, deben, tiene))
-        print('7) conteo de clips por pista: %s'
+                # Una linea ya entregada se sigue editando: una revision
+                # anade, quita o parte clips a proposito. Esos cambios se
+                # declaran en `revisiones` del caso -con su motivo escrito
+                # al lado- y el conteo los da por buenos. Lo que el punto 7
+                # sigue cazando es el clip que se pierde sin que nadie lo
+                # haya decidido, que es para lo que se escribio.
+                esp = deben + c.get('revisiones', {}).get(
+                    '%s%d' % (clave.upper(), k), 0)
+                if esp != tiene:
+                    fallos.append('%s%d esperaba %d clips utiles y quedaron %d'
+                                  % (clave.upper(), k, esp, tiene))
+        rev = c.get('revisiones', {})
+        print('7) conteo de clips por pista: %s%s'
               % ('OK' if not [f for f in fallos if 'clips utiles' in f]
-                 else 'revisar'))
+                 else 'revisar',
+                 '  (revisiones declaradas: %s)' % rev if rev else ''))
 
         if fallos:
             malos += 1
