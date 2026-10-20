@@ -43,6 +43,7 @@ OUT = "/mnt/user-data/outputs/ranuras_p3c2"
 FONDO = C.AZUL_NOCHE
 FIGURA = (206, 209, 214)
 AMARILLO = (252, 181, 0)
+CANAL_NUM = 16          # aire entre el numero y el texto del item
 BLANCO = (255, 255, 255)
 
 
@@ -191,7 +192,15 @@ def cinco_decisiones(n=215, salida=None):
             y = Y0 + i * DY + int(16 * (1 - t))
             d.rectangle([C.BAR_X, y + 6, C.BAR_X + 10, y + 56],
                         fill=AMARILLO + (int(255 * t),))
-            d.text((C.TEXT_X - 64, y + 16), str(i + 1), font=f_no,
+            # El numero va en la canal entre el filete y el texto, alineado a
+            # la derecha. En la primera version se dibujaba en TEXT_X - 64 =
+            # 185, y el filete llega hasta 186: el filete se comia el trazo
+            # izquierdo del digito, y siendo los dos amarillos el numero se
+            # leia pegado al filete. Alinear a la derecha ademas pone los
+            # cinco digitos en columna, que es lo correcto en una lista.
+            num = str(i + 1)
+            an = d.textlength(num, font=f_no)
+            d.text((C.TEXT_X - CANAL_NUM - an, y + 11), num, font=f_no,
                    fill=AMARILLO + (int(220 * t),))
             d.text((C.TEXT_X, y), it, font=f_it, fill=BLANCO + (int(255 * t),))
 
