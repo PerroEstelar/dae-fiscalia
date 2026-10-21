@@ -276,3 +276,57 @@ Y una métrica que me volvió a corregir: el bloque oscuro de `r09` me pareció
 manchado. Medido, el gradiente local de ese cuarto es 1,72 de media con un
 rango de 35 a 64 sobre 255 — es un degradado suave, no un patrón. Quinta vez
 en este proyecto.
+
+### Las 36, cerradas. Lo que la medida nueva encontró y mi ojo no
+
+A mitad de camino añadí a la banda de aceptación una medida que **no tenía**:
+el **tinte global**. Medía blanco, negro, ruido, piel y acento — y no medía la
+regla que más le importa a esta serie, *«el entorno es enteramente en grises»*.
+
+Se vio cuando `r18` salió **entera en azul** —98,5 % de píxeles con tinte frío,
+saturación media 0,155— y mi banda la dio por buena. Añadida la medida y
+pasada sobre todo lo generado hasta entonces, aparecieron dos más que yo había
+aprobado a ojo:
+
+| placa | % con tinte frío | saturación media |
+|---|---|---|
+| `r18` dos casillas | **98,5** | 0,155 |
+| `r05` Iván junto a la van | **48,9** | 0,093 |
+| `r24` dos peticiones | 20,0 | 0,055 |
+| `r15` renglón sin fin | 15,9 | 0,049 |
+| `r03` recepción vacía | 10,5 | 0,041 |
+
+**La lección no es que el modelo tire a azul. Es que yo medía lo que me
+acordaba de medir.** Es el mismo fallo del Caso 3 en un sitio nuevo: una
+comprobación completa no es la que pasa, es la que puede fallar.
+
+**Lo que lo arregla, en el prompt:** decir *«cada superficie es un gris neutro
+con rojo, verde y azul iguales»* y *«no hay azul ni color de ninguna clase»*.
+Con esa frase, los doce planos siguientes salieron entre **0,0 y 0,1 %** de
+tinte y con saturación media de 0,003 a 0,020. `r18` pasó de 98,5 % a 0,0 %.
+`r05`, regenerada, de 48,9 % a 1,2 % —y de paso su tono de piel entró en banda,
+de 40,0 a 18,5—.
+
+**Y lo que NO se repite:** por debajo del 20 % de tinte y 0,055 de saturación
+media, al grade. Para eso existe `grade_placas`, con su objetivo de croma. Se
+repitieron las dos que estaban fuera del alcance del grade, no las cinco.
+
+### La última repetición fue por una rima, no por una métrica
+
+`r39` salió con las seis carpetas **de pie**, como archivadores en un estante,
+vistas desde abajo. Pasaba todas las métricas. Pero el plano existe para rimar
+con `r01` —la misma mesa, la misma cámara cenital, las mismas seis carpetas,
+revueltas al abrir y separadas al cerrar— y con la cámara cambiada la rima no
+existe. Se repitió nombrando la geometría otra vez: *«acostadas, no de pie,
+nunca en un estante, nunca de canto»*.
+
+**Siete repeticiones en total sobre 43 generaciones.** Cuatro por geometría,
+dos por tinte, una por rima. Ninguna por piel: eso se corrige en el grade.
+
+### Un error mío de filtro que vale anotar
+
+Al copiar las placas a `01 PLANOS` filtré con `'hoja' not in f` para excluir
+las hojas de contacto, y el filtro se comió **`r27_sello_sobre_la_HOJA`** y
+**`r35_tres_HOJAs_aplanadas`**: 34 de 36 y el conteo cuadraba mal sin decir por
+qué. Se filtra por prefijo (`startswith('P3C4_r')`), nunca por una subcadena
+que puede aparecer dentro de un nombre descriptivo.
