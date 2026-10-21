@@ -74,6 +74,30 @@ SATUR_PIEL = 0.19
 VALOR_PIEL = 0.45
 GANANCIA_MAX = 1.5
 
+# EL TOPE NO PUEDE SER UNO SOLO PARA TODAS LAS PLACAS, 21 OCT 2026
+#     El tope de 1,5 se puso contra un plano en penumbra -Marta de lejos, en
+#     0,18- donde una ganancia de 2,5 dejaba la cara brillando sobre una
+#     habitacion oscura. Esa razon sigue siendo buena ahi y mala en otro
+#     sitio: en el Caso 4 hay siete planos de una MANO SOBRE UN ESCRITORIO
+#     CLARO, y ahi el tope deja la piel cuatro veces mas oscura que la mesa
+#     que la sostiene. Medido en el set ya graduado, piel contra el p75 del
+#     cuadro:
+#
+#         en banda      r13 1,17 · r22 1,07 · r25 0,93
+#         fuera         r01 0,23 · r15 0,24 · r37 0,31 · r07 0,31
+#
+#     O sea: donde la piel quedo bien, esta a la altura del cuarto mas claro
+#     del cuadro; donde quedo mal, esta muy por debajo. Eso es lo que hay que
+#     medir, no un numero fijo.
+#
+#     El tope pasa a ser relativo al propio cuadro: la piel puede subir hasta
+#     el p75 de la imagen y nunca mas de TECHO_ABSOLUTO. En un plano en
+#     penumbra el p75 es bajo y el tope vuelve a ser el de antes; en una mano
+#     sobre papel blanco deja subir lo que hace falta. El motivo original del
+#     tope -que la cara no brille sobre su entorno- queda intacto, porque el
+#     techo ES el entorno.
+TECHO_ABSOLUTO = 2.5
+
 SAT_MIN, SAT_MAX = 0.10, 0.42     # 0,42 queda bajo el piso del acento (0,45)
 RAMPA = 0.06                      # suavizado en los dos extremos de la banda
 VENTANA = 45.0                    # grados alrededor de la piel MEDIDA
@@ -125,12 +149,12 @@ def _peso(s):
     return min(1.0, (s - SAT_MIN) / RAMPA, (SAT_MAX - s) / RAMPA)
 
 
-def _corrector(antes):
+def _corrector(antes, techo=GANANCIA_MAX):
     """La funcion que lleva un pixel de piel al objetivo. Pura, sin estado."""
     centro = antes["tono"]
     giro = (((TONO_PIEL - centro) + 180) % 360 - 180)
     escala = SATUR_PIEL / max(antes["satur"], 0.01)
-    ganancia = min(GANANCIA_MAX, VALOR_PIEL / max(antes["valor"], 0.01))
+    ganancia = min(techo, VALOR_PIEL / max(antes["valor"], 0.01))
 
     def f(r, g, b):
         mx = max(r, g, b)
@@ -151,13 +175,21 @@ def _corrector(antes):
     return f, giro, escala, ganancia
 
 
+def techo_de(im, antes):
+    """Hasta donde puede subir la piel EN ESTA placa: su propio p75."""
+    ch = im.convert("L").resize((640, 360))
+    px = sorted(ch.getdata())
+    p75 = px[int(len(px) * 0.75)] / 255.0
+    return max(GANANCIA_MAX, min(TECHO_ABSOLUTO, p75 / max(antes["valor"], 0.01)))
+
+
 def fijar(origen, destino, cube=None, tam=33):
     im = Image.open(origen).convert("RGB")
     antes = medir(im)
     if antes is None:
         im.save(destino)
         return dict(placa=os.path.basename(origen), aviso="no encuentro piel")
-    f, giro, escala, ganancia = _corrector(antes)
+    f, giro, escala, ganancia = _corrector(antes, techo_de(im, antes))
 
     px = im.load()
     an, al = im.size
