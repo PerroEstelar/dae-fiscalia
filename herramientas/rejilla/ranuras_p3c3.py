@@ -13,6 +13,31 @@ LAS TRES PROPUESTAS TIENEN RANURA PROPIA Y LARGA
     peticiones y se lleva 243 cuadros; el precedente del Caso 2 era 213
     cuadros para una propuesta de una sola frase.
 
+LA COLA SE REHIZO EL 21 DE OCTUBRE, MEDIDA CONTRA LA VOZ
+    La primera version de esta tabla se armo leyendo los NOMBRES de los
+    archivos de placa, no lo que las placas muestran. Costo caro:
+    `cama_sello_sin_fecha` no es un sello, son once capturas de pantalla sobre
+    un escritorio. De ahi salieron doce ranuras mal calzadas, y ocho seguidas
+    en la cola -r23 a r30- corridas exactamente una casilla.
+
+    El origen del corrimiento fue `kf13_marta_lejos`: tenia ranura propia
+    dentro de b10, pero b10 solo da audio para una y la grafica de antes y
+    despues se la lleva entera. Salio de la linea.
+
+    El metodo que hay que repetir en los casos 4 y 5, ANTES de montar:
+    `silencedetect` sobre el master de narracion, casar los archivos de
+    bloque contra el master por duracion con programacion dinamica, y cruzar
+    cada ranura con la frase que se oye encima. Esta en cruce.py.
+
+CUIDADO CON AppendToTimeline Y EL MISMO MEDIO DOS VECES
+    Resolve coloca el intro en 0 y el outro en 6568 sin problema cuando los
+    dos van en el MISMO lote. Si el intro ya esta puesto y se intenta colocar
+    el outro despues, en otra llamada, AppendToTimeline devuelve [None] y no
+    coloca nada: no acepta el mismo media pool item una segunda vez en la
+    misma pista. Por eso existe ahora
+    `00 COMUNES/INTRO/FGN_outro_v7_182.mp4`, que son los 182 cuadros del
+    intro como medio aparte. Para montajes incrementales, usar ese.
+
 QUE VA EN CADA PISTA
     V1 placa o cama · V2 el clip de movimiento, que cubre la ranura entera y
     se puede apagar · V3 cartón teñido o de narración · V7 lower third.
@@ -23,7 +48,7 @@ import sys
 # puntos medios de los silencios medidos
 CORTES = [61, 202, 351, 445, 613, 916, 1094, 1207, 1261, 1439, 1608, 1826,
           2049, 2115, 2306, 2430, 2704, 2932, 3142, 3375, 3476, 3586, 3646,
-          3843, 3947, 4063, 4213, 4478, 4648, 4830, 5004, 5126, 5209, 5283,
+          3843, 3947, 4063, 4213, 4478, 4649, 4829, 5004, 5126, 5210, 5283,
           5393, 5594, 5770, 5863, 5947, 5992, 6090]
 
 # los cortes de las tres ranuras de propuesta no van al medio del silencio sino
@@ -40,10 +65,10 @@ RANURAS = [
     (613,  'graf_la_ruta',              'grafica', 'b2_los_cuatro',     None),
     (916,  'kf02_los_cuatro_espaldas',  'placa',   'b2_los_cuatro',     None),
     (1094, 'kf03_luis_computador',      'placa',   'b2_los_cuatro',     'lt02_luis'),
-    (1261, 'kf04_marta_giros',          'placa',   'b2_los_cuatro',     'lt03_marta'),
+    (1261, 'kf04_marta_giros',          'placa',   'b3_capturas',       'lt03_marta'),
     (1439, 'cama_sello_sin_fecha',      'cama',    'b3_capturas',       'ae02_no_identificada'),
     (1676, 'cama_mesa_equipo',          'cama',    'b4_propuesta_uno',  'prop1_tres_peticiones'),
-    (1826, 'kf05_omar_volante',         'placa',   'b5_teresa',         'lt04_omar'),
+    (1826, 'kf05_omar_volante',         'placa',   'b5_teresa',         None),
     (2049, 'kf06_teresa_cocina',        'placa',   'b5_teresa',         'lt05_teresa'),
     (2306, 'cama_tienda_esquina',       'cama',    'b5_teresa',         'ae03_podian_salir'),
     (2475, 'cama_informe_esfero',       'cama',    'b6_sin_esclarecer', 'prop2_agregar_trata'),
@@ -57,14 +82,13 @@ RANURAS = [
     (3947, 'kf12_viajero_documento',    'placa',   'b9_migracion',      None),
     (4120, 'cama_sala_reunion',         'cama',    'b9_migracion',      'prop3_ignorar'),
     (4478, 'graf_antes_y_despues',      'grafica', 'b10_evaluacion',    None),
-    (4648, 'kf13_marta_lejos',          'placa',   'b10_evaluacion',    None),
-    (4830, 'kf14_orden_servicio',       'placa',   'b11_omar',          None),
-    (5004, 'cama_telefono_omar',        'cama',    'b11_omar',          'ae06_no_atribuido'),
-    (5209, 'kf15_conversacion_pantalla','placa',   'b12_conversacion',  None),
-    (5393, 'cama_pantalla',             'cama',    'b12_conversacion',  'ae07_si_describen'),
-    (5594, 'kf16_cuaderno_teresa',      'placa',   'b13_contabilidad',  'ae08_sin_cierre'),
+    (4649, 'kf14_orden_servicio',       'placa',   'b11_omar',          None),
+    (4829, 'cama_telefono_omar',        'cama',    'b11_omar',          'ae06_no_atribuido'),
+    (5004, 'kf15_conversacion_pantalla','placa',   'b12_conversacion',  'cap01_viernes, cap02_saldo'),
+    (5126, 'cama_pantalla',             'cama',    'b12_conversacion',  'ae07_si_describen'),
+    (5393, 'kf16_cuaderno_teresa',      'placa',   'b13_contabilidad',  'ae08_sin_cierre'),
     (5770, 'graf_los_recursos',         'grafica', 'b14_recursos',      None),
-    (5947, 'kf17_dos_viajeros_se_van',  'placa',   'b14_recursos',      None),
+    (5947, 'kf17_dos_viajeros_se_van',  'placa',   'b15_cierre',        None),
     (6100, 'cama_carretera_golfo',      'cama',    'b15_cierre',        'ae09_sin_inercia'),
 ]
 
