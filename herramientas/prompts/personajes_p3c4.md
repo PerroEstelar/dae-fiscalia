@@ -243,3 +243,36 @@ brazalete amarillo sobre una persona investigada, en un video de formación
 judicial, tiene una lectura que no queremos. El acento de Lina pasa a
 **cinturón en la cintura**: sigue en el torso, lejos de la cara, y no se
 confunde con el de Nora ni con el de Iván. El descarte queda archivado.
+
+### Confirmado en los lotes 2 y 3: el prompt NO fija la saturación de la piel
+
+Cambiar la cláusula de «no higher than 0.20» a «around 0.20, between 0.17 and
+0.24» movió la saturación de 0,11 a **0,10–0,15**, es decir casi nada, y sigue
+por debajo de la banda aprobada en **todas** las placas con mano o con figura.
+Doce medidas lo dicen igual.
+
+**Conclusión, y ahorra intentos en los casos 5 y 6: la saturación de la piel no
+se pide, se corrige.** El prompt sirve para el TONO —que sí responde— y para
+que no salga marrón. El nivel lo pone `piel.py`, con ganancia, después. No
+vale la pena gastar créditos repitiendo una placa por ese número.
+
+### Lo que sí hay que mirar a ojo, porque ninguna métrica lo ve
+
+De las dieciocho primeras, **cuatro se repitieron y ninguna por color**:
+
+| placa | qué falló | qué lo arregló |
+|---|---|---|
+| `r04` tres fuentes | los tres objetos salieron agrupados; «bien separados» no basta | dividir el cuadro en **tercios nombrados** y poner uno en cada uno |
+| `r07` seis meses | el modelo dibujó una tabla, y el esfero tocaba el papel | quitar la tabla —«hoja lisa, sin cuadrícula»— y pedir el hueco de aire **con su sombra aparte**, para que la separación sea visible |
+| `r09` fachada vecina | plano frontal y plano: no se leía «visto desde la otra acera» | un bloque oscuro desenfocado en el **cuarto izquierdo** —la esquina contra la que uno está parado— y la calzada en perspectiva |
+| `r15` renglón sin fin | salieron tres barras sueltas de distinto largo, no un renglón que sigue | describirlo como **una sola cinta en tres tramos**: llena la línea uno, llena la dos, y se corta a mitad de la tres |
+
+El patrón de las cuatro es el mismo: **una relación espacial descrita en
+abstracto no se cumple; descrita como geometría del cuadro, sí.** «Bien
+separados» falla, «uno en cada tercio» funciona. «Sin tocar» falla, «un hueco
+de aire con su propia sombra» funciona.
+
+Y una métrica que me volvió a corregir: el bloque oscuro de `r09` me pareció
+manchado. Medido, el gradiente local de ese cuarto es 1,72 de media con un
+rango de 35 a 64 sobre 255 — es un degradado suave, no un patrón. Quinta vez
+en este proyecto.
