@@ -190,3 +190,56 @@ figura.
 placa salir marrón igual. *La planitud y la piel se ganan en el prompt de la
 PLACA, no en el de la hoja.* La cláusula con número va en las dieciséis placas
 con figura, no sólo en las hojas.
+
+---
+
+## 8 · Medido sobre las primeras ocho imágenes (21 oct, 900 créditos)
+
+Dos hojas, una repetición de hoja y las seis placas con personaje. Todo
+medido antes de seguir con las otras treinta.
+
+| placa | tono | satur | valor | % blanco | % negro | satur del acento |
+|---|---|---|---|---|---|---|
+| `r02` Nora en el umbral | 18,7 | 0,106 | 0,573 | 0,00 | 0,00 | 0,62 |
+| `r05` Iván junto a la van | **40,0** | 0,132 | 0,659 | 0,00 | 0,00 | 0,49 |
+| `r13` el recepcionista | **7,8** | 0,178 | 0,522 | 0,00 | 0,00 | 0,52 |
+| `r19` Nora escuchando | 17,1 | 0,114 | 0,541 | 0,00 | 0,00 | 0,97 |
+| `r22` Iván sentado | 16,7 | 0,119 | 0,502 | 0,00 | 0,00 | 0,51 |
+| `r25` Lina de pie | 18,7 | 0,113 | 0,565 | 0,00 | 0,00 | 0,53 |
+
+**Lo que funcionó, y hay que dejarlo dicho porque costó aprenderlo:**
+
+- **Cero por ciento de blanco y cero de negro en las seis.** La cláusula de
+  tres zonas tonales cumple. A ojo me pareció que el cielo de `r05` estaba
+  quemado; medido, no hay un solo píxel por encima de 0,93. Es la cuarta vez
+  en este proyecto que medir corrige al ojo.
+- **El acento pasa el piso de 0,45 en las seis** (0,49 a 0,97). La cláusula
+  «ese es el único color saturado de toda la imagen» resuelve por
+  construcción lo que en el Caso 3 costó una repetición, porque
+  `grade_placas` tiene piso 0,45 y `forzar` no mueve el tope.
+
+**Lo que no, y la corrección:**
+
+- **La cláusula con número la lee el modelo como OBJETIVO, no como techo.**
+  Pide «saturation no higher than 0,20» y entrega 0,11. La piel de estas seis
+  está por **debajo** de la banda aprobada (0,16–0,28): no sale marrón, sale
+  más gris de la cuenta. Es el error opuesto al del Caso 3 y es el lado bueno
+  en el que equivocarse, porque `piel.py` sube con ganancia y no hay que
+  volver a generar nada.
+
+  **Para el Caso 5 la cláusula se escribe «saturation around 0.20», no «no
+  higher than 0.20».**
+
+- **El tono se abre 32 grados entre la placa más baja y la más alta** —`r13`
+  en 7,8 y `r05` en 40,0—. Las dos están fuera de la banda por lados
+  contrarios, y 32 grados de diferencia hace que dos personajes no parezcan
+  iluminados por el mismo mundo. `piel.py` normaliza el tono además de la
+  saturación: se corrige en el grade, no generando otra vez.
+
+**Y una repetición, de hoja, que sí costó cien créditos.** La primera hoja 2
+puso el acento de Lina como **brazalete en el brazo**. Era mi especificación
+—«cuff band on the left sleeve»— y el modelo la leyó razonablemente. Un
+brazalete amarillo sobre una persona investigada, en un video de formación
+judicial, tiene una lectura que no queremos. El acento de Lina pasa a
+**cinturón en la cintura**: sigue en el torso, lejos de la cara, y no se
+confunde con el de Nora ni con el de Iván. El descarte queda archivado.
