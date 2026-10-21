@@ -38,6 +38,34 @@ CUIDADO CON AppendToTimeline Y EL MISMO MEDIO DOS VECES
     `00 COMUNES/INTRO/FGN_outro_v7_182.mp4`, que son los 182 cuadros del
     intro como medio aparte. Para montajes incrementales, usar ese.
 
+EL REPERTORIO SE REHIZO EL 21 DE OCTUBRE
+    Sebastian: *"muestra mas a los personajes a media accion, no puros cuadros
+    vacios"*. Tenia razon y el numero lo decia: de 28 placas, 21 eran entorno
+    vacio. Me habia ido a la convencion de "cama institucional" y la habia
+    estirado a casi toda la pieza, en vez de aplicar el metodo de prompts hero
+    que esta escrito en CLAUDE.md -la camara es el argumento, el gesto unico
+    antes que la cara, la emocion va en las manos, media accion y nunca el
+    pico-.
+
+    Entran dieciseis placas nuevas. Donde el caso no permite caras -el equipo,
+    los funcionarios- la accion va en las MANOS: la mesa en cenital con ocho
+    manos y una hoja a media deslizada, el dedo detenido a mitad de un renglon,
+    la mano que acaba de soltar un documento que nadie recoge. Eso respeta la
+    biblia SRPA -"sin personal identificable"- y es ademas el plano canonico
+    del metodo.
+
+LO QUE SALE DE LA LINEA, Y POR QUE
+    kf13_marta_lejos   el guion no le da frase propia; su nombre y su dato
+                       entran en el carton ae00, sobre el plano del grupo.
+    kf14_orden_servicio  Sebastian marco sus filetes casi negros; la frase de
+                       Omar se la queda su primer plano al volante.
+    kf04_marta_giros, kf03_luis_computador, kf05_omar_volante, kf06_teresa_cocina,
+    kf08_nidia_local, kf12_viajero_documento, cama_cajon, cama_pantalla,
+    kf07_certificado_empleo, kf09_pasaportes_recibos, kf10_puesto_control,
+    kf11_informe_dos_meses, cama_mesa_equipo, cama_sala_reunion,
+    cama_tienda_esquina, kf01_terminal_vehiculo
+                       reemplazadas por su version con gente en accion.
+
 QUE VA EN CADA PISTA
     V1 placa o cama · V2 el clip de movimiento, que cubre la ranura entera y
     se puede apagar · V3 cartón teñido o de narración · V7 lower third.
@@ -61,32 +89,32 @@ N_NARRACION = 6100
 #   clase: placa | cama | grafica
 RANURAS = [
     (202,  'cama_calle_medellin',       'cama',    'b1_apertura',       'ae01_progresiva'),
-    (445,  'kf01_terminal_vehiculo',    'placa',   'b1_apertura',       'lt01_fecha_lugar'),
+    (445,  'r02_terminal_viajeros',     'placa',   'b1_apertura',       'lt01_fecha_lugar'),
     (613,  'graf_la_ruta',              'grafica', 'b2_los_cuatro',     None),
-    (916,  'kf02_los_cuatro_espaldas',  'placa',   'b2_los_cuatro',     None),
-    (1094, 'kf03_luis_computador',      'placa',   'b2_los_cuatro',     'lt02_luis'),
-    (1261, 'kf04_marta_giros',          'placa',   'b3_capturas',       'lt03_marta'),
-    (1439, 'cama_sello_sin_fecha',      'cama',    'b3_capturas',       'ae02_no_identificada'),
-    (1676, 'cama_mesa_equipo',          'cama',    'b4_propuesta_uno',  'prop1_tres_peticiones'),
-    (1826, 'kf05_omar_volante',         'placa',   'b5_teresa',         None),
-    (2049, 'kf06_teresa_cocina',        'placa',   'b5_teresa',         'lt05_teresa'),
-    (2306, 'cama_tienda_esquina',       'cama',    'b5_teresa',         'ae03_podian_salir'),
+    (916,  'kf02_los_cuatro_espaldas',  'placa',   'b2_los_cuatro',     'ae00_los_cuatro'),
+    (1094, 'cama_formulario',           'cama',    'b2_los_cuatro',     'ae02_no_identificada'),
+    (1261, 'cama_sello_sin_fecha',      'cama',    'b3_capturas',       None),
+    (1439, 'r07_luis_cuenta',           'placa',   'b3_capturas',       'lt02_luis'),
+    (1676, 'r08_mesa_manos',            'cama',    'b4_propuesta_uno',  'prop1_tres_peticiones'),
+    (1826, 'r09_teresa_cocina',         'placa',   'b5_teresa',         'lt05_teresa'),
+    (2049, 'cama_pasillo',              'cama',    'b5_teresa',         None),
+    (2306, 'r11_tienda_esquina',        'placa',   'b5_teresa',         'ae03_podian_salir'),
     (2475, 'cama_informe_esfero',       'cama',    'b6_sin_esclarecer', 'prop2_agregar_trata'),
-    (2704, 'kf07_certificado_empleo',   'placa',   'b7_la_visa',        None),
+    (2704, 'r13_certificado_luz',       'cama',    'b7_la_visa',        None),
     (2932, 'cama_visado',               'cama',    'b7_la_visa',        'ae04_materialmente'),
-    (3142, 'kf08_nidia_local',          'placa',   'b8_nidia',          'lt06_nidia'),
-    (3375, 'kf09_pasaportes_recibos',   'placa',   'b8_nidia',          None),
-    (3476, 'cama_cajon',                'cama',    'b8_nidia',          'ae05_sin_relacion'),
-    (3646, 'kf10_puesto_control',       'placa',   'b9_migracion',      None),
-    (3843, 'kf11_informe_dos_meses',    'placa',   'b9_migracion',      None),
-    (3947, 'kf12_viajero_documento',    'placa',   'b9_migracion',      None),
-    (4120, 'cama_sala_reunion',         'cama',    'b9_migracion',      'prop3_ignorar'),
+    (3142, 'r15_nidia_mostrador',       'placa',   'b8_nidia',          'lt06_nidia'),
+    (3375, 'r16_pasaportes_cenital',    'cama',    'b8_nidia',          None),
+    (3476, 'r17_dos_carpetas',          'cama',    'b8_nidia',          'ae05_sin_relacion'),
+    (3646, 'r18_puesto_control',        'cama',    'b9_migracion',      'ae10_un_puesto'),
+    (3843, 'r19_informe_dedo',          'cama',    'b9_migracion',      'ae11_dos_meses'),
+    (3947, 'r20_documento_mostrador',   'cama',    'b9_migracion',      None),
+    (4120, 'r21_sala_alto',             'placa',   'b9_migracion',      'prop3_ignorar'),
     (4478, 'graf_antes_y_despues',      'grafica', 'b10_evaluacion',    None),
-    (4649, 'kf14_orden_servicio',       'placa',   'b11_omar',          None),
+    (4649, 'r23_omar_volante',          'placa',   'b11_omar',          'lt04_omar'),
     (4829, 'cama_telefono_omar',        'cama',    'b11_omar',          'ae06_no_atribuido'),
-    (5004, 'kf15_conversacion_pantalla','placa',   'b12_conversacion',  'cap01_viernes, cap02_saldo'),
-    (5126, 'cama_pantalla',             'cama',    'b12_conversacion',  'ae07_si_describen'),
-    (5393, 'kf16_cuaderno_teresa',      'placa',   'b13_contabilidad',  'ae08_sin_cierre'),
+    (5004, 'kf15_conversacion_pantalla','placa',   'b12_conversacion',  'cap01_viernes x2'),
+    (5126, 'r26_pantalla_mensajes',     'cama',    'b12_conversacion',  'ae07_si_describen'),
+    (5393, 'r27_cuaderno_bajo',         'cama',    'b13_contabilidad',  'ae08_sin_cierre'),
     (5770, 'graf_los_recursos',         'grafica', 'b14_recursos',      None),
     (5947, 'kf17_dos_viajeros_se_van',  'placa',   'b15_cierre',        None),
     (6100, 'cama_carretera_golfo',      'cama',    'b15_cierre',        'ae09_sin_inercia'),

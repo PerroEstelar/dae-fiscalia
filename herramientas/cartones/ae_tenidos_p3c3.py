@@ -2,6 +2,11 @@
 # -*- coding: utf-8 -*-
 """Los cartones del Caso 3 «Ruta del Golfo», teñidos sobre cama.
 
+HISTORICO: SUPERSEDIDO POR cartones_p3c3.py (21 de octubre de 2026).
+    El pigmento de estos cartones es el de la plantilla, no el azul
+    institucional medido del intro oficial. Correr este archivo vuelve a
+    escribir los .mov con el azul viejo. Queda como registro.
+
 TRES FAMILIAS EN UN SOLO ARCHIVO
     `ae`     nueve cartones de enunciado, uno por bisagra del caso
     `prop`   las tres propuestas equivocadas, LITERALES

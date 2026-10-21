@@ -96,8 +96,12 @@ def _texto(d, lineas, x, ys, f, desde, paso):
 
 
 def _cabecera(d, lineas, ys, bt, bb, f):
-    d.rectangle([C.BAR_X, bt, C.BAR_X + C.BAR_W - 1,
-                 bt + int((bb - bt) * _t(f, 0, 10))], fill=AMARILLO)
+    """Sin filete amarillo: el titulo entra solo.
+
+    Sebastian, 21 oct: el filete grande junto al titulo no dice nada y
+    ensucia. Los filetes pequenos de cada nombre si se quedan, porque esos
+    son la gramatica de acento de la serie y no decoracion.
+    """
     _texto(d, lineas, C.TEXT_X, ys, f, 2, 1)
 
 
@@ -218,13 +222,9 @@ def antes_y_despues(n=358, salida=None):
                     d.line([(XA, yy), (XA + int(an * t3), yy)],
                            fill=GRIS + (int(220 * t3),), width=3)
 
-        # la unica que no se tacha, dicha con palabras
-        t = _t(f, 262, 286)
-        if t > 0.004:
-            txt = "Tres se desarman. La de Teresa no."
-            an = d.textlength(txt, font=f_col)
-            d.text(((W - an) / 2, 1012 + int(10 * (1 - t))), txt, font=f_col,
-                   fill=BLANCO + (int(240 * t),))
+        # la linea de cierre al pie salio apretada y se quito (21 oct).
+        # La asimetria ya la dice la fila de Teresa, que es la unica sin
+        # tachar: no hace falta subrayarla con texto.
 
         p.stdin.write(im.tobytes())
     p.stdin.close()

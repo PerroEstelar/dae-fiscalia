@@ -1552,3 +1552,116 @@ Tres cosas que la hoja dejó claras al escribirla:
 El Caso 02 quedó con los dos juegos separados: la v2 en los subbins normales y
 los 41 medios de la v1 en `_v1 ARCHIVO`, con las dos líneas de tiempo juntas en
 la raíz del caso.
+
+## El grano de un clip generado no es un problema del modelo de vídeo (Caso 3, oct 2026)
+
+Sebastián marcó que los clips de movimiento del Caso 3 tenían «ruido y
+texturas muy raras», y lo atribuyó a Veo: *"¿por qué nos cambiamos de
+Kling?"*. Antes de cambiar de modelo había que medirlo, y medido dice otra
+cosa.
+
+El número es el **gradiente local horizontal medio** sobre el cuadro 0:
+
+| conjunto                      | ruido | dureza de borde |
+|-------------------------------|-------|-----------------|
+| placas quietas del Caso 3      | 1,33  | 7               |
+| clips Veo del Caso 3           | 3,81  | 32              |
+| clips Kling del Caso 1         | 7,45  | —               |
+| clips Veo del Caso 2           | 9,85  | —               |
+
+O sea: los clips de este caso son **los menos ruidosos de toda la serie**.
+Volver a Kling habría empeorado exactamente lo que se quería arreglar. El
+repo tiene 25 menciones de Kling y ninguna de Veo, y eso sesgaba la lectura.
+
+Y la dureza de 32 contra 7 **tampoco** era el modelo añadiendo estructura. A
+1:1 las formas y los bordes son idénticos; lo que cambia es un moteado fino y
+parejo sobre todas las superficies planas. Era grano, y el grano inflaba la
+propia métrica de dureza. Primero lo leí al revés y lo dije así; queda
+escrito para no repetirlo.
+
+**La herramienta: `herramientas/video/aplanar.py`.** `hqdn3d`, hasta
+50:40:60:50, baja el ruido de 9,07 a 7,24 y no alcanza. `nlmeans=s=N:p=7:r=15`
+sí llega. Pero **la fuerza no se elige a ojo**: con s=7 fijo el r11 queda en
+1,09 contra 1,58 de su placa, o sea *más liso* que el original, que también
+está mal. `aplanar.py` prueba s de 3 a 9 sobre el cuadro 0 y se queda con el
+que minimiza la distancia relativa a las dos métricas de SU placa. En este
+caso salieron valores entre 5,0 y 7,0, distintos por clip.
+
+**La causa del color, aparte:** los clips se habían generado ANTES de que
+existiera `piel.py`, así que los personajes en movimiento conservaban la piel
+marrón mientras las placas quietas ya estaban corregidas. Medido: clips entre
+−11° y +11° de tono, placas entre 24° y 26°. Luis estaba a 36° de su propia
+placa. No era el modelo: era el orden en que corrí las herramientas.
+
+## El azul institucional sale del intro oficial, medido (oct 2026)
+
+Sebastián: *"los ae tienen un color de fondo que no es el azul institucional y
+un ligero gradiente, eso está muy lejos del branding de la Fiscalía"*. Dos
+cosas distintas, y las dos ciertas.
+
+**El pigmento.** Medido sobre `FGN_intro_version7.mp4` —el intro oficial, que
+la pieza ya lleva dentro y es por tanto la referencia de marca disponible sin
+pedirle nada a nadie—: **#004890** institucional y **#002048** noche. La
+plantilla de la casa traía **#03398B**, heredado del Caso A. Está cerca y por
+eso aguantó tres cursos, pero no es.
+
+**El gradiente.** No lo dibuja el cartón: es la placa transparentándose. Con
+la tinta al 46 % el cuadro compuesto va de (94,119,158) arriba a (18,43,81)
+abajo, 76 niveles. Al 88 % bajaría a 17, pero rompería el emparejado con los
+Casos 1 y 2 ya aprobados. Se dejó en 46 %.
+
+Regla: **cuando haya duda de marca, medir el intro oficial**, que es el único
+activo de la Fiscalía que está en el proyecto. Y cambiar el pigmento SOLO en
+el caso que se está rehaciendo —en `cartones_p3c3.py`, no en
+`cartones_ta.py`—, porque tocar la plantilla repinta cursos aprobados.
+
+## Los nombres de archivo de placa mienten (Caso 3, oct 2026)
+
+La primera rejilla del Caso 3 se armó leyendo los NOMBRES de los archivos de
+placa en vez de abrir las imágenes. `cama_sello_sin_fecha` no es un sello: son
+once capturas de pantalla impresas sobre un escritorio. De ahí salieron doce
+ranuras mal calzadas y ocho seguidas corridas una casilla entera.
+
+**Antes de montar, siempre:** `silencedetect` sobre el máster de narración,
+casar los mp3 de bloque contra el máster por duración con programación
+dinámica —no con el método ávido, que se desincroniza en cuanto un bloque
+abarca dos segmentos—, y cruzar cada ranura con la frase que se oye encima.
+Está en `herramientas/rejilla/cruce.py`. Sin eso no se monta.
+
+Corolario para Magnific: el `thumbnailUrl` es un recorte **cuadrado de
+400×400** de un cuadro 16:9. Emparejar contra él dio tres parejas falsas. Se
+empareja contra el `previewUrl` a 1024, y contra el `_crudo_*.png`, nunca
+contra la placa ya graduada.
+
+## Media acción, y las manos cuando no puede haber caras (Caso 3, oct 2026)
+
+Sebastián, sobre el primer montaje: *"muestra más a los personajes a media
+acción a lo largo de TODO el video, no puros cuadros vacíos… ¿qué pasó con los
+prompts elaborados de media acción, fotográficos, cinematográficos, planos
+sobre el hombro, cenitales, contrapicados?"*.
+
+El número le daba la razón: de 28 placas, **21 eran entorno vacío**. Había
+estirado la convención de «cama institucional» a casi toda la pieza en vez de
+aplicar el método de prompts hero que está escrito más arriba en este mismo
+archivo. Entraron dieciséis placas nuevas.
+
+Donde el caso no permite caras —el equipo, los funcionarios, por la regla SRPA
+de «sin personal identificable»— la acción va en las **manos**: la mesa en
+cenital con ocho manos y una hoja a media deslizar, el dedo detenido a mitad
+de un renglón, la mano que acaba de soltar un documento que nadie recoge. No
+es un rodeo a la regla: es el plano canónico del método, y la regla lo empuja
+hacia él.
+
+Tres fracasos de prompt que costaron una repetición cada uno, y cómo se
+arreglaron:
+
+- **Una banda amarilla por debajo del piso de saturación.** `grade_placas` con
+  `forzar` no mueve el tope; el amarillo salía generado a 0,34 y el piso es
+  0,45. Se arregla en el prompt, no en el grade: *"THAT YELLOW BAND IS THE
+  ONLY SATURATED COLOUR ANYWHERE IN THE WHOLE IMAGE"*.
+- **`piel.py` manchó una mano casi gris** (×1,57 de saturación sobre una mano
+  clarísima). En placas de solo manos cuya piel ya está en banda, se salta.
+- **Teresa con los brazos arriba parecía estornudar.** Se arregla nombrando
+  los fracasos, no la pose: *"HER ELBOWS STAY DOWN… she is NOT reaching, NOT
+  recoiling, NOT sneezing"*. Es la regla de bloquear las dos versiones
+  opuestas del cliché, aplicada al gesto.
