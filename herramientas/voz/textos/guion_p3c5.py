@@ -91,11 +91,15 @@ BLOQUES = [
   'la audiencia preparatoria y el juicio.\n\n'
   '<break time="0.9s" />\n\n'
   'En cada una hay que diferenciar el medio que se ofrece de la información '
-  'que finalmente se admite y se practica.'),
+  'que finalmente se admite y se practica.\n\n'
+  '<break time="0.9s" />\n\n'
+  'Las decisiones evaluadas se limitan a los hechos y condiciones expresamente '
+  'suministrados.'),
 
  ("b02_acusacion", "Pilar",
   'La acusación atribuye a Óscar haber recibido y acogido a Lucía y a Renata, '
-  'ambas adultas, en un alojamiento de Medellín, para obtener beneficio '
+  'ambas adultas, entre enero y marzo de dos mil veintiséis, en un '
+  'alojamiento de Medellín, para obtener beneficio '
   'mediante servicios sexuales impuestos bajo deuda y amenazas.\n\n'
   '<break time="0.9s" />\n\n'
   'A Tomás le atribuye facilitar una salida irregular hacia Panamá, '
@@ -109,11 +113,15 @@ BLOQUES = [
 
  ("b04_informe_unitario", "Pilar",
   'En la audiencia preparatoria, la Fiscalía solicita el informe con todos '
-  'sus anexos: dos entrevistas, un acta de incautación, fotografías, el '
-  'registro de huéspedes, extractos bancarios y una extracción de teléfono.\n\n'
+  'sus anexos: dos entrevistas, un acta de incautación firmada por Óscar, '
+  'fotografías, el registro de huéspedes, extractos bancarios y una '
+  'extracción de teléfono.\n\n'
   '<break time="0.9s" />\n\n'
   'La defensa admite haber recibido todos esos elementos oportunamente, y '
-  'poder localizarlos.'),
+  'poder localizarlos.\n\n'
+  '<break time="0.9s" />\n\n'
+  'El problema de la petición es su tratamiento unitario, y la falta de '
+  'funciones diferenciadas.'),
 
  ("b05_andres", "Carlos",
   'El informe mezcla percepciones del investigador Andrés con lo dicho por '
@@ -124,7 +132,8 @@ BLOQUES = [
 
  ("b06_cuaderno", "Pilar",
   'Entre los elementos hallados en el registro del alojamiento hay un '
-  'cuaderno manuscrito. Una columna de nombres, fechas, cifras diarias.\n\n'
+  'cuaderno manuscrito. Una columna de nombres —entre ellos Lucía y '
+  'Renata—, fechas, cifras diarias.\n\n'
   '<break time="0.9s" />\n\n'
   'Y anotaciones: abono, multa por salir, falta.'),
 
