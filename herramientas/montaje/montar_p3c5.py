@@ -42,6 +42,13 @@ LA RIMA MAYOR VA LIMPIA, Y EL CHEQUEO LO EXIGE
     no es la del caso: es la del grafico. El carton del acta va en r34, que es
     justo el plano de en medio. Comprobado en el chequeo, paso 12.
 
+Y LAS CUATRO RIMAS SE MIDEN, NO SE SUPONEN
+    El paso 13 compara el plano de fondo y la saturacion de las dos mitades de
+    cada rima sobre la placa ya graduada. Existe porque dos rimas de este caso
+    -r33/r35 y r01/r43- llegaron rotas hasta el master sin que ningun chequeo
+    las viera: las dos habian pasado por el grade por separado. `graduar_par.py`
+    las arregla; el paso 13 es lo que avisa cuando alguna no paso por ahi.
+
 EL NARRADOR YA SALE NORMALIZADO
     `armar_p3c5.py` lo deja en -19,1 LUFS integrados con el limitador a
     -2 dBFS. Es la correccion que el Caso 4 necesito a posteriori -alli el
@@ -70,6 +77,7 @@ RESP = C + '/10 TIMELINE SEBASTIAN/RESPIRO'
 #     `02 CARTONES`, que es una carpeta y no un criterio: lo que separa a
 #     un rotulo de un carton es la pista en la que entra, no el directorio.
 K = C + '/02 CARTONES'
+GRADE = C + '/01 PLANOS/_grade'
 A = C + '/06 AUDIO'
 MU = C + '/08 MUSICA'
 COMUNES = 'E:/DAE MASTER/00 COMUNES'
@@ -150,6 +158,65 @@ REAL.update({f: 96 for f, _, _ in LOWERS})
 BLANCOS = ('P3C5_carton_entrada.mov', 'P3C5_carton_cierre.mov')
 EN_V7 = {f for f, _, _ in LOWERS}
 EN_V3 = {f for f, _ in TENIDOS}
+
+
+# ------------------------------------------------------------------- rimas
+#  LAS RIMAS, MEDIDAS: EL PASO QUE FALTABA
+#      Una rima visual son dos planos que el espectador compara. Si cada uno
+#      se gradua por su cuenta, la diferencia que ve ya no es la del caso sino
+#      la del grade, y en este montaje eso paso DOS VECES antes de que nadie
+#      lo notara: r33/r35 con las mesas a 174 niveles, y r01/r43 con las
+#      bandejas azules de un lado y grises del otro.
+#
+#      Lo que se mide es el PLANO DE FONDO -el borde del cuadro, que en estos
+#      encuadres es mesa, suelo o pared- y la saturacion media. No se miden
+#      los percentiles de la imagen entera: en r33 los papeles tapan la mesa
+#      y la mediana sube a 195 mientras en r35 se queda en 83, y esa
+#      diferencia ES el argumento de la pieza.
+#
+#      Los umbrales salen de medir, no de elegir. Sobre las versiones rotas
+#      guardadas en `_grade\_sin_rima` y las buenas:
+#
+#                        borde p5        saturacion media
+#          r01/r43   roto 3,7  bien 0,3    roto 0,050  bien 0,011
+#          r27/r28   roto 59,7 bien 1,5    roto 0,007  bien 0,001
+#          r33/r35   roto 73,8 bien 0,4    roto 0,017  bien 0,000
+#
+#      Con 2,5 y 0,020 los tres rotos caen y los cuatro buenos pasan.
+#
+#      r21/r22 NO comparten encuadre -una es un plano cerrado con Lucia y la
+#      otra uno abierto de la sala vacia-, asi que el borde no es el mismo
+#      material en las dos y solo se le mide la saturacion. Es la misma
+#      distincion que `plan_camara_p3c5.py` hace para r12/r13.
+RIMAS = [('r01', 'r43', True),      # las bandejas
+         ('r21', 'r22', False),     # la onda: mismo sitio, distinto encuadre
+         ('r27', 'r28', True),      # Lucia con la anotacion y sin ella
+         ('r33', 'r35', True)]      # LA RIMA MAYOR
+RIMA_BORDE = 2.5
+RIMA_SAT = 0.020
+
+
+def _medir_placa(ruta):
+    """(p5 del borde del cuadro, saturacion media). None si no se puede."""
+    try:
+        import numpy as np
+        from PIL import Image
+    except ImportError:
+        return None
+    a = np.asarray(Image.open(ruta).convert('RGB')).astype(np.float32)
+    l = 0.2126 * a[..., 0] + 0.7152 * a[..., 1] + 0.0722 * a[..., 2]
+    h, w = l.shape
+    m = max(8, h // 16)
+    borde = np.concatenate([l[:m].ravel(), l[-m:].ravel(),
+                            l[:, :m].ravel(), l[:, -m:].ravel()])
+    mx, mn = a.max(2), a.min(2)
+    sat = np.where(mx > 0, (mx - mn) / np.maximum(mx, 1), 0)
+    return float(np.percentile(borde, 5)), float(sat.mean())
+
+
+def _placas():
+    return {f.split('_')[1]: os.path.join(GRADE, f)
+            for f in os.listdir(GRADE) if f.endswith('.png')}
 
 
 def _handles():
@@ -438,6 +505,29 @@ def chequeo(pr):
           'OK' if not sucias else sucias)
     if sucias:
         fallos.append('12: %s' % sorted(sucias))
+
+    #   13  Las cuatro rimas, medidas sobre la placa graduada. Ver RIMAS.
+    P = _placas()
+    sucias13, sin_medir = [], []
+    for a, b, mismo in RIMAS:
+        if a not in P or b not in P:
+            sin_medir.append('%s/%s' % (a, b))
+            continue
+        ma, mb = _medir_placa(P[a]), _medir_placa(P[b])
+        if ma is None or mb is None:
+            sin_medir.append('%s/%s' % (a, b))
+            continue
+        if mismo and abs(ma[0] - mb[0]) > RIMA_BORDE:
+            sucias13.append(('%s/%s' % (a, b), 'fondo a %.1f niveles'
+                             % abs(ma[0] - mb[0])))
+        if abs(ma[1] - mb[1]) > RIMA_SAT:
+            sucias13.append(('%s/%s' % (a, b), 'saturacion a %.3f'
+                             % abs(ma[1] - mb[1])))
+    print('13) las %d rimas graduadas a la par:' % len(RIMAS),
+          'OK' if not sucias13 else sucias13,
+          '' if not sin_medir else '(sin medir: %s)' % sin_medir)
+    if sucias13:
+        fallos.append('13: %s' % sucias13)
 
     print('')
     print('FALLOS:', fallos if fallos else 'NINGUNO')

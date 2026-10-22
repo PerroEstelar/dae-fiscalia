@@ -44,7 +44,13 @@ import cartones_ta as C
 AZUL_FGN = (0, 72, 144)          # #004890, medido del intro oficial
 C.TINTE = AZUL_FGN
 
-AMARILLO = (252, 197, 14)
+# EL AMARILLO ES EL DE LA SERIE, NO UNO PARECIDO
+#     Estaba en (252, 197, 14) y la barra de `render_carton` -C.BAR_C-
+#     esta en (252, 181, 0). Son dos amarillos distintos dentro de la
+#     misma pieza: en r39 la vineta quedaba 16 niveles mas verde que el
+#     filete del carton anterior. Se toma del modulo para que no vuelva
+#     a separarse.
+AMARILLO = C.BAR_C[:3]
 BLANCO = (255, 255, 255)
 GRIS = (168, 174, 184)
 
@@ -69,13 +75,39 @@ def _t(f, a, b):
     return x * x * (3 - 2 * x)
 
 
+def _tinte(f, n):
+    """La misma rampa de azul que `render_carton(con_tinte=True)`."""
+    if f < C.TINTE_IN:
+        ta = C.TINTE_A * C.ease_out(f / float(C.TINTE_IN))
+    elif f >= n - C.TINTE_OUT:
+        ta = C.TINTE_A * (1 - (f - (n - C.TINTE_OUT)) / float(C.TINTE_OUT))
+    else:
+        ta = C.TINTE_A
+    return Image.new("RGBA", (C.W, C.H), C.TINTE + (int(ta),))
+
+
+def _escribir(p, im):
+    """ARGB, y en ESE orden.
+
+    EL ERROR QUE ESTO ARREGLA
+        `im.tobytes()` de una RGBA entrega R,G,B,A. El flujo esta declarado
+        `-pix_fmt argb`, que espera A,R,G,B. Cada pixel sale corrido un
+        canal: el blanco (255,255,255,245) sobrevive casi intacto y por eso
+        el texto parecia bien, pero el filete amarillo (252,197,14,255) se
+        leia como (197,14,255) -magenta-. `render_carton` ya hacia la
+        permutacion; estas dos funciones, escritas aparte, no.
+    """
+    r, g, b, al = im.split()
+    p.stdin.write(Image.merge("RGBA", (al, r, g, b)).tobytes())
+
+
 def lista_vinetas(ante, puntos, n, salida, y0=420, dy=170):
     """Dos o tres afirmaciones en una sola ranura, cada una con su filete."""
     f_ante = C.fuente(C.F_SEMI, 30)
     f_pt = C.fuente(C.F_MED, 44)
     p = _escritor(salida)
     for f in range(n):
-        im = Image.new("RGBA", (C.W, C.H), (0, 0, 0, 0))
+        im = _tinte(f, n)
         d = ImageDraw.Draw(im)
         t = _t(f, 0, 14)
         if t > 0.004:
@@ -91,7 +123,7 @@ def lista_vinetas(ante, puntos, n, salida, y0=420, dy=170):
             for k, linea in enumerate(txt.split("\n")):
                 d.text((C.TEXT_X, y + k * 58 + int(10 * (1 - t2))), linea,
                        font=f_pt, fill=BLANCO + (int(245 * t2),))
-        p.stdin.write(im.tobytes())
+        _escribir(p, im)
     p.stdin.close()
     p.wait()
     print("%-28s %4d f" % (os.path.basename(salida), n))
@@ -103,7 +135,7 @@ def cita(texto, n, salida, y0=430):
     p = _escritor(salida)
     lineas = texto.split("\n")
     for f in range(n):
-        im = Image.new("RGBA", (C.W, C.H), (0, 0, 0, 0))
+        im = _tinte(f, n)
         d = ImageDraw.Draw(im)
         for i, linea in enumerate(lineas):
             t = _t(f, 8 + i * 10, 34 + i * 10)
@@ -111,7 +143,7 @@ def cita(texto, n, salida, y0=430):
                 continue
             d.text((C.TEXT_X, y0 + i * 72 + int(12 * (1 - t))), linea,
                    font=f_c, fill=BLANCO + (int(248 * t),))
-        p.stdin.write(im.tobytes())
+        _escribir(p, im)
     p.stdin.close()
     p.wait()
     print("%-28s %4d f" % (os.path.basename(salida), n))
