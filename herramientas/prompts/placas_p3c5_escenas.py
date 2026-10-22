@@ -35,12 +35,17 @@ LAS CUATRO RANURAS A CABALLO
     cosas EN EL MISMO CUADRO, no eligiendo una.
 """
 
+# Las 22 cenitales. Llevan la clausula CENITAL del base, que es lo unico que
+# consiguio una camara de verdad perpendicular: «Overhead shot looking
+# STRAIGHT DOWN» daba una oblicua con pared y ventanas arriba.
+CENITALES = ['r01_dos_bandejas', 'r06_tres_bloques', 'r07_el_sitio_vacio', 'r09_los_anexos', 'r12_la_pagina_mezclada', 'r15_la_pagina_del_cuaderno', 'r17_el_cuaderno_solo', 'r18_la_linea_acordada', 'r19_la_pluma_suspendida', 'r25_los_dos_patrones', 'r26_los_flujos_sin_separar', 'r30_las_dos_cosas', 'r33_la_mesa_de_oscar', 'r34_el_acta_aparte', 'r35_la_mesa_de_tomas', 'r36_el_renglon_en_blanco', 'r37_la_mano_sobre_el_blanco', 'r38_tres_hojas', 'r39_cuatro_iguales', 'r40_el_sitio_de_la_cuarta', 'r42_empezar_a_separar', 'r43_dos_bandejas_desiguales']
+
 # nombre -> (ranura, cuadros, con_rostro, con_acento, que, escena)
 E = {}
 
 E['r01_dos_bandejas'] = (1, 167, False, False,
  'los dos momentos, todavia vacios', """
-Overhead shot looking STRAIGHT DOWN at a wide DARK GREY table, the camera directly above and perfectly level, so the table fills the whole frame and no head, face or shoulder is visible anywhere.
+The surface below the camera is a wide DARK GREY table.
 
 Two identical shallow MID GREY document trays sit side by side in the middle of the table, the same size, the same distance from the camera, perfectly square with each other. BOTH ARE COMPLETELY EMPTY. The table around them is bare.
 
@@ -97,7 +102,7 @@ What the camera asserts by giving him an empty room: everything attributed to th
 
 E['r06_tres_bloques'] = (6, 117, False, False,
  'los cargos, individualizados', """
-Overhead shot looking STRAIGHT DOWN at a single plain LIGHT GREY sheet of paper lying on a DARK GREY table, the camera directly above and perfectly level, the sheet filling most of the frame.
+The surface below the camera is a single plain LIGHT GREY sheet of paper lying on a DARK GREY table.
 
 The writing on the sheet is reduced to plain flat grey bars, arranged in THREE CLEARLY SEPARATE BLOCKS with generous empty paper between them. Each block is the same width. The separation between the blocks is obvious and deliberate.
 
@@ -163,7 +168,7 @@ What the camera asserts by standing this close: from here it is one object, and 
 
 E['r12_la_pagina_mezclada'] = (12, 122, False, False,
  'el informe mezcla dos cosas', """
-Overhead shot looking STRAIGHT DOWN at one plain LIGHT GREY page on a DARK GREY table, the camera directly above and perfectly level.
+The surface below the camera is one plain LIGHT GREY page on a DARK GREY table.
 
 The writing is reduced to plain flat grey bars, and there are TWO VISIBLY DIFFERENT KINDS of bar on the page: one kind slightly darker and shorter, the other slightly lighter and longer. THE TWO KINDS RUN STRAIGHT INTO EACH OTHER with no gap, no rule, no heading and no indent between them, alternating down the page as if they were the same thing.
 
@@ -196,7 +201,7 @@ What the camera asserts by showing it on a shelf among other things: this was fo
 
 E['r15_la_pagina_del_cuaderno'] = (15, 113, False, False,
  'la columna, las cifras y las tres anotaciones', """
-Overhead shot looking STRAIGHT DOWN at the notebook lying OPEN on a DARK GREY table, the camera directly above, perfectly level and close, so the two open pages fill the frame.
+The surface below the camera is the notebook lying OPEN on a DARK GREY table.
 
 The handwriting is reduced to plain flat grey bars. The layout is clearly readable AS A LAYOUT: a left-hand COLUMN of short bars running down the page like a list of names, a narrower column of small bars beside it like dates, a column of still shorter bars like daily figures, and at the right margin THREE SEPARATE SHORT MARKS set apart from the rest, each on its own line.
 
@@ -218,7 +223,7 @@ What the camera asserts: the thing is being put forward, and it is still only a 
 
 E['r17_el_cuaderno_solo'] = (17, 228, False, False,
  'la sustentacion, y el aire que le falta', """
-Overhead shot looking STRAIGHT DOWN at a VERY WIDE DARK GREY table, the camera directly above and perfectly level, the table running past all four edges of the frame.
+The surface below the camera is a VERY WIDE DARK GREY table.
 
 In the EXACT CENTRE of the frame, small, lies the closed notebook. IT IS THE ONLY OBJECT IN THE WHOLE IMAGE. Around it in every direction stretches bare flat grey table, and the empty area is many times larger than the notebook itself.
 
@@ -229,7 +234,7 @@ What the camera asserts by pulling this far back: this is everything that was of
 
 E['r18_la_linea_acordada'] = (18, 152, False, False,
  'lo que las partes acuerdan, que es una sola linea', """
-Overhead shot looking STRAIGHT DOWN at a plain LIGHT GREY sheet on a DARK GREY table, the camera directly above and perfectly level.
+The surface below the camera is a plain LIGHT GREY sheet on a DARK GREY table.
 
 Near the TOP of the sheet there is ONE SHORT LINE of plain flat grey bars, and nothing else on the paper at all. From the left and right edges of the frame, two hands in plain mid grey sleeves rest at the margins of the sheet, fingertips touching the paper, both still.
 
@@ -302,7 +307,7 @@ What the camera asserts by putting the document where the face was: the easier t
 
 E['r25_los_dos_patrones'] = (25, 293, False, False,
  'dos relatos que coinciden, puestos a coincidir', """
-Overhead shot looking STRAIGHT DOWN at a DARK GREY table, the camera directly above and perfectly level.
+The surface below the camera is a DARK GREY table.
 
 TWO separate plain LIGHT GREY pages lie side by side, squared up and the same distance apart from each other as from the frame edges. The writing on both is reduced to plain flat grey bars, and THE PATTERN OF BARS ON THE TWO PAGES IS VISIBLY THE SAME: the same lengths in the same order, line for line, so that the two pages read as a matched pair.
 
@@ -313,7 +318,7 @@ What the camera asserts by laying them out matched: the likeness between these t
 
 E['r26_los_flujos_sin_separar'] = (26, 296, False, False,
  'la grafica que no separa nada', """
-Overhead shot looking STRAIGHT DOWN at a large plain LIGHT GREY sheet on a DARK GREY table, the camera directly above and perfectly level, the sheet filling the frame.
+The surface below the camera is a large plain LIGHT GREY sheet on a DARK GREY table.
 
 Printed on the sheet is a SIMPLE FLOW DIAGRAM: several plain circles at the outer edges, and ARROWS running inward from all of them into ONE circle at the centre. EVERY ARROW IS EXACTLY THE SAME WIDTH AND EXACTLY THE SAME SHADE OF GREY as every other, and they all enter the central circle in the same way. Nothing in the drawing distinguishes one arrow from another: no thickness, no tone, no dash, no label, no grouping.
 
@@ -355,7 +360,7 @@ What the camera asserts by stretching it the full width: the whole of it is bein
 
 E['r30_las_dos_cosas'] = (30, 134, False, False,
  'lo que la defensa quiere examinar', """
-Overhead shot looking STRAIGHT DOWN at a DARK GREY table, the camera directly above and perfectly level.
+The surface below the camera is a DARK GREY table.
 
 TWO small separate objects lie on the table with clear bare space between them: on the left a single plain LIGHT GREY slip of paper with a few grey bars, on the right a small plain ledger card with a short column of grey bars. They are the same size and set at the same distance from the centre.
 
@@ -388,7 +393,7 @@ What the camera asserts by giving him the same stillness as before: nothing in h
 
 E['r33_la_mesa_de_oscar'] = (33, 242, False, False,
  'lo que quedo establecido, LA RIMA MAYOR A', """
-Overhead shot looking STRAIGHT DOWN at a wide DARK GREY table, the camera directly above, perfectly level, and at a clearly defined height so the table fills the frame edge to edge.
+The surface below the camera is a wide DARK GREY table.
 
 FOUR separate items are laid out across the table in a clear arrangement, evenly spaced and all square with the table edge: two plain LIGHT GREY document sheets, a small plain dark rectangle the size of a telephone, and a plain ledger card with a short column of grey bars. THE FOUR TOGETHER OCCUPY ALMOST THE WHOLE SURFACE: the bare table visible between and around them is narrow.
 
@@ -399,7 +404,7 @@ What the camera asserts by filling the table: four things stood up, and there is
 
 E['r34_el_acta_aparte'] = (34, 152, False, False,
  'el acta firmada, puesta a un lado', """
-Overhead shot looking STRAIGHT DOWN at the edge of the same dark grey table, the camera directly above and perfectly level.
+The surface below the camera is the edge of the same dark grey table.
 
 At the left edge of the frame, the corner of the arrangement of four items is just visible. SET WELL APART FROM THEM, alone on the right half of the frame with clear bare table between, lies ONE plain LIGHT GREY sheet carrying a short line of grey bars and, at its foot, a single small looping mark where a signature would be.
 
@@ -410,7 +415,7 @@ What the camera asserts by moving it out of the group: this one was kept, and it
 
 E['r35_la_mesa_de_tomas'] = (35, 146, False, False,
  'lo que quedo probado, LA RIMA MAYOR B', """
-Overhead shot looking STRAIGHT DOWN at THE SAME wide DARK GREY table, the camera directly above, perfectly level, and at EXACTLY THE SAME HEIGHT AND FRAMING as the shot of the four items, so the table again fills the frame edge to edge.
+The surface below the camera is THE SAME wide DARK GREY table.
 
 THIS TIME THERE ARE ONLY TWO ITEMS on the table: one plain ledger card with a short column of grey bars, and one small plain LIGHT GREY slip. They sit close together near one side, square with the table edge.
 
@@ -423,7 +428,7 @@ What the camera asserts by repeating the shot exactly: same table, same height, 
 
 E['r36_el_renglon_en_blanco'] = (36, 184, False, False,
  'los datos no identifican a nadie', """
-Overhead shot looking STRAIGHT DOWN at the plain ledger card, the camera directly above, perfectly level and close, so the card fills most of the frame.
+The surface below the camera is the plain ledger card.
 
 The card carries a short column of plain flat grey bars, evenly spaced, all of them the same. AT THE TOP OF THE COLUMN, WHERE A HEADING OR A NAME WOULD GO, THE LINE IS COMPLETELY BLANK: clean flat paper, clearly the place for something, and clearly empty.
 
@@ -434,7 +439,7 @@ What the camera asserts by framing the blank line dead centre: the figures are a
 
 E['r37_la_mano_sobre_el_blanco'] = (37, 183, False, False,
  'y nadie lo llena', """
-Overhead shot looking STRAIGHT DOWN at the SAME ledger card in the SAME framing, the camera directly above and perfectly level.
+The surface below the camera is the SAME ledger card in the SAME framing.
 
 A hand in a plain mid grey sleeve is now HELD IN THE AIR OVER THE BLANK LINE, fingers slightly apart, palm down, NOT TOUCHING THE CARD and holding nothing. There is no pen in the hand. The blank line remains clean and empty beneath it.
 
@@ -443,7 +448,7 @@ What the camera asserts by suspending an empty hand over an empty line: there is
 
 E['r38_tres_hojas'] = (38, 99, False, False,
  'el alegato sostiene tres cosas', """
-Overhead shot looking STRAIGHT DOWN at a DARK GREY table, the camera directly above and perfectly level.
+The surface below the camera is a DARK GREY table.
 
 THREE plain LIGHT GREY sheets are being laid out in a row, evenly spaced, each carrying a few grey bars. Two are already flat on the table; THE THIRD IS STILL TILTED, held at its corner by a hand in a plain mid grey sleeve entering from the right, halfway through being set down.
 
@@ -452,7 +457,7 @@ What the camera asserts: three claims, being put on the table one after another.
 
 E['r39_cuatro_iguales'] = (39, 253, False, False,
  'cuatro informes, y el mismo patron en los cuatro', """
-Overhead shot looking STRAIGHT DOWN at a DARK GREY table, the camera directly above and perfectly level.
+The surface below the camera is a DARK GREY table.
 
 FOUR separate folders are fanned out across the table, each lying open at its first page. THE PATTERN OF PLAIN GREY BARS ON ALL FOUR FIRST PAGES IS IDENTICAL: the same number of lines, the same lengths in the same order, line for line, so that the four pages are visibly copies of one another.
 
@@ -463,7 +468,7 @@ What the camera asserts by laying out four of the same thing: they can be counte
 
 E['r40_el_sitio_de_la_cuarta'] = (40, 214, False, False,
  'la tercera mujer: un sitio vacio y nada mas', """
-Overhead shot looking STRAIGHT DOWN at the DARK GREY table, the camera directly above and perfectly level, the same framing as the row of three sheets.
+The surface below the camera is the DARK GREY table.
 
 The THREE plain LIGHT GREY sheets lie flat in their row, evenly spaced. To the right of the third sheet, where a FOURTH would continue the row, THERE IS ONLY BARE TABLE: a clean empty space exactly the size and shape of one sheet, with nothing in it.
 
@@ -485,7 +490,7 @@ What the camera asserts by giving the two equal room: here are the two facts bei
 
 E['r42_empezar_a_separar'] = (42, 131, False, False,
  'revisar, medio por medio', """
-Overhead shot looking STRAIGHT DOWN at a DARK GREY table, the camera directly above and perfectly level.
+The surface below the camera is a DARK GREY table.
 
 A loose pile of plain LIGHT GREY sheets and folders lies in the middle of the table, and TWO hands in plain mid grey sleeves are HALFWAY THROUGH PULLING IT APART into two groups: a few items have already been drawn clear to the left, a few to the right, and the rest are still in the middle. One sheet is still held between finger and thumb, lifted slightly off the table, not yet placed on either side.
 
@@ -494,7 +499,7 @@ What the camera asserts by catching it half done: the sorting is the work, and i
 
 E['r43_dos_bandejas_desiguales'] = (43, 266, False, False,
  'el cierre: las mismas dos bandejas, y lo que falta', """
-Overhead shot looking STRAIGHT DOWN at THE SAME wide DARK GREY table with THE SAME two shallow MID GREY document trays, the camera directly above, perfectly level, and at EXACTLY THE SAME HEIGHT AND FRAMING as the opening shot.
+The surface below the camera is THE SAME wide DARK GREY table with THE SAME two shallow MID GREY document trays.
 
 THE TWO TRAYS ARE NO LONGER EQUAL. The left-hand tray holds a THICK squared stack of sheets that rises well above its rim. The right-hand tray holds TWO thin sheets lying flat, barely covering its floor, with the tray's grey bottom clearly visible around them.
 

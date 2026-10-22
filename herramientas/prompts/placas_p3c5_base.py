@@ -15,9 +15,13 @@ LOS CUATRO CON CARA, Y NADIE MAS
     le da a Tomas un color aparte aunque contra el casi nada quedo probado:
     vestirlo distinto seria adelantar el resultado en el minuto dos.
 """
+# Las cuatro de la primera tanda salieron con la piel rosa pese a pedirla
+# gris. `piel.py` lo corrige en el grade, pero cuanto menos haya que mover,
+# mejor: se nombran los colores que NO son, que es lo que funciona.
 PIEL = ('Skin is a desaturated warm grey: hue around 25 degrees and saturation '
-        'no higher than 0.20. It must read as grey with a faint warm tint, '
-        'never as brown and never as a saturated skin colour.')
+        'no higher than 0.20. It must read as GREY with only a faint warm '
+        'tint: never pink, never peach, never tan, never brown and never a '
+        'saturated skin colour.')
 
 ROSTRO = ('Faces ARE drawn and expressive, but simplified and graphic: clearly '
           'defined eyes with brow, a simple nose and a simple mouth, readable '
@@ -33,10 +37,15 @@ PLANOS = ('EVERY LARGE SURFACE IN THIS IMAGE IS A PERFECTLY UNIFORM FLAT AREA '
           'no camouflage, no maze pattern, no grain, no noise and no pattern '
           'of any kind.')
 
+# r02 de la primera tanda salio con la ventana y la mesa en una masa casi
+# blanca. «No large area of near-white» no alcanzo: hay que prohibir el
+# quemado por su nombre y fijar cual es el valor mas claro admisible.
 TONOS = ('The frame must have three clearly separate tonal zones and all three '
          'must be present: a deep dark, a mid grey, and a genuinely light '
-         'value. No large area of near-black and no large area of near-white '
-         'anywhere.')
+         'value. NO PART OF THIS IMAGE IS BLOWN OUT TO WHITE: the brightest '
+         'value anywhere in the picture is a light grey clearly darker than '
+         'paper white, and there is no glare, no hotspot, no bloom and no '
+         'washed-out area. No large area of near-black either.')
 
 LIMPIA = ('Clean plate: no legible text, no lettering, no numbers, no '
           'signage, no labels, no logos, no emblem, no insignia, no badge, no '
@@ -64,6 +73,28 @@ LUGAR = ('The setting is an ordinary Colombian public building interior: plain '
          'painted masonry walls, simple metal-framed windows with plain glass, '
          'modest institutional furniture, nothing lavish and nothing '
          'north-american in the fittings.')
+
+
+# LA CLAUSULA CENITAL, MEDIDA
+#     «Overhead shot looking STRAIGHT DOWN» produjo una oblicua con ventanas
+#     y pared en el tercio superior del cuadro. No alcanza. Lo que si
+#     funciona, probado contra r01: nombrar el aparato -copy stand, escaner-,
+#     decir que el plano de la mesa es PARALELO al plano de imagen, y
+#     prohibir por su nombre todo lo que no sea mesa.
+#
+#     Importa el doble porque 22 de las 43 escenas son cenitales y la rima
+#     mayor -la mesa de Oscar contra la de Tomas- necesita que el encuadre se
+#     repita exacto.
+CENITAL = ('NADIR AERIAL VIEW. The camera is mounted directly above the '
+           'surface with the lens pointing VERTICALLY DOWNWARD at exactly 90 '
+           'degrees to the floor, like a copy-stand or a document scanner. '
+           'THE SURFACE IS PARALLEL TO THE IMAGE PLANE and fills the ENTIRE '
+           'frame from edge to edge.\n\n'
+           'ABSOLUTELY NO WALL, NO WINDOW, NO CEILING, NO FLOOR, NO HORIZON, '
+           'NO ROOM AND NO BACKGROUND IS VISIBLE ANYWHERE IN THIS PICTURE. '
+           'There is no perspective and no vanishing point: nothing recedes, '
+           'nothing converges, and no vertical surface appears. No head, no '
+           'face and no shoulder appears anywhere.')
 
 
 def estilo(con_rostro):
@@ -111,9 +142,18 @@ def unico(cosa='band'):
             'everything else, without exception, is grey.' % cosa.upper())
 
 
-def arma(escena, con_rostro=False, con_acento=False, con_lugar=True):
-    """con_acento: False, o el nombre de la prenda que lleva el acento."""
-    partes = [escena.strip()]
+def arma(escena, con_rostro=False, con_acento=False, con_lugar=True,
+         cenital=False):
+    """con_acento: False, o el nombre de la prenda que lleva el acento.
+
+    cenital=True antepone la clausula de camara perpendicular y quita el
+    bloque de lugar: en una cenital no se ve la habitacion, asi que describir
+    el edificio solo le da al modelo una excusa para inclinar la camara.
+    """
+    partes = [CENITAL] if cenital else []
+    partes.append(escena.strip())
+    if cenital:
+        con_lugar = False
     if con_acento:
         partes.append(unico(con_acento if isinstance(con_acento, str) else 'band'))
     partes += [PLANOS, TONOS, estilo(con_rostro)]
