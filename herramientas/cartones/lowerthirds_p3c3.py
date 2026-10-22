@@ -14,10 +14,21 @@ CADA DATO ES LO QUE EL ENUNCIADO DA POR ESTABLECIDO, NO LO QUE SE DISCUTE
     Luis, que aparece como usuario de la cuenta —«aparece como», que es el
     verbo del documento—.
 
-NIDIA LLEVA LA PALABRA «ATRIBUIDO», Y ESTÁ MEDIDA
+NIDIA LLEVA LA ATRIBUCIÓN EN EL VERBO, NO EN UN ADJETIVO SUELTO
     El documento dice «en otro episodio, atribuido a una mujer llamada
-    Nidia». Imprimir su nombre sin esa palabra convertiría en hecho lo que el
-    texto marca como atribución, que es justo el error que la pieza enseña.
+    Nidia». Imprimir su nombre sin esa marca convertiría en hecho lo que el
+    texto da como atribución, que es justo el error que la pieza enseña.
+
+    La primera versión decía «Otro episodio, atribuido», y Sebastián marcó
+    el 22 de octubre que no se entiende al leerlo. Tenía razón, y el motivo
+    es que era el único de los cinco sin verbo: los otros cuatro son frases
+    -«Aparece como…», «Recibe…», «Conduce…», «Administra…»- y este era un
+    fragmento con el «atribuido» colgando al final sin nada que lo sostenga.
+
+    Queda «Se le atribuye otro episodio»: frase con verbo como las otras
+    cuatro, y la atribución la carga el verbo. Es la misma maniobra que el
+    «aparece como» de Luis. Quitar la marca y dejar «Otro episodio» no es
+    una opción: afirmaría.
 
 LOS CUATRO VIAJEROS NO LLEVAN
     El documento no les da nombre y el caso los trata como grupo. Un lower
@@ -56,7 +67,7 @@ LOWERS = [
         "dato": "Administra el alojamiento donde se quedan"}),
     ("lt06_nidia", "r15", 12, {
         "nombre": "Nidia",
-        "dato": "Otro episodio, atribuido"}),
+        "dato": "Se le atribuye otro episodio"}),
 ]
 
 if __name__ == "__main__":
