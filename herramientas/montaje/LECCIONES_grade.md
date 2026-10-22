@@ -119,3 +119,74 @@ saturación media                0,017
 
 Caso 4, las 36 ya terminadas: zona oscura 1,33 · croma 1,24 · zona clara
 1,45 · tinte azul 0,1 % · sin ninguna placa fuera de banda por tinte.
+
+---
+
+# Lo que el Caso 5 añadió
+
+22 de octubre de 2026. Dos cosas, y las dos son del mismo tipo que las de
+arriba: no fallan al medir, fallan al elegir sobre qué se mide.
+
+## 1 · La serie tiene DOS entradas al grade y la equivocada destruye el set
+
+En la misma carpeta viven `grade_placas.py` y `graduar_serie.py`. La que
+tiene el nombre más obvio es la mala.
+
+`grade_placas.curva()` separa dos puntos de control coincidentes por UN
+solo nivel. Con el set del Caso 5 eso significa, por ejemplo, p2 = 80 y
+p50 = 81: la curva manda 80 a 51 y 81 a 79, pendiente ×28 sobre ocho
+bits ya tramados. Nueve placas salieron con moteado de color antes de
+que nadie las mirara. Es el mismo accidente que la sección de arriba
+describe —la mediana dentro de la mancha— pero por una vía distinta:
+allí la curva se anclaba mal, aquí el desempate de puntos coincidentes
+no alcanza.
+
+**La entrada correcta es `graduar_serie.py`**, que trabaja en float32,
+trama al salir y aplica `anclas()` con `FRANJA_MINIMA = 20`.
+`grade_placas.py` queda sólo como histórico: no se llama.
+
+> Cuando dos herramientas hacen lo mismo y una está rota, el nombre no
+> protege a nadie. Lo que protege es que la buena sea la única que se
+> llama desde un script de caso.
+
+## 2 · Una rima visual NO sobrevive a dos grades independientes
+
+La rima mayor del Caso 5 es `r33` / `r35`: el mismo encuadre cenital de
+la misma mesa, y lo único que cambia entre las dos es lo que hay encima
+—cuatro cosas contra dos y una extensión vacía—. Es el resultado de la
+práctica probatoria puesto en una imagen.
+
+Graduadas por separado, las dos mesas acabaron a **174 niveles** de
+distancia: una gris media y la otra casi negra. El espectador ve esa
+diferencia antes que la de los objetos, y entonces la pieza opina.
+
+No se arregla concatenando y graduando el par: los crudos ya venían
+distintos —mesa 118 contra 81— así que una sola curva sobre los dos
+reparte el error en vez de quitarlo. `graduar_par.py` hace los dos pasos
+en orden:
+
+1. `mesa()` mide el valor del plano de fondo como **la moda del borde del
+   cuadro** —no la mediana de la imagen, que en una cenital se la come lo
+   que esté sobre la mesa—, y se iguala el crudo más oscuro al más claro
+   con un desplazamiento (+37 aquí).
+2. Recién entonces, UNA curva compartida para los dos. Final: 84 y 83.
+
+> La regla, para el montaje y para el grade: **las dos mitades de una
+> rima se tratan como un solo plano.** Vale igual para la cámara
+> horneada —`plan_camara_p3c5.py` da a `r33` y `r35` el mismo empuje— y
+> para los gráficos encima, que el chequeo del montaje exige que no
+> existan (paso 12).
+
+## 3 · Y una que no es de grade: una punta no manda sobre el máster
+
+El armador de la serie nunca normalizaba —ni `medir.py`, ni `armar.py`,
+ni `armar_p3c4.py` tienen un `loudnorm`—, y al corregirlo bajé la
+ganancia del máster hasta que cupiera el pico más alto. Quedó en −24,2
+LUFS, cinco por debajo de la serie, por una sola cresta de 23,3 dB en
+`b07` cuando el resto está entre 15 y 21.
+
+Lo correcto es subir al objetivo y poner un limitador a −2 dBFS que toque
+esas puntas y nada más: −19,1 con pico real −4,5. Es la misma frase de
+siempre con otra ropa —**el caso extremo no define el tratamiento del
+conjunto**—, sólo que aquí el conjunto es un máster de seis minutos y el
+caso extremo dura cuatro cuadros.

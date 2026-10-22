@@ -33,10 +33,16 @@ LA REGLA DE CLASIFICACION ES EL NOMBRE DEL ARCHIVO
     una tabla aparte que se desincronice:
 
         FGN_intro* / MARCA_DE_AGUA*          COMUNES
-        *_r00_* o *lecho*                    RANURAS
+        *_r00_* / *lecho* / *_respiro*       RANURAS
         *_carton_* / *_n0_* / *_n00_* / *_p0*  CARTONES
             (el C5U1 numeraba los cartones con un digito, _n5_; del C5U2
              en adelante van con dos, _n05_. Entran los dos.)
+        *_ae00_* / *_prop0* / *_cita00_* /    CARTONES
+        *_lt00_*
+            (la nomenclatura de la PRIORIDAD 03: `_ae01_` una afirmacion
+             establecida, `_prop1_` una propuesta, `_cita01_` un verbatim,
+             `_lt01_` un rotulo. Los Casos 3 y 4 ya se llamaban asi y los
+             23 archivos caian sin clasificar en la raiz del caso.)
         *NARRADOR* / *PREGUNTAS* / *DIALOGO* VOCES
         *MUSICA*                             MUSICA
         cualquier otra cosa                  la raiz del caso, y se avisa
@@ -80,9 +86,18 @@ def clasificar(nombre):
     n = os.path.basename(nombre).upper()
     if n.startswith('FGN_INTRO') or n.startswith('MARCA_DE_AGUA'):
         return 'COMUNES'
-    if re.search(r'_R\d\d_', n) or 'LECHO' in n:
+    if re.search(r'_R\d\d_', n) or 'LECHO' in n or '_RESPIRO' in n:
         return 'RANURAS'
     if '_CARTON_' in n or re.search(r'_N\d{1,2}_', n) or re.search(r'_P\d[AB]?_', n):
+        return 'CARTONES'
+    # LA NOMENCLATURA DE LA PRIORIDAD 03
+    #     Un carton de esta tanda se llama por lo que AFIRMA, no por su
+    #     numero de orden: `_ae01_` lo que el documento da por establecido,
+    #     `_prop1_` una propuesta o premisa que la pieza pone a examinar,
+    #     `_cita01_` un verbatim, `_lt01_` un rotulo. Ninguno de los cuatro
+    #     entraba por las reglas de arriba, asi que los 17 cartones, las dos
+    #     citas y los cinco rotulos de cada caso caian en la raiz.
+    if re.search(r'_(AE|CITA|LT)\d\d_', n) or re.search(r'_PROP\d', n):
         return 'CARTONES'
     if 'NARRADOR' in n or 'PREGUNTAS' in n or 'DIALOGO' in n:
         return 'VOCES'
