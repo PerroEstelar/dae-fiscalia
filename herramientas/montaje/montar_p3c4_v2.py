@@ -209,6 +209,59 @@ def medios(mp):
     rutas += [LT + '/' + f for f in sorted(os.listdir(LT))
               if not f.startswith('_') and f.endswith('.mov')]
     bins.importar(mp, CASO_BIN, rutas)
+    _refrescar_medios(mp)
+
+
+def _refrescar_medios(mp):
+    """Un medio reemplazado EN SU SITIO deja el media pool desactualizado.
+
+    23 oct 2026. El carton de r01 se rehizo con el mismo nombre y paso de 300
+    cuadros a 167. El archivo en disco era el nuevo -ffprobe lo medi­a- pero
+    Resolve siguio sirviendo el viejo: el clip del pool apunta a esa ruta y no
+    vuelve a leerla. El montaje puso 167 cuadros DEL CARTON ANTERIOR y las
+    catorce comprobaciones pasaron, porque todas miran posiciones y
+    duraciones, no contenido.
+
+    Es el tercer disfraz del mismo error -el nombre que gana a la ruta, la
+    calidad que se hereda de la pagina Deliver- y se arregla igual: midiendo.
+    Aqui se compara lo que el pool CREE que dura cada medio contra lo que la
+    tabla dice, y el que no cuadre se borra y se vuelve a importar.
+    """
+    # EN DOS ENTRADAS `REAL` ES LO QUE SE USA, NO LO QUE DURA
+    #     El intro mide 222 cuadros en disco y la pieza corta 182; el
+    #     narrador es audio. Comparar esos dos aqui da falso positivo.
+    SALTAR = {os.path.basename(INTRO), NARRADOR}
+    IT = _clips(mp)
+    malos = []
+    for nombre, n in REAL.items():
+        if nombre in SALTAR:
+            continue
+        c = IT.get(nombre)
+        if c is None:
+            continue
+        try:
+            hay = int(c.GetClipProperty('Frames'))
+        except (TypeError, ValueError):
+            continue
+        if hay != n:
+            malos.append((nombre, hay, n, c))
+    if not malos:
+        return
+    print('   %d medios desactualizados en el pool; se reimportan:' % len(malos))
+    rutas = []
+    for nombre, hay, n, c in malos:
+        print('      %-44s pool %d, tabla %d' % (nombre, hay, n))
+        rutas.append(c.GetClipProperty('File Path'))
+    mp.DeleteClips([c for _, _, _, c in malos])
+    bins.importar(mp, CASO_BIN, rutas)
+    IT = _clips(mp)
+    quedan = []
+    for nombre, _, n, _ in malos:
+        c = IT.get(nombre)
+        if c is None or int(c.GetClipProperty('Frames')) != n:
+            quedan.append(nombre)
+    if quedan:
+        raise RuntimeError('siguen desactualizados: %s' % quedan)
 
 
 def borrar(pr, mp):

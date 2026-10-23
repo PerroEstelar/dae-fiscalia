@@ -151,15 +151,21 @@ def cita(texto, n, salida, y0=430):
 
 #  (archivo, ranura, cuadros, spec)   — el largo es el de la ranura medida
 TENIDOS = [
-    # EL ANCLA DE APERTURA. Anadido el 23 oct 2026: la pieza corria 57,6 s
-    # sin un solo carton, contra los 12,6 a 14,2 s de las otras cuatro. El
-    # texto es la primera linea del documento del profesor -la tesis de
-    # toda la pieza- que ningun carton decia. Va sobre r02 y no sobre r01
-    # porque r01 es la mitad de apertura de la rima con r43.
-    ("ae00_medio_ofrecido", "r02", 300, {
+    # LOS DOS DE APERTURA. Anadidos el 23 oct 2026: la pieza corria 57,6 s
+    # sin un solo carton, contra los 12,6 a 14,2 s de las otras cuatro. Los
+    # textos son la primera y la tercera frase del encabezado del documento
+    # del profesor, que ningun carton decia. Cada uno sobre su imagen: la
+    # tesis sobre las dos bandejas vacias de r01, el alcance sobre la sala
+    # vacia de r02. El de r01 va corto -dos lineas y el separador de ae02 y
+    # ae03- porque 167 cuadros son 7,0 s y en tres lineas no se lee.
+    ("ae00_medio_ofrecido", "r01", 167, {
         "ante": "El punto de partida",
-        "titulo": "Debe diferenciarse el medio ofrecido de la información "
-                  "finalmente admitida y practicada"}),
+        "titulo": "El medio ofrecido · la información admitida y practicada"}),
+
+    ("ae07_alcance", "r02", 300, {
+        "ante": "El alcance del ejercicio",
+        "titulo": "Las decisiones evaluadas se limitan a los hechos y "
+                  "condiciones expresamente suministrados"}),
 
     ("ae01_individualizan", "r06", 117, {
         "ante": "La acusación",

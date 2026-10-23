@@ -130,23 +130,37 @@ assert _o == OFF_RESPIRO, _o
 
 # ------------------------------------------------------------------- V3
 #  ✦ = propuesta o premisa equivocada: cama institucional, nunca una cara
-# EL PRIMER CARTON ENTRA EN r02, NO EN r06
+# LOS DOS CARTONES DE APERTURA
 #     23 oct 2026. La pieza corria 57,6 s sin un solo carton. Las otras
 #     cuatro de la tanda anclan antes de los quince segundos -12,6 el C3 y
 #     el C4, 14,2 el C1 y el C2- y aqui el primero caia en r06. Se siente
 #     de entrada: casi un minuto de imagen y voz sin nada que leer.
 #
-#     El hueco tenia su texto esperando. El documento del profesor abre
-#     con «debe diferenciarse el medio ofrecido de la informacion
-#     finalmente admitida y practicada» -la tesis de toda la pieza- y
-#     ningun carton la decia. Va como `ae00`, premisa establecida, no
-#     propuesta a juzgar.
+#     El hueco tenia su texto esperando, y era el encabezado del documento
+#     del profesor, que ningun carton decia:
 #
-#     Va en r02 y NO en r01, que calzaria mejor con los 12,6 s de los
-#     otros: r01 es la mitad de apertura de la rima con r43, y un carton
-#     sobre una sola mitad mete una segunda diferencia entre las dos. Es
-#     lo mismo que el paso 12 vigila en la rima mayor.
-TENIDOS = [('P3C5_ae00_medio_ofrecido.mov', 'r02'),
+#       r01  la primera linea  -la tesis de toda la pieza-
+#       r02  la tercera        -la que autoriza el ejercicio entero-
+#
+#     CADA UNO SOBRE SU IMAGEN. r01 son las dos bandejas identicas y
+#     vacias: esa ES la diferencia entre lo ofrecido y lo practicado, asi
+#     que el carton cae sobre la imagen que ya la dice. r02 es la sala
+#     vacia, que es el marco del ejercicio.
+#
+#     El de r01 va con el texto CORTO, en dos lineas y con el separador
+#     de ae02 y ae03. r01 dura 167 cuadros -7,0 s- y en tres lineas no se
+#     alcanza a leer: la ultima termina de entrar a los 3,1 s.
+#
+#     Un carton sobre r01 ensucia la rima con r43 -el lavado azul es una
+#     segunda diferencia entre las dos mitades, que es lo que el paso 12
+#     vigila en la rima mayor-. Se acepta a sabiendas: estan a seis
+#     minutos una de otra y lo que el espectador compara es el contenido
+#     de las bandejas, no su tono.
+#
+#     Los numeros de `ae` son referencias al documento, no orden de
+#     pantalla -por eso falta `prop2`-; `ae07` es el ultimo que se sumo.
+TENIDOS = [('P3C5_ae00_medio_ofrecido.mov', 'r01'),
+           ('P3C5_ae07_alcance.mov', 'r02'),
            ('P3C5_ae01_individualizan.mov', 'r06'),
            ('P3C5_ae02_no_se_acusa.mov', 'r07'),
            ('P3C5_prop1_informe.mov', 'r11'),               # ✦
@@ -187,11 +201,8 @@ REAL = {'FGN_intro_version7.mp4': N_INTRO,
 REAL.update({f: RAN[r][1] for f, r in TENIDOS})
 REAL.update({f: 96 for f, _, _ in LOWERS})
 
-# El tope del paso 14. La norma de la tanda son 12,6 a 14,2 s, pero aqui
-# la primera ranura utilizable es r02 a los 19,5: r01 es la mitad de
-# apertura de la rima con r43 y un carton sobre una sola mitad mete una
-# segunda diferencia entre las dos.
-TOPE_PRIMER_CARTON = 20.0
+# El tope del paso 14: la norma de la tanda, 12,6 a 14,2 s.
+TOPE_PRIMER_CARTON = 15.0
 
 BLANCOS = ('P3C5_carton_entrada.mov', 'P3C5_carton_cierre.mov')
 EN_V7 = {f for f, _, _ in LOWERS}
@@ -297,6 +308,59 @@ def medios(mp):
     rutas += [K + '/' + f for f in sorted(os.listdir(K))
               if not f.startswith('_') and f.endswith('.mov')]
     bins.importar(mp, CASO_BIN, rutas)
+    _refrescar_medios(mp)
+
+
+def _refrescar_medios(mp):
+    """Un medio reemplazado EN SU SITIO deja el media pool desactualizado.
+
+    23 oct 2026. El carton de r01 se rehizo con el mismo nombre y paso de 300
+    cuadros a 167. El archivo en disco era el nuevo -ffprobe lo medi­a- pero
+    Resolve siguio sirviendo el viejo: el clip del pool apunta a esa ruta y no
+    vuelve a leerla. El montaje puso 167 cuadros DEL CARTON ANTERIOR y las
+    catorce comprobaciones pasaron, porque todas miran posiciones y
+    duraciones, no contenido.
+
+    Es el tercer disfraz del mismo error -el nombre que gana a la ruta, la
+    calidad que se hereda de la pagina Deliver- y se arregla igual: midiendo.
+    Aqui se compara lo que el pool CREE que dura cada medio contra lo que la
+    tabla dice, y el que no cuadre se borra y se vuelve a importar.
+    """
+    # EN DOS ENTRADAS `REAL` ES LO QUE SE USA, NO LO QUE DURA
+    #     El intro mide 222 cuadros en disco y la pieza corta 182; el
+    #     narrador es audio. Comparar esos dos aqui da falso positivo.
+    SALTAR = {os.path.basename(INTRO), NARRADOR}
+    IT = _clips(mp)
+    malos = []
+    for nombre, n in REAL.items():
+        if nombre in SALTAR:
+            continue
+        c = IT.get(nombre)
+        if c is None:
+            continue
+        try:
+            hay = int(c.GetClipProperty('Frames'))
+        except (TypeError, ValueError):
+            continue
+        if hay != n:
+            malos.append((nombre, hay, n, c))
+    if not malos:
+        return
+    print('   %d medios desactualizados en el pool; se reimportan:' % len(malos))
+    rutas = []
+    for nombre, hay, n, c in malos:
+        print('      %-44s pool %d, tabla %d' % (nombre, hay, n))
+        rutas.append(c.GetClipProperty('File Path'))
+    mp.DeleteClips([c for _, _, _, c in malos])
+    bins.importar(mp, CASO_BIN, rutas)
+    IT = _clips(mp)
+    quedan = []
+    for nombre, _, n, _ in malos:
+        c = IT.get(nombre)
+        if c is None or int(c.GetClipProperty('Frames')) != n:
+            quedan.append(nombre)
+    if quedan:
+        raise RuntimeError('siguen desactualizados: %s' % quedan)
 
 
 def borrar(pr, mp):
