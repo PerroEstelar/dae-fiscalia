@@ -52,7 +52,7 @@ def _linea(pr, nombre):
 
 
 def preparar(resolve, pr, nombre_linea, carpeta, nombre_archivo, cuadros,
-             formato=('QuickTime', 'H264_NVIDIA')):
+             formato=('QuickTime', 'H264_NVIDIA'), calidad=None):
     """Deja un trabajo de render COMPROBADO. Devuelve su job id."""
     tl = _linea(pr, nombre_linea)
     pr.SetCurrentTimeline(tl)
@@ -65,6 +65,15 @@ def preparar(resolve, pr, nombre_linea, carpeta, nombre_archivo, cuadros,
     s = dict(AJUSTES)
     s.update({'SelectAllFrames': True, 'TargetDir': carpeta,
               'CustomName': nombre_archivo})
+    # LA CALIDAD SE DECLARA, NO SE HEREDA
+    #     23 oct 2026. `AJUSTES` trae VideoQuality 0 -Automatico-, asi que
+    #     el bitrate real salia de lo que hubiera quedado en la pagina
+    #     Deliver del render anterior. El master de archivo del P3C5 se
+    #     pidio a 32 Mbps como el del P3C4 y salio a 15,3 sin un aviso.
+    #     Mismo error de fondo que el de AddRenderJob: el estado de la
+    #     pagina mandaba sobre lo que el script creia estar pidiendo.
+    if calidad is not None:
+        s['VideoQuality'] = calidad
     if not pr.SetRenderSettings(s):
         raise RuntimeError('SetRenderSettings devolvio False')
 
@@ -90,9 +99,9 @@ def preparar(resolve, pr, nombre_linea, carpeta, nombre_archivo, cuadros,
 
 
 def exportar(resolve, pr, nombre_linea, carpeta, nombre_archivo, cuadros,
-             formato=('QuickTime', 'H264_NVIDIA'), esperar=True):
+             formato=('QuickTime', 'H264_NVIDIA'), esperar=True, calidad=None):
     jid, j = preparar(resolve, pr, nombre_linea, carpeta, nombre_archivo,
-                      cuadros, formato)
+                      cuadros, formato, calidad)
     print('linea   %s' % j.get('TimelineName'))
     print('archivo %s' % j.get('OutputFilename'))
     print('marcas  %d..%d = %d cuadros  ·  %s %sx%s %s'

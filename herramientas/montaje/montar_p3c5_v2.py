@@ -130,7 +130,24 @@ assert _o == OFF_RESPIRO, _o
 
 # ------------------------------------------------------------------- V3
 #  ✦ = propuesta o premisa equivocada: cama institucional, nunca una cara
-TENIDOS = [('P3C5_ae01_individualizan.mov', 'r06'),
+# EL PRIMER CARTON ENTRA EN r02, NO EN r06
+#     23 oct 2026. La pieza corria 57,6 s sin un solo carton. Las otras
+#     cuatro de la tanda anclan antes de los quince segundos -12,6 el C3 y
+#     el C4, 14,2 el C1 y el C2- y aqui el primero caia en r06. Se siente
+#     de entrada: casi un minuto de imagen y voz sin nada que leer.
+#
+#     El hueco tenia su texto esperando. El documento del profesor abre
+#     con «debe diferenciarse el medio ofrecido de la informacion
+#     finalmente admitida y practicada» -la tesis de toda la pieza- y
+#     ningun carton la decia. Va como `ae00`, premisa establecida, no
+#     propuesta a juzgar.
+#
+#     Va en r02 y NO en r01, que calzaria mejor con los 12,6 s de los
+#     otros: r01 es la mitad de apertura de la rima con r43, y un carton
+#     sobre una sola mitad mete una segunda diferencia entre las dos. Es
+#     lo mismo que el paso 12 vigila en la rima mayor.
+TENIDOS = [('P3C5_ae00_medio_ofrecido.mov', 'r02'),
+           ('P3C5_ae01_individualizan.mov', 'r06'),
            ('P3C5_ae02_no_se_acusa.mov', 'r07'),
            ('P3C5_prop1_informe.mov', 'r11'),               # ✦
            ('P3C5_ae03_andres.mov', 'r13'),
@@ -169,6 +186,12 @@ REAL = {'FGN_intro_version7.mp4': N_INTRO,
         NARRADOR: N_RANURAS}
 REAL.update({f: RAN[r][1] for f, r in TENIDOS})
 REAL.update({f: 96 for f, _, _ in LOWERS})
+
+# El tope del paso 14. La norma de la tanda son 12,6 a 14,2 s, pero aqui
+# la primera ranura utilizable es r02 a los 19,5: r01 es la mitad de
+# apertura de la rima con r43 y un carton sobre una sola mitad mete una
+# segunda diferencia entre las dos.
+TOPE_PRIMER_CARTON = 20.0
 
 BLANCOS = ('P3C5_carton_entrada.mov', 'P3C5_carton_cierre.mov')
 EN_V7 = {f for f, _, _ in LOWERS}
@@ -548,6 +571,22 @@ def chequeo(pr):
           '' if not sin_medir else '(sin medir: %s)' % sin_medir)
     if sucias13:
         fallos.append('13: %s' % sucias13)
+
+    #   14  EL PRIMER CARTON ANCLA ANTES DE LOS QUINCE SEGUNDOS
+    #       23 oct 2026. El P3C5 corria 57,6 s sin un solo carton y nada lo
+    #       vio: las trece comprobaciones miran que cada carton este donde
+    #       dice la tabla, ninguna miraba CUANDO entra el primero. Las
+    #       cuatro piezas de la tanda anclan entre 12,6 y 14,2 s; esa es la
+    #       norma de la casa y ahora se mide.
+    it3 = tl.GetItemListInTrack('video', 3)
+    pri = (it3[0].GetStart() - T0) / (24000 / 1001.0) if it3 else None
+    ok14 = pri is not None and pri <= TOPE_PRIMER_CARTON
+    print('14) el primer carton entra en %s (tope %.1f s): %s'
+          % ('%.1f s' % pri if pri is not None else 'ninguno',
+             TOPE_PRIMER_CARTON, 'OK' if ok14 else 'FALLA'))
+    if not ok14:
+        fallos.append('14: primer carton en %s'
+                      % ('%.1f s' % pri if pri is not None else 'ninguno'))
 
     print('')
     print('FALLOS:', fallos if fallos else 'NINGUNO')

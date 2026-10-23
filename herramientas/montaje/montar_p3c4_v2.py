@@ -159,6 +159,9 @@ LOWERS = [('P3C4_lt01_nora.mov', 'r02', 12),
           ('P3C4_lt03_recepcionista.mov', 'r13', 10),
           ('P3C4_lt04_lina.mov', 'r25', 12)]
 
+# El tope del paso 14: la norma de la tanda, 12,6 a 14,2 s.
+TOPE_PRIMER_CARTON = 15.0
+
 REAL = {'FGN_intro_version7.mp4': N_INTRO,
         'MARCA_DE_AGUA_DAE_7s_fade.mov': N_MARCA,
         'P3C4_carton_entrada.mov': N_BLANCO,
@@ -449,6 +452,22 @@ def chequeo(pr):
     #     la hora- y eso se comprueba en plan_camara_p3c4_v2.py, no aqui.
     print('13) la rima r01/r39 es de encuadre y hora, no de tono:'
           ' se comprueba en plan_camara_p3c4_v2.py')
+
+    #   14  EL PRIMER CARTON ANCLA ANTES DE LOS QUINCE SEGUNDOS
+    #       23 oct 2026. El P3C5 corria 57,6 s sin un solo carton y nada lo
+    #       vio: las trece comprobaciones miran que cada carton este donde
+    #       dice la tabla, ninguna miraba CUANDO entra el primero. Las
+    #       cuatro piezas de la tanda anclan entre 12,6 y 14,2 s; esa es la
+    #       norma de la casa y ahora se mide.
+    it3 = tl.GetItemListInTrack('video', 3)
+    pri = (it3[0].GetStart() - T0) / (24000 / 1001.0) if it3 else None
+    ok14 = pri is not None and pri <= TOPE_PRIMER_CARTON
+    print('14) el primer carton entra en %s (tope %.1f s): %s'
+          % ('%.1f s' % pri if pri is not None else 'ninguno',
+             TOPE_PRIMER_CARTON, 'OK' if ok14 else 'FALLA'))
+    if not ok14:
+        fallos.append('14: primer carton en %s'
+                      % ('%.1f s' % pri if pri is not None else 'ninguno'))
 
     print('')
     print('FALLOS:', fallos if fallos else 'NINGUNO')
