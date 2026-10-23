@@ -59,6 +59,8 @@ SUBBINS = ['RANURAS', 'CARTONES', 'VOCES', 'MUSICA', 'B-ROLL', 'COMUNES']
 # (p. ej. "_v1 ARCHIVO"). clips() no los lee, para que un nombre repetido de
 # una version vieja no le gane al vigente en el diccionario.
 PREFIJO_ARCHIVO = '_'
+# El subbin donde `importar()` deja un medio cuyo nombre choca con el vigente.
+ARCHIVO = '_v1 ARCHIVO'
 
 
 def carpeta(mp, ruta, crear_subbins=True):
@@ -114,6 +116,38 @@ def importar(mp, ruta, rutas):
     """
     raiz_caso = carpeta(mp, ruta)
     ya = clips(mp, ruta)
+
+    # UN NOMBRE IGUAL QUE APUNTA A OTRO ARCHIVO NO ES "YA ESTA"
+    #     23 oct 2026. El P3C5 v2 se monto entero y paso sus trece
+    #     comprobaciones con DIECINUEVE de sus cuarenta y tres ranuras
+    #     tomadas de la v1. La causa es esta funcion: `if base in ya:
+    #     continue` miraba el NOMBRE. Las ranuras de la v2 se llaman igual
+    #     que las de la v1 -el nombre sale del guion, que no cambio- y
+    #     viven en `RANURAS v2` en vez de `RANURAS`. Asi que cada una de
+    #     esas diecinueve se dio por importada, nunca entro al media pool,
+    #     y `clips()` entrego la vieja. Ningun paso fallo: la linea tenia
+    #     48 clips contiguos, el conteo exacto y las rimas en su sitio,
+    #     porque la ranura vieja dura lo mismo que la nueva. El Caso 4 v2
+    #     ya se habia exportado y entregado con dos ranuras de la v1.
+    #
+    #     El nombre no identifica un medio; la RUTA si. Cuando el nombre
+    #     coincide y la ruta no, el clip viejo se archiva y el nuevo entra.
+    viejos = []
+    for r in rutas:
+        c = ya.get(os.path.basename(r))
+        if c is None:
+            continue
+        p = os.path.normcase(os.path.abspath(c.GetClipProperty('File Path') or ''))
+        if p != os.path.normcase(os.path.abspath(r)):
+            viejos.append((os.path.basename(r), c, p))
+    if viejos:
+        print('   %d medios con el nombre de otra version; se archivan en %r:'
+              % (len(viejos), ARCHIVO))
+        for base, _, p in viejos:
+            print('      %-44s %s' % (base, p))
+        archivar(mp, ruta, [c for _, c, _ in viejos], nombre=ARCHIVO)
+        ya = clips(mp, ruta)
+
     grupos = {}
     for r in rutas:
         base = os.path.basename(r)
@@ -134,9 +168,23 @@ def importar(mp, ruta, rutas):
 
     hay = clips(mp, ruta)
     faltan = [os.path.basename(r) for r in rutas if os.path.basename(r) not in hay]
+    # Y DESPUES SE MIDE: cada nombre pedido tiene que apuntar al archivo
+    # pedido. Es la comprobacion que no existia y por eso el error paso.
+    torcidos = []
+    for r in rutas:
+        c = hay.get(os.path.basename(r))
+        if c is None:
+            continue
+        p = c.GetClipProperty('File Path') or ''
+        if os.path.normcase(os.path.abspath(p)) != os.path.normcase(os.path.abspath(r)):
+            torcidos.append((os.path.basename(r), p, r))
     print('en el caso %d medios; faltan %s' % (len(hay), faltan or 'ninguno'))
     if faltan:
         raise RuntimeError('no entraron al media pool: %s' % faltan)
+    if torcidos:
+        raise RuntimeError('el media pool devuelve otro archivo con el mismo '
+                           'nombre:\n  ' + '\n  '.join(
+                               '%s\n    pool %s\n    pedido %s' % x for x in torcidos))
     return hay
 
 
