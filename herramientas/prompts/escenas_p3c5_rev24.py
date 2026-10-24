@@ -7,7 +7,7 @@ ESCENAS = {}
 # Las manos salieron abiertas en abanico, planas y sin pulgar: palas.
 ESCENAS[3] = dict(registro='contraluz', personas=('oscar',), acento=True,
                   rostro=True, lugar=True, texto="""\
-Medium shot of OSCAR, a man of about forty-five, heavy-set, medium height, short dark hair receding at the temples, clean shaven, in a plain mid-grey short-sleeved shirt over plain grey trousers and grey shoes, with a plain institutional yellow band around the left upper sleeve standing in the corridor of a modest lodging house, the camera at his eye level and perfectly level, him slightly off centre to the left.
+Medium shot of %(oscar)s standing in the corridor of a modest lodging house, the camera at his eye level and perfectly level, him slightly off centre to the left.
 
 HIS ARMS HANG STRAIGHT DOWN AT HIS SIDES, relaxed and close to his body. HIS HANDS ARE RELAXED AND NATURAL: the fingers held gently TOGETHER and slightly curled, following the natural inward curve of a resting hand, with the thumb lying along the side of the thigh and clearly visible as a thumb. The hands are seen edge-on, so each reads as a hand with thickness and knuckles.
 

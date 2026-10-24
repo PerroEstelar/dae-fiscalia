@@ -111,8 +111,16 @@ NEG = ('Not a photograph, not a 3D render, not painterly. No ink outlines, no '
        'simplified shapes with soft edges, never circular bokeh discs. No '
        'motion blur, no speed lines and no streaks.')
 
-ACENTO = ('That accent band is the ONLY saturated colour anywhere in the whole '
-          'image: everything else, without exception, is grey.')
+ACENTO = ('That accent is the ONLY saturated colour anywhere in the whole '
+          'image: everything else, without exception, is grey. It is MATTE '
+          'WOVEN CLOTH and part of the garment itself, cut and seamed like '
+          'the rest of it and following every fold of it. It DOES NOT EMIT '
+          'LIGHT: no glow, no halo, no bloom, no rim light, no outline and '
+          'no bright edge anywhere around it. The same light falls on it as '
+          'on the cloth beside it, so it goes into shadow wherever the '
+          'garment goes into shadow. It is a muted mustard, never a bright '
+          'chrome yellow and never a neon yellow. It is NEVER a band across '
+          'the chest and NEVER a band around the arm.')
 
 # LOS TOKENS, CON VIDA
 #     La v1 daba edad y ropa. Eso basta para repetir un cuerpo y no basta para
@@ -135,19 +143,19 @@ CUERPO = {
  'oscar': ('OSCAR, a man of about forty-five, heavy-set, medium height, short '
            'dark hair receding at the temples, clean shaven, in a plain '
            'mid-grey short-sleeved shirt over plain grey trousers and grey '
-           'shoes, with a plain institutional yellow band around the left '
-           'upper sleeve'),
+           'shoes, with a plain matte mustard-yellow woven belt at the '
+           'waist'),
  'tomas': ('TOMAS, a man of about thirty-eight, lean, tall, short dark hair, '
            'in a plain light grey long-sleeved shirt buttoned to the wrist '
-           'over plain grey trousers and grey shoes, with a plain '
-           'institutional yellow band across the chest'),
+           'over plain grey trousers and grey shoes, the shirt having a '
+           'plain matte mustard-yellow collar'),
  'lucia': ('LUCIA, a woman of about twenty-six, slim, medium height, dark '
            'hair tied back low, in a plain light grey long-sleeved blouse '
            'over plain grey trousers and flat grey shoes, with a plain '
-           'institutional yellow band at each cuff'),
+           'matte mustard-yellow band at each cuff'),
  'renata': ('RENATA, a woman of about twenty-eight, medium build, dark hair '
-            'worn loose to the shoulders, in a plain mid-grey blouse, with a '
-            'plain institutional yellow band across the chest'),
+            'worn loose to the shoulders, in a plain mid-grey blouse with a '
+            'plain matte mustard-yellow collar'),
  'andres': ('ANDRES, a man of about thirty-five, medium build, short dark '
             'hair, in a plain mid grey shirt with the sleeves rolled once '
             'over plain grey trousers, no tie'),
