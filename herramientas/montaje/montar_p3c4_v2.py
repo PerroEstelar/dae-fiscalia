@@ -200,7 +200,7 @@ def _ranuras():
             if not f.startswith('_') and f.endswith(('.mov', '.mp4'))]
 
 
-def medios(mp):
+def _rutas():
     rutas = [INTRO, MARCA, A + '/' + NARRADOR,
              MU + '/P3C4_MUSICA_cama.wav', RESP + '/P3C4_respiro_v2_v48.mp4']
     rutas += [R + '/' + f for f in _ranuras()]
@@ -208,57 +208,82 @@ def medios(mp):
               if not f.startswith('_') and f.endswith('.mov')]
     rutas += [LT + '/' + f for f in sorted(os.listdir(LT))
               if not f.startswith('_') and f.endswith('.mov')]
-    bins.importar(mp, CASO_BIN, rutas)
+    return rutas
+
+
+def medios(mp):
+    bins.importar(mp, CASO_BIN, _rutas())
     _refrescar_medios(mp)
 
 
 def _refrescar_medios(mp):
     """Un medio reemplazado EN SU SITIO deja el media pool desactualizado.
 
-    23 oct 2026. El carton de r01 se rehizo con el mismo nombre y paso de 300
-    cuadros a 167. El archivo en disco era el nuevo -ffprobe lo medi­a- pero
-    Resolve siguio sirviendo el viejo: el clip del pool apunta a esa ruta y no
-    vuelve a leerla. El montaje puso 167 cuadros DEL CARTON ANTERIOR y las
-    catorce comprobaciones pasaron, porque todas miran posiciones y
-    duraciones, no contenido.
+    23 oct 2026. El carton de r01 se rehizo con el mismo nombre y paso de
+    300 cuadros a 167. El archivo en disco era el nuevo -ffprobe lo medi­a-
+    pero Resolve siguio sirviendo el viejo: el clip del pool apunta a esa
+    ruta y no vuelve a leerla. El montaje puso 167 cuadros DEL CARTON
+    ANTERIOR y las catorce comprobaciones pasaron, porque todas miran
+    posiciones y duraciones, no contenido.
 
-    Es el tercer disfraz del mismo error -el nombre que gana a la ruta, la
-    calidad que se hereda de la pagina Deliver- y se arregla igual: midiendo.
-    Aqui se compara lo que el pool CREE que dura cada medio contra lo que la
-    tabla dice, y el que no cuadre se borra y se vuelve a importar.
+    LA PRIMERA VERSION DE ESTO COMPARABA CUADROS, Y NO ALCANZABA
+        24 oct. Se rehornearon veintiuna ranuras tras el pase de piel. El
+        conteo de cuadros no cambia al rehornear -es el mismo plan de
+        camara- asi que la comparacion por duracion no vio nada, y el
+        render murio a mitad: «Error decoding full resolution media for
+        P3C5_r23_renata_presente_v241.mp4». El pool decia «Date Modified:
+        Thu Oct 22 20:28:07» y el archivo en disco era del dia siguiente a
+        las 21:09.
+
+        La fecha SI lo ve, y lo ve para todo: una ranura rehorneada, un
+        carton con el mismo nombre y otro texto, una placa regraduada. Es
+        la señal correcta porque no depende de que el cambio se note en
+        ninguna otra propiedad.
+
+        Se arregla con `ReplaceClip`, no borrando: el clip se queda, las
+        lineas que lo usan lo siguen usando, y lo unico que cambia es que
+        Resolve vuelve a leer el archivo.
     """
-    # EN DOS ENTRADAS `REAL` ES LO QUE SE USA, NO LO QUE DURA
-    #     El intro mide 222 cuadros en disco y la pieza corta 182; el
-    #     narrador es audio. Comparar esos dos aqui da falso positivo.
-    SALTAR = {os.path.basename(INTRO), NARRADOR}
+    import datetime
+    import os as _os
+
+    def _fecha(c):
+        s = (c.GetClipProperty('Date Modified') or '').strip()
+        for f in ('%a %b %d %H:%M:%S %Y', '%a %b %d %Y %H:%M:%S'):
+            try:
+                return datetime.datetime.strptime(s, f).timestamp()
+            except ValueError:
+                pass
+        return None
+
+    rutas = _rutas()
     IT = _clips(mp)
-    malos = []
-    for nombre, n in REAL.items():
-        if nombre in SALTAR:
+    viejos = []
+    for r in rutas:
+        c = IT.get(_os.path.basename(r))
+        if c is None or not _os.path.exists(r):
             continue
-        c = IT.get(nombre)
-        if c is None:
-            continue
-        try:
-            hay = int(c.GetClipProperty('Frames'))
-        except (TypeError, ValueError):
-            continue
-        if hay != n:
-            malos.append((nombre, hay, n, c))
-    if not malos:
+        pool = _fecha(c)
+        disco = _os.path.getmtime(r)
+        if pool is not None and disco - pool > 2:
+            viejos.append((_os.path.basename(r), c, r, pool, disco))
+    if not viejos:
         return
-    print('   %d medios desactualizados en el pool; se reimportan:' % len(malos))
-    rutas = []
-    for nombre, hay, n, c in malos:
-        print('      %-44s pool %d, tabla %d' % (nombre, hay, n))
-        rutas.append(c.GetClipProperty('File Path'))
-    mp.DeleteClips([c for _, _, _, c in malos])
-    bins.importar(mp, CASO_BIN, rutas)
+    print('   %d medios cambiaron en disco despues de entrar al pool; se '
+          'releen:' % len(viejos))
+    import time as _time
+    for nombre, c, r, pool, disco in viejos:
+        ok = c.ReplaceClip(r)
+        print('      %-44s pool %s -> disco %s  %s'
+              % (nombre, _time.strftime('%d %b %H:%M', _time.localtime(pool)),
+                 _time.strftime('%d %b %H:%M', _time.localtime(disco)),
+                 'releido' if ok else 'NO SE PUDO'))
     IT = _clips(mp)
     quedan = []
-    for nombre, _, n, _ in malos:
-        c = IT.get(nombre)
-        if c is None or int(c.GetClipProperty('Frames')) != n:
+    for nombre, c, r, _, disco in viejos:
+        c2 = IT.get(nombre)
+        f2 = _fecha(c2) if c2 is not None else None
+        if f2 is None or disco - f2 > 2:
             quedan.append(nombre)
     if quedan:
         raise RuntimeError('siguen desactualizados: %s' % quedan)

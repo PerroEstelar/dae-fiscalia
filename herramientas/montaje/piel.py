@@ -220,6 +220,108 @@ def escribir_cube(ruta, f, tam=33):
                              % (n[0] / 255.0, n[1] / 255.0, n[2] / 255.0))
 
 
+# ---------------------------------------------------------------- vectorizado
+
+def _hsv_np(a):
+    """RGB 0..1 -> (tono 0..1, saturacion, valor), vectorizado."""
+    import numpy as np
+    mx = a.max(-1); mn = a.min(-1); d = mx - mn
+    s = np.where(mx > 0, d / np.maximum(mx, 1e-12), 0.0)
+    h = np.zeros_like(mx)
+    r, g, b = a[..., 0], a[..., 1], a[..., 2]
+    nz = d > 1e-12
+    i = nz & (mx == r); h[i] = ((g - b)[i] / d[i]) % 6
+    i = nz & (mx == g); h[i] = ((b - r)[i] / d[i]) + 2
+    i = nz & (mx == b); h[i] = ((r - g)[i] / d[i]) + 4
+    return h / 6.0, s, mx
+
+
+def _rgb_np(h, s, v):
+    import numpy as np
+    seis = h * 6.0
+    i = np.floor(seis).astype(np.int32) % 6
+    f = seis - np.floor(seis)
+    p = v * (1 - s); q = v * (1 - f * s); t = v * (1 - (1 - f) * s)
+    sel = [i == k for k in range(6)]
+    r = np.select(sel, [v, q, p, p, t, v])
+    g = np.select(sel, [t, v, v, q, p, p])
+    b = np.select(sel, [p, p, t, v, v, q])
+    return np.stack([r, g, b], -1)
+
+
+SUAVIZADO = 2.0
+
+
+def fijar_suave(origen, destino, cube=None, tam=33, suavizado=SUAVIZADO):
+    r"""Como `fijar`, pero sin el moteado, y mucho mas rapido.
+
+    EL MOTEADO QUE ESTO QUITA
+        24 oct 2026. `fijar` decide pixel por pixel si corrige o no, segun
+        donde cae la saturacion contra SAT_MIN. En una mejilla lisa y clara
+        la saturacion ronda ESE borde, asi que unos pixeles se corrigen y
+        sus vecinos no: el resultado es grano. Se vio a 1:1 en r29 y r36 del
+        P3C5, y en un estilo cuyo bloque dice "no speckle, no noise" eso es
+        un defecto, no un matiz.
+
+        La correccion es la misma. Lo que cambia es que el PESO se difumina
+        espacialmente antes de aplicarse: un peso continuo no puede dejar
+        dos vecinos tratados distinto. El radio es chico -2 px sobre 2560-
+        porque solo hace falta cruzar el borde de decision, no desplazar la
+        frontera de la piel.
+
+        El `.cube` se sigue escribiendo desde la funcion PUNTUAL, porque un
+        LUT 3D no puede llevar un peso espacial. Es correcto: sobre un clip
+        generado el grano del borde queda enterrado bajo la compresion, y
+        lo que el LUT tiene que garantizar es que el clip y su placa
+        coincidan en color.
+    """
+    import numpy as np
+    from PIL import Image as _Image, ImageFilter as _ImageFilter
+
+    im = _Image.open(origen).convert("RGB")
+    antes = medir(im)
+    if antes is None:
+        im.save(destino)
+        return dict(placa=os.path.basename(origen), aviso="no encuentro piel")
+
+    techo = techo_de(im, antes)
+    centro = antes["tono"]
+    giro = (((TONO_PIEL - centro) + 180) % 360 - 180)
+    escala = SATUR_PIEL / max(antes["satur"], 0.01)
+    ganancia = min(techo, VALOR_PIEL / max(antes["valor"], 0.01))
+
+    a = np.asarray(im).astype(np.float32) / 255.0
+    h, s, v = _hsv_np(a)
+
+    # el mismo peso de `_peso`, y la misma ventana de tono
+    k = np.minimum((s - SAT_MIN) / RAMPA, (SAT_MAX - s) / RAMPA)
+    k = np.clip(k, 0.0, 1.0)
+    k[(s <= SAT_MIN) | (s >= SAT_MAX)] = 0.0
+    k[a.max(-1) < 30 / 255.0] = 0.0
+    dist = np.abs(((h * 360.0 - centro + 180) % 360) - 180)
+    k[dist > VENTANA] = 0.0
+
+    # AQUI esta la diferencia: el peso se difumina
+    if suavizado > 0:
+        k = np.asarray(_Image.fromarray((k * 255).astype(np.uint8))
+                       .filter(_ImageFilter.GaussianBlur(suavizado))
+                       ).astype(np.float32) / 255.0
+
+    h2 = ((h * 360.0 + giro * k) % 360.0) / 360.0
+    s2 = np.clip(s * (1.0 + (escala - 1.0) * k), 0.0, 1.0)
+    v2 = np.clip(v * (1.0 + (ganancia - 1.0) * k), 0.0, 1.0)
+    out = _rgb_np(h2, s2, v2)
+    out = np.where((k > 0)[..., None], out, a)
+    _Image.fromarray(np.clip(out * 255.0 + 0.5, 0, 255).astype(np.uint8)).save(destino)
+
+    if cube:
+        f, _, _, _ = _corrector(antes, techo)
+        escribir_cube(cube, f, tam)
+    return dict(placa=os.path.basename(origen), antes=antes,
+                despues=medir(_Image.open(destino).convert("RGB"), centro + giro),
+                giro=giro, escala=escala, ganancia=ganancia)
+
+
 if __name__ == '__main__':
     # piel.py <entrada> <salida> [salida.cube]
     r = fijar(sys.argv[1], sys.argv[2],

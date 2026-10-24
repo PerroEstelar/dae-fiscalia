@@ -161,6 +161,7 @@ assert _o == OFF_RESPIRO, _o
 #     pantalla -por eso falta `prop2`-; `ae07` es el ultimo que se sumo.
 TENIDOS = [('P3C5_ae00_medio_ofrecido.mov', 'r01'),
            ('P3C5_ae07_alcance.mov', 'r02'),
+           ('P3C5_ae08_anexos.mov', 'r09'),
            ('P3C5_ae01_individualizan.mov', 'r06'),
            ('P3C5_ae02_no_se_acusa.mov', 'r07'),
            ('P3C5_prop1_informe.mov', 'r11'),               # ✦
@@ -175,8 +176,8 @@ TENIDOS = [('P3C5_ae00_medio_ofrecido.mov', 'r01'),
            ('P3C5_ae05_grafica.mov', 'r26'),
            ('P3C5_prop7_regresa.mov', 'r31'),               # ✦
            ('P3C5_ae06_acta.mov', 'r34'),
-           ('P3C5_prop8y9_alegato.mov', 'r39'),             # ✦
-           ('P3C5_prop10_tercera.mov', 'r40'),              # ✦
+           ('P3C5_prop8y9y10_alegato.mov', 'r39', 467),
+           ('P3C5_ae09_revisar.mov', 'r43'),
            ('P3C5_prop11_sin_encierro.mov', 'r41')]         # ✦
 
 # las siete placas con rostro. El chequeo comprueba que ninguna propuesta cae
@@ -187,6 +188,7 @@ RIMA_MAYOR = {'r33', 'r35'}
 
 # ------------------------------------------------------------------- V7
 LOWERS = [('P3C5_lt02_oscar.mov', 'r03', 12),
+          ('P3C5_lt06_andres.mov', 'r12', 12),
           ('P3C5_lt01_fecha_lugar.mov', 'r04', 14),
           ('P3C5_lt03_tomas.mov', 'r05', 12),
           ('P3C5_lt04_lucia.mov', 'r21', 10),
@@ -198,7 +200,14 @@ REAL = {'FGN_intro_version7.mp4': N_INTRO,
         'P3C5_carton_cierre.mov': N_BLANCO,
         RESPIRO: N_RESPIRO,
         NARRADOR: N_RANURAS}
-REAL.update({f: RAN[r][1] for f, r in TENIDOS})
+def _tenido(e):
+    """(nombre, ranura, cuadros). La tercera posicion es opcional:
+    sin ella el carton dura lo que su ranura; con ella puede abarcar
+    varias, como el del alegato, que ocupa r39 y r40."""
+    return e[0], e[1], (e[2] if len(e) > 2 else RAN[e[1]][1])
+
+
+REAL.update({f: n for f, _, n in map(_tenido, TENIDOS)})
 REAL.update({f: 96 for f, _, _ in LOWERS})
 
 # El tope del paso 14: la norma de la tanda, 12,6 a 14,2 s.
@@ -206,7 +215,29 @@ TOPE_PRIMER_CARTON = 15.0
 
 BLANCOS = ('P3C5_carton_entrada.mov', 'P3C5_carton_cierre.mov')
 EN_V7 = {f for f, _, _ in LOWERS}
-EN_V3 = {f for f, _ in TENIDOS}
+EN_V3 = {e[0] for e in TENIDOS}
+
+
+# ---------------------------------------------------------------- gente
+#  LAS RANURAS EN LAS QUE SE VE A ALGUIEN, 24 OCT 2026
+#      Sebastian, revisando el master: "too many just document lying around
+#      shots too frequently". Tenia razon y no habia forma de verlo venir:
+#      las catorce comprobaciones miraban cada ranura por separado y ninguna
+#      miraba la SECUENCIA.
+#
+#      Esta lista no sale de `gente` en escenas_p3c5_v2.py, que dice a quien
+#      nombra el prompt, sino de si en el cuadro se ve una persona. Son dos
+#      cosas distintas: en r19 y en r20 hay alguien de cuerpo presente y el
+#      prompt no nombra a nadie, porque llevan una propuesta encima y el
+#      paso 11 no deja que caiga sobre una cara.
+CON_PERSONA = {3, 4, 5, 8, 10, 12, 13, 16, 18, 19, 20, 21, 23, 25,
+               27, 28, 29, 30, 32, 35, 36, 37, 38, 42}
+
+#  Tres seguidas es lo que la pieza tiene hoy en su tramo mas seco -el
+#  alegato, r39 a r41- y ahi funciona porque las tres van bajo carton: el
+#  espectador esta leyendo. Cuatro ya es un fichero.
+TOPE_SIN_GENTE = 3
+
 
 
 # ------------------------------------------------------------------- rimas
@@ -244,8 +275,14 @@ EN_V3 = {f for f, _ in TENIDOS}
 #  encuadre. r27/r28 y r33/r35 son identicos de encuadre y se miden entero.
 RIMAS = [('r01', 'r43', False),     # las bandejas, ahora dentro de la sala
          ('r21', 'r22', False),     # la onda: mismo sitio, distinto encuadre
-         ('r27', 'r28', True),      # Lucia con la anotacion y sin ella
-         ('r33', 'r35', True)]      # LA RIMA MAYOR
+         ('r27', 'r28', True)]     # Lucia con la anotacion y sin ella
+#  r33/r35 SALIO DE AQUI, 24 OCT 2026
+#      Dejo de ser la misma camara dos veces: r35 lleva a Tomas y su
+#      acento amarillo, asi que medir identidad de tono entre las dos
+#      mitades ya no describe la relacion, mide el acento -daba 0,024
+#      contra un tope de 0,020-. Lo que sigue siendo exigible es que
+#      ninguna de las dos lleve un grafico encima, y eso lo guarda el
+#      paso 12, que no cambia.
 RIMA_BORDE = 2.5
 RIMA_SAT = 0.020
 
@@ -301,63 +338,88 @@ def _ranuras():
             if not f.startswith('_') and f.endswith(('.mov', '.mp4'))]
 
 
-def medios(mp):
+def _rutas():
     rutas = [INTRO, MARCA, A + '/' + NARRADOR, MU + '/' + MUSICA,
              RESP + '/' + RESPIRO]
     rutas += [R + '/' + f for f in _ranuras()]
     rutas += [K + '/' + f for f in sorted(os.listdir(K))
               if not f.startswith('_') and f.endswith('.mov')]
-    bins.importar(mp, CASO_BIN, rutas)
+    return rutas
+
+
+def medios(mp):
+    bins.importar(mp, CASO_BIN, _rutas())
     _refrescar_medios(mp)
 
 
 def _refrescar_medios(mp):
     """Un medio reemplazado EN SU SITIO deja el media pool desactualizado.
 
-    23 oct 2026. El carton de r01 se rehizo con el mismo nombre y paso de 300
-    cuadros a 167. El archivo en disco era el nuevo -ffprobe lo medi­a- pero
-    Resolve siguio sirviendo el viejo: el clip del pool apunta a esa ruta y no
-    vuelve a leerla. El montaje puso 167 cuadros DEL CARTON ANTERIOR y las
-    catorce comprobaciones pasaron, porque todas miran posiciones y
-    duraciones, no contenido.
+    23 oct 2026. El carton de r01 se rehizo con el mismo nombre y paso de
+    300 cuadros a 167. El archivo en disco era el nuevo -ffprobe lo medi­a-
+    pero Resolve siguio sirviendo el viejo: el clip del pool apunta a esa
+    ruta y no vuelve a leerla. El montaje puso 167 cuadros DEL CARTON
+    ANTERIOR y las catorce comprobaciones pasaron, porque todas miran
+    posiciones y duraciones, no contenido.
 
-    Es el tercer disfraz del mismo error -el nombre que gana a la ruta, la
-    calidad que se hereda de la pagina Deliver- y se arregla igual: midiendo.
-    Aqui se compara lo que el pool CREE que dura cada medio contra lo que la
-    tabla dice, y el que no cuadre se borra y se vuelve a importar.
+    LA PRIMERA VERSION DE ESTO COMPARABA CUADROS, Y NO ALCANZABA
+        24 oct. Se rehornearon veintiuna ranuras tras el pase de piel. El
+        conteo de cuadros no cambia al rehornear -es el mismo plan de
+        camara- asi que la comparacion por duracion no vio nada, y el
+        render murio a mitad: «Error decoding full resolution media for
+        P3C5_r23_renata_presente_v241.mp4». El pool decia «Date Modified:
+        Thu Oct 22 20:28:07» y el archivo en disco era del dia siguiente a
+        las 21:09.
+
+        La fecha SI lo ve, y lo ve para todo: una ranura rehorneada, un
+        carton con el mismo nombre y otro texto, una placa regraduada. Es
+        la señal correcta porque no depende de que el cambio se note en
+        ninguna otra propiedad.
+
+        Se arregla con `ReplaceClip`, no borrando: el clip se queda, las
+        lineas que lo usan lo siguen usando, y lo unico que cambia es que
+        Resolve vuelve a leer el archivo.
     """
-    # EN DOS ENTRADAS `REAL` ES LO QUE SE USA, NO LO QUE DURA
-    #     El intro mide 222 cuadros en disco y la pieza corta 182; el
-    #     narrador es audio. Comparar esos dos aqui da falso positivo.
-    SALTAR = {os.path.basename(INTRO), NARRADOR}
+    import datetime
+    import os as _os
+
+    def _fecha(c):
+        s = (c.GetClipProperty('Date Modified') or '').strip()
+        for f in ('%a %b %d %H:%M:%S %Y', '%a %b %d %Y %H:%M:%S'):
+            try:
+                return datetime.datetime.strptime(s, f).timestamp()
+            except ValueError:
+                pass
+        return None
+
+    rutas = _rutas()
     IT = _clips(mp)
-    malos = []
-    for nombre, n in REAL.items():
-        if nombre in SALTAR:
+    viejos = []
+    for r in rutas:
+        c = IT.get(_os.path.basename(r))
+        if c is None or not _os.path.exists(r):
             continue
-        c = IT.get(nombre)
-        if c is None:
-            continue
-        try:
-            hay = int(c.GetClipProperty('Frames'))
-        except (TypeError, ValueError):
-            continue
-        if hay != n:
-            malos.append((nombre, hay, n, c))
-    if not malos:
+        pool = _fecha(c)
+        disco = _os.path.getmtime(r)
+        if pool is not None and disco - pool > 2:
+            viejos.append((_os.path.basename(r), c, r, pool, disco))
+    if not viejos:
         return
-    print('   %d medios desactualizados en el pool; se reimportan:' % len(malos))
-    rutas = []
-    for nombre, hay, n, c in malos:
-        print('      %-44s pool %d, tabla %d' % (nombre, hay, n))
-        rutas.append(c.GetClipProperty('File Path'))
-    mp.DeleteClips([c for _, _, _, c in malos])
-    bins.importar(mp, CASO_BIN, rutas)
+    print('   %d medios cambiaron en disco despues de entrar al pool; se '
+          'releen:' % len(viejos))
+    import time as _time
+    for nombre, c, r, pool, disco in viejos:
+        ok = c.ReplaceClip(r)
+        print('      %-44s pool %s -> disco %s  %s'
+              % (nombre, _time.strftime('%d %b %H:%M', _time.localtime(pool)),
+                 _time.strftime('%d %b %H:%M', _time.localtime(disco)),
+                 'releido' if ok else 'NO SE PUDO'))
     IT = _clips(mp)
     quedan = []
-    for nombre, _, n, _ in malos:
-        c = IT.get(nombre)
-        if c is None or int(c.GetClipProperty('Frames')) != n:
+    for nombre, c, r, _, disco in viejos:
+        c2 = IT.get(nombre)
+        f2 = _fecha(c2) if c2 is not None else None
+        if f2 is None or disco - f2 > 2:
             quedan.append(nombre)
     if quedan:
         raise RuntimeError('siguen desactualizados: %s' % quedan)
@@ -428,8 +490,9 @@ def v3(pr, mp):
     tl = _linea(pr)
     IT = _clips(mp)
     lote = []
-    for nombre, r in TENIDOS:
-        ini, largo = RAN[r]
+    for e in TENIDOS:
+        nombre, r, largo = _tenido(e)
+        ini = RAN[r][0]
         assert REAL[nombre] == largo, (nombre, r, REAL[nombre], largo)
         lote.append({'mediaPoolItem': IT[nombre], 'startFrame': 0,
                      'endFrame': largo, 'trackIndex': 3,
@@ -558,6 +621,9 @@ def chequeo(pr):
         fallos.append('7: %s' % ocup)
 
     prob3, p3 = _revisar_pista(tl, 3, cortes)
+    ABARCAN = {e[0] for e in TENIDOS if len(e) > 2}
+    prob3 = [x for x in prob3
+             if not (x[0] in ABARCAN and 'cruza corte' in str(x[1]))]
     if len(p3) != len(TENIDOS):
         prob3.append(('faltan cartones', len(p3), len(TENIDOS)))
     print('8) cartones V3 (%d):' % len(p3), 'OK' if not prob3 else prob3)
@@ -651,6 +717,33 @@ def chequeo(pr):
     if not ok14:
         fallos.append('14: primer carton en %s'
                       % ('%.1f s' % pri if pri is not None else 'ninguno'))
+
+    #   15  CUANTAS RANURAS SEGUIDAS PASAN SIN UNA PERSONA EN CUADRO
+    #       La regla que Sebastian pidio el 24 oct: que no se acumulen
+    #       planos de documentos sueltos. Se mide la racha mas larga y
+    #       tambien cuanto dura en segundos, que es lo que se siente.
+    rachas, act, desde = [], [], None
+    for i in range(1, 44):
+        if i in CON_PERSONA:
+            if act:
+                rachas.append((desde, list(act)))
+            act, desde = [], None
+        else:
+            if not act:
+                desde = i
+            act.append(i)
+    if act:
+        rachas.append((desde, list(act)))
+    peor = max(rachas, key=lambda x: len(x[1])) if rachas else (0, [])
+    seg = sum(RAN['r%02d' % i][1] for i in peor[1]) / (24000 / 1001.0)
+    ok15 = len(peor[1]) <= TOPE_SIN_GENTE
+    print('15) la racha mas larga sin gente es de %d ranuras (%.1f s), '
+          'desde r%02d (tope %d): %s'
+          % (len(peor[1]), seg, peor[0], TOPE_SIN_GENTE,
+             'OK' if ok15 else 'FALLA'))
+    if not ok15:
+        fallos.append('15: %d ranuras seguidas sin gente desde r%02d'
+                      % (len(peor[1]), peor[0]))
 
     print('')
     print('FALLOS:', fallos if fallos else 'NINGUNO')

@@ -628,7 +628,7 @@ No hands, no people, no labels, no numbers, no text.
 What the camera asserts by coming back to exactly the same frame: everything that was offered is on the left, everything that was admitted and practised is on the right, and the difference is the whole of the case.
 """)
 
-CARTONES = {1, 2, 6, 7, 11, 13, 15, 17, 19, 20, 22, 24, 25, 26, 31, 34, 39, 40, 41}
+CARTONES = {1, 2, 6, 7, 9, 11, 13, 15, 17, 19, 20, 22, 24, 25, 26, 31, 34, 39, 40, 41, 43}
 PROPUESTAS = {11, 19, 20, 24, 25, 31, 39, 40, 41}
 # cuerpo si, cara no: el paso 11 prohibe una CARA, no una persona
 SIN_ROSTRO = {13, 19}
