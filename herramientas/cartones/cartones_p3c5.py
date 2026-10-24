@@ -158,14 +158,18 @@ TENIDOS = [
     # tesis sobre las dos bandejas vacias de r01, el alcance sobre la sala
     # vacia de r02. El de r01 va corto -dos lineas y el separador de ae02 y
     # ae03- porque 167 cuadros son 7,0 s y en tres lineas no se lee.
-    ("ae00_medio_ofrecido", "r01", 167, {
-        "ante": "El punto de partida",
-        "titulo": "El medio ofrecido · la información admitida y practicada"}),
-
-    ("ae07_alcance", "r02", 300, {
-        "ante": "El alcance del ejercicio",
-        "titulo": "Las decisiones evaluadas se limitan a los hechos y "
-                  "condiciones expresamente suministrados"}),
+    # LOS DOS DE APERTURA YA NO SE RENDERIZAN AQUI
+    #     24 oct 2026. Sebastian: "id rather it to be verbatum to whats being
+    #     said becasue they are right now kind of consufinsg". Tenia razon y
+    #     la causa no era el estilo: NO DECIAN LO QUE SONABA DEBAJO. b01 son
+    #     tres frases y las ranuras no caen donde el carton suponia -frase 1
+    #     sobre r01, frases 2 y 3 sobre r02-, asi que el de r01 parafraseaba
+    #     la frase 2 y el de r02 solo la 3.
+    #
+    #     Pasan a verbatim, literales y sincronizados renglon por renglon, y
+    #     los hace `apertura_verbatim_p3c5.py`: sin antetitulo, un solo
+    #     bloque y filete amarillo de una pieza. Los largos y las ranuras no
+    #     cambian, asi que el montaje no se entera.
 
     ("ae01_individualizan", "r06", 117, {
         "ante": "La acusación",
