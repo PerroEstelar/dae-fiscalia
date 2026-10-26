@@ -136,6 +136,15 @@ def graduar16(origen, destino, mezcla=1.0, semilla=7, alisar=True):
 #     1,3-4,4, que es la banda de las placas que si salieron bien.
 FRANJA_MINIMA = 20.0        # distancia minima de la mediana a cada extremo
 
+# EL GUARDIA POR PENDIENTE
+#     `FRANJA_MINIMA` es un proxy de lo que de verdad importa: cuanto
+#     tendria que abrir la curva para llevar la mediana a su objetivo. En
+#     una placa legitimamente oscura el proxy se dispara al reves y tirar
+#     el ancla LEVANTA la placa en vez de protegerla. Ver patch_pendiente.
+#     Apagado por defecto: lo prende graduar_registro con techo=True.
+PENDIENTE_MAXIMA = 8.0
+POR_PENDIENTE = False
+
 
 def anclas(p2, p50, p98, objetivo=G.OBJETIVO):
     """Si la mediana esta dentro de una mancha plana, se deja de usar.
@@ -144,7 +153,12 @@ def anclas(p2, p50, p98, objetivo=G.OBJETIVO):
     sobre la recta que une los dos extremos, que convierte los tres puntos en
     un mapa de dos y deja la pendiente en (205-23)/(p98-p2).
     """
-    if (p50 - p2) >= FRANJA_MINIMA and (p98 - p50) >= FRANJA_MINIMA:
+    if POR_PENDIENTE:
+        baja = (objetivo[1] - objetivo[0]) / max(p50 - p2, 0.5)
+        alta = (objetivo[2] - objetivo[1]) / max(p98 - p50, 0.5)
+        if max(baja, alta) <= PENDIENTE_MAXIMA:
+            return p50, False
+    elif (p50 - p2) >= FRANJA_MINIMA and (p98 - p50) >= FRANJA_MINIMA:
         return p50, False
     f = (objetivo[1] - objetivo[0]) / float(objetivo[2] - objetivo[0])
     return p2 + f * (p98 - p2), True

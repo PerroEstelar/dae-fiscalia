@@ -196,7 +196,9 @@ CUERPO = {
  'rosaelena': ('ROSA ELENA, an Afro-Colombian woman of about sixty, solidly '
                'built, grey hair gathered at the back, in a plain mid-grey '
                'blouse over a plain grey skirt, with a plain matte '
-               'mustard-yellow shawl folded over one shoulder'),
+               'mustard-yellow shawl worn over BOTH shoulders and hanging '
+               'down the front on both sides, like an ordinary shawl and '
+               'never as a sash or a diagonal band across the body'),
  'mariana': ('MARIANA, an Afro-Colombian young woman of about sixteen, slight '
              'build, dark hair in a single braid, in a plain light grey '
              'long-sleeved shirt over plain grey trousers and grey canvas '
@@ -222,17 +224,6 @@ CUERPO = {
                'trousers'),
 }
 
-# EL ESTADO NO VIVE EN EL TOKEN, VIVE EN LA ESCENA
-#     26 oct 2026. En el P3 cada persona tiene UN estado en toda la pieza y
-#     por eso el estado cabia en `VIDA`. Aqui no: Miriam esta RESUELTA
-#     sirviendo en su puesto y GUARDADA pensando en la amenaza, y Rosa Elena
-#     pasa de VACIA en la ventanilla a RESUELTA en la sala de atencion. Con
-#     el estado dentro del token, el prompt pedia las dos cosas a la vez.
-#
-#     `VIDA` se queda con lo que NO cambia -de donde viene, que hace a
-#     diario, y la cosa suya que vuelve en mas de un plano-. El ESTADO, en
-#     los terminos de la biblia -distante, resuelta, guardada, vacia- lo
-#     declara la escena, que es la que sabe en que momento esta.
 VIDA = {
  'miriam': ('Miriam has sold arepas in the same square for years and knows '
             'every face that passes. She keeps a small cloth purse tied at '

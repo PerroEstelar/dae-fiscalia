@@ -21,6 +21,23 @@ NOMBRE = {
      10: 'camino_de_vuelta', 11: 'gregoria_recibe', 12: 'la_cuadra_de_noche',
      13: 'el_puesto_cerrado', 14: 'la_minuta', 15: 'la_ventanilla_vacia',
      16: 'tres_puestos'},
+ 2: {1: 'rosaelena_patio', 2: 'mariana_puerta', 3: 'la_marcha',
+     4: 'el_cartel', 5: 'la_subestacion', 6: 'el_telefono_en_el_piso',
+     7: 'rosaelena_entra', 8: 'la_fiscal_recibe', 9: 'los_dos_formatos',
+     10: 'la_sala_de_trabajo', 11: 'el_mapa_en_pantalla'},
+ 3: {1: 'el_despacho', 2: 'los_dos_escritorios', 3: 'la_caja_por_el_pasillo',
+     4: 'la_caja_en_el_piso', 5: 'la_fiscal_en_la_puerta',
+     6: 'la_mesa_de_cinco', 7: 'tres_carpetas', 8: 'el_mismo_documento',
+     9: 'dos_carpetas'},
+ 4: {1: 'el_pasillo_de_sillas', 2: 'la_ventanilla', 3: 'rosaelena_pp',
+     4: 'la_fiscal_de_pie', 5: 'la_sala_de_atencion',
+     6: 'la_psicologa_al_lado', 7: 'las_manos_con_guantes',
+     8: 'la_entrevista'},
+ 5: {1: 'tres_mesas', 2: 'dos_documentos', 3: 'el_camino_de_noche',
+     4: 'el_georradar', 5: 'la_cuadricula', 6: 'las_manos_en_la_tierra',
+     7: 'la_bandeja', 8: 'el_perito', 9: 'la_pantalla_del_laboratorio',
+     10: 'el_analista_y_el_tablero', 11: 'el_tablero',
+     12: 'el_predio_al_atardecer', 13: 'el_documento_cerrado'},
 }
 
 

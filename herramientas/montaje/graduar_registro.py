@@ -56,6 +56,16 @@ REGISTRO = {
     'hero':      (16, 45, 190),
 }
 
+# Cuanto puede estar el crudo por debajo de su registro antes de que el
+# techo lo respete en vez de subirlo. Seis niveles es ruido del modelo;
+# veinte es una decision de luz.
+TOLERANCIA = 6
+
+# Y el techo SOLO aplica si la placa viene oscura de arriba a abajo: si su
+# p98 llega al blanco del registro, la mediana baja es una silueta y no una
+# decision de exposicion. Ver patch_techo2.
+BLANCO_MINIMO = 0.75
+
 
 # LAS TRES PUERTAS POR LAS QUE ENTRA EL OBJETIVO, Y DOS SON TRAMPAS
 #     `G.OBJETIVO` es un modulo-global que `pendiente_de` LEE en cada
@@ -71,21 +81,34 @@ REGISTRO = {
 #     objetivo de dia- sin un solo error. Lo unico que lo delato fue medir
 #     el resultado contra el objetivo declarado. Es la misma leccion de
 #     siempre: la herramienta no avisa, la medida si.
-def graduar(origen, destino, registro='dia'):
-    """Gradua una placa contra el objetivo de SU registro."""
+def graduar(origen, destino, registro='dia', techo=False):
+    """Gradua una placa contra el objetivo de SU registro.
+
+    Con `techo=True` el medio tono del registro es un TECHO y no un
+    destino: si la placa YA viene mas oscura que su registro se queda
+    donde esta y solo se le fijan los extremos. Ver el encabezado.
+    """
     obj = REGISTRO[registro]
+    if techo:
+        m = medir(origen)
+        oscura = m[1] < obj[1] - TOLERANCIA and m[2] < obj[2] * BLANCO_MINIMO
+        if oscura:
+            obj = (obj[0], int(round(m[1])), obj[2])
     viejo_g = G.OBJETIVO
     viejo_a = GS.anclas.__defaults__
     viejo_c = G.curva.__defaults__
+    viejo_p = GS.POR_PENDIENTE
     try:
         G.OBJETIVO = obj
         GS.anclas.__defaults__ = (obj,)
         G.curva.__defaults__ = (obj,)
+        GS.POR_PENDIENTE = bool(techo)
         return GS.graduar16(origen, destino)
     finally:
         G.OBJETIVO = viejo_g
         GS.anclas.__defaults__ = viejo_a
         G.curva.__defaults__ = viejo_c
+        GS.POR_PENDIENTE = viejo_p
 
 
 def medir(p):
