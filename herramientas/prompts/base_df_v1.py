@@ -222,22 +222,28 @@ CUERPO = {
                'trousers'),
 }
 
+# EL ESTADO NO VIVE EN EL TOKEN, VIVE EN LA ESCENA
+#     26 oct 2026. En el P3 cada persona tiene UN estado en toda la pieza y
+#     por eso el estado cabia en `VIDA`. Aqui no: Miriam esta RESUELTA
+#     sirviendo en su puesto y GUARDADA pensando en la amenaza, y Rosa Elena
+#     pasa de VACIA en la ventanilla a RESUELTA en la sala de atencion. Con
+#     el estado dentro del token, el prompt pedia las dos cosas a la vez.
+#
+#     `VIDA` se queda con lo que NO cambia -de donde viene, que hace a
+#     diario, y la cosa suya que vuelve en mas de un plano-. El ESTADO, en
+#     los terminos de la biblia -distante, resuelta, guardada, vacia- lo
+#     declara la escena, que es la que sabe en que momento esta.
 VIDA = {
  'miriam': ('Miriam has sold arepas in the same square for years and knows '
             'every face that passes. She keeps a small cloth purse tied at '
-            'her waist. Here she is RESOLVED: upright, chin level, both '
-            'hands busy.'),
+            'her waist.'),
  'rosaelena': ('Rosa Elena has farmed and organised her neighbours all her '
                'life and is used to being listened to. She carries a plastic '
-               'folder of papers pressed against her chest, and she never '
-               'puts it down. Here she is RESOLVED: upright and square, chin '
-               'level, still.'),
+               'folder of papers pressed against her chest.'),
  'mariana': ('Mariana finished school last year and learned to speak in '
-             'public by doing it. She keeps her phone in her hand. Here she '
-             'is RESOLVED: shoulders open, chin level, facing forward.'),
+             'public by doing it. She keeps her phone in her hand.'),
  'gregoria': ('Gregoria lives two doors down and has minded the children more '
-              'than once. Here she is GUARDED: head inclined down, chin '
-              'tucked, shoulders rounded inward, arms close to the body.'),
+              'than once.'),
  'fiscal': ('Twenty years of hearings and of telling families the truth. She '
             'keeps a plain grey folder squared in front of her and opens it '
             'only when she needs it.'),
