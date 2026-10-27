@@ -67,7 +67,7 @@ SITUACIONES = {
  'D': ('video',  'SITUACION D - LA CRECIENTE DE LA MIEL',      'Pilar'),
  'E': ('video',  'SITUACION E - EL CAMION HACIA EL VERGEL',    'Carlos'),
  'F': ('imagen', 'SITUACION F - EL PRIMER CONTACTO',           None),
- 'G': ('imagen', 'SITUACION G - LA VOCERA',                    None),
+ 'G': ('video',  'SITUACION G - LA VOCERA',                    'Pilar'),
  'H': ('imagen', 'SITUACION H - DOS MUJERES DOS IMPACTOS',     None),
  'I': ('imagen', 'SITUACION I - LA MINUTA',                    None),
  'J': ('imagen', 'SITUACION J - LAS PIEZAS DEL EXPEDIENTE',    None),
@@ -76,6 +76,15 @@ SITUACIONES = {
 
 VIDEOS = [k for k, v in SITUACIONES.items() if v[0] == 'video']
 IMAGENES = [k for k, v in SITUACIONES.items() if v[0] == 'imagen']
+
+# LA G PASO A VIDEO, Y LA IMAGEN SE CONSERVA
+#     27 de octubre, Sebastian: «Hagamoslo en video». De las seis marcadas
+#     IMAGEN, la G es la unica con secuencia -la exhumacion y las
+#     declaraciones, las 18:00, el telefono, la familia en la Fiscalia-, cuatro
+#     momentos que piden montaje. La agencia la habia marcado imagen, asi que
+#     su carpeta de IMAGENES se queda como esta -prompts, maqueta de lamina- y
+#     la G existe en las dos formas.
+TAMBIEN_IMAGEN = {'G'}
 
 # --------------------------------------------------------------- videos
 # (id, voz, texto_verbatim, tts_o_None, pausa_antes)
@@ -451,6 +460,36 @@ BLOQUES['E'] = [
   'procede activar la búsqueda sino esperar la aparición fortuita del '
   'cadáver.',
   CARTON),
+]
+
+BLOQUES['G'] = [
+ ('g01_la_vocera', 'Pilar',
+  'El 28 de mayo de 2026, la adolescente Mariana Morales (16 años), hermana '
+  'menor de Carlos Alberto y vocera del colectivo de víctimas, asiste a la '
+  'diligencia de exhumación en la Finca El Vergel y entrega declaraciones a '
+  'medios locales exigiendo justicia.',
+  'El veintiocho de mayo de dos mil veintiséis, la adolescente Mariana '
+  'Morales, dieciséis años, hermana menor de Carlos Alberto y vocera del '
+  'colectivo de víctimas, asiste a la diligencia de exhumación en la Finca '
+  'El Vergel y entrega declaraciones a medios locales exigiendo justicia.',
+  0.0),
+
+ ('g02_las_seis', 'Pilar',
+  'A las 18:00 hrs de ese mismo día no regresa a su domicilio.',
+  'A las dieciocho horas de ese mismo día no regresa a su domicilio.',
+  MOVIMIENTO),
+
+ ('g03_el_telefono', 'Pilar',
+  'Su teléfono celular es desconectado tras recibir mensajes intimidantes '
+  'de texto.',
+  None,
+  NORMAL),
+
+ ('g04_la_familia', 'Pilar',
+  'La familia acude de inmediato a la fiscalía general de la Nación a '
+  'reportar su desaparición y solicitar auxilio urgente.',
+  None,
+  MOVIMIENTO),
 ]
 
 # --------------------------------------------------------------- imagenes

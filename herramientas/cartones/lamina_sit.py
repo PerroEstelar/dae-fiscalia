@@ -34,7 +34,7 @@ sys.path.insert(0, r'D:\DAE\_repo\herramientas\cartones')
 sys.path.insert(0, r'D:\DAE\_repo\herramientas\voz\textos')
 sys.path.insert(0, r'D:\DAE\_repo\herramientas\prompts')
 import cartones_ta as C                         # noqa: E402
-from guion_sit import TEXTOS, IMAGENES          # noqa: E402
+from guion_sit import TEXTOS, IMAGENES, TAMBIEN_IMAGEN  # noqa: E402
 import rutas_sit as R                           # noqa: E402
 
 W, H = 1920, 1080
@@ -143,14 +143,15 @@ def maqueta(letra, lado):
 if __name__ == '__main__':
     import imagenes_sit as IMG
     if '--maqueta' in sys.argv:
-        for L in IMAGENES:
+        for L in sorted(set(IMAGENES) | TAMBIEN_IMAGEN):
             lado = IMG.IM[L]['a'][3]
-            dest = os.path.join(R.sub(L, '02 LAMINA'),
+            dest = os.path.join(R.sub(L, '02 LAMINA', 'imagen'),
                                 'SIT_%s_lamina_MAQUETA.png' % L)
             c, n = lamina(L, maqueta(L, lado), dest, lado)
             print('%s  lado %s  cuerpo %d  %d renglones  %s'
                   % (L, lado, c, n, os.path.basename(dest)))
     else:
         L, fondo, lado = sys.argv[1].upper(), sys.argv[2], sys.argv[3]
-        dest = os.path.join(R.sub(L, '02 LAMINA'), 'SIT_%s_lamina.png' % L)
+        dest = os.path.join(R.sub(L, '02 LAMINA', 'imagen'),
+                            'SIT_%s_lamina.png' % L)
         print(lamina(L, fondo, dest, lado))

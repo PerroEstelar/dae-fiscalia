@@ -25,7 +25,7 @@ sys.path.insert(0, r'D:\DAE\_repo\herramientas\prompts')
 sys.path.insert(0, r'D:\DAE\_repo\herramientas\voz\textos')
 import base_sit as S                            # noqa: E402
 import imagenes_sit as IMG                      # noqa: E402
-from guion_sit import SITUACIONES, bloques, TEXTOS   # noqa: E402
+from guion_sit import SITUACIONES, bloques, TEXTOS, TAMBIEN_IMAGEN  # noqa: E402
 
 TMP = r'D:\DAE\_tmp\sit'
 
@@ -63,7 +63,9 @@ def video(letra):
                             'prompt': p}
     for (n, nom), d in sorted(mod.DET.items()):
         madre = 'SIT_%s_r%02d_%s' % (letra, n, mod.NOMBRE[n])
-        gente = out['placas'][madre]['gente']
+        # el inserto puede ser de otra persona que la del plano madre -la
+        # mano del periodista frente a Mariana-: entonces lo declara el DET
+        gente = d.get('personas', out['placas'][madre]['gente'])
         p = S.arma(d['escena'] + '\n\n' + REFERENCIA, registro=d['registro'],
                    personas=tuple(gente), exterior=False)
         out['detalles']['SIT_%s_r%02d_%s_det' % (letra, n, nom)] = {
@@ -155,4 +157,15 @@ if __name__ == '__main__':
         with open(os.path.join(dest, 'SIT_%s_storyboard.md' % L), 'w',
                   encoding='utf-8') as f:
             f.write(md)
+        if L in TAMBIEN_IMAGEN:
+            # la forma de imagen se conserva al lado, con sus dos angulaciones
+            oi = imagen(L)
+            json.dump(oi, open(os.path.join(TMP, 'prompts_sit_%s_imagen.json'
+                                            % L), 'w', encoding='utf-8'),
+                      ensure_ascii=False, indent=1)
+            with open(os.path.join(R.sub(L, '06 GUION Y PROMPTS', 'imagen'),
+                                   'SIT_%s_storyboard.md' % L), 'w',
+                      encoding='utf-8') as f:
+                f.write(md_imagen(oi))
+            print('%s  tambien imagen: %d variantes' % (L, len(oi['variantes'])))
     print('LISTO')

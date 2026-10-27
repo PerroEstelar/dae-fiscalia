@@ -42,13 +42,16 @@ BINS_VIDEO = ['01 PLANOS', '02 CARTONES', '03 VOCES', '04 B-ROLL',
 BINS_IMAGEN = ['01 PLANOS', '02 LAMINA', '05 EXPORTS']
 
 
-def carpeta(letra):
+def carpeta(letra, como=None):
+    """`como` = 'video' o 'imagen' para pedir una forma en particular: la G
+    existe en las dos. Sin `como`, la forma principal de la situacion."""
     tipo, nombre, _ = SITUACIONES[letra]
+    tipo = como or tipo
     return os.path.join(VIDEOS if tipo == 'video' else IMAGENES, nombre)
 
 
-def sub(letra, cual):
-    return os.path.join(carpeta(letra), cual)
+def sub(letra, cual, como=None):
+    return os.path.join(carpeta(letra, como), cual)
 
 
 def voces(letra):

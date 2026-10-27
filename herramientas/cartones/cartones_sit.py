@@ -142,6 +142,17 @@ ELEGIDOS = {
   ('d09_el_funcionario', 'Vayan a la Defensa Civil o al Comité de Gestión '
    'del Riesgo para que manden buzos o rescate».'),
  ],
+ 'G': [
+  # el primer bloque -fecha, edad, la exhumacion, los medios- va sin carton:
+  # en una pieza de 38 s de voz cubrir los cuatro bloques deja el 98 % del
+  # cuerpo con texto. Quedan las tres cosas que pasan despues.
+  ('g02_las_seis', 'A las 18:00 hrs de ese mismo día no regresa a su '
+   'domicilio.'),
+  ('g03_el_telefono', 'Su teléfono celular es desconectado tras recibir '
+   'mensajes intimidantes de texto.'),
+  ('g04_la_familia', 'La familia acude de inmediato a la fiscalía general de '
+   'la Nación a reportar su desaparición y solicitar auxilio urgente.'),
+ ],
  'E': [
   ('e02_el_mirador', 'El 28 de abril de 2026, a las 17:30 horas, mientras '
    'Gustavo Adolfo caminaba cerca del antiguo estadero El Mirador'),
