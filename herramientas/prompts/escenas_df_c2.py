@@ -13,6 +13,15 @@ LA RIMA DEL CAPITULO
     r02 y r06. En r02 el telefono esta en la mano de Mariana y ella habla;
     en r06 el mismo telefono esta en el piso y no hay nadie. Las dos se
     graduan juntas.
+
+LA PRIMERA RONDA DE SEBASTIAN EN EL C1, APLICADA AQUI ANTES DE SU REVISION
+    r03: la marcha tenia diez personas lejanas y ninguna reconocible, y la voz
+    dice que Mariana ORGANIZO las marchas. Ahora Mariana y Rosa Elena van al
+    frente, cerca de camara, como el primer plano de Miriam del C1 r09.
+    r05: diez segundos de fachada vacia. La voz dice que Mariana fue a EXIGIR
+    RESPUESTAS en la estacion y que no regreso a las 18:00. Ahora esta ella,
+    de espaldas, sola frente a la puerta abierta, al final del dia. Sin cara,
+    sin policia, sin insignias; el contraluz hace el resto.
 """
 
 R = {}
@@ -47,20 +56,34 @@ Ordinary daylight from one side: a clearly lit side of the wall and a clear
 shadow on the other.
 ''')
 
-R[3] = (152, 'dia', (), False, False, True, '''
-Wide shot of a plain street in a small Colombian municipality, the camera at
-standing eye level and perfectly level.
+R[3] = (152, 'dia', ('mariana', 'rosaelena'), True, False, True, '''
+Medium-wide shot of a plain street in a small Colombian municipality by day,
+the camera at standing eye level and perfectly level, the street running
+toward the camera.
 
-A GROUP OF ABOUT TEN PEOPLE walks down the middle of the street toward the
-camera but still far off, unhurried and in a loose line. Several of them hold
-plain sheets of paper up at chest height; every sheet is a blank light grey
-rectangle with no image and no readable character on it.
+A LOOSE GROUP OF ABOUT TEN PEOPLE walks down the middle of the street toward
+the camera, unhurried. AT THE FRONT OF THE GROUP, clearly the nearest to the
+camera and the only two whose faces carry detail, %(mariana)s walks with
+%(rosaelena)s at her side, the two of them a step ahead of everyone else.
 
-They are simply walking. Nobody is shouting, nobody is running, nobody is
-holding anything but paper.
+Mariana holds a plain sheet of paper up at chest height with both hands, the
+fingers held together and the thumbs clearly visible; the sheet is a blank
+light grey rectangle with no image and no readable character on it. Her face
+is plain and readable: chin level, eyes forward, mouth closed -RESOLVED, not
+angry, not shouting-. Rosa Elena walks beside her with the plastic folder
+pressed flat against her chest and the shawl over both shoulders, her face
+plain and set.
+
+The people behind them are further off and smaller; several hold up plain
+blank sheets of the same kind, and no face behind the two women carries
+detail. They are simply walking. Nobody is shouting, nobody is running,
+nobody is holding anything but paper.
 
 Ordinary daylight from one dominant direction lays a bright plane down one
-side of the street.
+side of the street and a real cast shadow at their feet.
+
+What the camera asserts by putting the two women in front: the march has a
+face, and it is the family's.
 ''')
 
 R[4] = (151, 'dia', (), False, False, True, '''
@@ -80,19 +103,27 @@ One dominant side light rakes across the paper so the lifted corner throws a
 small clean shadow.
 ''')
 
-R[5] = (251, 'contraluz', (), False, False, True, '''
+R[5] = (251, 'contraluz', ('mariana',), True, False, True, '''
 Wide shot of the front of a plain small-town police substation seen from the
 pavement across the street, the camera at standing eye level and perfectly
-level. A plain rendered facade, a single open doorway, two plain
-metal-framed windows.
+level. A plain rendered facade, a single open doorway, two plain metal-framed
+windows. It is the end of the day: the sky above the roofline is pale and the
+street is already in shade.
 
-NOBODY is in the frame: no officer, no vehicle, no figure in the doorway.
+%(mariana)s stands on the pavement directly in front of the open doorway WITH
+HER BACK TO THE CAMERA, small in the frame -the doorway a little taller than
+she is-, upright and completely still, facing the door, her phone in one hand
+at her side. She is seen from behind: no face. She reads mostly as a dark
+shape with a clean edge of light down one side, the yellow band at her cuff
+catching it.
 
-The open doorway is the only bright thing in the picture and the whole facade
-reads as a dark plane against it. More than half the frame is dark.
+NOBODY ELSE is in the frame: no officer, no vehicle, no figure in the doorway,
+nobody coming out. The lit doorway is the only bright thing in the picture
+and the whole facade reads as a dark plane against it. More than half the
+frame is dark.
 
-What the camera asserts by photographing the building and not the people in
-it: this is the address where the answer was supposed to come from.
+What the camera asserts by leaving her alone in front of the door: she came
+to ask, and the picture does not show anyone coming out to answer.
 ''')
 
 R[6] = (254, 'hero', (), False, False, True, '''
@@ -199,7 +230,7 @@ no other part of a person is in the picture.
 One dominant light from the side rakes across the desk.
 ''')
 
-CON_PERSONA = {1, 2, 3, 7, 8, 10, 11}
+CON_PERSONA = {1, 2, 3, 5, 7, 8, 10, 11}
 TOPE_SIN_GENTE = 3
 CARTONES = {9}
 SILUETAS = set()

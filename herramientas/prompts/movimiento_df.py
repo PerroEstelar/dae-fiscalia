@@ -127,6 +127,13 @@ QUIETO = (
 MEZCLA = 12
 
 # (capitulo, ranura): (cuadros, movimiento)
+# (2, 5) ES LA EXCEPCION A «SIN GENTE», Y VA A PROPOSITO
+#     27 de octubre, revision del C1: Sebastian pidio para el R07 «hazlo mas
+#     oscuro, agregale particulas, nubes, cambio de luz». La r05 nueva del C2
+#     tiene a Mariana de espaldas, quieta, en contraluz: no hay cara ni mano
+#     que el modelo pueda inventar, y lo que se mueve es la luz del final del
+#     dia y un pajaro lejos. Si la figura se mueve, el clip no entra: V2 es una
+#     pista aparte precisamente para eso.
 MOV = {
  (1, 2): (158,
     'Her two hands work at the griddle in a small, slow, ordinary rhythm: the '
@@ -168,6 +175,8 @@ MOV = {
     'do not move.'),
  (2, 4): (151,
     'The light across the post and the taped sheet shifts slowly, as if a cloud were passing, and comes back. THE PAPER ITSELF DOES NOT MOVE AT ALL: no sheet, page, card, form or document lifts, flutters, curls, flaps, turns, slides or changes its position or angle by any amount. Only the light moves. The sheet stays taped flat against the post at exactly the same angle, the same size and the same place, and the grey rectangle and the grey bars on it never change.'),
+ (2, 5): (251,
+    'The last daylight on the facade dims very slowly, as if the sun were going down behind the camera, while the lit doorway stays exactly as bright as it is, so the open door stands out a little more against the dark wall by the end. High above the roofline a single bird crosses the pale sky, very small and very slow, and is gone. THE GIRL DOES NOT MOVE AT ALL: she stays exactly where she is, facing the door with her back to the camera, the same height, the same outline, the same posture, the braid still, the phone still in her hand at her side; she does not turn, step, sway, raise an arm or look back, and her clothes and the band at her cuff keep their exact shape and colour. Nobody appears in the doorway and nobody comes out.'),
  (2, 6): (254,
     'The pool of lamplight on the pavement wavers very slightly, as if the lamp above were swinging a little, and comes back. NOTHING CROSSES THE PAVEMENT: no leaf, no paper, no bird, no animal and no object of any kind enters the frame or passes near the phone. The phone does not move, is not touched, does not slide and its screen stays completely black.'),
  (2, 9): (136,
