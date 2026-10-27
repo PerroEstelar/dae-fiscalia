@@ -196,6 +196,69 @@ daylight from the same side as the reference.
     'The fingers of one hand rise a little and settle again on the table '
     'beside the document, once, slowly. The document does not move, the grey '
     'bars on it do not change, and nothing else moves.')),
+
+ (4, 2, 'manos_ventanilla'): dict(cuadros=90, entra=90, registro='contraluz',
+    personas=(), acento=False, escena='''
+EXTREME CLOSE-UP of the PAIR OF HANDS on the far side of the service hatch,
+resting on the counter beside the closed plain ledger, seen from the near,
+dark side of the counter: only the hands and part of the forearms in plain
+grey sleeves, at rest, the fingers of each hand held together, the thumbs
+clearly visible, each hand at its natural size and angle so it reads as a
+hand with thickness and knuckles. The hands are NOT reaching for anything.
+NO FACE, no shoulder and no other part of that person in the frame. The lit
+hatch behind them is the only bright thing, exactly as in the reference; the
+near side of the counter sits in deep shadow. The ledger is plain, closed,
+with no lettering.
+''', gesto=(
+    'The fingers of one hand lift a few millimetres off the counter and set '
+    'down again, once, slowly -an idle, indifferent tap- and both hands go '
+    'still. Neither hand reaches for anything, neither hand leaves the '
+    'counter, the ledger stays closed and does not move.')),
+
+ (4, 4, 'mano_ofrece'): dict(cuadros=96, entra=60, registro='dia',
+    personas=('fiscal',), acento=False, escena='''
+EXTREME CLOSE-UP of the open extended hand of %(fiscal)s as she offers the
+chair: the hand low in the frame, palm turned a little upward, the fingers
+held together and slightly curled, the thumb clearly visible, the hand seen
+edge-on so it reads as a hand with thickness and knuckles. Behind it, the
+sleeve of her plain dark grey jacket; beyond, the plain chair out of focus.
+THE FINGERS ARE NEVER SPREAD APART. No face and no other part of her in
+frame. Same daylight from the same side as the reference.
+''', gesto=(
+    'The open hand lowers a few centimetres toward the chair, unhurried, and '
+    'holds the offer, still. The fingers stay held together and slightly '
+    'curled the whole time, never spreading; the wrist does not rotate; the '
+    'sleeve and the chair do not move. Nothing else moves.')),
+
+ (4, 6, 'carpeta_en_el_regazo'): dict(cuadros=90, entra=60, registro='dia',
+    personas=('rosaelena',), acento=True, escena='''
+EXTREME CLOSE-UP of the plain plastic folder lying on the lap of
+%(rosaelena)s, her two hands resting on top of it, the fingers held together
+and the thumbs clearly visible, each hand at its natural size and seen at a
+natural angle. A fold of the matte mustard-yellow shawl hangs into one edge
+of the frame, and her plain grey skirt shows beneath the folder. No face.
+Same daylight from the same side as the reference.
+''', gesto=(
+    'Her thumbs press very slightly into the folder and ease again, once, '
+    'slowly, like a breath. THE HANDS KEEP EXACTLY THE ARRANGEMENT they have '
+    'in the first frame: they do not slide, lift, splay or clasp '
+    'differently. The folder stays closed and does not move. Nothing else '
+    'moves.')),
+
+ (4, 8, 'carpeta_en_la_mesa'): dict(cuadros=96, entra=70, registro='dia',
+    personas=('rosaelena',), acento=False, escena='''
+EXTREME CLOSE-UP of the plain plastic folder LYING FLAT AND CLOSED on the
+low table, and the hand of %(rosaelena)s resting on the table BESIDE it -not
+on it-, the fingers held together, the thumb clearly visible, the hand at
+its natural size and angle so it reads as a hand with thickness and
+knuckles. At the far edge of the frame, out of focus, the corner of the
+prosecutor's own grey folder. No face. Same daylight from the same side as
+the reference, landing on the table between them.
+''', gesto=(
+    'Her fingers settle a little on the table beside the folder, once, '
+    'slowly, and rest. The hand does not slide toward the folder, the '
+    'folder is not touched and does not move, and nothing else enters the '
+    'frame or moves.')),
 }
 
 # Kling 3.0 cobra por segundo entero; el inserto se conforma al largo exacto.
