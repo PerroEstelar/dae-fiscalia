@@ -80,24 +80,22 @@ happens on the other side is not shown, and the picture does not pretend to
 know it.
 ''')
 
-R[4] = (299, 'contraluz', (), False, False, False, '''
-Close shot, straight on and slightly from above, of a small plain cloth purse
-lying open and empty on a bare table, the purse occupying the middle of the
-frame. The cloth is slack and the mouth of the purse gapes: there is nothing
-inside and nothing beside it on the table.
-
-Behind the table and well out of focus, the lower part of a closed interior
-door, and in front of it TWO PAIRS OF SMALL CHILDREN'S SHOES placed neatly
-side by side on the floor, pointing at the door.
-
-NO PERSON, NO FACE, NO HAND anywhere in the frame.
-
-One dominant light comes from a window out of frame and rakes across the table
-top, leaving the floor and the door in deep shade.
-
-What the camera asserts by photographing an empty purse and two pairs of shoes:
-the money is gone and the children are on the other side of a door that is
-closed.
+R[4] = (299, 'contraluz', (), False, True, False, '''
+Close shot, straight on and slightly from above, of a SMALL TRADITIONAL COIN
+PURSE lying CLOSED on a bare table, the purse in the middle of the frame and
+large in it: a small rounded leather purse with a metal kiss-lock clasp at the
+top, the two little balls of the clasp pressed together, the purse clearly
+SHUT, its sides slack and flat because there is nothing inside. Nothing else on
+the table. Behind the table, out of focus, an open interior doorway, and
+standing in that doorway, cut by the frame at the knees, ONE MAN read entirely
+as a flat dark SILHOUETTE against the lit room beyond: a solid male shape,
+broad, slightly stooped, one hand hanging at his side, the other resting on the
+door frame. No face, no features, no detail of clothing. He is not moving and
+not reaching for anything. The one light comes from the room behind him and
+from a window out of frame, raking across the table top and leaving the near
+side of the room in deep shade. What the camera asserts by photographing a
+closed purse with a man's shape in the doorway behind it: the money is gone,
+and the picture names who stands between her and the door without showing him.
 ''')
 
 R[5] = (169, 'hero', ('miriam',), True, False, False, '''
@@ -131,23 +129,19 @@ What the camera asserts by keeping them at this distance: three people came and
 stood where they had no business standing, and that is all the picture claims.
 ''')
 
-R[7] = (168, 'dia', (), False, False, True, '''
-Medium close shot taken FROM INSIDE the stall, looking out over the griddle and
-the plain wooden counter toward the street, the camera at working height and
-perfectly level.
-
-The counter, the griddle and a stack of plain grey paper wrappers fill the
-lower half of the frame, sharp and close. Beyond them the street is a soft
-painted blur of simplified shapes, and three dark upright forms stand in that
-blur, unresolved and far enough away to carry no detail at all.
-
-NO FACE anywhere in the frame.
-
-Ordinary daylight from one side lays a clear bright plane across the counter
-and leaves the inside of the stall in shade.
-
-What the camera asserts by standing where she stands: this is her side of the
-counter, and what is waiting on the other side has no features.
+R[7] = (168, 'contraluz', (), False, True, True, '''
+Medium shot taken FROM INSIDE the stall, looking out over the griddle and the
+plain wooden counter toward the street, the camera at working height and
+perfectly level. The counter and the griddle fill the lower third of the frame,
+close and in shade. Beyond the counter the street is the only bright thing in
+the picture, and against that light stand THREE UPRIGHT FIGURES in a loose
+group, a few steps from the counter, read entirely as flat dark shapes: solid,
+featureless, no face, no hands visible, no detail of clothing -the SAME three
+dark shapes as in the wide shot down the row of stalls, now closer-. They are
+simply standing, still, facing the stall. Nothing is in anyone's hand. Nobody is
+touching anything. More than half of the frame is dark. What the camera asserts
+by standing where she stands: this is her side of the counter, and what is
+waiting on the other side has no features.
 ''')
 
 R[8] = (108, 'dia', (), False, False, False, '''
@@ -166,21 +160,21 @@ What the camera asserts by coming this close to an empty box: the money that was
 supposed to be here is not here, and nobody had to take it in front of us.
 ''')
 
-R[9] = (207, 'hero', (), False, True, True, '''
-Wide shot of an EMPTY stretch of open pasture at the edge of a small Colombian
-town at night, the camera at standing eye level and perfectly level. A sagging
-wire fence runs across the middle distance, a line of scrub behind it, and a
-patch of flattened grass in the foreground where the ground has been walked on.
-
-THERE IS NO PERSON IN THIS IMAGE. Nobody stands, sits, lies or moves anywhere
-in the frame. There is no vehicle, no object dropped on the ground, no clothing,
-no mark on the grass other than that it has been trodden.
-
-One low, weak light far away at the edge of town; everything nearer falls away
-into near-black with real depth. A long soft gradient across the ground.
-
-What the camera asserts by photographing an empty field: something happened
-here and the picture refuses to perform it.
+R[9] = (207, 'hero', ('miriam',), True, False, True, '''
+Close shot of %(miriam)s at night at the edge of open pasture, the camera at
+her eye level and perfectly level, her face filling the right half of the
+frame. She has stopped mid-step and turned her head toward something just out
+of frame on the left: her eyes wide, brows lifted, lips parted, the face of a
+woman who has just understood what is about to happen -FEAR AND SHOCK, held
+still, no scream, no tears-. Her hands are not visible. Behind her and to the
+left, a little further from the camera, TWO UPRIGHT FIGURES stand close
+together, read entirely as FLAT DARK SILHOUETTES against the faint far light:
+solid shapes with no face, no features, no hands visible, no weapon, nothing in
+anyone's hand, not touching her and not reaching for her. One low, weak light
+far away at the edge of town picks out the side of her face and the headwrap
+and leaves the two figures as pure shadow; everything else falls away into
+near-black with real depth. What the camera asserts by staying on her face:
+the picture shows what she sees arriving, and refuses to show what came next.
 ''')
 
 R[10] = (120, 'hero', (), False, False, True, '''
@@ -234,7 +228,7 @@ What the camera asserts by staying outside in the street: the whole block could
 hear it, and the picture stays where the neighbours were.
 ''')
 
-R[13] = (256, 'dia', (), False, False, True, '''
+R[13] = (103, 'dia', (), False, False, True, '''
 Wide shot of the market square at the hour when it should be busiest, the camera
 at standing eye level and perfectly level, framed on ONE stall in the middle of
 the row.
@@ -253,7 +247,39 @@ What the camera asserts by photographing one tied awning in a working market:
 the absence is the only thing in the square that is not moving.
 ''')
 
-R[14] = (247, 'dia', (), False, False, False, '''
+R[14] = (153, 'dia', ('gregoria',), False, False, True, '''
+Medium shot of %(gregoria)s standing at the service window of a small
+one-storey police post of the kind found in Colombian towns, the camera at her
+eye level and perfectly level, her slightly off centre to the right, seen in
+three-quarter profile, talking: her mouth slightly open mid-sentence, her brow
+drawn, one hand raised a little from her side with the fingers held together as
+she explains. The post: plain white rendered walls with a broad band of dull
+olive green along the lower half, a barred window, a low counter at the window,
+a plain metal door. In the lower left of the frame, close to the camera and
+WITH HIS BACK TO IT, the head and shoulders of a POLICE OFFICER in a plain
+olive-green uniform shirt and a peaked cap, listening: his face is NOT in the
+frame, he is seen only from behind, and his uniform carries NO badge, NO patch,
+NO insignia and NO lettering of any kind. Ordinary daylight from one side: a
+clearly lit wall, a real cast shadow at their feet. What the camera asserts by
+standing behind the officer: she came to say it to someone, and we see her say
+it.
+''')
+
+R[16] = (246, 'dia', ('vecinos',), False, False, True, '''
+Medium-wide shot on the same street of plain rendered houses by day, the
+camera at standing eye level and perfectly level. %(vecinos)s stand close
+together on the pavement outside a doorway, in a tight knot, the three heads
+leaning in: the older man with his arms folded, the heavy-set woman with one
+hand raised beside her mouth as she speaks low, the younger woman listening
+with her bag held in both hands in front of her, eyebrows up. Faces plain and
+readable: talking, listening, the look of people trading news they are not
+sure they should be trading. Hands held together, fingers never spread.
+Ordinary daylight from one dominant direction, a clear bright plane on the wall
+and a real cast shadow at their feet. What the camera asserts by photographing
+three people in a knot on a pavement: the street has started to talk.
+''')
+
+R[15] = (247, 'dia', (), False, False, False, '''
 Close shot, straight on and slightly from above, of a large plain ledger lying
 open on a counter top, the two pages occupying the middle of the frame.
 
@@ -274,23 +300,7 @@ What the camera asserts by photographing one short line: the whole answer fit
 in a single line, and it was written without looking up.
 ''')
 
-R[15] = (246, 'contraluz', ('gregoria',), False, False, False, '''
-Medium shot taken FROM BEHIND AND JUST ABOVE %(gregoria)s's shoulder, so the
-camera sees what she sees and not her face. The back of her shoulder and the
-edge of her jaw occupy the lower left of the frame, dark and close.
-
-In front of her, a plain counter and a service window, and beyond the window a
-plain interior wall. The window is the only bright thing in the picture and
-everything nearer the camera sits in deep shadow.
-
-Behind the counter there is NOBODY: the stool is empty and the ledger is
-closed.
-
-What the camera asserts by standing behind her: she is still there, and there
-is no longer anyone on the other side.
-''')
-
-R[16] = (118, 'hero', (), False, False, True, '''
+R[17] = (118, 'hero', (), False, False, True, '''
 Very wide shot of THREE market squares seen as one continuous row of plain
 rendered facades at dawn, the camera at standing eye level and perfectly level.
 
@@ -308,26 +318,26 @@ had already happened somewhere else.
 # Las ranuras en las que se ve a una persona en cuadro. No sale de `personas`:
 # en r06 hay tres siluetas, en r10 una figura lejana y en r14 una mano, y el
 # prompt no nombra a nadie en ninguna de las tres.
-CON_PERSONA = {1, 2, 5, 6, 7, 10, 11, 14, 15}
+CON_PERSONA = {1, 2, 5, 6, 7, 9, 10, 11, 14, 15, 16}
 TOPE_SIN_GENTE = 3
 
 # Las ranuras que llevan carton verbatim encima.
-CARTONES = {14}
+CARTONES = {15}
 
 # Las que van en silueta.
-SILUETAS = {6, 9}
+SILUETAS = {4, 6, 7}
 
 
 def comprobar():
     fallos = []
     tot = sum(v[0] for v in R.values())
-    if sorted(R) != list(range(1, 17)):
-        fallos.append('faltan ranuras: %s' % sorted(set(range(1, 17)) - set(R)))
+    if sorted(R) != list(range(1, 18)):
+        fallos.append('faltan ranuras: %s' % sorted(set(range(1, 18)) - set(R)))
     if tot != 2973:
         fallos.append('los cuadros suman %d y la rejilla dice 2973' % tot)
     # la racha mas larga sin gente
     racha = mejor = 0
-    for i in range(1, 17):
+    for i in range(1, 18):
         racha = 0 if i in CON_PERSONA else racha + 1
         mejor = max(mejor, racha)
     if mejor > TOPE_SIN_GENTE:
@@ -342,5 +352,5 @@ def comprobar():
 
 if __name__ == '__main__':
     f, tot, mejor = comprobar()
-    print('16 ranuras · %d cuadros · racha mas larga sin gente: %d' % (tot, mejor))
+    print('17 ranuras · %d cuadros · racha mas larga sin gente: %d' % (tot, mejor))
     print('FALLOS:', f or 'ninguno')

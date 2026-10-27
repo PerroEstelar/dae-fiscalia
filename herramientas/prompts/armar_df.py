@@ -16,11 +16,11 @@ from base_df_v1 import arma, TOKENS              # noqa: E402
 
 NOMBRE = {
  1: {1: 'plaza_abre', 2: 'miriam_puesto', 3: 'casa_cerrada',
-     4: 'monedero_y_zapatos', 5: 'miriam_pp', 6: 'tres_siluetas',
-     7: 'desde_el_puesto', 8: 'caja_vacia', 9: 'el_potrero_vacio',
+     4: 'monedero_cerrado', 5: 'miriam_pp', 6: 'tres_siluetas',
+     7: 'desde_el_puesto', 8: 'caja_vacia', 9: 'miriam_interceptada',
      10: 'camino_de_vuelta', 11: 'gregoria_recibe', 12: 'la_cuadra_de_noche',
-     13: 'el_puesto_cerrado', 14: 'la_minuta', 15: 'la_ventanilla_vacia',
-     16: 'tres_puestos'},
+     13: 'el_puesto_cerrado', 14: 'gregoria_al_cai', 15: 'la_minuta',
+     16: 'el_chisme_en_la_cuadra', 17: 'tres_puestos'},
  2: {1: 'rosaelena_patio', 2: 'mariana_puerta', 3: 'la_marcha',
      4: 'el_cartel', 5: 'la_subestacion', 6: 'el_telefono_en_el_piso',
      7: 'rosaelena_entra', 8: 'la_fiscal_recibe', 9: 'los_dos_formatos',

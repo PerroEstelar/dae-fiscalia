@@ -23,6 +23,23 @@ PASO 2 - LOS BORDES
 
     Resultado: V2 entra y sale sin salto, y apagar la pista sigue dejando
     la pieza completa. Que era todo el punto de la pista aparte.
+
+PASO 0 - EL ENCUADRE, QUE ERA EL ZOOM
+    27 de octubre. Sebastian vio dos veces «un ligero zoom cada vez que cambia
+    el clip». La primera vez apague el empuje de camara, que existia pero
+    era el chico. El grande era este: el keyframe que va a Kling es la placa
+    ENTERA a 1920x1080, y la ranura horneada va recortada al 88 %. Medido
+    sobre r03: la ranura y el clip recortado al 88 % difieren 1,5 niveles
+    -ruido de codec-; tal cual, 13,2. Asi que en cada fundido el encuadre
+    saltaba un 12 %.
+
+    La medicion de bordes que 'demostraba' que el fundido era invisible
+    comparaba el cuadro 0 y el N-1, donde el alfa del clip es CERO: ahi el
+    resultado es la base pixel a pixel por definicion. Media justo donde no
+    podia fallar. El salto esta en los doce cuadros de en medio.
+
+    Ahora el clip se recorta al mismo encuadre que la ranura antes del
+    retime, y el fundido une dos imagenes que coinciden.
 """
 import os
 import subprocess
@@ -34,6 +51,9 @@ import plan_camara_df as PC                        # noqa: E402
 from armar_df import NOMBRE                        # noqa: E402
 
 FPS = '24000/1001'
+# El mismo recorte con que camara.py hornea las ranuras (rehornear_df
+# pasa encuadre=0.88 al respiro; trabajos() lo pone igual en las ranuras).
+ENCUADRE = 0.88
 FPS_N = 23.976
 ENT = r'D:\DAE\_tmp\df\mov\crudos'
 TMP = r'D:\DAE\_tmp\df\mov\_retime'
@@ -50,7 +70,11 @@ def cuadros(p):
 
 print('%-44s %6s %6s %6s %6s' % ('clip', 'crudo', 'ranura', 'final', 'borde'),
       flush=True)
+# Con argumentos -'1:2 1:6'- conforma solo esas ranuras; sin ellos, todas.
+SOLO = {tuple(int(x) for x in a.split(':')) for a in sys.argv[1:]}
 for (cap, ran), (largo, _) in sorted(M.MOV.items()):
+    if SOLO and (cap, ran) not in SOLO:
+        continue
     nm = 'DF_C%d_r%02d_%s' % (cap, ran, NOMBRE[cap][ran])
     o = os.path.join(ENT, nm + '.mp4')
     tl = os.path.join(PC.RAIZ, PC.CAPS[cap], '10 TIMELINE SEBASTIAN')
@@ -61,11 +85,21 @@ for (cap, ran), (largo, _) in sorted(M.MOV.items()):
     sal = os.path.join(tl, 'MOVIMIENTO')
     os.makedirs(sal, exist_ok=True)
     d = os.path.join(sal, '%s_mov_v%d.mp4' % (nm, largo))
+    if os.path.exists(d):
+        des = os.path.join(sal, '_descartes')
+        os.makedirs(des, exist_ok=True)
+        k, dd = 0, os.path.join(des, os.path.basename(d).replace('.mp4', '_sin_recorte.mp4'))
+        while os.path.exists(dd):
+            k += 1
+            dd = os.path.join(des, os.path.basename(d).replace('.mp4', '_sin_recorte_%d.mp4' % k))
+        os.replace(d, dd)
 
     n0 = cuadros(o)
     rt = os.path.join(TMP, nm + '.mp4')
     subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', o,
-                    '-vf', 'setpts=%.9f*PTS,fps=%s' % (float(largo) / n0, FPS),
+                    '-vf', 'crop=iw*%.4f:ih*%.4f,scale=1920:1080:flags=lanczos,'
+                           'setpts=%.9f*PTS,fps=%s'
+                           % (ENCUADRE, ENCUADRE, float(largo) / n0, FPS),
                     '-frames:v', str(largo), '-c:v', 'libx264', '-crf', '12',
                     '-preset', 'medium', '-pix_fmt', 'yuv420p', '-an', rt],
                    check=True)

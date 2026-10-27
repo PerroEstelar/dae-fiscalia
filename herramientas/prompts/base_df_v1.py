@@ -219,6 +219,12 @@ CUERPO = {
  'analista': ('THE CRIME ANALYST, a man of about thirty-five, medium build, '
               'short dark hair, in a plain mid grey shirt with the sleeves '
               'rolled once over plain grey trousers, no tie'),
+ 'vecinos': ('THREE NEIGHBOURS of a small Colombian town: an older man of about '
+             'sixty-five in a plain light grey shirt, plain grey trousers and a '
+             'plain pale straw hat; a heavy-set woman of about fifty in a plain '
+             'grey house dress with a plain grey apron; and a younger woman of '
+             'about thirty in a plain grey blouse and grey trousers carrying a '
+             'plain cloth shopping bag'),
  'asistente': ('THE ASSISTANT, a young man of about twenty-six, slight build, '
                'short dark hair, in a plain light grey shirt over plain grey '
                'trousers'),
@@ -244,6 +250,8 @@ VIDA = {
             'does it. He carries a plain field case he sets down flat.'),
  'analista': ('He builds the pattern out of what the others bring him and '
               'does not say more than the papers allow.'),
+ 'vecinos': ('They have lived on this street all their lives and know everything '
+             'that happens on it before it happens.'),
  'asistente': ('He carries the boxes and is the one who notices that a page '
                'is missing.'),
 }

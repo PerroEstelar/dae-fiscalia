@@ -128,29 +128,40 @@ MEZCLA = 12
 
 # (capitulo, ranura): (cuadros, movimiento)
 MOV = {
+ (1, 2): (158,
+    'Her two hands work at the griddle in a small, slow, ordinary rhythm: the '
+    'right hand slides one flat arepa a few centimetres across the griddle and '
+    'presses it lightly, the left hand rests on the counter and stays there. '
+    'No steam and no smoke rises from the griddle. HER HEAD, FACE, '
+    'EYES AND EXPRESSION DO NOT CHANGE: no blink, no turn, no smile, no '
+    'change of gaze. Her body stays exactly where it is.'),
+ (1, 6): (168,
+    'A thin, low drift of dust moves slowly along the ground of the street '
+    'from left to right, close to the pavement, and fades. High above the far '
+    'bright end of the street a bank of cloud moves slowly across, and as it '
+    'passes the light at the far end softens slightly and then returns. THE '
+    'THREE DARK FIGURES DO NOT MOVE AT ALL: not a step, not a turn, not a '
+    'gesture, no limb shifts; they stay exactly as they are, flat dark shapes '
+    'with no features.'),
+ (1, 10): (120,
+    'High above, a single small aircraft light crosses the dark sky very '
+    'slowly from left to right and leaves the frame. The weak scatter of '
+    'windows at the edge of town flickers once and stays lit. The small far '
+    'figure on the road keeps walking away at the same slow steady pace, '
+    'upright, no detail visible, and does not grow or shrink noticeably. '
+    'Nothing else moves and nothing appears on the road.'),
  (1, 3): (145,
     'A few specks of dust drift slowly across the bright doorway. A DOG walks '
     'across the lit doorway, left to right, and out of the picture: small, '
     'unhurried, a dark shape against the light. The closed door, the window '
     'and the walls do not move and nothing hangs from them.'),
- (1, 4): (299,
-    'The light across the table shifts very slowly, as if a cloud were passing '
-    'outside the frame, and comes back. The slack cloth of the purse eases '
-    'almost imperceptibly where it is folded. The purse does not move from '
-    'where it lies and nothing comes out of it.'),
  (1, 8): (108,
     'The light on the open cash box shifts slightly and comes back. The tipped-'
     'back lid does not move. The box stays empty: no coin, no note, no object '
     'appears in any compartment.'),
- (1, 9): (207,
-    'The dry grass in the foreground and the scrub behind the fence move in a '
-    'light wind, a slow uneven sway. The sagging wire fence trembles very '
-    'slightly. The weak light at the edge of town flickers once. High above, a '
-    'single aircraft light crosses the dark sky, very small and very slow. The '
-    'ground is not disturbed and nothing is uncovered.'),
  (1, 12): (196,
     'The light in the one lit window dims very slightly and comes back, as if someone had crossed the room far away: IT NEVER GOES OUT and the window stays clearly lit for the whole clip. A MOTH crosses the lit rectangle once. Down at the far end of the street a DOG walks slowly across and out of frame, very small. Every other window stays dark, the street stays empty, and the window openings stay exactly as they are: nothing hangs out of any of them.'),
- (1, 16): (118,
+ (1, 17): (118,
     'The tied-down awnings of the three closed stalls lift and fall slightly in '
     'the dawn wind. The dawn light grows a little and settles. A bird crosses '
     'high above the row of facades. The stalls stay closed and the tipped stools '

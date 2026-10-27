@@ -56,19 +56,20 @@ GESTO[1] = {
  1:  (ABRE,   [0.0, 0.0]),    # la plaza al abrir
  2:  (APENAS, [0.03, 0.0]),   # Miriam en su puesto
  3:  (ABRE,   [0.0, 0.0]),    # la casa con la puerta cerrada
- 4:  (CIERRA, [0.0, 0.02]),   # el monedero vacio
+ 4:  (CIERRA, [0.0, 0.02]),   # el monedero cerrado, Gavino en silueta
  5:  (APENAS, [-0.03, 0.0]),  # Miriam, primer plano
  6:  (CIERRA, [0.0, 0.0]),    # las tres siluetas
- 7:  (APENAS, [0.0, 0.0]),    # desde dentro del puesto
+ 7:  (APENAS, [0.0, 0.0]),    # desde dentro del puesto, las mismas tres
  8:  (CIERRA, [0.0, 0.02]),   # la caja vacia
- 9:  (ABRE,   [0.0, 0.0]),    # el potrero vacio
+ 9:  (APENAS, [0.0, 0.0]),    # Miriam interceptada, primer plano
  10: (ABRE,   [0.0, 0.0]),    # el camino de vuelta
  11: (APENAS, [0.03, 0.0]),   # Gregoria y el televisor
  12: (ABRE,   [0.0, 0.0]),    # la cuadra de noche
- 13: (ABRE,   [0.0, 0.0]),    # EL PUESTO CERRADO · el plano que carga
- 14: (CIERRA, [0.0, 0.02]),   # la minuta
- 15: (APENAS, [0.0, 0.0]),    # la ventanilla vacia
- 16: (ABRE,   [0.0, 0.0]),    # los tres puestos
+ 13: (ABRE,   [0.0, 0.0]),    # EL PUESTO CERRADO - el plano que carga
+ 14: (APENAS, [0.0, 0.0]),    # Gregoria en el CAI
+ 15: (CIERRA, [0.0, 0.02]),   # la minuta
+ 16: (APENAS, [0.0, 0.0]),    # el chisme en la cuadra
+ 17: (ABRE,   [0.0, 0.0]),    # los tres puestos
 }
 
 
