@@ -275,6 +275,46 @@ daylight from the same side as the reference, the bench otherwise bare.
     'with the edge of the bench, and settles flat on it. The case stays '
     'closed, the clasp is not opened, nothing comes out of it, and nothing '
     'else moves.')),
+ # 27 oct, noche: el C5 tenia UN detalle contra cuatro o cinco de los otros
+ # capitulos. Dos mas, con la misma ley: un gesto, un objeto, nada que
+ # afirme lo que el capitulo discute (ni un dedo que senale el tablero).
+ (5, 6, 'brocha'): dict(cuadros=96, entra=70, registro='dia',
+    personas=(), acento=False, escena='''
+EXTREME CLOSE-UP of the soft brush held in a hand in a plain grey glove, the
+bristles resting on the bare earth inside one square of the string grid, the
+brush and the gloved fingers filling the frame and a single taut string
+crossing one corner above the soil, casting its thin shadow. The fingers are
+held together around the handle, the thumb clearly visible. THE SOIL IS PLAIN
+BARE EARTH: a smooth matte mid-dark grey with a few small loose crumbs. THERE
+IS NOTHING IN THE GROUND: no bone, no cloth, no object, no shape of any kind.
+NO FACE and no other part of a person in frame. The glove carries no marking.
+Same daylight from the same side as the reference, raking across the soil so
+the bristles throw a small clean shadow.
+''', gesto=(
+    'The brush makes one slow short stroke across the soil, moving a few loose '
+    'crumbs aside, and stops. Nothing is uncovered: the soil under the stroke '
+    'is the same plain bare earth. The string does not move and nothing else '
+    'moves.')),
+
+ (5, 10, 'ojos_analista'): dict(cuadros=72, entra=60, registro='dia',
+    personas=('analista',), acento=False, escena='''
+EXTREME CLOSE-UP of the eyes of %(analista)s: the frame cut from just above
+the eyebrows to just below the lower lids, the two eyes filling the width of
+the frame, seen from slightly to one side at his eye level, turned toward the
+board beyond the frame. The same face as the reference in the same flat
+graphic style: eyes clearly defined with the brow, dark irises, plain round
+pupils, no photographic detail, no individual lashes, no glare. The
+expression is plain, level attention: RESOLVED, not wide, not narrowed. Same
+daylight from the same side as the reference. No other feature of the face in
+frame.
+''', gesto=(
+    'His eyes move slowly from one side to the other, as if following a line '
+    'between two cards, and hold; he blinks once. The eyebrows do not rise, '
+    'the head does not move, and nothing else moves.')),
+
+ # (5, 13) se probo y se descarto: las dos candidatas abrian los dedos, y la
+ # r13 ya ES un plano cerrado de las dos manos sobre el expediente; un
+ # inserto mas cerrado de lo mismo no agrega nada. Quedan dos nuevos.
 }
 
 # Kling 3.0 cobra por segundo entero; el inserto se conforma al largo exacto.
