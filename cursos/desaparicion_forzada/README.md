@@ -19,6 +19,10 @@ E:/DAE MASTER/PRIORIDAD 03/
            01 PLANOS  02 CARTONES  03 VOCES  04 B-ROLL  05 EXPORTS
            06 GUION Y STORYBOARD  07 MOVIMIENTO  08 MUSICA  09 A LA VOZ
            10 TIMELINE SEBASTIAN
+      16 SITUACIONES/
+        00 FUENTE/  _PERSONAJES/
+        VIDEOS/SITUACION A..E/       las mismas diez carpetas
+        IMAGENES/SITUACION F..K/     01 PLANOS 02 LAMINA 05 EXPORTS 06 GUION Y PROMPTS
 ```
 
 El mismo arbol existe como bins dentro del proyecto `DAE MASTER - CURSOS`.
@@ -44,6 +48,8 @@ guion de TTS -sicosocial, sicologica- y en el carton van con su ortografia.
 
 ## Pendiente
 
-- `16 situaciones` no se toca por indicacion de Sebastian.
+- `16 situaciones`: en produccion desde el 27 de octubre de 2026, por
+  indicacion de Sebastian. Trae once (A-K): cinco en video, seis en imagen.
+  Ver `16 SITUACIONES/README.md`.
 - `escenas_df.py` y `armar_df.py` se escriben cuando el desglose este
   aprobado.
