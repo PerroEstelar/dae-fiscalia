@@ -12,6 +12,17 @@ TODO SE HORNEA, Y EL MOVIMIENTO GENERADO VA ENCIMA EN OTRA PISTA
     O sea que si un clip generado sale mal, apagar la pista deja la pieza
     entera en pie. Es la primera vez que el movimiento no es un riesgo.
 
+EL EMPUJE SE APAGO, POR INDICACION DE SEBASTIAN
+    27 de octubre: «note unos efectos extranos en las transiciones como
+    un zoom in de camara (...) eso no me gusta, quitalo». Medido sobre el
+    capitulo 1, entre el cuadro 790 y el 940 de la misma ranura la ventana
+    y el plato crecen a ojo: un empuje de 8,5 %% en 150 cuadros se ve.
+
+    `SIN_EMPUJE` deja el encuadre fijo -ni empuje ni deriva- y conserva el
+    pulso de mano, que es sub-pixel y lo unico que hace es que la placa no
+    se lea como un JPEG pegado. Los tres gestos se quedan escritos abajo:
+    apagar la bandera los devuelve tal como estaban.
+
 LOS TRES EMPUJES SON LOS DE LA SERIE
     ABRE    -0,085   el plano se abre: sitio, aire, respiro
     CIERRA  +0,070   el plano se cierra: el dato, el objeto, la frase
@@ -22,6 +33,8 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+SIN_EMPUJE = True
 
 ABRE = -0.085
 CIERRA = 0.070
@@ -123,6 +136,8 @@ def trabajos(cap, nombres, largos, desde_grade=True):
     for n in sorted(GESTO[cap]):
         f = nombres[n]
         emp, der = GESTO[cap][n]
+        if SIN_EMPUJE:
+            emp, der = 0.0, [0.0, 0.0]
         out.append({'modo': 'camara',
                     'fuente': os.path.join(pl, f),
                     'salida': os.path.join(sal, '%s_v%d.mp4' % (f[:-4], largos[n])),

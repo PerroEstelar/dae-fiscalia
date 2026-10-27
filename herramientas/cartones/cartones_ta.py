@@ -66,7 +66,18 @@ TINTE_IN, TINTE_OUT = 8, 7
 # largo que usamos (seis líneas: 2 + 5 + 8 = 15).
 CABEZA, COLA = 15, 7
 
-FDIR = "/usr/share/fonts/truetype/montserrat/"
+# LA RUTA DE LAS FUENTES ES CONFIGURABLE, Y HACE FALTA QUE LO SEA
+#     Este modulo nacio en el contenedor, donde Montserrat vive en
+#     /usr/share/fonts. En la maquina de Sebastian no existe esa ruta,
+#     y los cartones largos de una pieza entera pesan cientos de MB:
+#     generarlos alla y traerlos no es viable. Con `fuentes/` al lado
+#     de este archivo el mismo codigo corre en los dos sitios.
+FDIR = os.environ.get(
+    "DAE_FUENTES",
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "fuentes"))
+if not os.path.isdir(FDIR):
+    FDIR = "/usr/share/fonts/truetype/montserrat/"
+FDIR = os.path.join(FDIR, "")
 F_BOLD = FDIR + "Montserrat-Bold.ttf"
 F_MED = FDIR + "Montserrat-Medium.ttf"
 F_SEMI = FDIR + "Montserrat-SemiBold.ttf"

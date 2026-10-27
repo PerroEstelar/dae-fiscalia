@@ -109,7 +109,7 @@ def oraciones(t):
     return partes
 
 
-def propone(cap):
+def propone(cap, ranuras=None):
     b = os.path.join(PC.RAIZ, PC.CAPS[cap], '03 VOCES')
     rr = json.load(open(os.path.join(b, 'DF_C%d_ranuras.json' % cap),
                         encoding='utf-8'))['ranuras']
@@ -119,7 +119,7 @@ def propone(cap):
     tx = {e[0]: e[2] for e in G.bloques(cap)}
     mod = __import__('escenas_df_c%d' % cap)
     out = []
-    for n in sorted(mod.CARTONES):
+    for n in sorted(mod.CARTONES if ranuras is None else ranuras):
         r = rr[n - 1]
         t, texto = tr[r['bloque']], ' '.join(tx[r['bloque']].split())
         ini_s, fin_s = r['ini'] / FPS, (r['ini'] + r['dur']) / FPS
