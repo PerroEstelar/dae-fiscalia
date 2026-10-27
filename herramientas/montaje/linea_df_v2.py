@@ -46,6 +46,7 @@ import sys
 import time
 
 sys.path.insert(0, 'D:/DAE/_repo/herramientas/prompts')
+import detalles_df as DD                           # noqa: E402
 import movimiento_df as M                          # noqa: E402
 import plan_camara_df as PC                        # noqa: E402
 from armar_df import NOMBRE                        # noqa: E402
@@ -56,8 +57,12 @@ INTRO = os.path.join(COMUNES, 'INTRO', 'FGN_intro_version7.mp4')
 MARCA = os.path.join(COMUNES, 'MARCA DE AGUA', 'MARCA_DE_AGUA_DAE_7s_fade.mov')
 N_INTRO, N_BLANCO, N_RESPIRO, N_MARCA = 182, 119, 48, 168
 
-PISTAS_V = ((1, 'VIDEO'), (2, 'MOVIMIENTO'), (3, 'CARTONES'), (4, 'APOYO'),
-            (5, 'MARCA DE AGUA'), (6, 'EFECTOS'), (7, 'LOWER THIRD'))
+# V3 DETALLE: los insertos de plano detalle. Van DEBAJO de los cartones y
+# ENCIMA de la placa, asi un carton sigue leyendose durante el inserto. Cada
+# inserto es un cutaway de 3-4 s DENTRO de su ranura madre: no cambia ni un
+# cuadro del largo de la pieza. Es la ley del 27 de octubre -ver detalles_df-.
+PISTAS_V = ((1, 'VIDEO'), (2, 'MOVIMIENTO'), (3, 'DETALLE'), (4, 'CARTONES'),
+            (5, 'APOYO'), (6, 'MARCA DE AGUA'), (7, 'EFECTOS'), (8, 'LOWER THIRD'))
 PISTAS_A = ((1, 'NARRADOR'), (2, 'PREGUNTAS'), (3, 'DIALOGO'),
             (4, 'AMBIENTE'), (5, 'MUSICA'))
 PISTA_MUSICA = 5
@@ -104,7 +109,11 @@ def plan(cap, cartones):
     lt = os.path.join(cart, 'LOWER THIRDS')
     cpieza = os.path.join(cart, 'PIEZA')
 
-    v1, v2, v7, t = [], [], [], 0
+    det_por_ran = {}
+    for (cc, rr, nom) in DD.DET:
+        if cc == cap:
+            det_por_ran.setdefault(rr, []).append((nom, DD.DET[(cc, rr, nom)]))
+    v1, v2, vdet, v7, t = [], [], [], [], 0
     v1.append((t, N_INTRO, INTRO)); t += N_INTRO
     v1.append((t, N_BLANCO, os.path.join(cart, 'DF_C%d_carton_entrada.mov' % cap)))
     t += N_BLANCO
@@ -119,6 +128,11 @@ def plan(cap, cartones):
         if n in LOWERS.get(cap, {}):
             v7.append((t + LT_OFF, LT_LARGO,
                        os.path.join(lt, LOWERS[cap][n])))
+        for nom, d in det_por_ran.get(n, []):
+            vdet.append((t + d['entra'], d['cuadros'],
+                         os.path.join(tl, 'DETALLE',
+                                      'DF_C%d_r%02d_%s_det_v%d.mp4'
+                                      % (cap, n, nom, d['cuadros']))))
         t += largo
     fin = t
     v1.append((t, N_RESPIRO, os.path.join(tl, 'RESPIRO',
@@ -133,7 +147,7 @@ def plan(cap, cartones):
     v5 = [(ini, N_MARCA, MARCA), (fin - N_MARCA, N_MARCA, MARCA)]
     voz = os.path.join(base, '03 VOCES', 'DF_C%d_NARRADOR.wav' % cap)
     musica = os.path.join(base, '08 MUSICA', 'DF_C%d_MUSICA_cama.wav' % cap)
-    return v1, v2, v3, v5, v7, voz, musica, ini, fin - ini, t
+    return v1, v2, vdet, v3, v5, v7, voz, musica, ini, fin - ini, t
 
 
 def huecos(tl, pista=1):
@@ -173,8 +187,8 @@ def construye(resolve, cap, nombre_linea, cartones, sufijo_viejo='anterior'):
         else:
             mp.DeleteTimelines([t])
 
-    v1, v2, v3, v5, v7, voz, musica, ini, dur_cuerpo, tot = plan(cap, cartones)
-    todos = [p for _, _, p in v1 + v2 + v3 + v5 + v7] + [voz, musica]
+    v1, v2, vdet, v3, v5, v7, voz, musica, ini, dur_cuerpo, tot = plan(cap, cartones)
+    todos = [p for _, _, p in v1 + v2 + vdet + v3 + v5 + v7] + [voz, musica]
     falta = sorted({p for p in todos if not os.path.exists(p)})
     if falta:
         return None, 'faltan en disco: %s' % falta[:4]
@@ -310,7 +324,7 @@ def construye(resolve, cap, nombre_linea, cartones, sufijo_viejo='anterior'):
     for i, n in PISTAS_A:
         tl.SetTrackName('audio', i, n)
 
-    for lista, pista in ((v1, 1), (v2, 2), (v3, 3), (v5, 5), (v7, 7)):
+    for lista, pista in ((v1, 1), (v2, 2), (vdet, 3), (v3, 4), (v5, 6), (v7, 8)):
         if not lista:
             continue
         items = []
