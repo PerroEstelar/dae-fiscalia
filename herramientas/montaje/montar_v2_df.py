@@ -53,5 +53,21 @@ for cap in [int(a) for a in sys.argv[1:]] or [1, 2, 3, 4, 5]:
          for i in range(1, tl.GetTrackCount("audio") + 1)]
     print("      %s" % [x for x in v if x[2]], flush=True)
     print("      %s" % [x for x in a if x[2]], flush=True)
+    #  Y EL .drt EN SU CARPETA, QUE ES UNA DECISION VIEJA DE SEBASTIAN
+    #      Cada caso de la serie guarda su linea en '10 TIMELINE SEBASTIAN'
+    #      como .drt, para abrirla sin depender del proyecto. Se habia
+    #      quedado sin hacer en este curso.
+    import shutil
+    dest = os.path.join(PC.RAIZ, PC.CAPS[cap], "10 TIMELINE SEBASTIAN")
+    os.makedirs(dest, exist_ok=True)
+    drt = os.path.join(dest, "%s.drt" % nombres[cap])
+    if os.path.exists(drt):
+        des = os.path.join(dest, "_descartes")
+        os.makedirs(des, exist_ok=True)
+        shutil.move(drt, os.path.join(des, os.path.basename(drt)))
+    tl.Export(drt, resolve.EXPORT_DRT)
+    print("      .drt %s" % ("%d bytes" % os.path.getsize(drt)
+                             if os.path.exists(drt) else "NO SE ESCRIBIO"), flush=True)
+
 resolve.GetProjectManager().SaveProject()
 print("MONTAJE LISTO", flush=True)

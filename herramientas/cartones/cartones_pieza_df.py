@@ -132,6 +132,178 @@ def _cita(f):
     return '«' in f or '»' in f
 
 
+# ---------------------------------------------------------------- recorte
+#  EL CARTON LLEVA UN FRAGMENTO, NO LA ORACION ENTERA
+#      27 de octubre, Sebastian: «que sean verbatim pero legibles (...) que
+#      aparezca solo cantidad de palabras suficientes y que sean comodas de
+#      leer (...) son dos o tres lineas de texto a la vez (...) ahora me estas
+#      entregando el verbatim de pedazos muy largos de texto».
+#
+#      Medido en el C5U4, que el aprobo: el texto de sus quince cartones va de
+#      50 a 110 caracteres -dos renglones- y dura de 114 a 210 cuadros. O sea
+#      entre 6 y 12 caracteres por segundo: tiempo de sobra para leerlo.
+#      Los mios traian la oracion entera, 180 a 309 caracteres a 15-17 car/s.
+#
+#      Entonces el carton se queda con la duracion de la frase -que es cuando
+#      la voz la dice- y el TEXTO se recorta a un fragmento de dos o tres
+#      renglones. El fragmento es literal y contiguo: se corta SOLO en junta
+#      de clausula, nunca a mitad de una.
+TOPE_RENGLONES = 3
+CUERPO = 52              # uno solo para todos, y no se cambia por carton
+
+# Las juntas donde una oracion se puede partir sin romper la gramatica.
+_JUNTAS = (u'; ', u': ', u', ')
+_NEXOS = (u' y que ', u' y ', u' que ', u' para ', u' tras ', u' ante ',
+          u' donde ', u' mientras ', u' porque ', u' con el ', u' con la ',
+          u' en el ', u' en la ', u' al ')
+
+
+def _clausulas(t):
+    """Parte la oracion en trozos que se pueden leer solos."""
+    trozos = [t]
+    for sep in _JUNTAS:
+        out = []
+        for x in trozos:
+            partes = x.split(sep)
+            for i, q in enumerate(partes):
+                out.append(q + (sep.strip() if i < len(partes) - 1 else ''))
+        trozos = out
+    out = []
+    for x in trozos:
+        resto = x
+        while True:
+            corte = None
+            for nx in _NEXOS:
+                k = resto.find(nx, 25)
+                if k > 0 and (corte is None or k < corte[0]):
+                    corte = (k, nx)
+            if corte is None or len(resto) < 70:
+                break
+            out.append(resto[:corte[0]])
+            resto = resto[corte[0] + 1:]
+        out.append(resto)
+    return [q.strip() for q in out if q.strip()]
+
+
+def _peso(t):
+    """Que tanto APORTA el fragmento. Un numero, una ley o un nombre propio
+    es lo que el espectador necesita ver escrito; un conector no."""
+    pal = t.split()
+    n = sum(1 for w in pal if any(c.isdigit() for c in w)) * 3
+    n += sum(1 for w in pal[1:] if w[:1].isupper()) * 2
+    n += sum(1 for w in pal if len(w) > 8)
+    return n + len(pal) * 0.12
+
+
+#  Caracteres por segundo con los que se lee comodo. Los quince cartones
+#  del C5U4 que Sebastian aprobo van entre 6 y 12.
+DENSIDAD_COMODA = 13.0
+
+#  Arranques de relleno que se pueden saltar sin romper la gramatica: son
+#  adverbiales cortos que no llevan informacion -«Ademas,», «Finalmente,»,
+#  «Tras varios dias de ausencia,»-. Saltarlos deja el carton empezando en
+#  el sujeto, que es donde el lector quiere empezar.
+RELLENO_MAX = 42
+
+#  Un carton de seis caracteres no es un carton. Y uno que termina en
+#  «comenzaron los macabros rumores de» deja la frase colgando: si el
+#  ultimo trozo es una palabra de enlace, se quita.
+MINIMO_CARACTERES = 35
+_COLGANTES = set(u'de del a al y o e ni que con en para por tras sobre '
+                 u'entre hacia desde como cuando donde la el los las un '
+                 u'una unos unas su sus mi mis lo se'.split())
+
+
+def _limpia(w):
+    import unicodedata as U
+    w = ''.join(c for c in U.normalize('NFD', w.lower())
+                 if U.category(c) != 'Mn')
+    return ''.join(c for c in w if c.isalpha())
+
+
+def recorta(frase, mide_renglones, cuadros=None):
+    """El ARRANQUE de la oracion, hasta donde quepa en dos o tres renglones.
+
+    Es la regla simple, y es la de las piezas aprobadas: el carton no elige
+    el trozo 'mas interesante' de la oracion -eso deja fragmentos huerfanos
+    como «halladas con el vientre abierto» o «Etnico e Interseccional»-,
+    sino que empieza donde empieza la oracion y corta en junta de clausula
+    cuando ya no cabe. Asi siempre se lee como una frase.
+
+    Lo unico que se permite saltar es un adverbial de relleno al principio.
+    """
+    seg = (cuadros / FPS) if cuadros else None
+
+    def cabe(t):
+        if mide_renglones(t) > TOPE_RENGLONES:
+            return False
+        return (len(t) / seg) <= DENSIDAD_COMODA if seg else True
+
+    if cabe(frase):
+        return frase
+    cl = _clausulas(frase)
+    if not cl:
+        return frase
+    arranques = [0]
+    if (len(cl) > 1 and len(cl[0]) <= RELLENO_MAX
+            and not frase.lstrip().startswith(u'\u00ab')):
+        arranques.append(1)
+    mejor = None
+    for a in arranques:
+        acum = None
+        for b in range(a, len(cl)):
+            trozo = ' '.join(cl[a:b + 1]).strip()
+            if mide_renglones(trozo) > TOPE_RENGLONES:
+                break
+            if seg and (len(trozo) / seg) > DENSIDAD_COMODA and acum is not None:
+                break
+            acum = trozo
+        if acum and (mejor is None or len(acum) > len(mejor)):
+            mejor = acum
+    if mejor is None or len(mejor) < MINIMO_CARACTERES:
+        # Demasiado corto para ser un carton: se crece aunque apriete el
+        # ritmo, que es menos malo que poner «Ademas» solo en pantalla.
+        largo = None
+        for a in arranques:
+            acum = None
+            for b in range(a, len(cl)):
+                trozo = ' '.join(cl[a:b + 1]).strip()
+                if mide_renglones(trozo) > TOPE_RENGLONES:
+                    break
+                acum = trozo
+            if acum and (largo is None or len(acum) > len(largo)):
+                largo = acum
+        if largo is None or len(largo) < MINIMO_CARACTERES:
+            # Ultimo recurso: ninguna clausula cabe entera -el capitulo 3
+            # tiene una de 147 caracteres sin una sola coma-, asi que se
+            # corta por palabra. Sigue siendo literal y contiguo; lo unico
+            # que se pierde es que termine en junta de clausula.
+            arranque = arranques[-1] if len(arranques) > 1 else 0
+            pal = ' '.join(cl[arranque:]).split()
+            acum = ''
+            for w in pal:
+                probe = (acum + ' ' + w).strip()
+                if mide_renglones(probe) > TOPE_RENGLONES:
+                    break
+                acum = probe
+            if len(acum) > len(largo or ''):
+                largo = acum
+        mejor = largo or cl[0]
+    mejor = mejor.rstrip(' ,;:')
+    # nada de frases que cuelgan de una preposicion
+    pal = mejor.split()
+    while len(pal) > 6 and _limpia(pal[-1]) in _COLGANTES:
+        pal.pop()
+    mejor = ' '.join(pal).rstrip(' ,;:')
+    if frase.rstrip().endswith(mejor + '.'):
+        mejor += '.'
+    #  Una comilla que abre y no cierra se lee como un error de montaje.
+    #  Cerrarla no toca una sola palabra, asi que comprobar_arreglo la pasa.
+    if mejor.lstrip().startswith(u'\u00ab') and u'\u00bb' not in mejor:
+        mejor = mejor.rstrip('.') + u'\u00bb'
+    return mejor
+
+
 def _entrada(f):
     """Una frase que termina en dos puntos es un ARRANQUE: lo que importa
     viene despues. Vale la mitad, asi que solo entra si no le quita el sitio

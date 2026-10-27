@@ -44,10 +44,20 @@ def medida(frase, cuerpo, salto):
 
 
 def ajusta(frase):
-    for cuerpo in (52, 48, 44, 40, 36, 33):
-        salto = int(round(cuerpo * 1.36))
-        if medida(frase, cuerpo, salto) <= ALTO_UTIL:
-            return cuerpo, salto
+    """UN SOLO CUERPO PARA TODA LA SERIE.
+
+    27 de octubre, Sebastian: «estaba usando muchos tipos de tamanos de
+    letra (...) es mejor solo usar un tamano de letra y mantenerse fiel al
+    extracto». Antes el cuerpo bajaba de 52 a 33 para que cupiera una
+    oracion larga; eso es al reves. El cuerpo se queda en 52 y es el TEXTO
+    el que se recorta, en cartones_pieza_df.recorta.
+
+    Si aun asi no cabe, FALLA: es que el recorte no hizo su trabajo.
+    """
+    cuerpo = 52
+    salto = int(round(cuerpo * 1.36))
+    if medida(frase, cuerpo, salto) <= ALTO_UTIL:
+        return cuerpo, salto
     return None, None
 
 

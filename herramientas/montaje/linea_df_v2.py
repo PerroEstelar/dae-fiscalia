@@ -63,13 +63,23 @@ PISTA_MUSICA = 5
 
 # El lower third entra 14 cuadros despues de que abre su ranura, y dura 120.
 LT_OFF, LT_LARGO = 14, 120
+#  SOLO DOS, Y NO ES UN RECORTE: ES QUE EL CARTON GANO EL SITIO
+#      Se hicieron diez rotulos. Con los cartones verbatim cubriendo el 51 %
+#      de la pieza, OCHO de los diez caen encima de un carton que ademas
+#      esta diciendo lo mismo: sobre Miriam el carton leia «Miriam, una mujer
+#      afrodescendiente de 36 anos en su septimo mes de embarazo» y el rotulo
+#      debajo repetia «Vende arepas en la plaza. Siete meses de embarazo».
+#      Dos filetes amarillos y dos bloques diciendo lo mismo.
+#
+#      Y el carton es MEJOR para eso: es la voz del profesor literal, que es
+#      lo que hay que poder justificarle a la Fiscalia. El rotulo es texto
+#      que escribi yo.
+#
+#      Quedan los dos que caen en plano limpio. Los otros ocho estan hechos y
+#      quemados en 02 CARTONES\LOWER THIRDS: devolverlos es agregarlos aqui.
 LOWERS = {
-    1: {1: 'DF_C1_lt01_lugar.mov', 2: 'DF_C1_lt02_miriam.mov',
-        11: 'DF_C1_lt03_gregoria.mov'},
-    2: {1: 'DF_C2_lt01_rosaelena.mov', 2: 'DF_C2_lt02_mariana.mov'},
-    3: {5: 'DF_C3_lt01_fiscal.mov'},
-    4: {1: 'DF_C4_lt01_rosaelena.mov', 4: 'DF_C4_lt02_fiscal.mov'},
-    5: {8: 'DF_C5_lt01_perito.mov', 10: 'DF_C5_lt02_analista.mov'},
+    1: {11: 'DF_C1_lt03_gregoria.mov'},
+    2: {2: 'DF_C2_lt02_mariana.mov'},
 }
 
 
@@ -162,28 +172,66 @@ def construye(resolve, cap, nombre_linea, cartones, sufijo_viejo='anterior'):
         return None, 'faltan en disco: %s' % falta[:4]
 
     raiz = mp.GetRootFolder()
-    carp = None
-    for f in raiz.GetSubFolderList():
-        if f.GetName() == nombre_linea:
-            carp = f
-    if carp is None:
-        carp = mp.AddSubFolder(raiz, nombre_linea)
-    mp.SetCurrentFolder(carp)
 
-    #  SE VACIA EL BIN ANTES DE IMPORTAR, Y NO ES POR ORDEN
-    #      Las ranuras se rehornearon CON EL MISMO NOMBRE DE ARCHIVO. Resolve
+    #  EL BIN VA DONDE VA EL ARCHIVO, NO EN LA RAIZ DEL POOL
+    #      27 de octubre, Sebastian: «todo lo relacionado a este curso es un
+    #      desastre en el arbol de carpetas de DaVinci, lo tenemos como tres
+    #      veces (...) dejemos una sola version, todo bajo caso miriam y
+    #      mariana, sigan la ruta».
+    #
+    #      Tenia razon y era este armador: colgaba un bin por capitulo de la
+    #      RAIZ del pool, al lado de los cursos, mientras el arbol correcto
+    #      -espejo del disco- existia y estaba vacio. Cada remontaje creaba
+    #      otro juego.
+    #
+    #      Ahora el bin de cada archivo se deduce de SU RUTA EN DISCO: lo que
+    #      vive en '02 CARTONES\PIEZA' entra al bin '02 CARTONES/PIEZA' del
+    #      capitulo, y lo de 00 COMUNES se queda en el bin de comunes del
+    #      proyecto en vez de duplicarse en cada capitulo.
+    def _hijo(f, n):
+        for x in f.GetSubFolderList():
+            if x.GetName() == n:
+                return x
+        return None
+
+    def _asegura(f, n):
+        return _hijo(f, n) or mp.AddSubFolder(f, n)
+
+    def _baja(f, partes):
+        for q in partes:
+            if q:
+                f = _asegura(f, q)
+        return f
+
+    comunes = None
+    for x in raiz.GetSubFolderList():
+        if x.GetName().strip() == '00 COMUNES':
+            comunes = x
+    cmm = _baja(raiz, ['PRIORIDAD 03',
+                       'CURSO - INVESTIGACION JUDICIAL Y FORENSE DE LA '
+                       'DESAPARICION FORZADA',
+                       'UNIDAD DESAPARICION FORZADA', 'CASO MIRIAM Y MARIANA'])
+    carp = _asegura(cmm, PC.CAPS[cap])
+    capdir = os.path.join(PC.RAIZ.replace('/', os.sep), PC.CAPS[cap])
+
+    def _bin_de(ruta):
+        r = ruta.replace('/', os.sep)
+        if r.lower().startswith(capdir.lower()):
+            rel = os.path.dirname(os.path.relpath(r, capdir))
+            return _baja(carp, rel.split(os.sep)) if rel else carp
+        if comunes is not None and '00 COMUNES' in r.upper():
+            return _asegura(comunes,
+                            'INTRO' if 'INTRO' in r.upper() else 'MARCA DE AGUA')
+        return carp
+
+    #  SE VACIA ANTES DE IMPORTAR, Y NO ES POR ORDEN
+    #      Las ranuras se rehornean CON EL MISMO NOMBRE DE ARCHIVO. Resolve
     #      guarda la media decodificada del item del pool, asi que un item
     #      viejo sigue sirviendo los cuadros viejos -con el zoom- aunque el
     #      archivo en disco ya sea otro. Y como el archivo ya esta en el
-    #      proyecto, ImportMedia lo salta y ni siquiera aparece en este bin:
-    #      asi fue como el capitulo 2 fallo con 'no quedo en el pool'.
-    #
-    #      Vaciar el bin y volver a importar fuerza la lectura de disco. La
-    #      linea anterior queda offline, que es honesto: su media ya no existe
-    #      con ese contenido. En disco no se borra nada.
-    #      Y se busca en TODO el pool, no solo en este bin: una copia vieja
-    #      en otra carpeta hace que ImportMedia salte el archivo y entonces
-    #      no aparece aqui -asi fallaron el capitulo 2 y el 3-.
+    #      proyecto, ImportMedia lo salta y ni siquiera aparece en el bin:
+    #      asi fallo el capitulo 2 con 'no quedo en el pool'.
+    #      Se busca en TODO el pool, no solo en este bin.
     quiero = {os.path.basename(x) for x in todos}
 
     def _todos_los_clips(f):
@@ -199,45 +247,49 @@ def construye(resolve, cap, nombre_linea, cartones, sufijo_viejo='anterior'):
               in quiero]
     if viejos:
         mp.DeleteClips(viejos)
-    mp.SetCurrentFolder(carp)
 
     #  IMPORTMEDIA PIERDE ARCHIVOS CUANDO SE LE PASA LA LISTA ENTERA
-    #      27 de octubre: con 26 rutas de una vez se quedaron fuera una cada
+    #      27 de octubre: con 26 rutas de una vez se quedaba fuera una cada
     #      vez -el capitulo 3 fallo primero en r05 y despues en r08-, sin
     #      error y sin aviso. El mismo archivo importado solo entra bien.
-    #      Entonces se importa y se COMPRUEBA, y lo que falte se reintenta
-    #      uno por uno. Un valor de retorno no es una comprobacion.
-    def _en_el_bin():
-        return {os.path.basename(
-            (c.GetClipProperty('File Path') or '').replace('/', os.sep))
-            for c in carp.GetClipList()}
-
+    #      Se importa, se COMPRUEBA, y lo que falte se reintenta uno por uno
+    #      CON UN RESPIRO: reintentar al toque falla igual. Un valor de
+    #      retorno no es una comprobacion.
     pedidos = sorted(set(todos))
-    mp.ImportMedia(pedidos)
-    #      Y hay que DARLE UN RESPIRO entre intentos: reintentar al toque
-    #      falla igual, y el mismo archivo entra solo con esperar medio
-    #      segundo. Es tiempo, no el archivo.
+    por_bin = {}
+    for x in pedidos:
+        por_bin.setdefault(id(_bin_de(x)), [_bin_de(x), []])[1].append(x)
+
+    def _puestos():
+        d = {}
+        for b, _ in por_bin.values():
+            for c in b.GetClipList():
+                r = (c.GetClipProperty('File Path') or '').replace('/', os.sep)
+                if r:
+                    d[os.path.basename(r)] = c
+        return d
+
+    for b, lista in por_bin.values():
+        mp.SetCurrentFolder(b)
+        mp.ImportMedia(lista)
     for _ in range(6):
-        hay = _en_el_bin()
-        faltan = [x for x in pedidos if os.path.basename(x) not in hay]
+        pool = _puestos()
+        faltan = [x for x in pedidos if os.path.basename(x) not in pool]
         if not faltan:
             break
         time.sleep(0.7)
         for x in faltan:
+            mp.SetCurrentFolder(_bin_de(x))
             mp.ImportMedia([x])
             time.sleep(0.15)
-    hay = _en_el_bin()
-    faltan = [x for x in pedidos if os.path.basename(x) not in hay]
+    pool = _puestos()
+    faltan = [x for x in pedidos if os.path.basename(x) not in pool]
     if faltan:
         return None, 'no entraron al pool ni uno por uno: %s' % faltan[:3]
 
-    # por NOMBRE DE ARCHIVO: RAIZ usa barras normales y os.path.join las
-    # invertidas, asi que la ruta que arma este script y la que Resolve
-    # devuelve en 'File Path' no son la misma cadena.
-    pool = {}
-    for it in carp.GetClipList():
-        pool[os.path.basename(
-            it.GetClipProperty('File Path').replace('/', os.sep))] = it
+    #  La linea de tiempo nace en la carpeta actual: que nazca en la del
+    #  capitulo y no en la ultima que se toco.
+    mp.SetCurrentFolder(carp)
 
     tl = mp.CreateEmptyTimeline(nombre_linea)
     pr.SetCurrentTimeline(tl)
