@@ -13,6 +13,14 @@ NO HAY HECHO DURO, ASI QUE NO HAY SILUETAS
 EL PLANO QUE CARGA EL CAPITULO
     r05, la Fiscal de pie en el umbral con la luz del pasillo detras. Es el
     momento en que alguien se hace cargo.
+
+LA MESA DE CINCO SE REHIZO EL 27 DE OCTUBRE, ANTES DE LA REVISION
+    La voz dice que LA FISCAL reorganiza el equipo definiendo los roles, y la
+    placa eran cinco personas genericas: la autora de la reorganizacion no se
+    reconocia. Ahora ella esta de pie en la cabecera con su carpeta cuadrada
+    -su objeto de ficha- y los otros cuatro sentados, cada uno con su objeto.
+    Es el mismo criterio del C1 r09 y del C2 r03: la persona que la voz
+    nombra tiene que verse.
 """
 
 R = {}
@@ -105,23 +113,28 @@ What the camera asserts by stopping her in the doorway: somebody walked in and
 the room stopped.
 ''')
 
-R[6] = (273, 'dia', (), False, False, False, '''
-Wide shot of a plain meeting table with FIVE CHAIRS around it, the camera at
+R[6] = (273, 'dia', ('fiscal',), False, False, False, '''
+Wide shot of a plain meeting table with FIVE PEOPLE around it, the camera at
 standing eye level and perfectly level.
 
-FIVE PEOPLE sit at the table, one to a chair, evenly spaced, each with ONE
-DIFFERENT OBJECT on the table in front of them: a plain grey folder, a plain
-notebook, a plain screen showing a flat grey rectangle, a small plain field
-case, and a single sheet of paper. No two people have the same thing.
+%(fiscal)s STANDS at the head of the table, upright and still, her plain grey
+folder lying squared on the table in front of her, both hands resting on its
+edges, the fingers held together and the thumbs clearly visible. Her head is
+level and turned toward the table, her mouth closed. She is the only one
+standing and the nearest of the five to the camera, close enough that her
+face reads clearly: plain ordinary authority, no drama.
 
-They are seated and still, turned toward the middle of the table. They are far
-enough away that no face carries much detail.
+FOUR PEOPLE sit along the sides of the table, one to a chair, evenly spaced,
+each with ONE DIFFERENT OBJECT on the table in front of them: a plain
+notebook, a plain screen showing a flat grey rectangle, a small plain field
+case, and a single sheet of paper. No two people have the same thing. They
+are far enough away that no face carries much detail.
 
 Ordinary daylight from one dominant direction lays a bright plane across the
 table top.
 
-What the camera asserts by giving each one a different object: this is not five
-people doing the same job, and now it says so.
+What the camera asserts by standing her at the head: the roles are being
+assigned, and by her.
 ''')
 
 R[7] = (179, 'dia', (), False, False, False, '''

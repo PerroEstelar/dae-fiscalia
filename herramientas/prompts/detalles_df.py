@@ -133,6 +133,69 @@ focus behind.
 """, gesto=(
     'The hand adjusts its grip on the handset very slightly, once, and the '
     'handset settles a little closer to the ear. Nothing else moves.')),
+
+ (3, 3, 'manos_caja'): dict(cuadros=90, entra=50, registro='dia',
+    personas=('asistente',), acento=False, escena='''
+EXTREME CLOSE-UP of the two hands of %(asistente)s under the base of the
+plain grey document box he is carrying, the box filling the upper half of the
+frame and the hands the middle: the fingers held together under its base,
+taking its weight, the thumbs up its sides clearly visible, the knuckles
+slightly raised. No face and no other part of him in frame. The corridor
+shelving is a soft out-of-focus plane behind. The box is plain: no label, no
+lettering, no number anywhere. Same daylight from the same side as the
+reference.
+''', gesto=(
+    'His fingers shift once under the base of the box, re-taking the weight, '
+    'and settle. The box stays level and closed, nothing slides out of it, '
+    'and nothing else moves.')),
+
+ (3, 5, 'ojos_fiscal_umbral'): dict(cuadros=96, entra=150, registro='contraluz',
+    personas=('fiscal',), acento=False, escena='''
+EXTREME CLOSE-UP of the eyes of %(fiscal)s standing in the doorway: the frame
+cut from just above the eyebrows to just below the lower lids, the two eyes
+filling the width of the frame, seen straight on at her eye level. The same
+face as the reference in the same flat graphic style: eyes clearly defined
+with the brow, dark irises, plain round pupils, no photographic detail, no
+individual lashes, no glare. The corridor light behind her puts ONE CLEAN
+CONTINUOUS EDGE of light down one side of the face; the other side is in
+shadow; nothing crosses the face. The expression is level and surveying:
+RESOLVED, not wide, not narrowed, not wet. No other feature of the face in
+frame.
+''', gesto=(
+    'Her gaze travels slowly across the room from one side to the other and '
+    'holds; she blinks once, slowly. The eyebrows do not rise, the head does '
+    'not move, and the edge of light on her face does not change.')),
+
+ (3, 6, 'mano_carpeta'): dict(cuadros=96, entra=60, registro='dia',
+    personas=('fiscal',), acento=False, escena='''
+EXTREME CLOSE-UP of the hand of %(fiscal)s resting on her plain grey closed
+folder, which lies on the meeting table SLIGHTLY ASKEW to the table edge, the
+folder and the hand filling the frame and the table edge running along the
+bottom. The hand rests flat on the folder, the fingers held together, the
+thumb clearly visible, seen at a natural angle so it reads as a hand with
+thickness and knuckles. A sliver of her dark grey jacket sleeve enters at one
+edge. No face. The folder is plain: no label, no lettering, no number. Same
+daylight from the same side as the reference, the table top otherwise bare.
+''', gesto=(
+    'Her hand slides the folder a few centimetres until it lies squared with '
+    'the edge of the table, and settles flat on it. The folder stays closed, '
+    'nothing comes out of it, and nothing else moves.')),
+
+ (3, 8, 'dos_manos_documento'): dict(cuadros=90, entra=50, registro='dia',
+    personas=('fiscal', 'analista'), acento=False, escena='''
+EXTREME CLOSE-UP, slightly from above, of the single document lying flat on
+the table with TWO RESTING HANDS near it, one entering from each side of the
+frame: the hand of %(fiscal)s from one side and the hand of %(analista)s from
+the other, each resting on the table beside the document, the fingers held
+together and the thumbs clearly visible, each at its natural size and seen at
+a natural angle so it reads as a hand with thickness and knuckles. Neither
+hand is on the paper and neither is pointing. The document carries plain flat
+grey bars with no readable character anywhere. NO FACE in the frame. Same
+daylight from the same side as the reference.
+''', gesto=(
+    'The fingers of one hand rise a little and settle again on the table '
+    'beside the document, once, slowly. The document does not move, the grey '
+    'bars on it do not change, and nothing else moves.')),
 }
 
 # Kling 3.0 cobra por segundo entero; el inserto se conforma al largo exacto.
