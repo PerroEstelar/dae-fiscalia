@@ -1,0 +1,37 @@
+{
+ "_nota": "Prompts de video (Kling 3.0, 1080p, 16:9, cuadro inicial = placa graduada subida) usados el 27 oct para V2 MOVIMIENTO y V3 DETALLE de las situaciones. Sufijo comun de los detalles: 'The camera does not move at all and the framing does not change. Only the movement described happens; nothing else in the frame moves. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.'",
+ "mov": {
+  "SIT_A_r03_el_camino": [10, "la camioneta avanza por el camino (prompt del 27 oct, antes del resumen)"],
+  "SIT_A_r09_los_pobladores": [9, "DESCARTADO: Kling movio a las tres personas; reemplazado por rampa de luz 'faros'"],
+  "SIT_B_r06_el_corredor": [10, "el pasto del corredor se mueve con el viento"],
+  "SIT_B_r10_el_cruce_al_amanecer": [7, "la niebla del cruce se desplaza muy despacio"],
+  "SIT_C_r05_el_camion_cerrado": [7, "el camion se aleja y el polvo queda suspendido"],
+  "SIT_C_r08_el_punto_rural": [11, "las hojas del arbol se mueven con el viento"],
+  "SIT_D_r04_el_vado_crecido": [10, "The flood water of the swollen river ford keeps running fast in the direction of its current, breaking in simple foam shapes, and the loose branches drift slowly along with it. Nothing else moves..."],
+  "SIT_D_r07_la_ribera_vacia": [5, "A thin low mist drifts very slowly along the tree line on the far bank of the river, and the surface of the river moves very gently with the current..."],
+  "SIT_D_r12_el_vado_al_anochecer": [11, "At dusk the water keeps running gently across the submerged river ford..."],
+  "SIT_E_r04_los_pajaros": [8, "The flock of dark birds lifts off the power lines and flies away together toward the upper right, growing smaller and leaving the frame..."],
+  "SIT_E_r06_el_camion_se_va": [7, "The truck drives slowly away along the dirt road toward the low sun on the horizon, growing smaller, and the dust it raised stays hanging low behind it..."],
+  "SIT_G_r01_la_exhumacion": [11, "A light wind moves across the open field: the tall grass sways gently and the plain cord that marks the excavation perimeter trembles slightly. The girl in the foreground stands still..."]
+ },
+ "luz": {"A_r05": "cielo -0.16", "A_r09": "faros, se apagan entre el 30 y el 80 % de la ranura", "E_r07": "cielo -0.18", "G_r03": "cielo -0.14", "G_r04": "pantalla -0.85 en los ultimos 30 cuadros"},
+ "det": {
+  "SIT_A_r04_pulgar_telefono_det": "The thumb slides a few millimetres along the edge of the phone and comes to rest. The phone stays in the hand.",
+  "SIT_A_r10_carpeta_al_pecho_det": "The fingers tighten a little on the folder held against the chest and stay there. (+ mustard shawl matte)",
+  "SIT_A_r12_el_libro_se_cierra_det": "The hand presses the closed cover of the book down once, flat, and lies still on it. The book stays closed.",
+  "SIT_B_r01_la_llave_en_el_motor_det": "The hand turns the wrench a quarter turn on the engine bolt and stops.",
+  "SIT_B_r05_el_telefono_boca_abajo_det": "The fingers press the phone, screen down, flat against the blanket and stay there. (crudo cortado en 65: entra una segunda mano)",
+  "SIT_B_r11_la_nota_sobre_el_mostrador_det": "Her fingertips slide the folded paper a few centimetres forward across the counter toward the window and stop, still resting on it.",
+  "SIT_C_r01_el_saco_en_el_mostrador_det": "The hand pats the small sack on the counter once, flat, and rests on it.",
+  "SIT_C_r06_los_nudillos_en_el_telefono_det": "The fingers tighten on the phone held to the ear and stay there; the head does not move.",
+  "SIT_C_r10_la_mano_entre_carpetas_det": "The fingertips tap the desk slowly twice in the empty space between the two folders and come to rest there, touching neither folder. (cambiado: acercar una carpeta implicaba una decision)",
+  "SIT_D_r01_la_cincha_det": "The hand pulls the girth strap one notch tighter against the mule's flank and holds it. The mule stands still.",
+  "SIT_D_r04_el_agua_en_las_piedras_det": "The flood water keeps running fast over the stones...",
+  "SIT_D_r08_la_taza_det": "Her thumbs move slowly along the rim of the cup and stop. She does not drink.",
+  "SIT_E_r01_el_cabestro_det": "The hand gives the rope halter a short gentle tug and holds it.",
+  "SIT_E_r08_el_pulgar_en_el_telefono_det": "The thumb presses the phone screen once and lifts. The screen stays one plain flat pale grey field.",
+  "SIT_E_r11_el_sello_baja_det": "The hand presses the rubber stamp down onto the folder cover once, firmly, and holds it there.",
+  "SIT_G_r02_el_microfono_det": "The hand tilts the microphone a few degrees closer and holds it there.",
+  "SIT_G_r03_la_mano_en_el_marco_det": "The fingers tighten on the edge of the door frame and stay there. (3 s; crudo cortado en 60: asoma otra mano)"
+ }
+}

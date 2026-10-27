@@ -81,7 +81,9 @@ def _bloque(texto, alto_max, ancho):
     raise SystemExit('el texto no cabe ni a cuerpo 26')
 
 
-def lamina(letra, fondo, salida, lado='izq'):
+def lamina(letra, fondo, salida, lado='izq', ancho=ANCHO_PANEL):
+    """`ancho` del panel: 820 por defecto; se angosta cuando la ilustracion
+    tiene algo que no se puede tapar cerca del borde (la J, 690)."""
     if isinstance(fondo, Image.Image):
         im = fondo.convert('RGB').resize((W, H), Image.LANCZOS)
     else:
@@ -94,16 +96,16 @@ def lamina(letra, fondo, salida, lado='izq'):
             x, y = (im.width - W) // 2, (im.height - H) // 2
             im = im.crop((x, y, x + W, y + H))
     im = im.convert('RGBA')
-    x0 = 0 if lado == 'izq' else W - ANCHO_PANEL
+    x0 = 0 if lado == 'izq' else W - ancho
     panel = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-    ImageDraw.Draw(panel).rectangle([x0, 0, x0 + ANCHO_PANEL, H],
+    ImageDraw.Draw(panel).rectangle([x0, 0, x0 + ancho, H],
                                     fill=AZUL + (ALFA_PANEL,))
     im = Image.alpha_composite(im, panel)
     d = ImageDraw.Draw(im)
 
     f_rot = C.fuente(C.F_BOLD, 30)
     rotulo = 'Situación %s' % letra
-    ancho_txt = ANCHO_PANEL - MARGEN_X - FILETE - SEP - 70
+    ancho_txt = ancho - MARGEN_X - FILETE - SEP - 70
     f, cuerpo, salto, lineas, alto = _bloque(TEXTOS[letra],
                                              H - 2 * MARGEN_Y - 70, ancho_txt)
     total = 30 + 34 + alto

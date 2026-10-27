@@ -20,7 +20,9 @@ import rutas_sit as R                                       # noqa: E402
 
 def destino(nombre, letra_var):
     L = nombre.split('_')[1]
-    d = os.path.join(R.sub(L, '01 PLANOS'), '_candidatas')
+    # 'SIT_G_img_c': la forma de IMAGEN de una situacion (la G existe en las dos)
+    como = 'imagen' if '_img_' in nombre else None
+    d = os.path.join(R.sub(L, '01 PLANOS', como), '_candidatas')
     os.makedirs(d, exist_ok=True)
     return os.path.join(d, '%s_%s.png' % (nombre, letra_var))
 

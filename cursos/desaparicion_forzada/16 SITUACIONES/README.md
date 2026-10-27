@@ -39,41 +39,73 @@ pedido de Sebastián: es la única de las imágenes con secuencia (la vocera, la
 
 ## Los seis videos, medidos
 
-| | ranuras | pieza | duración | voz | cartones | cobertura | estado |
-|---|---|---|---|---|---|---|---|
-| A | 13 | 3366 | 2:20,4 | −19,0 LUFS | 7 | 61 % | **v1 montada** |
-| B | 12 | 2880 | 2:00,1 | −19,0 LUFS | 6 | 56 % | **v1 montada** |
-| C | 11 | 3000 | 2:05,1 | −19,1 LUFS | 7 | 63 % | **v1 montada** |
-| D | 12 | 3137 | 2:10,8 | −19,0 LUFS | 8 | 59 % | bases |
-| E | 13 | 3151 | 2:11,4 | −19,2 LUFS | 6 | 54 % | bases |
-| G | 5 | 1565 | 1:05,3 | — | 3 | 52 % | bases |
+| | ranuras | pieza | duración | cartones | V2 mov. | V3 detalle | rótulo | línea en Resolve |
+|---|---|---|---|---|---|---|---|---|
+| A | 13 | 3366 | 2:20,4 | 7 | 3 | 3 | 1 | `SIT A LA ULTIMA LLAMADA v2` |
+| B | 12 | 2880 | 2:00,1 | 6 | 2 | 3 | 1 | `SIT B LA NOTA SOBRE LA CAMA v2` |
+| C | 11 | 3000 | 2:05,1 | 7 | 2 | 3 | 1 | `SIT C EL PLAZO DE 24 HORAS v2` |
+| D | 12 | 3137 | 2:10,8 | 8 | 3 | 3 | 1 | `SIT D LA CRECIENTE DE LA MIEL` |
+| E | 13 | 3151 | 2:11,4 | 6 | 3 | 3 | 1 | `SIT E EL CAMION HACIA EL VERGEL` |
+| G | 5 | 1565 | 1:05,3 | 3 | 3 | 2 | 1 | `SIT G LA VOCERA` |
 
-### La v1 de A, B y C (27 de octubre)
+**Estado (27 oct, noche): las seis líneas completas en su bin de Resolve, SIN
+exportar** (así lo pidió Sebastián: revisa en la línea y después se exporta).
+Las A, B y C v1 siguen en Resolve y su v1 en `05 EXPORTS`, intactas. Cada
+línea tiene su `.drt` en `10 TIMELINE SEBASTIAN`. La revisión interna se rindió
+a `D:\DAE\_tmp\sit\revision\SIT_<X>_v<n>_REVISION_INTERNA.mp4` (no es
+entrega) y sobre ese archivo se midió: cuadros = pieza, negros, loudness y una
+hoja con un cuadro de cada ranura, de cada movimiento, de cada detalle y del
+rótulo.
 
-Entregadas en el `05 EXPORTS` de cada una: `SIT_<X>_v1.mp4` (receta Fiscalía)
-y `SIT_<X>_v1_revision_720p.mp4`. Medido sobre el archivo entregado: los
-cuadros son exactamente la `pieza`, ningún negro, integrado −19,6 a −19,8 LUFS,
-pico −4,1 a −4,4 dBFS. La línea de cada una está en Resolve (`SIT A …`, `SIT B
-…`, `SIT C …`) dentro de su bin, y el `.drt` en `10 TIMELINE SEBASTIAN`.
+### Pistas
 
-- **Placas**: Seedream 5 Pro, 2k, 16:9, dos candidatas por ranura, con la hoja
-  de personaje corregida como referencia. 72 candidatas, 7.200 créditos. Las
-  dos quedan en `01 PLANOS/_candidatas`; la elegida está en
-  `herramientas/prompts/elegidas_sit.json`.
-- **Limpieza de color por bandas** antes del grade (`sit_pieza.limpia`): las
-  placas de noche salieron azules (r08 de la A: 17 % del cuadro sobre
-  saturación 0,25, todo en la franja fría). Verde/frío/magenta ×0,08 siempre;
-  amarillo ×0,15 si el plano no lleva acento; plano sin gente y sin acento,
-  todo ×0,15. Peso difuminado, rampa de 8 de tono, la piel no se toca.
-- **Grade** por registro con techo y **horneado** sin empuje (encuadre 0,88,
-  pulso 5), respiro = r01 quieta 48 cuadros: lo mismo del caso integrador.
-- **Entrada y cierre**: antetítulo el curso, título «Situación X». Los nombres
-  de carpeta («La última llamada»…) son de trabajo y no salen en pantalla.
-- **Música**: la TA03 del caso integrador, ducking horneado contra los tramos
-  reales de la voz.
+- **V1 VIDEO** intro · entrada · ranuras · respiro · cierre · outro.
+- **V2 MOVIMIENTO** (`mov_sit.py`). Kling 3.0 desde la placa graduada (cuadro
+  inicial, sin cuadro final), recortado al 88 % como la ranura, limpieza de
+  bandas por cuadro, retime al largo, 12 cuadros de entrada contra la ranura
+  horneada. **Sin fundido de salida** (nuevo): el clip cubre la ranura entera y
+  sale en el corte; el fundido de salida hacía reaparecer como fantasma lo que
+  cruzaba (la camioneta de A r03, el camión de C r05). Donde lo único que cambia
+  es la luz, rampa sin modelo: `cielo` (A r05, E r07, G r03), `pantalla` (G r04,
+  el teléfono se apaga) y `faros` (A r09: Kling movía a las tres personas, los
+  faros que se van son luz).
+- **V3 DETALLE** (`detalle_sit.py`). Placa Seedream con la madre graduada de
+  referencia → limpieza de la madre + piel igualada → grade de la madre → Kling
+  4 s desde esa placa con un solo gesto → conformado: cuadro 0 contra la placa,
+  bandas, piel por el factor del cuadro 0, topes de piel (rosado ≤ 0,20; sin
+  acento, banda cálida ≤ 0,22), **acento girado al tono de la madre** (A r10: la
+  madre naranja, el detalle mostaza), retime. Dos crudos se cortan antes de que
+  entre una segunda mano (B r05, G r03). Entra en `entra` de su ranura madre.
+- **V4 CARTONES** los de siempre (verbatim, un tamaño).
+- **V6 MARCA DE AGUA** al abrir y al cerrar el cuerpo.
+- **V8 LOWER THIRD** (`lowerthirds_sit.py`): uno por pieza, en la r01 —la única
+  ranura sin cartón en las seis—, nombre + edad + oficio tal como lo dice la voz.
+  120 cuadros, entra a los 14.
 
-Geometría de la serie: intro 182 · entrada 119 · ranuras · respiro 48 ·
-cierre 119 · outro 182.
+### Correcciones de esta ronda que también tocan lo ya hecho
+
+- **A r09 tenía un cian** que le ponía el grade de contraluz (frío p90 0,02 →
+  0,07, se veía en la ropa clara). `construir` ahora repasa la limpieza de
+  bandas DESPUÉS del grade cuando queda frío; A r09 se rehorneó. Medido en las
+  70 placas: ninguna otra pasa de 1,5 % de píxeles fríos.
+- **Láminas: el grade sube la saturación** (J: yemas 0,15 → 0,27, rosadas). El
+  tope de rojos se pasa ahora sobre la graduada; las seis láminas se rehicieron
+  (las anteriores en `_descartes`).
+- **Apagón** a media construcción de D y E: `sit_pieza.py X construir=5,6,…`
+  rehace solo las ranuras que faltaban; la ranura cortada quedó en
+  `_descartes` con el motivo.
+
+### Para que Sebastián mire
+
+- Voces de A–E y G sin escuchar por mí (siglas deletreadas).
+- A r10: Rosa Elena camina alejándose del edificio. C r02 sedán / r03 cabina de
+  camioneta: continuidad del vehículo de Fernando.
+- B: la piel de Julián es más cálida que la del resto (decisión DF de no
+  pasarle piel); B r05 tiene 2,6 % de píxeles rosados.
+- G: Mariana se ve menor de 16 en algunas placas.
+- E r01 detalle: la vaca del detalle es gris medio, la de la madre blanca.
+- Los rótulos de la r01 de B, C, D y E pasan por encima del corte al detalle
+  (la r01 es la única ranura limpia y el detalle de oficio vive ahí).
 
 ## Dónde está cada cosa
 
@@ -105,11 +137,26 @@ PRIORIDAD 03 › CURSO … › UNIDAD DESAPARICION FORZADA › 16 SITUACIONES.
 | `herramientas/cartones/lamina_sit.py` | la lámina de las imágenes |
 | `herramientas/prompts/bajar_placas_sit.py` | baja las candidatas y arma la hoja de contacto |
 | `herramientas/prompts/elegidas_sit.json` | qué candidata va en cada ranura |
-| `herramientas/montaje/sit_pieza.py` | elegir · construir · blancos · musica · montar · exportar · entregas · verificar |
+| `herramientas/montaje/sit_pieza.py` | elegir · construir[=n,…] · blancos · musica · montar · revisar · exportar · entregas · verificar (`v=2` antes de los pasos) |
+| `herramientas/montaje/detalle_sit.py` | placas · conformar de los insertos V3 |
+| `herramientas/montaje/mov_sit.py` | kling · luz de la pista V2 |
+| `herramientas/montaje/cadena.py` | corre pasos en orden, cada uno a su log |
+| `herramientas/cartones/lowerthirds_sit.py` | los seis rótulos |
+| `herramientas/cartones/imagen_sit.py` | candidata → limpieza → grade → tope de rojos → lámina → 05 EXPORTS |
+| `herramientas/prompts/imagenes_sit_creativas.py` | las ideas de las láminas (doble exposición, cenital, espalda con espalda…) |
+| `herramientas/prompts/subir_sit.py` · `bajar_crudos_sit.py` | subir placas a Magnific · bajar crudos de Kling |
 
-## Lo que falta, uno por uno
+## Las cinco imágenes (y la G en imagen)
 
-- A, B y C: la revisión de Sebastián; después, segundo pase de planos de
-  detalle (V3, los `DET` de cada escena) y movimiento (V2).
-- D, E y G: placas, y el mismo `sit_pieza.py`.
-- F, H, I, J, K (y la G en imagen): las dos angulaciones y su lámina.
+En `IMAGENES/SITUACION X/05 EXPORTS`: `SIT_X_lamina.png/.jpg` (ilustración +
+contexto verbatim) y `SIT_X_ilustracion.png` sola. Ideas: F doble exposición
+(el camino dentro de la silueta de Rosa Elena), G cenital de la cuadrícula de
+exhumación, H Rosa Elena y Mariana espalda con espalda, I la minuta escrita
+frente a las manos de la madre (el funcionario sin rostro), J los ocho
+documentos en orden sobre la mesa, K cuatro manos que juntan las carpetas en
+cruz.
+
+## Lo que falta
+
+- La revisión de Sebastián de las seis líneas y las seis láminas.
+- Con su OK: exportar (`sit_pieza.py X v=2 exportar entregas verificar`) y subir.

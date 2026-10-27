@@ -102,8 +102,14 @@ def pieza(L):
                           encoding='utf-8'))['pieza']
 
 
+VERSION = 1
+
+
 def nombre_linea(L):
-    return 'SIT ' + SITUACIONES[L][1].replace('SITUACION ', '').replace(' - ', ' ')
+    """La v1 se llama como siempre; desde la v2 la linea lleva la version en
+    el nombre, para que en el bin se distingan sin abrirlas."""
+    base = 'SIT ' + SITUACIONES[L][1].replace('SITUACION ', '').replace(' - ', ' ')
+    return base if VERSION <= 1 else '%s v%d' % (base, VERSION)
 
 
 def cuadros(p):
@@ -172,7 +178,8 @@ def medir_color(p):
     h, s, v = a[:, 0], a[:, 1] / 255.0, a[:, 2]
     lit = v > 40
     def banda(lo, hi):
-        m = lit & (h >= lo) & (h <= hi)
+        # un gris puro tiene tono 0: sin el piso de saturacion cae en la calida
+        m = lit & (s > 0.04) & (h >= lo) & (h <= hi)
         return float(np.percentile(s[m], 90)) if m.sum() > 500 else 0.0
     return {'calida_p90': round(banda(0, 27), 3),
             'amarilla_p90': round(banda(28, 55), 3),
@@ -186,6 +193,9 @@ def con_acento(L, n):
     gente, acento = r[2], r[3]
     if acento is None:
         acento = any(p in S.CON_ACENTO for p in gente)
+    # el sombrero de la D (r06) es acento sin persona: lo dice el texto
+    if 'mustard' in r[6].lower():
+        acento = True
     return bool(acento), bool(gente)
 
 
@@ -236,6 +246,14 @@ def construir(L, solo=None):
         o, g = os.path.join(pl, nm + '.png'), os.path.join(gd, nm + '.png')
         c = GR.medir(o)
         GR.graduar(o, g, reg, techo=True)
+        # 27 oct: el grade de contraluz le devolvio un cian a A r09 (frio p90
+        # 0,02 -> 0,07; se ve en la ropa clara). Si el grade deja frio, la
+        # limpieza de bandas se vuelve a pasar DESPUES del grade.
+        fr = medir_color(g)['fria_p90']
+        if fr > 0.05:
+            ac, ge = con_acento(L, n)
+            w('r%02d frio despues del grade %.3f -> %.3f'
+              % (n, fr, limpia(g, g, ac, ge)['fria_p90']))
         v = GR.medir(g)
         sal = os.path.join(ran, '%s_v%d.mp4' % (nm, largo))
         if os.path.exists(sal):
@@ -326,6 +344,48 @@ def plan(L):
     return v1, v4, v6, voz, mus, ini, fin - ini, t
 
 
+def capas(L):
+    """V2 MOVIMIENTO, V3 DETALLE y V8 LOWER THIRD: lo que exista en disco.
+    Las tres son capas que se pueden apagar: debajo, V1 tiene la pieza
+    completa.
+        V2  10 TIMELINE SEBASTIAN/MOVIMIENTO/<ranura>_mov_v<largo>.mp4, la
+            ranura entera (el clip ya trae fundidos horneados contra V1)
+        V3  10 TIMELINE SEBASTIAN/DETALLE/<det>_v<cuadros>.mp4, en la ranura
+            madre + `entra` (prompts_sit_<L>.json -> detalles)
+        V8  02 CARTONES/LOWER THIRDS, 14 cuadros despues de abrir la ranura
+    Devuelve las tres listas y lo que se espero y no estaba (para el reporte).
+    """
+    import lowerthirds_sit as LTS
+    base = R.carpeta(L)
+    tl = os.path.join(base, '10 TIMELINE SEBASTIAN')
+    pos, t = {}, CABEZA
+    for n in sorted(E(L).R):
+        pos[n] = t
+        t += E(L).R[n][0]
+    v2, v3, v8, faltan = [], [], [], []
+    for n in sorted(E(L).R):
+        largo = E(L).R[n][0]
+        p = os.path.join(tl, 'MOVIMIENTO', '%s_mov_v%d.mp4' % (nombre(L, n), largo))
+        if os.path.exists(p):
+            v2.append((pos[n], largo, p))
+    sp = os.path.join(TMP, 'prompts_sit_%s.json' % L)
+    dets = json.load(open(sp, encoding='utf-8')).get('detalles', {}) if os.path.exists(sp) else {}
+    for nm, d in sorted(dets.items()):
+        p = os.path.join(tl, 'DETALLE', '%s_v%d.mp4' % (nm, d['cuadros']))
+        largo = E(L).R[d['ranura']][0]
+        assert d['entra'] + d['cuadros'] <= largo, (nm, d, largo)
+        if os.path.exists(p):
+            v3.append((pos[d['ranura']] + d['entra'], d['cuadros'], p))
+        else:
+            faltan.append(os.path.basename(p))
+    for r, n, p in LTS.lista(L):
+        if os.path.exists(p):
+            v8.append((pos[r] + LTS.OFF, n, p))
+        else:
+            faltan.append(os.path.basename(p))
+    return v2, v3, v8, faltan
+
+
 def huecos(tl, pista=1):
     fuera, pos = [], 0
     tot = tl.GetEndFrame() - tl.GetStartFrame()
@@ -359,8 +419,9 @@ def construye(resolve, L):
             mp.DeleteTimelines([x])
 
     v1, v4, v6, voz, mus, ini, dur_cuerpo, tot = plan(L)
+    v2, v3, v8, _ = capas(L)
     assert tot == pieza(L), (tot, pieza(L))
-    todos = [p for _, _, p in v1 + v4 + v6] + [voz, mus]
+    todos = [p for _, _, p in v1 + v2 + v3 + v4 + v6 + v8] + [voz, mus]
     falta = sorted({p for p in todos if not os.path.exists(p)})
     if falta:
         return None, 'faltan en disco: %s' % falta[:4]
@@ -462,7 +523,9 @@ def construye(resolve, L):
     for i, n in PISTAS_A:
         tl.SetTrackName('audio', i, n)
 
-    for lista, pista in ((v1, 1), (v4, 4), (v6, 6)):
+    for lista, pista in ((v1, 1), (v2, 2), (v3, 3), (v4, 4), (v6, 6), (v8, 8)):
+        if not lista:
+            continue
         items = []
         for pos, largo, p in lista:
             it = pool.get(os.path.basename(p))
@@ -510,6 +573,7 @@ def montar(L):
          for i in range(1, tl.GetTrackCount('audio') + 1)]
     w('   ', [x for x in v if x[2]])
     w('   ', [x for x in a if x[2]])
+    w('    capas que faltan en disco:', capas(L)[3] or 'ninguna')
     dest = R.sub(L, '10 TIMELINE SEBASTIAN')
     drt = os.path.join(dest, '%s.drt' % nombre_linea(L))
     if os.path.exists(drt):
@@ -519,7 +583,10 @@ def montar(L):
     resolve.GetProjectManager().SaveProject()
 
 
-def exportar(L):
+REVISION = os.path.join(TMP, 'revision')
+
+
+def exportar(L, destino=None, nm=None):
     resolve = _resolve()
     pr = resolve.GetProjectManager().GetCurrentProject()
     tl = None
@@ -529,14 +596,15 @@ def exportar(L):
             tl = t
     if tl is None:
         raise SystemExit('no hay linea %s' % nombre_linea(L))
-    os.makedirs(RENDER, exist_ok=True)
+    destino = destino or RENDER
+    os.makedirs(destino, exist_ok=True)
     pr.SetCurrentTimeline(tl)
     pr.DeleteAllRenderJobs()
-    nm = 'SIT_%s_master' % L
-    m = os.path.join(RENDER, nm + '.mp4')
+    nm = nm or 'SIT_%s_master' % L
+    m = os.path.join(destino, nm + '.mp4')
     if os.path.exists(m):
         aparta(m, 'rerender_%s' % time.strftime('%H%M%S'))
-    ok = pr.SetRenderSettings({'SelectAllFrames': True, 'TargetDir': RENDER,
+    ok = pr.SetRenderSettings({'SelectAllFrames': True, 'TargetDir': destino,
                                'CustomName': nm, 'FormatWidth': 1920,
                                'FormatHeight': 1080, 'VideoQuality': 80000,
                                'AudioCodec': 'lpcm', 'AudioBitDepth': 24,
@@ -610,15 +678,69 @@ def verificar(L, version=1):
     w('hoja', hp)
 
 
+def revisar(L):
+    """Chequeo de la linea SIN EXPORTAR (27 oct, Sebastian: «timeline
+    completa en su carpeta de DaVinci, sin exportar todavia»). Se rinde a
+    D:\\DAE\\_tmp\\sit\\revision -nunca a 05 EXPORTS- y sobre ese archivo:
+    cuadros = pieza, negros, loudness, y una hoja con un cuadro a mitad de
+    cada ranura, de cada detalle (V3), de cada movimiento (V2) y de cada
+    rotulo (V8): lo que la pista agrega se tiene que VER en la hoja."""
+    nm = 'SIT_%s_v%d_REVISION_INTERNA' % (L, VERSION)
+    exportar(L, REVISION, nm)
+    f = os.path.join(REVISION, nm + '.mp4')
+    n = cuadros(f)
+    w('cuadros %d / pieza %d  %s' % (n, pieza(L), 'OK' if n == pieza(L) else 'FALLA'))
+    r = subprocess.run(['ffmpeg', '-v', 'info', '-i', f, '-vf',
+                        'blackdetect=d=0.04:pix_th=0.06', '-an', '-f', 'null', '-'],
+                       capture_output=True, text=True).stderr
+    negros = [l.split('blackdetect')[1].strip() for l in r.splitlines() if 'black_start' in l]
+    w('negros:', negros or 'ninguno')
+    r = subprocess.run(['ffmpeg', '-nostats', '-i', f, '-af', 'ebur128=peak=true',
+                        '-vn', '-f', 'null', '-'], capture_output=True, text=True).stderr
+    for l in r.splitlines()[-14:]:
+        if l.strip().startswith(('I:', 'Peak:', 'LRA:')):
+            w('   ', l.strip())
+    from PIL import Image, ImageDraw
+    v1, v4, v6, voz, mus, ini, dur, tot = plan(L)
+    v2, v3, v8, _ = capas(L)
+    marcas = [('V1', pos + largo // 2) for pos, largo, _ in v1]
+    marcas += [('V2', pos + largo // 2) for pos, largo, _ in v2]
+    marcas += [('V3', pos + largo // 2) for pos, largo, _ in v3]
+    marcas += [('V8', pos + 60) for pos, largo, _ in v8]
+    marcas.sort(key=lambda x: x[1])
+    hoja = Image.new('RGB', (4 * 480, ((len(marcas) + 3) // 4) * 270), (20, 20, 20))
+    d = ImageDraw.Draw(hoja)
+    for i, (k, q) in enumerate(marcas):
+        p = os.path.join(TMP, '_q_%s.png' % L)
+        subprocess.run(['ffmpeg', '-y', '-v', 'error', '-ss', '%.3f' % ((q + 0.5) / FPS_N),
+                        '-i', f, '-frames:v', '1', '-vf', 'scale=480:270', p], check=True)
+        x, y = (i % 4) * 480, (i // 4) * 270
+        hoja.paste(Image.open(p), (x, y))
+        d.text((x + 6, y + 4), '%s %d' % (k, q), fill=(255, 255, 0))
+    hp = os.path.join(TMP, 'revision_%s_v%d.jpg' % (L, VERSION))
+    hoja.save(hp, quality=85)
+    w('hoja', hp, ' V2 %d  V3 %d  V8 %d' % (len(v2), len(v3), len(v8)))
+
+
 PASOS = {'elegir': elegir, 'construir': construir, 'blancos': blancos,
          'musica': musica, 'montar': montar, 'exportar': exportar,
-         'entregas': entregas, 'verificar': verificar}
+         'entregas': entregas, 'verificar': verificar, 'revisar': revisar}
 
 if __name__ == '__main__':
+    # `construir=5,6,7` rehace solo esas ranuras (27 oct: un apagon corto D y E
+    # a mitad del horneado; lo ya horneado y verificado no se toca).
+    # `v=2` antes de los pasos: la linea se llama «... v2» (montar, revisar).
     L = sys.argv[1].upper()
     for p in sys.argv[2:]:
+        if p.startswith('v='):
+            VERSION = int(p[2:])
+            continue
         w('===', L, p)
         t0 = time.time()
-        PASOS[p](L)
+        paso, _, arg = p.partition('=')
+        if arg:
+            PASOS[paso](L, solo={int(x) for x in arg.split(',')})
+        else:
+            PASOS[paso](L)
         w('--- %s %.0f s' % (p, time.time() - t0))
     w('LISTO')
