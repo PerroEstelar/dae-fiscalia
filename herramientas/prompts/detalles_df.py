@@ -259,6 +259,22 @@ the reference, landing on the table between them.
     'slowly, and rest. The hand does not slide toward the folder, the '
     'folder is not touched and does not move, and nothing else enters the '
     'frame or moves.')),
+
+ (5, 8, 'estuche_cuadrado'): dict(cuadros=96, entra=60, registro='dia',
+    personas=('perito',), acento=False, escena='''
+EXTREME CLOSE-UP of the hand of %(perito)s resting on his plain closed field
+case, which sits on the laboratory bench SLIGHTLY ASKEW to the bench edge,
+the case and the hand filling the frame and the bench edge running along the
+bottom. The hand rests flat on the lid, the fingers held together, the thumb
+clearly visible, seen at a natural angle so it reads as a hand with thickness
+and knuckles. A sliver of his plain grey sleeve enters at one edge. No face.
+The case is plain, with a simple clasp and no marking of any kind. Same
+daylight from the same side as the reference, the bench otherwise bare.
+''', gesto=(
+    'His hand slides the field case a few centimetres until it lies squared '
+    'with the edge of the bench, and settles flat on it. The case stays '
+    'closed, the clasp is not opened, nothing comes out of it, and nothing '
+    'else moves.')),
 }
 
 # Kling 3.0 cobra por segundo entero; el inserto se conforma al largo exacto.
