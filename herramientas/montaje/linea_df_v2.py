@@ -31,6 +31,7 @@ LAS PISTAS SON LAS DE LAS OTRAS 46 LINEAS DEL PROYECTO
     V6 EFECTOS        vacia.
     V7 LOWER THIRD    el rotulo de quien acaba de entrar.
     A1 NARRADOR       el master de voz, despues del intro y de la entrada.
+    A4 AMBIENTE       el sonido propio del intro y del outro.
     A5 MUSICA         la cama. VA EN A5: una pista de audio agregada en el
                       indice 2 no llega al bus principal de este build y el
                       render sale con los huecos en silencio digital, sin un
@@ -60,6 +61,13 @@ PISTAS_V = ((1, 'VIDEO'), (2, 'MOVIMIENTO'), (3, 'CARTONES'), (4, 'APOYO'),
 PISTAS_A = ((1, 'NARRADOR'), (2, 'PREGUNTAS'), (3, 'DIALOGO'),
             (4, 'AMBIENTE'), (5, 'MUSICA'))
 PISTA_MUSICA = 5
+#  EL INTRO Y EL OUTRO ENTRAN CON SU SONIDO. Regla de Sebastian, 27 de
+#  octubre: «always respect the intro and outro sound that comes along
+#  with it». El mp4 del intro trae su audio; AppendToTimeline con
+#  mediaType 1 pone solo el video, asi que el audio se pone aparte, en A4
+#  AMBIENTE. A4 si llega al bus principal: medido sobre el outro, donde
+#  no hay cama, -33 dB en el render contra -131 si no llegara.
+PISTA_AMBIENTE = 4
 
 # El lower third entra 14 cuadros despues de que abre su ranura, y dura 120.
 LT_OFF, LT_LARGO = 14, 120
@@ -317,7 +325,9 @@ def construye(resolve, cap, nombre_linea, cartones, sufijo_viejo='anterior'):
         mp.AppendToTimeline(items)
 
     for p, largo, pos, pista in ((voz, dur_cuerpo, ini, 1),
-                                 (musica, tot, 0, PISTA_MUSICA)):
+                                 (musica, tot, 0, PISTA_MUSICA),
+                                 (INTRO, N_INTRO, 0, PISTA_AMBIENTE),
+                                 (INTRO, N_INTRO, tot - N_INTRO, PISTA_AMBIENTE)):
         it = pool.get(os.path.basename(p))
         if it is None:
             return None, 'no quedo en el pool: %s' % p
