@@ -20,6 +20,13 @@ LAS PISTAS
     V4  MARCA       la marca de agua, al principio y al final del cuerpo.
     A1  NARRADOR    el master de voz, que entra DESPUES del intro y de la
                     entrada: la voz empieza con la primera ranura.
+    A5  MUSICA      la cama, de punta a punta. VA EN A5, NO EN A2: una pista
+                    de audio agregada en el indice 2 no llega al bus
+                    principal de este build. El render sale con los huecos
+                    en silencio digital, reporta Complete 100 y no da un
+                    solo error -medido el 26 de octubre, tres renders-.
+                    A5 es ademas el sitio que la musica ocupa en las otras
+                    46 lineas del proyecto, asi que todas quedan iguales.
 
 NO REMONTA UNA LINEA QUE YA TENGA CLIPS
     En el P3C5 remontar una linea que Sebastian habia partido a mano para
@@ -119,7 +126,11 @@ def construye(resolve, cap, nombre_linea):
         tl.AddTrack('video')
     for i, n in ((1, 'VIDEO'), (2, 'MOVIMIENTO'), (3, 'CARTONES'), (4, 'MARCA')):
         tl.SetTrackName('video', i, n)
-    tl.SetTrackName('audio', 1, 'NARRADOR')
+    while tl.GetTrackCount('audio') < 5:
+        tl.AddTrack('audio', 'stereo')
+    for i, n in ((1, 'NARRADOR'), (2, 'PREGUNTAS'), (3, 'DIALOGO'),
+                 (4, 'AMBIENTE'), (5, 'MUSICA')):
+        tl.SetTrackName('audio', i, n)
 
     for lista, pista in ((v1, 1), (v2, 2), (v3, 3), (v4, 4)):
         if not lista:
