@@ -185,7 +185,7 @@ arms. She is RESOLVED AND AFRAID at once: walking fast, chin level, mouth set,
 eyes fixed on the building ahead.
 
 The building is plain painted masonry with a simple metal door and a small
-barred window, no sign, no flag, no shield, no lettering of any kind.
+plain window, no sign, no flag, no shield, no lettering of any kind.
 
 Early-morning daylight from one low dominant direction, long cool shadows on
 the pavement.
@@ -235,6 +235,8 @@ rest falls into shadow.
 What the camera asserts: what she was told to do was wait.
 ''')
 
+# r10: la ventana "barred" se pidio "plain" el 27/10 al generar la placa:
+# una reja en la fachada a donde va a denunciar dice carcel (C5U3 v2).
 NOMBRE = {1: 'el_lider', 2: 'la_salida', 3: 'el_camino', 4: 'la_ultima_llamada',
           5: 'la_antena', 6: 'el_vergel_de_noche', 7: 'el_mirador',
           8: 'cuatro_siluetas', 9: 'los_pobladores', 10: 'rosaelena_camina',
