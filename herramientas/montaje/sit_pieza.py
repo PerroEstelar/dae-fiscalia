@@ -268,7 +268,11 @@ def construir(L, solo=None):
                                   GR.REGISTRO[reg][1], nf, largo,
                                   'OK' if nf == largo else 'FALLA', time.time() - t0))
         assert nf == largo, (nm, nf, largo)
-    # el respiro: la r01 graduada, 48 cuadros, quieta
+    # el respiro: la r01 graduada, 48 cuadros, quieta. Si se rehacen solo
+    # algunas ranuras y la r01 no esta entre ellas, el respiro no cambia y no
+    # se toca (28 oct: E r03/r11 sobre la linea que Sebastian ya ajusto).
+    if solo and 1 not in solo:
+        return
     g1 = os.path.join(gd, nombre(L, 1) + '.png')
     rd = os.path.join(tl, 'RESPIRO')
     os.makedirs(rd, exist_ok=True)
