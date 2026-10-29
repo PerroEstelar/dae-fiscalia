@@ -210,6 +210,49 @@ def medir_color(p):
             'sat_media': round(float(s[lit].mean()) if lit.any() else 0, 3)}
 
 
+# EL ACENTO DEL CURSO, IGUAL EN LOS TRES TEMAS (29 oct). Medido en las placas
+# graduadas: el sueter del T3 tiene el tono de la serie (41-47 grados, como
+# DF: 45), saturacion mediana ~0,5. El cardigan de la servidora y la manta de
+# la joven del T4 salieron 10 grados mas NARANJA (31-34) y hasta 0,78 de
+# saturacion: en el corte entre temas se lee como otra prenda y deja de ser
+# «mostaza mate». Se gira el tono +7 unidades PIL (~10 grados) y se baja la
+# saturacion del acento x0,9, solo en la banda del acento (tono PIL 14-45,
+# s > 0,20 con rampa: la piel, s <= 0,20, no se toca). Va despues del grade
+# en `construir`, cuadro a cuadro en `mov_gj` y en los detalles.
+ACENTO = {'T4': (7.0, 0.90)}
+
+
+def acento_serie(rgb, L, acento, girar=True, saturar=True):
+    """rgb uint8 (H, W, 3) -> rgb con el acento del T4 llevado al de la serie."""
+    import numpy as np
+    from PIL import Image
+    if L not in ACENTO or not acento:
+        return rgb
+    delta, k = ACENTO[L]
+    hsv = np.asarray(Image.fromarray(rgb).convert('HSV')).astype(np.float32)
+    h, s = hsv[..., 0], hsv[..., 1] / 255.0
+    wgt = _peso_banda(h, 14, 45, rampa=4.0) * np.clip((s - 0.20) / 0.10, 0, 1)
+    if girar:
+        hsv[..., 0] = h + wgt * delta
+    if saturar:
+        hsv[..., 1] = hsv[..., 1] * (1 - wgt * (1 - k))
+    return np.asarray(Image.fromarray(np.clip(hsv, 0, 255).astype(np.uint8), 'HSV')
+                      .convert('RGB'))
+
+
+def medir_acento(p):
+    """(% del cuadro, tono en grados, saturacion mediana) del acento, o None."""
+    import numpy as np
+    from PIL import Image
+    a = np.asarray(Image.open(p).convert('HSV')).reshape(-1, 3).astype(np.float32)
+    h, s = a[:, 0], a[:, 1] / 255.0
+    m = (h >= 12) & (h <= 45) & (s > 0.30)
+    if m.mean() < 0.003:
+        return None
+    return (round(float(m.mean()) * 100, 2), round(float(np.median(h[m])) * 360 / 255, 1),
+            round(float(np.median(s[m])), 2))
+
+
 def con_acento(L, n):
     import base_gj as S
     r = E(L).R[n]
@@ -285,6 +328,14 @@ def construir(L, solo=None):
             ac, ge = con_acento(L, n)
             w('r%02d frio despues del grade %.3f -> %.3f'
               % (n, fr, limpia(g, g, ac, ge)['fria_p90']))
+        ac, ge = con_acento(L, n)
+        if L in ACENTO and ac:
+            import numpy as np
+            from PIL import Image
+            antes = medir_acento(g)
+            Image.fromarray(acento_serie(np.asarray(Image.open(g).convert('RGB')),
+                                         L, ac)).save(g)
+            w('r%02d acento de la serie %s -> %s' % (n, antes, medir_acento(g)))
         v = GR.medir(g)
         sal = os.path.join(ran, '%s_v%d.mp4' % (nm, largo))
         if os.path.exists(sal):

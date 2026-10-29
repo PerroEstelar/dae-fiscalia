@@ -247,6 +247,8 @@ def calcula(clave):
         limite = fin_b - int(round(len(b['frase']) / 16.0 * FPS))
         if quiere > b['ini']:
             b['ini'] = min(quiere, max(b['ini'], limite))
+    cierre = json.load(open(os.path.join(R.voces(clave), 'GJ_%s_ranuras.json' % clave),
+                            encoding='utf-8'))['pieza'] - (182 + 119)
     for k, p in enumerate(piezas):
         sig = piezas[k + 1]['ini'] if k + 1 < len(piezas) else None
         mismo = sig is not None and piezas[k + 1]['bloque'] == p['bloque']
@@ -258,6 +260,11 @@ def calcula(clave):
             fin = min(fin, p['fin_bloque'] + 90)
             if sig is not None:
                 fin = min(fin, sig - RESPIRO)
+        # 29 oct: el ultimo carton de cada tema se estiraba hasta 90 cuadros
+        # despues de la voz y se metia ~28 cuadros en el carton de cierre
+        # (T1 903 > 875). Puede sostenerse sobre el respiro, nunca pasar al
+        # cierre.
+        fin = min(fin, cierre)
         p['cuadros'] = fin - p['ini']
         p['densidad'] = round(len(p['frase']) / (p['cuadros'] / FPS), 1)
     for n, p in enumerate(piezas, 1):

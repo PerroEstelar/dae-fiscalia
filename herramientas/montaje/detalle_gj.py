@@ -66,7 +66,11 @@ CRUDOS = os.path.join(TMP, 'det', 'crudos')
 #   GJ T4 r06 el teclado: desde el ~70 la mano de abajo se sale del teclado
 #   y queda grande sobre la mesa (el prompt: «the hands stay on the
 #   keyboard»). Se usan 0-66 (67 -> 84, x0,8: el tecleo sigue natural).
-CORTE = {'GJ_T4_r06_el_teclado_det': 67}
+#   GJ T3 r01 la pagina: el detalle pasa a 58 cuadros desde el 140 de la
+#   ranura (el rotulo «Fiscal delegado» ocupa 14-134; antes entraba en el
+#   100 y los dos convivian 34 cuadros). La hoja vuelve a caer hacia el ~40
+#   y del ~56 en adelante la mano esta quieta: se usan 0-63 (64 -> 58).
+CORTE = {'GJ_T4_r06_el_teclado_det': 67, 'GJ_T3_r01_la_pagina_det': 64}
 FPS = '24000/1001'
 W, Hh = 1920, 1080
 
@@ -256,8 +260,6 @@ def conformar(L, solo=None):
             fr = np.frombuffer(buf, np.uint8).reshape(Hh, W, 3)
             if k is None:
                 d0 = float(np.abs(fr.astype(np.int16) - kfa.astype(np.int16)).mean())
-                k, a, b = factor_piel(mh, np.asarray(Image.fromarray(aplica(fr, ac, ge, 1.0))
-                                                     .convert('HSV')).astype(np.float32))
                 # el acento del detalle tiene que ser el MISMO color que el de
                 # la madre: en A r10 la madre salio naranja y el detalle
                 # mostaza, y en el corte se ve el cambio de prenda
@@ -265,9 +267,19 @@ def conformar(L, solo=None):
                     Image.fromarray(fr).convert('HSV')).astype(np.float32))
                 giro = (ta - td) if (ac and ta is not None and td is not None) else 0.0
                 giro = float(np.clip(giro, -12, 12))
+                # 29 oct: el factor de piel se mide DESPUES del giro. Con la
+                # madre ya en el tono de la serie (fuera de la banda calida) y
+                # el crudo todavia naranja (dentro), el baston del T4 media la
+                # prenda como piel y bajaba las manos x0,52.
+                f0 = gira_acento(fr, giro) if abs(giro) >= 1.0 else fr
+                k, a, b = factor_piel(mh, np.asarray(Image.fromarray(aplica(f0, ac, ge, 1.0))
+                                                     .convert('HSV')).astype(np.float32))
             if abs(giro) >= 1.0:
                 fr = gira_acento(fr, giro)
             o = aplica(fr, ac, ge, k)
+            # el tono ya se igualo a la madre (que lleva el acento de la
+            # serie, SP.ACENTO); falta la saturacion
+            o = SP.acento_serie(o, L, ac, girar=False)
             if i in (0, n0 // 2, n0 - 1):
                 muestras[i] = o
             wr.stdin.write(o.tobytes())

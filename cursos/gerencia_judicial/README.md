@@ -146,6 +146,7 @@ clip) y `montaje/tira_gj.py` (tira de cuadros con recorte, para las caras).
 | `montaje/mov_gj.py` · `detalle_gj.py` | V2 movimiento · V3 detalle |
 | `montaje/hoja_mov_gj.py` · `tira_gj.py` | hojas para mirar movimiento, detalles y caras |
 | `montaje/hoja_linea_gj.py` | la hoja de `revisar` compuesta desde la media, sin render |
+| `montaje/revision_ffmpeg_gj.py` | la línea entera compuesta con ffmpeg (V1-V8, voz, música, intro): cuadros, negros, loudness, hoja; revisión cuando Resolve no rinde |
 | `cartones/cartones_gj.py` | cartones a mano; el tiempo sale de Scribe |
 | `cartones/lowerthirds_gj.py` | un rótulo por caso, en la r01 |
 
@@ -164,13 +165,52 @@ Los mismos bins en Resolve (`DAE MASTER - CURSOS`): PRIORIDAD 2 › CURSO -
 GERENCIA JUDICIAL › TEMA n. La línea de cada tema va en su
 `10 TIMELINE SEBASTIAN`, con su `.drt` en la carpeta del mismo nombre.
 
-## Estado (29 oct)
+## Decisiones de la segunda pasada (29 oct, tarde)
 
-Las tres líneas montadas en Resolve con largo exacto (1176 / 2872 / 4877),
-ninguna capa faltante, `.drt` exportado. **Sin exportar.** El render de
-revisión interna se colgó en 0 % dentro de Resolve (no responde a Stop): la
-revisión se hizo con `hoja_linea_gj.py`, que compone el cuadro de cada marca
-desde la media en disco con el mismo `plan` y las mismas `capas` del montaje.
-Pendiente: reiniciar Resolve y correr `gj_pieza.py <T> revisar` (cuadros,
-negros, loudness).
+Sebastián: «you make the decisions… I will check and approve everything at
+the end». Lo que decidí, y por qué:
 
+- **El acento del T4 se lleva al de la serie.** Medido en las placas
+  graduadas: suéter del T3 41-47°, saturación ~0,5; DF 45°. El cárdigan de la
+  servidora y la manta de la joven salieron a 31-34° (naranja) y hasta 0,78.
+  `gj_pieza.ACENTO = {'T4': (+7 PIL ≈ 10°, ×0,9)}` después del grade, cuadro a
+  cuadro en `mov_gj` y en la saturación de los detalles (el tono del detalle
+  ya se iguala a la madre). Quedó: r05 32,5° → 40,9°, r06 31,1 → 40,9,
+  r07 33,9 → 43,8 (0,78 → 0,70), r09 35,3 → 45,2.
+- **T3 r01: el detalle de la página ya no pisa el rótulo.** El rótulo
+  «Fiscal delegado» ocupa los cuadros 14-134 de la ranura; el detalle entraba
+  en el 100. Ahora entra en el 140 y dura 58 (se usan los cuadros 0-63 del
+  crudo: la hoja cae hacia el 40 y después la mano está quieta).
+- **El último cartón de cada tema ya no entra al cierre.** Se estiraba hasta
+  90 cuadros después de la voz y se metía ~28 cuadros en el cartón blanco de
+  cierre. Puede sostenerse sobre el respiro, nunca pasarlo
+  (`cartones_gj.calcula`). Cambian T1 p02 (181 → 153), T3 p07 (219 → 192),
+  T4 p17 (149 → 122); se requemaron solo esos tres.
+- Se quedan como están: T1 r03 en 94 cuadros (cortado por palabra), los
+  cartones del T4 al 70 % (es lo que la voz dice; p14 lee a 17,5 car/s pero
+  es verbatim de lo que se oye), el piso de 96 de la rejilla.
+- **El render de revisión con vigía**: si el porcentaje no se mueve en 240 s
+  se para (`_tmp/gj/cadena_revisar.py`); la primera vez Resolve se colgó en
+  0 % y hubo que reiniciarlo.
+
+## Estado (29 oct, cierre)
+
+- Las tres líneas **remontadas** con las decisiones de la segunda pasada
+  (largos exactos 1176 / 2872 / 4877, ninguna capa faltante, `.drt`). Las
+  anteriores quedaron en el proyecto como «(anterior)».
+- **Revisión** con `revision_ffmpeg_gj.py` (Resolve no rinde: ver abajo), en
+  `D:\DAE\_tmp\gj\revision\GJ_<T>_REVISION_FFMPEG.mp4`:
+
+  | | cuadros | negros | integrado | pico |
+  |---|---|---|---|---|
+  | T1 | 1176 / 1176 | ninguno | −20,9 LUFS | −5,0 dBFS |
+  | T3 | 2872 / 2872 | ninguno | −19,8 LUFS | −4,2 dBFS |
+  | T4 | 4877 / 4877 | ninguno | −19,2 LUFS | −4,3 dBFS |
+
+- **Resolve no rinde**: tres renders se quedaron en 0 % (dos completos y una
+  prueba de 48 cuadros con H.264 por CPU, así que no es el códec) y después
+  no responden a Stop; hay que reiniciar Resolve. El log trae
+  `cuMemAlloc failed 801` desde el 27 de octubre (también cuando sí rendía),
+  así que no está probado que sea la causa. Lo primero: reiniciar el
+  computador y probar un render corto.
+- **Sin exportar y sin subir a Drive**: va con el OK de Sebastián.

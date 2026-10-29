@@ -274,7 +274,8 @@ HOJAS = {1: ['fiscal3'], 2: ['fiscal3'], 5: ['fiscal3'], 6: ['fiscal3'],
          7: ['fiscal3'], 8: ['fiscal3']}
 
 DET = {
- (1, 'la_pagina'): dict(cuadros=84, entra=100, registro='dia',
+ # 29 oct: 84 desde el 100 -> 58 desde el 140, para no pisar el rotulo (14-134)
+ (1, 'la_pagina'): dict(cuadros=58, entra=140, registro='dia',
      personas=('fiscal3',),
      escena='Close shot of two hands turning a page of a thick case file '
             'open on a grey desk: the page stands half-way up, held by the '
