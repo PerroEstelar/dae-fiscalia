@@ -144,6 +144,8 @@ clip) y `montaje/tira_gj.py` (tira de cuadros con recorte, para las caras).
 | `prompts/elegidas_gj.json` | candidata por ranura |
 | `montaje/gj_pieza.py` | elegir · construir · blancos · musica · montar · revisar · exportar · entregas · verificar |
 | `montaje/mov_gj.py` · `detalle_gj.py` | V2 movimiento · V3 detalle |
+| `montaje/hoja_mov_gj.py` · `tira_gj.py` | hojas para mirar movimiento, detalles y caras |
+| `montaje/hoja_linea_gj.py` | la hoja de `revisar` compuesta desde la media, sin render |
 | `cartones/cartones_gj.py` | cartones a mano; el tiempo sale de Scribe |
 | `cartones/lowerthirds_gj.py` | un rótulo por caso, en la r01 |
 
@@ -161,3 +163,14 @@ E:\DAE MASTER\PRIORIDAD 2\CURSO - GERENCIA JUDICIAL\
 Los mismos bins en Resolve (`DAE MASTER - CURSOS`): PRIORIDAD 2 › CURSO -
 GERENCIA JUDICIAL › TEMA n. La línea de cada tema va en su
 `10 TIMELINE SEBASTIAN`, con su `.drt` en la carpeta del mismo nombre.
+
+## Estado (29 oct)
+
+Las tres líneas montadas en Resolve con largo exacto (1176 / 2872 / 4877),
+ninguna capa faltante, `.drt` exportado. **Sin exportar.** El render de
+revisión interna se colgó en 0 % dentro de Resolve (no responde a Stop): la
+revisión se hizo con `hoja_linea_gj.py`, que compone el cuadro de cada marca
+desde la media en disco con el mismo `plan` y las mismas `capas` del montaje.
+Pendiente: reiniciar Resolve y correr `gj_pieza.py <T> revisar` (cuadros,
+negros, loudness).
+
