@@ -1,0 +1,56 @@
+{
+ "_nota": "Kling 3.0, 1080p, 16:9, cuadro inicial = placa GRADUADA de la ranura (01 PLANOS/_grade), sin cuadro final. La clausula de quietud (QUIETO de prompts_gj.py) va al final de cada prompt. Duracion: los segundos de la ranura, tope 8 s; mov_gj.py retima al largo exacto. Negativo por plano (camara, manos y dedos de mas, piel rosada, foto/3D, textura, parpadeo, letras + lo propio del plano). Leccion 29 oct: en las caras, Kling sonrie, alza las cejas y abre la boca si el prompt dice «about to speak» o deja la expresion libre; en un plano con cara el prompt fija la expresion (neutral, labios quietos, cejas quietas) y el negativo nombra sonrisa, cejas, boca abierta, arrugas.",
+ "GJ_T1_r01_el_fiscal_llega": {
+  "duracion": 6,
+  "prompt": "The man standing in the doorway slowly lowers his gaze from the top of the tower of files down to the floor, and breathes out once; his shoulders settle. His expression stays neutral and serious the whole time: the mouth stays a closed straight line, it never smiles, the eyebrows do not rise. The briefcase stays in his hand.",
+  "descartes": [
+   {
+    "prompt": "The man standing just inside the doorway slowly lowers his gaze from the tall tower of files to the room in front of him and takes one slow breath; his right hand keeps holding the briefcase at his side and he does not walk. The towers of folders do not move.",
+    "motivo": "v1: sonreia (cuadros 32-56) y la cara se volvia 3D"
+   }
+  ],
+  "negativo": "smile, smiling, grin, raised eyebrows, worried face, talking, 3D render, Pixar style, glossy shading, ..."
+ },
+ "GJ_T1_r03_la_fila": {
+  "duracion": 4,
+  "prompt": "Beyond the counter, the people waiting in the long line shift their weight and the whole line moves forward by one small step, slowly. In the foreground the two people behind the counter keep their backs to the camera and stay still: their heads never turn and their faces are never seen. The sheet of paper stays where it is.",
+  "descartes": [
+   {
+    "prompt": "The person at the front of the line lets go of the sheet of paper and the hand behind the counter takes it; the people in the line shift their weight slightly as they wait. Nobody turns toward the camera.",
+    "motivo": "v1: el del equipo volteaba y mostraba la cara sonriendo; la hoja pasaba entre los dos asistentes (el mismo error de la candidata a)"
+   }
+  ],
+  "negativo": "head turning, turning around, face of the people behind the counter, profile view, smiling, the sheet passing between the two people behind the counter, ..."
+ },
+ "GJ_T3_r02_la_evidencia": {
+  "duracion": 5,
+  "prompt": "He finishes lifting the bundle of documents out of the open box and lowers his eyes to the top page. The box and the shelves do not move."
+ },
+ "GJ_T3_r11_la_sala": {
+  "duracion": 8,
+  "prompt": "The standing lawyer finishes his open-hand gesture and slowly lowers his hand to the table. The people seated on the bench keep listening, still, with their hands in their laps. Nobody stands up and nobody turns to the camera."
+ },
+ "GJ_T4_r01_la_coordinadora": {
+  "duracion": 6,
+  "prompt": "Behind the glass, out of focus, the team settles in: one person sits down at a desk, another sets down a cup. In the foreground the woman stays still at the glass, looking out across the floor with a calm, attentive, neutral expression, and breathes in slowly once. Her face does not change: her lips stay still, her eyebrows do not move, her eyes stay calm. She does not speak, does not walk and does not turn to the camera.",
+  "descartes": [
+   {
+    "prompt": "Behind her, out of focus, the team settles in: one person sits down at a desk, another sets down a cup. She keeps looking out across the floor and breathes in, about to speak; she does not walk and does not turn to the camera.",
+    "motivo": "v1: la cara se volvia ansiosa (cejas arriba, boca abierta, arrugas); «about to speak» abria la boca"
+   }
+  ],
+  "negativo": "worried face, anxious face, raised eyebrows, wide eyes, open mouth, talking, lip movement, wrinkles, aging, fear, surprise, smile, ..."
+ },
+ "GJ_T4_r06_el_lector_de_pantalla": {
+  "duracion": 8,
+  "prompt": "Her fingers type a short quick burst on the keyboard and pause; her head tilts very slightly toward the sound in her headset, then her fingers type again. The screen does not change."
+ },
+ "GJ_T4_r13_la_joven_lejos": {
+  "duracion": 5,
+  "prompt": "Far away on the footpath, the small figure keeps walking slowly away toward the house, seen only from behind. Thin mist drifts slowly across the far mountains."
+ },
+ "GJ_T4_r16_donde_termina_la_via": {
+  "duracion": 8,
+  "prompt": "The river flows fast over the stones and the thin haze drifts slowly over the far mountains. The parked vehicle does not move. Nobody appears."
+ }
+}

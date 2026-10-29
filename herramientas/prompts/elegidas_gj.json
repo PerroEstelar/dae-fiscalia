@@ -1,0 +1,60 @@
+{
+ "_nota": "Candidata elegida por ranura (a/b de la primera tirada; c/d de la segunda, 29 oct: T1 r04, T3 r03 y T3 r10 salieron como hoja de historieta en las dos primeras). Motivos en cursos/gerencia_judicial/README.md.",
+ "T1": {
+  "1": "a",
+  "2": "a",
+  "3": "b",
+  "4": "c"
+ },
+ "T3": {
+  "1": "a",
+  "2": "a",
+  "3": "c",
+  "4": "a",
+  "5": "a",
+  "6": "a",
+  "7": "b",
+  "8": "a",
+  "9": "a",
+  "10": "d",
+  "11": "a"
+ },
+ "T4": {
+  "1": "a",
+  "2": "a",
+  "3": "a",
+  "4": "a",
+  "5": "a",
+  "6": "a",
+  "7": "a",
+  "8": "a",
+  "9": "a",
+  "10": "b",
+  "11": "a",
+  "12": "a",
+  "13": "a",
+  "14": "a",
+  "15": "a",
+  "16": "a",
+  "17": "b",
+  "18": "b",
+  "19": "b",
+  "20": "a",
+  "21": "a"
+ },
+ "_detalles": {
+  "T1": {
+   "4": "b"
+  },
+  "T3": {
+   "1": "b",
+   "6": "a"
+  },
+  "T4": {
+   "5": "b",
+   "6": "b",
+   "18": "b"
+  }
+ },
+ "_nota_detalles": "Detalles, 29 oct. T1 r04 b (a casi repetia el encuadre de la madre); T3 r01 b (a era plano medio con cara, no detalle); T3 r06 a; T4 r05 b (baston extendido y apoyado en la silla, como en la madre; a era plano medio con cara); T4 r06 b (taza y baston plegado sobre la mesa, como en la madre). T4 r18 b (a traia la manga con mancha de textura). T1 r04: el grade le devolvio el rosado a la mano (1,34 %); detalle_gj ahora vuelve a limpiar despues del grade."
+}
