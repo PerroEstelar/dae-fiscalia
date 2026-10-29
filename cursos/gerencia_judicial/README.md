@@ -198,19 +198,18 @@ the end». Lo que decidí, y por qué:
 - Las tres líneas **remontadas** con las decisiones de la segunda pasada
   (largos exactos 1176 / 2872 / 4877, ninguna capa faltante, `.drt`). Las
   anteriores quedaron en el proyecto como «(anterior)».
-- **Revisión** con `revision_ffmpeg_gj.py` (Resolve no rinde: ver abajo), en
-  `D:\DAE\_tmp\gj\revision\GJ_<T>_REVISION_FFMPEG.mp4`:
+- **Resolve volvió a rendir después de reiniciar el computador** (los tres
+  cuelgues en 0 % eran del estado de la máquina: ni el códec ni la línea).
+  Revisión interna de Resolve en `D:\DAE\_tmp\gj\revision\GJ_<T>_v1_REVISION_INTERNA.mp4`:
 
-  | | cuadros | negros | integrado | pico |
-  |---|---|---|---|---|
-  | T1 | 1176 / 1176 | ninguno | −20,9 LUFS | −5,0 dBFS |
-  | T3 | 2872 / 2872 | ninguno | −19,8 LUFS | −4,2 dBFS |
-  | T4 | 4877 / 4877 | ninguno | −19,2 LUFS | −4,3 dBFS |
+  | | cuadros | negros | integrado | pico | render |
+  |---|---|---|---|---|---|
+  | T1 | 1176 / 1176 | ninguno | −21,0 LUFS | −5,0 dBFS | 9 s |
+  | T3 | 2872 / 2872 | ninguno | −19,9 LUFS | −4,1 dBFS | 18 s |
+  | T4 | 4877 / 4877 | ninguno | −19,3 LUFS | −4,3 dBFS | 30 s |
 
-- **Resolve no rinde**: tres renders se quedaron en 0 % (dos completos y una
-  prueba de 48 cuadros con H.264 por CPU, así que no es el códec) y después
-  no responden a Stop; hay que reiniciar Resolve. El log trae
-  `cuMemAlloc failed 801` desde el 27 de octubre (también cuando sí rendía),
-  así que no está probado que sea la causa. Lo primero: reiniciar el
-  computador y probar un render corto.
+- El render de Resolve es exacto al cuadro (el detalle de T3 r01, medido
+  contra su archivo, cae en el cuadro que dice el plan). El armado de
+  `revision_ffmpeg_gj.py` coincide en loudness y largo pero va ~1 cuadro
+  tarde en las capas: queda solo como respaldo si Resolve vuelve a colgarse.
 - **Sin exportar y sin subir a Drive**: va con el OK de Sebastián.
