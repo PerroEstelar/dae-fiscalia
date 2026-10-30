@@ -43,7 +43,14 @@
  },
  "GJ_T4_r06_el_lector_de_pantalla": {
   "duracion": 8,
-  "prompt": "Her fingers type a short quick burst on the keyboard and pause; her head tilts very slightly toward the sound in her headset, then her fingers type again. The screen does not change."
+  "prompt": "She keeps listening, her face turned away from the monitor and her eyes lowered and unfocused; then she lowers her left hand from the headset to the keyboard and both hands type a short quick burst and stop, resting on the keys. She never turns toward the screen and never looks at it; her eyes stay lowered the whole time. Her expression stays the same.",
+  "descartes": [
+   {
+    "prompt": "Her fingers type a short quick burst on the keyboard and pause; her head tilts very slightly toward the sound in her headset, then her fingers type again. The screen does not change.",
+    "motivo": "placa vieja: ella miraba la pantalla (Sebastian, 29 oct)"
+   }
+  ],
+  "negativo": "looking at the screen, turning toward the monitor, eyes moving to the monitor, reading, smile, crying, open mouth, talking, camera movement, zoom, pan, extra hands, extra fingers, pink skin, 3D render, flicker, morphing, text, letters, numbers"
  },
  "GJ_T4_r13_la_joven_lejos": {
   "duracion": 5,

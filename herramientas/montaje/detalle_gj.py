@@ -70,7 +70,16 @@ CRUDOS = os.path.join(TMP, 'det', 'crudos')
 #   ranura (el rotulo «Fiscal delegado» ocupa 14-134; antes entraba en el
 #   100 y los dos convivian 34 cuadros). La hoja vuelve a caer hacia el ~40
 #   y del ~56 en adelante la mano esta quieta: se usan 0-63 (64 -> 58).
-CORTE = {'GJ_T4_r06_el_teclado_det': 67, 'GJ_T3_r01_la_pagina_det': 64}
+#   GJ T4 r06 la escucha: desde ~2,3 s los ojos se levantan hacia el monitor
+#   (ella es ciega: no puede «mirar» la pantalla). Se usan 0-53 (54 -> 84).
+CORTE = {'GJ_T4_r06_el_teclado_det': 67, 'GJ_T3_r01_la_pagina_det': 64,
+         'GJ_T4_r06_la_escucha_det': 54}
+# Detalles que se voltean en horizontal al conformar.
+#   T4 r06 el teclado (29 oct, noche): la madre nueva tiene el monitor a la
+#   IZQUIERDA y a ella entrando desde la derecha; el detalle tenia el monitor a
+#   la derecha y los brazos desde la izquierda. Volteado, la direccion de
+#   pantalla coincide (el teclado no tiene letras: nada se lee al reves).
+ESPEJO = {'GJ_T4_r06_el_teclado_det'}
 FPS = '24000/1001'
 W, Hh = 1920, 1080
 
@@ -233,8 +242,11 @@ def conformar(L, solo=None):
         n0 = cuadros_de(crudo)
         if nm in CORTE:
             n0 = min(n0, CORTE[nm])
+        vf = 'scale=%d:%d:flags=lanczos' % (W, Hh)
+        if nm in ESPEJO:
+            vf = 'hflip,' + vf
         rd = subprocess.Popen(['ffmpeg', '-v', 'error', '-i', crudo, '-vf',
-                               'scale=%d:%d:flags=lanczos' % (W, Hh), '-frames:v', str(n0),
+                               vf, '-frames:v', str(n0),
                                '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'],
                               stdout=subprocess.PIPE)
         out = os.path.join(sal_d, '%s_v%d.mp4' % (nm, cuad))
@@ -279,7 +291,7 @@ def conformar(L, solo=None):
             o = aplica(fr, ac, ge, k)
             # el tono ya se igualo a la madre (que lleva el acento de la
             # serie, SP.ACENTO); falta la saturacion
-            o = SP.acento_serie(o, L, ac, girar=False)
+            o = SP.acento_serie(o, L, ac, girar=False, n=n)
             if i in (0, n0 // 2, n0 - 1):
                 muestras[i] = o
             wr.stdin.write(o.tobytes())

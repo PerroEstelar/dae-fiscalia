@@ -193,6 +193,42 @@ the end». Lo que decidí, y por qué:
   se para (`_tmp/gj/cadena_revisar.py`); la primera vez Resolve se colgó en
   0 % y hubo que reiniciarlo.
 
+## Revisión de Sebastián (29-30 oct)
+
+T1 y T3 aprobados (con ajustes suyos a mano en Resolve: no se tocan). En el
+T4, **r06 y r07** no funcionaban: el texto habla de una servidora ciega a la
+que el aplicativo nuevo no le sirve con el lector de pantalla, y en las placas
+ella miraba la pantalla y leía. Rehechas sin remontar su línea:
+
+- **r06** (placa c): cámara delante de ella, el monitor a un lado del cuadro,
+  la cara vuelta lejos de él y hacia abajo, la mano apretando el audífono, la
+  otra quieta en el teclado: el lector se quedó callado. La primera tirada ya
+  decía «her eyes not on the screen» y el modelo la puso de perfil mirando el
+  monitor: lo que funcionó fue la composición (cámara de frente, monitor al
+  costado) y «she is blind and she works by ear».
+- **Movimiento r06**: el primer Kling la hacía girar hacia la pantalla al
+  bajar la mano al teclado (descartado). El bueno: cuadro inicial y final la
+  misma placa, ella sigue escuchando con la mano en el audífono y teclea con
+  la otra; nunca mira el monitor.
+- **Detalle r06**: el teclado a dos manos ya no casaba (ahora tiene una mano
+  en el audífono). Pasa a `la_escucha`: la mano en el audífono, los ojos bajos
+  (cuadros 0-53 del crudo: después los ojos subían hacia el monitor).
+  Mismo largo y misma entrada; el clip de la línea se reapuntó con
+  `ReplaceClip` al archivo nuevo.
+- **r07** (placa e): en la planta, todos miran su pantalla menos ella, que
+  escucha con la cabeza baja y el bastón plegado en el escritorio. Las dos
+  primeras tiradas (c, d) le pusieron DOS audífonos —uno puesto y otro al
+  cuello, porque la hoja de personaje lo trae al cuello—: se repitió con la
+  r06 nueva como referencia y «ONE headset, ON HER EARS; NOTHING around her
+  neck».
+- **Acento**: para las placas nuevas el giro se mide (objetivo 42°,
+  saturación ≤ 0,55: `ACENTO_AUTO` en `gj_pieza`), porque ya no traían el
+  naranja de la primera tirada.
+- **En sitio** (`montaje/reemplazar_en_sitio_gj.py`): los cuatro medios se
+  releyeron con `ReplaceClip`; retrato de los 58 clips de su línea antes y
+  después: misma pista, entrada, salida y desplazamiento en todos; solo cambió
+  el nombre del archivo del detalle.
+
 ## Estado (29 oct, cierre)
 
 - Las tres líneas **remontadas** con las decisiones de la segunda pasada

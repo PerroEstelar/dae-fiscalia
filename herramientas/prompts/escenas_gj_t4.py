@@ -144,20 +144,36 @@ coordinator, listening; her notebook open on the desk.
 Ordinary daylight from a window to one side.
 ''')
 
+# 29 oct, noche (Sebastian): «they are talking about a blind worker who is
+# struggling with the software ... right now it doesn't make sense because she
+# looks like she is seeing what is happening on the screen». La primera tirada
+# ya pedia «her eyes not on the screen» y el modelo la puso de perfil MIRANDO
+# el monitor. Lo que funciono: la camara DELANTE de ella, el monitor a un lado
+# del cuadro, la cara vuelta lejos de el, la mano apretando el audifono, y la
+# frase «she is blind and she works by ear». Placas nuevas con la hoja y la
+# placa anterior (para el lugar) de referencia: r06 c, r07 d.
 R[6] = (232, 'dia', ('servidora',), None, False, 'oficina', '''
-Close shot of %(servidora)s working at her desk in the open-plan office, the
-camera at her side at seated eye level and perfectly level, seeing her in
-profile with the screen beside her.
+Medium close shot of %(servidora)s, at her desk in the open-plan office. The
+camera is in front of her and a little to one side, at seated eye level and
+perfectly level: her face is seen in three-quarter view, and her monitor
+stands beside her on the LEFT of the frame, its screen angled toward her chair.
 
-She wears her headset over her ears and types on the keyboard with both
-hands, the fingers resting on the home row, her head tilted a little toward
-the sound in her ears, her eyes not on the screen. She is listening hard:
-her brow is drawn very slightly together, her mouth closed.
+She is blind and she works by ear. The headset is over her ears. Her face is
+turned AWAY from the monitor and slightly down: chin lowered, head tilted
+toward her right shoulder, the way a person tilts to catch a voice in one ear.
+Her eyes are open but unfocused and resting on nothing: they point down at the
+empty desk surface in front of the keyboard, NOT at the screen and NOT at the
+camera. Her left hand presses the ear cup of the headset against her ear; the
+fingertips of her right hand rest still on the keyboard, waiting. Her brow is
+drawn very slightly together and her lips are closed: the screen reader has
+gone silent on the new application and she is waiting for it to speak.
 
-The monitor beside her shows a new plain application window: a large block
-of plain grey boxes and buttons with no readable character. Her desk is
-orderly: the keyboard, the folded white cane laid along the back edge of the
-desk, a plain cup.
+The monitor shows a new plain application window: a large block of plain grey
+boxes and buttons with no readable character. Nobody in the picture looks at
+it.
+
+Her desk is orderly: the keyboard, the folded white cane laid along the back
+edge of the desk, a plain cup.
 
 Ordinary daylight from the windows behind her.
 ''')
@@ -167,14 +183,20 @@ Wide shot of the open-plan floor of a Colombian prosecutor's office during the
 working day, the camera at standing eye level at one end of the floor and
 perfectly level.
 
-Rows of plain grey desks with ordinary screens; %(equipo4)s work at them,
-each busy: one on the phone, one reading a folder, one typing. Among them, at
-a desk in the second row, %(servidora)s works exactly like everyone else:
-headset on, both hands on the keyboard. She is not singled out by anything in
-the room, only by the colour of her cardigan.
+Rows of plain grey desks with ordinary screens; %(equipo4)s work at them, each
+busy and each looking at their own screen, folder or phone: one on the phone,
+one reading a folder, one typing while reading the screen. Among them, at a
+desk in the second row, %(servidora)s works like everyone else, but she is
+blind and works by ear: the headset is over her ears and both hands are on the
+keyboard, while her head is lowered and tilted toward one shoulder and her
+face is turned DOWN toward the desk, AWAY from her screen. She is the only
+person in the room whose eyes are not on a screen or a page. Her folded white
+cane lies on her desk beside the keyboard. Nothing else singles her out, only
+the colour of her cardigan.
 
 Plain painted walls, metal shelves of folders, daylight from the windows.
 ''')
+
 
 R[8] = (113, 'dia', ('coordinadora',), None, False, 'oficina', '''
 Close shot of a desk seen from the coordinator's side, the camera above the
@@ -435,13 +457,24 @@ DET = {
             'sleeve of a matte mustard cardigan at the wrist.',
      gesto='The fingers settle on the top of the cane and stay. The cane '
            'does not move.'),
- (6, 'el_teclado'): dict(cuadros=84, entra=90, registro='dia',
+ # 29 oct, noche: el teclado (dos manos tecleando) ya no casa con la r06 nueva,
+ # donde ella escucha con la mano en el audifono y la cara lejos del monitor.
+ # El detalle pasa a ser esa mano: la escucha. Mismo largo y misma entrada,
+ # para reemplazarlo en sitio en la linea de Sebastian.
+ (6, 'la_escucha'): dict(cuadros=84, entra=90, registro='dia',
      personas=('servidora',),
-     escena='Extreme close shot of two hands typing on a plain grey keyboard, '
-            'the cuffs of a matte mustard cardigan at the wrists. No letters '
-            'on the keys.',
-     gesto='The fingers type a short quick burst and stop, resting on the '
-           'keys. The hands stay on the keyboard.'),
+     escena='Close shot of the same woman\'s head and left hand: her left hand '
+            'presses the dark grey ear cup of her over-ear headset against her '
+            'ear, the cuff of her matte mustard cardigan at the wrist. Her face '
+            'is seen in three-quarter view, turned down and away from the '
+            'monitor that glows softly out of focus at the edge of the frame; her '
+            'eyes are open, lowered and unfocused, resting on nothing; her brow '
+            'drawn very slightly together, her lips closed. She is blind and she '
+            'is listening hard to a screen reader that has gone silent. She wears '
+            'ONE headset only, on her ears; nothing around her neck.',
+     gesto='Her fingers press the ear cup a little closer to her ear and stay '
+           'there. Her eyes stay lowered and do not turn toward the screen. '
+           'Nothing else moves.'),
  (18, 'la_palma'): dict(cuadros=72, entra=50, registro='contraluz',
      personas=('investigador',),
      escena='Close shot of a man\'s hand in a dark grey zip-jacket sleeve '
@@ -459,7 +492,7 @@ BROLL = {
 
 MOV = {
  1: 'kling: el equipo llega a sus puestos detras de ella; ella respira',
- 6: 'kling: los dedos teclean; la cabeza se inclina hacia el sonido',
+ 6: 'kling: baja la mano del audifono al teclado y teclea; la cara sigue lejos del monitor',
  13: 'kling: la joven sigue caminando por el sendero, alejandose',
  16: 'kling: el rio corre; nada mas se mueve',
  20: 'luz: contraluz, nada se mueve (rampa leve)',

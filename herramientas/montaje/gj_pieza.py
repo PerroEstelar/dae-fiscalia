@@ -220,15 +220,45 @@ def medir_color(p):
 # s > 0,20 con rampa: la piel, s <= 0,20, no se toca). Va despues del grade
 # en `construir`, cuadro a cuadro en `mov_gj` y en los detalles.
 ACENTO = {'T4': (7.0, 0.90)}
+# 29 oct, noche: r06 y r07 del T4 se rehicieron (la servidora tiene que actuar
+# como persona ciega: Sebastian). Sus placas nuevas no traen el naranja de la
+# primera tirada, asi que el giro fijo las pasaria de largo. Para ellas el
+# giro se MIDE: tono objetivo 42 grados (el sueter del T3) y saturacion
+# mediana <= 0,55. `construir` lo calcula sobre la placa graduada y lo guarda;
+# `mov_gj` y `detalle_gj` leen el mismo valor para su ranura.
+ACENTO_AUTO = {('T4', 6), ('T4', 7)}
+OBJETIVO_ACENTO = (42.0, 0.55)
+ACENTO_J = os.path.join(TMP, 'acento_por_ranura.json')
 
 
-def acento_serie(rgb, L, acento, girar=True, saturar=True):
+def parametros_acento(L, n=None):
+    if n is not None and (L, n) in ACENTO_AUTO and os.path.exists(ACENTO_J):
+        v = json.load(open(ACENTO_J, encoding='utf-8')).get('%s_%02d' % (L, n))
+        if v:
+            return tuple(v)
+    return ACENTO.get(L)
+
+
+def mide_parametros_acento(L, n, p):
+    m = medir_acento(p)
+    if not m:
+        return ACENTO.get(L)
+    delta = max(-12.0, min(12.0, (OBJETIVO_ACENTO[0] - m[1]) * 255.0 / 360.0))
+    k = min(1.0, OBJETIVO_ACENTO[1] / m[2])
+    d = json.load(open(ACENTO_J, encoding='utf-8')) if os.path.exists(ACENTO_J) else {}
+    d['%s_%02d' % (L, n)] = [round(delta, 2), round(k, 3)]
+    json.dump(d, open(ACENTO_J, 'w', encoding='utf-8'), indent=1)
+    return delta, k
+
+
+def acento_serie(rgb, L, acento, girar=True, saturar=True, n=None):
     """rgb uint8 (H, W, 3) -> rgb con el acento del T4 llevado al de la serie."""
     import numpy as np
     from PIL import Image
-    if L not in ACENTO or not acento:
+    par = parametros_acento(L, n)
+    if not par or not acento:
         return rgb
-    delta, k = ACENTO[L]
+    delta, k = par
     hsv = np.asarray(Image.fromarray(rgb).convert('HSV')).astype(np.float32)
     h, s = hsv[..., 0], hsv[..., 1] / 255.0
     wgt = _peso_banda(h, 14, 45, rampa=4.0) * np.clip((s - 0.20) / 0.10, 0, 1)
@@ -329,12 +359,14 @@ def construir(L, solo=None):
             w('r%02d frio despues del grade %.3f -> %.3f'
               % (n, fr, limpia(g, g, ac, ge)['fria_p90']))
         ac, ge = con_acento(L, n)
-        if L in ACENTO and ac:
+        if ac and ((L, n) in ACENTO_AUTO or L in ACENTO):
             import numpy as np
             from PIL import Image
             antes = medir_acento(g)
+            if (L, n) in ACENTO_AUTO:
+                w('r%02d giro medido %s' % (n, mide_parametros_acento(L, n, g)))
             Image.fromarray(acento_serie(np.asarray(Image.open(g).convert('RGB')),
-                                         L, ac)).save(g)
+                                         L, ac, n=n)).save(g)
             w('r%02d acento de la serie %s -> %s' % (n, antes, medir_acento(g)))
         v = GR.medir(g)
         sal = os.path.join(ran, '%s_v%d.mp4' % (nm, largo))

@@ -134,7 +134,7 @@ def kling(L, solo=None):
         for i, fr in enumerate(cuadros_rgb(crudo, vf)):
             o = DS.aplica(fr, ac, ge, 1.0)
             # el acento del curso, igual que en la ranura horneada (SP.ACENTO)
-            o = SP.acento_serie(o, L, ac)
+            o = SP.acento_serie(o, L, ac, n=n)
             if primero is None:
                 primero = o
             if i % 12 == 0:
