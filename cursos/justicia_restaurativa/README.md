@@ -109,8 +109,53 @@ Nueve clips de Kling 3.0 donde el movimiento es real y robusto
 (`kling_jr.json`): C1 r07 (los dos se alejan por el corredor), C2 r09 (una
 moto cruza), U1 r01 (el carro por la carretera), U1 r09 (el humo), U2 r01
 (Juana entra), U3 r08 (el niño corre a la madre, siluetas), U4 r06 (el
-café), U4 r32 (las manos en la escalera), U4 r35 (Juana se levanta).
-Nueve rampas de luz sin modelo (`mov_jr.LUZ`).
+café), U4 r32 (las manos en la escalera), U4 r35 (Juana se levanta). Los
+nueve salieron a la primera; ninguno se repitió. Dos notas: en U2 r01
+Kling metió la mano del fiscal a tomar la taza a los 3,8 s, y
+`bajar_mov_jr.py` recorta el crudo a 3,7 s antes del conformado (el retime
+al largo de la ranura hace el resto); en U4 r32 las siluetas, después de
+tomarse la mano, suben un par de peldaños (el prompt pedía que no), y se
+queda porque es exactamente lo que dice el texto. Nueve rampas de luz sin
+modelo (`mov_jr.LUZ`).
+
+**Detalles: 15 insertos de 72 cuadros, ninguno con Kling.** Sin gesto no
+hay modelo: `detalle_jr.py quieto` le hace a la placa de detalle graduada
+la cámara de la casa (empuje lento, vibra 4) y `conformar` lo trata como a
+un crudo (la placa va a 2560 porque el riel de `camara` exige ventana ≥
+1920/ancho). Lo que se aprendió con las placas de detalle: con «CLOSER
+SHOT OF THE SAME SCENE» + la madre como referencia, Seedream devolvía
+casi la misma composición de la madre (un salto de eje al cortar), le
+copiaba la melena de Juana a la espalda del fiscal (U2 r10) o metía
+escudo, bandera y retrato en la pared (U3 r23). La fórmula que sirve, para
+la biblia: **«MACRO INSERT ... the reference image gives ONLY the palette,
+the light and the flat graphic style: this image is a much tighter
+framing of the same desk, not a copy of the reference composition ... NO
+head, NO face, NO hair, NO shoulders, NO second person»**. Siete detalles
+se rehicieron así (U1 r03 —la primera traía la cara de Diego gritando, y
+la decisión equivocada no va en una cara—, U1 r06, U2 r10, U3 r19, U3
+r23, U4 r08, U4 r26); U1 r06 se rehizo dos veces porque la segunda era de
+noche con faros y la madre es día nublado. Motivos en
+`elegidas_jr.json["_motivos"]["_detalles"]`.
+
+## Líneas y revisión interna
+
+`jr_pieza.py <L> montar` arma la línea en `DAE MASTER - CURSOS` (bins
+espejo, V1 ranuras, V2 movimiento, V3 detalle, V4 cartones, V6 marca de
+agua, V8 lower third; A1 narrador, A4 ambiente, A5 música) y exporta el
+`.drt` a `10 TIMELINE SEBASTIAN`. `revisar` rinde a
+`D:\DAE\_tmp\jr\revision` (nunca a 05 EXPORTS) y mide:
+
+| | cuadros | LUFS | pico | negros |
+|---|---|---|---|---|
+| C1 | 2344/2344 | −19,8 | −4,5 | ninguno |
+| U1 | 2339/2339 | −20,3 | −4,6 | ninguno |
+| C2 | 6268/6268 | −19,4 | −3,9 | ninguno |
+| U2 | 2605/2605 | −19,6 | −4,4 | ninguno |
+| U3 | 6571/6571 | −19,3 | −3,9 | ninguno |
+| U4 | ver `cad_K.log` | | | |
+
+Las hojas `revision_<L>_v1.jpg` (un cuadro a mitad de cada ranura, cada
+detalle, cada movimiento y cada rótulo) están en `D:\DAE\_tmp\jr`.
 
 ## Créditos de Magnific
 
@@ -120,6 +165,13 @@ Nueve rampas de luz sin modelo (`mov_jr.LUZ`).
 | hojas de personaje (6 × 2, Flash) | 420 |
 | placas (94 × 2, Flash) | 6.580 |
 | repeticiones (3 × 2) | 210 |
+| Kling 3.0, 9 clips (6 + 6 + 4 + 5 + 5 + 6 + 5 + 5 + 5 s a 90/s) | 4.230 |
+| placas de detalle (15 + 8 rehechas, Flash, 1 candidata) | 805 |
+| **total del curso** | **12.430** |
+
+Contra los ~22.000 de Gerencia judicial (tres videos) es la mitad por
+video: Flash en vez de Pro para las placas, una candidata por detalle,
+nada de Kling en los detalles, y las rampas de luz sin modelo.
 
 ## Herramientas
 

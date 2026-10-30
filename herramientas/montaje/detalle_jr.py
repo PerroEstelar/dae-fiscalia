@@ -337,7 +337,16 @@ def quieto(L, solo=None):
         if os.path.exists(crudo) or not os.path.exists(g):
             SP.w('%s  %s' % (nm, 'ya hay crudo' if os.path.exists(crudo) else 'sin placa'))
             continue
-        camara.render({'modo': 'camara', 'fuente': g, 'salida': crudo,
+        # la placa de detalle graduada es de 1920 (placas() la baja a W x Hh) y
+        # el riel de `camara` exige ventana >= 1920/ancho: con 1920 no hay
+        # sitio para el empuje. Se le da una copia a 2560 x 1440 (LANCZOS, en
+        # una placa de planos lisos no se nota) como fuente de la camara;
+        # `conformar` la vuelve a 1920 igual que a un crudo de Kling.
+        fd = os.path.join(TMP, 'det', '_fuente')
+        os.makedirs(fd, exist_ok=True)
+        fuente = os.path.join(fd, nm + '.png')
+        Image.open(g).convert('RGB').resize((2560, 1440), Image.LANCZOS).save(fuente)
+        camara.render({'modo': 'camara', 'fuente': fuente, 'salida': crudo,
                        'frames': sp['cuadros'], 'encuadre': 0.94, 'empuje': 0.04,
                        'deriva': [0.0, 0.0], 'vibra': 4.0})
         SP.w('%s  quieto %d cuadros' % (nm, SP.cuadros(crudo)))

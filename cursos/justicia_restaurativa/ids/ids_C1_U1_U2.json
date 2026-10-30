@@ -1,0 +1,112 @@
+{
+  "C1": {
+    "JR_C1_r01_la_plaza": [
+      "u5ZdDJ3QLD",
+      "s7pufGjl8e"
+    ],
+    "JR_C1_r02_el_bolso": [
+      "8aOYGLXIrU",
+      "SyXHu0VUb8"
+    ],
+    "JR_C1_r03_el_hospital": [
+      "7985HDUJAL",
+      "EbReM4UuuO"
+    ],
+    "JR_C1_r04_la_ventanilla": [
+      "7985He7JAL",
+      "hu9TWO3vqL"
+    ],
+    "JR_C1_r05_la_fiscal_recibe": [
+      "iGEljCz3uK",
+      "u5ZdDRcQLD"
+    ],
+    "JR_C1_r06_el_legista": [
+      "jUMCvpJLD0",
+      "fHiDTRiCDY"
+    ],
+    "JR_C1_r07_el_corredor": [
+      "hu9TW3YvqL",
+      "w4obFhO7EI"
+    ],
+    "JR_C1_r08_la_fiscal_escucha": [
+      "5jYtoDHKxe",
+      "0exNPwwTfW"
+    ],
+    "JR_C1_r09_la_reja": [
+      "dtUARiBXSL",
+      "lJeQCamgv9"
+    ]
+  },
+  "U1": {
+    "JR_U1_r01_la_carretera": [
+      "YMkPP1xWeC",
+      "LwDEEpEswO"
+    ],
+    "JR_U1_r02_el_bloqueo": [
+      "XmwGGOGBfo",
+      "Cq3ppAsEEy"
+    ],
+    "JR_U1_r03_el_insulto": [
+      "XmwGG4YBfo",
+      "Cq3ppnSEEy"
+    ],
+    "JR_U1_r04_el_pinchazo": [
+      "UPBqqfMwny",
+      "5jYtteFKxe"
+    ],
+    "JR_U1_r05_mario_aparece": [
+      "LwDEEa9swO",
+      "9Zajj1FNYZ"
+    ],
+    "JR_U1_r06_frente_a_frente": [
+      "1l0vvhMr4r",
+      "kschhmK16B"
+    ],
+    "JR_U1_r07_los_carros": [
+      "vQNVVDJa47",
+      "YMkPP96WeC"
+    ],
+    "JR_U1_r08_atravesado": [
+      "UPBqqkmwny",
+      "dtUAAWvXSL"
+    ],
+    "JR_U1_r09_el_resplandor": [
+      "gOdFFr0SXO",
+      "3zuggP5REY"
+    ],
+    "JR_U1_r10_calcinado": [
+      "ovJnndL829",
+      "0exNNYGTfW"
+    ]
+  },
+  "U2": {
+    "JR_U2_r01_juana_entra": [
+      "6ACsSM0iJO",
+      "8aOY05zIrU"
+    ],
+    "JR_U2_r02_juana_frente": [
+      "DolRAQKpcl",
+      "p8gZGFYehw"
+    ],
+    "JR_U2_r03_juana_cerca": [
+      "LwDEF2DswO",
+      "EbReB7KuuO"
+    ],
+    "JR_U2_r04_el_campo": [
+      "fHiDd7jCDY",
+      "KLWma3hkqp"
+    ],
+    "JR_U2_r05_la_mirada": [
+      "Bh7zWsKoQR",
+      "eIS2zxPdqL"
+    ],
+    "JR_U2_r08_una_madre": [
+      "jUMCQ0FLD0",
+      "Bh7zWUxoQR"
+    ],
+    "JR_U2_r10_sobre_el_hombro": [
+      "gOdFbeLSXO",
+      "EbReBRUuuO"
+    ]
+  }
+}

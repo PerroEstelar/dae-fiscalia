@@ -106,13 +106,42 @@
   "34": "a",
   "35": "a"
  },
- "_detalles": {},
+ "_detalles": {
+  "C1": {
+   "6": "a",
+   "9": "a"
+  },
+  "U1": {
+   "3": "b",
+   "6": "c"
+  },
+  "C2": {
+   "11": "a",
+   "19": "a",
+   "25": "a"
+  },
+  "U2": {
+   "3": "a",
+   "10": "b"
+  },
+  "U3": {
+   "19": "b",
+   "23": "b",
+   "32": "a"
+  },
+  "U4": {
+   "8": "b",
+   "20": "a",
+   "26": "b"
+  }
+ },
  "_motivos": {
   "C1": "r01 a (b: pared amarilla y figura azul al fondo); r03 a (b: sombra doble en la pared); r05 a (b: portatil en vez de carpeta); r07 a (corredor largo a la puerta clara); r08 a (b deja ver el perfil del defensor).",
   "C2": "r01 b (manos menos rosadas); r03 b (a: luz rosada); r04 b (Camilo de espaldas con el brazo que frena); r11 b (a ponia la mesa en la calle); r12 a (b deja ver la barba); r13 a (b: mano naranja); r17 b (a: un hombre con caja en primer plano); r20 a (el cenital); r23 a de la primera tirada traia a uno de los procesados con pelo largo (se leia como mujer): se repitio con «TWO MEN, SHORT hair» (reparos_1); r27 b (las tres sillas se ven). r23 c (reparos_1: los dos procesados hombres, pelo corto; d dejaba ver al juez entero).",
   "U1": "r01 b (a: un hombre parado en la berma); r02 a (el carro viejo cruza la linea); r03 a (b duplicaba a Diego en el asiento del pasajero); r04 b (mas cerca, de espaldas); r06 a (el metro de aire entre los dos; b mas fotografico); r07 b (el espejo en primer plano); r08 a; r09 a (el resplandor detras de la curva); r10 b.",
   "U2": "r01 a; r02 a (manos cruzadas); r03 a (b caricaturesca); r04 b (a: fila en circulo); r05 a (b azulada); r08 b; r10 a (b muestra mas mejilla del fiscal).",
   "U3": "r01 b (a deja ver el perfil del fiscal); r03 a (b: dos cabezas del fiscal); r05 b; r07 b (a tenia una mujer caminando); r09 a; r12 b (a azulada); r14 b; r17 b (a: media cara del fiscal); r18 b (a: la nariz del fiscal); r21 b; r27 b; r29 a (b: ladrillo calido); r31 a (b: retrato y bandera); r32 b de la primera tirada traia al fiscal con melena: se repitio con el token «SHORT dark hair cut close at the neck» (reparos_1). r32 c (reparos_1: pelo corto; d volvio a la melena).",
-  "U4": "r01 b, r06 b, r07 b (las a dejaban ver el perfil del fiscal); r02 b; r08 b de la primera tirada con melena: repetida (reparos_1); r12 b; r17 b (a azulada); r23 a (b con gente al fondo); r26 a (b con gente); r27 b; r28 b (sillas sencillas); r34 a (b dibujaba a la fiscal con cara, de frente); r35 a. r08 d (reparos_1: las dos volvieron con melena aun con el token nuevo; d la deja mas fuera de foco). El modelo le copia el pelo de Juana al fiscal en los planos sobre el hombro."
+  "U4": "r01 b, r06 b, r07 b (las a dejaban ver el perfil del fiscal); r02 b; r08 b de la primera tirada con melena: repetida (reparos_1); r12 b; r17 b (a azulada); r23 a (b con gente al fondo); r26 a (b con gente); r27 b; r28 b (sillas sencillas); r34 a (b dibujaba a la fiscal con cara, de frente); r35 a. r08 d (reparos_1: las dos volvieron con melena aun con el token nuevo; d la deja mas fuera de foco). El modelo le copia el pelo de Juana al fiscal en los planos sobre el hombro.",
+  "_detalles": "30 oct: la primera tirada de cada detalle con «closer shot of the same scene» + referencia devolvia casi la misma composicion de la madre (salto de eje) o copiaba la melena de Juana al fiscal (U2 r10) o metia escudo, bandera y retrato (U3 r23). La segunda tirada (b) pide «MACRO INSERT ... the reference gives ONLY the palette, the light and the flat graphic style ... NO head, NO face, NO hair» y sale el inserto de manos limpio. U1 r06 (a) salia con fondo blanco; b es de noche con los faros. U1 r03 (a) traia la cara de Diego gritando en primer plano: la decision equivocada no va en una cara (biblia); b es la mano en el volante. U1 r06 (b) era de noche con faros y la madre es dia nublado: c es a la luz de la madre."
  }
 }

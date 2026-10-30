@@ -1,0 +1,390 @@
+{
+ "C1": {
+  "JR_C1_r01_la_plaza": [
+   "u5ZdDJ3QLD",
+   "s7pufGjl8e"
+  ],
+  "JR_C1_r02_el_bolso": [
+   "8aOYGLXIrU",
+   "SyXHu0VUb8"
+  ],
+  "JR_C1_r03_el_hospital": [
+   "7985HDUJAL",
+   "EbReM4UuuO"
+  ],
+  "JR_C1_r04_la_ventanilla": [
+   "7985He7JAL",
+   "hu9TWO3vqL"
+  ],
+  "JR_C1_r05_la_fiscal_recibe": [
+   "iGEljCz3uK",
+   "u5ZdDRcQLD"
+  ],
+  "JR_C1_r06_el_legista": [
+   "jUMCvpJLD0",
+   "fHiDTRiCDY"
+  ],
+  "JR_C1_r07_el_corredor": [
+   "hu9TW3YvqL",
+   "w4obFhO7EI"
+  ],
+  "JR_C1_r08_la_fiscal_escucha": [
+   "5jYtoDHKxe",
+   "0exNPwwTfW"
+  ],
+  "JR_C1_r09_la_reja": [
+   "dtUARiBXSL",
+   "lJeQCamgv9"
+  ]
+ },
+ "U1": {
+  "JR_U1_r01_la_carretera": [
+   "YMkPP1xWeC",
+   "LwDEEpEswO"
+  ],
+  "JR_U1_r02_el_bloqueo": [
+   "XmwGGOGBfo",
+   "Cq3ppAsEEy"
+  ],
+  "JR_U1_r03_el_insulto": [
+   "XmwGG4YBfo",
+   "Cq3ppnSEEy"
+  ],
+  "JR_U1_r04_el_pinchazo": [
+   "UPBqqfMwny",
+   "5jYtteFKxe"
+  ],
+  "JR_U1_r05_mario_aparece": [
+   "LwDEEa9swO",
+   "9Zajj1FNYZ"
+  ],
+  "JR_U1_r06_frente_a_frente": [
+   "1l0vvhMr4r",
+   "kschhmK16B"
+  ],
+  "JR_U1_r07_los_carros": [
+   "vQNVVDJa47",
+   "YMkPP96WeC"
+  ],
+  "JR_U1_r08_atravesado": [
+   "UPBqqkmwny",
+   "dtUAAWvXSL"
+  ],
+  "JR_U1_r09_el_resplandor": [
+   "gOdFFr0SXO",
+   "3zuggP5REY"
+  ],
+  "JR_U1_r10_calcinado": [
+   "ovJnndL829",
+   "0exNNYGTfW"
+  ]
+ },
+ "U2": {
+  "JR_U2_r01_juana_entra": [
+   "6ACsSM0iJO",
+   "8aOY05zIrU"
+  ],
+  "JR_U2_r02_juana_frente": [
+   "DolRAQKpcl",
+   "p8gZGFYehw"
+  ],
+  "JR_U2_r03_juana_cerca": [
+   "LwDEF2DswO",
+   "EbReB7KuuO"
+  ],
+  "JR_U2_r04_el_campo": [
+   "fHiDd7jCDY",
+   "KLWma3hkqp"
+  ],
+  "JR_U2_r05_la_mirada": [
+   "Bh7zWsKoQR",
+   "eIS2zxPdqL"
+  ],
+  "JR_U2_r08_una_madre": [
+   "jUMCQ0FLD0",
+   "Bh7zWUxoQR"
+  ],
+  "JR_U2_r10_sobre_el_hombro": [
+   "gOdFbeLSXO",
+   "EbReBRUuuO"
+  ]
+ },
+ "C2": {
+  "JR_C2_r01_el_expediente": [
+   "ovJnZXw829",
+   "N2fLk4O6D9"
+  ],
+  "JR_C2_r02_la_ventanilla": [
+   "N2fL1i46D9",
+   "LwDEvgGswO"
+  ],
+  "JR_C2_r03_la_tienda": [
+   "7985F4EJAL",
+   "lJeQfJZgv9"
+  ],
+  "JR_C2_r04_camilo_y_la_amiga": [
+   "dtUA3hgXSL",
+   "tCPczuImZJ"
+  ],
+  "JR_C2_r05_el_anden": [
+   "6ACsrWViJO",
+   "LwDEvPVswO"
+  ],
+  "JR_C2_r06_las_siluetas": [
+   "UPBquZJwny",
+   "nVKywoQYQD"
+  ],
+  "JR_C2_r07_cirugia": [
+   "gOdFuJtSXO",
+   "xSVfvgqjfW"
+  ],
+  "JR_C2_r08_el_corredor": [
+   "gOdFuysSXO",
+   "8aOYzC2IrU"
+  ],
+  "JR_C2_r09_la_cuadra_de_dia": [
+   "WD14yBVcXe",
+   "O6tk52pynm"
+  ],
+  "JR_C2_r10_la_cama": [
+   "u5ZdpsOQLD",
+   "gOdFu3QSXO"
+  ],
+  "JR_C2_r11_en_casa": [
+   "p8gZ3u0ehw",
+   "hu9TcxUvqL"
+  ],
+  "JR_C2_r12_la_venda": [
+   "lJeQEzZgv9",
+   "p8gZ3bpehw"
+  ],
+  "JR_C2_r13_el_dictamen": [
+   "w4obqtU7EI",
+   "1l0vhDAr4r"
+  ],
+  "JR_C2_r14_la_sala_vacia": [
+   "9ZajxFaNYZ",
+   "rgTavdKxtc"
+  ],
+  "JR_C2_r17_el_bus": [
+   "s7puEvZl8e",
+   "lJeQuaIgv9"
+  ],
+  "JR_C2_r18_el_puesto": [
+   "mE40cWlhJQ",
+   "WD14PylcXe"
+  ],
+  "JR_C2_r19_la_reja": [
+   "xSVfafpjfW",
+   "DolR3R0pcl"
+  ],
+  "JR_C2_r20_el_acuerdo": [
+   "Bh7znrboQR",
+   "P3hrxpK42C"
+  ],
+  "JR_C2_r23_la_audiencia": [
+   "gOdFHpASXO",
+   "s7puQMIl8e"
+  ],
+  "JR_C2_r25_dos_carpetas": [
+   "LwDEuDfswO",
+   "UPBqboGwny"
+  ],
+  "JR_C2_r27_la_mesa_del_acuerdo": [
+   "5jYtm0vKxe",
+   "4RvxjE09Aa"
+  ],
+  "JR_C2_r28_la_ventana": [
+   "9ZajLqaNYZ",
+   "LwDEuIbswO"
+  ]
+ },
+ "U3": {
+  "JR_U3_r01_juana_piensa": [
+   "fHiDcTTCDY",
+   "eIS26R8dqL"
+  ],
+  "JR_U3_r02_las_manos_de_juana": [
+   "Bh7zRGzoQR",
+   "Tdj6y6mVNR"
+  ],
+  "JR_U3_r03_el_vaso": [
+   "rgTaIEMxtc",
+   "9ZajKlLNYZ"
+  ],
+  "JR_U3_r05_cansado": [
+   "jUMCmqGLD0",
+   "VXLiPGYMMU"
+  ],
+  "JR_U3_r07_la_calle": [
+   "YMkPJpoWeC",
+   "P3hrKZf42C"
+  ],
+  "JR_U3_r08_el_jardin": [
+   "UPBqQ6gwny",
+   "s7puf4Yl8e"
+  ],
+  "JR_U3_r09_en_la_reja": [
+   "SyXHu3zUb8",
+   "dtUARE7XSL"
+  ],
+  "JR_U3_r10_sin_jardin": [
+   "gOdFERHSXO",
+   "YMkPJtfWeC"
+  ],
+  "JR_U3_r12_la_mano_de_la_madre": [
+   "YMkPJhEWeC",
+   "MBs3Nu9DCm"
+  ],
+  "JR_U3_r14_desde_la_puerta": [
+   "Bh7zA2RoQR",
+   "xSVfvhkjfW"
+  ],
+  "JR_U3_r16_la_reja_abierta": [
+   "lJeQEu1gv9",
+   "LwDEfERswO"
+  ],
+  "JR_U3_r17_juana_rie": [
+   "LwDEfQUswO",
+   "p8gZ3ALehw"
+  ],
+  "JR_U3_r18_sobre_el_hombro": [
+   "O6tk5URynm",
+   "s7puCrdl8e"
+  ],
+  "JR_U3_r21_juana_escucha": [
+   "8aOYYgXIrU",
+   "WD144qvcXe"
+  ],
+  "JR_U3_r22_el_vaso_en_la_mesa": [
+   "SyXHHpDUb8",
+   "IfyWW7WtvE"
+  ],
+  "JR_U3_r23_el_celular": [
+   "DolRRsypcl",
+   "s7puup7l8e"
+  ],
+  "JR_U3_r24_juana_lee": [
+   "ovJnnyB829",
+   "EbReeAPuuO"
+  ],
+  "JR_U3_r25_los_ojos": [
+   "lJeQHnTgv9",
+   "s7puFzkl8e"
+  ],
+  "JR_U3_r27_el_texto": [
+   "jUMCuzCLD0",
+   "1l0vfAlr4r"
+  ],
+  "JR_U3_r29_la_ventana": [
+   "p8gZAxdehw",
+   "kschaGe16B"
+  ],
+  "JR_U3_r31_baja_el_celular": [
+   "DolR2jwpcl",
+   "ovJnWUV829"
+  ],
+  "JR_U3_r32_el_silencio": [
+   "dtUAzS2XSL",
+   "fHiDeiOCDY"
+  ]
+ },
+ "U4": {
+  "JR_U4_r01_el_vaso_vacio": [
+   "EbReTiPuuO",
+   "XmwG3SGBfo"
+  ],
+  "JR_U4_r02_no_gracias": [
+   "Tdj6yjWVNR",
+   "yim1qhDPW9"
+  ],
+  "JR_U4_r03_juana_cerca": [
+   "w4obutO7EI",
+   "EbReTAiuuO"
+  ],
+  "JR_U4_r06_el_cafe": [
+   "KLWmohNkqp",
+   "gOdFCHaSXO"
+  ],
+  "JR_U4_r07_el_libro": [
+   "N2fL1gj6D9",
+   "LwDEvHOswO"
+  ],
+  "JR_U4_r08_leyendo": [
+   "lJeQfKbgv9",
+   "O6tkql3ynm"
+  ],
+  "JR_U4_r10_la_silla_vacia": [
+   "w4obH9I7EI",
+   "3zugsnJREY"
+  ],
+  "JR_U4_r11_junto_al_doliente": [
+   "bxnIolJ5Y2",
+   "JNIKbREOq4"
+  ],
+  "JR_U4_r12_la_pagina": [
+   "w4obHRa7EI",
+   "cpr9PIh0eP"
+  ],
+  "JR_U4_r14_mas_practico": [
+   "iGElLMw3uK",
+   "6ACsjMpiJO"
+  ],
+  "JR_U4_r17_la_puerta": [
+   "9Zajx1HNYZ",
+   "w4obqHi7EI"
+  ],
+  "JR_U4_r20_la_ventana": [
+   "w4obqbR7EI",
+   "0exN9N4TfW"
+  ],
+  "JR_U4_r22_juana_contraluz": [
+   "7985bk0JAL",
+   "6ACsLgSiJO"
+  ],
+  "JR_U4_r23_cierra_el_libro": [
+   "KLWmtfNkqp",
+   "yim1kLCPW9"
+  ],
+  "JR_U4_r25_juana_adelante": [
+   "s7puQNzl8e",
+   "4RvxjYU9Aa"
+  ],
+  "JR_U4_r26_sobre_el_hombro": [
+   "p8gZ2Enehw",
+   "bxnItJP5Y2"
+  ],
+  "JR_U4_r27_el_camino": [
+   "LwDEuRDswO",
+   "8aOYWkcIrU"
+  ],
+  "JR_U4_r28_tres_sillas": [
+   "w4ob5WQ7EI",
+   "3zugSoZREY"
+  ],
+  "JR_U4_r29_juana_sonrie": [
+   "kschac816B",
+   "jUMCuDlLD0"
+  ],
+  "JR_U4_r30_la_bajada": [
+   "MBs3ZgnDCm",
+   "xSVfEp3jfW"
+  ],
+  "JR_U4_r31_juana_confundida": [
+   "SyXHbtoUb8",
+   "kschaDF16B"
+  ],
+  "JR_U4_r32_la_subida": [
+   "VXLiZyUMMU",
+   "dtUAn6VXSL"
+  ],
+  "JR_U4_r34_juana_rie": [
+   "s7puHaHl8e",
+   "iGElUjM3uK"
+  ],
+  "JR_U4_r35_se_levanta": [
+   "P3hrL1342C",
+   "gOdFbQXSXO"
+  ]
+ }
+}
