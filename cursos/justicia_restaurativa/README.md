@@ -327,11 +327,12 @@ de «Videos» (`1_RSBf53etpkeY264s4_90eYkatBLqgHE`).
 | C2 | `JR_C2_v1.mp4` | 6268/6268 | −19,4 · −3,9 | 66 | `PRIO 1 - JUSTICIA RESTAURATIVA - CASO 2 FASE 1 LA HISTORIA.mp4` · `1UvzArxMOhsLSdJOPZdjb-W00GHR3EtZ5` |
 | U1 | `JR_U1_v1.mp4` | 2339/2339 | −20,3 · −4,6 | 31 | `PRIO 1 - JUSTICIA RESTAURATIVA - UNIDAD 1 EL ENCUENTRO EN LA CARRETERA.mp4` · `1U4fxc4OVQkgU8kejkA-C5_s2eSnkOIzy` |
 | U2 | `JR_U2_v1.mp4` | 2605/2605 | −19,6 · −4,4 | 29 | `PRIO 1 - JUSTICIA RESTAURATIVA - UNIDAD 2 LA SITUACION REFLEXIVA.mp4` · `1_BMjlR5DUFNJ1Y4Qm-orP15iorf4KBT-` |
+| U3 | `JR_U3_v1.mp4` | 6571/6571 | −19,3 · −4,0 | 67 | `PRIO 1 - JUSTICIA RESTAURATIVA - UNIDAD 3 PROSIGUE LA SITUACION REFLEXIVA.mp4` · `1_5nKCluhHy3FWtCJJcXEs_ziJxa3NbFU` |
 
 El único «negro» del C1 (3 cuadros, 85,1 s) es el fundido del respiro antes
 del cartón de cierre, como en toda la serie. El `.drt` del C2 se reexportó
 después de la cirugía (el anterior, en `_descartes`). U1 entregada el 31 oct tras su
-revisión (r04, r05, r08); U2 también (r06). U3 y U4: a la espera de la revisión.
+revisión (r04, r05, r08); U2 también (r06); U3 también (el jardín, r02, cartones de r18 y r27, la música). U4: a la espera de la revisión.
 
 ## Créditos de Magnific
 
