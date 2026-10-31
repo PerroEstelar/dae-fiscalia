@@ -380,11 +380,12 @@ de «Videos» (`1_RSBf53etpkeY264s4_90eYkatBLqgHE`).
 | U1 | `JR_U1_v1.mp4` | 2339/2339 | −20,3 · −4,6 | 31 | `PRIO 1 - JUSTICIA RESTAURATIVA - UNIDAD 1 EL ENCUENTRO EN LA CARRETERA.mp4` · `1U4fxc4OVQkgU8kejkA-C5_s2eSnkOIzy` |
 | U2 | `JR_U2_v1.mp4` | 2605/2605 | −19,6 · −4,4 | 29 | `PRIO 1 - JUSTICIA RESTAURATIVA - UNIDAD 2 LA SITUACION REFLEXIVA.mp4` · `1_BMjlR5DUFNJ1Y4Qm-orP15iorf4KBT-` |
 | U3 | `JR_U3_v1.mp4` | 6571/6571 | −19,3 · −4,0 | 67 | `PRIO 1 - JUSTICIA RESTAURATIVA - UNIDAD 3 PROSIGUE LA SITUACION REFLEXIVA.mp4` · `1_5nKCluhHy3FWtCJJcXEs_ziJxa3NbFU` |
+| U4 | `JR_U4_v1.mp4` | 6936 (su línea, sin respiro) | −19,3 · −4,1 | 74 | `PRIO 1 - JUSTICIA RESTAURATIVA - UNIDAD 4 CULMINAMOS LA SITUACION.mp4` · `1R9U_Cxq-IpV80Hc87dWFIg38luz1Q1xT` |
 
 El único «negro» del C1 (3 cuadros, 85,1 s) es el fundido del respiro antes
 del cartón de cierre, como en toda la serie. El `.drt` del C2 se reexportó
 después de la cirugía (el anterior, en `_descartes`). U1 entregada el 31 oct tras su
-revisión (r04, r05, r08); U2 también (r06); U3 también (el jardín, r02, cartones de r18 y r27, la música). U4: a la espera de la revisión.
+revisión (r04, r05, r08); U2 también (r06); U3 también (el jardín, r02, cartones de r18 y r27, la música); U4 también (ver su sección). Los seis videos del curso están en «Videos». En la U4 `entregas`/`verificar` dicen «NO CUADRA» contra 6984: es la pieza original; su línea mide 6936 porque quitó el respiro, y máster, Fiscalía y ligera tienen los 6936. Los 2 cuadros oscuros en 276,65 s son el paso de r35 al cartón de cierre que él editó.
 
 ## Créditos de Magnific
 
