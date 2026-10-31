@@ -116,8 +116,24 @@ faces are simplified graphic planes, not portraits.
 ''')
 
 R[6] = (202, 'contraluz', (), False, False, 'recuerdo', '''
-(reusa r05: la mirada, mas cerca)
+Extreme close shot of the eyes of the younger man of the previous shot, the
+one on the right in the plain torn coat: the frame holds only the band of his
+face from the brows to the cheekbones, in three-quarter view turned toward
+the left edge of the frame, the camera at the height of his eyes, perfectly
+level. A lean face, the brow bare, a receding hairline just at the top edge.
+
+His eyes are open, level and steady, looking out of the frame to the left at
+the other man: not pleading, not afraid, simply holding the look. The brows
+are level, the lids still. The pale light of the doorway behind him lays a
+thin bright edge along the bridge of his nose, his brow and his cheekbone;
+a soft spill of the same light reaches into the eye sockets so that both
+eyes read clearly, the irises dark and the whites a mid grey. The rest of
+the face sits in shadow. Behind him, out of focus, the pale grey of the
+doorway.
 ''')
+# 31 oct, Sebastian: «en vez de [la mirada mas cerca], un primer plano de los
+# ojos de Pierre». Deja de reusar la r05: placa propia, con la r05 como
+# referencia de la cara y del dibujo.
 
 R[7] = (125, 'dia', ('juana', 'fiscal'), None, False, 'oficina', '''
 (reusa r02: Juana del otro lado del escritorio, otro encuadre)
@@ -160,12 +176,11 @@ R[11] = (187, 'dia', ('juana',), None, False, 'oficina', '''
 ''')
 
 NOMBRE = {1: 'juana_entra', 2: 'juana_frente', 3: 'juana_cerca', 4: 'el_campo',
-          5: 'la_mirada', 6: 'la_mirada_b', 7: 'juana_frente_b',
+          5: 'la_mirada', 6: 'los_ojos_de_pierre', 7: 'juana_frente_b',
           8: 'una_madre', 9: 'el_campo_b', 10: 'sobre_el_hombro',
           11: 'juana_cerca_b'}
 
 REUSA = {
- 6: (5, dict(encuadre=0.76, empuje=0.04, centro=[0.5, 0.5])),
  7: (2, dict(encuadre=0.78, empuje=0.03, centro=[0.5, 0.45])),
  9: (4, dict(encuadre=0.76, empuje=-0.05, centro=[0.5, 0.5])),
  11: (3, dict(encuadre=1.0, empuje=0.0, centro=[0.5, 0.5])),
@@ -180,6 +195,12 @@ SIN_CARA = {8}
 TOPE_SIN_GENTE = 3
 PIEZA = 2605
 TOTAL = PIEZA - (182 + 119 + 48 + 119 + 182)
+
+# camara propia de una ranura que no reusa: r06, empuje lento sobre los ojos
+# (la placa trae la cara entera: el encuadre la cierra a la banda de los ojos)
+CAMARA = {
+ 6: dict(encuadre=0.80, empuje=0.05, centro=[0.55, 0.42]),
+}
 
 HOJAS = {1: ['juana'], 2: ['juana'], 3: ['juana'], 10: ['juana']}
 

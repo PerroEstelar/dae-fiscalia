@@ -240,6 +240,20 @@ remonta, solo `ReplaceClip` de los medios. Lo que pidió y lo que se hizo:
 Créditos: 4 placas Flash (140). Revisión interna: 2339/2339, −20,3 LUFS,
 sin negros.
 
+## Revisión de Sebastián, 31 oct · U2
+
+- **r06**: en vez de la mirada más cerca (reuso de la r05), un primer plano de
+  los ojos de Pierre. Placa propia (`los_ojos_de_pierre`) con la r05 como
+  referencia de la cara y del dibujo; la placa trae la cara entera y la
+  cámara la cierra a la banda de los ojos con un empuje lento
+  (`escenas_jr_u2.CAMARA`: encuadre 0,80, empuje 0,05, centro arriba). Entró
+  con `ReplaceClip` al nombre nuevo, mismo largo (202): sus cambios en la
+  línea (cartones de V4 retocados, el inserto de los ojos de Juana corrido a
+  2184 y alargado a 120) quedan como estaban. `.drt` reexportado.
+
+Créditos: 1 placa Flash (35). Revisión interna: 2605/2605, −19,6 LUFS, sin
+negros.
+
 ## Entregas (31 oct)
 
 Con el OK de Sebastián («export the two first cases, they are good to go»):
@@ -272,7 +286,8 @@ revisión (r04, r05, r08). U2-U4: a la espera de la revisión.
 | placas de detalle (15 + 8 rehechas, Flash, 1 candidata) | 805 |
 | revisión del C2, 31 oct (6 placas) | 210 |
 | revisión de la U1, 31 oct (4 placas) | 140 |
-| **total del curso** | **12.780** |
+| revisión de la U2, 31 oct (1 placa) | 35 |
+| **total del curso** | **12.815** |
 
 Contra los ~22.000 de Gerencia judicial (tres videos) es la mitad por
 video: Flash en vez de Pro para las placas, una candidata por detalle,
