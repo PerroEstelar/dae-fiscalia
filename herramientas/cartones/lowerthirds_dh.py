@@ -38,7 +38,8 @@ OFF = 14
 
 # Derechos humanos, 31 oct: los rotulos de nombre se llenan por video con
 # el montaje (nombre y dato literales del guion).
-# Nombre y, cuando la voz lo dice, el dato literal. Ninguno comparte ranura
+# Nombre y, cuando la voz lo dice, el dato literal (sin punto final en
+# ninguno: «Fiscal», «Asistente» y las frases van igual). Ninguno comparte ranura
 # con un carton (medido con Scribe, 31 oct): el juez de la U2 r09 se cae (su
 # pregunta es carton y la voz ya lo nombra en b05); la apoderada de la U4 pasa
 # a la r32 (la r14 lleva «Peligro para la victima»); Sandra en la U4 se cae
@@ -48,7 +49,7 @@ OFF = 14
 # cae; la voz la nombra en b01 y su rotulo va en la U4 r24.
 LOWERS = {
     'U1': [('lt01_carmen', 3, {'nombre': 'Carmen Elisa Rojas',
-                               'dato': 'Vocera de la mesa de víctimas del municipio.'},
+                               'dato': 'Vocera de la mesa de víctimas del municipio'},
             40),
            # 31 oct, revision: el carton «Y una vecina...» sigue hasta el
            # cuadro 43 de la r08; el rotulo entra 24 despues y dura 96 (no
@@ -64,7 +65,7 @@ LOWERS = {
     'U4': [('lt01_juez', 3, {'nombre': 'Juez de control de garantías'}),
            ('lt02_quintero', 21, {'nombre': 'Marina Quintero', 'dato': 'Fiscal'}),
            ('lt03_salgado', 24, {'nombre': 'Abogada Salgado',
-                                 'dato': 'Defensora de Wilmer Acosta.'}, 52)],
+                                 'dato': 'Defensora de Wilmer Acosta'}, 52)],
     'U5': [('lt01_julian', 1, {'nombre': 'Julián Mora', 'dato': 'Asistente'}),
            # el carton «Hoy vence el termino...» cruza a la r02 hasta su cuadro 49
            ('lt02_sandra', 2, {'nombre': 'Sandra Ibáñez'}, 74),

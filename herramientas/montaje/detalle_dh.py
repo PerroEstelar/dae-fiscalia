@@ -291,6 +291,7 @@ def conformar(L, solo=None):
             # el tono ya se igualo a la madre (que lleva el acento de la
             # serie, SP.ACENTO); falta la saturacion
             o = SP.acento_serie(o, L, ac, girar=False, n=n)
+            o = SP.cielo(o, L)
             if i in (0, n0 // 2, n0 - 1):
                 muestras[i] = o
             wr.stdin.write(o.tobytes())

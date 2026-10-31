@@ -93,8 +93,38 @@ los rótulos van en `lowerthirds_dh.LOWERS`.
 ## Movimiento
 
 Kling 3.0 (`kling-30`, 1080p, cuadro inicial = placa graduada) solo para
-acción real: U1 r01, r02, r13 · U2 r01 · U3 r01, r02, r09, r25 · U4 r40 ·
-U5 r08, r13 (`prompts/kling_dh.json`). Quien solo habla (U2 r13, r21; U4
+acción real: U1 r01, r02, r13 · U2 r01 · U3 r01, r09, r25 · U5 r08, r13
+(`prompts/kling_dh.json`). Fuera en la revisión: U3 r02 (ver abajo) y U4 r40
+(Kling disolvió la fila del pabellón); las dos ranuras quedan con la cámara
+de la casa. Quien solo habla (U2 r13, r21; U4
 r06, r24, r28) queda con la cámara de la casa: Kling deforma las caras al
 hablar. Los detalles (`DET`, V3) van con `detalle_dh quieto` (placa de
 detalle graduada con empuje lento), con la piel igualada a la madre.
+
+## Revisión propia antes de entregar (31 oct, noche)
+
+- **Rótulos contra cartones:** el primer montaje dejó rótulos debajo de
+  cartones que venían de la ranura anterior (el último cartón de un bloque se
+  estira). Se midió con los tiempos quemados (`D:\DAE\_tmp\dh\cartones_dh.json`) y se
+  movieron: Carmen U1 r03 +40, Andrés U1 r08 +67 con 96 cuadros
+  (`LOWERS` acepta `'cuadros'`), Quintero U4 → r21, Salgado U4 r24 +52,
+  Sandra U5 r02 +74; fuera Salgado en la U2 y la apoderada en la U4. Datos de
+  rótulo sin punto final, todos.
+- **U2, Gelman:** el cartón empezaba en «Que es tarea…»; ahora «Control de
+  convencionalidad, que es tarea de cualquier autoridad pública (Gelman vs.
+  Uruguay, 2011, párr. 239).»
+- **U1 r13:** Kling escribió «COMMUNITY RADIO» en la caja de luz (la placa la
+  tiene lisa). `montaje/parche_caja_dh.py` la rellena cuadro a cuadro con el
+  fondo del letrero (rectángulo fijo 918-1043 × 639-680).
+- **U3 r02:** el clip de Kling hacía que el entrevistador mirara a Carmen al
+  señalar la silla (la escena pide lo contrario): fuera; la ranura queda con
+  la cámara de la casa.
+- **U5, cielo:** el atardecer en la ventana quedaba salmón. `dh_pieza.CIELO`
+  apaga la banda cálida/rosada en lo claro (v > 150, rampa de 40) a s ≤ 0,05
+  y lleva su tono a 28° (gris cálido, la misma regla de la piel) en la placa
+  graduada, en Kling (`mov_dh`) y en los detalles. Con s ≤ 0,10 (primer
+  intento) la hoja seguía mostrando las nubes rosadas.
+- Se dejan como están: cuatro cartones a 17-19 car/s que dicen lo mismo que
+  la voz en ese momento (U2 «Camino C», «¿Cómo se motiva…», U3 «Cuatro…», «La
+  diferencia…»): darles más tiempo obligaría a montarlos sobre el bloque
+  siguiente.
