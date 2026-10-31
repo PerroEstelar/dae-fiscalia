@@ -254,6 +254,64 @@ sin negros.
 Créditos: 1 placa Flash (35). Revisión interna: 2605/2605, −19,6 LUFS, sin
 negros.
 
+## Revisión de Sebastián, 31 oct · U3
+
+Su línea ya tenía cambios (V1 r32 recortada a 122 con el respiro en 6202;
+cartones p03, p04, p05 y p17 movidos o recortados; la música A5 recortada
+por la cabeza, entra en 118): nada se remonta. Las placas entran con
+`ReplaceClip` (`reemplazar_en_sitio_jr.py`, retrato idéntico, 75 clips) y lo
+nuevo con `cirugia_jr.py poner`, que no deja guardar si cambia algo más.
+
+- **El jardín, r09–r15** (escenas: `escenas_jr_u3.py`, cabecera «EL
+  JARDÍN»). Antes el hombre nunca tocaba al niño; Sebastián pidió lo
+  contrario: el niño **al lado del hombre**. r09 (c): sobre el hombro del
+  hombre, su mano en el brazo del niño, la madre sola al fondo en la puerta.
+  r11 deja de reusar la r08: **el recuerdo del hombre**, la mano de un niño
+  que no alcanza la de su madre, en el cuarto de la r10. r12: la misma placa,
+  pero la mano es la del hombre, grande, sobre el hombro del niño. r13 sigue
+  reusando la r09, más cerca (la mano en el brazo y la madre mirando, «mira
+  el brazo del niño rodeado por la mano enorme del raptor»). r14: el mismo
+  plano desde la puerta, el niño al lado del hombre con el brazo alrededor.
+  r15 deja de reusar la r12: plano ancho de la calle de la r07, los dos en
+  silueta alejándose. Nada violento: una mano en el brazo o en el hombro.
+- **Placa aprobada como referencia, ahora en el repo**: `REF_PLACA` en el
+  módulo de escenas y `REF_MISMO` / `REF_LUGAR` en `prompts_jr.py`. «mismo»
+  = el mismo plano, se cambia solo lo dicho (r09, r12, r14: salieron con el
+  encuadre y el dibujo de la placa vieja); «lugar» = el mismo lugar en otro
+  plano, solo dibujo y luz (r11 con la r10, r15 con la r07).
+- **r02 con movimiento**: Kling 3.0, 7 s, desde la placa graduada: los
+  dedos se cierran sobre el asa del bolso y aflojan, respira una vez. Kling
+  metió una figura oscura por el borde derecho desde los 4,2 s, en el último
+  1,7 % del ancho; el recorte del 88 % del conformado la deja fuera. En V2
+  sobre la r02 (529, 212).
+- **Cartones que faltaban** (`cartones/cartones_sueltos_jr.py` +
+  `sueltos_jr_U3.json`): `cartones_jr.py U3 --quemar` renumeraría los p01–p21
+  y su línea ya los tiene movidos; los nuevos llevan nombre propio. r18:
+  `p07b` «Usted, con un gesto irónico, le dice que no, que no es una broma.
+  Juana no le cree.» (3251, 200). r27 en **dos**, como pidió: `p17b` «Pero si
+  uno ha sido llevado… ha desnudado su alma,» (5126 —donde él dejó terminar
+  el p17—, 163) y `p17c` «y luego ha sido profundamente traicionado… el
+  perdón adquiere un gran significado.» (5289, 207). En dos no cabe en tres
+  renglones: el p17c va en **cuatro**, excepción marcada (`tope`). Densidad
+  18,7 y 16,8 car/s, la de la voz.
+- **Bug de `cartones_jr.entra`**: se saltaba los números en letras (NUM_PAL)
+  en Scribe pero no en el trozo; «con UN gesto», «si UNO ha sido» nunca
+  casaban y caían a proporción (13 cuadros antes). Arreglado a los dos lados.
+- **La música en 3:59**: dos causas. TA05 crece hacia el final (bajo la voz,
+  de −40 a −33,5 LUFS de corto plazo entre 4:00 y 4:10, y −22 después), y la
+  cama **bombeaba** en las pausas de 0,35–1,2 s entre bloques (las rampas de
+  1 s alcanzaban a subir hasta 6 dB en cada pausa; en 4:14 llegaba a −23,8
+  momentáneo con la voz todavía hablando). `cama_musica.py` gana `_nivelar`
+  (energía en ventanas de 3 s llevada a la mediana, +4/−12 dB, suavizada 4 s)
+  y `_unir` (tramos de voz con pausas de menos de 1,5 s se unen: la cama se
+  queda abajo hasta que la voz termina). Solo para la U3
+  (`jr_pieza.CAMA_AJUSTES`). Bajo la voz: dispersión de 11,4 dB a 5 dB,
+  máximo momentáneo de −23,6 a −26,2 LUFS. Mismo largo; se releyó con
+  `cirugia_jr relink`, su recorte de cabeza quedó igual. La anterior, en
+  `08 MUSICA\_descartes`.
+
+Créditos: 10 placas Flash (350) + Kling 7 s (630) = 980.
+
 ## Entregas (31 oct)
 
 Con el OK de Sebastián («export the two first cases, they are good to go»):
@@ -288,7 +346,8 @@ revisión (r04, r05, r08); U2 también (r06). U3 y U4: a la espera de la revisi�
 | revisión del C2, 31 oct (6 placas) | 210 |
 | revisión de la U1, 31 oct (4 placas) | 140 |
 | revisión de la U2, 31 oct (1 placa) | 35 |
-| **total del curso** | **12.815** |
+| revisión de la U3, 31 oct (10 placas + Kling 7 s) | 980 |
+| **total del curso** | **13.795** |
 
 Contra los ~22.000 de Gerencia judicial (tres videos) es la mitad por
 video: Flash en vez de Pro para las placas, una candidata por detalle,

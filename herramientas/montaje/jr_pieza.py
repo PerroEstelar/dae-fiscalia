@@ -619,6 +619,15 @@ def blancos(L):
         w('%s %d cuadros' % (os.path.basename(p), cuadros(p)))
 
 
+# 31 oct, revision de Sebastian de la U3: «music starts getting louder at
+# 3:59 and the voice is still going». Dos causas: TA05 crece hacia el final
+# (se nivela antes del ducking, cama_musica._nivelar) y la cama bombeaba en
+# las pausas de 0,35-1,2 s entre bloques (se unen, cama_musica._unir).
+CAMA_AJUSTES = {'U3': {'nivelar': {'ventana': 3.0, 'suavizado': 4.0, 'sube': 4.0,
+                                   'baja': 12.0},
+                       'unir': 1.5}}
+
+
 def musica(L):
     rej = json.load(open(os.path.join(R.voces(L), 'JR_%s_rejilla.json' % L),
                         encoding='utf-8'))
@@ -630,6 +639,7 @@ def musica(L):
         aparta(sal, 'rehecha_%s' % time.strftime('%H%M%S'))
     spec = [{'pista': CAMA_MUSICA.get(L, PISTA_MUSICA_FUENTE), 'salida': sal,
              'dur': round(pieza(L) / FPS_N, 3), 'voz': voz, 'objetivo': -26.0}]
+    spec[0].update(CAMA_AJUSTES.get(L, {}))
     sp = os.path.join(TMP, 'spec_musica_jr_%s.json' % L)
     json.dump(spec, open(sp, 'w', encoding='utf-8'), indent=1)
     r = subprocess.run([sys.executable, os.path.join(H, 'musica', 'cama_musica.py'), sp],

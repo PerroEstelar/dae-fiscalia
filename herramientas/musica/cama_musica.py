@@ -108,6 +108,41 @@ def _armar_con_costura(a, n, costura, cruce_s=2.5):
     return res[:n]
 
 
+def _nivelar(a, ventana=3.0, suavizado=4.0, sube=4.0, baja=12.0):
+    """Aplana la dinamica LARGA de la pista antes del ducking.
+
+    POR QUE (31 oct, JR U3)
+        TA05 crece: bajo la voz de la U3 la cama medida en sonoridad de corto
+        plazo iba de -40 a -31 LUFS durante cuatro minutos y en el ultimo
+        bloque de narracion (3:59 a 4:20) subia a -26 y despues a -22,
+        encima de la voz. El ducking baja 6 dB fijos; si la pista sube 15,
+        la voz pierde. Aqui se mide la energia en ventanas de `ventana`
+        segundos, se calcula la ganancia que lleva cada ventana a la mediana
+        de la pista (subir como mucho `sube` dB, bajar como mucho `baja`),
+        se suaviza `suavizado` segundos para que no respire, y se aplica.
+        Despues se normaliza y se hace el ducking como siempre.
+    """
+    n = len(a)
+    m = a.mean(axis=1).astype(np.float64)
+    e = np.concatenate([[0.0], np.cumsum(m * m)])
+    paso, w = int(0.1 * SR), int(ventana * SR)
+    centros = np.arange(0, n, paso)
+    i0 = np.clip(centros - w // 2, 0, n)
+    i1 = np.clip(centros + w // 2, 0, n)
+    ms = (e[i1] - e[i0]) / np.maximum(i1 - i0, 1)
+    db = 10 * np.log10(ms + 1e-12)
+    vivo = db > db.max() - 30                 # los silencios no votan
+    ref = float(np.median(db[vivo]))
+    g = np.clip(ref - db, -baja, sube)
+    g[~vivo] = 0.0
+    k = max(1, int(suavizado / 0.1))
+    g = np.convolve(np.pad(g, (k, k), mode="edge"), np.ones(k) / k, mode="same")[k:-k]
+    gan = np.interp(np.arange(n), centros, g).astype(np.float32)
+    print("   nivelado: mediana %.1f dB, ganancia de %+.1f a %+.1f dB"
+          % (ref, float(g.min()), float(g.max())))
+    return a * (10 ** (gan / 20))[:, None]
+
+
 def _envolvente(dur, tramos_voz):
     """1.0 en los huecos, DUCK_DB donde hay voz, con rampas lineales."""
     n = int(round(dur * SR))
@@ -139,8 +174,35 @@ def _lufs(ruta):
     return None
 
 
-def cama(pista, salida, dur, tramos_voz, objetivo=-26.0, costura=None):
+def _unir(tramos, hueco):
+    """Junta los tramos de voz separados por menos de `hueco` segundos.
+
+    31 oct, JR U3: entre bloque y bloque de narracion hay 0,35 a 1,2 s; con
+    rampas de 1 s la musica alcanzaba a subir hasta 6 dB en cada pausa y
+    volvia a bajar con la voz siguiente: bombeaba. En 3:59 (pausas de 0,9 y
+    1,2 s mientras TA05 crecia) se oia como la musica subiendo con la voz
+    todavia hablando. Unidos, la cama se queda abajo hasta que la voz
+    termina de verdad.
+    """
+    out = []
+    for a, b in sorted(tramos):
+        if out and a - out[-1][1] < hueco:
+            out[-1] = (out[-1][0], max(out[-1][1], b))
+        else:
+            out.append((a, b))
+    return out
+
+
+def cama(pista, salida, dur, tramos_voz, objetivo=-26.0, costura=None, nivelar=None,
+         unir=None):
     a = _decodificar(pista, dur, costura)
+    if unir:
+        antes = len(tramos_voz)
+        tramos_voz = _unir(tramos_voz, unir)
+        print("   voz: %d tramos unidos en %d (pausas de menos de %.1f s)"
+              % (antes, len(tramos_voz), unir))
+    if nivelar:
+        a = _nivelar(a, **(nivelar if isinstance(nivelar, dict) else {}))
 
     tmp = salida + ".plano.wav"
     _escribir(tmp, a)
@@ -170,4 +232,4 @@ if __name__ == "__main__":
     spec = json.load(open(sys.argv[1], encoding="utf-8"))
     for c in spec:
         cama(c["pista"], c["salida"], c["dur"], [tuple(t) for t in c["voz"]],
-             c.get("objetivo", -26.0), c.get("costura"))
+             c.get("objetivo", -26.0), c.get("costura"), c.get("nivelar"), c.get("unir"))

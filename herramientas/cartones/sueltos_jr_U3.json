@@ -1,0 +1,33 @@
+[
+ {
+  "tema": "U3",
+  "bloque": "b14_no_le_cree",
+  "trozo": "Usted, con un gesto irónico, le dice que no, que no es una broma. Juana no le cree.",
+  "archivo": "JR_U3_p07b_carton.mov",
+  "ranura": 18,
+  "ini": 3251,
+  "cuadros": 200,
+  "nota": "r18: entra con «Usted» (3251), sale 74 cuadros antes del p08 de Sebastian (3525)"
+ },
+ {
+  "tema": "U3",
+  "bloque": "b20_hillman_2",
+  "trozo": "Pero si uno ha sido llevado paso a paso a una implicación en la que la sustancia era la propia confianza, ha desnudado su alma,",
+  "archivo": "JR_U3_p17b_carton.mov",
+  "ranura": 27,
+  "ini": 5126,
+  "cuadros": 163,
+  "nota": "r27 (1/2): entra donde Sebastian dejo terminar el p17 (5126; «Pero» se oye en 5103) y corta con el siguiente en «y luego» (5289)"
+ },
+ {
+  "tema": "U3",
+  "bloque": "b20_hillman_2",
+  "trozo": "y luego ha sido profundamente traicionado en el sentido de entregado a sus enemigos, externos o internos, el perdón adquiere un gran significado.",
+  "archivo": "JR_U3_p17c_carton.mov",
+  "ranura": 27,
+  "ini": 5289,
+  "cuadros": 207,
+  "tope": 4,
+  "nota": "r27 (2/2): «y luego» (5289) hasta 24 cuadros antes del p18 de Sebastian (5520); cuatro renglones por excepcion"
+ }
+]

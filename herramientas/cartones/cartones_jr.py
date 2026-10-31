@@ -335,7 +335,10 @@ def entra(clave, bloque, texto, trozo):
     Busca la secuencia de las primeras palabras (sin numeros) en Scribe; si
     no la encuentra, reparte caracteres como en las situaciones."""
     ws, tr = palabras_stt(clave, bloque)
-    q = [x for x in norm(trozo) if not x.isdigit()][:3]
+    # 31 oct (U3 r18, r27): la busqueda se saltaba NUM_PAL en Scribe pero no
+    # en el trozo, y «Usted, con UN gesto» o «Pero si UNO ha sido» nunca
+    # casaban (caian a proporcion, 13 cuadros antes). Se salta a los dos lados.
+    q = [x for x in norm(trozo) if not x.isdigit() and x not in NUM_PAL][:3]
     # 31 oct: el carton dice «Procesado 1» y Scribe oye «procesado uno»; los
     # numeros en letras se saltan igual que los digitos, a los dos lados.
     idx = [k for k, (_, t) in enumerate(ws) if not t.isdigit() and t not in NUM_PAL]

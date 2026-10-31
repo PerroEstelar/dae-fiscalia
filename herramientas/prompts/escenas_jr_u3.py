@@ -17,15 +17,17 @@ LA OFICINA AL MEDIODIA, Y TRES RECUERDOS
     la calle con jardines y el jardin de la historia de Rubiano.
 
 EL JARDIN: LO QUE SE DIBUJA Y LO QUE NO
-    La madre y el nino juegan (r08); el hombre esta en la reja, de
-    espaldas (r09); el cuarto sin jardin de su infancia (r10); la mano de
-    la madre en el hombro del nino (r12); el jardin desde la puerta (r14);
-    la reja abierta y la madre sola (r16). El hombre NUNCA toca al nino en
-    imagen, y el nino no se dibuja llevado por nadie: la r16 es la madre
-    sola en la reja abierta, mirando la calle.
+    La madre y el nino juegan (r08); el nino AL LADO del hombre, la mano de
+    el en el brazo del nino, la madre sola al fondo (r09, y r13 mas cerca);
+    el cuarto sin jardin (r10); el recuerdo del hombre: la mano de un nino
+    que no alcanza la de su madre (r11); la mano del hombre en el hombro del
+    nino (r12); desde la puerta: la madre sola, el hombre con el brazo
+    alrededor del nino (r14); los dos en silueta alejandose por la calle
+    (r15); la reja abierta y la madre sola (r16). Nada violento: una mano en
+    el brazo o en el hombro y nada mas (31 oct, revision de Sebastian).
 
-PLACAS: 22 · REUSOS: r04<-r03, r06<-r05, r11<-r08, r13<-r09, r15<-r12,
-r19<-r01, r20<-r18, r26<-r24, r28<-r25, r30<-r05.
+PLACAS: 24 · REUSOS: r04<-r03, r06<-r05, r13<-r09, r19<-r01, r20<-r18,
+r26<-r24, r28<-r25, r30<-r05.
 """
 
 MEDIODIA = ('Midday: the light from the window on the left comes in higher '
@@ -120,18 +122,22 @@ metres from the child and touches nobody.
 ''')
 
 R[9] = (151, 'contraluz', (), False, False, 'jardin', '''
-Medium shot in the same front garden, the camera at chest height just
-behind the man's shoulder, perfectly level, the bright sky over the house
-the only light in the picture.
+Over-the-shoulder shot in the same front garden, the camera at standing
+height just behind the man's left shoulder, perfectly level, looking across
+the lawn toward the house; the bright open doorway of the house is the
+strongest light in the picture.
 
-In the left foreground, large and out of focus, the back of the man's head
-and shoulder, a dark shape. Facing him across two metres of lawn, the
-mother, standing now, upright, her arms at her sides, her face a dark plane
-against the light with no feature drawn; the small boy stands half behind
-her leg, one of his hands holding her hand, his face hidden against her.
-The man's hands are not in the frame. Nobody touches the child but the
-mother.
+In the left foreground, large, the man seen from BEHIND: the back of his
+head and his dark shoulder, nothing of his face. RIGHT BESIDE HIM, in the
+foreground at his right side, the small boy of about five stands against
+the man's leg, seen from behind, a small dark shape; the man's large hand
+closes around the boy's upper arm, holding him at his side. At the BACK of
+the frame, small, alone in the lit doorway of the house, the mother stands
+upright facing them, her arms at her sides, her face a dark plane with no
+feature drawn. A grip on the arm and nothing more: nobody pulls, nobody
+falls, nothing in anyone's hand.
 ''')
+# 31 oct, Sebastian: el nino va AL LADO del hombre, no detras de la madre.
 
 R[10] = (151, 'hero', (), False, False, 'recuerdo', '''
 Medium shot of a small bare room, the camera low at the height of a child's
@@ -146,21 +152,42 @@ in the room.
 What the camera asserts: where there was no garden.
 ''')
 
-R[11] = (233, 'contraluz', (), False, False, 'jardin', '''
-(reusa r08: el jardin, otro encuadre)
+R[11] = (233, 'hero', (), False, False, 'recuerdo', '''
+Close shot in a small bare room, the camera low at the height of a child's
+shoulder, perfectly level, the weak grey light of a single plain window
+behind the subject the only light in the picture.
+
+A small boy's hand, a child of about five in the cuff of a plain worn
+sweater, reaches up and forward from the lower left of the frame, the
+fingers open, toward a woman's hand that hangs at her side in the upper
+right of the frame in the sleeve of a plain dark dress. The two hands do
+NOT touch: a clear gap of air, a few centimetres, between the boy's
+fingertips and the woman's fingers, and the woman's hand is already
+turning away from him. Both hands read as dark planes with a thin edge of
+light from the window; everything else falls away into near-black. Exactly
+two hands in the frame; no face, no body beyond the wrists and the cuffs.
+
+What the camera asserts: the memory of the man, as a child, reaching for a
+mother who does not take his hand.
 ''')
+# 31 oct, Sebastian: «un recuerdo de la figura oscura: la mano de un nino
+# que trata de alcanzar la de la mama y no la alcanza». Deja de reusar r08.
 
 R[12] = (207, 'contraluz', (), False, False, 'jardin', '''
-Close shot of a woman's hand resting on a small boy's shoulder, the camera
-at the child's shoulder height, perfectly level, the bright sky behind
-them the only light; the hand and the shoulder read as dark planes with
-light along their edges. The boy's plain T-shirt, the sleeve of the
-mother's plain blouse. The fingers of the hand have closed a little on the
-shoulder. Exactly one hand in the frame; no face.
+Close shot of a man's large hand resting on a small boy's shoulder, the
+camera at the child's shoulder height just behind him, perfectly level,
+looking past him through the open front door to the street; the bright day
+outside the door is the only strong light. The boy, seen from behind, in a
+plain T-shirt; the man's arm comes in from the left of the frame in the
+sleeve of a plain dark jacket, and his hand, broad and heavy, much bigger
+than the shoulder it rests on, is closed over it, firm and still. Exactly
+one hand in the frame; no face, no weapon.
 ''')
+# 31 oct, Sebastian: el mismo concepto, pero la mano del hombre sobre el
+# hombro del nino (antes era la mano de la madre).
 
 R[13] = (131, 'contraluz', (), False, False, 'jardin', '''
-(reusa r09: la madre frente al hombre, otro encuadre)
+(reusa r09: la mano del hombre en el brazo del nino, la madre al fondo)
 ''')
 
 R[14] = (172, 'contraluz', (), False, False, 'jardin', '''
@@ -170,15 +197,31 @@ looking out over the lawn to the street. The sky over the far houses is
 the only bright thing; the lawn, the low wall and the figures on it are
 dark planes with edges of light.
 
-Three figures stand on the lawn, small: the mother on the left with the
-boy beside her holding her hand, and the man on the right by the open
-gate, two metres from them, all three still, all three dark shapes with no
+Three figures stand on the lawn, small: the mother alone on the left,
+upright, her arms at her sides; and on the right, by the open gate, the
+man with the small boy BESIDE HIM, the man's arm around the boy's
+shoulders holding him against his side. Two metres of lawn between the
+mother and the two of them; all three still, all three dark shapes with no
 feature drawn. The plain ball on the grass between them.
 ''')
+# 31 oct, Sebastian: le gusta el plano; el nino al lado del hombre, con el
+# brazo del hombre alrededor.
 
-R[15] = (172, 'contraluz', (), False, False, 'jardin', '''
-(reusa r12: la mano de la madre, otro encuadre)
+R[15] = (172, 'contraluz', (), False, True, 'jardin', '''
+Wide shot of the same quiet residential street of single-storey houses,
+late in the afternoon, the camera at standing height in the middle of the
+street, perfectly level, looking along it toward the low sun hidden behind
+the far houses: the sky at the end of the street is the only bright thing.
+
+Far down the street, in the middle of the road, the man and the small boy
+walk AWAY from the camera side by side toward the light, the man's hand on
+the boy's shoulder: two solid dark SILHOUETTES, one tall and one small,
+their long shadows stretching back toward the camera on the pale asphalt.
+The houses and their small front gardens on either side sit in shadow.
+Nobody else in the street.
 ''')
+# 31 oct, Sebastian: plano ancho, el hombre y el nino en siluetas
+# caminando por esa calle. Deja de reusar r12.
 
 R[16] = (120, 'contraluz', (), False, False, 'jardin', '''
 Wide shot of the same front garden from the street, the camera at standing
@@ -330,9 +373,9 @@ is quiet and the light is the only thing that fills it.
 
 NOMBRE = {1: 'juana_piensa', 2: 'las_manos_de_juana', 3: 'el_vaso',
           4: 'el_vaso_b', 5: 'cansado', 6: 'cansado_b', 7: 'la_calle',
-          8: 'el_jardin', 9: 'en_la_reja', 10: 'sin_jardin', 11: 'el_jardin_b',
-          12: 'la_mano_de_la_madre', 13: 'en_la_reja_b', 14: 'desde_la_puerta',
-          15: 'la_mano_de_la_madre_b', 16: 'la_reja_abierta', 17: 'juana_rie',
+          8: 'el_jardin', 9: 'en_la_reja', 10: 'sin_jardin', 11: 'la_mano_que_no_alcanza',
+          12: 'la_mano_del_hombre', 13: 'en_la_reja_b', 14: 'desde_la_puerta',
+          15: 'se_lo_lleva', 16: 'la_reja_abierta', 17: 'juana_rie',
           18: 'sobre_el_hombro', 19: 'juana_piensa_b', 20: 'sobre_el_hombro_b',
           21: 'juana_escucha', 22: 'el_vaso_en_la_mesa', 23: 'el_celular',
           24: 'juana_lee', 25: 'los_ojos', 26: 'juana_lee_b', 27: 'el_texto',
@@ -342,9 +385,7 @@ NOMBRE = {1: 'juana_piensa', 2: 'las_manos_de_juana', 3: 'el_vaso',
 REUSA = {
  4: (3, dict(encuadre=0.76, empuje=0.04, centro=[0.5, 0.45])),
  6: (5, dict(encuadre=0.76, empuje=0.05, centro=[0.5, 0.45])),
- 11: (8, dict(encuadre=0.78, empuje=0.03, centro=[0.4, 0.5])),
- 13: (9, dict(encuadre=0.76, empuje=0.04, centro=[0.55, 0.45])),
- 15: (12, dict(encuadre=1.0, empuje=0.0, centro=[0.5, 0.5])),
+ 13: (9, dict(encuadre=0.78, empuje=0.05, centro=[0.62, 0.55])),  # 31 oct: mas cerca de la mano en el brazo del nino
  19: (1, dict(encuadre=0.78, empuje=0.04, centro=[0.5, 0.45])),
  20: (18, dict(encuadre=1.0, empuje=0.0, centro=[0.5, 0.5])),
  26: (24, dict(encuadre=0.76, empuje=0.04, centro=[0.5, 0.45])),
@@ -354,11 +395,11 @@ REUSA = {
 
 CON_PERSONA = {1, 2, 3, 4, 5, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19,
                20, 21, 22, 23, 24, 25, 26, 27, 28, 30, 31, 32}
-SILUETAS = set()
+SILUETAS = {15}
 CARTONES = {1, 4, 6, 7, 9, 12, 16, 19, 20, 21, 22, 24, 25, 27, 29, 31, 32}
 CENITALES = set()
-SOLO_MANOS = {2, 12, 15, 22, 27}
-SIN_CARA = {5, 6, 8, 9, 11, 13, 14, 16, 30}
+SOLO_MANOS = {2, 11, 12, 22, 27}
+SIN_CARA = {5, 6, 8, 9, 11, 13, 14, 15, 16, 30}
 TOPE_SIN_GENTE = 3
 PIEZA = 6571
 TOTAL = PIEZA - (182 + 119 + 48 + 119 + 182)
@@ -398,6 +439,9 @@ DET = {
 BROLL = {}
 
 MOV = {
+ 2: 'kling (31 oct, Sebastian: «add some motion»): los dedos se cierran sobre el '
+    'asa del bolso y aflojan; respira una vez (sin cara). 7 s, el borde derecho '
+    'que entra al final lo quita el recorte del 88 %',
  3: 'kling: el vaso baja hasta la mesa y la mano se queda sobre el (cara quieta)',
  8: 'kling: el nino termina la carrera hacia la madre; el hombre quieto',
  16: 'kling: la madre baja la mano de la reja; la luz baja',
@@ -406,6 +450,35 @@ MOV = {
 }
 
 LOWER_THIRD = {}
+
+# 31 oct: placas rehechas con una placa aprobada como referencia (la ULTIMA
+# referencia del pedido). 'mismo' = el mismo plano, cambia solo lo dicho;
+# 'lugar' = el mismo lugar, otro plano: solo el dibujo y la luz.
+REF_PLACA = {
+ 9: ('JR_U3_r09_en_la_reja', 'mismo',
+     'keep its framing, its camera, the man in the foreground, the house, the '
+     'lit doorway, the garden and the light EXACTLY. Change ONLY the people: '
+     'the small boy is no longer beside the mother; he now stands in the '
+     'foreground beside the man, the man\'s hand around his upper arm, and the '
+     'mother stands ALONE, small, in the doorway at the back.'),
+ 11: ('JR_U3_r10_sin_jardin', 'lugar', ''),
+ 12: ('JR_U3_r12_la_mano_de_la_madre', 'mismo',
+      'keep its framing, the boy, the open door, the street beyond and the '
+      'light EXACTLY. Change ONLY the arm and the hand: it is no longer a '
+      'woman\'s slender arm in a light sleeve; it is a MAN\'s arm in the sleeve '
+      'of a plain dark jacket, and his hand is large, broad and heavy, with '
+      'thick fingers, much bigger than the boy\'s shoulder, closed firmly over '
+      'it.'),
+ 14: ('JR_U3_r14_desde_la_puerta', 'mismo',
+      'keep its framing, the dark room, the two open door leaves, the lawn, '
+      'the houses, the ball and the light EXACTLY. Change ONLY the people: the '
+      'mother stands ALONE on the left; the small boy now stands on the right '
+      'beside the man by the gate, the man\'s arm around the boy\'s shoulders '
+      'holding him against his side.'),
+ 15: ('JR_U3_r07_la_calle', 'lugar',
+      'Keep the street, the houses, the camera position and the light of the '
+      'reference; add ONLY the two walking figures described above.'),
+}
 
 
 def comprobar():

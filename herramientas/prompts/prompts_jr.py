@@ -73,6 +73,25 @@ HOJAS_REF = ('The reference images are character model sheets: use them ONLY '
              'appearing ONCE.')
 
 
+# 31 oct: una placa aprobada como ULTIMA referencia (REF_PLACA del modulo de
+# escenas). 'mismo': el mismo plano, se cambia solo lo dicho; 'lugar': el
+# mismo lugar en otro plano, solo el dibujo y la luz. Sin esto Flash dibuja
+# foto (U1 r04/r05) o se inventa otro lugar.
+REF_MISMO = ('The LAST reference image is the SAME SHOT from this same film, '
+             'already approved: %s Match its DRAWING exactly: a flat graphic '
+             'illustration built from broad simplified tonal planes, no rendered '
+             'texture anywhere, no photographic detail. This picture must look '
+             'like it was drawn by the same hand as that plate, not like a '
+             'photograph.')
+REF_LUGAR = ('The LAST reference image is a finished plate of this same place '
+             'from this same film, already approved: use it for the place, the '
+             'light and the drawing, not for the framing, which is described '
+             'above. %sMatch its DRAWING exactly: a flat graphic illustration '
+             'built from broad simplified tonal planes, no rendered texture '
+             'anywhere, no photographic detail. This picture must look like it '
+             'was drawn by the same hand as that plate, not like a photograph.')
+
+
 def E(clave):
     return __import__('escenas_jr_%s' % clave.lower())
 
@@ -108,9 +127,14 @@ def video(clave):
         # en los planos de solo manos no va la clausula de rostro: pedir
         # caras donde no las hay hace que el modelo las meta
         manos = n in (getattr(mod, 'SOLO_MANOS', set()) | getattr(mod, 'SIN_CARA', set()))
+        ref = getattr(mod, 'REF_PLACA', {}).get(n)
+        if ref:
+            extra = (REF_MISMO % ref[2]) if ref[1] == 'mismo' else \
+                    (REF_LUGAR % ((ref[2] + ' ') if ref[2] else ''))
+            cuerpo = cuerpo.strip() + '\n\n' + extra
         p = S.arma(cuerpo, registro=reg, personas=gente, con_acento=acento,
                    lugar=lugar, silueta=sil, con_rostro=not manos)
-        out['placas'][nombre(clave, n)] = {
+        out['placas'][nombre(clave, n)] = {'ref_placa': ref[0] if ref else None,
             'ranura': n, 'cuadros': cuad, 'luz': reg, 'gente': list(gente),
             'lugar': lugar, 'hojas': hojas, 'hojas_id': [HOJA_ID[h] for h in hojas],
             'cenital': n in mod.CENITALES, 'carton_sugerido': n in mod.CARTONES,
