@@ -104,6 +104,20 @@ def nombre(L, n):
     return 'JR_%s_r%02d_%s' % (L, n, E(L).NOMBRE[n])
 
 
+def nombre_extra(L, k):
+    """31 oct: una placa de EXTRA (no es una ranura entera): JR_C2_r04b_..."""
+    return 'JR_%s_r%s_%s' % (L, k, E(L).EXTRA[k][0])
+
+
+def con_acento_extra(L, k):
+    import base_jr as S
+    e = E(L).EXTRA[k]
+    gente, acento = e[2], e[3]
+    if acento is None:
+        acento = any(g in S.CON_ACENTO for g in gente) or 'mustard' in e[6].lower()
+    return bool(acento), bool(gente)
+
+
 def pieza(L):
     return json.load(open(os.path.join(R.voces(L), 'JR_%s_ranuras.json' % L),
                           encoding='utf-8'))['pieza']
@@ -257,11 +271,11 @@ def mide_parametros_acento(L, n, p):
     return delta, k
 
 
-def acento_serie(rgb, L, acento, girar=True, saturar=True, n=None):
+def acento_serie(rgb, L, acento, girar=True, saturar=True, n=None, par=None):
     """rgb uint8 (H, W, 3) -> rgb con el acento del T4 llevado al de la serie."""
     import numpy as np
     from PIL import Image
-    par = parametros_acento(L, n)
+    par = par or parametros_acento(L, n)
     if not par or not acento:
         return rgb
     delta, k = par
@@ -274,6 +288,73 @@ def acento_serie(rgb, L, acento, girar=True, saturar=True, n=None):
         hsv[..., 1] = hsv[..., 1] * (1 - wgt * (1 - k))
     return np.asarray(Image.fromarray(np.clip(hsv, 0, 255).astype(np.uint8), 'HSV')
                       .convert('RGB'))
+
+
+def piso_negro(g, etiqueta, piso=16, codo=40):
+    """31 oct, Sebastian (r28 del C2): «los negros son negro puro y eso casi
+    nunca pasa en nuestros videos». La curva de la serie ancla p2 en 16-23,
+    pero una placa con zonas de negro 0 (r05 nuevo del C2: 5 % del cuadro
+    bajo 8) sale con p2 = 0. Si el p2 de la placa graduada queda bajo 10, se
+    le sube el pie: v' = piso + v * (1 - piso/codo) para v < codo, identidad
+    arriba. Monotona y continua; no toca los medios."""
+    import numpy as np
+    from PIL import Image
+    im = Image.open(g).convert('RGB')
+    a = np.asarray(im).astype(np.float32)
+    lum = 0.2126 * a[..., 0] + 0.7152 * a[..., 1] + 0.0722 * a[..., 2]
+    p2 = float(np.percentile(lum, 2))
+    if p2 >= 10:
+        return None
+    b = np.where(a < codo, piso + a * (1.0 - piso / float(codo)), a)
+    Image.fromarray(np.clip(b, 0, 255).astype(np.uint8)).save(g)
+    lum2 = 0.2126 * b[..., 0] + 0.7152 * b[..., 1] + 0.0722 * b[..., 2]
+    w('%s pie del negro: p2 %.0f -> %.0f' % (etiqueta, p2, np.percentile(lum2, 2)))
+    return p2
+
+
+def reinyectar_acento(o, g, etiqueta, banda=(14, 45), piso_s=0.25):
+    """31 oct (r12 del C2): el sueter de Camilo ocupa el 39 % del cuadro y la
+    neutralizacion del entorno de `graduar_serie` lo tomo por dominante de
+    color: la placa graduada quedo con el 2,5 % de pixeles saturados y el
+    sueter salmon-gris. Donde la placa limpia (antes del grade) tiene el
+    acento (tono en la banda mostaza, saturacion >= piso_s) y la graduada lo
+    perdio (saturacion a menos de la mitad), se devuelven tono y saturacion
+    de la limpia y se deja el valor de la graduada."""
+    import numpy as np
+    from PIL import Image
+    a = np.asarray(Image.open(o).convert('RGB').resize(Image.open(g).size, Image.LANCZOS)
+                   .convert('HSV')).astype(np.float32)
+    b = np.asarray(Image.open(g).convert('HSV')).astype(np.float32)
+    ha, sa = a[..., 0], a[..., 1] / 255.0
+    sb = b[..., 1] / 255.0
+    m = (sa >= piso_s) & (ha >= banda[0]) & (ha <= banda[1]) & (sb < 0.5 * sa)
+    if m.mean() < 0.01:
+        return None
+    b[..., 0][m] = ha[m]
+    b[..., 1][m] = np.minimum(255.0, sa[m] * 0.9 * 255.0)
+    Image.fromarray(np.clip(b, 0, 255).astype(np.uint8), 'HSV').convert('RGB').save(g)
+    w('%s acento devuelto al %.1f%% del cuadro que el grade desaturo' % (etiqueta, m.mean() * 100))
+    return float(m.mean())
+
+
+def nivelar_acento(L, g, etiqueta, tol=8.0):
+    """31 oct: si el acento de una placa graduada se va del tono de la serie
+    (42 grados) mas de `tol` grados, o se pasa de saturacion, se gira EN SITIO
+    con el giro medido (r04 y 04b del C2 salieron a 54-57 grados: amarillo
+    limon en vez de mostaza, al lado de las placas de dia a 37-41)."""
+    import numpy as np
+    from PIL import Image
+    m = medir_acento(g)
+    if not m:
+        return None
+    if abs(m[1] - OBJETIVO_ACENTO[0]) <= tol and m[2] <= OBJETIVO_ACENTO[1] + 0.07:
+        return None
+    delta = max(-12.0, min(12.0, (OBJETIVO_ACENTO[0] - m[1]) * 255.0 / 360.0))
+    k = min(1.0, OBJETIVO_ACENTO[1] / m[2])
+    rgb = acento_serie(np.asarray(Image.open(g).convert('RGB')), L, True, par=(delta, k))
+    Image.fromarray(rgb).save(g)
+    w('%s acento %s -> %s (giro %+.1f, k %.2f)' % (etiqueta, m, medir_acento(g), delta, k))
+    return delta, k
 
 
 def medir_acento(p):
@@ -335,7 +416,67 @@ def elegir(L):
              antes['amarilla_p90'], despues['amarilla_p90'],
              antes['calida_p90'], despues['calida_p90'],
              antes['rosado_pct'], despues['rosado_pct']))
+    # 31 oct: las placas EXTRA (ranuras compuestas) se eligen igual, con su
+    # clave ('04b') en elegidas_jr.json.
+    for k in sorted(getattr(E(L), 'EXTRA', {})):
+        nm = nombre_extra(L, k)
+        v = el.get(k)
+        if not v:
+            w('%s sin tirada elegida' % nm)
+            continue
+        src = os.path.join(cand, '%s_%s.png' % (nm, v))
+        dst = os.path.join(pl, nm + '.png')
+        assert os.path.exists(src), src
+        firma = '%s:%s' % (v, md5(src)[:10])
+        if hecho.get(nm) == firma and os.path.exists(dst):
+            w('%s %s ya aplicada' % (k, v))
+            continue
+        if os.path.exists(dst):
+            aparta(dst, 'reemplazada_por_candidata_%s' % v)
+        ac, ge = con_acento_extra(L, k)
+        antes = medir_color(src)
+        despues = limpia(src, dst, ac, ge)
+        hecho[nm] = firma
+        w('%s %s  acento %-5s gente %-5s  fria %.3f->%.3f  rosado %.2f%%->%.2f%%'
+          % (k, v, ac, ge, antes['fria_p90'], despues['fria_p90'],
+             antes['rosado_pct'], despues['rosado_pct']))
     json.dump(hecho, open(hecho_p, 'w', encoding='utf-8'), indent=1)
+
+
+def gradua(L, o, g, reg, ac, ge, etiqueta, techo=True):
+    """La placa limpia -> graduada en su registro, con las dos relimpiezas
+    (rosado y frio despues del grade). Es lo que `construir` hacia en linea;
+    sale a funcion para graduar tambien las placas EXTRA."""
+    import graduar_registro as GR
+    c = GR.medir(o)
+    GR.graduar(o, g, reg, techo=techo)
+    mc = medir_color(g)
+    fr = mc['fria_p90']
+    if mc['rosado_pct'] > 0.3:
+        w('%s rosado despues del grade %.2f%% -> %.2f%%'
+          % (etiqueta, mc['rosado_pct'], limpia(g, g, ac, ge)['rosado_pct']))
+        fr = medir_color(g)['fria_p90']
+    if fr > 0.05:
+        w('%s frio despues del grade %.3f -> %.3f'
+          % (etiqueta, fr, limpia(g, g, ac, ge)['fria_p90']))
+    return c, GR.medir(g)
+
+
+def hornea(cam_base, fuente, salida, frames, extra_cam):
+    """camara.render con el riel de la placa (2560 de ancho -> ventana >= 0,752)."""
+    import camara
+    cam = dict(cam_base)
+    cam.update({'fuente': fuente, 'salida': salida, 'frames': frames})
+    cam.update(extra_cam or {})
+    from PIL import Image as _Im
+    piso = 1920.0 / _Im.open(fuente).size[0] * 1.002 + 0.002
+    emp = max(0.0, float(cam.get('empuje', 0.0)))
+    if cam['encuadre'] * (1 - emp) < piso:
+        cam['encuadre'] = round(piso / (1 - emp), 4)
+    if cam['encuadre'] * (1 - min(0.0, float(cam.get('empuje', 0.0)))) > 1.0:
+        cam['encuadre'] = round(1.0 / (1 - min(0.0, float(cam['empuje']))), 4)
+    camara.render(cam)
+    return cam
 
 
 def construir(L, solo=None):
@@ -354,7 +495,9 @@ def construir(L, solo=None):
         nm = nombre(L, n)
         o, g = os.path.join(pl, nm + '.png'), os.path.join(gd, nm + '.png')
         c = GR.medir(o)
-        GR.graduar(o, g, reg, techo=True)
+        # 31 oct: SIN_TECHO (r28 del C2): la placa se lleva al medio tono de su
+        # registro aunque venga oscura; con techo se quedaba en negro.
+        GR.graduar(o, g, reg, techo=n not in getattr(E(L), 'SIN_TECHO', set()))
         # 27 oct: el grade de contraluz le devolvio un cian a A r09 (frio p90
         # 0,02 -> 0,07; se ve en la ropa clara). Si el grade deja frio, la
         # limpieza de bandas se vuelve a pasar DESPUES del grade.
@@ -379,26 +522,65 @@ def construir(L, solo=None):
             Image.fromarray(acento_serie(np.asarray(Image.open(g).convert('RGB')),
                                          L, ac, n=n)).save(g)
             w('r%02d acento de la serie %s -> %s' % (n, antes, medir_acento(g)))
+        if ac:
+            reinyectar_acento(o, g, 'r%02d' % n)
+            nivelar_acento(L, g, 'r%02d' % n)
+        piso_negro(g, 'r%02d' % n)
         v = GR.medir(g)
         sal = os.path.join(ran, '%s_v%d.mp4' % (nm, largo))
         if os.path.exists(sal):
             aparta(sal, 'rehorneada_%s' % time.strftime('%H%M%S'))
         t0 = time.time()
-        cam = {'modo': 'camara', 'fuente': g, 'salida': sal, 'frames': largo,
-               'encuadre': 0.88, 'empuje': 0.0, 'deriva': [0.0, 0.0], 'vibra': 5.0}
-        cam.update(getattr(E(L), 'REUSA', {}).get(n, (None, {}))[1])
+        base = {'modo': 'camara', 'encuadre': 0.88, 'empuje': 0.0,
+                'deriva': [0.0, 0.0], 'vibra': 5.0}
+        propia = dict(getattr(E(L), 'REUSA', {}).get(n, (None, {}))[1])
+        # 31 oct: camara propia de una ranura que no reusa (r25 del C2)
+        propia.update(getattr(E(L), 'CAMARA', {}).get(n, {}))
         # 30 oct: la placa de Flash mide 2560 de ancho y el riel de `camara`
-        # no deja bajar de 1920/2560 = 0,752. Un reuso con encuadre 0,76 y
-        # empuje 0,04 terminaba en 0,73 y cortaba la cadena. Se sube el
-        # encuadre lo justo para que el empuje termine dentro del riel.
-        from PIL import Image as _Im
-        piso = 1920.0 / _Im.open(g).size[0] * 1.002 + 0.002
-        emp = max(0.0, float(cam.get('empuje', 0.0)))
-        if cam['encuadre'] * (1 - emp) < piso:
-            cam['encuadre'] = round(piso / (1 - emp), 4)
-        if cam['encuadre'] * (1 - min(0.0, float(cam.get('empuje', 0.0)))) > 1.0:
-            cam['encuadre'] = round(1.0 / (1 - min(0.0, float(cam['empuje']))), 4)
-        camara.render(cam)
+        # no deja bajar de 1920/2560 = 0,752 (`hornea` sube el encuadre lo
+        # justo para que el empuje termine dentro del riel).
+        partes = getattr(E(L), 'COMPUESTAS', {}).get(n)
+        if not partes:
+            hornea(base, g, sal, largo, propia)
+        else:
+            # 31 oct: ranura en dos planos pegados por corte (r04 y r12 del
+            # C2). Cada parte se hornea aparte con su placa graduada y se
+            # concatenan sin recodificar; la ultima toma lo que falte.
+            tmp = []
+            queda = largo
+            for i, (quien, cu) in enumerate(partes):
+                if isinstance(quien, int):
+                    f, et = os.path.join(gd, nombre(L, quien) + '.png'), 'r%02d' % quien
+                else:
+                    ex = E(L).EXTRA[quien]
+                    f = os.path.join(gd, nombre_extra(L, quien) + '.png')
+                    o_ex = os.path.join(pl, nombre_extra(L, quien) + '.png')
+                    acx, gex = con_acento_extra(L, quien)
+                    cx, vx = gradua(L, o_ex, f, ex[1], acx, gex, quien)
+                    if acx:
+                        reinyectar_acento(o_ex, f, quien)
+                        nivelar_acento(L, f, quien)
+                    piso_negro(f, quien)
+                    w('%s %-9s crudo %3.0f/%3.0f/%3.0f  final %3.0f/%3.0f/%3.0f'
+                      % (quien, ex[1], cx[0], cx[1], cx[2], vx[0], vx[1], vx[2]))
+                    et = quien
+                cu = queda if (cu is None or i == len(partes) - 1) else cu
+                assert 0 < cu <= queda, (nm, partes, cu, queda)
+                queda -= cu
+                t = os.path.join(ran, '_%s_parte%d_%s.mp4' % (nm, i, et))
+                hornea(base, f, t, cu, propia)
+                assert cuadros(t) == cu, (t, cuadros(t), cu)
+                tmp.append(t)
+            lista = os.path.join(ran, '_%s_partes.txt' % nm)
+            with open(lista, 'w', encoding='utf-8') as fh:
+                for t in tmp:
+                    fh.write("file '%s'\n" % t.replace("'", "'\\''"))
+            subprocess.run(['ffmpeg', '-y', '-v', 'error', '-f', 'concat', '-safe', '0',
+                            '-i', lista, '-c', 'copy', sal], check=True)
+            for t in tmp + [lista]:
+                os.remove(t)
+            w('r%02d compuesta: %s' % (n, ' + '.join('%s x%d' % (q, c if c else largo)
+                                                    for q, c in partes)))
         nf = cuadros(sal)
         w('r%02d %-9s crudo %3.0f/%3.0f/%3.0f  final %3.0f/%3.0f/%3.0f  obj %3d  '
           '%4d/%4d %s  %.0f s' % (n, reg, c[0], c[1], c[2], v[0], v[1], v[2],
@@ -520,9 +702,9 @@ def capas(L):
             v3.append((pos[d['ranura']] + d['entra'], d['cuadros'], p))
         else:
             faltan.append(os.path.basename(p))
-    for r, n, p in LTS.lista(L):
+    for r, n, p, off in LTS.lista(L):
         if os.path.exists(p):
-            v8.append((pos[r] + LTS.OFF, n, p))
+            v8.append((pos[r] + off, n, p))
         else:
             faltan.append(os.path.basename(p))
     return v2, v3, v8, faltan

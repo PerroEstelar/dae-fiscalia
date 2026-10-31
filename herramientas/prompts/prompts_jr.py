@@ -115,6 +115,20 @@ def video(clave):
             'lugar': lugar, 'hojas': hojas, 'hojas_id': [HOJA_ID[h] for h in hojas],
             'cenital': n in mod.CENITALES, 'carton_sugerido': n in mod.CARTONES,
             'prompt': p}
+    # 31 oct: placas que no son una ranura entera (EXTRA), para las ranuras
+    # compuestas (COMPUESTAS): mismo trato que una placa, con su hoja.
+    out['extras'] = {}
+    for k, (nom, reg, gente, acento, sil, lugar, txt, hojas) in sorted(
+            getattr(mod, 'EXTRA', {}).items()):
+        cuerpo = txt % S.TOKENS if '%(' in txt else txt
+        if hojas:
+            cuerpo = cuerpo.strip() + '\n\n' + (HOJA_REF if len(hojas) == 1
+                                                 else HOJAS_REF)
+        p = S.arma(cuerpo, registro=reg, personas=gente, con_acento=acento,
+                   lugar=lugar, silueta=sil, con_rostro=True)
+        out['extras']['JR_%s_r%s_%s' % (clave, k, nom)] = {
+            'clave': k, 'luz': reg, 'gente': list(gente), 'lugar': lugar,
+            'hojas': hojas, 'hojas_id': [HOJA_ID[h] for h in hojas], 'prompt': p}
     for (n, nom), d in sorted(mod.DET.items()):
         madre = nombre(clave, n)
         gente = d.get('personas', out['placas'][madre]['gente'])

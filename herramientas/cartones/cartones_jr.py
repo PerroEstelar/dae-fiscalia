@@ -100,6 +100,11 @@ ELEGIDOS = {
    'dos procesados:'),
   ('n07_perfil_victima', 'Perfil de la víctima. Nombre en el caso, '
    'ficticio: Camilo Andrés Ferreira Buitrago.'),
+  # 31 oct, Sebastian: el perfil entero. Edad y relacion van en UN carton
+  # de tres renglones: separados salian a 16 car/s (la voz los dice en 7 s).
+  ('n07_perfil_victima', 'Edad y ocupación: 27 años, trabajador '
+   'independiente. Relación con los procesados: ninguna; no se conocían '
+   'antes de los hechos.'),
   ('n08_lesiones', 'Lesiones sufridas: herida por arma cortopunzante en '
    'tórax posterior izquierdo con hemoneumotórax'),
   ('n08_lesiones', 'Incapacidad médico-legal: 30 días, con carácter '
@@ -301,6 +306,13 @@ def presentar(trozo, primero_del_bloque, empieza_oracion):
     return t
 
 
+NUM_PAL = {'uno', 'una', 'un', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete',
+           'ocho', 'nueve', 'diez', 'once', 'doce', 'quince', 'veinte', 'veintiun',
+           'veintiuno', 'veintisiete', 'treinta', 'cuarenta', 'cincuenta', 'sesenta',
+           'setenta', 'ochenta', 'noventa', 'cien', 'ciento', 'doscientos',
+           'cuatrocientos', 'mil', 'veintiseis'}
+
+
 def palabras_stt(clave, bloque):
     """[(t_master, palabra_normalizada)] del bloque, con Scribe."""
     v = R.voces(clave)
@@ -324,7 +336,10 @@ def entra(clave, bloque, texto, trozo):
     no la encuentra, reparte caracteres como en las situaciones."""
     ws, tr = palabras_stt(clave, bloque)
     q = [x for x in norm(trozo) if not x.isdigit()][:3]
-    toks = [t for _, t in ws]
+    # 31 oct: el carton dice «Procesado 1» y Scribe oye «procesado uno»; los
+    # numeros en letras se saltan igual que los digitos, a los dos lados.
+    idx = [k for k, (_, t) in enumerate(ws) if not t.isdigit() and t not in NUM_PAL]
+    toks = [ws[k][1] for k in idx]
     pos = texto.find(trozo)
     est = len(norm(texto[:pos]))
     mejor = None
@@ -333,7 +348,7 @@ def entra(clave, bloque, texto, trozo):
             if mejor is None or abs(k - est) < abs(mejor - est):
                 mejor = k
     if mejor is not None:
-        return CABEZA + int(round(ws[mejor][0] * FPS)), 'stt'
+        return CABEZA + int(round(ws[idx[mejor]][0] * FPS)), 'stt'
     return CABEZA + int(round((tr['entra'] + tr['dur'] * pos / len(texto))
                               * FPS)), 'proporcion'
 

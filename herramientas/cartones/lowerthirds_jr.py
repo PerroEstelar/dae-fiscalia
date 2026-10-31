@@ -40,6 +40,13 @@ LOWERS = {
     'C1': [('lt01_ana', 1, {
         'nombre': 'Ana Pérez',
         'dato': 'El 01 de enero de 2025, en un sitio público.'})],
+    # 31 oct, Sebastian: Camilo si lleva rotulo, en la r04, sobre el primer
+    # plano que la cierra (COMPUESTAS): entra en el cuadro 96 de la ranura,
+    # cuando ya salio el carton p01, no en el 14 (rotulo y carton no
+    # conviven). El dato es literal de la voz (n07).
+    'C2': [('lt01_camilo', 4, {
+        'nombre': 'Camilo Andrés Ferreira Buitrago',
+        'dato': '27 años, trabajador independiente.'}, 96)],
     'U2': [('lt01_juana', 1, {
         'nombre': 'Juana',
         'dato': 'Prima de Alberto, víctima de tortura.'})],
@@ -58,19 +65,22 @@ def archivo(L, nom):
 
 
 def lista(L):
-    """[(ranura, cuadros, archivo)] para el montaje."""
-    return [(r, N, archivo(L, nom)) for nom, r, _ in LOWERS.get(L, [])]
+    """[(ranura, cuadros, archivo, entra)] para el montaje. `entra` es OFF
+    salvo que la entrada de LOWERS traiga un cuarto valor."""
+    return [(e[1], N, archivo(L, e[0]), e[3] if len(e) > 3 else OFF)
+            for e in LOWERS.get(L, [])]
 
 
 if __name__ == '__main__':
     import lower_third as LT
     import jr_pieza as GP
     for L in [a.upper() for a in sys.argv[1:]] or sorted(LOWERS):
-        for nom, r, spec in LOWERS[L]:
+        for e in LOWERS[L]:
+            nom, r, spec = e[0], e[1], e[2]
             p = archivo(L, nom)
             os.makedirs(os.path.dirname(p), exist_ok=True)
             GP.aparta(p, 'rehecho')
             LT.render(spec, N, p)
             print('   %s r%02d  entra en el cuadro %d de la ranura  %d cuadros'
-                  % (L, r, OFF, GP.cuadros(p)), flush=True)
+                  % (L, r, e[3] if len(e) > 3 else OFF, GP.cuadros(p)), flush=True)
     print('LISTO')

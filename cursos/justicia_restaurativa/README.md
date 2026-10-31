@@ -157,6 +157,59 @@ agua, V8 lower third; A1 narrador, A4 ambiente, A5 música) y exporta el
 Las hojas `revision_<L>_v1.jpg` (un cuadro a mitad de cada ranura, cada
 detalle, cada movimiento y cada rótulo) están en `D:\DAE\_tmp\jr`.
 
+## Revisión de Sebastián, 31 oct · C2
+
+La línea ya la había tocado (un inserto del cerrojo puesto a mano en V3,
+cuadro 5138): nada se remonta. Todo entra por `reemplazar_en_sitio_jr`
+(mismo nombre, mismo largo, `ReplaceClip`) o por `cirugia_jr.py` (quitar o
+poner UN item, o rehacer V4 entera), con retrato antes y después. Lo que
+pidió y lo que se hizo:
+
+- **r04**: otro plano de Camilo como presentación, el actual con menos
+  tiempo, y el rótulo que faltaba. La ranura es ahora **compuesta**
+  (`escenas_jr_c2.COMPUESTAS`): 84 cuadros del plano ancho mientras sale el
+  cartón p01, y luego el plano de frente (placa EXTRA `r04b_camilo_de_frente`,
+  con la hoja) con el rótulo «Camilo Andrés Ferreira Buitrago · 27 años,
+  trabajador independiente.» (`lowerthirds_jr.LOWERS['C2']`, entra en el
+  cuadro 96 de la ranura, cuando el cartón ya salió). La primera tirada del
+  plano de frente traía el nombre ESCRITO en la imagen —el prompt decía
+  «with his name under him»—: nunca describir el rótulo en el prompt.
+- **r05**: Ferreira huyendo de la escena, herido, la mano derecha en el lado
+  izquierdo del pecho, la cara preocupada, una sombra al fondo del callejón.
+  Sin sangre ni arma. Placa nueva (c) con la hoja y la calle vacía anterior
+  como referencia; la rampa de luz se rehizo sobre ella.
+- **p06**: el perfil completo. Dos cartones nuevos: «Perfil de la víctima.
+  Nombre…» y «Edad y ocupación: 27 años, trabajador independiente. Relación
+  con los procesados: ninguna; no se conocían antes de los hechos.» (separados
+  salían a 16 car/s). V4 se rehízo entera con `cirugia_jr C2 v4`.
+- **r12**: primero la radiografía (placa EXTRA `r12a_la_radiografia`, 206
+  cuadros, hasta «urgencia») y la venda en «laceración en el brazo».
+- **r17, la voz**: «Jairo Ortiz … Cuéllar» con un segundo de pausa y el
+  acento en la a. `voz/retomar_jr.py`: pide variantes (la mitad con la
+  grafía «Cuéyar», que es lo que el modelo lee bien), las oye con Scribe y
+  mide la pausa; la elegida (16,5 s en una ventana de 20,6) entra EN LA MISMA
+  VENTANA del master, nivelada al short-term de la toma vieja, y el sobrante
+  se reparte en las pausas internas de coma y dos puntos (+0,4 s cada una)
+  en vez de dejar cinco segundos de silencio al final. Rejilla y ranuras no
+  cambian; los cartones se recalculan por palabra (`cartones_jr.NUM_PAL`:
+  «Procesado 1» contra «procesado uno»).
+- **2:40**: r19 pasa de la reja vacía a las dos sombras sentadas en la celda
+  (`la_celda`, placa nueva con la r08 como referencia); el cerrojo sigue como
+  inserto.
+- **r25**: fuera el inserto de la carpeta (saltaba del zoom a la placa); la
+  ranura lleva ahora un empuje continuo del 14 % (`escenas_jr_c2.CAMARA`).
+- **r28**: la placa era negro puro alrededor de la ventana. Placa nueva con
+  una cláusula de luz propia («the room is lit by its spill… NO pure black»)
+  y graduada **sin techo** (`SIN_TECHO = {28}`): 20/60/200.
+- **Dos reglas nuevas en `construir`**, de paso: `nivelar_acento` gira el
+  acento a los 42° de la serie cuando una placa se va más de 8° (r04 y 04b
+  salían a 54-57°, limón en vez de mostaza) y `piso_negro` le sube el pie a
+  16 a la placa que quede con p2 bajo 10 (la r05 nueva traía 5 % del cuadro
+  en negro 0).
+
+Créditos: 6 placas Flash (210). Revisión interna: 6268/6268, −19,4 LUFS,
+sin negros.
+
 ## Créditos de Magnific
 
 | | créditos |
@@ -167,7 +220,8 @@ detalle, cada movimiento y cada rótulo) están en `D:\DAE\_tmp\jr`.
 | repeticiones (3 × 2) | 210 |
 | Kling 3.0, 9 clips (6 + 6 + 4 + 5 + 5 + 6 + 5 + 5 + 5 s a 90/s) | 4.230 |
 | placas de detalle (15 + 8 rehechas, Flash, 1 candidata) | 805 |
-| **total del curso** | **12.430** |
+| revisión del C2, 31 oct (6 placas) | 210 |
+| **total del curso** | **12.640** |
 
 Contra los ~22.000 de Gerencia judicial (tres videos) es la mitad por
 video: Flash en vez de Pro para las placas, una candidata por detalle,

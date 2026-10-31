@@ -97,21 +97,31 @@ faces not readable. Nobody is touching anybody. Nothing is in anyone's
 hand.
 ''')
 
-R[5] = (205, 'hero', (), False, False, 'barrio', '''
-Wide shot of the same street at night, a few metres further along from the
-shop, the camera low at knee height on the pavement, perfectly level,
-looking along the pavement.
+R[5] = (205, 'hero', ('camilo',), None, False, 'barrio', '''
+Medium-wide shot of the same street at night, a few metres along from the
+shop, the camera at waist height on the pavement, perfectly level, looking
+back along the pavement toward the corner.
 
-The only light is one street lamp on a concrete pole, throwing a weak cone
-onto the raised concrete pavement and the kerb; the brick facades with
-their window grilles sit in the dark on the left, the road on the right is
-black. Under the lamp the pavement is EMPTY: no person, no object, no mark,
-no stain, nothing on the ground. Far back, out of focus, the faint spill
-of the shop's light at the corner.
+%(camilo)s runs TOWARD the camera along the pavement under the street
+lamp, caught mid-stride: his right hand pressed flat against the LEFT side
+of his chest, his left arm half raised for balance, his body bent a little
+forward. His face is turned to the camera, pale and concerned, the mouth
+closed, the brows drawn: a man who has just been hurt and is getting away.
+His right forearm is NOT bandaged: the sleeve of the mustard sweater is
+plain and whole. No blood, no wound visible, no weapon anywhere, nothing in
+his hands.
 
-What the camera asserts: this is the spot, a few metres on, and there is
-nothing to see on it.
+Far back at the corner, under the spill of the shop's light, ONE human
+figure stands as a solid dark SILHOUETTE, small and still, with no face and
+nothing in its hands. The brick facades with their window grilles sit in
+the dark on the left; the road on the right is black. Nothing on the
+ground.
+
+What the camera asserts: he is hurt and he is getting away; whoever did
+it is a shadow at the back of the street.
 ''')
+# 31 oct, Sebastian: Ferreira huyendo, herido, la mano en el pecho, la cara
+# preocupada, una sombra al fondo. Sin sangre ni arma.
 
 R[6] = (138, 'hero', ('procesados',), False, True, 'barrio', '''
 Wide shot of the same street corner at night, the camera at standing height
@@ -259,15 +269,20 @@ grey daylight. Nobody at the stall; a passer-by far down the pavement,
 small, from behind. No lettering, no sign, no logo anywhere.
 ''')
 
-R[19] = (285, 'contraluz', (), False, False, 'celda', '''
-Close shot of the long barred metal gate of a detention corridor, the
-camera at the height of the lock, perfectly level, square to the bars.
+R[19] = (285, 'contraluz', ('procesados',), False, True, 'celda', '''
+Medium shot inside the same plain detention cell, closer than before, the
+camera at seated eye level just inside the barred gate, perfectly level,
+looking at the far wall.
 
-The bars fill the frame, plain painted metal; the plain heavy lock and its
-bolt in the centre, closed. Through the bars, out of focus, the corridor
-beyond and the small high window at its end, the only light in the picture.
-Nobody in frame, no hand, no uniform, no lettering, no number.
+The two accused men sit side by side on the plain bench under the small
+high window, the only light in the picture: solid dark SILHOUETTES against
+the pale wall, one slight and one heavy-set, their hands on their knees,
+completely still, no face, no feature, nothing in their hands. Two or three
+bars of the gate, out of focus, cross the left edge of the frame. No
+uniform, no lettering, no number.
 ''')
+# 31 oct, Sebastian: a los 2:40 se ven las dos sombras en la celda; el
+# cerrojo sigue como inserto.
 
 R[20] = (180, 'dia', ('fiscal2',), False, False, 'oficina', '''
 Top-down shot, the camera directly above a plain grey desk, looking straight
@@ -351,14 +366,22 @@ left of it.
 R[28] = (211, 'contraluz', ('camilo',), None, False, 'barrio', '''
 Medium shot of %(camilo)s standing at the window of his house, seen from
 inside the room, the camera at standing height behind and to one side of
-him, perfectly level. The window with its metal grille is the only bright
+him, perfectly level. The window with its metal grille is the brightest
 thing in the picture: the daylight outside, the brick facade across the
 street soft in it. He stands with his back three-quarter to the camera,
 his bandaged right forearm held against his chest with his left hand, his
 head turned to the window, his face seen only as an edge against the light.
-The room nearer the camera is in shadow: the plain table, the closed
-toolbox on the floor.
+
+The room nearer the camera is in SOFT shadow and fully legible: the
+daylight from the window spills into the room and lays a soft plane of
+light on the floor and across the plain table; the walls are a mid-dark
+grey with visible tone, the closed toolbox on the floor can be read, and
+NOTHING in the frame is pure black. Every surface in the room keeps its
+form and a little light.
 ''')
+# 31 oct, Sebastian: la primera placa era negro puro alrededor de la
+# ventana; en esta serie el negro nunca es puro. Esta se gradua SIN techo
+# (ver jr_pieza.SIN_TECHO).
 
 R[29] = (262, 'dia', ('defensor2',), False, False, 'oficina', '''
 (reusa r02: la ventanilla, otro encuadre)
@@ -369,7 +392,7 @@ NOMBRE = {1: 'el_expediente', 2: 'la_ventanilla', 3: 'la_tienda',
           7: 'cirugia', 8: 'el_corredor', 9: 'la_cuadra_de_dia',
           10: 'la_cama', 11: 'en_casa', 12: 'la_venda', 13: 'el_dictamen',
           14: 'la_sala_vacia', 15: 'el_expediente_b', 16: 'el_corredor_b',
-          17: 'el_bus', 18: 'el_puesto', 19: 'la_reja', 20: 'el_acuerdo',
+          17: 'el_bus', 18: 'el_puesto', 19: 'la_celda', 20: 'el_acuerdo',
           21: 'la_sala_vacia_b', 22: 'en_casa_b', 23: 'la_audiencia',
           24: 'la_audiencia_b', 25: 'dos_carpetas', 26: 'la_sala_vacia_c',
           27: 'la_mesa_del_acuerdo', 28: 'la_ventana', 29: 'la_ventanilla_b'}
@@ -386,8 +409,8 @@ REUSA = {
  29: (2, dict(encuadre=0.76, empuje=0.05, centro=[0.55, 0.5])),
 }
 
-CON_PERSONA = {1, 2, 3, 4, 6, 8, 10, 11, 12, 13, 15, 16, 20, 22, 23, 24, 25, 28, 29}
-SILUETAS = {6, 8, 16}
+CON_PERSONA = {1, 2, 3, 4, 5, 6, 8, 10, 11, 12, 13, 15, 16, 19, 20, 22, 23, 24, 25, 28, 29}
+SILUETAS = {6, 8, 16, 19}
 CARTONES = {1, 3, 8, 10, 12, 13, 14, 17, 18, 19, 20, 22, 23, 25, 26, 27, 29}
 CENITALES = {13, 20}
 SOLO_MANOS = {1, 12, 13, 15, 20, 25}
@@ -396,8 +419,8 @@ TOPE_SIN_GENTE = 3
 PIEZA = 6268
 TOTAL = PIEZA - (182 + 119 + 48 + 119 + 182)
 
-HOJAS = {4: ['camilo'], 10: ['camilo'], 11: ['camilo'], 12: ['camilo'],
-         28: ['camilo']}
+HOJAS = {4: ['camilo'], 5: ['camilo'], 10: ['camilo'], 11: ['camilo'],
+         12: ['camilo'], 28: ['camilo']}
 
 DET = {
  (11, 'la_taza'): dict(cuadros=72, entra=100, registro='dia',
@@ -416,14 +439,66 @@ DET = {
             'a distant window behind.',
      gesto='Nothing in the frame moves except the light: it dims very '
            'slightly and holds, as a cloud passes the window far away.'),
- (25, 'la_carpeta'): dict(cuadros=72, entra=140, registro='dia',
-     personas=('fiscal2',),
-     escena='Close shot of a hand in a plain charcoal grey sleeve resting '
-            'flat on the cover of a closed plain grey folder on a desk, '
-            'daylight from the left.',
-     gesto='The hand presses down on the cover once, lightly, and stays '
-           'there. The folder does not open. Nothing else moves.'),
 }
+
+# 31 oct, revision de Sebastian: placas que no son una ranura entera.
+# clave -> (nombre, registro, gente, acento, silueta, lugar, texto, hojas)
+EXTRA = {
+ '04b': ('camilo_de_frente', 'hero', ('camilo', 'amiga'), None, False, 'barrio', '''
+Medium-close shot of %(camilo)s at night on the pavement in front of the
+lit doorway of the same corner shop, the camera at standing height across
+the pavement, perfectly level, a little to one side so that we see him in
+THREE-QUARTER VIEW FROM THE FRONT, from the waist up.
+
+He has just turned toward the camera side, alert and serious: his mouth
+closed, his brows a little drawn, his eyes on something off frame to the
+right. His right forearm is NOT bandaged yet: the sleeve of the mustard
+sweater is plain and whole. The light of the shop doorway behind him lays
+a rim of light on his shoulder and on the side of his face; the rest of
+the street behind him is dark, the brick facades and the window grilles
+soft in it. Half a step behind him, at the left edge of the frame and out
+of focus, %(amiga)s, small, her face not readable. Nobody is touching
+anybody; nothing in anyone's hand.
+
+What the camera asserts: this is the man the case is about, seen clearly
+once, with his name under him.
+''', ['camilo']),
+ '12a': ('la_radiografia', 'contraluz', (), False, False, 'hospital', '''
+Close shot, square on, of a chest X-ray film clipped to a plain
+wall-mounted light box in a plain hospital room, the camera at the height
+of the film, perfectly level. The light box is the only bright thing in
+the picture; the film shows the grey ribcage, the spine and the two lung
+fields of an adult, drawn in the same flat graphic way as everything else:
+soft tonal planes, no fine anatomical detail. On the LEFT lung field, low
+and toward the back, one slightly denser grey area, nothing more. The film
+carries NO letters, NO numbers, NO side markers, NO labels and NO name
+strip: only the image. The wall around the light box is plain and in
+shadow. No hand, no person, no second film.
+''', []),
+}
+
+# ranura -> [(placa, cuadros), ...]: la ranura se hornea en dos planos y se
+# pegan por corte; la ultima parte toma lo que falte. Un int es la placa de
+# esa ranura; un str es una clave de EXTRA.
+#   r04: el plano ancho (84 cuadros, mientras sale el carton p01) y el
+#        primer plano de Camilo con el rotulo (31 oct, Sebastian).
+#   r12: la radiografia mientras la voz dice el torax (hasta «urgencia»,
+#        cuadro 2548 de la linea) y la venda en «laceracion en el brazo».
+COMPUESTAS = {
+ 4: [(4, 84), ('04b', None)],
+ 12: [('12a', 206), (12, None)],
+}
+
+# camara propia de una ranura que no reusa (31 oct: r25 sin inserto, un
+# empuje continuo en vez del salto del detalle).
+CAMARA = {
+ 25: dict(encuadre=0.96, empuje=0.14),
+}
+
+# ranuras que se graduan sin techo (jr_pieza.construir): el medio tono de su
+# registro es destino, no tope. r28: el cuarto tiene que leerse.
+SIN_TECHO = {28}
+
 
 BROLL = {
  'la_cuadra_lluvia': ('hero', 'Wide shot of the same Bogota street corner at '
@@ -440,7 +515,7 @@ MOV = {
  28: 'kling: baja la mano izquierda un poco; la luz de afuera',
 }
 
-LOWER_THIRD = {10: 'Camilo Andrés Ferreira Buitrago'}
+LOWER_THIRD = {4: 'Camilo Andrés Ferreira Buitrago'}
 
 
 def comprobar():
