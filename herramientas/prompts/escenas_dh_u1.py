@@ -20,7 +20,8 @@ CINCO ESCENAS (biblia §4: un lugar + quien + a que hora + que pasa)
        (r08), las manos: la bolsa (04c), el celular (r07), la carpeta (r12)
 
 LO QUE NO SE DIBUJA
-    El panfleto legible, las llamadas, la moto, «Los del Cerro». El panfleto
+    El panfleto legible, las llamadas, «Los del Cerro». La moto SI (31 oct, noche,
+    Sebastian): el detalle de la r05 es Carmen caminando con la moto detras. El panfleto
     es una hoja doblada dentro de una bolsa plastica, sin una letra.
 
 QUIEN LLEVA CARA
@@ -244,6 +245,9 @@ REF_PLACA = {
  2: ([ANCLA], 'estilo', ''),
  3: ([ANCLA], 'lugar', ''),
  4: ([ANCLA], 'lugar', ''),
+ # 31 oct, noche: se probo rehacer la placa con UNA mano (Sebastian: «r05
+ # anatomically incorrect»); salio casi igual y la aprobada ya tiene los dos
+ # antebrazos con su puno: lo roto era el DETALLE (ver DET). Se queda la b.
  5: ([ANCLA], 'lugar', ''),
  7: ([ANCLA], 'lugar', ''),
  8: ([ANCLA], 'lugar', ''),
@@ -257,14 +261,46 @@ REF_PLACA = {
 }
 
 DET = {
- (5, 'el_telefono'): dict(cuadros=84, entra=96, registro='dia',
-     personas=('carmen',),
-     escena='Extreme close shot of a woman\'s two hands holding a mobile '
-            'phone at chest height, the cuffs of a matte mustard knitted '
-            'cardigan at the wrists, the dark screen showing a short list as '
-            'plain flat grey bars, nothing legible.',
-     gesto='Her thumb moves slowly down the screen once, a short scroll, and '
-           'stops. The phone stays in her hands. Nothing else moves.'),
+ # 31 oct, noche (Sebastian, en la linea: «r05 anatomically incorrect, weird
+ # positioning of the hands; minute 00:58 we should portray the scene with
+ # character being followed by a bike»). Fuera el telefono en dos manos (los
+ # dedos cruzaban la pantalla). En su lugar, con la frase «el martes una moto
+ # me siguio desde la emisora hasta mi casa» (V3 1313-1397 de la linea), la
+ # escena: OTRO lugar (una calle del pueblo), asi que no es «el mismo plano
+ # mas cerrado»: lleva hoja, cara y la placa de la calle de la emisora (r02)
+ # como referencia de lugar (`prompts_dh.video`: 'ref', 'hojas', 'lugar').
+ # El motociclista no tiene cara: casco cerrado de visor oscuro.
+ (5, 'la_moto'): dict(cuadros=84, entra=96, registro='dia',
+     personas=('carmen',), lugar='pueblo', hojas=['carmen'],
+     ref=(['DH_U1_r02_carmen_llega'], 'lugar',
+          'This is ANOTHER street of the same town, two blocks from the radio '
+          'station, in the afternoon: the same houses, poles, cables and '
+          'mountains, the same drawing. '),
+     escena='''
+Medium-wide shot along a narrow residential street of the town in the
+afternoon, the camera at standing height on the pavement a few metres in front
+of %(carmen)s, perfectly level, looking back up the street the way she has
+come. Mid-action: she walks toward the camera along the narrow pavement close
+to the house fronts, seen from the front, from head to knees, her right hand
+gripping the strap of a plain dark shoulder bag at her shoulder and her left
+arm down at her side, her steps quick; her eyes cut sideways and back toward
+the sound behind her, her head turned only a little. Some fifteen metres
+behind her, in the middle of the empty street, a small plain dark motorcycle
+rolls slowly after her at walking pace, its round headlight on, ridden by ONE
+man in a plain dark jacket and a plain dark full-face helmet with an opaque
+dark visor: no face is visible. The motorcycle has no number plate, no logo
+and no lettering; the helmet has no logo. Nobody else is in the street. The
+low sun from behind the houses on the right lays the street in long soft
+shadow, the light still falling on the house fronts on the left.
+
+Her state: she knows it is there and does not stop; her jaw set, her
+shoulders drawn in, her mouth closed.
+''',
+     gesto='She walks steadily toward the camera, three or four quick steps, '
+           'her eyes cutting back over her shoulder once. Behind her the '
+           'motorcycle rolls slowly forward at walking pace, keeping the same '
+           'distance from her, its headlight on; the rider does not move his '
+           'head. The camera stays still. Nobody else enters the street.'),
  (9, 'la_carpeta_al_pecho'): dict(cuadros=72, entra=150, registro='dia',
      personas=('carmen',),
      escena='Extreme close shot of a woman\'s two hands holding a clear '

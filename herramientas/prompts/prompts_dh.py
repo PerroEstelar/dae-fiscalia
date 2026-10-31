@@ -238,6 +238,27 @@ def video(clave):
         gente = d.get('personas', out['placas'][madre]['gente'])
         # un detalle sobre una ranura que reusa placa: la referencia es la madre real
         base = out['placas'][madre].get('reusa') or madre
+        if d.get('ref'):
+            # 31 oct, noche (U1 r05, la moto): un inserto de OTRO lugar dentro
+            # de la ranura. No es «el mismo plano mas cerrado»: lleva hoja,
+            # cara y su placa de lugar, como una placa.
+            esc = d['escena'] % S.TOKENS if '%(' in d['escena'] else d['escena']
+            hojas = d.get('hojas', [])
+            if hojas:
+                esc = esc.strip() + '\n\n' + (HOJA_REF if len(hojas) == 1 else HOJAS_REF)
+            esc = con_ref(esc, d['ref'], hojas)
+            p = S.arma(esc, registro=d['registro'], personas=tuple(gente),
+                       lugar=d.get('lugar', out['placas'][madre]['lugar']),
+                       con_rostro=True)
+            refs = refs_de(d['ref'])
+            out['detalles']['DH_%s_r%02d_%s_det' % (clave, n, nom)] = {
+                'ranura': n, 'madre': madre, 'placa_ref': refs[-1],
+                'placa_ref_id': PID.get(refs[-1]), 'ref_placa': refs,
+                'ref_ids': [PID.get(x) for x in refs], 'hojas': hojas,
+                'hojas_id': [HOJA_ID[h] for h in hojas], 'cuadros': d['cuadros'],
+                'entra': d['entra'], 'prompt_placa': p,
+                'prompt_video': d['gesto'] + ' ' + QUIETO}
+            continue
         # un detalle es una mano sobre su objeto: sin clausula de rostro
         p = S.arma(d['escena'] + '\n\n' + REFERENCIA, registro=d['registro'],
                    personas=tuple(gente), lugar=out['placas'][madre]['lugar'],

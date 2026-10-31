@@ -93,8 +93,8 @@ los rótulos van en `lowerthirds_dh.LOWERS`.
 ## Movimiento
 
 Kling 3.0 (`kling-30`, 1080p, cuadro inicial = placa graduada) solo para
-acción real: U1 r01, r02, r13 · U2 r01 · U3 r01, r09, r25 · U5 r08, r13
-(`prompts/kling_dh.json`). Fuera en la revisión: U3 r02 (ver abajo) y U4 r40
+acción real: U1 r01, r02, r13 · U2 r01 · U3 r01, r09, r25 · U5 r08, r13, y
+el detalle de la moto en la U1 r05 (`prompts/kling_dh.json`). Fuera en la revisión: U3 r02 (ver abajo) y U4 r40
 (Kling disolvió la fila del pabellón); las dos ranuras quedan con la cámara
 de la casa. Quien solo habla (U2 r13, r21; U4
 r06, r24, r28) queda con la cámara de la casa: Kling deforma las caras al
@@ -128,3 +128,24 @@ detalle graduada con empuje lento), con la piel igualada a la madre.
   la voz en ese momento (U2 «Camino C», «¿Cómo se motiva…», U3 «Cuatro…», «La
   diferencia…»): darles más tiempo obligaría a montarlos sobre el bloque
   siguiente.
+
+## Primera revisión de Sebastián en la línea (31 oct, noche)
+
+- **U1 r05, 00:58:** «anatomically incorrect, weird positioning of the hands;
+  we should portray the scene with character being followed by a bike».
+  Lo roto era el detalle V3 (el teléfono en dos manos, los dedos cruzando la
+  pantalla). En su lugar, con la frase «el martes una moto me siguió desde la
+  emisora hasta mi casa» (V3 1313-1397, el mismo sitio y largo): Carmen camina
+  por una calle del pueblo y una moto la sigue despacio, el motociclista con
+  casco cerrado de visor oscuro, sin placa. Placa de Seedream con la hoja de
+  Carmen y la calle de la emisora (U1 r02) como lugar; Kling 3.0, 84 primeros
+  cuadros sin retime (`detalle_dh.CORTE`). Kling hizo un travelling hacia
+  atrás con ella (la regla es cámara quieta): se deja porque es lo que cuenta
+  la escena. `prompts_dh.video` acepta detalles de OTRO lugar ('ref', 'hojas',
+  'lugar').
+- Se probó rehacer la placa de la r05 con una mano: salió casi igual y la
+  aprobada ya tiene los dos antebrazos con su puño. Se quedó la aprobada (la
+  ranura volvió a ser idéntica, diferencia 0).
+- Cambio en la línea con `reemplazar_en_sitio_dh.py` (nuevo=>>viejo): retrato
+  idéntico antes y después, 41 clips; nada de lo que Sebastián movió se tocó.
+- Revisados los otros nueve detalles del curso (manos): ninguno roto.

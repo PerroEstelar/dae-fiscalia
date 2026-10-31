@@ -72,7 +72,10 @@ CRUDOS = os.path.join(TMP, 'det', 'crudos')
 #   y del ~56 en adelante la mano esta quieta: se usan 0-63 (64 -> 58).
 #   JR (de GJ) T4 r06 la escucha: desde ~2,3 s los ojos se levantan hacia el monitor
 #   (ella es ciega: no puede «mirar» la pantalla). Se usan 0-53 (54 -> 84).
-CORTE = {}
+#   DH U1 r05 la moto (31 oct, noche): Carmen camina hacia la camara con la
+#   moto detras; el detalle dura 84 cuadros y el crudo 121: se usan los 84
+#   primeros SIN retime (estirado/encogido, el paso se veria apurado).
+CORTE = {'DH_U1_r05_la_moto_det': 84}
 # Detalles que se voltean en horizontal al conformar.
 #   T4 r06 el teclado (29 oct, noche): la madre nueva tiene el monitor a la
 #   IZQUIERDA y a ella entrando desde la derecha; el detalle tenia el monitor a
