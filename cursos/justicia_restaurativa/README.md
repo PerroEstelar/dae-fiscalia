@@ -312,6 +312,58 @@ nuevo con `cirugia_jr.py poner`, que no deja guardar si cambia algo más.
 
 Créditos: 10 placas Flash (350) + Kling 7 s (630) = 980.
 
+## Revisión de Sebastián, 31 oct · U4
+
+Su línea ya tenía cambios (sin la V1 de r35, con su movimiento encima; sin el
+respiro: la pieza mide 6936; el movimiento de r22 estirado a 248; fuera el
+detalle de r20; p13 recortado a 148 y p21 corrido a 6318; 21 cuadros de voz
+quitados en 6514; la música entra en 152): nada se remonta.
+
+- **El fiscal es un hombre.** El documento lo deja sin género («doctor(a)») y
+  la placa de r08 lo sacó de espaldas con melena. Ahora `base_jr.TOKENS
+  ['fiscal']` dice «a MAN»; r08 se rehízo con la r08 vieja como MISMO plano y
+  la r26 (el fiscal de espaldas, hombre) como referencia del personaje; r13
+  la reusa.
+- **r06 y r07 con Juana en el cuadro** («si no está, se corta la ilusión»).
+  r07 sobre el hombro del fiscal, con ella mirando el libro (r16 lo reusa: se
+  le dio a la r16 el acento de Juana, que la limpieza le estaba quitando a la
+  bufanda). r06: dos tiradas sobre el hombro no sacaron el termo; la tercera
+  usa la r06 vieja (el vertido) como MISMO plano, abierta para que se vea
+  Juana del otro lado (g).
+- **r18** deja de reusar la puerta de la r17: un inserto de una mano que
+  ayuda, en la misma calle («Atender al reclamo de un dolor…»), animado.
+  Kling agregó la segunda mano del que ayuda: quedan dos manos envolviendo
+  una; se dejó.
+- **r28** las tres sillas con gente: una facilitadora, un señor que habla, un
+  muchacho que escucha (la r28 vieja como MISMO plano).
+- **r33** deja de reusar la r32: el detalle de las dos manos que se juntan en
+  la subida, animado (el crudo se corta en 6,0 s: a los 6,6 entraba una
+  cabeza por abajo).
+- **Movimiento con cuadro inicial y final** (r02, r31): la placa de la ranura
+  es el cuadro FINAL; la de inicio es la misma escena un instante antes
+  (`escenas.EXTRA` + `INICIO`, graduada con `jr_pieza.py U4 inicios`), y
+  `mov_jr` conforma esas ranuras sin el fundido de entrada. r02: las manos en
+  el bolso → el «no, gracias». r31: escucha derecha → ladea la cabeza y mueve
+  la boca preguntando. Además **r04** habla (sin sincronía exacta), **r14**
+  niega con la cabeza, confundida, y **r06** el vertido sobre la placa nueva.
+  `mov_jr.encuadre_de`: el crudo se recorta al encuadre de SU ranura (la r04
+  reusa la r03 a encuadre 1,0; con el 88 % fijo el fundido saltaba).
+- **Cartones de lo que se oye.** En 1:04 seguía «Aprender el sufrimiento…»
+  mientras la voz decía «es, en un grado cero, aprender a nombrarlo…»; en
+  1:18 «Dar una imagen…» mientras decía «es, en gran medida, haber sabido
+  fijarlo…»; en r21 el p10 duraba 453 cuadros. `cartones_jr` estira el último
+  cartón de cada bloque hasta que el bloque termina, y en las lecturas largas
+  eso deja pantalla vieja. Se completaron TODAS las lecturas de Thiebaut
+  (d07, d08, d09, d13, d14, d15, d16; `cartones/sueltos_jr_U4.json`): los
+  largos se requemaron recortados con nombre propio (`p03r`, `p04r`, `p06r`,
+  `p09r`, `p10r`, `p11r`, misma entrada) y entraron diez nuevos (`p03b`,
+  `p04b`, `p04c`, `p06b`, `p09b`, `p09c`, `p09d`, `p10b`, `p10c`, `p11b`),
+  cada uno en la palabra en que se oye (Scribe), relevos a tope cuando con
+  el respiro pasaban de 17 car/s. 22 operaciones de `cirugia_jr`, ninguna
+  tocó otra cosa.
+
+Créditos: 20 placas Flash (700) + Kling 44 s (3.960) = 4.660.
+
 ## Entregas (31 oct)
 
 Con el OK de Sebastián («export the two first cases, they are good to go»):
@@ -348,7 +400,8 @@ revisión (r04, r05, r08); U2 también (r06); U3 también (el jardín, r02, cart
 | revisión de la U1, 31 oct (4 placas) | 140 |
 | revisión de la U2, 31 oct (1 placa) | 35 |
 | revisión de la U3, 31 oct (10 placas + Kling 7 s) | 980 |
-| **total del curso** | **13.795** |
+| revisión de la U4, 31 oct (20 placas + Kling 44 s) | 4.660 |
+| **total del curso** | **18.455** |
 
 Contra los ~22.000 de Gerencia judicial (tres videos) es la mitad por
 video: Flash en vez de Pro para las placas, una candidata por detalle,

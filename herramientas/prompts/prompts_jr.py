@@ -92,6 +92,27 @@ REF_LUGAR = ('The LAST reference image is a finished plate of this same place '
              'was drawn by the same hand as that plate, not like a photograph.')
 
 
+def refs_de(ref):
+    """Placas de referencia en el ORDEN del pedido (despues de las hojas):
+    REF_PLACA trae primero la del mismo plano/lugar, que va al FINAL."""
+    if not ref:
+        return None
+    lst = ref[0] if isinstance(ref[0], (list, tuple)) else [ref[0]]
+    return list(lst[1:]) + [lst[0]]
+
+
+def con_ref(cuerpo, ref, hojas):
+    extra = (REF_MISMO % ref[2]) if ref[1] == 'mismo' else \
+            (REF_LUGAR % ((ref[2] + ' ') if ref[2] else ''))
+    if hojas:
+        # con placas de referencia la hoja ya no es «la» referencia
+        cuerpo = cuerpo.replace('The reference image is a character model sheet',
+                                'The FIRST reference image is a character model sheet')
+        cuerpo = cuerpo.replace('The reference images are character model sheets',
+                                'The FIRST reference images are character model sheets')
+    return cuerpo.strip() + '\n\n' + extra
+
+
 def E(clave):
     return __import__('escenas_jr_%s' % clave.lower())
 
@@ -129,12 +150,10 @@ def video(clave):
         manos = n in (getattr(mod, 'SOLO_MANOS', set()) | getattr(mod, 'SIN_CARA', set()))
         ref = getattr(mod, 'REF_PLACA', {}).get(n)
         if ref:
-            extra = (REF_MISMO % ref[2]) if ref[1] == 'mismo' else \
-                    (REF_LUGAR % ((ref[2] + ' ') if ref[2] else ''))
-            cuerpo = cuerpo.strip() + '\n\n' + extra
+            cuerpo = con_ref(cuerpo, ref, hojas)
         p = S.arma(cuerpo, registro=reg, personas=gente, con_acento=acento,
                    lugar=lugar, silueta=sil, con_rostro=not manos)
-        out['placas'][nombre(clave, n)] = {'ref_placa': ref[0] if ref else None,
+        out['placas'][nombre(clave, n)] = {'ref_placa': refs_de(ref),
             'ranura': n, 'cuadros': cuad, 'luz': reg, 'gente': list(gente),
             'lugar': lugar, 'hojas': hojas, 'hojas_id': [HOJA_ID[h] for h in hojas],
             'cenital': n in mod.CENITALES, 'carton_sugerido': n in mod.CARTONES,
@@ -148,9 +167,13 @@ def video(clave):
         if hojas:
             cuerpo = cuerpo.strip() + '\n\n' + (HOJA_REF if len(hojas) == 1
                                                  else HOJAS_REF)
+        ref = getattr(mod, 'REF_PLACA', {}).get(k)
+        if ref:
+            cuerpo = con_ref(cuerpo, ref, hojas)
         p = S.arma(cuerpo, registro=reg, personas=gente, con_acento=acento,
                    lugar=lugar, silueta=sil, con_rostro=True)
         out['extras']['JR_%s_r%s_%s' % (clave, k, nom)] = {
+            'ref_placa': refs_de(ref),
             'clave': k, 'luz': reg, 'gente': list(gente), 'lugar': lugar,
             'hojas': hojas, 'hojas_id': [HOJA_ID[h] for h in hojas], 'prompt': p}
     for (n, nom), d in sorted(mod.DET.items()):

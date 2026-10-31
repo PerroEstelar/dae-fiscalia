@@ -37,10 +37,13 @@
   "descartes": []
  },
  "JR_U4_r06_el_cafe": {
-  "duracion": 5,
-  "prompt": "The thin stream of coffee keeps pouring from the grey thermos flask into the white cup until the cup is nearly full, then the hand tilts the flask upright and the stream stops. The other hand keeps holding the cup steady on the desk. The book and the pen stay where they are. The camera does not move at all and the framing does not change. Only the movement described happens; nothing else in the frame moves. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
-  "negativo": "spilling, overflowing, cup moving, cup lifting, book opening, extra cup, face, head turning, smile, smiling, grin, laughing, raised eyebrows, frown lines, wrinkles appearing, open mouth, talking, lip movement, blinking repeatedly, face morphing, face becoming 3D, camera movement, zoom, pan, dolly, camera shake, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, Pixar style, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark",
-  "descartes": []
+  "duracion": 6,
+  "inicio": "JR_U4_r06_el_cafe (placa nueva g)",
+  "prompt": "El cafe sigue cayendo; el termo se endereza y se apoya junto a la taza; Juana mira, parpadea. + QUIETO",
+  "descartes": [
+   "crudo de la placa vieja (sin Juana), en crudos/_descartes"
+  ],
+  "revision": "31 oct, Sebastian (U4)"
  },
  "JR_U4_r32_la_subida": {
   "duracion": 5,
@@ -58,5 +61,46 @@
   "duracion": 7,
   "prompt": "The woman's two hands rest on the grey handbag in her lap. Very slowly the fingers of the upper hand close a little tighter around the bag's handle, the knuckles rising, and then ease off again just slightly; the lower hand stays where it is. She breathes in once, slowly, so the grey coat and the end of the mustard scarf rise and settle a few millimetres. The desk, the office and everything behind her stay completely still. The camera does not move at all and the framing does not change. Only the movement described happens; nothing else in the frame moves. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
   "nota": "31 oct, Sebastian: «r02 we can add some motion there»"
+ },
+ "JR_U4_r02_no_gracias": {
+  "duracion": 6,
+  "inicio": "JR_U4_r02i_no_gracias_inicio",
+  "final": "JR_U4_r02_no_gracias",
+  "prompt": "Ambas manos en el bolso; levanta una a la altura del hombro, palma hacia la camara, un «no, gracias» pequeno, y la sostiene: termina en el cuadro final. + QUIETO",
+  "revision": "31 oct, Sebastian (U4)"
+ },
+ "JR_U4_r04_juana_cerca_b": {
+  "duracion": 5,
+  "inicio": "JR_U4_r03_juana_cerca",
+  "prompt": "Juana habla: labios naturales, pequenos movimientos de cabeza, cejas arriba en la pregunta; ojos a la camara. + QUIETO",
+  "revision": "31 oct, Sebastian (U4)"
+ },
+ "JR_U4_r14_mas_practico": {
+  "duracion": 6,
+  "inicio": "JR_U4_r14_mas_practico",
+  "prompt": "No entiende: frunce el ceno, niega despacio con la cabeza, baja un poco la mano en alto. + QUIETO",
+  "revision": "31 oct, Sebastian (U4)"
+ },
+ "JR_U4_r18_la_mano_que_ayuda": {
+  "duracion": 8,
+  "inicio": "JR_U4_r18_la_mano_que_ayuda",
+  "prompt": "La mano de la derecha se cierra con suavidad sobre la palma abierta; la otra se deja sostener. + QUIETO",
+  "nota": "Kling metio la segunda mano del que ayuda (a los 2,5 s): quedan dos manos envolviendo una. Se dejo: es la idea.",
+  "revision": "31 oct, Sebastian (U4)"
+ },
+ "JR_U4_r31_juana_confundida": {
+  "duracion": 6,
+  "inicio": "JR_U4_r31i_juana_confundida_inicio",
+  "final": "JR_U4_r31_juana_confundida",
+  "prompt": "Escucha y algo la desconcierta: ladea un poco la cabeza, una ceja sube, los labios se mueven como preguntando; termina en el cuadro final. + QUIETO",
+  "revision": "31 oct, Sebastian (U4)"
+ },
+ "JR_U4_r33_las_manos_se_juntan": {
+  "duracion": 7,
+  "hasta": 6.0,
+  "inicio": "JR_U4_r33_las_manos_se_juntan",
+  "prompt": "La mano de arriba tira despacio hacia la luz; la de abajo se agarra. + QUIETO",
+  "nota": "A los 6,6 s entra una cabeza por abajo: el crudo se corta en 6,0 s (bajar_mov_jr «hasta»).",
+  "revision": "31 oct, Sebastian (U4)"
  }
 }

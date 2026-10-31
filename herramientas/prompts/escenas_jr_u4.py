@@ -26,8 +26,14 @@ LO QUE SE RECUERDA O SE PIENSA, EN OTRO REGISTRO
     (r32, r33). Sin horrores dibujados: la oscuridad y la profundidad
     bastan.
 
-PLACAS: 24 · REUSOS: r04<-r03, r05<-r01, r09<-r03, r13<-r08, r15<-r14,
-r16<-r07, r18<-r17, r19<-r01, r21<-r10, r24<-r03, r33<-r32.
+PLACAS: 26 + 2 de inicio · REUSOS: r04<-r03, r05<-r01, r09<-r03,
+r13<-r08, r15<-r14, r16<-r07, r19<-r01, r21<-r10, r24<-r03.
+
+REVISION DE SEBASTIAN (31 oct): r06/r07 con Juana del otro lado del
+escritorio; el fiscal sobre el hombro es un HOMBRE (r08, y r13 que la
+reusa); r18 un inserto de una mano que ayuda; r28 la mediacion con gente;
+r33 el detalle de las manos que se juntan; movimiento en r02 y r31 (con
+placa de inicio), r04, r06, r14, r18 y r33.
 """
 
 TARDE = ('Late afternoon: the light from the window on the left comes in '
@@ -79,41 +85,54 @@ R[5] = (108, 'dia', ('juana', 'fiscal'), None, False, 'oficina', '''
 (reusa r01: Juana del otro lado, otro encuadre)
 ''')
 
-R[6] = (159, 'dia', ('fiscal',), False, False, 'oficina', '''
-High three-quarter shot of the prosecutor's side of the desk, the camera at
-the height of the prosecutor's own eyes looking down at the hands,
-perfectly level.
+R[6] = (159, 'dia', ('fiscal', 'juana'), None, False, 'oficina', '''
+High three-quarter shot from just behind and above the prosecutor's right
+shoulder, perfectly level, looking down across the desk.
 
-%(fiscal)s's two hands: the left holds the plain white cup steady on the
-desk, the right pours from a plain grey thermos flask into it, the thin
-stream of coffee caught mid-pour. Beside the cup, the plain grey hardcover
-book, closed, no lettering. A plain grey pen, the plain grey notebook.
-Exactly two hands, both in plain light grey shirt cuffs; no face.
-''' + TARDE + '''
+In the lower half of the frame, large and sharp, the prosecutor's two
+hands on the desk, in plain light grey shirt cuffs and the sleeves of a
+charcoal jacket: the left holds the plain white cup steady, the right
+tilts a plain grey thermos flask over it, and a thin dark stream of coffee
+falls from the spout into the cup, caught mid-pour. Beyond the desk, in
+the upper part of the frame and in focus, %(juana)s sits in the visitor
+chair facing us and watches him pour, her hands on the handbag in her
+lap, her mouth closed, a small polite patience in her face. The empty
+glass and the closed plain grey book on the desk. ''' + TARDE + '''
 ''')
+# 31 oct, Sebastian (U4): «Juana no esta en el cuadro y corta la ilusion».
+# Primera tirada sobre el hombro (c-f): el termo no salio en ninguna. Ahora
+# la placa vieja del vertido como MISMO plano, abriendo para que se vea ella.
 
-R[7] = (158, 'dia', ('fiscal',), False, False, 'oficina', '''
-High three-quarter shot of the desk from the prosecutor's eyes, the camera
-looking down at the hands, perfectly level.
+R[7] = (158, 'dia', ('fiscal', 'juana'), None, False, 'oficina', '''
+Over-the-shoulder shot across the desk, the camera at seated eye level
+just behind and above the prosecutor's left shoulder, perfectly level.
 
-%(fiscal)s's two hands open the plain grey hardcover book on the desk: the
-left hand holds the cover open, the right hand holds a page half turned.
-The pages carry only plain flat grey bars, no readable character anywhere;
-the cover is plain grey with no title. The white cup with coffee beside
-the book, steam faintly rising. Exactly two hands; no face. ''' + TARDE + '''
+In the left foreground, large, %(fiscal)s seen from BEHIND: the back of
+his head and his shoulder, nothing of his face; his two hands open the
+plain grey hardcover book on the desk: the left holds the cover open, the
+right holds a page half turned. The pages carry only plain flat grey bars,
+no readable character anywhere; the cover is plain grey with no title. The
+white cup with coffee beside the book, steam faintly rising. Beyond the
+desk, in focus, %(juana)s sits in the visitor chair and looks at the book,
+curious, her hands on the handbag, her mouth closed. ''' + TARDE + '''
 ''')
+# 31 oct, Sebastian (U4): lo mismo que la r06, Juana en el cuadro.
 
 R[8] = (280, 'dia', ('fiscal', 'juana'), None, False, 'oficina', '''
-Medium shot across the desk, the camera at seated eye level on the
-prosecutor's side, perfectly level, as if we were the prosecutor.
+Over-the-shoulder shot across the desk, the camera at seated eye level on
+the prosecutor's side, just behind his right shoulder, perfectly level.
 
-In the lower foreground, sharp, %(fiscal)s's two hands hold the open book
-up a little off the desk, its pages of plain flat grey bars toward the
-camera's side, tilted so that we read over them. Beyond the book,
-%(juana)s in the visitor chair listens: her hands on her handbag, her head
-a little inclined, her eyes on the book, her mouth closed. The empty glass
-and the cup on the desk. ''' + TARDE + '''
+At the left edge of the frame, large, %(fiscal)s seen from BEHIND: the
+back of his head and his broad shoulder, nothing of his face. In the
+lower foreground, sharp, his two hands hold the open book up a little off
+the desk, its pages of plain flat grey bars toward the camera's side,
+tilted so that we read over them. Beyond the book, %(juana)s in the
+visitor chair listens: her hands on her handbag, her head a little
+inclined, her eyes on the book, her mouth closed. The empty glass and the
+cup on the desk. ''' + TARDE + '''
 ''')
+# 31 oct, Sebastian (U4): la figura sobre el hombro salio mujer (melena); el
+# fiscal es un hombre. La r13 reusa esta placa.
 
 R[9] = (103, 'dia', ('juana',), None, False, 'oficina', '''
 (reusa r03: Juana de cerca, segundo encuadre)
@@ -175,9 +194,11 @@ R[15] = (114, 'dia', ('juana', 'fiscal'), None, False, 'oficina', '''
 (reusa r14: la mano alzada, mas cerca)
 ''')
 
-R[16] = (144, 'dia', ('fiscal',), False, False, 'oficina', '''
-(reusa r07: las manos abren el libro, otro encuadre)
+R[16] = (144, 'dia', ('fiscal', 'juana'), None, False, 'oficina', '''
+(reusa r07: el fiscal abre el libro y Juana mira, otro encuadre)
 ''')
+# 31 oct: con la r07 nueva Juana esta en el cuadro: lleva su acento (con
+# ('fiscal',) y acento False la limpieza le quitaba el amarillo a la bufanda).
 
 R[17] = (251, 'contraluz', (), False, False, 'barrio', '''
 Medium-wide shot of a plain house doorway on a Colombian street in the
@@ -195,8 +216,23 @@ What the camera asserts: a thing being put back where it was.
 ''')
 
 R[18] = (255, 'contraluz', (), False, False, 'barrio', '''
-(reusa r17: la puerta, mas cerca)
+Close insert of hands, the camera at chest height, perfectly level, in the
+same street in the early morning: the bright sky and the open doorway
+behind are soft and out of focus, and the hands in front of them read as
+dark shapes with a clean edge of light.
+
+One person's hand, open and a little unsteady, rests palm up in the lower
+left of the frame in the cuff of a plain worn jacket; another person's two
+hands, coming in from the right in the cuffs of a plain grey sweater, hold
+it: one hand underneath, supporting it, the other laid gently over it. A
+helping hand: careful, warm, nothing forced. Exactly three hands in the
+frame; no face, no body beyond the wrists.
+
+What the camera asserts: tending to someone's pain.
 ''')
+# 31 oct, Sebastian (U4): «algo completamente distinto, un inserto en
+# nuestro estilo de compasion y una mano que ayuda, animado». Deja de reusar
+# la r17. Se oye: «Atender al reclamo de un dolor, sanarlo o paliarlo...».
 
 R[19] = (157, 'dia', ('juana', 'fiscal'), None, False, 'oficina', '''
 (reusa r01: Juana del otro lado, abierto)
@@ -275,14 +311,24 @@ else in the picture.
 ''')
 
 R[28] = (220, 'dia', (), False, False, 'oficina', '''
-Medium shot of a plain room with a plain grey floor and plain walls, the
-camera at seated height, perfectly level. Three plain chairs stand in the
-middle of the room arranged in a loose triangle, facing one another, each
-a little apart from the others, all EMPTY; a small plain table with a plain
-jug of water and three plain glasses to one side. Low afternoon light from
-a window on the right lays long shadows of the chairs across the floor.
-Nobody in the room.
+Medium shot of the same plain room, the camera at seated height, perfectly
+level. In the three plain chairs, arranged in a loose triangle facing one
+another, three ordinary Colombian people are in the middle of a
+conversation: on the left a facilitator, a woman of about fifty with short
+grey hair and reading glasses pushed up on her head, a plain grey cardigan
+and a plain notebook on her knee, listening with a small nod; in the middle
+a man of about sixty with a weathered face, a plain grey shirt and a plain
+cap held in his hands, speaking, one open hand turned up as he explains
+something; on the right a young man of about twenty-five with short black
+hair in a plain dark hooded sweatshirt, leaning forward with his elbows on
+his knees, listening. The small plain table with the jug of water and three
+glasses beside them, one glass half drunk. Low afternoon light from the
+window on the right lays long shadows across the floor. Nobody else in the
+room. Their clothes are plain grey and charcoal: no colour accent on
+anyone.
 ''')
+# 31 oct, Sebastian (U4): gente colombiana cualquiera en las sillas,
+# conversando. Se oye: «las personas mediadoras o facilitadoras...».
 
 R[29] = (165, 'dia', ('juana', 'fiscal'), None, False, 'oficina', '''
 Medium shot across the desk, the camera at seated eye level on the
@@ -328,8 +374,19 @@ about to meet in the light. Nothing else in the picture.
 ''')
 
 R[33] = (189, 'contraluz', (), False, True, 'recuerdo', '''
-(reusa r32: la subida, mas cerca)
+Close shot of two hands meeting on the narrow rock stair, the camera low at
+the height of the steps, perfectly level, looking up toward the opening of
+pale daylight above, which is the only bright thing in the picture.
+
+From the top of the frame the hand of the one ahead reaches DOWN; from the
+bottom the hand of the one behind reaches UP; the two hands have just met
+and the fingers close around each other's wrist, a firm grip. Both hands
+and forearms read as solid dark silhouettes against the pale light, with a
+thin bright edge. The edges of the dark stone steps in the lower corners.
+Nothing else in the picture.
 ''')
+# 31 oct, Sebastian (U4): «el mismo plano» que la r32; ahora el detalle de
+# las manos que se juntan en esa escena. Deja de reusar la r32.
 
 R[34] = (109, 'dia', ('juana', 'fiscal'), None, False, 'oficina', '''
 Medium shot across the desk, the camera at seated eye level on the
@@ -358,12 +415,12 @@ NOMBRE = {1: 'el_vaso_vacio', 2: 'no_gracias', 3: 'juana_cerca', 4: 'juana_cerca
           9: 'juana_cerca_c', 10: 'la_silla_vacia', 11: 'junto_al_doliente',
           12: 'la_pagina', 13: 'leyendo_b', 14: 'mas_practico',
           15: 'mas_practico_b', 16: 'el_libro_b', 17: 'la_puerta',
-          18: 'la_puerta_b', 19: 'el_vaso_vacio_c', 20: 'la_ventana',
+          18: 'la_mano_que_ayuda', 19: 'el_vaso_vacio_c', 20: 'la_ventana',
           21: 'la_silla_vacia_b', 22: 'juana_contraluz', 23: 'cierra_el_libro',
           24: 'juana_cerca_d', 25: 'juana_adelante', 26: 'sobre_el_hombro',
-          27: 'el_camino', 28: 'tres_sillas', 29: 'juana_sonrie',
+          27: 'el_camino', 28: 'la_mediacion', 29: 'juana_sonrie',
           30: 'la_bajada', 31: 'juana_confundida', 32: 'la_subida',
-          33: 'la_subida_b', 34: 'juana_rie', 35: 'se_levanta'}
+          33: 'las_manos_se_juntan', 34: 'juana_rie', 35: 'se_levanta'}
 
 REUSA = {
  4: (3, dict(encuadre=1.0, empuje=0.0, centro=[0.5, 0.5])),
@@ -372,25 +429,24 @@ REUSA = {
  13: (8, dict(encuadre=0.76, empuje=0.03, centro=[0.55, 0.42])),
  15: (14, dict(encuadre=0.76, empuje=0.04, centro=[0.5, 0.45])),
  16: (7, dict(encuadre=0.76, empuje=0.04, centro=[0.5, 0.5])),
- 18: (17, dict(encuadre=0.76, empuje=0.05, centro=[0.5, 0.45])),
  19: (1, dict(encuadre=1.0, empuje=0.0, centro=[0.5, 0.5])),
  21: (10, dict(encuadre=0.76, empuje=0.05, centro=[0.4, 0.55])),
  24: (3, dict(encuadre=0.78, empuje=0.03, centro=[0.55, 0.45])),
- 33: (32, dict(encuadre=0.76, empuje=0.05, centro=[0.5, 0.4])),
 }
 
 CON_PERSONA = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-               22, 23, 24, 25, 26, 27, 29, 30, 31, 32, 33, 34, 35}
+               22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35}
 SILUETAS = {27, 30, 32, 33}
 CARTONES = {1, 3, 7, 8, 10, 12, 13, 17, 19, 20, 22, 23, 26, 27, 28, 30, 32, 35}
 CENITALES = set()
-SOLO_MANOS = {2, 6, 7, 12, 16, 23}
-SIN_CARA = {11, 17, 18}
+SOLO_MANOS = {2, 12, 18, 23, 33}
+SIN_CARA = {11, 17}
 TOPE_SIN_GENTE = 3
 PIEZA = 6984
 TOTAL = PIEZA - (182 + 119 + 48 + 119 + 182)
 
-HOJAS = {1: ['juana'], 2: ['juana'], 3: ['juana'], 8: ['juana'], 14: ['juana'],
+HOJAS = {1: ['juana'], 2: ['juana'], 3: ['juana'], 6: ['juana'], 7: ['juana'],
+         8: ['juana'], 14: ['juana'],
          22: ['juana'], 25: ['juana'], 26: ['juana'], 29: ['juana'],
          31: ['juana'], 34: ['juana'], 35: ['juana']}
 
@@ -421,7 +477,18 @@ DET = {
 BROLL = {}
 
 MOV = {
- 6: 'kling: el cafe termina de caer y el termo se endereza; la taza quieta',
+ 2: 'kling (31 oct, Sebastian): de la placa de inicio (las manos en el bolso) a '
+    'la placa de la ranura: levanta la mano y hace el «no, gracias»',
+ 4: 'kling (31 oct, Sebastian): Juana habla, sin sincronia exacta de labios',
+ 6: 'kling: el cafe termina de caer y el termo se endereza; la taza quieta '
+    '(31 oct: rehecho sobre la placa nueva, con Juana mirando)',
+ 14: 'kling (31 oct, Sebastian): rechazo o confusion: niega con la cabeza, '
+     'frunce el ceno, la mano en alto baja un poco',
+ 18: 'kling (31 oct): la mano de encima aprieta con suavidad; la de abajo se '
+     'afloja y se deja sostener',
+ 31: 'kling (31 oct, Sebastian): de la placa de inicio (escucha, derecha) a '
+     'la placa de la ranura: ladea la cabeza, mueve un poco la boca preguntando',
+ 33: 'kling (31 oct): las dos manos terminan de cerrarse sobre las munecas',
  17: 'kling: la puerta sube los ultimos centimetros y entra en la bisagra',
  20: 'luz: baja la tarde (sin modelo)',
  32: 'kling: la mano de abajo sube y la de arriba la toma; las figuras quietas',
@@ -429,6 +496,67 @@ MOV = {
 }
 
 LOWER_THIRD = {}
+
+# 31 oct, revision de Sebastian: placas de INICIO para Kling con cuadro
+# inicial y final. La placa de la ranura es el cuadro FINAL; la de inicio es
+# la misma escena un instante antes. Se eligen como EXTRA, se gradan con
+# `jr_pieza.py U4 inicios` y `mov_jr` conforma esas ranuras sin el fundido de
+# entrada contra la ranura (el clip empieza en otra pose).
+EXTRA = {
+ '02i': ('no_gracias_inicio', 'dia', ('juana',), None, False, 'oficina', '''
+Close shot of the empty plain glass on the plain grey desk, the camera at
+desk height, perfectly level, the glass in the left third of the frame with
+one bright edge of low light on its rim and a long shadow behind it. Beyond
+it, in focus, %(juana)s sits with BOTH hands resting together on the
+handbag in her lap; the top of the frame cuts her face at the mouth. The
+cuff of the grey coat. ''' + TARDE + '''
+''', ['juana']),
+ '31i': ('juana_confundida_inicio', 'dia', ('juana',), None, False, 'oficina', '''
+Close shot of %(juana)s's face and shoulders in three-quarter view across
+the desk, the camera at seated eye level, perfectly level, as if we were
+the prosecutor. She is listening: her head upright, her brows level, her
+mouth closed, her eyes on the camera. The low light from the left on the
+scarf and one side of the face.
+''', ['juana']),
+}
+INICIO = {2: '02i', 31: '31i'}
+
+# Placa aprobada como referencia (ver `prompts_jr.REF_MISMO`): la primera de
+# la lista es la placa del MISMO plano o lugar (ultima referencia del pedido);
+# las demas entran antes, y el texto dice para que.
+OTS = ('JR_U4_r26_sobre_el_hombro',)
+EL_FISCAL = ('The SECOND reference image, an over-the-shoulder shot, shows '
+             'the prosecutor from behind: this MAN -short dark hair cut close at '
+             'the neck, broad shoulders in a plain charcoal grey jacket-; '
+             'never a woman, never a bob, never long hair. ')
+REF_PLACA = {
+ '02i': (['JR_U4_r02_no_gracias'], 'mismo',
+         'keep its framing, the glass, the desk, the office, her coat, the '
+         'scarf and the light EXACTLY. Change ONLY her raised hand: it is NOT '
+         'raised; it rests on the handbag in her lap beside the other hand.'),
+ '31i': (['JR_U4_r31_juana_confundida'], 'mismo',
+         'keep its framing, her hair, her clothes, the office and the light '
+         'EXACTLY. Change ONLY her head and face: her head is upright, not '
+         'tilted; her brows are level; her mouth is closed; she is simply '
+         'listening.'),
+ 6: (['JR_U4_r06_el_cafe'], 'mismo',
+     'keep the two hands, the thermos, the cup, the stream of coffee, the '
+     'desk and the drawing EXACTLY; the camera is only a little higher and '
+     'further back so that, beyond the desk, Juana is now visible sitting in '
+     'the visitor chair facing us. Nothing else changes.'),
+ 7: (['JR_U4_r07_el_libro'] + list(OTS), 'lugar',
+     EL_FISCAL + 'From the last reference take the open book, the cup and the '
+     'desk.'),
+ 8: (['JR_U4_r08_leyendo'] + list(OTS), 'mismo',
+     'keep its framing, the book, Juana, the desk, the office and the light '
+     'EXACTLY. Change ONLY the person in the foreground: ' + EL_FISCAL),
+ 18: (['JR_U4_r17_la_puerta'], 'lugar', ''),
+ 28: (['JR_U4_r28_tres_sillas'], 'mismo',
+      'keep its framing, the room, the window, the three chairs, the table and '
+      'the light EXACTLY. Change ONLY that three people now sit in the chairs, '
+      'talking, as described above.'),
+ 33: (['JR_U4_r32_la_subida'], 'lugar', ''),
+}
 
 
 def comprobar():

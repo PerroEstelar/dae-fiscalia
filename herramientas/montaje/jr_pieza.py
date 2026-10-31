@@ -1056,7 +1056,32 @@ def revisar(L):
     w('hoja', hp, ' V2 %d  V3 %d  V8 %d' % (len(v2), len(v3), len(v8)))
 
 
-PASOS = {'elegir': elegir, 'construir': construir, 'blancos': blancos,
+def inicios(L):
+    """31 oct (U4, revision de Sebastian): las placas de INICIO de Kling con
+    cuadro inicial y final (`escenas.INICIO`, ranura -> clave de EXTRA) se
+    gradan a _grade igual que una placa EXTRA de una ranura compuesta, para
+    subirlas a Magnific como cuadro inicial. La placa de la ranura es el
+    cuadro final."""
+    pl = R.sub(L, '01 PLANOS')
+    gd = os.path.join(pl, '_grade')
+    os.makedirs(gd, exist_ok=True)
+    for n, k in sorted(getattr(E(L), 'INICIO', {}).items()):
+        ex = E(L).EXTRA[k]
+        o = os.path.join(pl, nombre_extra(L, k) + '.png')
+        g = os.path.join(gd, nombre_extra(L, k) + '.png')
+        if os.path.exists(g):
+            aparta(g, 'regradada_%s' % time.strftime('%H%M%S'))
+        ac, ge = con_acento_extra(L, k)
+        c, v = gradua(L, o, g, ex[1], ac, ge, k)
+        if ac:
+            reinyectar_acento(o, g, k)
+            nivelar_acento(L, g, k)
+        piso_negro(g, k)
+        w('r%02d inicio %s %-9s crudo %3.0f/%3.0f/%3.0f  final %3.0f/%3.0f/%3.0f'
+          % (n, k, ex[1], c[0], c[1], c[2], v[0], v[1], v[2]))
+
+
+PASOS = {'elegir': elegir, 'construir': construir, 'inicios': inicios, 'blancos': blancos,
          'musica': musica, 'montar': montar, 'exportar': exportar,
          'entregas': entregas, 'verificar': verificar, 'revisar': revisar}
 

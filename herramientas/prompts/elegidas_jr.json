@@ -91,9 +91,9 @@
   "1": "b",
   "2": "b",
   "3": "a",
-  "6": "b",
-  "7": "b",
-  "8": "d",
+  "6": "g",
+  "7": "c",
+  "8": "e",
   "10": "a",
   "11": "a",
   "12": "b",
@@ -105,13 +105,17 @@
   "25": "a",
   "26": "a",
   "27": "b",
-  "28": "b",
+  "28": "a",
   "29": "a",
   "30": "a",
   "31": "a",
   "32": "a",
   "34": "a",
-  "35": "a"
+  "35": "a",
+  "18": "a",
+  "33": "a",
+  "02i": "a",
+  "31i": "a"
  },
  "_detalles": {
   "C1": {
@@ -153,6 +157,7 @@
   "C2_31oct": "Revision de Sebastian: r05 rehecha (Ferreira huye herido, la mano en el pecho, una sombra al fondo: c); r19 pasa de la reja vacia a las dos sombras en la celda (nombre nuevo la_celda, tirada a); r28 rehecha con el cuarto legible (c); placas EXTRA 04b (Camilo de frente, con rotulo) y 12a (la radiografia) para las ranuras compuestas r04 y r12.",
   "U1_31oct": "Revision de Sebastian: r04 y r05 salian fotograficas; rehechas (c) con la r02/r06 como referencia de dibujo. r08 compuesta: atravesado + 08b la_lucha (dentro del carro, sobre el hombro) + 08c el_incendio (el carro de r08 ardiendo) antes del resplandor de r09.",
   "U2_31oct": "Revision de Sebastian: r06 deja de reusar la r05 (la mirada mas cerca) y pasa a un primer plano de los ojos de Pierre (los_ojos_de_pierre, a), con la r05 como referencia de la cara y del dibujo.",
-  "U3_31oct": "Revision de Sebastian: r09 el nino al lado del hombre (su mano en el brazo del nino) y la madre sola al fondo (c, con la r09 vieja como referencia del plano); r11 deja de reusar la r08: la mano de un nino que no alcanza la de su madre, el recuerdo del hombre (la_mano_que_no_alcanza, a, con la r10 como referencia del cuarto); r12 la mano del hombre en el hombro del nino (la_mano_del_hombre, b, con la r12 vieja como referencia); r13 sigue reusando la r09 nueva, mas cerca de la mano; r14 el mismo plano desde la puerta, el nino al lado del hombre con su brazo alrededor (d); r15 deja de reusar la r12: plano ancho, los dos en silueta alejandose por la calle de la r07 (se_lo_lleva, b)."
+  "U3_31oct": "Revision de Sebastian: r09 el nino al lado del hombre (su mano en el brazo del nino) y la madre sola al fondo (c, con la r09 vieja como referencia del plano); r11 deja de reusar la r08: la mano de un nino que no alcanza la de su madre, el recuerdo del hombre (la_mano_que_no_alcanza, a, con la r10 como referencia del cuarto); r12 la mano del hombre en el hombro del nino (la_mano_del_hombre, b, con la r12 vieja como referencia); r13 sigue reusando la r09 nueva, mas cerca de la mano; r14 el mismo plano desde la puerta, el nino al lado del hombre con su brazo alrededor (d); r15 deja de reusar la r12: plano ancho, los dos en silueta alejandose por la calle de la r07 (se_lo_lleva, b).",
+  "U4_31oct": "Revision de Sebastian: r06 y r07 con Juana del otro lado del escritorio (r06 g: la placa vieja del vertido como MISMO plano, abierta; la primera tirada sobre el hombro, c-f, no saco el termo); r08 e: el fiscal sobre el hombro es un hombre (la r13 lo reusa); r18 a: inserto de una mano que ayuda, en la calle de la r17; r28 a: tres personas en la mediacion; r33 a: las manos que se juntan en la subida; 02i a y 31i a: placas de inicio para Kling con cuadro inicial y final (r02, r31)."
  }
 }

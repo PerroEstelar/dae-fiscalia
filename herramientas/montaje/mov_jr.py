@@ -90,6 +90,17 @@ LUZ = {
 }
 
 
+def encuadre_de(L, n):
+    """31 oct (U4 r04): el recorte del crudo es el encuadre de la ranura. Casi
+    todas hornean al 88 %; una ranura que REUSA con su propia camara (r04 de
+    la U4: encuadre 1,0, la placa entera) o con CAMARA propia se recorta a lo
+    suyo, o el fundido de entrada salta de escala."""
+    e = SP.E(L)
+    cam = (getattr(e, 'REUSA', {}).get(n) or (None, None))[1] or \
+        getattr(e, 'CAMARA', {}).get(n)
+    return float(cam.get('encuadre', ENCUADRE)) if cam else ENCUADRE
+
+
 def ranura(L, n):
     largo = SP.E(L).R[n][0]
     nm = SP.nombre(L, n)
@@ -140,7 +151,8 @@ def kling(L, solo=None):
         n0 = SP.cuadros(crudo)
         rt = os.path.join(TMP, nm + '.mp4')
         wr = escritor(rt, '24', 'setpts=%.9f*PTS,fps=%s' % (float(largo) / n0, FPS), largo)
-        vf = 'crop=iw*%.4f:ih*%.4f,scale=%d:%d:flags=lanczos' % (ENCUADRE, ENCUADRE, W, Hh)
+        enc = encuadre_de(L, n)
+        vf = 'crop=iw*%.4f:ih*%.4f,scale=%d:%d:flags=lanczos' % (enc, enc, W, Hh)
         movs, prev, primero = [], [], None
         for i, fr in enumerate(cuadros_rgb(crudo, vf)):
             o = DS.aplica(fr, ac, ge, 1.0)
@@ -157,6 +169,21 @@ def kling(L, solo=None):
         wr.wait()
         b0 = next(cuadros_rgb(base))
         d0 = dif(primero, b0)
+        if n in getattr(SP.E(L), 'INICIO', {}):
+            # 31 oct: el clip arranca en la placa de INICIO (otra pose) y
+            # termina en la de la ranura: un fundido contra la ranura al
+            # entrar dejaria ver las dos poses a la vez. Corte limpio.
+            # el retime puede dar un cuadro de menos (r02: 154/155): se
+            # repite el ultimo, que es el cuadro final pedido
+            subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', rt,
+                            '-vf', 'tpad=stop_mode=clone:stop=4', '-frames:v', str(largo),
+                            '-c:v', 'libx264', '-crf', '14', '-preset', 'slow',
+                            '-pix_fmt', 'yuv420p', '-an', d], check=True)
+            n1 = SP.cuadros(d)
+            SP.w('%-40s crudo %3d -> %3d/%3d %s  (desde placa de inicio)  movimiento %s'
+                 % (nm, n0, n1, largo, 'OK' if n1 == largo else 'FALLA',
+                    ' '.join('%.1f' % x for x in movs[:12])))
+            continue
         m = min(MEZCLA, max(2, largo // 6))
         dur = m / FPS_N
         subprocess.run(

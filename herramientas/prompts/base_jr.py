@@ -20,7 +20,9 @@ SEIS PIEZAS, TRES MUNDOS
 
 EL FISCAL DE LAS UNIDADES ES «USTED»: LA CAMARA
     El documento le habla al fiscal en segunda persona y lo deja sin
-    genero («doctor(a)»). Entonces el fiscal no se dibuja de frente nunca:
+    genero («doctor(a)»). (31 oct, Sebastian, U4: en imagen el fiscal es
+    un HOMBRE; una placa lo saco de espaldas con melena y no tenia sentido.)
+    Entonces el fiscal no se dibuja de frente nunca:
     es el punto de vista. Juana esta del otro lado del escritorio, mirando
     a la camara o un poco a un lado de ella; del fiscal se ven las manos
     -sirviendo el cafe, abriendo el libro, sosteniendo el celular- y, en los
@@ -176,11 +178,12 @@ CUERPO = {
            'knitted scarf wrapped once around her neck with both ends '
            'hanging down the front; she keeps a plain grey handbag on her lap '
            'or at her feet'),
- 'fiscal': ('THE PROSECUTOR -«usted»-, never seen from the front: only the '
-            'back of a head of SHORT dark hair cut close at the neck, well '
-            'above the collar, never long and never a bob, a plain charcoal '
-            'grey jacket over the shoulders, and a pair of hands with plain '
-            'light grey shirt cuffs, no ring, no watch'),
+ 'fiscal': ('THE PROSECUTOR -«usted»-, a MAN, never seen from the front: '
+            'only the back of a man\'s head of SHORT dark hair cut close at '
+            'the neck, well above the collar, never long and never a bob, '
+            'broad shoulders in a plain charcoal grey jacket, and a pair of '
+            'man\'s hands with plain light grey shirt cuffs, no ring, no '
+            'watch'),
 }
 
 VIDA = {
