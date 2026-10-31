@@ -210,6 +210,36 @@ pidió y lo que se hizo:
 Créditos: 6 placas Flash (210). Revisión interna: 6268/6268, −19,4 LUFS,
 sin negros.
 
+## Revisión de Sebastián, 31 oct · U1
+
+La línea ya la había tocado (r06 acortada a 163 cuadros con el inserto de
+las manos de Mario corrido a 1211; el inserto del volante a 748; la rampa
+de luz de r10 partida en tres y estirada sobre el respiro): nada se
+remonta, solo `ReplaceClip` de los medios. Lo que pidió y lo que se hizo:
+
+- **r04 y r05** salían fotográficas (roca con textura, carro de foto, el
+  modelo se fue al realismo en los dos planos anchos de día). Rehechas (c)
+  con la **r02 y la r06 —la misma carretera, ya aprobadas— como última
+  referencia de dibujo** y una cláusula explícita: «match its DRAWING
+  exactly: a flat graphic illustration built from broad simplified tonal
+  planes… drawn by the same hand as that plate, not like a photograph».
+  Funciona: para la biblia, una placa aprobada del mismo lugar como
+  referencia de estilo vale más que todo el bloque de texto.
+- **r08 en tres planos** (`COMPUESTAS`): el carro atravesado (96, «uno
+  intenta matar al otro con el auto»), **08b la lucha dentro del carro**
+  (110, sobre el hombro de Mario, la cara de Diego forcejeando, un agarre y
+  un empujón: sin arma, sin sangre, con la r03 como referencia del interior
+  y un poco de motion blur permitido en el brazo) y **08c el incendio** (80,
+  el mismo carro de la r08 ardiendo, con la r08 como referencia; el modelo
+  pintó la llama naranja y la limpieza de la placa sin acento la dejó en
+  luz gris-blanca, como el resplandor de la r09). La rampa de luz de la
+  ranura se rehízo sobre el compuesto.
+- r09 y r10 no se tocaron (sus cambios se conservan). El `.drt` se
+  reexportó con la línea tal como está.
+
+Créditos: 4 placas Flash (140). Revisión interna: 2339/2339, −20,3 LUFS,
+sin negros.
+
 ## Entregas (31 oct)
 
 Con el OK de Sebastián («export the two first cases, they are good to go»):
@@ -240,7 +270,8 @@ revisión.
 | Kling 3.0, 9 clips (6 + 6 + 4 + 5 + 5 + 6 + 5 + 5 + 5 s a 90/s) | 4.230 |
 | placas de detalle (15 + 8 rehechas, Flash, 1 candidata) | 805 |
 | revisión del C2, 31 oct (6 placas) | 210 |
-| **total del curso** | **12.640** |
+| revisión de la U1, 31 oct (4 placas) | 140 |
+| **total del curso** | **12.780** |
 
 Contra los ~22.000 de Gerencia judicial (tres videos) es la mitad por
 video: Flash en vez de Pro para las placas, una candidata por detalle,

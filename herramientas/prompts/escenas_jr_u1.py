@@ -227,10 +227,66 @@ BROLL = {
               'in the Colombian Andes, low cloud on the ridges, nobody on it.'),
 }
 
+# 31 oct, revision de Sebastian: r04 y r05 salieron fotograficas (roca con
+# textura, carro de foto): se rehacen con la r02 y la r06 -la misma carretera,
+# ya aprobadas- como referencia de dibujo. Y la r08 se parte en tres: el carro
+# atravesado, la pelea DENTRO del carro (sobre el hombro, cara que forcejea,
+# sin sangre ni arma) y el carro ardiendo antes del resplandor lejano de r09.
+# clave -> (nombre, registro, gente, acento, silueta, lugar, texto, hojas)
+EXTRA = {
+ '08b': ('la_lucha', 'hero', ('diego', 'mario'), None, False, 'carretera', '''
+Medium-close shot INSIDE the dark sedan at night, the camera low in the back
+seat looking forward between the two front seats, perfectly level.
+
+Over the near shoulder of %(mario)s -his back and the collar of his plain
+grey canvas jacket large and soft in the right foreground, his face not
+visible- we see %(diego)s in the driver's seat turned toward him, caught in
+the middle of a struggle: his face lit from below by the dashboard and the
+headlight glow coming back off the slope through the windscreen, teeth
+clenched, brows drawn, eyes on the other man; his right hand grips the
+other man's jacket at the shoulder and his left forearm is raised between
+them. Mario's near arm pushes against Diego's chest. It is a shove and a
+grip, two men locked together in a space too small for it: NO weapon, NO
+blood, NO wound, no broken glass in the frame. The arm in motion may carry
+a slight motion blur; the faces and the car interior are sharp. Through the
+windscreen beyond them, out of focus, the pale plane of the headlights on
+the asphalt and the black of the slope.
+
+What the camera asserts: «atrapados en una lucha salvaje dentro del
+vehiculo», and nothing more explicit than that.
+''', ['diego', 'mario']),
+ '08c': ('el_incendio', 'hero', (), False, False, 'carretera', '''
+Medium-wide shot of the dark sedan at night, skewed across the road exactly
+as in the previous wide shot, the camera at standing height on the asphalt
+forty metres away, perfectly level.
+
+The car is burning: broad pale grey-white planes of fire rise from the
+engine bay and out of the open front doors, rendered as LIGHT -soft flat
+shapes with no drawn tongues of coloured flame- and a wide dark column of
+smoke climbs from it into the night, lit grey from below. The fire is now
+the only light source: it lays a bright plane on the asphalt around the car
+and a soft glow on the slope behind it; the headlights are off. The old
+light grey car is a dark shape behind it on the shoulder, untouched. NOBODY
+is visible: no figure in the car, no figure on the road, no shadow of a
+person. The valley dissolves into near-black.
+
+What the camera asserts: the end of it, from a distance, as light and smoke.
+''', []),
+}
+
+# ranura -> [(placa, cuadros), ...]; la ultima toma lo que falte.
+#   r08: el carro atravesado hasta «con el auto» (96), la pelea dentro del
+#   carro en «terminan atrapados en una lucha salvaje dentro del vehiculo»
+#   (110) y el incendio desde «Desenlace» hasta el corte a r09 (80).
+COMPUESTAS = {
+ 8: [(8, 96), ('08b', 110), ('08c', None)],
+}
+
+
 MOV = {
  1: 'kling: el carro oscuro avanza por la carretera hacia la camara',
  2: 'kling: el carro viejo se cierra sobre la linea; el oscuro frena',
- 8: 'luz: los faros parpadean una vez (sin modelo)',
+ 8: 'luz: la noche se cierra sobre los tres planos (sin modelo); ver COMPUESTAS',
  9: 'kling: el humo sube; el resplandor late',
  10: 'luz: amanece (sube el cielo, sin modelo)',
 }
