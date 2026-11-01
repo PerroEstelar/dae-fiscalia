@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-r"""UNIDAD 5 «La decisión integral y el giro» · 13 ranuras · pieza 3504.
+r"""UNIDAD 5 «La decisión integral y el giro» · 13 ranuras · pieza 3141.
+
+1 NOV, APRETADA (como la U3: huecos de narracion mas cortos, personajes mas
+rapidos; `voz/plan_apretar_dh.py` + `voz/apretar_dh.py`, mapa en
+D:\DAE\_tmp\dh\u5_apretado\mapa.json). Largos de antes: r01 299, r02 262, r03 120, r04 272, r05 183, r06 182, r07 262, r08 270, r09 186, r10 175, r11 191, r12 199, r13 253.
 
 LO QUE SE OYE ENCIMA (cruce_dh.json)
     Parte A «El cierre»
@@ -31,7 +35,7 @@ TARDE = ('Late afternoon: low warm sunlight comes in through the wide window '
 
 R = {}
 
-R[1] = (299, 'contraluz', ('quintero', 'julian', 'sandra'), False, False, 'despacho', '''
+R[1] = (284, 'contraluz', ('quintero', 'julian', 'sandra'), False, False, 'despacho', '''
 Medium-wide shot of the prosecutor's office at the end of the afternoon, the
 camera at standing height near the door, perfectly level. Mid-action:
 %(julian)s stands at the end of the small meeting table reading aloud from a
@@ -41,7 +45,7 @@ black binder clip, her reading glasses on; %(sandra)s sits at the side of the
 table with her dark notebook. The wide window behind them is the brightest
 thing in the room. ''' + TARDE + '\n')
 
-R[2] = (262, 'dia', ('sandra',), False, False, 'despacho', '''
+R[2] = (231, 'dia', ('sandra',), False, False, 'despacho', '''
 Medium shot of %(sandra)s seated at the meeting table in the prosecutor's
 office, from the waist up, in three-quarter view, the camera at seated height
 across the table, perfectly level. Mid-action: she lays the fourth of four
@@ -51,7 +55,7 @@ folded blank sheet, and a phone sealed in a clear evidence bag- speaking as
 she does it. Low warm afternoon light from the window on one side.
 ''')
 
-R[3] = (120, 'dia', ('quintero',), False, False, 'despacho', '''
+R[3] = (105, 'dia', ('quintero',), False, False, 'despacho', '''
 Close shot at table height of a plain desk telephone on the meeting table,
 its speaker on: one small plain round light on it is lit, and nothing else on
 it carries any mark. A woman's hand, the cuff of a plain charcoal grey blazer
@@ -59,7 +63,7 @@ at the wrist, rests beside it on the table. Low warm afternoon light from the
 window. No face in frame.
 ''')
 
-R[4] = (272, 'dia', ('quintero',), False, False, 'despacho', '''
+R[4] = (239, 'dia', ('quintero',), False, False, 'despacho', '''
 Medium-close shot of %(quintero)s seated at the head of the meeting table,
 from the chest up, frontal, the camera at seated height, perfectly level.
 Mid-action: she speaks to her team, one hand flat on the closed case file in
@@ -70,7 +74,7 @@ side. She is ALONE in the frame and appears ONCE; nobody else is visible.
 Her state: decisive, calm; everything has to hold together.
 ''')
 
-R[5] = (183, 'dia', (), False, False, 'despacho', '''
+R[5] = (164, 'dia', (), False, False, 'despacho', '''
 Medium shot of the meeting table in the prosecutor's office, the camera at
 seated height, perfectly level, looking at an EMPTY chair pulled back from
 the table at its near side. On the table in front of the empty chair, four
@@ -81,11 +85,11 @@ long soft shadows across the table and the chair.
 What the camera asserts: this place is yours.
 ''')
 
-R[6] = (182, 'dia', (), False, False, 'despacho', '''
+R[6] = (164, 'dia', (), False, False, 'despacho', '''
 (reusa r05: las cuatro carpetas, mas cerca)
 ''')
 
-R[7] = (262, 'dia', ('quintero',), False, False, 'despacho', '''
+R[7] = (223, 'dia', ('quintero',), False, False, 'despacho', '''
 Close shot at table height of the meeting table, the camera low and level.
 Mid-action: a woman's two hands, the cuffs of a plain charcoal grey blazer at
 the wrists, square two plain closed folders together edge to edge on the
@@ -93,7 +97,7 @@ table, so that they line up exactly; the folders never leave the table. Low
 warm afternoon light from the window. No face in frame.
 ''')
 
-R[8] = (270, 'contraluz', ('julian', 'quintero'), False, False, 'despacho', '''
+R[8] = (213, 'contraluz', ('julian', 'quintero'), False, False, 'despacho', '''
 Medium-wide shot of the prosecutor's office at dusk, the camera at seated
 height from the meeting table, perfectly level. Mid-action: %(julian)s comes
 in through the open door holding a single sheet of paper, mid-step; at the
@@ -102,7 +106,7 @@ round clock with NO numerals shows its two hands at twenty to six. The window
 is a pale band of evening sky; the room is dimmer now.
 ''')
 
-R[9] = (186, 'dia', ('quintero',), False, False, 'despacho', '''
+R[9] = (141, 'dia', ('quintero',), False, False, 'despacho', '''
 Close shot at table height of a mobile phone lying face up on the meeting
 table, its screen lit with only a plain grey rectangle, nothing legible.
 Mid-action: a woman's forefinger, the cuff of a plain charcoal grey blazer at
@@ -110,7 +114,7 @@ the wrist, touches the lower edge of the screen to turn on the speaker. The
 phone never leaves the table. Evening light, dim. No face in frame.
 ''')
 
-R[10] = (175, 'dia', ('quintero', 'sandra'), False, False, 'despacho', '''
+R[10] = (147, 'dia', ('quintero', 'sandra'), False, False, 'despacho', '''
 Close-up of %(quintero)s leaning toward the phone on the table, face and
 shoulders, in three-quarter view, the camera at seated height, perfectly
 level. Mid-action: she speaks toward the phone, calm and firm; behind her, out
@@ -120,7 +124,7 @@ evening light from the window.
 Her state: steady; acting at once.
 ''')
 
-R[11] = (191, 'contraluz', ('quintero',), False, False, 'despacho', '''
+R[11] = (165, 'contraluz', ('quintero',), False, False, 'despacho', '''
 Medium shot of %(quintero)s standing at the wide window of her office at
 dusk, turning from the window toward the room, from the waist up, the camera
 at standing height inside the room, perfectly level. The pale evening sky in
@@ -130,7 +134,7 @@ edge, her face half lit. She is ALONE in the room and appears ONCE.
 Her state: thinking it through again, not starting over.
 ''')
 
-R[12] = (199, 'dia', ('julian', 'sandra'), False, False, 'despacho', '''
+R[12] = (181, 'dia', ('julian', 'sandra'), False, False, 'despacho', '''
 Medium two-shot of %(julian)s and %(sandra)s seated at the meeting table,
 from the waist up, the camera at seated height across the table, perfectly
 level. Mid-action: both look up toward someone standing off frame, listening;
@@ -138,7 +142,7 @@ Julian holds his pencil over his notebook, Sandra her phone in her hand. Dim
 evening light from the window.
 ''')
 
-R[13] = (253, 'contraluz', ('quintero', 'julian', 'sandra'), False, False, 'despacho', '''
+R[13] = (234, 'contraluz', ('quintero', 'julian', 'sandra'), False, False, 'despacho', '''
 Medium-wide shot of the prosecutor's office at dusk, the camera at standing
 height near the door, perfectly level. Mid-action: the team moves at once:
 %(julian)s gets up from the table with his notebook, %(sandra)s stands with
@@ -166,7 +170,7 @@ CENITALES = set()
 SOLO_MANOS = {3, 7, 9}
 SIN_CARA = set()
 TOPE_SIN_GENTE = 3
-PIEZA = 3504
+PIEZA = 3141  # 1 nov, apretada (antes 3504)
 TOTAL = PIEZA - (182 + 119 + 48 + 119 + 182)
 
 HOJAS = {1: ['quintero', 'julian', 'sandra'], 2: ['sandra'], 4: ['quintero'],
@@ -185,14 +189,16 @@ for _n in (8, 11, 13):
     REF_PLACA[_n] = ([ANCLA5], 'lugar', 'It is now DUSK: the window is a pale band of evening sky and the room is dimmer. ')
 
 DET = {
- (4, 'la_mano_en_el_expediente'): dict(cuadros=72, entra=110, registro='dia',
+ (4, 'la_mano_en_el_expediente'): dict(cuadros=67, entra=97,  # 1 nov apretada (antes 72, 110)
+     registro='dia',
      personas=('quintero',),
      escena='Extreme close shot of a woman\'s hand resting flat on a closed '
             'thick case file held with a black binder clip, the cuff of a '
             'plain charcoal grey blazer at the wrist, warm low light.',
      gesto='The fingers press very slightly on the file and relax. The file '
            'does not move. Nothing else moves.'),
- (12, 'el_lapiz'): dict(cuadros=60, entra=80, registro='dia',
+ (12, 'el_lapiz'): dict(cuadros=56, entra=74,  # 1 nov apretada (antes 60, 80)
+     registro='dia',
      personas=('julian',),
      escena='Extreme close shot of a young man\'s hand holding a plain pencil '
             'above an open notebook with grey bars, the cuff of a light grey '

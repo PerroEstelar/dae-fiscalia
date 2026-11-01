@@ -288,3 +288,37 @@ conforman sin recorte (`KLING_DESDE_RANURA`). Descartes: r03 dos veces (él
 toma la carpeta; luego la cámara se corre), r16 y r20 una vez (guiño y
 sonrisa con dientes; el cuerpo se mecía). r08 y r19 no llevan: el detalle de
 V3 los tapa casi enteros. Créditos: 9.000 (quedan 18.850).
+
+## U4 y U5 apretadas antes de su revisión (1 nov)
+
+Sebastián: «considering last changes… before I check video 4 and 5, are
+there any changes you want to make?» → lo mismo que la U3, y «make sure we
+leave enough Magnific credits for another series of 5 videos».
+
+**Voz.** El plan de la U3 quedó escrito para todas:
+`herramientas/voz/plan_apretar_dh.py <L> plan | final | instalar` (reglas en
+su docstring: los huecos salen de las voces que se encuentran y de la pausa
+que pedía el guion; el bloque SILENCIO de la U4, «la otra silla», se queda
+entero). Tempo: Sandra y Salgado 1,12; Juez, Quintero, Carmen y Andrés
+1,08; Julián 1,05; Carlos 1.
+- U4: 328,6 → 291,4 s (huecos 33,4 → 19,7; pausas 11,9 → 7,6; habla
+  282,7 → 263,4); −19,1 LUFS, pico −4,6. Línea 8529 → 7637 cuadros.
+- U5: 119,0 → 103,9 s; −19,2 LUFS, pico −4,8. Línea 3504 → 3141.
+- Scribe oye los dos masters palabra por palabra igual al guion (705 y 284
+  palabras, coincidencia 1,000).
+- `03 VOCES`: `DH_<L>_NARRADOR.wav` y `_v2`; lo de antes en `_descartes`
+  con `__antes_de_apretar_<hora>`.
+
+**Línea.** Desde la suya con el mismo mapa (`apretar_linea_dh.py`); queda
+«… (antes de apretar)». Aquí sí se deja el respiro final (en U1 y U2 lo dejó;
+solo en la U3 lo quitó él). Cartones requemados `_ap<n>`; si al devolverles su
+largo pisaban un rótulo, se quedan con el del mapa (U4 p15, por el rótulo de
+Salgado).
+
+**Kling** (pocos, por los créditos): U4 r03 y r28 (juez), r04 y r06
+(Quintero), r24 (Salgado); U5 r02 (Sandra), r10 (Quintero; el crudo se
+corta a 5,0 s porque a los 5,1 entra una persona) y r11 (Quintero en la
+ventana). Más U5 r08 y r13 reconformados. 5.040 créditos; quedan ~13.800
+para la serie siguiente. Las caras que en el 31 oct «se deformaban al
+hablar» (U4 r06, r24, r28) salieron bien con Kling 3.0 y la plantilla de
+habla de la U3 (cuerpo y cabeza en su sitio, la expresión no cambia).

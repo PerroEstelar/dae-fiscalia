@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-r"""UNIDAD 4 «La medida de aseguramiento» · 40 ranuras · pieza 8529.
+r"""UNIDAD 4 «La medida de aseguramiento» · 40 ranuras · pieza 7637.
+
+1 NOV, APRETADA (como la U3: huecos de narracion mas cortos, personajes mas
+rapidos; `voz/plan_apretar_dh.py` + `voz/apretar_dh.py`, mapa en
+D:\DAE\_tmp\dh\u4_apretado\mapa.json). Largos de antes: r01 195, r02 245, r03 232, r04 156, r05 155, r06 163, r07 244, r08 249, r09 163, r10 204, r11 220, r12 252, r13 275, r14 153, r15 204, r16 140, r17 175, r18 175, r19 154, r20 154, r21 297, r22 264, r23 213, r24 215, r25 267, r26 112, r27 285, r28 182, r29 168, r30 163, r31 162, r32 111, r33 273, r34 159, r35 158, r36 183, r37 192, r38 222, r39 173, r40 172.
 
 LO QUE SE OYE ENCIMA (cruce_dh.json)
     r01-02  voz en off: semana diez, la captura, la legalizacion
@@ -35,7 +39,7 @@ LO QUE NO SE DIBUJA
 
 R = {}
 
-R[1] = (195, 'contraluz', (), False, False, 'emisora', '''
+R[1] = (190, 'contraluz', (), False, False, 'emisora', '''
 Wide shot of the corner house of the community radio station at dawn, the
 camera across the empty street at standing height, perfectly level. The
 sky behind the antenna is the only bright thing; the facade, the closed
@@ -45,7 +49,7 @@ Nobody in the street. A thin mist over the far roofs.
 What the camera asserts: the place where it happened, after it happened.
 ''')
 
-R[2] = (245, 'dia', ('juez', 'quintero', 'sandra', 'salgado', 'acosta', 'apoderada'), False, False, 'sala', '''
+R[2] = (226, 'dia', ('juez', 'quintero', 'sandra', 'salgado', 'acosta', 'apoderada'), False, False, 'sala', '''
 Wide shot of the hearing room during the hearing, the camera at the back of
 the room behind the public benches, at standing height, perfectly level,
 the whole room in frame. At the centre, behind his plain desk on the low
@@ -59,7 +63,7 @@ from the high plain windows on the left falls in long shapes across the
 floor; the public benches in the foreground are empty.
 ''')
 
-R[3] = (232, 'dia', ('juez',), False, False, 'sala', '''
+R[3] = (186, 'dia', ('juez',), False, False, 'sala', '''
 Medium shot of %(juez)s at his plain desk on the low platform, from the
 waist up, in three-quarter view, the camera at the height of the parties'
 tables, perfectly level. Mid-action: he looks toward the defence table,
@@ -70,7 +74,7 @@ plain painted wall behind him, daylight from the high window on the left.
 His state: orderly, procedural, attentive.
 ''')
 
-R[4] = (156, 'dia', ('quintero', 'sandra'), False, False, 'sala', '''
+R[4] = (137, 'dia', ('quintero', 'sandra'), False, False, 'sala', '''
 Medium shot of %(quintero)s standing at the prosecution table, from the
 waist up, in three-quarter view, the camera at seated height from the side
 of the room, perfectly level. Mid-action: she has just risen to speak and
@@ -82,11 +86,11 @@ high windows.
 Her state: formal, composed, ready.
 ''')
 
-R[5] = (155, 'dia', ('quintero', 'sandra'), False, False, 'sala', '''
+R[5] = (142, 'dia', ('quintero', 'sandra'), False, False, 'sala', '''
 (reusa r04: Quintero, mas cerca)
 ''')
 
-R[6] = (163, 'dia', ('quintero',), False, False, 'sala', '''
+R[6] = (145, 'dia', ('quintero',), False, False, 'sala', '''
 CLOSE-UP of %(quintero)s ALONE in the frame, standing at the prosecution
 table, face and shoulders filling the frame, nobody else in the picture, in three-quarter view, the camera at standing height, perfectly
 level. Mid-action: she speaks with quiet urgency, her reading glasses in her
@@ -96,7 +100,7 @@ plain wall and a high window.
 Her state: urgent, without raising her voice.
 ''')
 
-R[7] = (244, 'dia', ('quintero', 'juez'), False, False, 'sala', '''
+R[7] = (219, 'dia', ('quintero', 'juez'), False, False, 'sala', '''
 Over-the-shoulder shot from behind %(quintero)s standing at the prosecution
 table, at standing height, perfectly level: in the left foreground, out of
 focus, her shoulder in the charcoal blazer and the back of her head; across
@@ -104,7 +108,7 @@ the room, sharp, %(juez)s at his desk on the low platform listens with his
 hands joined, his glasses on. Daylight from the high windows.
 ''')
 
-R[8] = (249, 'dia', ('quintero',), False, False, 'sala', '''
+R[8] = (225, 'dia', ('quintero',), False, False, 'sala', '''
 Close shot at table height of the prosecution table, the camera low and
 level. Mid-action: a woman's hand, the cuff of a plain charcoal grey blazer
 at the wrist, lays a thin plain grey report folder flat on the table, first
@@ -113,7 +117,7 @@ short stand at the edge of the frame. Daylight from the left. No face in
 frame.
 ''')
 
-R[9] = (163, 'dia', ('quintero',), False, False, 'sala', '''
+R[9] = (146, 'dia', ('quintero',), False, False, 'sala', '''
 Close shot at table height of the prosecution table, the camera low and
 level. On the table, next to a thin grey report folder, a small sealed plain
 cardboard evidence box, closed with plain tape, a blank plain tag tied to
@@ -122,7 +126,7 @@ Mid-action: a woman's fingertips, the cuff of a plain charcoal grey blazer
 at the wrist, rest on the tag. Daylight from the left. No face in frame.
 ''')
 
-R[10] = (204, 'dia', ('quintero',), False, False, 'sala', '''
+R[10] = (185, 'dia', ('quintero',), False, False, 'sala', '''
 Close shot at table height of the prosecution table, the camera low and
 level. Two clear plastic bags lie side by side, each holding a single sheet
 of paper folded in three, their visible sides blank grey with no mark and no
@@ -132,7 +136,7 @@ at the wrist, rests on the table between the two bags. Daylight from the
 left. No face in frame.
 ''')
 
-R[11] = (220, 'dia', ('quintero',), False, False, 'sala', '''
+R[11] = (198, 'dia', ('quintero',), False, False, 'sala', '''
 Close shot at table height of the prosecution table, the camera low and
 level. A mobile phone sealed inside a clear plastic evidence bag lies on top
 of a thin plain report; the phone's screen is dark. Mid-action: a woman's
@@ -141,7 +145,7 @@ report under it by a centimetre; the bag never leaves the report. Daylight
 from the left. No face in frame.
 ''')
 
-R[12] = (252, 'dia', ('quintero',), False, False, 'sala', '''
+R[12] = (227, 'dia', ('quintero',), False, False, 'sala', '''
 Overhead shot, looking straight down, of the prosecution table: FOUR items
 in one row across the table, evenly spaced -a thin plain grey report folder,
 a small sealed cardboard evidence box with a blank tag, two clear bags each
@@ -151,7 +155,7 @@ charcoal grey sleeves rest flat on the table edge. Daylight falls across the
 table from the left, each item casting a small soft shadow.
 ''')
 
-R[13] = (275, 'dia', ('juez',), False, False, 'sala', '''
+R[13] = (249, 'dia', ('juez',), False, False, 'sala', '''
 CLOSE-UP of %(juez)s ALONE in the frame, at his desk, face and shoulders
 filling the frame, no tables of the parties and nobody else in the picture,
 frontal, the camera at
@@ -163,7 +167,7 @@ left side of his face.
 His state: weighing every word.
 ''')
 
-R[14] = (153, 'dia', ('apoderada',), False, False, 'sala', '''
+R[14] = (139, 'dia', ('apoderada',), False, False, 'sala', '''
 Medium shot of %(apoderada)s ALONE in the frame, seated at the small third
 table near the front of the hearing room, from the waist up, nobody else in
 the picture, in three-quarter view, the camera at
@@ -175,7 +179,7 @@ windows.
 Her state: alert; she is there for the victim.
 ''')
 
-R[15] = (204, 'dia', ('sandra',), False, False, 'sala', '''
+R[15] = (186, 'dia', ('sandra',), False, False, 'sala', '''
 Medium close-up of %(sandra)s ALONE in the frame, seated at the prosecution
 table, from the chest up, nobody else in the picture, in three-quarter view, the camera at seated height, perfectly
 level. Mid-action: she holds her dark notebook closed on the table and looks
@@ -185,7 +189,7 @@ the high windows.
 Her state: quiet, watchful.
 ''')
 
-R[16] = (140, 'dia', ('salgado', 'acosta'), False, False, 'sala', '''
+R[16] = (124, 'dia', ('salgado', 'acosta'), False, False, 'sala', '''
 Medium shot of the defence table, the camera at seated height behind and to
 one side of %(acosta)s, perfectly level: in the foreground, out of focus,
 his shoulder in a plain dark grey zip jacket and the back of his head of
@@ -194,15 +198,15 @@ short black hair, his face turned away and never visible; beside him, sharp,
 and makes a short note. Daylight from the high windows.
 ''')
 
-R[17] = (175, 'dia', ('quintero', 'sandra'), False, False, 'sala', '''
+R[17] = (157, 'dia', ('quintero', 'sandra'), False, False, 'sala', '''
 (reusa r04: Quintero de pie, otro encuadre)
 ''')
 
-R[18] = (175, 'dia', ('quintero', 'juez'), False, False, 'sala', '''
+R[18] = (160, 'dia', ('quintero', 'juez'), False, False, 'sala', '''
 (reusa r07: sobre el hombro, mas cerca del juez)
 ''')
 
-R[19] = (154, 'dia', ('quintero',), False, False, 'sala', '''
+R[19] = (141, 'dia', ('quintero',), False, False, 'sala', '''
 Close shot of a thick open book lying flat on the prosecution table, the
 camera close and level with the table, looking along the pages. The right
 page shows a short list drawn ONLY as plain flat grey bars of different
@@ -214,11 +218,11 @@ left lays the shadow of the raised page edge across the paper. No face in
 frame.
 ''')
 
-R[20] = (154, 'dia', ('juez', 'quintero', 'sandra', 'salgado', 'acosta', 'apoderada'), False, False, 'sala', '''
+R[20] = (140, 'dia', ('juez', 'quintero', 'sandra', 'salgado', 'acosta', 'apoderada'), False, False, 'sala', '''
 (reusa r02: la sala, mas cerca del centro)
 ''')
 
-R[21] = (297, 'dia', ('quintero',), False, False, 'sala', '''
+R[21] = (268, 'dia', ('quintero',), False, False, 'sala', '''
 Medium shot of %(quintero)s standing at the prosecution table, from the
 waist up, seen in profile from the side of the room where the public benches
 are, the camera at seated height, perfectly level. Mid-action: she explains,
@@ -229,7 +233,7 @@ Daylight from the high windows behind her.
 Her state: methodical; she has examined every option.
 ''')
 
-R[22] = (264, 'dia', ('quintero', 'acosta'), False, False, 'sala', '''
+R[22] = (238, 'dia', ('quintero', 'acosta'), False, False, 'sala', '''
 Over-the-shoulder shot from DIRECTLY BEHIND %(acosta)s seated at the
 defence table, at seated height, perfectly level, the camera exactly behind
 his head: in the right foreground, out of focus, the back of his head of
@@ -242,11 +246,11 @@ her hand flat on her case file. Daylight from the high windows.
 Her state: she knows the cost of what she is asking.
 ''')
 
-R[23] = (213, 'dia', ('carmen',), None, False, 'cabina', '''
+R[23] = (183, 'dia', ('carmen',), None, False, 'cabina', '''
 (copia de la U2 r13: Carmen Elisa al aire; COPIA)
 ''')
 
-R[24] = (215, 'dia', ('salgado', 'acosta'), False, False, 'sala', '''
+R[24] = (177, 'dia', ('salgado', 'acosta'), False, False, 'sala', '''
 Medium shot of %(salgado)s standing at the defence table, from the waist up,
 in three-quarter view, the camera at seated height, perfectly level.
 Mid-action: she addresses the bench, serene, one hand resting on her open
@@ -257,7 +261,7 @@ from behind, his face turned away. Daylight from the high windows.
 Her state: serene and technical.
 ''')
 
-R[25] = (267, 'dia', ('salgado',), False, False, 'sala', '''
+R[25] = (228, 'dia', ('salgado',), False, False, 'sala', '''
 CLOSE-UP of %(salgado)s ALONE in the frame, standing at the defence table,
 face and shoulders filling the frame, nobody else in the picture,
 in three-quarter view, the camera at standing height, perfectly level.
@@ -267,7 +271,7 @@ slightly raised. The plain wall behind her, out of focus.
 Her state: precise, unhurried, sure of her ground.
 ''')
 
-R[26] = (112, 'dia', ('acosta',), False, False, 'sala', '''
+R[26] = (96, 'dia', ('acosta',), False, False, 'sala', '''
 Medium-close shot from directly behind %(acosta)s seated at the defence
 table, at seated height, perfectly level: his back in a plain dark grey zip
 jacket, the back of his head of short black hair slightly lowered, his two
@@ -278,11 +282,11 @@ judge's desk. Daylight from the high windows.
 What the camera asserts: a person who is presumed innocent.
 ''')
 
-R[27] = (285, 'dia', ('salgado', 'acosta'), False, False, 'sala', '''
+R[27] = (237, 'dia', ('salgado', 'acosta'), False, False, 'sala', '''
 (reusa r24: Salgado, mas cerca)
 ''')
 
-R[28] = (182, 'dia', ('juez',), False, False, 'sala', '''
+R[28] = (155, 'dia', ('juez',), False, False, 'sala', '''
 Medium close-up of %(juez)s ALONE in the frame, at his desk on the low
 platform, from the chest up, no tables of the parties and nobody else in the
 picture, frontal, the camera at the height of the parties' tables,
@@ -294,15 +298,15 @@ window on the left.
 His state: deliberate, in order, one requirement at a time.
 ''')
 
-R[29] = (168, 'dia', ('quintero',), False, False, 'sala', '''
+R[29] = (149, 'dia', ('quintero',), False, False, 'sala', '''
 (reusa r12: los cuatro elementos)
 ''')
 
-R[30] = (163, 'dia', ('juez',), False, False, 'sala', '''
+R[30] = (136, 'dia', ('juez',), False, False, 'sala', '''
 (reusa r28: el juez, mas cerca)
 ''')
 
-R[31] = (162, 'dia', ('quintero', 'sandra'), False, False, 'sala', '''
+R[31] = (145, 'dia', ('quintero', 'sandra'), False, False, 'sala', '''
 Medium two-shot of %(quintero)s and %(sandra)s seated side by side at the
 prosecution table, from the waist up, in three-quarter view, the camera at
 seated height, perfectly level. Mid-action: both listen to the ruling,
@@ -310,15 +314,15 @@ still, Quintero with her hands folded on her closed case file, Sandra with
 her pen resting on her notebook. Daylight from the high windows.
 ''')
 
-R[32] = (111, 'dia', ('apoderada',), False, False, 'sala', '''
+R[32] = (95, 'dia', ('apoderada',), False, False, 'sala', '''
 (reusa r14: la apoderada, mas cerca)
 ''')
 
-R[33] = (273, 'dia', ('quintero',), False, False, 'sala', '''
+R[33] = (233, 'dia', ('quintero',), False, False, 'sala', '''
 (reusa r11: el telefono sellado, empuje lento)
 ''')
 
-R[34] = (159, 'dia', ('juez',), False, False, 'sala', '''
+R[34] = (137, 'dia', ('juez',), False, False, 'sala', '''
 Medium shot of %(juez)s at his desk on the low platform, from the waist up,
 in three-quarter view, the camera at the height of the parties' tables,
 perfectly level. Mid-action: he writes in the open case file with a plain
@@ -326,19 +330,19 @@ dark pen, his reading glasses on, his other hand holding the page flat.
 Daylight from the high window falls across the desk.
 ''')
 
-R[35] = (158, 'dia', ('salgado', 'acosta'), False, False, 'sala', '''
+R[35] = (140, 'dia', ('salgado', 'acosta'), False, False, 'sala', '''
 (reusa r16: la mesa de la defensa)
 ''')
 
-R[36] = (183, 'dia', ('juez',), False, False, 'sala', '''
+R[36] = (160, 'dia', ('juez',), False, False, 'sala', '''
 (reusa r03: el juez, otro encuadre)
 ''')
 
-R[37] = (192, 'dia', ('juez', 'quintero', 'sandra', 'salgado', 'acosta', 'apoderada'), False, False, 'sala', '''
+R[37] = (162, 'dia', ('juez', 'quintero', 'sandra', 'salgado', 'acosta', 'apoderada'), False, False, 'sala', '''
 (reusa r02: la sala entera, empuje lento)
 ''')
 
-R[38] = (222, 'contraluz', ('colegas',), False, False, 'sala', '''
+R[38] = (190, 'contraluz', ('colegas',), False, False, 'sala', '''
 Wide shot of the hearing room just after the hearing, the camera low at the
 side of the prosecution table, perfectly level. In the foreground, on the
 empty prosecution table, a closed case file and the plain microphone on its
@@ -348,7 +352,7 @@ through it as small dark figures. The platform and the judge's desk are
 empty. The room around falls into soft shadow.
 ''')
 
-R[39] = (173, 'contraluz', ('presos',), False, True, 'pabellon', '''
+R[39] = (164, 'contraluz', ('presos',), False, True, 'pabellon', '''
 Wide shot down a long plain institutional prison corridor, the camera at
 standing height, perfectly level. At the far end, a heavy barred gate and,
 beyond it, a high small barred window: the only light. Halfway down the
@@ -407,7 +411,7 @@ CENITALES = {12}
 SOLO_MANOS = {8, 9, 10, 11, 12, 19}
 SIN_CARA = {26}
 TOPE_SIN_GENTE = 3
-PIEZA = 8529
+PIEZA = 7637  # 1 nov, apretada (antes 8529)
 TOTAL = PIEZA - (182 + 119 + 48 + 119 + 182)
 
 HOJAS = {2: ['juez', 'quintero', 'sandra', 'salgado', 'apoderada'],
@@ -443,14 +447,16 @@ REF_PLACA[22] = (['DH_U4_r16_la_defensa'], 'lugar',
                  'of his head only, never his face. ')
 
 DET = {
- (22, 'la_mano_en_el_expediente'): dict(cuadros=72, entra=100, registro='dia',
+ (22, 'la_mano_en_el_expediente'): dict(cuadros=66, entra=89,  # 1 nov apretada (antes 72, 100)
+     registro='dia',
      personas=('quintero',),
      escena='Extreme close shot of a woman\'s hand resting flat on a closed '
             'thick case file held with a black binder clip, the cuff of a '
             'plain charcoal grey blazer at the wrist.',
      gesto='The fingers press very slightly on the file and relax. The file '
            'does not move. Nothing else moves.'),
- (26, 'las_manos_juntas'): dict(cuadros=60, entra=30, registro='dia',
+ (26, 'las_manos_juntas'): dict(cuadros=53, entra=25,  # 1 nov apretada (antes 60, 30)
+     registro='dia',
      personas=('acosta',),
      escena='Extreme close shot of a man\'s two hands joined on a plain table, '
             'the cuffs of a plain dark grey zip jacket at the wrists.',
