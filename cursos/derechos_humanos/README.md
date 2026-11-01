@@ -342,3 +342,16 @@ respeta todo; la línea mide 3093).
   víctima; qué pasa con la medida; con qué fuentes y estándares;», 3
   renglones, 11,9 car/s; entra con «qué se decide» (1344), sigue en la r07
   y le deja 24 cuadros al de coherencia (`cirugia_dh poner V4`).
+- «carton ap277 its badly redacted, debería ser preguntas separadas por punto
+  y coma»: tenía razón, el primero corría las preguntas como un párrafo, sin
+  signos de interrogación y con «;» colgando al final. El nuevo
+  (`DH_U5_p02b_carton_preguntas_ap227.mov`, mismo largo y mismo sitio) va una
+  pregunta por renglón y cada una entra cuando se dice (cuadros 0/48/108/152):
+  «¿Qué se decide y con qué soporte?; / ¿cómo queda protegida la víctima?; /
+  ¿qué pasa con la medida?; / ¿con qué fuentes y estándares?» (RAE: tras el
+  cierre de interrogación cabe punto y coma). Releído en su línea con
+  `reemplazar_en_sitio_dh` (forma `nuevo=>>viejo`, retrato idéntico); el
+  primero a `_descartes`, .drt nuevo (el anterior a `_descartes`).
+- «víctima … the wrong tilde, it's flipped»: revisado a 4x en el cartón viejo
+  y en el nuevo: la tilde es aguda (í, U+00ED), el mismo glifo de Montserrat
+  Bold que en «cómo». No se cambió nada ahí; se le mandó el zoom.

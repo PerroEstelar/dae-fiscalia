@@ -201,11 +201,18 @@ ELEGIDOS = {
   ('e04_hoy_cerramos', 'Lo que decidamos de un lado no puede deshacer lo del '
    'otro.'),
   # 1 nov (Sebastian: «we are missing a carton in r07»): las cuatro preguntas
-  # del cierre, «Que se decide y con que soporte; como queda protegida la
-  # victima; que pasa con la medida; con que fuentes y estandares;», cruzan
-  # e05 y e06 y `calcula` no arma cartones de dos bloques: va a mano, quemado
-  # con `cartones_apretados_dh` (DH_U5_p02b_carton_ap227.mov, V4 1344-1571,
-  # entra con «que se decide» y le deja 24 cuadros al de coherencia).
+  # del cierre cruzan e05 y e06 y `calcula` no arma cartones de dos bloques:
+  # va a mano (V4 1344-1571, entra con «que se decide» y le deja 24 cuadros
+  # al de coherencia). La primera version las corria como un parrafo sin
+  # signos de pregunta y con «;» al final (Sebastian: «badly redacted»; a
+  # _descartes). La que queda, DH_U5_p02b_carton_preguntas_ap227.mov, va
+  # una pregunta por renglon, cada una entra cuando se dice (cuadros
+  # 0/48/108/152 del carton) y se separan con «?;» (RAE: tras el cierre de
+  # interrogacion cabe punto y coma):
+  #   ¿Qué se decide y con qué soporte?; / ¿cómo queda protegida la
+  #   víctima?; / ¿qué pasa con la medida?; / ¿con qué fuentes y estándares?
+  # La tilde de «víctima» es aguda (U+00ED, NFC), el mismo glifo de
+  # Montserrat Bold que en «cómo»: se reviso a 4x.
   ('e06_prueba_de_coherencia', 'ninguna protección vulnera garantías, '
    'ninguna restricción desprotege.'),
   ('e07_se_retracta', 'el comerciante que declaró haber visto a Acosta dejar '
