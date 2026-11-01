@@ -159,6 +159,8 @@ Nombre: `PRIO 2 - DERECHOS HUMANOS - UNIDAD <n> <TÍTULO>.mp4`. Camino:
 igual) → sincroniza → `update_file(parentId=Videos)`.
 
 - U1 (31 oct): 3316 cuadros, −20,0 LUFS, pico −3,6, 38 MB.
+- U3 (1 nov, apretada): 4358 cuadros, −19,1 LUFS, pico −2,5, sin negros, 54 MB
+  (`1TPTzhZjC2RZ2yzvAsYCMB_70tm9iJwyT`).
 
 ## Revisión de Sebastián de la U2 (31 oct, noche)
 
