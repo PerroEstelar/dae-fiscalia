@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
-r"""UNIDAD 3 «Dos versiones de la misma entrevista» · 27 ranuras · pieza 5343.
+r"""UNIDAD 3 «Dos versiones de la misma entrevista» · 27 ranuras · pieza 4406
+(4358 en la linea de Sebastian, sin el respiro final).
+
+1 NOV, APRETADA (Sebastian: huecos de narracion mas cortos, personajes mas
+rapidos, mas animacion). Las ranuras se pasaron por el mapa de tiempo de
+`apretar_dh` (D:\DAE\_tmp\dh\u3_apretado\u3_apretado.json); los largos de
+antes, en el comentario de cada cambio: r01 197, r02 138, r03 252, r04 130, r05 224, r06 97, r07 202, r08 127, r09 217, r10 243, r11 164, r12 170, r13 237, r14 257, r15 188, r16 104, r17 170, r18 187, r19 112, r20 180, r21 129, r22 101, r23 210, r24 221, r25 107, r26 165, r27 164.
 
 LO QUE SE OYE ENCIMA (cruce_dh.json)
     r01-02  voz en off: semana ocho, dos versiones, «márquelo»
@@ -34,7 +40,7 @@ EL COLOR DEL DOCUMENTO, TRADUCIDO («del gris al azul con acentos verdes»)
 
 R = {}
 
-R[1] = (197, 'dia', ('carmen', 'colegas'), None, False, 'oficina_abierta', '''
+R[1] = (196, 'dia', ('carmen', 'colegas'), None, False, 'oficina_abierta', '''
 Wide shot of a crowded open-plan office of the prosecution office, the camera
 at standing height at one end of the room, perfectly level, looking down the
 aisle between rows of grey desks. Mid-action: near the camera, at the end of
@@ -48,7 +54,7 @@ ceiling, no window light.
 What the camera asserts: a busy place where nobody is waiting for her.
 ''')
 
-R[2] = (138, 'dia', ('carmen', 'entrevistador'), None, False, 'oficina_abierta', '''
+R[2] = (115, 'dia', ('carmen', 'entrevistador'), None, False, 'oficina_abierta', '''
 Over-the-shoulder shot from behind %(carmen)s, standing, at standing height,
 perfectly level: in the left foreground, out of focus, her shoulder in the
 mustard cardigan and the back of her head with the low ponytail; in the
@@ -59,7 +65,7 @@ in front of his desk; his eyes stay on his computer screen. He is seen at a
 medium distance, never close. Flat cold fluorescent light.
 ''')
 
-R[3] = (252, 'dia', ('carmen', 'entrevistador'), None, False, 'oficina_abierta', '''
+R[3] = (185, 'dia', ('carmen', 'entrevistador'), None, False, 'oficina_abierta', '''
 Close shot at desk height across a crowded grey desk, the camera low and
 level on the side of the visitor's chair. Mid-action: a woman's two hands,
 the cuffs of a matte mustard knitted cardigan at the wrists, slide a clear
@@ -72,7 +78,7 @@ short-sleeved shirt and loose dark tie are in frame, out of focus. Stacks of
 folders on both sides. Flat cold fluorescent light.
 ''')
 
-R[4] = (130, 'dia', ('carmen',), None, False, 'oficina_abierta', '''
+R[4] = (103, 'dia', ('carmen',), None, False, 'oficina_abierta', '''
 Medium-close shot of %(carmen)s seated in the visitor's chair in front of a
 crowded grey desk, from the chest up, in three-quarter view from the front,
 the camera at seated height on the other side of the desk, perfectly level.
@@ -84,7 +90,7 @@ stacks of folders. Flat cold fluorescent light.
 Her state: tired disbelief, still polite.
 ''')
 
-R[5] = (224, 'dia', ('carmen', 'entrevistador'), None, False, 'oficina_abierta', '''
+R[5] = (184, 'dia', ('carmen', 'entrevistador'), None, False, 'oficina_abierta', '''
 Over-the-shoulder shot from behind %(entrevistador)s, at seated height,
 perfectly level: in the right foreground, out of focus, his broad back in a
 pale grey short-sleeved shirt, his arms crossed, leaning back in his office
@@ -96,11 +102,11 @@ folder in her lap, her eyes on him. Flat cold fluorescent light.
 Her state: stung, holding herself together.
 ''')
 
-R[6] = (97, 'dia', ('carmen',), None, False, 'oficina_abierta', '''
+R[6] = (71, 'dia', ('carmen',), None, False, 'oficina_abierta', '''
 (reusa r04: Carmen, mas cerca)
 ''')
 
-R[7] = (202, 'dia', ('entrevistador',), False, False, 'oficina_abierta', '''
+R[7] = (150, 'dia', ('entrevistador',), False, False, 'oficina_abierta', '''
 Close shot of an ordinary computer screen on a crowded grey desk, the camera
 at seated height, perfectly level, the screen filling most of the frame at an
 angle. Mid-action: a heavy-set man's hand holding a plain ballpoint pen
@@ -110,7 +116,7 @@ pale grey short sleeve at the edge of the frame. Flat cold fluorescent light.
 No face in frame.
 ''')
 
-R[8] = (127, 'dia', ('carmen',), None, False, 'oficina_abierta', '''
+R[8] = (84, 'dia', ('carmen',), None, False, 'oficina_abierta', '''
 Close-up of %(carmen)s, face and shoulders, in three-quarter view from the
 front, the camera at seated height across the desk, perfectly level.
 Mid-action: she has just taken a breath to say the hardest thing: her lips
@@ -121,7 +127,7 @@ cold fluorescent light.
 Her state: gathering courage.
 ''')
 
-R[9] = (217, 'dia', ('entrevistador',), False, False, 'oficina_abierta', '''
+R[9] = (131, 'dia', ('entrevistador',), False, False, 'oficina_abierta', '''
 Close shot at desk height of the corner of a crowded grey desk, the camera
 low and level. Mid-action: a mobile phone lying face up beside the keyboard
 has just lit up with a message; a heavy-set man's hand, his pale grey short
@@ -132,19 +138,19 @@ plastic folder held by a woman's hands in a mustard cardigan. Flat cold
 fluorescent light. No face in frame.
 ''')
 
-R[10] = (243, 'dia', ('carmen', 'entrevistador'), None, False, 'oficina_abierta', '''
+R[10] = (207, 'dia', ('carmen', 'entrevistador'), None, False, 'oficina_abierta', '''
 (reusa r03: R1, y despues la r05: R2; ver COMPUESTAS)
 ''')
 
-R[11] = (164, 'dia', ('entrevistador',), False, False, 'oficina_abierta', '''
+R[11] = (142, 'dia', ('entrevistador',), False, False, 'oficina_abierta', '''
 (reusa r07: R3)
 ''')
 
-R[12] = (170, 'dia', ('entrevistador',), False, False, 'oficina_abierta', '''
+R[12] = (145, 'dia', ('entrevistador',), False, False, 'oficina_abierta', '''
 (reusa r09: R4)
 ''')
 
-R[13] = (237, 'dia', ('colegas',), False, False, 'oficina_abierta', '''
+R[13] = (185, 'dia', ('colegas',), False, False, 'oficina_abierta', '''
 Wide shot of the same crowded open-plan office, the camera at seated height
 beside the interviewer's desk, perfectly level. In the foreground the
 visitor's chair in front of the desk is EMPTY, turned a little away; on the
@@ -155,7 +161,7 @@ past with folders. Flat cold fluorescent light.
 What the camera asserts: she has gone, and nothing in the room noticed.
 ''')
 
-R[14] = (257, 'dia', ('sandra', 'carmen'), None, False, 'sala_entrevistas', '''
+R[14] = (207, 'dia', ('sandra', 'carmen'), None, False, 'sala_entrevistas', '''
 Medium-wide shot of the small interview room with its door closed, the camera
 at seated height near the wall opposite the window, perfectly level. Mid-action:
 %(sandra)s and %(carmen)s sit in the two upholstered chairs set at an angle
@@ -170,7 +176,7 @@ What the camera asserts: the same diligence, a different room and a
 different method.
 ''')
 
-R[15] = (188, 'dia', ('sandra',), False, False, 'sala_entrevistas', '''
+R[15] = (159, 'dia', ('sandra',), False, False, 'sala_entrevistas', '''
 CLOSE framing: medium close-up of %(sandra)s ALONE in the frame, seated in the
 upholstered chair, from the chest up, filling the frame; nobody else in the
 picture, in three-quarter view from the front, the camera at seated height
@@ -181,7 +187,7 @@ her other hand. Soft daylight from the window on her face.
 Her state: prepared, warm, unhurried.
 ''')
 
-R[16] = (104, 'dia', ('carmen',), None, False, 'sala_entrevistas', '''
+R[16] = (82, 'dia', ('carmen',), None, False, 'sala_entrevistas', '''
 CLOSE framing: medium close-up of %(carmen)s ALONE in the frame, seated in the
 upholstered chair, from the chest up, filling the frame; nobody else in the
 picture, she appears ONCE. In three-quarter view from the front, the camera at
@@ -192,7 +198,7 @@ plastic folder rests loosely in her lap. Soft daylight from the window.
 Her state: relief.
 ''')
 
-R[17] = (170, 'dia', ('sandra', 'carmen'), None, False, 'sala_entrevistas', '''
+R[17] = (138, 'dia', ('sandra', 'carmen'), None, False, 'sala_entrevistas', '''
 Over-the-shoulder shot from behind %(carmen)s, at seated height, perfectly
 level: in the left foreground, out of focus, her shoulder in the mustard
 cardigan and her low ponytail; across from her, sharp, %(sandra)s in the
@@ -201,7 +207,7 @@ her knee and a pen in her hand, looking at Carmen. The window with the
 half-lowered blind behind Sandra; soft light.
 ''')
 
-R[18] = (187, 'dia', ('carmen',), None, False, 'sala_entrevistas', '''
+R[18] = (116, 'dia', ('carmen',), None, False, 'sala_entrevistas', '''
 CLOSE-UP of %(carmen)s ALONE in the frame, face and shoulders filling the
 frame; nobody else in the picture, she appears ONCE. In three-quarter view, the
 camera at seated height from Sandra's side, perfectly level. Mid-action: she
@@ -212,7 +218,7 @@ window on one side of her face; the room behind her soft and out of focus.
 Her state: the thing she cannot say yet.
 ''')
 
-R[19] = (112, 'dia', ('carmen',), None, False, 'sala_entrevistas', '''
+R[19] = (87, 'dia', ('carmen',), None, False, 'sala_entrevistas', '''
 Close-up of %(carmen)s, face and shoulders, frontal, the camera at seated
 height, perfectly level. Mid-action: she raises her eyes from the floor and
 says it, looking straight ahead at the person in front of her, her brows
@@ -221,11 +227,11 @@ drawn, her eyes bright but steady. Soft daylight from the window.
 Her state: naming it at last; hurt, not ashamed.
 ''')
 
-R[20] = (180, 'dia', ('sandra',), False, False, 'sala_entrevistas', '''
+R[20] = (152, 'dia', ('sandra',), False, False, 'sala_entrevistas', '''
 (reusa r15: Sandra, mas cerca)
 ''')
 
-R[21] = (129, 'dia', ('sandra',), False, False, 'sala_entrevistas', '''
+R[21] = (100, 'dia', ('sandra',), False, False, 'sala_entrevistas', '''
 Close shot of a dark notebook open on a woman's knee, the camera at seated
 height just above it, perfectly level. Mid-action: her hand, the cuff of a
 plain dark charcoal jacket at the wrist, writes a short line with a plain
@@ -234,7 +240,7 @@ stroke, nothing legible. Soft daylight from the window across the page. No
 face in frame.
 ''')
 
-R[22] = (101, 'dia', ('carmen',), None, False, 'sala_entrevistas', '''
+R[22] = (77, 'dia', ('carmen',), None, False, 'sala_entrevistas', '''
 Medium-close shot of %(carmen)s seated in the upholstered chair, from the
 chest up, in three-quarter view, the camera at seated height, perfectly
 level. Mid-action: her head is bowed and she looks down at her own two hands
@@ -244,7 +250,7 @@ the side.
 Her state: blaming herself.
 ''')
 
-R[23] = (210, 'dia', ('sandra', 'carmen'), None, False, 'sala_entrevistas', '''
+R[23] = (172, 'dia', ('sandra', 'carmen'), None, False, 'sala_entrevistas', '''
 Medium two-shot of the two upholstered chairs set at an angle, the camera at
 seated height to one side, perfectly level, both women in profile or
 three-quarter. Mid-action: %(sandra)s leans toward %(carmen)s, speaking
@@ -254,7 +260,7 @@ lap and looks at Sandra. Soft daylight from the window between them.
 What the camera asserts: the blame put back where it belongs.
 ''')
 
-R[24] = (221, 'dia', ('sandra', 'carmen'), None, False, 'sala_entrevistas', '''
+R[24] = (174, 'dia', ('sandra', 'carmen'), None, False, 'sala_entrevistas', '''
 Close shot at chest height between the two chairs, the camera level, both
 women out of frame above the shoulders. Mid-action: a woman's hand in a plain
 dark charcoal jacket sleeve holds out a small plain white card with nothing
@@ -263,7 +269,7 @@ cardigan at the wrist takes it between two fingers. Behind, out of focus,
 the clear plastic folder in a lap and the window light.
 ''')
 
-R[25] = (107, 'contraluz', ('carmen',), None, False, 'sala_entrevistas', '''
+R[25] = (83, 'contraluz', ('carmen',), None, False, 'sala_entrevistas', '''
 Medium-wide shot of the open door of the small interview room, the camera
 inside the room at standing height, perfectly level. Mid-action: %(carmen)s
 walks out through the door into the bright corridor beyond, seen in
@@ -274,7 +280,7 @@ only bright thing in the frame; the room around the door is in shadow.
 What the camera asserts: she leaves differently from how she came in.
 ''')
 
-R[26] = (165, 'dia', ('colegas',), False, False, 'oficina_abierta', '''
+R[26] = (150, 'dia', ('colegas',), False, False, 'oficina_abierta', '''
 Medium shot of an ordinary work desk in the open-plan office, the camera at
 seated height in front of it, perfectly level, as if we were about to sit
 down: an empty office chair pulled back, a plain notebook lying open with a
@@ -285,7 +291,7 @@ fluorescent light.
 What the camera asserts: your own desk.
 ''')
 
-R[27] = (164, 'dia', ('colegas',), False, False, 'oficina_abierta', '''
+R[27] = (161, 'dia', ('colegas',), False, False, 'oficina_abierta', '''
 (reusa r13: la silla vacia, empuje lento)
 ''')
 
@@ -314,7 +320,7 @@ CENITALES = set()
 SOLO_MANOS = {3, 7, 9, 21, 24}
 SIN_CARA = set()
 TOPE_SIN_GENTE = 3
-PIEZA = 5343
+PIEZA = 4406  # 1 nov, apretada (antes 5343)
 TOTAL = PIEZA - (182 + 119 + 48 + 119 + 182)
 
 HOJAS = {1: ['carmen'], 2: ['carmen', 'entrevistador'], 4: ['carmen'],
@@ -357,10 +363,10 @@ grey bars. Soft daylight from the window. No face in frame.
 # y el celular boca abajo de la segunda version («Ahora vea», 113); r18 ella
 # se detiene y el boligrafo que Sandra deja en el silencio («Tómese», 142).
 COMPUESTAS = {
- 9: [(9, 150), ('09b', None)],
- 10: [(10, 180), (5, None)],
- 13: [(13, 95), ('13b', None)],
- 18: [(18, 100), ('18b', None)],
+ 9: [(9, 91), ('09b', None)],     # 1 nov apretada (antes 150)
+ 10: [(10, 151), (5, None)],        # (antes 180)
+ 13: [(13, 75), ('13b', None)],    # (antes 95)
+ 18: [(18, 67), ('18b', None)],    # (antes 100)
 }
 
 ANCLA = 'DH_U1_r10_la_recepcion'
@@ -382,14 +388,16 @@ REF_PLACA[16] = (['DH_U3_r19_por_ser_mujer'], 'lugar', '')
 REF_PLACA[18] = (['DH_U3_r19_por_ser_mujer'], 'lugar', '')
 
 DET = {
- (8, 'las_manos'): dict(cuadros=60, entra=50, registro='dia',
+ (8, 'las_manos'): dict(cuadros=50, entra=29,  # 1 nov (antes 60, 50)
+     registro='dia',
      personas=('carmen',),
      escena='Extreme close shot of a woman\'s two hands gripping the edges of '
             'a clear plastic document folder in her lap, the cuffs of a matte '
             'mustard knitted cardigan at the wrists.',
      gesto='The fingers tighten on the edges of the folder. The folder does '
            'not move. Nothing else moves.'),
- (19, 'los_ojos'): dict(cuadros=60, entra=40, registro='dia',
+ (19, 'los_ojos'): dict(cuadros=53, entra=26,  # 1 nov (antes 60, 40)
+     registro='dia',
      personas=('carmen',),
      escena='Extreme close shot of a woman\'s eyes and brows, black hair '
             'pulled back, soft daylight from one side.',
@@ -401,12 +409,32 @@ BROLL = {}
 
 MOV = {
  1: 'kling: los colegas pasan por detrás; Carmen quieta',
+ # 3: kling probado dos veces (1 nov): él toma la carpeta / la cámara se corre. Quieta.
+ 4: 'kling: habla («¿otra vez?»), parpadea',
+ 5: 'kling: él habla de espaldas; ella se endereza',
+ 6: 'kling (desde la ranura): habla',
+ 7: 'kling: el lapicero toca dos veces la pantalla',
+ 14: 'kling: Sandra habla, Carmen asiente',
+ 15: 'kling: habla',
+ 16: 'kling: habla, suelta el aire',
+ 17: 'kling: Sandra pregunta',
+ 20: 'kling (desde la ranura): habla',
+ 22: 'kling: habla con la cabeza baja',
+ 23: 'kling: Sandra habla; Carmen levanta la cabeza',
+ 24: 'kling: la tarjeta pasa de mano',
+ 26: 'kling: los colegas pasan al fondo',
  2: 'kling: él cuelga y señala la silla sin mirar',
  9: 'kling: el celular se ilumina y el pulgar teclea',
  25: 'kling: Carmen sale por la puerta con la carpeta bajo el brazo',
 }
 
 LOWER_THIRD = {14: 'Sandra Ibáñez'}
+
+# 1 nov: el Kling de estas ranuras sale del cuadro 0 de la ranura horneada
+# (REUSA con su propio encuadre, 0,7): ya viene encuadrado y se conforma sin
+# recorte (mov_dh.encuadre_de devuelve 1,0). Recortar al 0,7 un clip de 1080
+# lo dejaba blando al lado de la placa.
+KLING_DESDE_RANURA = {6, 20}
 
 
 def comprobar():

@@ -229,3 +229,60 @@ muestras). En su línea: `DH_U3_NARRADOR_v4.wav`. Lección: a la voz de un
 personaje que ya está aprobado se la realza (EQ, nivel); cambiarla de voz es
 otra decisión y se pregunta. Si el master de la U3 se vuelve a armar con
 `retomar_dh`, hay que volver a correr el realce.
+
+## U3 apretada y con más animación (1 nov)
+
+Sebastián: «we need to shorten some of the narration gaps… it sounds
+glitchy, also make the other characters besides the main narrator talk a bit
+faster, it's like they are dragging the video, also we need every other clip
+where they talk to have mouth movement, not necessarily sync… en general
+necesita más animación, deja los otros cambios que hice».
+
+**La voz** (`herramientas/voz/apretar_dh.py`, plan en
+`D:\DAE\_tmp\dh\u3_apretado\`: `mapa_u3.py`, `final_u3.py`). Sobre el master
+v4 (con el realce del entrevistador), con la envolvente a −48 dB:
+- huecos entre bloques: 0,45 s entre personajes, 1,0 s cuando entra o sale el
+  narrador, 0,65-0,9 entre bloques de Carlos; los que pesan quedan algo más
+  largos (c09 «…Nada» 0,85; «Tómese su tiempo» 1,3; c10 1,15). Un hueco que se
+  acorta conserva sus dos orillas (la cola de la frase y el aire antes de la
+  siguiente) y pierde el medio: todos los cortes caen en silencio.
+- pausas internas: las de los personajes de 0,40 s o más quedan en 0,34; las
+  de Carlos de 0,55 o más, en 0,45 (eran los «…» del guion, hasta 1 s).
+- tempo (`atempo`, no cambia el tono): Sandra 1,12; Carmen y el
+  Entrevistador 1,08; Carlos igual.
+- 195,7 s → 156,65 s (huecos −22,8 s, pausas −8,5, habla −7,9). Nivel y
+  timbre intactos: −18,8 LUFS integrado, pico −3,0; el pico de diferencia
+  entre muestras es la «T» de «Tres» que ya estaba en el original (no hay
+  clics nuevos). `atempo` deja unos ms por bloque: el mapa se corrigió con
+  los arranques medidos en el master armado (deriva final 0,1 s).
+- `03 VOCES`: `DH_U3_NARRADOR.wav` y `_v5`, rejilla, ranuras y los 25 stt
+  pasados por el mapa; los de antes en `_descartes` con
+  `__antes_de_apretar_<hora>`. Ojo: `retomar_dh` sobre la U3 rearma desde
+  los crudos sin apretar; si hace falta una toma nueva, se pone a mano y se
+  vuelve a apretar ese bloque.
+
+**La línea** (`herramientas/montaje/apretar_linea_dh.py`), hecha desde la
+SUYA, item por item, con el mismo mapa: 5295 → 4358 cuadros (3:41 → 3:02).
+Sus cambios siguen: sin el respiro final, cartón p03 con su recorte (termina
+antes del corte a la r11), la cama terminando donde empieza el outro. Su
+línea quedó como «… (antes de apretar)»; nada se borró del pool.
+- V1: ranuras simples cortadas (`apretar_ranuras_dh.py`, el horneado es sin
+  empuje); las compuestas (r09, r10, r13, r18) rehorneadas con el corte
+  pasado por el mapa (151 «Dos», 75 «Ahora vea», 67 «Tómese», 91 «Nada»).
+- V3: detalles cortados (las manos 50, los ojos 53).
+- V4: los 11 cartones requemados al largo nuevo (`cartones_apretados_dh.py`,
+  `_ap<cuadros>.mov`), entrando en la misma palabra; si el mapa los dejaba
+  más densos se les devolvió su largo de antes mientras cupiera (p04 17,1,
+  p05 20,2 y p10 19,0 car/s: no caben más, el siguiente entra detrás).
+- V6/V8: marca de agua y rótulo de Sandra con su largo, corridos.
+- A5: cama rehecha con la rejilla nueva (`abre`/`cierra`).
+
+**Kling 3.0** (boca sin sincronía: «habla genérica», nunca abierta del
+todo): r04, r06, r14, r15, r16, r17, r20, r22, r23 con boca; r05 (él habla de
+espaldas, ella se endereza), r07 (el lapicero), r24 (la tarjeta pasa de mano)
+y r26 (la oficina al fondo). Más los tres de antes reconformados (r01, r09,
+r25). r06 y r20 (REUSA al 0,7) salen del cuadro 0 de la ranura y se
+conforman sin recorte (`KLING_DESDE_RANURA`). Descartes: r03 dos veces (él
+toma la carpeta; luego la cámara se corre), r16 y r20 una vez (guiño y
+sonrisa con dientes; el cuerpo se mecía). r08 y r19 no llevan: el detalle de
+V3 los tapa casi enteros. Créditos: ~9.000.

@@ -87,6 +87,10 @@ def encuadre_de(L, n):
     la U4: encuadre 1,0, la placa entera) o con CAMARA propia se recorta a lo
     suyo, o el fundido de entrada salta de escala."""
     e = SP.E(L)
+    # 1 nov (U3 r06, r20): el Kling salio del cuadro 0 de la ranura horneada,
+    # ya encuadrado: no se recorta (recortar al 0,7 un clip de 1080 lo ablanda)
+    if n in getattr(e, 'KLING_DESDE_RANURA', set()):
+        return 1.0
     cam = (getattr(e, 'REUSA', {}).get(n) or (None, None))[1] or \
         getattr(e, 'CAMARA', {}).get(n)
     return float(cam.get('encuadre', ENCUADRE)) if cam else ENCUADRE
