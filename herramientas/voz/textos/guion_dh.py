@@ -265,11 +265,14 @@ BLOQUES['U2'] = [
   'tarea de cualquier autoridad pública. Gelman contra Uruguay, dos mil '
   'once, párrafo doscientos treinta y nueve.',
   NORMAL),
+ # 1 nov (Sebastian, U2 2:58): «ni rechazo reflejo» se leia como verbos
+ # («rechazó», «reflejó»). Se dice lo mismo sin la palabra que confunde, y
+ # el camino C se nombra como el del analisis (sugerencia suya).
  ('b18_ni_rechazo', 'Carlos',
-  'Ni rechazo reflejo (camino A) ni retirada refleja (camino B): análisis '
-  '(camino C).',
-  'Ni rechazo reflejo, camino A, ni retirada refleja, camino B: análisis, '
-  'camino C.',
+  'Ni el rechazo automático (camino A) ni la retirada automática (camino B): '
+  'el camino C es el del análisis.',
+  'Ni el rechazo automático, camino A, ni la retirada automática, camino B: '
+  'el camino C es el del análisis.',
   CIERRE),
  ('b19_el_musculo', 'Carlos',
   'Ese es el músculo que entrenará en la matriz de convencionalidad de esta '

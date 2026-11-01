@@ -185,10 +185,14 @@ la página en que estaba).
 - **r09, la voz del juez:** −20,1 LUFS contra −18,7 de Carlos. +2 dB solo en su
   bloque (59,1-66,5 s del narrador, rampas en el silencio): −18,1, pico −3,0.
 - **Rótulo de Carmen Elisa en la r13** (no aparece antes en la U2).
-- **2:58, «Ni rechazo reflejo… ni retirada refleja»:** no se cambió. «Rechazo
-  reflejo» es sustantivo + adjetivo (un rechazo automático), en paralelo con
-  «retirada refleja»; con tildes («rechazó», «reflejó») serían verbos y la
-  frase se rompe. El texto es el del documento y Scribe lo oye bien.
+- **2:58 (b18, cartón p13):** Sebastián (1 nov): «Ni rechazo reflejo… ni
+  retirada refleja» se leía como verbos. Ahora, voz y cartón: «Ni el rechazo
+  automático (camino A) ni la retirada automática (camino B): el camino C es
+  el del análisis.» Toma nueva de Carlos (`retomar_dh candidatos`, la 2 de 4,
+  6,26 s de habla, `atempo` 1,03), puesta a mano en el narrador: empieza 0,6
+  s antes (163,075 s) y la b19 se corre 0,47 s (la cola del archivo tenía
+  sitio). Mismo largo de archivo, −19,2 LUFS como la b17. Rejilla, crudo y
+  stt al día. Cartón `DH_U2_p13_carton_v2.mov`, 197 cuadros como en su línea.
 - **Música:** Sebastián recortaba a mano la cama para que no pisara el intro.
   Ahora `cama_musica` calla antes de `abre` (intro − 23 cuadros, como la dejó
   él en la U2) y termina de salir en el primer cuadro del outro. U3-U5

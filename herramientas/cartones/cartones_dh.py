@@ -127,8 +127,8 @@ ELEGIDOS = {
    'estándar y su aplicación a los hechos).'),
   ('b17_fortalecida', 'control de convencionalidad, que es tarea de '
    'cualquier autoridad pública (Gelman vs. Uruguay, 2011, párr. 239).'),
-  ('b18_ni_rechazo', 'Ni rechazo reflejo (camino A) ni retirada refleja '
-   '(camino B): análisis (camino C).'),
+  ('b18_ni_rechazo', 'Ni el rechazo automático (camino A) ni la retirada '
+   'automática (camino B): el camino C es el del análisis.'),
  ],
  'U3': [
   ('c01_semana_ocho', 'Va a escuchar dos versiones de la misma entrevista.'),
