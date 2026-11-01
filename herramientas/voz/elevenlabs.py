@@ -14,6 +14,14 @@ USO
     python elevenlabs.py cuota
     python elevenlabs.py decir <archivo_de_texto> <voice_id> <salida.mp3>
     python elevenlabs.py lote <carpeta_de_textos> <voice_id> <carpeta_salida>
+    python elevenlabs.py transformar <audio> <voice_id> <salida.mp3>
+    python elevenlabs.py aislar <audio> <salida.mp3>
+
+    `transformar` (1 nov, DH U3: la voz del entrevistador salia sucia) es
+    voz-a-voz: la MISMA actuacion -mismas palabras, mismas pausas, mismo
+    largo- dicha con otra voz, y sin el ruido de fondo de la toma. Sirve
+    para cambiar o limpiar una voz sin mover un cuadro de la linea.
+    `aislar` es solo el aislador de voz (quita ruido, deja la misma voz).
 
     `lote` toma todos los .txt de una carpeta y genera un mp3 por cada uno, con
     el mismo nombre. Es la forma de pedir las seis pistas de una sentada.
@@ -137,6 +145,60 @@ def decir(texto, voice_id, salida):
                                           len(audio) // 1024, len(texto)))
 
 
+MODELO_STS = "eleven_multilingual_sts_v2"
+
+
+def _multipart(ruta, campos, archivo):
+    """POST multipart/form-data (urllib, sin dependencias). Devuelve bytes."""
+    import uuid
+    b = uuid.uuid4().hex
+    cuerpo = b""
+    for k, v in campos.items():
+        cuerpo += ('--%s\r\nContent-Disposition: form-data; name="%s"\r\n\r\n%s\r\n'
+                   % (b, k, v)).encode("utf-8")
+    nombre = os.path.basename(archivo)
+    tipo = "audio/mpeg" if nombre.lower().endswith(".mp3") else "audio/wav"
+    with open(archivo, "rb") as f:
+        datos = f.read()
+    cuerpo += ('--%s\r\nContent-Disposition: form-data; name="audio"; filename="%s"\r\n'
+               'Content-Type: %s\r\n\r\n' % (b, nombre, tipo)).encode("utf-8")
+    cuerpo += datos + ("\r\n--%s--\r\n" % b).encode("utf-8")
+    req = urllib.request.Request(
+        BASE + ruta, data=cuerpo, method="POST",
+        headers={"xi-api-key": llave(), "Accept": "audio/mpeg",
+                 "Content-Type": "multipart/form-data; boundary=%s" % b})
+    try:
+        with urllib.request.urlopen(req, timeout=300) as r:
+            return r.read()
+    except urllib.error.HTTPError as e:
+        sys.exit("ElevenLabs respondió %s: %s" % (e.code, e.read().decode("utf-8", "replace")[:500]))
+
+
+def transformar(entrada, voice_id, salida, quitar_ruido=False):
+    """`quitar_ruido` (remove_background_noise) va APAGADO: en la U3 se comia
+    el arranque de las palabras («Porque» -> «que», los primeros 0,2 s sin
+    energia). La voz de destino ya sale limpia sin el (pausas a -91 dB)."""
+    ajustes = {"stability": AJUSTES["stability"],
+               "similarity_boost": AJUSTES["similarity_boost"],
+               "style": 0.0, "use_speaker_boost": True}
+    audio = _multipart("/speech-to-speech/%s?output_format=mp3_44100_192" % voice_id,
+                       {"model_id": MODELO_STS, "voice_settings": json.dumps(ajustes),
+                        "remove_background_noise": "true" if quitar_ruido else "false"},
+                       entrada)
+    os.makedirs(os.path.dirname(os.path.abspath(salida)), exist_ok=True)
+    with open(salida, "wb") as f:
+        f.write(audio)
+    print("%s  %d KB  (voz a voz)" % (os.path.basename(salida), len(audio) // 1024))
+
+
+def aislar(entrada, salida):
+    audio = _multipart("/audio-isolation", {}, entrada)
+    os.makedirs(os.path.dirname(os.path.abspath(salida)), exist_ok=True)
+    with open(salida, "wb") as f:
+        f.write(audio)
+    print("%s  %d KB  (aislada)" % (os.path.basename(salida), len(audio) // 1024))
+
+
 def lote(carpeta_textos, voice_id, carpeta_salida):
     txts = sorted(f for f in os.listdir(carpeta_textos) if f.lower().endswith(".txt"))
     if not txts:
@@ -163,5 +225,9 @@ if __name__ == "__main__":
             decir(f.read().strip(), a[2], a[3])
     elif a[0] == "lote":
         lote(a[1], a[2], a[3])
+    elif a[0] == "transformar":
+        transformar(a[1], a[2], a[3])
+    elif a[0] == "aislar":
+        aislar(a[1], a[2])
     else:
         sys.exit(__doc__)

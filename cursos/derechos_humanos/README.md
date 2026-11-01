@@ -198,3 +198,19 @@ la página en que estaba).
   él en la U2) y termina de salir en el primer cuadro del outro. U3-U5
   rehechas y releídas en su línea; la U1 (entregada) y la U2 (recortada por
   él) no se tocan. Regla en la biblia (§10).
+
+## U3: la voz del entrevistador (1 nov)
+
+Sebastián: «the voice of the interviewer in DH U3 is weird, can you clean it
+up?». Medido: las cuatro tomas de Johan (c02, c04, c06, c08) tenían la voz
+ronca y con ruido (relación armónico/ruido 1,7 dB contra 7-8 de Carmen y
+Sandra; pausas a −51/−65 dB contra −88). Arreglo sin mover un cuadro:
+**voz a voz** (`elevenlabs.py transformar`, modelo
+`eleven_multilingual_sts_v2`) de cada toma a **Jerome** —misma actuación,
+mismas pausas, mismo largo—, puesta en su ventana con `retomar_dh poner
+--sin-repartir`. Se probaron Iván, Alexander y Horacio: Jerome salió el más
+limpio. `remove_background_noise` va APAGADO: con él se comía el arranque de
+las palabras («Porque» → «que»). Scribe oye las cuatro igual que las de Johan.
+Resultado: relación armónico/ruido 4,0-4,7 dB, pausas −68/−84 dB, c04 +1,6 dB
+para quedar como las otras (−19,8 LUFS). En su línea: `DH_U3_NARRADOR_v3.wav`
+(ReplaceClip, retrato idéntico, 55 clips).
