@@ -161,6 +161,10 @@ igual) → sincroniza → `update_file(parentId=Videos)`.
 - U1 (31 oct): 3316 cuadros, −20,0 LUFS, pico −3,6, 38 MB.
 - U3 (1 nov, apretada): 4358 cuadros, −19,1 LUFS, pico −2,5, sin negros, 54 MB
   (`1TPTzhZjC2RZ2yzvAsYCMB_70tm9iJwyT`).
+- U4 (1 nov, apretada): 7637 cuadros, −19,2 LUFS, pico −4,1, sin negros, 72 MB
+  (`14k_ryU-mtLcMxL4m7DxLtah5W74_x23-`). D: estaba lleno y el primer master salió
+  cortado: se movieron ~30 GB de renders viejos de `D:\DAE\_tmp` a
+  `E:\DAE MASTER\_archivo_tmp` (nada borrado) y se volvió a exportar.
 
 ## Revisión de Sebastián de la U2 (31 oct, noche)
 
