@@ -10,11 +10,11 @@ en el mismo video.
     Carlos         Y4HwpMNrBWN5dFKi5Lw8   narrador de la serie
     Carmen         Pzocg9GZr24gNfKRHiyy   Elisa Maria
     Andres         Ux2YbCNfurnKHnzlBHGX   Leo
-    Entrevistador  4uvQjLPvqApx1dVzpNfM   Johan  (1 nov: sus cuatro tomas de la U3 se pasaron
-                                          voz a voz a Jerome qqab7XtemzUr6wYwGSrQ:
-                                          Johan salia ronco y con ruido, HNR 1,7 dB.
-                                          Una toma nueva: pedirla con Johan y
-                                          `elevenlabs.py transformar` a Jerome)
+    Entrevistador  4uvQjLPvqApx1dVzpNfM   Johan  (1 nov: se probo pasarlo voz a voz a
+                                          Jerome y Sebastian lo rechazo: golpes de
+                                          viento en el micro. Se queda Johan; en la
+                                          U3 lleva +2 dB a 280 Hz y ~+1,5 dB de nivel.
+                                          Realzar, no transformar)
     Sandra         oWSxI36XAKnfMWmzmQok   Milena
     Salgado        oWSxI36XAKnfMWmzmQok   Milena
     Quintero       x6LHvMgpXmty838MUqHh   Pilar

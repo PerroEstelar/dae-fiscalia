@@ -214,3 +214,18 @@ las palabras («Porque» → «que»). Scribe oye las cuatro igual que las de Jo
 Resultado: relación armónico/ruido 4,0-4,7 dB, pausas −68/−84 dB, c04 +1,6 dB
 para quedar como las otras (−19,8 LUFS). En su línea: `DH_U3_NARRADOR_v3.wav`
 (ReplaceClip, retrato idéntico, 55 clips).
+
+**Revertido el mismo día.** Sebastián: «now it sounds worse, mucho golpe de
+viento en el micrófono… quiero que realces la voz, no que la dañes». Jerome
+fuera; vuelven las cuatro tomas de **Johan** tal cual (crudos, stt y
+`habla_master` de la rejilla restaurados) y sobre el master original solo
+dentro de las cuatro ventanas (±60 ms): EQ **+2 dB a 280 Hz, Q 1** (presencia
+en medios bajos) y ganancia por bloque para quedar **~+1,5 dB** sobre como
+estaba, con techo −17,8 LUFS (`herramientas/voz/realce_entrevistador_u3.py`). Medido, antes →
+después: c02 −20,0 → −18,4, c04 −19,8 → −18,3, c06 −19,2 → −17,9,
+c08 −18,7 → −17,9 LUFS; picos ≤ −2,9 dBFS, sin limitador. Fuera de las
+ventanas el master es bit a bit el original; mismo largo (9 394 531
+muestras). En su línea: `DH_U3_NARRADOR_v4.wav`. Lección: a la voz de un
+personaje que ya está aprobado se la realza (EQ, nivel); cambiarla de voz es
+otra decisión y se pregunta. Si el master de la U3 se vuelve a armar con
+`retomar_dh`, hay que volver a correr el realce.
