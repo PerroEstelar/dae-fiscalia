@@ -149,3 +149,48 @@ detalle graduada con empuje lento), con la piel igualada a la madre.
 - Cambio en la línea con `reemplazar_en_sitio_dh.py` (nuevo=>>viejo): retrato
   idéntico antes y después, 41 clips; nada de lo que Sebastián movió se tocó.
 - Revisados los otros nueve detalles del curso (manos): ninguno roto.
+
+## Entregas
+
+Carpeta «Videos» del Drive (creada el 31 oct dentro de «PRIORIDAD 2 - DDHH
+APLICADOS A LA FUNCIÓN JUDICIAL»): `1Oa_NdV5Uwl6IgMccYY-BO38RofKr7iAk`.
+Nombre: `PRIO 2 - DERECHOS HUMANOS - UNIDAD <n> <TÍTULO>.mp4`. Camino:
+`dh_pieza <L> exportar entregas verificar` → `G:\My Drive\_DH subidas` (md5
+igual) → sincroniza → `update_file(parentId=Videos)`.
+
+- U1 (31 oct): 3316 cuadros, −20,0 LUFS, pico −3,6, 38 MB.
+
+## Revisión de Sebastián de la U2 (31 oct, noche)
+
+Todo entra en SU línea sin remontar: `reemplazar_en_sitio_dh` (nuevo=>>viejo,
+siempre a un archivo de NOMBRE distinto: Resolve guarda lo decodificado y un
+reemplazo con el mismo nombre puede no llegar al render) y `cirugia_dh`
+(poner un item, con retrato antes/después; devuelve a Sebastián a la línea y
+la página en que estaba).
+
+- **Cenital entre r01 y r02:** inserto V3 en los últimos 96 cuadros de la r01
+  (`DET (1, 'el_despacho_desde_arriba')`, placa con las dos hojas y la r01
+  de lugar, cámara de la casa).
+- **r02 con el fondo de la r01:** era imposible (la vemos de frente). Ahora la
+  cámara mira a la pared de la ventana (referencia de lugar: la r18). La r05
+  tenía el mismo problema y se rehizo igual.
+- **r04 («¿quién es ella?»):** Quintero coteja el escrito con los registros
+  telefónicos del expediente (lo que dice la voz). Salgado se presenta con su
+  rótulo en la r14 (cuadros 2-72, antes del cartón).
+- **r07, r12, r21, r22 con movimiento** (Kling): la bandeja; Julián cuelga el
+  teléfono (placa nueva, la r12 ya no es el cajón); Quintero y el juez
+  parpadean, asienten, mueven un poco las manos (10 s, boca cerrada). La
+  primera r21 hizo un empuje de cámara y metió una espalda por el borde: se
+  rehízo con «locked-off», sin figura en primer plano.
+- **r09, la voz del juez:** −20,1 LUFS contra −18,7 de Carlos. +2 dB solo en su
+  bloque (59,1-66,5 s del narrador, rampas en el silencio): −18,1, pico −3,0.
+- **Rótulo de Carmen Elisa en la r13** (no aparece antes en la U2).
+- **2:58, «Ni rechazo reflejo… ni retirada refleja»:** no se cambió. «Rechazo
+  reflejo» es sustantivo + adjetivo (un rechazo automático), en paralelo con
+  «retirada refleja»; con tildes («rechazó», «reflejó») serían verbos y la
+  frase se rompe. El texto es el del documento y Scribe lo oye bien.
+- **Música:** Sebastián recortaba a mano la cama para que no pisara el intro.
+  Ahora `cama_musica` calla antes de `abre` (intro − 23 cuadros, como la dejó
+  él en la U2) y termina de salir en el primer cuadro del outro. U3-U5
+  rehechas y releídas en su línea; la U1 (entregada) y la U2 (recortada por
+  él) no se tocan. Regla en la biblia (§10).

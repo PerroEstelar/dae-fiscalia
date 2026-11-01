@@ -143,8 +143,15 @@ def _nivelar(a, ventana=3.0, suavizado=4.0, sube=4.0, baja=12.0):
     return a * (10 ** (gan / 20))[:, None]
 
 
-def _envolvente(dur, tramos_voz):
-    """1.0 en los huecos, DUCK_DB donde hay voz, con rampas lineales."""
+def _envolvente(dur, tramos_voz, abre=None, cierra=None):
+    """1.0 en los huecos, DUCK_DB donde hay voz, con rampas lineales.
+
+    1 nov (Sebastian, DH U2): «siempre tengo que editar la musica para que no
+    se meta con el sonido de las intros». `abre`/`cierra` (segundos): antes
+    de `abre` la cama calla y entra con un fundido de ENTRADA desde ahi; el
+    fundido de SALIDA termina en `cierra` y despues calla. Asi la cama nunca
+    pisa el sonido de la intro ni el del cierre. Sin ellos, como antes
+    (fundidos en los bordes del archivo)."""
     n = int(round(dur * SR))
     g = np.ones(n, dtype=np.float32)
     duck = float(10 ** (DUCK_DB / 20))
@@ -158,8 +165,12 @@ def _envolvente(dur, tramos_voz):
         if i1 > ib:
             g[ib:i1] = np.minimum(g[ib:i1], np.linspace(duck, 1.0, i1 - ib, dtype=np.float32))
     ne, ns = int(ENTRADA * SR), int(SALIDA * SR)
-    g[:ne] *= np.linspace(0, 1, ne, dtype=np.float32)
-    g[-ns:] *= np.linspace(1, 0, ns, dtype=np.float32)
+    a0 = int(round((abre or 0.0) * SR))
+    c1 = int(round(cierra * SR)) if cierra else n
+    g[:a0] = 0.0
+    g[a0:a0 + ne] *= np.linspace(0, 1, len(g[a0:a0 + ne]), dtype=np.float32)
+    g[max(0, c1 - ns):c1] *= np.linspace(1, 0, len(g[max(0, c1 - ns):c1]), dtype=np.float32)
+    g[c1:] = 0.0
     return g[:, None]
 
 
@@ -194,7 +205,7 @@ def _unir(tramos, hueco):
 
 
 def cama(pista, salida, dur, tramos_voz, objetivo=-26.0, costura=None, nivelar=None,
-         unir=None):
+         unir=None, abre=None, cierra=None):
     a = _decodificar(pista, dur, costura)
     if unir:
         antes = len(tramos_voz)
@@ -210,7 +221,10 @@ def cama(pista, salida, dur, tramos_voz, objetivo=-26.0, costura=None, nivelar=N
     a *= float(10 ** ((objetivo - actual) / 20))        # al nivel de hueco
     os.remove(tmp)
 
-    a *= _envolvente(dur, tramos_voz)
+    a *= _envolvente(dur, tramos_voz, abre, cierra)
+    if abre or cierra:
+        print("   cama: calla antes de %.2f s y despues de %.2f s (intro y cierre)"
+              % (abre or 0.0, cierra or dur))
     pico = float(np.abs(a).max())
     if pico > 0.89:                                      # techo a −1 dBTP con aire
         a *= 0.89 / pico
@@ -232,4 +246,5 @@ if __name__ == "__main__":
     spec = json.load(open(sys.argv[1], encoding="utf-8"))
     for c in spec:
         cama(c["pista"], c["salida"], c["dur"], [tuple(t) for t in c["voz"]],
-             c.get("objetivo", -26.0), c.get("costura"), c.get("nivelar"), c.get("unir"))
+             c.get("objetivo", -26.0), c.get("costura"), c.get("nivelar"), c.get("unir"),
+             c.get("abre"), c.get("cierra"))

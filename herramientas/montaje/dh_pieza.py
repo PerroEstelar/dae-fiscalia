@@ -676,6 +676,8 @@ def blancos(L):
 # Derechos humanos (31 oct): la leccion de la U3 de Justicia restaurativa
 # va por defecto en los cinco: cama nivelada antes del ducking y tramos de
 # voz unidos en las pausas cortas.
+# 1 nov: la cama entra 23 cuadros antes de que acabe la intro (Sebastian, U2)
+MUSICA_ABRE = N_INTRO - 23
 _AJUSTE = {'nivelar': {'ventana': 3.0, 'suavizado': 4.0, 'sube': 4.0,
                        'baja': 12.0},
            'unir': 1.5}
@@ -691,8 +693,13 @@ def musica(L):
     os.makedirs(os.path.dirname(sal), exist_ok=True)
     if os.path.exists(sal):
         aparta(sal, 'rehecha_%s' % time.strftime('%H%M%S'))
+    # 1 nov (Sebastian): la cama no pisa el sonido de la intro ni del cierre.
+    # Entra con fundido en el ultimo segundo de la intro (como la dejo el a
+    # mano en la U2: cuadro 159) y termina de salir donde empieza el cierre.
     spec = [{'pista': CAMA_MUSICA.get(L, PISTA_MUSICA_FUENTE), 'salida': sal,
-             'dur': round(pieza(L) / FPS_N, 3), 'voz': voz, 'objetivo': -26.0}]
+             'dur': round(pieza(L) / FPS_N, 3), 'voz': voz, 'objetivo': -26.0,
+             'abre': round(MUSICA_ABRE / FPS_N, 3),
+             'cierra': round((pieza(L) - N_INTRO) / FPS_N, 3)}]
     spec[0].update(CAMA_AJUSTES.get(L, {}))
     sp = os.path.join(TMP, 'spec_musica_dh_%s.json' % L)
     json.dump(spec, open(sp, 'w', encoding='utf-8'), indent=1)

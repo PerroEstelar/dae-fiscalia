@@ -72,5 +72,31 @@
   "negativo": "looking at the camera, stopping, turning around, face morphing, face becoming 3D, smile, grin, laughing, open mouth, talking, lip movement, blinking repeatedly, new person, extra person, duplicated person, camera movement, zoom, pan, dolly, camera shake, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, Pixar style, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, number plate, rider face, rider removing helmet, motorcycle speeding up, motorcycle overtaking",
   "descartes": [],
   "nota": "31 oct, noche: detalle V3 de la r05 (Sebastian: la moto que la sigue). Cuadro inicial = DETALLE/_grade; se usan los primeros 84 cuadros sin retime (detalle_dh.CORTE)."
+ },
+ "DH_U2_r07_la_respuesta": {
+  "duracion": 5,
+  "prompt": "The young man's hand lowers the single sheet of paper into the metal tray, lets go of it, and withdraws slowly up and out of the frame. The sheet settles flat in the tray and stays there. The camera does not move at all and the framing does not change. Only the movement described happens; nothing else in the frame moves. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "descartes": [],
+  "nota": "31 oct, noche (Sebastian: «r07 can be animated»). En su linea el item de V1 lee el archivo de MOVIMIENTO."
+ },
+ "DH_U2_r12_julian_cuelga": {
+  "duracion": 5,
+  "prompt": "The young man finishes setting the handset of the desk telephone down on its base, slowly lets go of it, and his right hand comes to rest beside the telephone; his left hand stays on the grey folder. He lowers his head a little and breathes out, his eyes still on the telephone. His mouth stays closed. The camera does not move at all and the framing does not change. Only the movement described happens; nothing else in the frame moves. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "descartes": [],
+  "nota": "31 oct, noche (Sebastian: «r12 ... hanging up a phone»). Placa nueva."
+ },
+ "DH_U2_r21_quintero_sustenta": {
+  "duracion": 10,
+  "prompt": "A locked-off shot on a tripod: the camera does not move at all, no push-in, no zoom, the framing stays exactly the same from the first frame to the last. The prosecutor stands at the table, composed and attentive, her eyes open and her expression steady: she blinks naturally two or three times, gives one small slow nod, and her open hand moves a few centimetres and comes to rest on the stapled sheets. Her mouth stays closed. In the background the judge and the woman at the other table sit still, listening. Nobody and nothing enters the frame: the edges of the frame stay exactly as they are in the first frame. The camera does not move at all and the framing does not change. Only the movement described happens; nothing else in the frame moves. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "descartes": [
+   "8aymtoOIrU: empuje de camara y una espalda entra por el borde derecho desde ~4 s"
+  ],
+  "nota": "31 oct, noche (Sebastian: «r21 and r22 small animation: blinking, nod, little hand movements»)."
+ },
+ "DH_U2_r22_el_juez_valora": {
+  "duracion": 10,
+  "prompt": "The judge writes one short line in the open case file with the pen, pauses, blinks naturally, and nods very slightly once to himself; then the pen moves on a little along the page. His other hand stays flat on the page. His mouth stays closed. The camera does not move at all and the framing does not change. Only the movement described happens; nothing else in the frame moves. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "descartes": [],
+  "nota": "31 oct, noche. Al final levanta la mirada: cae bajo el carton de Gelman."
  }
 }

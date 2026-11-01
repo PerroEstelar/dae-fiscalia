@@ -56,7 +56,17 @@ LOWERS = {
            # cruza el corte a la r09)
            ('lt02_andres', 8, {'nombre': 'Andrés Peña', 'cuadros': 96}, 67)],
     'U2': [('lt01_julian', 1, {'nombre': 'Julián Mora', 'dato': 'Asistente'}),
-           ('lt02_quintero', 2, {'nombre': 'Marina Quintero', 'dato': 'Fiscal'})],
+           ('lt02_quintero', 2, {'nombre': 'Marina Quintero', 'dato': 'Fiscal'}),
+           # 31 oct, noche (Sebastian): «nos falto un lower third de Carmen
+           # Elisa ya que ella no ha salido en este video». La r13 no lleva
+           # carton (p05 termina antes, p06 empieza en la r14).
+           ('lt03_carmen', 13, {'nombre': 'Carmen Elisa Rojas',
+                                'dato': 'Vocera de la mesa de víctimas del municipio'}),
+           # y la abogada: la r04 ya no es suya, asi que la r14 es donde se
+           # la ve por primera vez. El carton «Bastó invocar...» entra en el
+           # cuadro 74 de la r14: el rotulo va del 2 al 72.
+           ('lt04_salgado', 14, {'nombre': 'Abogada Salgado',
+                                 'dato': 'Defensora de Wilmer Acosta', 'cuadros': 70}, 2)],
     'U3': [('lt01_sandra', 14, {'nombre': 'Sandra Ibáñez'})],
     # U4, revision: los cartones de la r02 y la r23 siguen encima de la r04 y
     # la r24. Quintero pasa a la r21 (su plano medio), Salgado entra en el
@@ -89,9 +99,16 @@ def lista(L):
 if __name__ == '__main__':
     import lower_third as LT
     import dh_pieza as GP
-    for L in [a.upper() for a in sys.argv[1:]] or sorted(LOWERS):
+    # `U2:lt03_carmen` rinde solo ese (los que ya estan en una linea tocada
+    # no se reescriben)
+    pedidos = [a for a in sys.argv[1:]]
+    solo = {tuple(a.split(':', 1)) for a in pedidos if ':' in a}
+    temas = sorted({a.split(':')[0].upper() for a in pedidos}) or sorted(LOWERS)
+    for L in temas:
         for e in LOWERS[L]:
             nom, r, spec = e[0], e[1], e[2]
+            if solo and (L, nom) not in {(x.upper(), y) for x, y in solo}:
+                continue
             p = archivo(L, nom)
             os.makedirs(os.path.dirname(p), exist_ok=True)
             GP.aparta(p, 'rehecho')

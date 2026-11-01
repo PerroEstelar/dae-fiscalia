@@ -20,7 +20,7 @@ CINCO ESCENAS
     B  las tres carpetas sobre la mesa del despacho, cenital (r06): son
        los tres caminos y vuelven recortadas en r11 (B), r15 (C) y abiertas
        en r24 (la sintesis)
-    C  la oficina de la abogada Salgado (r04, r14)
+    C  la oficina de la abogada Salgado (r14; la r04 era suya hasta el 31 oct)
     D  la sala de audiencias (r08 ANCLA de la sala, que vuelve en toda la
        U4): el juez lee y pregunta (r09), el expediente (r10), Quintero
        sustenta (r21), el juez valora (r22)
@@ -51,15 +51,24 @@ that will need an answer.
 ''')
 
 R[2] = (172, 'dia', ('quintero',), False, False, 'despacho', '''
-Medium-close shot of %(quintero)s seated at her desk, from the chest up, in
-three-quarter view from the front, the camera at seated height across the
-desk, perfectly level. Mid-action: she reads the stapled sheets she holds in
-both hands at chest height, her reading glasses low on her nose, her eyes on
-the page, one eyebrow slightly raised. The back of the sheets shows nothing.
-The window behind her is bright; a soft rim of daylight on her shoulder.
+Medium-close shot of %(quintero)s seated at her desk, from the chest up, seen
+from the FRONT across the desk, the camera at seated height where Julian stood,
+perfectly level, facing the window wall. Mid-action: she reads the stapled
+sheets she holds in both hands at chest height, her reading glasses low on her
+nose, her eyes on the page, one eyebrow slightly raised. The back of the sheets
+shows nothing. Directly BEHIND her the wide window fills the background: the
+clay tile roofs across the street and the green slopes beyond, bright morning
+light, a soft rim of daylight on her shoulders. Behind her there are NO
+shelves, NO folders and NO wall clock: those are on the other walls of the
+room, behind the camera.
 
 Her state: attentive, unhurried; reading a lawyer's argument carefully.
 ''')
+
+# 31 oct, noche (Sebastian): «r02 shares the exact same background as r01,
+# which is not possible because we are seeing la fiscal desde otro angulo».
+# La r02 es el contraplano: la camara donde estaba Julian, mirando a la
+# ventana; detras de ella solo la ventana.
 
 R[3] = (180, 'dia', ('quintero',), False, False, 'despacho', '''
 Close shot over the shoulder of a woman in a plain charcoal grey blazer,
@@ -72,25 +81,36 @@ right hand rests under a line in the middle of the page. Daylight from the
 window falls across the paper. Her face is not in frame.
 ''')
 
-R[4] = (179, 'dia', ('salgado',), False, False, 'oficina_defensa', '''
-Medium shot of %(salgado)s at her desk in her own office, from the waist up,
-in three-quarter view, the camera at seated height, perfectly level.
-Mid-action: she is signing the last page of a short document with a plain
-dark pen, the page flat on the desk, her other hand holding the slim black
-folder open beside it; her face calm and concentrated, her eyes on the page.
-A plain desk lamp is on. Behind her, the shelves of thick law books with blank
-spines, and a window with a half-closed blind laying thin stripes of light on
-the wall.
+# 31 oct, noche (Sebastian): «r04 I don't understand it, who is she? maybe
+# something more acorde a lo que se esta hablando». La voz (el escrito de
+# Salgado) habla de los REGISTROS TELEFONICOS y la vida privada: Quintero
+# coteja el escrito con los registros del expediente. Salgado se presenta
+# con su rotulo en la r14.
+R[4] = (179, 'dia', ('quintero',), False, False, 'despacho', '''
+Medium shot of %(quintero)s at her desk, from the waist up, seen from the
+side of the room, the camera at seated height, perfectly level. Mid-action:
+she has laid the stapled sheets flat on the desk beside the thick open case
+file, which shows a printed table of phone records drawn ONLY as rows and
+columns of plain flat grey bars, nothing legible; with the index finger of
+her right hand she runs down one column of the records, comparing, her
+reading glasses on, her eyes on the table. Her left hand rests flat on the
+stapled sheets. Behind her, slightly out of focus, the metal shelves of case
+folders; daylight from the window on the right.
 
-Her state: serene and technical; doing her job well.
+Her state: checking what the lawyer says against what the file holds.
 ''')
 
+# 31 oct, noche: el mismo problema que Sebastian vio en la r02 (de frente,
+# con el fondo de la r01): detras de ella va la ventana.
 R[5] = (132, 'dia', ('quintero',), False, False, 'despacho', '''
 Close-up of %(quintero)s at her desk, face and shoulders, in three-quarter
-view, the camera at seated height, perfectly level. Mid-action: she has just
-lowered the stapled sheets to the desk and is taking off her reading glasses
-with one hand, her eyes lifting from the page to a point in front of her,
-thinking. The bright window behind her, slightly out of focus.
+view from the front, the camera at seated height across the desk, perfectly
+level, facing the window wall. Mid-action: she has just lowered the stapled
+sheets to the desk and is taking off her reading glasses with one hand, her
+eyes lifting from the page to a point in front of her, thinking. Directly
+BEHIND her, slightly out of focus, the wide bright window with the clay tile
+roofs and the green slopes; NO shelves, NO folders and NO wall clock behind
+her.
 
 Her state: weighing it; not alarmed, not dismissive.
 ''')
@@ -155,13 +175,19 @@ R[11] = (122, 'dia', ('quintero',), False, False, 'despacho', '''
 (reusa r06: la carpeta del medio)
 ''')
 
+# 31 oct, noche (Sebastian): «r12 can be instead a brief animation of the
+# same guy at the same office but hanging up a phone». Julian cuelga: el
+# despacho acaba de renunciar a los registros (b09). Kling.
 R[12] = (153, 'dia', ('julian',), False, False, 'despacho', '''
-Close shot of a plain grey desk drawer half open in the prosecutor's office,
-the camera at desk height, perfectly level. Mid-action: a young man's hand,
-the cuff of a plain light grey shirt under a dark grey knitted vest, lowers a
-thin plain grey folder of printed sheets into the drawer; the top sheet shows
-a long column of short grey bars, nothing legible. The folder settles flat in
-the drawer. Daylight from the left across the desk top. No face in frame.
+Medium shot of %(julian)s standing beside the desk in the prosecutor's office,
+from the waist up, in three-quarter view, the camera at standing height,
+perfectly level. Mid-action: with his right hand he is putting the handset of
+the plain desk telephone back down on its base, the coiled cord hanging
+loose; his left hand rests on a thin plain grey folder on the desk. His eyes
+are down on the telephone, his mouth closed, his face sober. Behind him the
+metal shelves of case folders; morning daylight from the window on the left.
+
+His state: the call is done and he does not like what it means.
 ''')
 
 R[13] = (153, 'dia', ('carmen',), None, False, 'cabina', '''
@@ -286,10 +312,10 @@ side. Late-morning daylight from the window on the left.
 What the camera asserts: the next step is yours.
 ''')
 
-NOMBRE = {1: 'el_escrito', 2: 'quintero_lee', 3: 'la_pagina', 4: 'salgado_firma',
+NOMBRE = {1: 'el_escrito', 2: 'quintero_lee', 3: 'la_pagina', 4: 'los_registros',
           5: 'las_gafas', 6: 'tres_carpetas', 7: 'la_respuesta', 8: 'la_sala',
           9: 'el_juez_pregunta', 10: 'el_expediente', 11: 'camino_b',
-          12: 'el_cajon', 13: 'carmen_al_aire', 14: 'salgado_cierra',
+          12: 'julian_cuelga', 13: 'carmen_al_aire', 14: 'salgado_cierra',
           15: 'camino_c', 16: 'la_mesa', 17: 'el_libro', 18: 'la_ventana',
           19: 'la_orden', 20: 'la_motivacion', 21: 'quintero_sustenta',
           22: 'el_juez_valora', 23: 'quintero_b', 24: 'los_tres_caminos',
@@ -307,13 +333,13 @@ SILUETAS = set()
 CARTONES = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
             19, 20, 21, 22, 23, 24, 25}
 CENITALES = {6}
-SOLO_MANOS = {3, 6, 7, 10, 12, 17}
+SOLO_MANOS = {3, 6, 7, 10, 17}
 SIN_CARA = set()
 TOPE_SIN_GENTE = 3
 PIEZA = 4822
 TOTAL = PIEZA - (182 + 119 + 48 + 119 + 182)
 
-HOJAS = {1: ['quintero', 'julian'], 2: ['quintero'], 4: ['salgado'],
+HOJAS = {1: ['quintero', 'julian'], 2: ['quintero'], 4: ['quintero'], 12: ['julian'],
          5: ['quintero'], 8: ['juez', 'quintero', 'salgado'], 9: ['juez'],
          13: ['carmen'], 14: ['salgado'], 16: ['quintero', 'julian'],
          18: ['quintero'], 19: ['quintero', 'julian'], 20: ['quintero'],
@@ -326,20 +352,49 @@ SALA = 'DH_U2_r08_la_sala'
 REF_PLACA = {
  1: ([ANCLA], 'estilo', ''),
  8: ([ANCLA], 'estilo', ''),
- 4: ([ANCLA], 'estilo', ''),
+ 4: ([DESPACHO], 'lugar', ''),
  13: (['DH_U1_r02_carmen_llega'], 'estilo', 'It is the inside of that same radio station. '),
- 2: ([DESPACHO], 'lugar', ''), 3: ([DESPACHO], 'lugar', ''),
- 5: ([DESPACHO], 'lugar', ''), 6: ([DESPACHO], 'lugar', ''),
+ # 31 oct, noche: los planos de frente de Quintero miran a la PARED DE LA
+ # VENTANA: la referencia de lugar es la r18 (la camara mira a la ventana)
+ 2: (['DH_U2_r18_la_ventana'], 'lugar', 'The camera faces the WINDOW WALL, as in this plate: behind her there is only the window. '),
+ 3: ([DESPACHO], 'lugar', ''),
+ 5: (['DH_U2_r18_la_ventana'], 'lugar', 'The camera faces the WINDOW WALL, as in this plate: behind her there is only the window. '), 6: ([DESPACHO], 'lugar', ''),
  7: ([DESPACHO], 'lugar', ''), 12: ([DESPACHO], 'lugar', ''),
  16: ([DESPACHO], 'lugar', ''), 17: ([DESPACHO], 'lugar', ''),
  18: ([DESPACHO], 'lugar', ''), 19: ([DESPACHO], 'lugar', ''),
  20: ([DESPACHO], 'lugar', ''), 25: ([DESPACHO], 'lugar', ''),
  9: (['DH_U2_r22_el_juez_valora'], 'lugar', ''), 10: ([SALA], 'lugar', ''),
  21: ([SALA], 'lugar', ''), 22: ([SALA], 'lugar', ''),
+ # la placa vieja de Salgado (r04 hasta el 31 oct) sigue siendo la referencia de su oficina
  14: (['DH_U2_r04_salgado_firma'], 'lugar', ''),
 }
 
 DET = {
+ # 31 oct, noche (Sebastian): «between r01 and r02 we need like a top down
+ # shot of the office just to add variation». Inserto en la V3 de su linea,
+ # los ultimos 96 cuadros de la r01 (497-593, sin rotulo ni carton encima),
+ # con «...citado a interrogatorio. El escrito dice, en lo esencial:».
+ (1, 'el_despacho_desde_arriba'): dict(cuadros=96, entra=196, registro='dia',
+     personas=('quintero', 'julian'), lugar='despacho',
+     hojas=['quintero', 'julian'],
+     ref=(['DH_U2_r01_el_escrito'], 'lugar', ''),
+     escena='''
+Overhead shot looking straight down from the ceiling onto the desk of the
+prosecutor's office, perfectly vertical. Mid-action: %(quintero)s, seated at
+the desk, has the stapled sheets in front of her and leans over them, seen
+from directly above: the top of her head and her shoulders in the plain
+charcoal grey blazer, her hands on the sheets. %(julian)s stands at the near
+side of the desk, seen from directly above too: the top of his dark curly
+head, his shoulders in the dark grey knitted vest, one hand still resting on
+the edge of the desk. On the desk: the thick open case file with its black
+binder clip, a plain desk telephone, the computer screen seen from above, a
+pen. Morning daylight from the window side lays one soft shadow of each of
+them across the floor and the desk. Nothing legible anywhere.
+
+This is ONE single continuous picture that fills the whole frame: NOT a split
+screen, NOT a comic page, NOT a storyboard sheet, NO panels, NO inset pictures.
+''',
+     gesto='quieto'),
  (5, 'las_gafas'): dict(cuadros=72, entra=50, registro='dia',
      personas=('quintero',),
      escena='Extreme close shot of a woman\'s hand holding a pair of plain '
@@ -365,12 +420,19 @@ BROLL = {}
 
 MOV = {
  1: 'kling: Julián alarga los papeles y Quintero los toma; la cámara quieta',
+ # 31 oct, noche (Sebastian): r07 «can be animated»; r12 Julian cuelga;
+ # r21 y r22 «small animation: blinking, nod, little hand movements». En la
+ # linea de Sebastian entran con `reemplazar_en_sitio` (nuevo=>>viejo: el
+ # item de V1 pasa a leer el archivo de MOVIMIENTO, mismo largo).
+ 7: 'kling: la mano deja la hoja en la bandeja y se retira',
+ 12: 'kling: Julián cuelga el teléfono',
  13: 'quieta (31 oct): solo habla; Kling deforma las caras al hablar',
  18: 'quieta (31 oct): la nube no se hizo; camara de la casa',
- 21: 'quieta (31 oct): solo habla',
+ 21: 'kling 10 s: Quintero parpadea, asiente, la mano se mueve poco; boca cerrada',
+ 22: 'kling 10 s: el juez escribe, parpadea y asiente; boca cerrada',
 }
-
-LOWER_THIRD = {1: 'Julián Mora', 2: 'Marina Quintero'}
+LOWER_THIRD = {1: 'Julián Mora', 2: 'Marina Quintero', 13: 'Carmen Elisa Rojas',
+               14: 'Abogada Salgado'}
 
 
 def comprobar():

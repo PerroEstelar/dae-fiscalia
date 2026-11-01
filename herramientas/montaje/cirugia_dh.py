@@ -1,20 +1,21 @@
 # -*- coding: utf-8 -*-
-r"""Cirugia sobre una linea que Sebastian ya toco: cambios puntuales de items,
+r"""(Derechos humanos; es `cirugia_jr` con la linea anterior devuelta al final.)
+Cirugia sobre una linea que Sebastian ya toco: cambios puntuales de items,
 SIN remontar (31 oct, la revision del C2). Complementa a
 `reemplazar_en_sitio_dh.py` (que solo cambia el MEDIO de un clip).
 
-    python cirugia_dh.py C2 v4                   rehace la pista CARTONES (V4)
+    python cirugia_dh.py U2 v4                   rehace la pista CARTONES (V4)
                                                  completa segun el plan actual
-    python cirugia_dh.py C2 quitar V3 <archivo> [pos]
+    python cirugia_dh.py U2 quitar V3 <archivo> [pos]
                                                  quita el item de esa pista que
                                                  usa ese archivo (y esa posicion
                                                  relativa, si se da)
-    python cirugia_dh.py C2 poner V8 <ruta> <pos> <largo>
+    python cirugia_dh.py U2 poner V8 <ruta> <pos> <largo>
                                                  pone un clip nuevo en esa pista
                                                  en el cuadro `pos` de la linea
-    python cirugia_dh.py C2 relink <ruta> [...]  relee archivos reescritos en
+    python cirugia_dh.py U2 relink <ruta> [...]  relee archivos reescritos en
                                                  su sitio (ReplaceClip)
-    python cirugia_dh.py C2 retrato              imprime el retrato de la linea
+    python cirugia_dh.py U2 retrato              imprime el retrato de la linea
                                                  contra el plan (que cambio)
 
 Antes y despues se toma el RETRATO (pista, archivo, entrada, salida,
@@ -41,9 +42,17 @@ def w(*a):
     print(*a, flush=True)
 
 
+ANTES = {}
+
+
 def linea(L):
     resolve = SP._resolve()
     pr = resolve.GetProjectManager().GetCurrentProject()
+    # 1 nov: Sebastian sigue trabajando en otra linea mientras esto corre: se
+    # anota en cual estaba y en que pagina, y se le devuelve al terminar
+    cur = pr.GetCurrentTimeline()
+    ANTES['linea'] = cur.GetName() if cur else None
+    ANTES['pagina'] = resolve.GetCurrentPage()
     nl = SP.nombre_linea(L)
     for i in range(1, int(pr.GetTimelineCount()) + 1):
         t = pr.GetTimelineByIndex(i)
@@ -175,6 +184,17 @@ def main():
         raise SystemExit(2)
     resolve.GetProjectManager().SaveProject()
     w('guardado;', SP.nombre_linea(L), 'largo', tl.GetEndFrame() - tl.GetStartFrame())
+    devolver(resolve, pr)
+
+
+def devolver(resolve, pr):
+    if ANTES.get('linea'):
+        for i in range(1, int(pr.GetTimelineCount()) + 1):
+            t = pr.GetTimelineByIndex(i)
+            if t and t.GetName() == ANTES['linea']:
+                pr.SetCurrentTimeline(t)
+    if ANTES.get('pagina'):
+        resolve.OpenPage(ANTES['pagina'])
 
 
 if __name__ == '__main__':
