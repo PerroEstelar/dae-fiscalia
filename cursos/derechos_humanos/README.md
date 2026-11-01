@@ -165,6 +165,10 @@ igual) → sincroniza → `update_file(parentId=Videos)`.
   (`14k_ryU-mtLcMxL4m7DxLtah5W74_x23-`). D: estaba lleno y el primer master salió
   cortado: se movieron ~30 GB de renders viejos de `D:\DAE\_tmp` a
   `E:\DAE MASTER\_archivo_tmp` (nada borrado) y se volvió a exportar.
+- U5 (1 nov, «we are good to go»): su línea tal cual, 3093 cuadros (la pieza
+  del plan medía 3141; él quitó el respiro final), −19,5 LUFS, pico −4,1, 37 MB
+  (`1t-mlOu56P7z2rpCC44mKbn-avABOxhGI`). Único negro: su fundido desde negro al
+  entrar la r11 (92,26 s, 1 cuadro). Con esto el curso queda entregado completo.
 
 ## Revisión de Sebastián de la U2 (31 oct, noche)
 
