@@ -285,4 +285,4 @@ r25). r06 y r20 (REUSA al 0,7) salen del cuadro 0 de la ranura y se
 conforman sin recorte (`KLING_DESDE_RANURA`). Descartes: r03 dos veces (él
 toma la carpeta; luego la cámara se corre), r16 y r20 una vez (guiño y
 sonrisa con dientes; el cuerpo se mecía). r08 y r19 no llevan: el detalle de
-V3 los tapa casi enteros. Créditos: ~9.000.
+V3 los tapa casi enteros. Créditos: 9.000 (quedan 18.850).
