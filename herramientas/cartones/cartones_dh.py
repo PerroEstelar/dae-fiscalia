@@ -200,6 +200,12 @@ ELEGIDOS = {
   ('e01_estado_del_caso', 'hoy vence el término para definir la acusación.'),
   ('e04_hoy_cerramos', 'Lo que decidamos de un lado no puede deshacer lo del '
    'otro.'),
+  # 1 nov (Sebastian: «we are missing a carton in r07»): las cuatro preguntas
+  # del cierre, «Que se decide y con que soporte; como queda protegida la
+  # victima; que pasa con la medida; con que fuentes y estandares;», cruzan
+  # e05 y e06 y `calcula` no arma cartones de dos bloques: va a mano, quemado
+  # con `cartones_apretados_dh` (DH_U5_p02b_carton_ap227.mov, V4 1344-1571,
+  # entra con «que se decide» y le deja 24 cuadros al de coherencia).
   ('e06_prueba_de_coherencia', 'ninguna protección vulnera garantías, '
    'ninguna restricción desprotege.'),
   ('e07_se_retracta', 'el comerciante que declaró haber visto a Acosta dejar '

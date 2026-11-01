@@ -326,3 +326,19 @@ ventana). Más U5 r08 y r13 reconformados. 5.040 créditos; quedan ~13.800
 para la serie siguiente. Las caras que en el 31 oct «se deformaban al
 hablar» (U4 r06, r24, r28) salieron bien con Kling 3.0 y la plantilla de
 habla de la U3 (cuerpo y cabeza en su sitio, la expresión no cambia).
+
+## Revisión de Sebastián de la U5 (1 nov)
+
+Sobre SU línea (ya le había quitado el respiro final, recortado el cartón p07,
+la cama hasta el outro y puesto un fundido desde negro al entrar la r11: se
+respeta todo; la línea mide 3093).
+- «r06 its a repeated clip from the previous one, we need variety»: la r06
+  deja de reusar la r05. Placa nueva, cenital de la mesa con las cuatro
+  carpetas y la hoja en blanco por redactar (`DH_U5_r06_la_pagina_en_blanco`,
+  candidata c de 3, 105 créditos); horneada a 164 y releída en su línea con
+  `reemplazar_en_sitio_dh` (retrato idéntico).
+- «we are missing a carton in r07»: las cuatro preguntas del cierre, VERBATIM
+  de e05-e06, «Qué se decide y con qué soporte; cómo queda protegida la
+  víctima; qué pasa con la medida; con qué fuentes y estándares;», 3
+  renglones, 11,9 car/s; entra con «qué se decide» (1344), sigue en la r07
+  y le deja 24 cuadros al de coherencia (`cirugia_dh poner V4`).

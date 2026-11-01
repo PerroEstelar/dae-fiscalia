@@ -85,8 +85,20 @@ long soft shadows across the table and the chair.
 What the camera asserts: this place is yours.
 ''')
 
+# 1 nov (Sebastian: «r06 its a repeated clip from the previous one, we need
+# variety»): la r06 ya no reusa la r05; es un cenital de la mesa con la hoja
+# en blanco que hay que redactar (lo que dice la voz: «redacte desde su rol
+# la actuacion de cierre… ¿que se decide…?»).
 R[6] = (164, 'dia', (), False, False, 'despacho', '''
-(reusa r05: las cuatro carpetas, mas cerca)
+Overhead shot, looking straight down, of the meeting table in the
+prosecutor's office: in a row across the top of the frame, four plain closed
+folders side by side, nothing written on them; below them, in the middle of
+the frame, a single plain sheet of paper, still blank, with a plain pen lying
+across it, waiting for the closing document to be written. Low warm
+afternoon light from the window lays long soft shadows of the folders across
+the table. Nobody in the frame.
+
+What the camera asserts: the four questions, and the page you have to write.
 ''')
 
 R[7] = (223, 'dia', ('quintero',), False, False, 'despacho', '''
@@ -154,19 +166,19 @@ What the camera asserts: the case is not over; the work goes on.
 ''')
 
 NOMBRE = {1: 'el_estado_del_caso', 2: 'los_elementos', 3: 'el_altavoz',
-          4: 'hoy_cerramos', 5: 'la_silla_vacia', 6: 'la_silla_vacia_b',
+          4: 'hoy_cerramos', 5: 'la_silla_vacia', 6: 'la_pagina_en_blanco',
           7: 'coherencia', 8: 'julian_entra', 9: 'el_celular',
           10: 'gracias_por_avisar', 11: 'reponderar', 12: 'el_equipo',
           13: 'se_abre_hoy'}
 
 REUSA = {
- 6: (5, dict(encuadre=0.7, empuje=0.04, centro=[0.5, 0.55])),
+ # 6: (5, ...) hasta el 1 nov: repetia la r05 (Sebastian pidio variedad)
 }
 
 CON_PERSONA = {1, 2, 3, 4, 7, 8, 9, 10, 11, 12, 13}
 SILUETAS = set()
 CARTONES = set(range(1, 14))
-CENITALES = set()
+CENITALES = {6}
 SOLO_MANOS = {3, 7, 9}
 SIN_CARA = set()
 TOPE_SIN_GENTE = 3
@@ -183,7 +195,7 @@ ANCLA5 = 'DH_U5_r01_el_estado_del_caso'
 REF_PLACA = {
  1: ([DESPACHO_U2], 'lugar', 'It is now the END OF THE AFTERNOON: low warm light. '),
 }
-for _n in (2, 3, 4, 5, 7, 9, 10, 12):
+for _n in (2, 3, 4, 5, 6, 7, 9, 10, 12):
     REF_PLACA[_n] = ([ANCLA5], 'lugar', '')
 for _n in (8, 11, 13):
     REF_PLACA[_n] = ([ANCLA5], 'lugar', 'It is now DUSK: the window is a pale band of evening sky and the room is dimmer. ')
