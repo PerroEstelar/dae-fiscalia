@@ -1,0 +1,99 @@
+{
+ "_nota": "Enfoque diferencial (3 nov). Kling 2.5 (kling-25), 720p, 16:9, 5 s, 140 creditos. Cuadro inicial = placa GRADUADA de la ranura, subida con \"tipo\": \"kling\". Solo accion real (biblia §8): caminar, un bote, un rio, un trapero, velas, una mano que habla. Lo demas, camara de la casa. Prompts en positivo, con destino, y la cola de la casa al final. 12 clips, 1.680 creditos.",
+ "ED_C1_r01_el_pasillo": {
+  "prompt": "The prosecutor in the navy-grey suit walks steadily down the long corridor toward the camera, one unhurried step after another, the grey folder under his left arm and his glasses folded in his right hand, his eyes on the floor ahead of him; he keeps walking until he is a few steps closer, filling more of the frame. The window at the far end stays bright behind him and the empty benches stay where they are. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "ED_C1_r21_la_valoracion": {
+  "prompt": "The young woman in the mustard cardigan, seated in the left armchair, speaks calmly, moving her open right hand slowly at chest height as she talks and then resting it back on the notebook in her lap. The psychologist in the right armchair listens, nods slowly twice and keeps her pen still above her notepad. The glasses and the jug on the low table stay where they are. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "ED_C2_r04_la_casa": {
+  "prompt": "A light morning breeze moves the leaves of the big almond tree and its round shadow trembles softly on the pavement. Far down the empty street a small motorcycle rides slowly away from the camera and disappears around the corner. The house, the porch, the two rocking chairs and the half-open grille door stay exactly where they are; nobody comes out. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "ED_C2_r17_el_piso_lavado": {
+  "prompt": "The grey string mop slides slowly across the pale tiles from left to right, pushing a thin sheet of water ahead of it, and comes back once, leaving the floor shining wet; the feet in rubber sandals take one small step sideways to follow it. The bucket stays where it is. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "ED_C2_r30_las_velas": {
+  "prompt": "The small candle flames flicker gently in the night air and their soft light trembles on the hands and on the pavement. The people holding the candles stand still in their half-circle, one of them slowly lowers his head. The house and the dark almond tree stay exactly where they are. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "ED_C3_r04_el_pasillo": {
+  "prompt": "The tall patrolman walks slowly down the narrow aisle of the cabin toward the camera, step by step, his open hands low at his sides, his partner following one step behind him. The seated passengers on both sides turn their heads slowly to follow them as they pass. The seats, the overhead bins and the cabin lights stay exactly where they are. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "ED_C3_r09_el_traslado": {
+  "prompt": "The four figures walk steadily away from the camera down the long empty departures hall, toward the lit glass door at the far end, their long shadows sliding along the polished floor behind them; they keep walking and grow smaller with distance. The rows of empty seats and the dark windows stay exactly where they are. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "ED_C3_r24_el_amanecer": {
+  "prompt": "The patrolman stands on the apron in the first light, breathing slowly, his gaze fixed on the parked white plane; a slight breeze moves the collar of his jacket. Behind him the pale sky brightens very slightly. The plane, the stair and the terminal stay exactly where they are. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "ED_C4_r10_el_rio": {
+  "prompt": "The long wooden boat glides slowly forward along the wide brown river, the water sliding past its side and small ripples spreading behind it; the low cloud drifts slowly over the forest on the far bank. The woman in the mustard blouse sits still with the small grey backpack on her lap, looking ahead, and the boatman stays at the motor. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "ED_C4_r17_punto_muerto": {
+  "prompt": "The wide brown river flows slowly past from right to left and the low cloud drifts over the far forest. A light breeze moves the hem of the woman's skirt and a strand of her hair; she stands still on the bank, the small grey backpack hanging from her hand, looking at the water. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "ED_C5_r01_la_calle": {
+  "prompt": "The woman in the mustard coat walks steadily toward the camera along the wet night street, through the pool of light under the street lamp, glancing back once over her shoulder and then looking ahead again as she keeps walking. Far behind her the dark figure under the other lamp stays where he is. The parked cars and the houses stay exactly where they are. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "ED_C5_r18_la_salida": {
+  "prompt": "The woman in the mustard coat walks down the concrete steps of the building toward the camera, one step after another, holding the folded paper in her hand and her eyes on the steps, until she reaches the bottom step. The people at the edges keep walking slowly in and out of the building. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ }
+}
