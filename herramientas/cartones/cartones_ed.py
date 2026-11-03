@@ -85,6 +85,13 @@ SALIDA = r'D:\DAE\_tmp\ed\cartones_ed.json'
 #     del C3 es «comenzaron las expresiones racistas»;
 #   - el hecho de violencia sexual del C4 («abuso sexualmente de ella») y
 #     los golpes del C2 y del C3: lo dice la voz, el carton no lo subraya.
+# Primera corrida (3 nov): densidad 62/62/54/59/50 %. Fuera por velocidad
+# de lectura: «los demas pasajeros... grababan» (C3, 19 car/s), «no habia
+# sido valorado...» (C3, 19), «punto muerto» (C4: le daba 75 cuadros a la
+# remision, que es el error del caso) y la pregunta «¿nombre real o apodo?»
+# (C5, 44 cuadros: la dice Julian y la r05 es el primer plano de ella).
+# Recortados: la imputacion del C3 desde «les imputo» y el 134B desde «el
+# posible».
 ELEGIDOS = {
  'C1': [
   ('a02_la_denuncia', 'una mujer de 29 años con discapacidad cognitiva leve,'),
@@ -146,24 +153,20 @@ ELEGIDOS = {
   ('c02_la_llamada', 'dos pasajeros, en evidente estado de embriaguez, se '
    'negaban a descender'),
   ('c03_la_aeronave', 'les explicó con calma la situación'),
-  ('c05_los_celulares', 'los demás pasajeros, con los celulares en alto, '
-   'grababan la escena.'),
   ('c06_el_video', 'El video se difundió esa misma noche en redes sociales'),
   ('c08_los_insultos', 'Fue solo entonces, durante el traslado, cuando '
    'comenzaron las expresiones racistas:'),
-  ('c11_la_imputacion', 'el fiscal de turno les imputó únicamente el delito de '
-   'violencia contra servidor público,'),
+  ('c11_la_imputacion', 'les imputó únicamente el delito de violencia contra '
+   'servidor público,'),
   ('c12_sin_considerar', 'la circunstancia de agravación punitiva por móvil '
    'discriminatorio prevista en el artículo 58, numeral 3, del Código Penal,'),
-  ('c12_sin_considerar', 'ni el posible delito autónomo de hostigamiento (art. '
+  ('c12_sin_considerar', 'el posible delito autónomo de hostigamiento (art. '
    '134B).'),
   ('c13_en_libertad', 'Esa misma noche quedaron en libertad'),
   ('c16_wilmer', '«lo que más me dolió no fueron los golpes, fue que nadie, al '
    'principio, quiso llamar las cosas por su nombre».'),
   ('c17_la_revision', 'el patrón verbal reiterado documentado durante el '
    'traslado y en la estación'),
-  ('c17_la_revision', 'no había sido valorado en la calificación jurídica '
-   'original.'),
   ('c18_la_adicion', 'Mediante una adición a la imputación,'),
   ('c18_la_adicion', 'la circunstancia de agravación del artículo 58.3 como el '
    'delito autónomo de hostigamiento (art. 134B),'),
@@ -189,14 +192,12 @@ ELEGIDOS = {
   ('d12_la_recomendacion', 'la recomendación mayoritaria fue devolver el caso '
    'a la jurisdicción indígena,'),
   ('d13_remitio', 'el fiscal remitió el caso de vuelta al resguardo.'),
-  ('d14_punto_muerto', 'La menor y su madre quedaron así en un punto muerto:'),
   ('d16_en_su_cargo', 'Ninguna de las dos jurisdicciones lo asumió,'),
   ('d16_en_su_cargo', 'sin que se activara medida de protección alguna a favor '
    'de la víctima.'),
  ],
  'C5': [
   ('e01_valentina', 'Valentina, mujer trans de 29 años,'),
-  ('e05_el_apodo', '«¿ese es su nombre real o es un apodo?».'),
   ('e06_su_nombre', 'Valentina explicó que Valentina era su nombre '
    'identitario.'),
   ('e07_el', 'el funcionario se refirió a ella varias veces como «él»,'),

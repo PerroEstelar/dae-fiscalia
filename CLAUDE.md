@@ -1665,3 +1665,22 @@ arreglaron:
   los fracasos, no la pose: *"HER ELBOWS STAY DOWN… she is NOT reaching, NOT
   recoiling, NOT sneezing"*. Es la regla de bloquear las dos versiones
   opuestas del cliché, aplicada al gesto.
+
+## Una prohibición en mayúsculas sobre la ropa se dibuja como texto (Enfoque diferencial, 3 nov 2026)
+
+El patrullero Wilmer y su compañero salieron con parches en la chaqueta que
+decían «NO»: el token del personaje decía «with NO badge, NO insignia, NO patch
+and NO lettering». Seedream leyó la palabra en mayúsculas pegada a la prenda y
+la escribió en la prenda. Lo mismo pasó con un token en mayúsculas al lado de
+un formulario: «THE PROSECUTOR ON DUTY» quedó impreso como título del papel.
+
+La regla: **la ropa se describe en positivo** —«de tela completamente lisa, sin
+nada cosido, prendido ni impreso en ninguna parte»— y un token en mayúsculas
+no va en la misma frase que un papel o una prenda que el modelo pueda rotular.
+Las prohibiciones generales siguen en la cláusula de placa limpia, en minúscula.
+
+## Revisar las placas con `creations_read` antes de bajarlas
+
+`mcp__magnific__creations_read` muestra la candidata a 512 px sin bajar nada.
+Para tandas chicas (rehechas, detalles) es más rápido que bajar a la máquina,
+armar la hoja y subirla al contenedor.
