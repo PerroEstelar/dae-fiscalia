@@ -42,8 +42,13 @@ OFF = 14
 # procesados no llevan rotulo (de espaldas o en silueta) y en la U4 nadie
 # tiene nombre.
 LOWERS = {
+    # 3 nov, revision propia: en el 14 el rotulo caia sobre el inserto de
+    # las tapas (V3 70-142, que tapa el Kling de las botellas en los ojos):
+    # el nombre quedaba sobre dos manos. Entra despues del inserto, sobre el
+    # supervisor, y dura lo que queda de la ranura (144 + 90 = 234).
     'U2C1': [('lt01_supervisor', 5, {'nombre': 'Jorge Eliécer Benavides',
-                                     'dato': 'Supervisor de zona'})],
+                                     'dato': 'Supervisor de zona',
+                                     'cuadros': 90}, 144)],
     'U2C2': [('lt01_mariaelena', 2, {'nombre': 'María Elena Gutiérrez Ríos'})],
 }
 

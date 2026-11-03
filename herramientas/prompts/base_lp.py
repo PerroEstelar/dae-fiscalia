@@ -208,6 +208,12 @@ CUERPO = {
  'defensor': ('THE DEFENCE LAWYER, a Colombian man of about fifty, bald with '
               'grey at the sides, plain dark-rimmed glasses, in a plain navy-'
               'grey suit and plain grey tie'),
+ # 3 nov: el defensor del caso de analisis 2 (U4 C2). La voz dice «El
+ # defensor formula oposicion»: es hombre (la primera placa salio con la
+ # defensora de la U2, y no es). Otra cara que el de la U4 C1: otro caso.
+ 'defensor2': ('THE DEFENCE LAWYER, a Colombian man of about forty, short '
+               'black hair, clean-shaven, no glasses, in a plain dark charcoal '
+               'suit, a plain white shirt and a plain dark tie'),
  # ---- U4
  'fiscal_sin_cara': ('THE PROSECUTOR, a Colombian man in a plain charcoal '
                      'jacket over a plain light grey shirt, seen ONLY FROM '
@@ -240,6 +246,8 @@ VIDA = {
            'her own counsel; her hands do the talking.'),
  'defensora': ('A defence lawyer, serene and technical, who keeps a slim '
                'black folder closed in front of her until she needs it.'),
+ 'defensor2': ('A defence lawyer, precise and calm, who objects on a point of '
+               'law, not on a feeling.'),
  'supervisor': ('He has followed his distribution zone for months. He records '
                 'with his mobile phone held flat in both hands.'),
  'mariaelena': ('She has lived for three years under threat in her own home. '

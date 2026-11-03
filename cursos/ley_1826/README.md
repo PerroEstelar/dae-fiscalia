@@ -73,6 +73,9 @@ ciudadana (U4 C3).
 Repetidas, y por qué:
 - U4 C2 r02 (las partes): el conductor salió de perfil; se rehízo desde detrás
   de las sillas de visita (`_b`).
+- U4 C2 r09 (la oposición): la voz dice «El defensor formula oposición» y la
+  placa era una defensora. Rehecha con un defensor (`base_lp.defensor2`, otra
+  cara que el de la U4 C1), con la placa vieja de lugar.
 - U4 C3, inserto de la r04: dos tiradas, las dos con DOS anillos, uno a medio
   sacar (se lee como que ella se quita la argolla: lo contrario del caso).
   Fuera; la r04 queda sola. El primer planteamiento (un teléfono con un
@@ -102,3 +105,14 @@ Revisados cuadro a cuadro antes de conformar:
   hasta 2,9 s (`hasta` en el manifiesto de `bajar_mov_lp`).
 - U4 C3, la firma y la carpeta: hasta 2,6 s (después la mano flota o la
   carpeta pierde las hojas).
+
+## Revisión propia (3 nov)
+
+Las cinco líneas montadas en `DAE MASTER - CURSOS` (bins del árbol, `.drt` en
+`10 TIMELINE SEBASTIAN`) y rendidas a `D:\DAE\_tmp\lp\revision` (NO es
+entrega): cuadros = pieza, sin negros, −19,5 a −20,3 LUFS, pico −4,0 a
+−4,5 dBFS.
+
+- U2 C1: el rótulo del supervisor caía sobre el inserto de las tapas (dos
+  manos): ahora entra en el 144 de la r05, 90 cuadros, sobre él.
+- U4 C2 r09: defensor (ver Placas).

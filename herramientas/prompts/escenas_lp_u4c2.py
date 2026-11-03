@@ -16,7 +16,8 @@ LO QUE SE OYE ENCIMA (cruce_lp.json)
 QUIÉN LLEVA CARA
     El fiscal lleva al juicio el audio de la mediación (decide mal): sin cara.
     El indiciado se presume inocente: de espaldas. El lesionado y el mediador
-    sí llevan cara; la defensora también. El accidente no se dibuja con
+    sí llevan cara; el defensor también (la voz dice «El defensor»: hombre;
+    la primera r09 salio con una defensora y se rehizo). El accidente no se dibuja con
     heridos: el después en la calle, sin nadie.
 """
 
@@ -92,11 +93,11 @@ behind the plain desk, %(juez)s looks at the recorder. Daylight from high
 windows.
 ''')
 
-R[9] = (122, 'dia', ('defensora',), None, False, 'sala', '''
-Medium-close shot of %(defensora)s rising from the defence table, from the
-chest up, three-quarter view, the camera at her eye level, perfectly level.
-Mid-action: her right hand is raised, palm open, in objection, her mouth
-half open mid-word. Behind her, soft and out of focus, the hearing room. She
+R[9] = (122, 'dia', ('defensor2',), None, False, 'sala', '''
+Medium-close shot of %(defensor2)s rising from the defence table, from the
+chest up, three-quarter view, the camera at his eye level, perfectly level.
+Mid-action: his right hand is raised, palm open, in objection, his mouth
+half open mid-word. Behind him, soft and out of focus, the hearing room. He
 is ALONE in the frame and appears ONCE.
 ''')
 
@@ -126,7 +127,7 @@ REF_PLACA = {
  6: ([ANCLA], 'lugar', ''),
  7: ([ANCLA], 'lugar', ''),
  8: (['LP_U4C1_r05_la_recusacion'], 'lugar', ''),
- 9: (['LP_U4C1_r05_la_recusacion'], 'lugar', ''),
+ 9: (['LP_U4C2_r09_la_oposicion'], 'lugar', 'It is the SAME hearing room and the SAME framing as that plate; only the person changes: the defence lawyer is a MAN. '),
 }
 
 REUSA = {}
