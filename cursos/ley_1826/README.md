@@ -116,3 +116,19 @@ entrega): cuadros = pieza, sin negros, −19,5 a −20,3 LUFS, pico −4,0 a
 - U2 C1: el rótulo del supervisor caía sobre el inserto de las tapas (dos
   manos): ahora entra en el 144 de la r05, 90 cuadros, sobre él.
 - U4 C2 r09: defensor (ver Placas).
+
+## Timelines en Resolve (3 nov)
+
+Cada pieza del curso tiene su bin `10 TIMELINE SEBASTIAN` con una sola línea
+y el `.drt` en la misma carpeta del disco:
+
+- Videos: `LP UNIDAD 2 ESTUDIO REVERSO 1 …`, `LP UNIDAD 2 ESTUDIO REVERSO 2 …`,
+  `LP UNIDAD 4 CASO DE ANALISIS 1/2/3` (las «(anterior)» en
+  `_ARCHIVO versiones anteriores`).
+- Láminas (Sebastián: «no creaste timeline para Sebastián para cada video»;
+  las unidades de láminas no tenían ninguna): `LP UNIDAD 1 CASO DE ESTUDIO
+  1…5` y `LP UNIDAD 3 CASO DE ESTUDIO 1…3`, una pista `LAMINA` con la lámina
+  como clip de 240 cuadros (`LP_<K>_lamina_v240.mp4`, x264 crf 10: un still
+  apendizado por API entra de 24 cuadros). La lámina, la ilustración y los
+  exports también quedaron importados en sus bins (01 PLANOS, 02 LAMINA,
+  05 EXPORTS).
