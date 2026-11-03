@@ -117,6 +117,47 @@ entrega): cuadros = pieza, sin negros, −19,5 a −20,3 LUFS, pico −4,0 a
   manos): ahora entra en el 144 de la r05, 90 cuadros, sobre él.
 - U4 C2 r09: defensor (ver Placas).
 
+## Pase previo a la revisión de Sebastián (3 nov, noche) — v2 de las cinco líneas
+
+Antes de que revisara los videos, se midió qué ajusta él a mano en las líneas
+que aprueba y qué pide cambiar después de revisar (docs del proyecto de las
+rondas de P3, C5, TA, DF/16 situaciones, GJ, JR y DH), y se aplicó lo que ese
+historial dice sin esperar la ronda. Líneas nuevas `… v2` (la v1 en
+`_ARCHIVO versiones anteriores`), `.drt` v2 en `10 TIMELINE SEBASTIAN`,
+revisión interna en `D:\DAE\_tmp\lp\revision\LP_<K>_v2_REVISION_INTERNA.mp4`.
+
+Lo que él deja a mano, medido (16 líneas aprobadas):
+
+| ajuste suyo | líneas | qué se hizo aquí |
+|---|---|---|
+| fundido a negro al final del respiro, antes del cartón de cierre (SIT B/C/D/E/G, DH U2) o desde negro en un cambio de escena (DH U1/U5, GJ T4) | 9 | `lp_pieza.respiro`: los últimos 16 cuadros del respiro funden a negro, horneado (luma ~95 → 21) |
+| recortar la cama para que no pise intro/outro («always») | 5 + regla en la biblia | ya venía: `abre` 159 / `cierra` = primer cuadro del outro |
+| quitar el respiro o recortar el último cartón (SIT A/B, DH U3/U5) | 4 | `cartones_lp.calcula`: el último cartón termina con el cuerpo, el respiro queda limpio (antes se estiraba sobre él, como en las situaciones) |
+| apagar/mover capas de movimiento o detalle, partir clips | 7 | las capas siguen en V2/V3, apagables; los 4 Kling nuevos revisados cuadro a cuadro |
+
+Lo que pide después de revisar (~95 pedidos en 13 rondas), y lo que se hizo:
+
+| categoría | pedidos | aquí |
+|---|---|---|
+| la placa no muestra lo que la voz dice / falta quien se nombra / rasgo equivocado | ~22 | las 41 ranuras cruzadas con la frase que se oye encima (`cruce_lp.json`): sin faltas; U4 C2 r09 y U4 C3 r04 ya se habían corregido |
+| cartones: faltan, primera mitad «vacía», redacción, dígitos | ~14 | U2 C1: 27 s sin cartón entre el 1224 y el 1868 → vuelve «debido a una caída atípica…» (a04); U2 C2: vuelve «Durante los últimos tres años…» cortado donde empieza la ranura del rótulo (303-470). Rótulo y cartón siguen sin convivir: ahora el cartón se corta, no se descarta |
+| cuadros vacíos / falta gente a media acción / insertos de detalle | ~12 | insertos nuevos: U4 C1 r05 la solicitud en la mano (84 cuadros, entra 70), U4 C2 r07 las tres firmas (84, entra 110; la ranura más larga, 299, cenital sin gente) |
+| defectos de movimiento (manos, cámara que empuja, figura que sale) | ~12 | los 11 clips existentes revisados en tira de 8 cuadros: ninguno con defecto |
+| más animación / boca en los planos de habla | ~6 | 4 Kling más (560 cr): U4 C1 r06 el defensor habla y baja la hoja; U2 C2 r11 la fiscal habla ante el juez; U2 C1 r08 el vigilante habla y el investigador escribe; U4 C2 r09 el defensor se levanta y objeta. 15 clips en 41 ranuras |
+| placas repetidas / monotonía | ~9 | U4 C1 r01 y r03 son el mismo escritorio (OTS y cerrado): se dejan, son dos momentos |
+| color / piel / estilo | ~10 | sin cambios; piel 0 % rosado en las placas graduadas |
+| audio / voz | ~8 | huecos entre bloques 1,0-1,6 s (narrador solo): se dejan |
+| rótulos | ~4 | sin cambios |
+
+Créditos: 2.701 → 2.071 (2 placas de detalle 70 + 4 Kling 560). Quedan por
+encima de los 2.000 de reserva.
+
+Para mirar en su revisión: el inserto de las firmas (U4 C2) trae el moteado
+del papel blanco que deja el grade; el defensor de U4 C2 r09 se levanta y
+queda de perfil señalando con el índice (todo el clip es la ranura, 122
+cuadros); la mano del inserto de U4 C1 salió gris neutro (la madre, gris
+cálido 0,098).
+
 ## Timelines en Resolve (3 nov)
 
 Cada pieza del curso tiene su bin `10 TIMELINE SEBASTIAN` con una sola línea

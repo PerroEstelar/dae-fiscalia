@@ -132,13 +132,29 @@ REF_PLACA = {
 
 REUSA = {}
 
-DET = {}
+# 3 nov, pase previo a la revision: la r07 es la mas larga de la pieza (299
+# cuadros, cenital sin gente, bajo el carton de «no hubo acuerdo»); un plano
+# de 300 cuadros donde no pasa nada se parte (CLAUDE.md): inserto de las
+# tres firmas al pie del formato. Sin modelo: camara de la casa.
+DET = {
+ (7, 'las_firmas'): dict(cuadros=84, entra=110,
+     registro='dia',
+     personas=(),
+     escena='Extreme close shot looking straight down at the bottom of a '
+            'one-page form lying on a plain round table: three plain signature '
+            'scribbles in a row above a plain grey line, a plain pen laid down '
+            'beside them, the edge of a half-empty glass of water at the top '
+            'corner. Nobody in the frame. Soft daylight from one side.',
+     gesto='Nothing moves.'),
+}
 
 BROLL = {}
 
 MOV = {
  5: 'kling: el conductor habla con las manos abiertas; los otros escuchan',
  8: 'kling: el fiscal levanta la grabadora hacia el juez',
+ # 3 nov, pase previo: el defensor se levanta y objeta (boca y mano)
+ 9: 'kling: el defensor termina de levantarse, la mano abierta, y habla',
 }
 
 LOWER_THIRD = {}

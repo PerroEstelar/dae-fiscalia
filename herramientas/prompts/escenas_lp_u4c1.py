@@ -103,12 +103,30 @@ REF_PLACA = {
 
 REUSA = {}
 
-DET = {}
+# 3 nov, pase previo a la revision (estadistica de Sebastian: pide insertos
+# de detalle y «media accion» donde el plano se queda quieto): la solicitud
+# de recusacion en la mano del defensor, dentro de la r05 (224 cuadros, la
+# audiencia en plano general). Sin modelo: camara de la casa.
+DET = {
+ (5, 'la_solicitud'): dict(cuadros=84, entra=70,
+     registro='dia',
+     personas=('defensor',),
+     escena='Extreme close shot of a plain written motion held up in a man\'s '
+            'hand, the cuff of a plain dark grey suit sleeve and a plain white '
+            'shirt cuff at the wrist, the page carrying only plain grey bars '
+            'and one plain signature scribble at the bottom; behind it, soft '
+            'and out of focus, the pale wall of a hearing room. Daylight from '
+            'high windows.',
+     gesto='The hand holds the page still. Nothing else moves.'),
+}
 
 BROLL = {}
 
 MOV = {
  1: 'kling: la mano deja la carpeta y se retira; la de el se queda sobre ella',
+ # 3 nov, pase previo: el defensor habla (boca y gesto; una de cada dos
+ # ranuras de habla con boca, regla de Sebastian en Derechos humanos U3)
+ 6: 'kling: el defensor golpea la hoja con dos dedos y habla; baja la hoja',
 }
 
 LOWER_THIRD = {}

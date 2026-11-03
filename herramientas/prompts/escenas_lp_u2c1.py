@@ -179,6 +179,9 @@ MOV = {
  1: 'kling: el supervisor da un paso y se asoma desde la esquina',
  3: 'kling: la caja pasa de unas manos a otras y entra al camion',
  5: 'kling: gira las dos botellas y las compara',
+ # 3 nov, pase previo: la entrevista, el vigilante habla y el investigador
+ # escribe (boca y manos)
+ 8: 'kling: el vigilante habla con la mano abierta; el investigador escribe',
 }
 
 LOWER_THIRD = {5: 'Jorge Eliécer Benavides'}

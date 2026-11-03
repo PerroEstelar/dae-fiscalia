@@ -1684,3 +1684,43 @@ Las prohibiciones generales siguen en la cláusula de placa limpia, en minúscul
 `mcp__magnific__creations_read` muestra la candidata a 512 px sin bajar nada.
 Para tandas chicas (rehechas, detalles) es más rápido que bajar a la máquina,
 armar la hoja y subirla al contenedor.
+
+## Lo que Sebastián ajusta a mano, medido, y lo que pide después (Ley 1826, 3 nov 2026)
+
+Antes de su revisión de Ley 1826 se contó, sobre los docs de las rondas
+anteriores (P3, C5, TA, DF/16 situaciones, GJ, JR, DH), qué toca él a mano en
+las líneas que aprueba y qué pide cambiar. Los dos rankings, en orden:
+
+**A mano, en 16 líneas aprobadas:** (1) fundido a negro al final del respiro,
+antes del cartón blanco de cierre —medido en SIT C: luma 66 → 16 en 9 cuadros;
+en DH U2, ~20 cuadros—, o desde negro en un cambio de escena: 9 líneas.
+(2) Recortar la cama para que no pise el sonido del intro ni del outro: «always»
+(ya está en `cama_musica` con `abre`/`cierra`). (3) Quitar el respiro o
+recortar el último cartón: 4 líneas. (4) Apagar o mover capas de movimiento y
+detalle, partir clips: 7 líneas.
+
+**Lo que pide (~95 pedidos en 13 rondas):** la placa no muestra lo que la voz
+dice o falta quien se nombra (~22) · cartones que faltan, primera mitad
+«vacía», redacción, dígitos (~14) · cuadros vacíos, gente a media acción,
+insertos de detalle (~12) · defectos de movimiento (~12) · color, piel, estilo
+(~10) · placas repetidas (~9) · audio y voz (~8) · más animación y boca en los
+planos de habla (~6) · rótulos (~4).
+
+Lo que cambió en la receta por eso (`lp_pieza`, `cartones_lp`):
+
+- **El respiro funde a negro** en sus últimos 16 cuadros, horneado en el
+  archivo (`lp_pieza.respiro`, paso aparte). `blackdetect` marca un cuadro al
+  final del respiro: es el fundido, no un hueco.
+- **El último cartón termina con el cuerpo**, no sobre el respiro. Así lo deja
+  él en C, D, E, G y en DH U2: cartón fuera en el corte, respiro limpio,
+  fundido. La regla vieja de las situaciones («el último cartón se queda
+  sobre el respiro lo que tarde en leerse») queda derogada.
+- **Rótulo y cartón siguen sin convivir, pero el cartón se corta donde empieza
+  la ranura del rótulo** en vez de descartarse entero («Durante los últimos
+  tres años…» volvió a la U2 C2 a 10,3 car/s).
+- **Un hueco de más de 400 cuadros sin cartón en la narración es un fallo**,
+  aunque la placa «ya lo diga»: en la U2 C1 había 27 s sin cartón y volvió
+  el de la caída de las ventas.
+- Los cuadros de prueba: la hoja de `revisar` muestra el COMPUESTO a mitad de
+  cada ítem, así que donde hay un inserto V3 la fila de V1 enseña el inserto,
+  no la placa madre. No es una placa repetida.

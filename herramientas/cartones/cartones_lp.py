@@ -69,6 +69,7 @@ SALTO = int(round(CUERPO * 1.36))
 FPS = 24000 / 1001.0
 CABEZA = 182 + 119
 RESPIRO = 24
+N_RESPIRO = 48          # el respiro de la pieza (lp_pieza.N_RESPIRO)
 COMODO = 10.0
 TOPE_RENGLONES = 3
 
@@ -91,6 +92,20 @@ SALIDA = r'D:\DAE\_tmp\lp\cartones_lp.json'
 # Medellin,» (U2 C2): iba de 303 a 627 y la r02 (470-639) es la del rotulo de
 # Maria Elena. Rotulo y carton no conviven; el nombre pesa mas, y la ladera
 # de la r01 ya dice Medellin.
+#
+# 3 nov, pase previo a la revision de Sebastian (estadistica de sus
+# revisiones: lo que mas pide es que la primera mitad no quede «vacia» y lo
+# que mas recorta a mano es el ultimo carton y el respiro):
+# - Vuelve «Durante los ultimos tres anos...» (U2 C2): ya no se descarta
+#   el carton que pisa una ranura con rotulo, se CORTA donde empieza esa
+#   ranura (`calcula`, RANURA_ROTULO). Queda 303-470, 10,3 car/s.
+# - Vuelve «debido a una caida atipica...» (U2 C1): entre el 1224 y el 1868
+#   iban 27 s sin un carton (la r05 lleva el rotulo), y la regla de la
+#   serie es uno cada 300-400 cuadros.
+# - El ultimo carton de cada pieza termina donde termina el cuerpo: el
+#   respiro queda limpio (asi lo deja el en C, D, E, G de las situaciones y
+#   en la U2 de Derechos humanos: carton fuera en el corte, respiro limpio,
+#   fundido a negro). Antes se estiraba sobre el respiro.
 ELEGIDOS = {
  'U2C1': [
   ('a01_cali', 'El 15 de agosto de 2023, en el barrio Industrial de la ciudad '
@@ -101,11 +116,16 @@ ELEGIDOS = {
    'etiquetas de la marca protegida Kombucha Valle'),
   ('a02_transbordo', 'desde un vehículo particular (Placa KTH412) hacia el '
    'camión repartidor oficial de la compañía (Placa WXN445).'),
+  # el trozo entero (con «durante los meses anteriores») se estiraba 72
+  # cuadros sobre la r07, que es el video del celular: se deja el dato
+  ('a04_seguimiento', 'una caída atípica e injustificada en las ventas'),
   ('a06_sin_captura', 'La investigación se adelantó sin captura,'),
   ('a07_radicado', 'se radicó bajo las reglas del procedimiento penal '
    'especial abreviado (Ley 1826 de 2017) el 4 de febrero de 2026.'),
  ],
  'U2C2': [
+  ('b01_tres_anos', 'Durante los últimos tres años, en vivienda conyugal '
+   'ubicada en Medellín,'),
   ('b02_episodio', 'El episodio más grave ocurrió el 10 de enero de 2026,'),
   ('b02_episodio', 'una incapacidad médico-legal definitiva de 25 días con '
    'deformidad física transitoria,'),
@@ -282,8 +302,15 @@ def calcula(clave):
         limite = fin_b - int(round(len(b['frase']) / 16.0 * FPS))
         if quiere > b['ini']:
             b['ini'] = min(quiere, max(b['ini'], limite))
-    cierre = json.load(open(os.path.join(R.voces(clave), 'LP_%s_ranuras.json' % clave),
-                            encoding='utf-8'))['pieza'] - (182 + 119)
+    ran = json.load(open(os.path.join(R.voces(clave), 'LP_%s_ranuras.json' % clave),
+                         encoding='utf-8'))
+    cierre = ran['pieza'] - (182 + 119)
+    # 3 nov: las ranuras con rotulo, en cuadros de la linea
+    import lowerthirds_lp as LTS
+    rotulos = []
+    for e in LTS.LOWERS.get(clave, []):
+        r = ran['ranuras'][e[1] - 1]
+        rotulos.append((CABEZA + r['ini'], CABEZA + r['ini'] + r['dur']))
     for k, p in enumerate(piezas):
         sig = piezas[k + 1]['ini'] if k + 1 < len(piezas) else None
         mismo = sig is not None and piezas[k + 1]['bloque'] == p['bloque']
@@ -302,6 +329,17 @@ def calcula(clave):
         # (T1 903 > 875). Puede sostenerse sobre el respiro, nunca pasar al
         # cierre.
         fin = min(fin, cierre)
+        # 3 nov: el ultimo carton termina con el CUERPO, no sobre el respiro
+        # (es lo que Sebastian deja a mano: respiro limpio y fundido a negro).
+        # Si al cortarlo quedara por debajo de 72 cuadros, entra lo justo.
+        fin = min(fin, max(cierre - N_RESPIRO, p['ini'] + 72))
+        # 3 nov: rotulo y carton no conviven. Un carton que empieza antes de
+        # una ranura con rotulo se CORTA donde ella empieza (antes se
+        # descartaba entero); uno que empiece dentro de ella no puede ir.
+        for a, b in rotulos:
+            assert not (a <= p['ini'] < b), (clave, p['frase'], 'empieza sobre el rotulo')
+            if p['ini'] < a < fin:
+                fin = a
         p['cuadros'] = fin - p['ini']
         p['densidad'] = round(len(p['frase']) / (p['cuadros'] / FPS), 1)
     for n, p in enumerate(piezas, 1):

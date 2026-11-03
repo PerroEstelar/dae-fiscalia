@@ -174,6 +174,8 @@ MOV = {
  7: 'kling: ella abre un poco mas la cortina; abajo, un carro pasa despacio',
  8: 'kling: las manos cierran la maleta y la sostienen cerrada',
  1: 'camara de la casa (empuje lento), sin modelo',
+ # 3 nov, pase previo: la fiscal habla ante el juez (boca y mano)
+ 11: 'kling: la fiscal habla hacia el juez con la mano abierta sobre la carpeta',
 }
 
 LOWER_THIRD = {2: 'María Elena Gutiérrez Ríos'}
