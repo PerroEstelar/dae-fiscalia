@@ -2,14 +2,14 @@
  "DH_U1_r01_el_mercado": "JNI7bIAOq4",
  "DH_U1_r10_la_recepcion": "rgT1mzrxtc",
  "DH_U2_r01_el_escrito": "gOdlq5dSXO",
- "LP_U2C1_r01_la_calle_de_bodegas": "KLcvGgqkqp",
+ "LP_U2C1_r01_la_calle_de_bodegas": "s7e1184l8e",
  "LP_U2C1_r02_de_espaldas": "lJdHD98gv9",
  "LP_U2C1_r03_el_transbordo": "xSME09vjfW",
  "LP_U2C1_r04_los_dos_vehiculos": "yihxI0MPW9",
  "LP_U2C1_r05_las_tapas": "yihxIMePW9",
  "LP_U2C1_r06_la_caida_de_ventas": "xSME0AHjfW",
  "LP_U2C1_r07_el_video": "mE9Vy7shJQ",
- "LP_U2C1_r08_la_entrevista": "JNt1841Oq4",
+ "LP_U2C1_r08_la_entrevista": "nVkZZPRYQD",
  "LP_U2C1_r09_los_informes": "P3vjmRx42C",
  "LP_U2C1_r10_la_radicacion": "ovOW7EM829",
  "LP_U2C1_r11_el_escrito": "Dog2sfPpcl",
@@ -49,5 +49,7 @@
  "LP_U4C3_r02_la_carpeta_det": "N2ClsiJ6D9",
  "LP_U4C2_r09_la_oposicion_b_defensora_a": "CqRdno0EEy",
  "LP_U4C1_r05_la_solicitud_det": "s7ekjmPl8e",
- "LP_U4C2_r07_las_firmas_det": "LwpKxu4swO"
+ "LP_U4C2_r07_las_firmas_det": "LwpKxu4swO",
+ "LP_U2C1_r01_la_calle_de_bodegas_v1": "KLcvGgqkqp",
+ "LP_U2C1_r08_la_entrevista_v1": "JNt1841Oq4"
 }

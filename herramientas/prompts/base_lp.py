@@ -184,9 +184,15 @@ CUERPO = {
                    'fifty in a plain grey cap and a plain charcoal T-shirt, '
                    'seen ONLY FROM BEHIND or in three-quarter back view, his '
                    'face never readable'),
- 'vigilante': ('A SECURITY GUARD of the company, a Colombian man of about fifty, '
-               'short grey hair, a plain grey work shirt with no badge, no patch '
-               'and no lettering'),
+ # 3 nov, revision de Sebastian: el vigilante salio igual al supervisor
+ # (bigote, misma edad, misma camisa): «misleading». Ahora es visiblemente
+ # otro hombre, y la ropa se describe en positivo (CLAUDE.md).
+ 'vigilante': ('A SECURITY GUARD of the company, a Colombian man of about '
+               'twenty-eight, lean, clean-shaven with his upper lip bare, very '
+               'short dark hair cut close to the scalp, a narrow face, in a '
+               'plain dark navy-grey long-sleeved shirt of completely smooth '
+               'fabric with nothing sewn, pinned or printed on it anywhere; '
+               'he looks nothing like the stocky moustached supervisor'),
  'investigador': ('A JUDICIAL POLICE INVESTIGATOR seen ONLY FROM BEHIND, over the '
                   'shoulder, in a plain dark jacket, his face never visible'),
  # ---- U2 C2 (Medellín)

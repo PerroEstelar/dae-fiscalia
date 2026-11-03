@@ -158,6 +158,37 @@ queda de perfil señalando con el índice (todo el clip es la ranura, 122
 cuadros); la mano del inserto de U4 C1 salió gris neutro (la madre, gris
 cálido 0,098).
 
+## Revisión de Sebastián · U2 C1 (3 nov, noche) — sobre SU línea v2, sin remontar
+
+Pedido: «r01 el supervisor se ve raro, encuadrado tan a la derecha que no
+parece intencional; a los 23 s la narración parte el nombre (Mario Alberto…
+Gómez Parra) y debe leerse como uno; el vigilante de r08 se parece demasiado
+al supervisor; mientras el presupuesto esté apretado, solo stills con cámara
+horneada; conservar los cortes que él hizo».
+
+- **r01**: placa nueva (candidata c, 2 tiradas, 70 cr): el supervisor es el
+  sujeto, en el tercio izquierdo, del muslo para arriba, mirando calle abajo
+  hacia los vehículos; la vieja (ancla de lugar) como referencia. Cámara de
+  la casa; su clip de Kling (el paso desde la esquina) fuera de la línea y a
+  `MOVIMIENTO/_descartes`. El respiro sale de la r01 nueva.
+- **r08**: `base_lp.vigilante` es otro hombre (28 años, flaco, afeitado,
+  pelo al ras, camisa azul grisácea) y la placa se pidió con la r08 vieja de
+  referencia (mismo cuarto, mismo encuadre, solo cambia él). Candidata b
+  (2 tiradas, 70 cr). Su clip de Kling también fuera.
+- **La voz** (medido en el STT: 0,50 s de silencio entre «Alberto» y
+  «Gómez», 0,32 entre «Eliécer» y «Benavides»): cirugía sobre el master, sin
+  volver a pedir la voz. Se quitan 0,32 s y 0,15 s de esos huecos (quedan
+  ~0,10) y se devuelven como silencio después de «Parra,» (+0,22) y al final
+  del bloque a01 (+0,25): mismo número de muestras, la rejilla no se mueve,
+  «contratista» sigue cayendo en el corte a la r02. `LP_U2C1_NARRADOR_v2.wav`
+  releído con `ReplaceClip`; el STT del bloque remapeado. El cartón p02 ya
+  traía «Mario Alberto Gómez Parra» en un solo renglón (el que se parte es
+  «Pedro Antonio Morales / Rincón»: cabe en 3 renglones solo partiéndolo).
+- Todo en su línea con `cirugia_lp U2C1 v=2 relink/quitar` y
+  `reemplazar_en_sitio_lp`: retrato idéntico salvo los dos ítems de V2 que
+  salen. `.drt` reexportado (el anterior en `_descartes`). Créditos: 1.511 →
+  1.371.
+
 ## Timelines en Resolve (3 nov)
 
 Cada pieza del curso tiene su bin `10 TIMELINE SEBASTIAN` con una sola línea

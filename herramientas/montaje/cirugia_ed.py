@@ -122,8 +122,14 @@ def quitar(tl, pista, archivo, pos=None):
 
 
 def main():
-    L, paso = sys.argv[1].upper(), sys.argv[2]
-    args = sys.argv[3:]
+    # 3 nov: `v=2` en cualquier posicion apunta a la linea «... v2» (la del
+    # pase previo), como en lp_pieza/ed_pieza
+    argv = [a for a in sys.argv[1:] if not a.startswith('v=')]
+    for a in sys.argv[1:]:
+        if a.startswith('v='):
+            SP.VERSION = int(a[2:])
+    L, paso = argv[0].upper(), argv[1]
+    args = argv[2:]
     resolve, pr, tl = linea(L)
     antes = retrato_rel(tl)
     esperado_fuera, esperado_dentro = [], []

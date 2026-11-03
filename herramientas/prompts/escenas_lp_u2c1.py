@@ -30,15 +30,23 @@ tiene nombre: solo manos y el escrito.
 
 R = {}
 
+# 3 nov, revision de Sebastian: «framed so much to the right it looks not
+# even intentional... this frame is about him». La placa vieja lo tenia medio
+# escondido en el borde derecho. Ahora el plano es de el: medio-general, en el
+# tercio izquierdo, entero del muslo para arriba, de tres cuartos mirando
+# calle abajo, donde estan los vehiculos.
 R[1] = (290, 'dia', ('supervisor',), None, False, 'bodegas', '''
-Wide shot of a street of warehouses in the industrial district of Cali at
-midday, the camera at standing height on the pavement, perfectly level. In
-the foreground on the right, %(supervisor)s has just stopped at the corner of
-a warehouse wall, half hidden by it, looking down the street, mid-step, one
-hand on the wall. Far down the street, small in the frame, a plain private
+Medium-wide shot of a street of warehouses in the industrial district of Cali
+at midday, the camera at standing height on the pavement, perfectly level.
+%(supervisor)s is THE SUBJECT OF THE SHOT: he stands in the LEFT THIRD of the
+frame, seen from the thighs up, his whole head and both shoulders well inside
+the frame with air above his head, in three-quarter view turned toward the
+right, at the corner of a warehouse wall, one hand resting on the wall, his
+eyes fixed down the street toward the right. Down the street, in the right
+half of the frame, in the middle distance and clearly visible, a plain private
 hatchback car is parked with its boot open, nose to nose with the rear of a
 plain white delivery truck with its roll-up door raised. Hard noon light,
-short shadows.
+short shadows. He appears ONCE.
 ''')
 
 R[2] = (153, 'dia', ('contratista', 'transportador'), None, False, 'bodegas', '''
@@ -97,10 +105,13 @@ crate of bottles on the ground at the back of the truck. Only his hands and
 the edge of his shoulder are in the frame. Hard noon light.
 ''')
 
+# 3 nov, revision de Sebastian: el vigilante se parecia al supervisor. Otro
+# hombre (token nuevo en base_lp) y se dice en el plano.
 R[8] = (204, 'dia', ('vigilante', 'investigador'), None, False, 'sala_entrevistas', '''
 Medium shot of a judicial police interview at a plain table, the camera at
 seated height behind the investigator, perfectly level. Facing the camera,
-%(vigilante)s speaks with one hand open on the table; in the near foreground,
+%(vigilante)s -a young, lean, clean-shaven man, a different person from the
+supervisor- speaks with one hand open on the table; in the near foreground,
 %(investigador)s writes in a plain notebook. Window light from one side.
 ''')
 
@@ -175,13 +186,12 @@ DET = {
 
 BROLL = {}
 
+# 3 nov, revision de Sebastian: r01 y r08 se rehicieron como placas nuevas y,
+# con el presupuesto en pausa (solo stills), sus clips de Kling se quitaron
+# de la linea: camara de la casa.
 MOV = {
- 1: 'kling: el supervisor da un paso y se asoma desde la esquina',
  3: 'kling: la caja pasa de unas manos a otras y entra al camion',
  5: 'kling: gira las dos botellas y las compara',
- # 3 nov, pase previo: la entrevista, el vigilante habla y el investigador
- # escribe (boca y manos)
- 8: 'kling: el vigilante habla con la mano abierta; el investigador escribe',
 }
 
 LOWER_THIRD = {5: 'Jorge Eliécer Benavides'}
