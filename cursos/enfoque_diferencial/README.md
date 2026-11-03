@@ -81,6 +81,42 @@ cosido, prendido ni impreso».
 `cartones/cartones_ed.py`, verbatim, densidad 49–62 %. Los insultos (C2, C3)
 los dice la voz y no se escriben; el hecho de violencia sexual del C4 tampoco.
 
+## Pase previo a la revisión de Sebastián (3 nov, noche) — v2 de las cinco líneas
+
+El mismo pase que en Ley 1826 (ver `cursos/ley_1826/README.md`: lo que él
+ajusta a mano en las líneas que aprueba y lo que pide después de revisar), con
+la reserva de créditos en 1.500. Líneas nuevas `… v2`, la v1 en
+`_ARCHIVO versiones anteriores` (bin y disco), revisión interna en
+`D:\DAE\_tmp\ed\revision\ED_<K>_v2_REVISION_INTERNA.mp4`.
+
+- **Respiro con fundido a negro** horneado (`ed_pieza.respiro`, 16 cuadros).
+- **El último cartón termina con el cuerpo**; el respiro queda limpio
+  (`cartones_ed.calcula`). Un cartón que pise una ranura con rótulo se corta
+  donde ella empieza (no pasaba en ninguno).
+- **Huecos de más de 400 cuadros sin cartón**, medidos: C2 914–1567, C3
+  1022–1519 y 2233–2807, C4 777–1289, C5 521–1107 (la primera mitad del C3
+  iba al 35 %). Entran: C2 «Una mañana de finales de agosto,» y «Su cuerpo fue
+  hallado al día siguiente, coincidiendo con la fecha de su cumpleaños»; C3
+  «Los dos hombres se negaron y, ante la insistencia de Wilmer, se resistieron
+  físicamente» y «Los dos agresores fueron capturados por agresión a servidor
+  público,»; C4 «Jacanamijoy, aprovechando su posición de autoridad y la
+  confianza que esta le confería ante la familia y la comunidad,»; C5 «En la
+  recepción, el funcionario le solicitó su documento de identidad.» y «le
+  preguntó en voz alta, frente a otras personas que esperaban de turno». Los
+  golpes, el abuso y los insultos siguen sin escribirse.
+- **Las cuatro caminatas hacia cámara** (C1 r01, C3 r04, C5 r01, C5 r18): el
+  clip conformado terminaba con la cabeza cortada por arriba (Kling acerca al
+  personaje y el recorte al 88 % lo adelanta). Ahora el encuadre se abre del
+  0,88 al 1,00 a lo largo del clip (`mov_ed.ABRE`, smoothstep: un retroceso
+  de cámara suave) y la ventana útil es más larga (48 / 96 / 84 / 78 cuadros
+  desde `_enteros`; en C5 r18 Kling vuelve transparente a Valentina desde el
+  82): la cabeza queda en cuadro y el estirado baja (C3 r04 de 3,0× a 2,6×;
+  C5 r01 de 3,2× a 2,7×; C5 r18 1,8×; C1 r01 2,5×).
+- **Kling ×4 (560 cr), boca en planos de habla:** C1 r11 la defensora
+  argumenta; C3 r19 Wilmer ante el reportero; C4 r13 el fiscal entre los dos
+  colegas; C5 r05 Valentina responde. 16 clips en 118 ranuras.
+- Créditos: 2.071 → 1.511.
+
 ## Estado
 
 Ver el documento del proyecto `claude/ED_Enfoque_Diferencial_03_noviembre.md`.

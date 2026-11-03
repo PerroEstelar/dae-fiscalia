@@ -287,6 +287,8 @@ DET = {
 BROLL = {}
 
 MOV = {
+ # 3 nov, pase previo: boca en un plano de habla
+ 13: 'kling: el fiscal mira a un colega y al otro; los dos hablan con las manos',
  10: 'kling: la lancha avanza por el río; ella quieta con el morral',
  17: 'kling: el río corre; el viento mueve apenas la ropa; ella quieta',
 }

@@ -378,6 +378,8 @@ DET = {
 BROLL = {}
 
 MOV = {
+ # 3 nov, pase previo: boca en un plano de habla
+ 11: 'kling: la defensora argumenta hacia el juez; la mano abierta sube y vuelve a la hoja',
  1: 'kling: Molano camina por el pasillo hacia la cámara y la pasa',
  21: 'kling: Yolanda habla con la mano abierta; la psicóloga escucha',
 }

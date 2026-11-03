@@ -371,6 +371,8 @@ DET = {
 BROLL = {}
 
 MOV = {
+ # 3 nov, pase previo: boca en un plano de habla
+ 19: 'kling: Wilmer habla al reportero, sereno; parpadea y asienta la cabeza',
  4: 'kling: Wilmer camina por el pasillo de la cabina; los pasajeros giran la cabeza',
  9: 'kling: los cuatro caminan hacia la puerta iluminada del fondo',
  24: 'kling: Wilmer respira y sostiene la mirada; el cielo aclara apenas',

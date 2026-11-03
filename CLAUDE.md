@@ -1724,3 +1724,21 @@ Lo que cambió en la receta por eso (`lp_pieza`, `cartones_lp`):
 - Los cuadros de prueba: la hoja de `revisar` muestra el COMPUESTO a mitad de
   cada ítem, así que donde hay un inserto V3 la fila de V1 enseña el inserto,
   no la placa madre. No es una placa repetida.
+
+## Las caminatas hacia cámara: el encuadre se abre, no se recorta (Enfoque diferencial, 3 nov 2026)
+
+Kling, con un personaje que camina hacia la cámara, lo acerca hasta sacarle la
+cabeza por arriba; el recorte al 88 % con que se conforma el clip lo adelanta
+todavía más. En las cuatro caminatas del curso (C1 r01, C3 r04, C5 r01, C5 r18)
+el conformado terminaba con la cabeza cortada, y la salida anterior —cortar
+corto y estirar 3×— era peor que el defecto.
+
+Lo que sí funciona, y sale gratis (`mov_ed.ABRE`): el encuadre se abre a lo
+largo del clip, del 0,88 de la ranura al 1,00 del crudo, con smoothstep. El
+cuadro 0 sigue siendo exacto a la ranura horneada, el final deja la cabeza
+dentro, y la ventana útil puede ser un 20–30 % más larga, así que se estira
+menos. Se lee como un retroceso de cámara suave, no como un zoom.
+
+Y mirar la cola del crudo antes de fijar la ventana: en C5 r18 Kling vuelve
+TRANSPARENTE a Valentina desde el cuadro 82 (se desvanece, no sale de cuadro).
+La ventana se corta en el 78.

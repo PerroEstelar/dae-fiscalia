@@ -80,6 +80,16 @@ TMP = r'D:\DAE\_tmp\ed\mov\_retime'
 LUZ = {
 }
 
+# 3 nov, pase previo a la revision de Sebastian. Los cuatro clips de caminata
+# hacia camara (C1 r01, C3 r04, C5 r01, C5 r18): Kling acerca al personaje
+# hasta sacarle la cabeza por arriba, y el recorte al 88 % lo adelanta. En vez
+# de cortar corto y estirar 3x, el encuadre se ABRE a lo largo del clip, del
+# 0,88 de la ranura al 1,00 del crudo (un retroceso de camara suave, con
+# smoothstep): la cabeza entra en cuadro hasta el final de la ventana util y
+# la ventana puede ser mas larga, asi que se estira menos. El cuadro 0 sigue
+# siendo exacto a la ranura horneada (0,88).
+ABRE = {('C1', 1), ('C3', 4), ('C5', 1), ('C5', 18)}
+
 
 def encuadre_de(L, n):
     """31 oct (U4 r04): el recorte del crudo es el encuadre de la ranura. Casi
@@ -147,9 +157,20 @@ def kling(L, solo=None):
         rt = os.path.join(TMP, nm + '.mp4')
         wr = escritor(rt, '24', 'setpts=%.9f*PTS,fps=%s' % (float(largo) / n0, FPS), largo)
         enc = encuadre_de(L, n)
-        vf = 'crop=iw*%.4f:ih*%.4f,scale=%d:%d:flags=lanczos' % (enc, enc, W, Hh)
+        abre = (L, n) in ABRE
+        if abre:
+            vf = 'scale=%d:%d:flags=lanczos' % (W, Hh)
+        else:
+            vf = 'crop=iw*%.4f:ih*%.4f,scale=%d:%d:flags=lanczos' % (enc, enc, W, Hh)
         movs, prev, primero = [], [], None
         for i, fr in enumerate(cuadros_rgb(crudo, vf)):
+            if abre:
+                # encuadre que se abre: f va de `enc` a 1,0 con smoothstep
+                f = enc + (1.0 - enc) * suave(i / float(max(1, n0 - 1)))
+                cw, ch = W * f, Hh * f
+                x0, y0 = (W - cw) / 2.0, (Hh - ch) / 2.0
+                fr = np.asarray(Image.fromarray(fr).resize(
+                    (W, Hh), Image.LANCZOS, box=(x0, y0, x0 + cw, y0 + ch)))
             o = DS.aplica(fr, ac, ge, 1.0)
             # el acento del curso, igual que en la ranura horneada (SP.ACENTO)
             o = SP.acento_serie(o, L, ac, n=n)

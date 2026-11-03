@@ -54,6 +54,7 @@ LA LIMPIEZA DE COLOR, POR QUE Y COMO
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -649,6 +650,22 @@ def construir(L, solo=None):
     # se toca (28 oct: E r03/r11 sobre la linea que Sebastian ya ajusto).
     if solo and 1 not in solo:
         return
+    respiro(L)
+
+
+# 3 nov, pase previo a la revision de Sebastian (como en Ley 1826). Medido
+# sobre lo que el deja a mano en las lineas que aprueba (situaciones C, D, E,
+# G; Derechos humanos U2): el respiro termina en un FUNDIDO A NEGRO antes del
+# corte al carton blanco de cierre. Va horneado en el archivo: los ultimos
+# RESPIRO_FUNDE cuadros bajan a negro. La linea no cambia.
+RESPIRO_FUNDE = 16
+
+
+def respiro(L):
+    """El respiro: la r01 graduada, 48 cuadros, quieta, con el fundido a
+    negro del final horneado. Paso aparte para rehacerlo sin tocar ranuras."""
+    tl = R.sub(L, '10 TIMELINE SEBASTIAN')
+    gd = os.path.join(R.sub(L, '01 PLANOS'), '_grade')
     g1 = os.path.join(gd, nombre(L, 1) + '.png')
     rd = os.path.join(tl, 'RESPIRO')
     os.makedirs(rd, exist_ok=True)
@@ -656,10 +673,16 @@ def construir(L, solo=None):
     if os.path.exists(d):
         aparta(d, 'rehecho_%s' % time.strftime('%H%M%S'))
     subprocess.run(['ffmpeg', '-y', '-v', 'error', '-loop', '1', '-i', g1,
-                    '-vf', 'scale=1920:1080:flags=lanczos,fps=%s' % FPS,
+                    '-vf', 'scale=1920:1080:flags=lanczos,fps=%s,'
+                    'fade=t=out:s=%d:n=%d:c=black'
+                    % (FPS, N_RESPIRO - RESPIRO_FUNDE, RESPIRO_FUNDE),
                     '-frames:v', str(N_RESPIRO), '-c:v', 'libx264', '-crf', '14',
                     '-preset', 'slow', '-pix_fmt', 'yuv420p', '-an', d], check=True)
-    w('respiro %d/%d' % (cuadros(d), N_RESPIRO))
+    r = subprocess.run(['ffmpeg', '-v', 'info', '-i', d, '-vf',
+                        'signalstats,metadata=print:key=lavfi.signalstats.YAVG',
+                        '-an', '-f', 'null', '-'], capture_output=True, text=True).stderr
+    ys = [float(x) for x in re.findall(r'YAVG=([0-9.]+)', r)]
+    w('respiro %d/%d  luma %s -> %s -> %s' % (cuadros(d), N_RESPIRO, ys[0], ys[40], ys[-1]))
 
 
 def blancos(L):
@@ -1153,6 +1176,7 @@ def inicios(L):
 
 
 PASOS = {'elegir': elegir, 'construir': construir, 'inicios': inicios, 'blancos': blancos,
+         'respiro': respiro,
          'musica': musica, 'montar': montar, 'exportar': exportar,
          'entregas': entregas, 'verificar': verificar, 'revisar': revisar}
 

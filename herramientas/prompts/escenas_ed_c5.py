@@ -301,6 +301,8 @@ DET = {
 BROLL = {}
 
 MOV = {
+ # 3 nov, pase previo: boca en un plano de habla
+ 5: 'kling: Valentina responde, serena; parpadea y respira entre frases',
  1: 'kling: Valentina camina hacia la cámara bajo el farol; la silueta lejana quieta',
  18: 'kling: Valentina baja los escalones y sale de cuadro',
 }

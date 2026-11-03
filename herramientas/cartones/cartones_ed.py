@@ -69,6 +69,7 @@ SALTO = int(round(CUERPO * 1.36))
 FPS = 24000 / 1001.0
 CABEZA = 182 + 119
 RESPIRO = 24
+N_RESPIRO = 48          # el respiro de la pieza (ed_pieza.N_RESPIRO)
 COMODO = 10.0
 TOPE_RENGLONES = 3
 
@@ -120,6 +121,11 @@ ELEGIDOS = {
    'del activismo LGBTI en su ciudad.'),
   ('b03_las_amenazas', 'había recibido amenazas relacionadas con su labor como '
    'activista.'),
+  # 3 nov, pase previo: 27 s sin carton entre el 914 y el 1567 (la manana
+  # del crimen). Los datos, no los golpes.
+  ('b04_la_manana', 'Una mañana de finales de agosto,'),
+  ('b06_el_cumpleanos', 'Su cuerpo fue hallado al día siguiente, coincidiendo con '
+   'la fecha de su cumpleaños'),
   ('b07_nada_robado', 'No se sustrajo ningún objeto de valor de la vivienda.'),
   ('b08_el_prejuicio', 'la actuación institucional estuvo marcada por el '
    'prejuicio.'),
@@ -153,9 +159,17 @@ ELEGIDOS = {
   ('c02_la_llamada', 'dos pasajeros, en evidente estado de embriaguez, se '
    'negaban a descender'),
   ('c03_la_aeronave', 'les explicó con calma la situación'),
+  # 3 nov, pase previo: la primera mitad iba al 35 %; 21 s sin carton entre
+  # el 1022 y el 1519 (se negaron) y 24 s entre el 2233 y el 2807 (la
+  # captura; los insultos siguen sin escribirse en pantalla).
+  ('c04_los_golpes', 'Los dos hombres se negaron y, ante la insistencia de '
+   'Wilmer, se resistieron físicamente'),
   ('c06_el_video', 'El video se difundió esa misma noche en redes sociales'),
   ('c08_los_insultos', 'Fue solo entonces, durante el traslado, cuando '
    'comenzaron las expresiones racistas:'),
+  # («Los dos agresores...» entero salia a 16,6 car/s: el relevo de «les
+  # imputo» no se deja empujar)
+  ('c11_la_imputacion', 'fueron capturados por agresión a servidor público,'),
   ('c11_la_imputacion', 'les imputó únicamente el delito de violencia contra '
    'servidor público,'),
   ('c12_sin_considerar', 'la circunstancia de agravación punitiva por móvil '
@@ -178,6 +192,10 @@ ELEGIDOS = {
    'Putumayo,'),
   ('d02_el_taita', 'autoridad indígena (Taita) de un cabildo con una estructura '
    'política y organizativa débil'),
+  # 3 nov, pase previo: 21 s sin carton entre el 777 y el 1289. El nombre y
+  # la posicion de autoridad son la tesis del caso; el abuso no se escribe.
+  ('d03_la_rutina', 'Jacanamijoy, aprovechando su posición de autoridad y la '
+   'confianza que esta le confería ante la familia y la comunidad,'),
   ('d05_la_madre', 'acudió primero ante las autoridades del cabildo para '
    'denunciar.'),
   ('d06_la_reunion', 'no tenían la fuerza política ni los mecanismos internos '
@@ -198,6 +216,12 @@ ELEGIDOS = {
  ],
  'C5': [
   ('e01_valentina', 'Valentina, mujer trans de 29 años,'),
+  # 3 nov, pase previo: 24 s sin carton entre el 521 y el 1107 (la
+  # recepcion y la pregunta en voz alta, que es el hecho del caso).
+  ('e03_la_recepcion', 'En la recepción, el funcionario le solicitó su documento '
+   'de identidad.'),
+  ('e04_en_voz_alta', 'le preguntó en voz alta, frente a otras personas que '
+   'esperaban de turno'),
   ('e06_su_nombre', 'Valentina explicó que Valentina era su nombre '
    'identitario.'),
   ('e07_el', 'el funcionario se refirió a ella varias veces como «él»,'),
@@ -345,8 +369,15 @@ def calcula(clave):
         limite = fin_b - int(round(len(b['frase']) / 16.0 * FPS))
         if quiere > b['ini']:
             b['ini'] = min(quiere, max(b['ini'], limite))
-    cierre = json.load(open(os.path.join(R.voces(clave), 'ED_%s_ranuras.json' % clave),
-                            encoding='utf-8'))['pieza'] - (182 + 119)
+    ran = json.load(open(os.path.join(R.voces(clave), 'ED_%s_ranuras.json' % clave),
+                         encoding='utf-8'))
+    cierre = ran['pieza'] - (182 + 119)
+    # 3 nov: las ranuras con rotulo, en cuadros de la linea
+    import lowerthirds_ed as LTS
+    rotulos = []
+    for e in LTS.LOWERS.get(clave, []):
+        r = ran['ranuras'][e[1] - 1]
+        rotulos.append((CABEZA + r['ini'], CABEZA + r['ini'] + r['dur']))
     for k, p in enumerate(piezas):
         sig = piezas[k + 1]['ini'] if k + 1 < len(piezas) else None
         mismo = sig is not None and piezas[k + 1]['bloque'] == p['bloque']
@@ -365,6 +396,16 @@ def calcula(clave):
         # (T1 903 > 875). Puede sostenerse sobre el respiro, nunca pasar al
         # cierre.
         fin = min(fin, cierre)
+        # 3 nov (pase previo, como en Ley 1826): el ultimo carton termina con
+        # el CUERPO, no sobre el respiro (Sebastian deja el respiro limpio y
+        # funde a negro). Si al cortarlo quedara bajo 72 cuadros, entra lo justo.
+        fin = min(fin, max(cierre - N_RESPIRO, p['ini'] + 72))
+        # rotulo y carton no conviven: un carton que empieza antes de una
+        # ranura con rotulo se corta donde ella empieza.
+        for a, b in rotulos:
+            assert not (a <= p['ini'] < b), (clave, p['frase'], 'empieza sobre el rotulo')
+            if p['ini'] < a < fin:
+                fin = a
         p['cuadros'] = fin - p['ini']
         p['densidad'] = round(len(p['frase']) / (p['cuadros'] / FPS), 1)
     for n, p in enumerate(piezas, 1):
