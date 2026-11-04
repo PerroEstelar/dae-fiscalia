@@ -186,9 +186,10 @@ sincroniza, `update_file(parentId=VIDEOS)`.
 |---|---|---|---|---|---|
 | C1 Édgar Molano (4 nov, «you are good to export and upload») | `ED_C1_v1.mp4` | 4964/4964 | −19,2 · −4,1 | 55 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 1 EDGAR MOLANO.mp4` · `1E5jbysh98ZfEXY_n0Nuh3-4XGbd86-a6` |
 | C2 Jairo Montero Salas (4 nov, «export and upload ed c2») | `ED_C2_v1.mp4` | 6046/6046 | −19,1 · −4,1 | 83 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 2 JAIRO MONTERO SALAS.mp4` · `1BZUppd4nYSmb_06Ps86qqYYFDxJXD1-h` |
+| C3 El patrullero Wilmer (4 nov, tras su revisión: «export and upload that one too») | `ED_C3_v1.mp4` | 5347/5347 | −19,2 · −3,5 | 54 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 3 EL PATRULLERO WILMER.mp4` · `13nUHnPO0K35pLLYFIoGPl59IUxAdVcBo` |
 
 El único «negro» de cada uno es el último cuadro del respiro (C1 194,44 s;
-C2 239,57 s), el fundido horneado. C3–C5 esperan su revisión.
+C2 239,57 s; C3 210,42 s), el fundido horneado. C4 y C5 esperan su revisión.
 
 ## Estado
 
