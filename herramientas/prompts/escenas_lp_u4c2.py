@@ -153,8 +153,10 @@ BROLL = {}
 MOV = {
  5: 'kling: el conductor habla con las manos abiertas; los otros escuchan',
  8: 'kling: el fiscal levanta la grabadora hacia el juez',
- # 3 nov, pase previo: el defensor se levanta y objeta (boca y mano)
- 9: 'kling: el defensor termina de levantarse, la mano abierta, y habla',
+ # 3 nov, pase previo: el defensor se levanta y objeta (boca y mano). Sebastian
+ # lo retiro en su revision: «demasiado realista, se ve de otro estilo que el
+ # resto». La r09 queda con la placa horneada (el defensor de pie, la mano
+ # abierta) y la camara de la casa. El clip esta en MOVIMIENTO/_descartes.
 }
 
 LOWER_THIRD = {}

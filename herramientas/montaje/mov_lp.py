@@ -56,7 +56,12 @@ import detalle_lp as DS                                 # noqa: E402
 FPS = '24000/1001'
 FPS_N = 24000 / 1001.0
 ENCUADRE = 0.88
-MEZCLA = 12
+# 3 nov (Sebastian, revision de U4 C2 r09): 0 = corte seco. Era 12: un fundido
+# de entrada contra la ranura horneada, y la ranura SE MUEVE (zoom + pulso de
+# la camara de la casa) mientras el Kling no: doce cuadros de dos imagenes
+# desfasadas, que se ven como un arranque tembloroso y fantasmal. Regla de la
+# biblia: las transiciones entre clips no pueden tener ese arrastre.
+MEZCLA = 0
 W, Hh = 1920, 1080
 CRUDOS = r'D:\DAE\_tmp\lp\mov\crudos'
 TMP = r'D:\DAE\_tmp\lp\mov\_retime'
@@ -180,14 +185,25 @@ def kling(L, solo=None):
                  % (nm, n0, n1, largo, 'OK' if n1 == largo else 'FALLA',
                     ' '.join('%.1f' % x for x in movs[:12])))
             continue
-        m = min(MEZCLA, max(2, largo // 6))
-        dur = m / FPS_N
-        subprocess.run(
-            ['ffmpeg', '-y', '-v', 'error', '-i', base, '-i', rt, '-filter_complex',
-             '[1:v]format=yuva420p,fade=t=in:st=0:d=%.6f:alpha=1[m];'
-             '[0:v][m]overlay=format=auto,format=yuv420p[v]' % dur,
-             '-map', '[v]', '-frames:v', str(largo), '-c:v', 'libx264', '-crf', '14',
-             '-preset', 'slow', '-pix_fmt', 'yuv420p', '-an', d], check=True)
+        m = min(MEZCLA, max(2, largo // 6)) if MEZCLA else 0
+        if m == 0:
+            # 3 nov (Sebastian, U4 C2 r09): el clip entra en CORTE SECO. El
+            # fundido de 12 cuadros contra la ranura horneada mezclaba una
+            # imagen que se mueve (la camara de la casa) con una que no (el
+            # Kling), y eso se ve como un arranque tembloroso, fantasmal,
+            # «glitching». No hay nada que empatar: el clip cubre la ranura
+            # desde el cuadro 0 y el corte anterior ya es un corte.
+            subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', rt, '-frames:v', str(largo),
+                            '-c:v', 'libx264', '-crf', '14', '-preset', 'slow',
+                            '-pix_fmt', 'yuv420p', '-an', d], check=True)
+        else:
+            dur = m / FPS_N
+            subprocess.run(
+                ['ffmpeg', '-y', '-v', 'error', '-i', base, '-i', rt, '-filter_complex',
+                 '[1:v]format=yuva420p,fade=t=in:st=0:d=%.6f:alpha=1[m];'
+                 '[0:v][m]overlay=format=auto,format=yuv420p[v]' % dur,
+                 '-map', '[v]', '-frames:v', str(largo), '-c:v', 'libx264', '-crf', '14',
+                 '-preset', 'slow', '-pix_fmt', 'yuv420p', '-an', d], check=True)
         n1 = SP.cuadros(d)
         SP.w('%-40s crudo %3d -> %3d/%3d %s  cuadro0 vs ranura %5.1f  movimiento %s'
              % (nm, n0, n1, largo, 'OK' if n1 == largo else 'FALLA', d0,

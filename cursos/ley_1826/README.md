@@ -189,6 +189,33 @@ horneada; conservar los cortes que él hizo».
   salen. `.drt` reexportado (el anterior en `_descartes`). Créditos: 1.511 →
   1.371.
 
+## Revisión de Sebastián · U4 C2 r09 (3 nov, noche) — y una regla nueva de la biblia
+
+Pedido: «no hagas tan tembloroso el arranque de los clips, se ve siniestro,
+como si el video fallara; no revises los clips pasados pero pon la regla en la
+biblia: las transiciones entre clips no pueden tener ese movimiento de cámara
+fantasmal, arrastrado, a saltos; y este clip de la r09 se ve de otro estilo
+que el resto porque es demasiado realista: cámbialo por un still del mismo
+hombre en nuestro estilo gráfico, gesticulando. El caso de análisis 1 está
+bien por ahora. No exportes nada hasta que yo lo diga».
+
+- **La causa del arranque tembloroso** no era Kling sino el conformado:
+  `mov_lp.kling` fundía el clip 12 cuadros (`MEZCLA`) contra la ranura
+  horneada de V1, y esa ranura se mueve (zoom + pulso de `camara.py`)
+  mientras el clip no. Dos imágenes desfasadas durante medio segundo. Desde
+  ahora `MEZCLA = 0` en `mov_lp` y `mov_ed`: el clip se escribe tal cual y
+  entra en corte seco (cubre la ranura entera desde el cuadro 0; el corte
+  anterior ya es un corte). Lo ya conformado no se rehace, como pidió. La
+  regla está en la biblia (§8) y en `CLAUDE.md`.
+- **r09**: su clip (`LP_U4C2_r09_la_oposicion_mov_v122.mp4`) fuera de SU
+  línea v2 con `cirugia_lp U4C2 v=2 quitar V2 …` (retrato idéntico salvo ese
+  ítem) y a `MOVIMIENTO/_descartes/…__demasiado_realista_*.mp4`. Queda la
+  placa horneada que ya estaba debajo: el defensor de pie, la mano abierta,
+  gesticulando, con la cámara de la casa. Sin gastar créditos (siguen en
+  1.371). `9` fuera de `MOV` en `escenas_lp_u4c2.py`; `retirado` en
+  `kling_lp.json`. `.drt` reexportado (el anterior en `_descartes`).
+- U4 C1 queda como está. Nada exportado.
+
 ## Timelines en Resolve (3 nov)
 
 Cada pieza del curso tiene su bin `10 TIMELINE SEBASTIAN` con una sola línea

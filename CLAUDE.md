@@ -1742,3 +1742,28 @@ menos. Se lee como un retroceso de cámara suave, no como un zoom.
 Y mirar la cola del crudo antes de fijar la ventana: en C5 r18 Kling vuelve
 TRANSPARENTE a Valentina desde el cuadro 82 (se desvanece, no sale de cuadro).
 La ventana se corta en el 78.
+
+## La entrada de un clip es un CORTE SECO: ningún fundido contra una placa que se mueve (Ley 1826, 3 nov 2026)
+
+Sebastián, sobre la U4 C2 r09: *«don't make it so shaky at the beginning of
+clips, it looks so uncanny, like the video is glitching, doesn't look natural
+(…) the transitions between clips cannot have this ghostly dragged choppy
+feeling movement of the camera»*. Es regla de la biblia (§8).
+
+La causa estaba en el conformado, no en Kling: el clip entraba con un fundido
+de 12 cuadros (`MEZCLA`) contra la ranura horneada que va debajo en V1, y esa
+ranura SE MUEVE —el zoom y el pulso de `camara.py`— mientras el Kling no. Doce
+cuadros de dos imágenes desfasadas se ven como un arranque tembloroso y
+fantasmal. El fundido venía del caso Miriam y Mariana, donde empataba el borde
+de salida; aquí el clip cubre la ranura entera desde el cuadro 0 y no hay nada
+que empatar: el corte anterior ya es un corte.
+
+`mov_lp.MEZCLA = 0` y `mov_ed.MEZCLA = 0`: el clip se escribe tal cual, sin
+`overlay`. Si algún día un clip entra a mitad de ranura, el empate se resuelve
+con el cuadro 0 del clip igual a la ranura en ese cuadro (como las caminatas
+`ABRE`), nunca mezclando dos imágenes que se mueven distinto. Lo ya conformado
+no se rehace (él lo pidió así); la regla rige desde aquí.
+
+Y un clip que se ve «demasiado realista» frente al resto —otro estilo, otra
+textura— se retira y queda la placa horneada: la pieza es gráfica plana, y un
+clip que se separa del estilo rompe más que lo que aporta su gesto.
