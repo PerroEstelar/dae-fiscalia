@@ -1767,3 +1767,20 @@ no se rehace (él lo pidió así); la regla rige desde aquí.
 Y un clip que se ve «demasiado realista» frente al resto —otro estilo, otra
 textura— se retira y queda la placa horneada: la pieza es gráfica plana, y un
 clip que se separa del estilo rompe más que lo que aporta su gesto.
+
+## Una mano que se dibuja bien: palma abajo, dedos juntos, pulgar a la vista (Ley 1826, 3 nov 2026)
+
+Sebastián, U4 C3 r03: *«hand its anatomically incorrect»*. La placa pedía «a
+young man's hand slides a request across the desk» y el modelo resolvió el
+brazo entrando por la esquina superior y la mano de plano HACIA la cámara: en
+escorzo, con dos dedos visibles y sin pulgar. Un escorzo de mano es lo más
+difícil de dibujar para una persona y también para el modelo.
+
+La pose que sale bien a la primera (35 cr, una tirada): cámara a la altura de
+la mesa y DE LADO, la mano entra por un borde lateral, **palma abajo, los
+cuatro dedos juntos y planos sobre el objeto, el pulgar visible a un lado**,
+el dorso y los nudillos hacia el espectador, y se dice en el prompt («exactly
+five fingers of natural length, nothing hidden or bent oddly»). Vale para
+cualquier mano sobre una mesa: empujar una hoja, apoyar una carpeta, posar la
+mano junto a un teléfono. Lo que no se pide: dedos apuntando a la lente, una
+mano que cruza hacia la cámara, dos manos entrelazadas en escorzo.

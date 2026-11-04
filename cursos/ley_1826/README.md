@@ -214,7 +214,57 @@ bien por ahora. No exportes nada hasta que yo lo diga».
   gesticulando, con la cámara de la casa. Sin gastar créditos (siguen en
   1.371). `9` fuera de `MOV` en `escenas_lp_u4c2.py`; `retirado` en
   `kling_lp.json`. `.drt` reexportado (el anterior en `_descartes`).
-- U4 C1 queda como está. Nada exportado.
+- U4 C1 queda como está.
+
+## Revisión de Sebastián · U4 C3 r03 (3 nov, noche): la mano
+
+Pedido: «u4 ca 3 r03 hand its anatomically incorrect, keep my changes». La
+placa traía el brazo entrando por la esquina superior derecha y la mano de
+plano hacia la cámara: dos dedos visibles, sin pulgar. Solo stills (regla del
+presupuesto): una tirada de Seedream (35 cr, candidata `b`) con la r02 de
+referencia de lugar y la escena reescrita (`escenas_lp_u4c3.R[3]`) con una
+pose que se dibuja bien: cámara a la altura de la mesa, de lado; la mano
+entra por el borde derecho, palma abajo, los cuatro dedos juntos y planos
+sobre la hoja, el pulgar visible a un lado, empujando la hoja a la izquierda
+hacia la carpeta. Salió bien a la primera (cinco dedos, nudillos al frente).
+`lp_pieza U4C3 elegir construir=3` (la vieja a `_descartes`), y en SU línea
+`cirugia_lp U4C3 v=2 relink <ranura>` (`ReplaceClip`: 0 fuera, 0 dentro,
+largo 1460). `.drt` reexportado. Créditos: 1.371 → **1.336**.
+
+## Entregas (3 nov, noche) — con su OK («export all videos and upload»)
+
+`lp_pieza <L> v=2 exportar entregas verificar` sobre SUS líneas v2 tal como
+las dejó (máster H.264 NVIDIA 32 Mbps en `D:\DAE\_tmp\lp\render`, MP4 receta
+Fiscalía x264 crf 18 y copia 720p en `05 EXPORTS`). Los cinco `.drt` de
+`10 TIMELINE SEBASTIAN` se reexportaron después, para que el de disco sea la
+línea que se entregó (los anteriores en `_descartes`). Camino al Drive: copia
+con el nombre de entrega (`guion_lp.ENTREGA`) a `G:\My Drive\_LP subidas`
+(md5 igual), Drive la sincroniza, `update_file(parentId=…)` a la carpeta de
+la unidad. Las ocho láminas igual, desde `IMAGENES ENTREGA`.
+
+| | archivo en `05 EXPORTS` | cuadros | LUFS · pico | MB | Drive |
+|---|---|---|---|---|---|
+| U2 C1 | `LP_U2C1_v1.mp4` | 2809/2809 | −19,6 · −4,1 | 37 | `…UNIDAD 2 ESTUDIO REVERSO 1 ESCRITO DE ACUSACION FLAGRANCIA Y NULIDAD.mp4` · `1ZK86YTtEh9fPS5zYIk8K6dFfn7d0VgBG` |
+| U2 C2 | `LP_U2C2_v1.mp4` | 2770/2770 | −19,5 · −4,4 | 33 | `…UNIDAD 2 ESTUDIO REVERSO 2 AUDIENCIA DE PRUEBA ANTICIPADA.mp4` · `1-OAnn0_zO0f7K6ujq35Iv4ID5vRXdvqn` |
+| U4 C1 | `LP_U4C1_v1.mp4` | 1879/1879 | −20,1 · −4,3 | 26 | `…UNIDAD 4 CASO DE ANALISIS 1.mp4` · `1wQuMlgjGJiXFClq2cSXgGDb0DtjAtDq3` |
+| U4 C2 | `LP_U4C2_v1.mp4` | 2386/2386 | −19,5 · −4,5 | 28 | `…UNIDAD 4 CASO DE ANALISIS 2.mp4` · `1pYNBcyXD_l6Bn7vVEiGTo8_XmK0ChOGT` |
+| U4 C3 | `LP_U4C3_v1.mp4` | 1460/1460 | −20,3 · −4,0 | 19 | `…UNIDAD 4 CASO DE ANALISIS 3.mp4` · `1RstfERMeZENQA-gWr02i-wkx9r3msTtJ` |
+
+Videos en `VIDEOS/Unidad 2` (`1Y_lqs6RKjnaWy9__5zaEV5kmkaz9m05U`) y
+`VIDEOS/Unidad 4` (`1RFogbclwzHYAbl0xK_b3ozGy0xohFsbi`); láminas en
+`IMAGENES/Unidad 1` (`1h6NXHpPnZG0r8VnJoFMRRPQEMzANsmCP`: ids `1Azw5jVCZ…`,
+`1E1BxutRC…`, `1lzRZGTGe…`, `1PFYbkn4W…`, `1hPAWlBml…`) y `IMAGENES/Unidad 3`
+(`1iUTlTecycCSXiA8R2_9Fvd0oPqYovZ8C`: `176G0zwKj…`, `1-CvmzSry…`,
+`13EHY5bfv…`). Los trece comprobados en el Drive con el tamaño del disco.
+
+Los «negros» que mide `blackdetect`: en los cinco, el último cuadro del
+respiro (el fundido horneado). Además, dos que son SUYOS, hechos a mano en su
+línea y que por eso van: U2 C2, 2 cuadros en 26,65 s —la r03 «la silla
+caída» entra desde negro (la ranura horneada empieza en luma 63; en su línea
+sube 16 → 38 en doce cuadros: fundido de entrada de clip)—, y U4 C2, 1 cuadro
+en 84,92 s —la r09 funde a negro en sus últimos seis cuadros antes del
+respiro (71 → 22)—. Son sus dos patrones medidos (desde negro en cambio de
+escena; a negro antes del respiro).
 
 ## Timelines en Resolve (3 nov)
 

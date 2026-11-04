@@ -40,11 +40,24 @@ chairs: %(ciudadana)s, her hands clasped in her lap, eyes down; beside her,
 knees. Daylight from the window.
 ''')
 
+# 3 nov, revision de Sebastian: «hand anatomically incorrect». La primera
+# placa traia el brazo entrando por la esquina superior y la mano de plano
+# hacia la camara, con dos dedos visibles y sin pulgar. Se vuelve a pedir con
+# una pose que se dibuja bien: camara a la altura de la mesa, de lado, la mano
+# entra por el borde derecho, palma abajo, los cuatro dedos juntos y planos
+# sobre la hoja y el pulgar visible a un lado, empujando hacia la izquierda.
 R[3] = (128, 'dia', ('estudiante',), None, False, 'despacho', '''
-Close shot at desk height: a young man's hand, the cuff of a plain light grey
-shirt under a dark grey sweater, slides a single written request across the
-desk toward a thick closed case folder. The request carries only plain grey
-bars. Only the hand and sleeve; no face. Daylight from one side.
+Close shot at desk height, the camera level with the desktop and looking
+across it from the side. From the RIGHT edge of the frame a young man's right
+hand and forearm enter, the cuff of a plain light grey shirt under a dark grey
+sweater: the hand is PALM DOWN, flat on a single written request, its four
+fingers together, straight and side by side, the thumb resting visibly along
+the near edge of the sheet, and it pushes the sheet slowly to the LEFT across
+the desk toward a thick closed case folder. The hand is drawn with correct,
+simple anatomy: exactly five fingers of natural length, the back of the hand
+and the knuckles facing the viewer, nothing hidden or bent oddly. The request
+carries only plain grey bars. Only the hand, the sleeve and the desk; no face,
+no second hand. Daylight from one side.
 ''')
 
 R[4] = (189, 'dia', ('ciudadana',), None, False, 'despacho', '''
