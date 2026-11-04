@@ -70,9 +70,12 @@ EXTRA = {
            'cover under one arm.'),
  'mauricio': ('In the three full figures he holds a small plain bunch of keys '
               'in one hand.'),
+ # 4 nov: el uniforme de la Policia Nacional (base_ed.UNIFORME_POLICIA)
  'wilmer': ('In the three full figures his hands hang relaxed and open at his '
-            'sides; the jacket is plain dark navy everywhere, with nothing on '
-            'the chest, the sleeves or the shoulders.'),
+            'sides and he wears the cap; the vest is lime yellow-green with '
+            'only its two silver-grey reflective bands, and the shirt, the '
+            'trousers and the cap are plain dark olive-green cloth with nothing '
+            'on the chest, the sleeves or the shoulders.'),
  'madre': ('In the three full figures she holds a small plain child\'s school '
            'backpack by its strap.'),
  'fiscal_c4': ('In the three full figures he holds a plain manila case folder.'),
@@ -92,6 +95,8 @@ def prompt(quien):
         p.append(EXTRA[quien])
     if quien in S.VIDA:
         p.append('WHO THIS IS. ' + S.VIDA[quien])
+    if quien in S.PATRULLEROS:
+        p.append(S.UNIFORME_POLICIA)
     p.append(LUZ_HOJA)
     # 3 nov (ED): las clausulas cortas de la serie (base_ed.C_*), como las placas
     p.append(S.C_ESTILO + S.C_ROSTRO + S.C_PIEL + S.C_FIGURA)

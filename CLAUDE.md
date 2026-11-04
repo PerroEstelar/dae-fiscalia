@@ -1784,3 +1784,37 @@ five fingers of natural length, nothing hidden or bent oddly»). Vale para
 cualquier mano sobre una mesa: empujar una hoja, apoyar una carpeta, posar la
 mano junto a un teléfono. Lo que no se pide: dedos apuntando a la lente, una
 mano que cruza hacia la cámara, dos manos entrelazadas en escorzo.
+
+## El patrullero colombiano lleva su uniforme; la noche es gris, no negra (Enfoque diferencial C3, 4 nov 2026)
+
+Sebastián: *«none of the characters from la Policía Nacional look like
+Colombian patrulleros regarding their attire, specially during the incident at
+the airport»* y *«clips graded with too much hard black tones, everything's
+supposed to be more greyish»*.
+
+- **Uniforme.** La regla vieja («ningún uniforme: chaqueta oscura lisa») dejaba
+  a un patrullero que nadie reconocía. Un policía de servicio va con el
+  uniforme de la Policía Nacional (`base_ed.UNIFORME_POLICIA`: verde oliva,
+  chaleco reflectivo verde-amarillo de dos franjas grises, gorra verde), sin
+  letras, insignia, escudo, bandera, placa ni arma. Un token que se inserta a
+  mitad de frase lleva la versión corta (`UNIFORME_CORTO`); la descripción
+  entera va en su propio párrafo (`arma` la agrega si hay un patrullero): un
+  token largo con punto y coma rompe la oración del plano.
+- **Re-vestir sin perder el plano**: la placa aprobada como referencia 'mismo'
+  («mismo plano, misma gente, misma luz; solo cambia la ropa») + la hoja nueva
+  como primera referencia. Diez de diez salieron a la primera.
+- **La limpieza de color se come el uniforme**: frío x0,08 y amarillo suelto
+  x0,15 dejan el verde y el chaleco grises. Esas ranuras van en
+  `escenas.CHALECO` (acota a s ≤ 0,55 el chaleco y ≤ 0,30 el verde, sin girar a
+  la mostaza).
+- **Gris, no negro**: `escenas.GRIS = (piso, codo)` levanta la sombra de todo
+  el tema con una curva suave (`ed_pieza.gris`; en ffmpeg `gris_vf` para los
+  clips que se quedan) y SIN_TECHO para las de noche. Con (30, 130), medido en el C3:
+  p2 12-25 → 38-45 y bajo 30 de 3-59 % → 0 % en las 25; la terminal de p50
+  20-50 → 57-61; los hero de noche quedan en 45-52.
+- **Un detalle de agarre se pide nombrando a quién se agarra**: «la mano
+  sostiene el brazo de otro hombre» devolvió la mano de un policía sobre el
+  chaleco de otro policía. Funcionó «el pasajero NO es policía: camisa clara,
+  sin chaleco».
+- Subir referencias desde Windows falló dos veces (SSL EOF en el PUT); desde la
+  nube con curl salió a la primera: JPEG en `D:\DAE\_tmp\ed\up`, stage, PUT.

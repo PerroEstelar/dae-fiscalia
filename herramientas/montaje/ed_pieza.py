@@ -180,25 +180,54 @@ def _peso_banda(h, a, b, rampa=8.0):
     return np.clip(x, 0.0, 1.0)
 
 
-def limpia(src, dst, acento, gente):
+# 4 nov, Sebastian (revision del C3): «none of the characters from la Policia
+# Nacional look like Colombian patrulleros». Los patrulleros de servicio llevan
+# el uniforme de la Policia Nacional: verde oliva oscuro y el chaleco
+# reflectivo verde-amarillo. En las ranuras de `escenas.CHALECO` la limpieza
+# NO apaga ese verde ni ese verde-amarillo (con la regla de siempre los dos
+# quedaban grises y el uniforme no se leia); los ACOTA: chaleco (tono PIL
+# 34-62) a s <= 0,55 y verde del uniforme (62-95) a s <= 0,30. El frio de
+# verdad (azul, cian, magenta: 96-255) sigue x0,08. El chaleco no es acento:
+# no se gira a la mostaza de la serie.
+CHALECO_S = (0.55, 0.30)
+
+
+def chaleco(L, n):
+    return n in getattr(E(L), 'CHALECO', set())
+
+
+def topes_chaleco(hsv):
+    import numpy as np
+    h, s = hsv[..., 0], hsv[..., 1]
+    wv = _peso_banda(h, 34, 62, rampa=4.0)
+    s = s - wv * np.clip(s - CHALECO_S[0] * 255, 0, None)
+    wg = _peso_banda(h, 63, 95, rampa=4.0)
+    s = s - wg * np.clip(s - CHALECO_S[1] * 255, 0, None)
+    hsv[..., 1] = s
+    return hsv
+
+
+def limpia(src, dst, acento, gente, con_chaleco=False):
     import numpy as np
     from PIL import Image, ImageFilter
     im = Image.open(src).convert('RGB')
     hsv = np.asarray(im.convert('HSV')).astype(np.float32)
     h, s = hsv[..., 0], hsv[..., 1]
     k = np.ones_like(s)
-    frio = _peso_banda(h, 66, 262)
+    frio = _peso_banda(h, 96 if con_chaleco else 66, 262)
     k = np.minimum(k, 1 - frio * (1 - 0.08))
-    if not acento:
+    if not acento and not con_chaleco:
         am = _peso_banda(h, 30, 54)
         k = np.minimum(k, 1 - am * (1 - 0.15))
-    if not acento and not gente:
+    if not acento and not gente and not con_chaleco:
         k = np.minimum(k, 0.15)
     # el peso se difumina antes de aplicarse: dos vecinos nunca distintos
     km = Image.fromarray(np.clip(k * 255, 0, 255).astype(np.uint8), 'L')
     km = km.filter(ImageFilter.GaussianBlur(6))
     k = np.asarray(km).astype(np.float32) / 255.0
     hsv[..., 1] = s * k
+    if con_chaleco:
+        hsv = topes_chaleco(hsv)
     hsv = topes_piel(hsv, acento)
     out = Image.fromarray(np.clip(hsv, 0, 255).astype(np.uint8), 'HSV').convert('RGB')
     out.save(dst)
@@ -357,6 +386,55 @@ def piso_negro(g, etiqueta, piso=16, codo=40):
     return p2
 
 
+# 4 nov, Sebastian (revision del C3): «there are clips graded with too much hard
+# black tones, everything's supposed to be more greyish». Medido sobre su
+# linea: las placas de noche de la terminal (r02, r08-r11) tenian p50 18-31 y
+# 53-70 % del cuadro bajo 30. Dos cosas, por tema (`escenas.GRIS`):
+#   - las de noche van SIN_TECHO (el registro les sube el medio tono);
+#   - a TODA placa del tema se le levanta la sombra con una curva suave:
+#       v' = v + piso * (1 - v/codo)^2   para v < codo; identidad arriba.
+#     Con (30, 130): 0 -> 30, 20 -> 42, 45 -> 58, 90 -> 93. Monotona (pendiente
+#     minima 1 - 2*piso/codo = 0,54 en el negro), continua y derivable en el
+#     codo: no hay quiebre. Los blancos y los medios altos no se tocan.
+# La misma curva va en ffmpeg (`gris_vf`) para los clips de V2/V3 que no se
+# rehacen, para que el corte entre placa y clip no salte.
+def gris_lut(piso, codo):
+    import numpy as np
+    v = np.arange(256, dtype=np.float32)
+    o = np.where(v < codo, v + piso * (1.0 - v / float(codo)) ** 2, v)
+    return np.clip(np.round(o), 0, 255).astype(np.uint8)
+
+
+def gris(g, L, etiqueta):
+    par = getattr(E(L), 'GRIS', None)
+    if not par:
+        return None
+    import numpy as np
+    from PIL import Image
+    a = np.asarray(Image.open(g).convert('RGB'))
+    b = gris_lut(*par)[a]
+    Image.fromarray(b).save(g)
+
+    def lum(x):
+        x = x.astype(np.float32)
+        return 0.2126 * x[..., 0] + 0.7152 * x[..., 1] + 0.0722 * x[..., 2]
+    la, lb = lum(a), lum(b)
+    w('%s gris: p2 %.0f -> %.0f  p50 %.0f -> %.0f  bajo 30 %.1f%% -> %.1f%%'
+      % (etiqueta, np.percentile(la, 2), np.percentile(lb, 2), np.percentile(la, 50),
+         np.percentile(lb, 50), (la < 30).mean() * 100, (lb < 30).mean() * 100))
+    return par
+
+
+def gris_vf(L):
+    """El filtro de ffmpeg con la misma curva (lutrgb), o None."""
+    par = getattr(E(L), 'GRIS', None)
+    if not par:
+        return None
+    piso, codo = par
+    ex = 'if(lt(val\\,%d)\\,val+%g*pow(1-val/%d\\,2)\\,val)' % (codo, piso, codo)
+    return 'lutrgb=r=%s:g=%s:b=%s' % (ex, ex, ex)
+
+
 def reinyectar_acento(o, g, etiqueta, banda=(14, 45), piso_s=0.25):
     """31 oct (r12 del C2): el sueter de Camilo ocupa el 39 % del cuadro y la
     neutralizacion del entorno de `graduar_serie` lo tomo por dominante de
@@ -458,7 +536,7 @@ def elegir(L):
             aparta(dst, 'reemplazada_por_candidata_%s' % v)
         ac, ge = con_acento(L, n)
         antes = medir_color(src)
-        despues = limpia(src, dst, ac, ge)
+        despues = limpia(src, dst, ac, ge, chaleco(L, n))
         hecho[nm] = firma
         w('r%02d %s  acento %-5s gente %-5s  fria %.3f->%.3f  amarilla %.3f->%.3f'
           '  calida %.3f->%.3f  rosado %.2f%%->%.2f%%'
@@ -559,12 +637,12 @@ def construir(L, solo=None):
         if mc['rosado_pct'] > 0.3:
             ac, ge = con_acento(L, n)
             w('r%02d rosado despues del grade %.2f%% -> %.2f%%'
-              % (n, mc['rosado_pct'], limpia(g, g, ac, ge)['rosado_pct']))
+              % (n, mc['rosado_pct'], limpia(g, g, ac, ge, chaleco(L, n))['rosado_pct']))
             fr = medir_color(g)['fria_p90']
         if fr > 0.05:
             ac, ge = con_acento(L, n)
             w('r%02d frio despues del grade %.3f -> %.3f'
-              % (n, fr, limpia(g, g, ac, ge)['fria_p90']))
+              % (n, fr, limpia(g, g, ac, ge, chaleco(L, n))['fria_p90']))
         ac, ge = con_acento(L, n)
         if ac and ((L, n) in ACENTO_AUTO or L in ACENTO):
             import numpy as np
@@ -584,6 +662,7 @@ def construir(L, solo=None):
             Image.fromarray(cielo(np.asarray(Image.open(g).convert('RGB')), L)).save(g)
             w('r%02d cielo apagado' % n)
         piso_negro(g, 'r%02d' % n)
+        gris(g, L, 'r%02d' % n)
         v = GR.medir(g)
         sal = os.path.join(ran, '%s_v%d.mp4' % (nm, largo))
         if os.path.exists(sal):

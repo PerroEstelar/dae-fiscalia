@@ -56,28 +56,28 @@
   "31": "a"
  },
  "C3": {
-  "1": "a",
+  "1": "p",
   "3": "a",
   "8": "a",
-  "9": "a",
-  "12": "a",
+  "9": "p",
+  "12": "p",
   "16": "a",
   "18": "a",
   "20": "a",
   "14": "b",
-  "4": "a",
-  "5": "a",
-  "6": "a",
+  "4": "p",
+  "5": "p",
+  "6": "p",
   "7": "a",
-  "11": "a",
-  "13": "a",
+  "11": "p",
+  "13": "p",
   "17": "a",
   "19": "a",
   "21": "a",
-  "24": "a",
-  "25": "a",
-  "2": "b",
-  "10": "b",
+  "24": "p",
+  "25": "p",
+  "2": "p",
+  "10": "p",
   "15": "a",
   "22": "b",
   "23": "b"
@@ -134,8 +134,9 @@
    "26": "a"
   },
   "C3": {
-   "11": "a",
-   "22": "a"
+   "11": "p",
+   "22": "a",
+   "12": "p"
   },
   "C4": {
    "15": "a"
@@ -146,6 +147,20 @@
   }
  },
  "_magnific": {
-  "nota": "ids de candidatas en /home/claude/ed/gen/ids_candidatas.json; las aprobadas en placa_id_ed.json"
+  "nota": "ids de candidatas en /home/claude/ed/gen/ids_candidatas.json; las aprobadas en placa_id_ed.json",
+  "ED_C3_r01_el_anden": "gOB6QFaSXO",
+  "ED_C3_r02_la_llamada": "p8UaRGnehw",
+  "ED_C3_r04_el_pasillo": "SyoiFrYUb8",
+  "ED_C3_r05_la_explicacion": "DoSvZeSpcl",
+  "ED_C3_r06_el_antebrazo": "xSDyCS9jfW",
+  "ED_C3_r09_el_traslado": "iGQ0gYA3uK",
+  "ED_C3_r10_el_gesto": "gOB6qxFSXO",
+  "ED_C3_r12_la_estacion": "BhOuWt1oQR",
+  "ED_C3_r13_el_coronel": "lJXNqOngv9",
+  "ED_C3_r24_el_amanecer": "u5AjornQLD",
+  "ED_C3_r25_restituida": "nV1X9BSYQD",
+  "ED_C3_r11_los_insultos": "xSDyqH5jfW",
+  "ED_C3_r11_el_brazo_det": "dt7CVOmXSL",
+  "ED_C3_r12_el_contraplano_det": "79tZsOkJAL"
  }
 }

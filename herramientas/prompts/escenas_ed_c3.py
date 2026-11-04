@@ -19,8 +19,27 @@ LO QUE SE OYE ENCIMA (cruce_ed.json)
 LO QUE NO SE DIBUJA
     Los golpes. La r06 es la mano de Wilmer en el antebrazo del hombre, y el
     corte siguiente son los celulares en alto. Los dos agresores son formas
-    oscuras, de espaldas o en sombra: nunca una cara legible. Ningún
-    uniforme, insignia ni placa: chaqueta de campo azul noche lisa.
+    oscuras, de espaldas o en sombra: nunca una cara legible.
+
+REVISION DE SEBASTIAN (4 nov) — todo en SU linea v2, sin remontar
+    «none of the characters from la Policia Nacional look like Colombian
+    patrulleros regarding their attire, specially during the shots of the
+    incident at the airport; clips graded with too much hard black, everything
+    is supposed to be more greyish; r09 isn't giving police escorting people
+    out of the airport; r11 should be a top-down shot of the same scene; at
+    1:39 add a camera angle variation insert». Con el presupuesto apretado,
+    solo stills y la camara de la casa:
+      - los patrulleros llevan el uniforme de la Policia Nacional (verde oliva
+        y chaleco reflectivo verde-amarillo, `base_ed.UNIFORME_POLICIA`), sin
+        letras, insignia, escudo, bandera, placa ni arma. Hoja nueva de Wilmer;
+        las placas con policias se re-visten sobre la misma placa (REF 'mismo':
+        mismo plano, misma gente, misma luz, solo cambia la ropa);
+      - CHALECO: en esas ranuras la limpieza de color deja el verde y el
+        verde-amarillo, acotados (`ed_pieza.limpia`);
+      - GRIS y SIN_TECHO: las sombras se levantan (`ed_pieza.gris`);
+      - r09 nueva (la escolta hacia la salida, luz de techo), r11 nueva (cenital
+        de la misma escena), inserto nuevo en la r12 (contraplano, 1:39);
+      - fuera de su linea los Kling de r04, r09 y r24 (la placa cambio).
 
 LA LUZ
     Es una pieza de noche. Hero en el andén (r01) y en el código cerrado
@@ -117,14 +136,18 @@ icons, no buttons, no text, no numbers. The thumb rests at the edge of the
 screen. Everything around the hand falls into darkness.
 ''')
 
-R[9] = (191, 'contraluz', ('wilmer', 'companero', 'agresores'), None, False, 'terminal', '''
-Wide shot down the long, empty departures hall at night, the camera at
-standing height, perfectly level, looking along the hall toward a lit glass
-door at the far end, which is the only bright thing in the frame. Four figures
-walk AWAY from the camera toward it, small, seen from behind, caught
-mid-stride: %(wilmer)s and %(companero)s, each holding one of %(agresores)s
-by the upper arm. Their shadows stretch back toward the camera on the polished
-floor. The rows of seats on both sides are empty. Nobody shows a face.
+R[9] = (191, 'dia', ('wilmer', 'companero', 'agresores'), None, False, 'terminal', '''
+Medium-wide shot inside the departures hall of the small airport at night,
+the camera at standing height, perfectly level, from the side at three-quarter
+view. Walking from right to left toward the open glass exit doors at the left
+edge of the frame -beyond them the dark night and the kerb outside-,
+%(wilmer)s and %(companero)s ESCORT %(agresores)s out of the airport: each
+policeman walks beside one of the two passengers, holding him firmly by the
+upper arm, all four caught mid-stride. The two passengers walk with their
+heads down and turned away toward the exit, their faces hidden. Wilmer,
+nearest to the camera, is in three-quarter profile, his eyes ahead, his jaw
+set. Rows of empty seats behind them and the polished floor reflecting the
+ceiling lamps. Each person appears ONCE.
 ''')
 
 R[10] = (133, 'contraluz', ('wilmer', 'agresores'), None, False, 'terminal', '''
@@ -138,14 +161,17 @@ Wilmer, never his face. Wilmer is the only face in the picture. The lit far
 end of the hall behind them. Wilmer appears ONCE.
 ''')
 
-R[11] = (276, 'contraluz', ('wilmer', 'agresores'), None, False, 'terminal', '''
-Profile shot from the side as they walk through the empty hall, the camera at
-eye level, perfectly level. In the left foreground, out of focus, the dark
-back of the head and the shoulder of one of the two passengers, turned toward
-Wilmer, his face hidden: he leans in close to Wilmer's ear. In focus in the
-middle ground, %(wilmer)s walks on in clean profile facing left, his eyes
-ahead, not turning his head, his mouth closed in a straight line. The bright
-glass door at the far end of the hall behind him. Wilmer appears ONCE.
+R[11] = (276, 'dia', ('wilmer', 'companero', 'agresores'), None, False, 'terminal', '''
+Overhead shot looking STRAIGHT DOWN from high above at the polished floor of
+the empty departures hall at night, the camera directly above the people.
+Four figures walk across the frame from right to left, seen from directly
+above: %(wilmer)s and %(companero)s -their dark olive-green caps and the lime
+yellow-green vests on their shoulders seen from above-, each holding one of
+%(agresores)s by the upper arm; the two passengers are dark heads and
+shoulders in light shirts, and one of them turns his head toward Wilmer as
+he walks. Their four short shadows on the floor, the plain square floor tiles
+and the end of a row of seats at the top edge of the frame. Nobody's face is
+visible from this height. Each person appears ONCE.
 ''')
 
 R[12] = (238, 'dia', ('wilmer', 'agresores'), None, False, 'estacion_aeropuerto', '''
@@ -269,7 +295,7 @@ No face. A glass of water beside the form. Daylight from one side.
 R[24] = (213, 'contraluz', ('wilmer',), None, False, 'aeropuerto', '''
 Medium shot on the same apron at first light, the camera at standing height,
 perfectly level. %(wilmer)s stands in near profile facing left, on duty again
-in his plain dark navy field jacket, the radio on his chest, looking toward
+in his patrol uniform and vest, the radio on his chest, looking toward
 the parked white jet with no livery. Behind him the sky is a flat pale grey
 just before day, the only bright thing in the frame; the apron and the
 terminal are still in soft shadow. His face is calm and steady, his mouth
@@ -297,7 +323,7 @@ CON_PERSONA = set(R) - {16}
 SILUETAS = set()
 # Los insultos (r11-r13) los dice la voz; no se escriben en carton.
 CARTONES = {3, 6, 8, 10, 14, 15, 16, 17, 20, 21, 22, 23, 24}
-CENITALES = {15, 23}
+CENITALES = {11, 15, 23}
 SOLO_MANOS = {8, 15, 21, 23}
 SIN_CARA = {14}
 TOPE_SIN_GENTE = 3
@@ -305,6 +331,10 @@ TOTAL = 4697
 PIEZA = TOTAL + (182 + 119 + 48 + 119 + 182)
 
 HOJAS = {n: ['wilmer'] for n in (1, 2, 4, 5, 6, 9, 10, 11, 12, 13, 18, 19, 24, 25)}
+# 4 nov: la hoja de Wilmer es la del uniforme; en la entrevista (r18, r19) va de
+# civil y esa hoja ya no le sirve: la referencia es su placa aprobada.
+HOJAS.pop(18)
+HOJAS.pop(19)
 
 E_OFICINA = 'LP_U4C1_r01_la_noticia'
 E_SALA = 'LP_U4C1_r05_la_recusacion'
@@ -314,48 +344,82 @@ E_NOCHE = 'LP_U2C2_r07_la_ventana'
 E_RECEPCION = 'DH_U1_r10_la_recepcion'
 ANCLAS = {1, 3, 8, 9, 12, 14, 16, 18, 20}
 
+# 4 nov: re-vestir sobre la placa aprobada (el plano no cambia, solo la ropa)
+REVISTE = ('Keep the place, the framing, the camera, every person, every pose '
+           'and the light exactly as they are in it; the ONLY change is the '
+           'clothes of the policemen, who now wear the Colombian police patrol '
+           'uniform described above: dark olive-green shirt and trousers, the '
+           'lime yellow-green high-visibility vest with its two silver-grey '
+           'reflective bands and the dark olive-green cap.')
+
 REF_PLACA = {
- 1: ([E_NOCHE], 'estilo', ''),
+ 1: (['ED_C3_r01_el_anden'], 'mismo', REVISTE),
  3: ([E_CUARTO], 'estilo', ''),
  8: ([E_NOCHE], 'estilo', ''),
- 9: ([E_NOCHE], 'estilo', ''),
- 12: ([E_RECEPCION], 'estilo', ''),
+ 9: (['ED_C3_r02_la_llamada'], 'lugar', 'It is the SAME departures hall, lit by its ceiling lamps. '),
+ 12: (['ED_C3_r12_la_estacion'], 'mismo', REVISTE),
  14: ([E_SALA], 'estilo', ''),
  16: ([E_NOCHE], 'estilo', ''),
  18: ([E_CALLE], 'estilo', ''),
  20: ([E_OFICINA], 'estilo', ''),
- 2: (['ED_C3_r09_el_traslado'], 'lugar', ''),
- 4: (['ED_C3_r03_se_niegan'], 'lugar', 'It is the SAME cabin. '),
- 5: (['ED_C3_r03_se_niegan'], 'lugar', ''),
- 6: (['ED_C3_r03_se_niegan'], 'lugar', ''),
+ 2: (['ED_C3_r02_la_llamada'], 'mismo', REVISTE),
+ 4: (['ED_C3_r04_el_pasillo'], 'mismo', REVISTE),
+ 5: (['ED_C3_r05_la_explicacion'], 'mismo', REVISTE),
+ 6: (['ED_C3_r06_el_antebrazo'], 'mismo', REVISTE),
  7: (['ED_C3_r03_se_niegan'], 'lugar', ''),
- 10: (['ED_C3_r09_el_traslado'], 'lugar', ''),
- 11: (['ED_C3_r09_el_traslado'], 'lugar', ''),
- 13: (['ED_C3_r12_la_estacion'], 'lugar', ''),
+ 10: (['ED_C3_r10_el_gesto'], 'mismo', REVISTE),
+ 11: (['ED_C3_r09_el_traslado'], 'lugar', 'It is the SAME four people in the SAME hall at the SAME moment, now seen from straight above. '),
+ 13: (['ED_C3_r13_el_coronel'], 'mismo', REVISTE),
  15: (['ED_C3_r14_la_imputacion'], 'lugar', ''),
  17: (['ED_C3_r12_la_estacion'], 'lugar', ''),
  19: (['ED_C3_r18_el_medio_local'], 'lugar', 'It is the SAME man in the SAME light grey shirt. '),
  21: (['ED_C3_r20_la_revision'], 'lugar', ''),
  22: (['ED_C3_r14_la_imputacion'], 'lugar', 'It is the SAME hearing room, now in daylight. '),
  23: (['ED_C3_r15_una_casilla'], 'mismo', 'It is the SAME form from the SAME overhead camera; only now THREE boxes are checked instead of one, and the hand is a woman\'s in a charcoal sleeve. '),
- 24: (['ED_C3_r01_el_anden'], 'lugar', 'It is the SAME apron and the SAME man, now at first light. '),
- 25: (['ED_C3_r01_el_anden'], 'lugar', ''),
+ 24: (['ED_C3_r24_el_amanecer'], 'mismo', REVISTE),
+ 25: (['ED_C3_r25_restituida'], 'mismo', REVISTE),
 }
 
 REUSA = {}
 
 DET = {
+ # 4 nov: re-vestido (la manga del uniforme verde oliva); la referencia es la
+ # r10 re-vestida (el mismo agarre de frente), porque la madre ahora es cenital
  (11, 'el_brazo'): dict(cuadros=84, entra=150,
-     registro='contraluz',
+     registro='dia',
      personas=('wilmer',),
+     hojas=['wilmer'],
+     ref=(['ED_C3_r10_el_gesto'], 'lugar', 'It is a much closer view of the SAME grip, the SAME two men, in the SAME hall. '),
      escena='Extreme close shot at elbow height of a man\'s right hand in the '
-            'sleeve of a plain dark navy field jacket with no badge, holding '
-            'the upper arm of another man in a light shirt sleeve: the grip '
-            'is firm and steady, the fingers closed but not digging in. '
-            'Exactly one hand. No face. The bright far end of the hall '
+            'long sleeve of a plain dark olive-green police shirt, the lower '
+            'edge of a lime yellow-green high-visibility vest at the top of the '
+            'frame, holding the upper arm of another man in a light shirt '
+            'sleeve: the grip is firm and steady, the fingers closed but not '
+            'digging in. Exactly one hand, five fingers. No face. The lit hall '
             'behind, soft.',
      gesto='The two arms move forward together with the walk, the hand '
            'keeping exactly the same grip. Nothing else moves.'),
+ # 4 nov, Sebastian: «at 1:39 add a camera angle variation insert». 1:39 es el
+ # cuadro 2374 de su linea, en la r12 (2239-2477, la estacion; sin carton en
+ # todo el tramo). El contraplano: desde detras del banco, Wilmer de frente
+ # escribiendo el informe. Entra en el 100 de la ranura (2339-2435).
+ (12, 'el_contraplano'): dict(cuadros=96, entra=100,
+     registro='dia',
+     personas=('wilmer', 'agresores'),
+     hojas=['wilmer'],
+     lugar='estacion_aeropuerto',
+     ref=(['ED_C3_r12_la_estacion'], 'lugar', 'It is the SAME police post at the SAME moment, seen from the opposite side, from behind the bench. '),
+     escena='Reverse shot of the small plain police post inside the airport at '
+            'night, the camera low behind the plain metal bench, at the height '
+            'of a seated man, perfectly level. In the near foreground, soft and '
+            'out of focus, the dark backs of the heads and the shoulders of '
+            '%(agresores)s sitting on the bench, in shadow, turned away from the '
+            'camera toward the counter. Across the post, in focus, %(wilmer)s '
+            'stands behind the plain counter, facing the camera in three-quarter '
+            'view, writing the report on a plain sheet, his eyes down on the '
+            'page, his jaw set. Flat white light from the ceiling lamps. Wilmer '
+            'appears ONCE.',
+     gesto='Nothing moves.'),
  (22, 'la_hoja'): dict(cuadros=84, entra=150,
      registro='dia',
      personas=('fiscal_revision',),
@@ -373,12 +437,16 @@ BROLL = {}
 MOV = {
  # 3 nov, pase previo: boca en un plano de habla
  19: 'kling: Wilmer habla al reportero, sereno; parpadea y asienta la cabeza',
- 4: 'kling: Wilmer camina por el pasillo de la cabina; los pasajeros giran la cabeza',
- 9: 'kling: los cuatro caminan hacia la puerta iluminada del fondo',
- 24: 'kling: Wilmer respira y sostiene la mirada; el cielo aclara apenas',
+ # 4 nov: fuera r04, r09 y r24 (placa re-vestida o nueva; solo stills por
+ # presupuesto). Sus clips estan en MOVIMIENTO/_descartes.
 }
 
 LOWER_THIRD = {1: 'Wilmer'}
+
+# 4 nov (revision de Sebastian): ver el encabezado
+CHALECO = {1, 2, 4, 5, 6, 9, 10, 11, 12, 13, 24, 25}
+SIN_TECHO = {1, 2, 8, 9, 10, 11, 16, 17, 24, 25}
+GRIS = (30, 130)
 
 
 def comprobar():

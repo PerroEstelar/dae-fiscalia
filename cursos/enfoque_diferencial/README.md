@@ -117,6 +117,58 @@ la reserva de créditos en 1.500. Líneas nuevas `… v2`, la v1 en
   colegas; C5 r05 Valentina responde. 16 clips en 118 ranuras.
 - Créditos: 2.071 → 1.511.
 
+## Revisión de Sebastián · C3 El patrullero Wilmer (4 nov) — en SU línea v2, sin remontar
+
+Pedido: «ningún personaje de la Policía Nacional se ve como un patrullero
+colombiano por el uniforme, sobre todo en los planos del incidente en el
+aeropuerto (búscalos de referencia); hay clips con negros demasiado duros,
+todo debería ser más grisáceo; la r09 no da la idea de la policía sacando a
+la gente del aeropuerto; la r11 debería ser un cenital de la misma escena; en
+el 1:39 agrega un inserto con una variación de ángulo». Presupuesto apretado:
+solo stills y la cámara de la casa.
+
+- **El uniforme.** Referencia: el uniforme de servicio urbano de la Policía
+  Nacional (verde oliva) con el chaleco reflectivo verde-amarillo de dos
+  franjas grises y la gorra verde. El uniforme azul se presentó en 2021 como
+  piloto en diez ciudades (El Heraldo, policia.gov.co, RTVC); las fuentes
+  consultadas no confirman que haya reemplazado al verde, y la imagen que se
+  reconoce del patrullero es la del verde con el chaleco: esa se usó. `base_ed.UNIFORME_POLICIA` (párrafo entero que
+  `arma` agrega cuando hay un patrullero) y `UNIFORME_CORTO` dentro del token
+  de Wilmer y de su compañero. Sin letras («POLICÍA» de la espalda),
+  insignia, escudo, bandera, placa ni arma, como siempre. Hoja nueva de
+  Wilmer (la vieja como referencia de cara; la anterior en
+  `00 PERSONAJES/_descartes`).
+- **Re-vestidas sobre la misma placa** (REF 'mismo': mismo plano, misma gente,
+  misma luz, solo cambia la ropa; una tirada cada una, candidata `p`): r01,
+  r02, r04, r05, r06, r10, r12, r13, r24, r25. **Nuevas:** r09 (los dos
+  patrulleros escoltan a los dos pasajeros hacia la puerta de salida, luz de
+  techo, los pasajeros con la cabeza baja y la cara fuera), r11 (picado
+  cenital de la misma escena). Detalles: el brazo de la r11 re-vestido (la
+  primera tirada agarraba a otro policía: descartada, segunda tirada con la
+  r09 de referencia) y el **contraplano** nuevo en la r12 (desde detrás del
+  banco, Wilmer de frente escribiendo el informe), V3 2339-2435 — el 1:39 es el
+  cuadro 2374. Los tres, quietos con la cámara de la casa.
+- **El color del uniforme.** La limpieza de la serie apagaba el verde
+  (x0,08) y el amarillo suelto (x0,15): el uniforme habría salido gris. En
+  `escenas.CHALECO` la limpieza deja el verde-amarillo del chaleco a
+  s ≤ 0,55 y el verde oliva a s ≤ 0,30 (`ed_pieza.topes_chaleco`; también en
+  `detalle_ed` y `hojas_ref_ed`). El chaleco no es acento: no se gira a la
+  mostaza.
+- **Los negros.** Medido sobre su línea: las placas de noche de la terminal
+  tenían p50 18-31 y 53-70 % del cuadro bajo 30 (r02, r08-r11; el detalle del
+  brazo 75 %). Dos cosas: SIN_TECHO para las de noche (el registro les sube el
+  medio tono) y a TODO el C3 una curva suave que levanta la sombra
+  (`ed_pieza.gris`, `GRIS = (30, 130)`: 0 → 30, 20 → 42, 45 → 58, 90 → 93,
+  blancos intactos). Las 25 ranuras y el respiro rehorneados; el Kling de la
+  r19 y el detalle de la r22, que se quedan, llevan la misma curva en ffmpeg
+  (`gris_vf`, mismo archivo, `ReplaceClip`).
+- **Fuera de su línea** los Kling de r04, r09 y r24 (mostraban la chaqueta
+  vieja; `MOVIMIENTO/_descartes`): esas ranuras quedan con la placa nueva y la
+  cámara de la casa. Todo con `cirugia_ed C3 v=2 relink / quitar / poner`;
+  nada más cambió en la línea. `.drt` reexportado.
+- Créditos: 1.336 → **776** (16 stills × 35: la hoja, 12 placas, 2 detalles
+  y la tirada descartada del brazo).
+
 ## Entregas
 
 Con su OK, caso por caso. `ed_pieza <L> v=2 exportar entregas verificar` sobre

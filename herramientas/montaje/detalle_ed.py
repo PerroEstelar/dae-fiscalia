@@ -101,12 +101,14 @@ def p90_calida(hsv):
     return float(np.percentile(s[m], 90)) if m.sum() > 500 else 0.0
 
 
-def pesos(h, acento, gente, k_piel):
+def pesos(h, acento, gente, k_piel, chaleco=False):
+    # 4 nov (C3): con el uniforme de la Policia Nacional el verde y el
+    # verde-amarillo del chaleco no se apagan (ver `ed_pieza.limpia`)
     k = np.ones_like(h)
-    k = np.minimum(k, 1 - SP._peso_banda(h, 66, 262) * (1 - 0.08))
-    if not acento:
+    k = np.minimum(k, 1 - SP._peso_banda(h, 96 if chaleco else 66, 262) * (1 - 0.08))
+    if not acento and not chaleco:
         k = np.minimum(k, 1 - SP._peso_banda(h, 30, 54) * (1 - 0.15))
-    if not acento and not gente:
+    if not acento and not gente and not chaleco:
         k = np.minimum(k, 0.15)
     if k_piel < 1.0:
         piel = SP._peso_banda(h, 0, 21, rampa=6.0)
@@ -133,9 +135,11 @@ def topes(hsv, acento):
     return hsv
 
 
-def aplica(rgb, acento, gente, k_piel):
+def aplica(rgb, acento, gente, k_piel, chaleco=False):
     hsv = np.asarray(Image.fromarray(rgb).convert('HSV')).astype(np.float32)
-    hsv[..., 1] *= pesos(hsv[..., 0], acento, gente, k_piel)
+    hsv[..., 1] *= pesos(hsv[..., 0], acento, gente, k_piel, chaleco)
+    if chaleco:
+        hsv = SP.topes_chaleco(hsv)
     hsv = topes(hsv, acento)
     return np.asarray(Image.fromarray(np.clip(hsv, 0, 255).astype(np.uint8), 'HSV')
                       .convert('RGB'))
@@ -192,13 +196,14 @@ def placas(L):
         for p in (dst, g):
             SP.aparta(p, 'reemplazada_%s' % time.strftime('%H%M%S'))
         ac, ge = SP.con_acento(L, n)
+        ch = SP.chaleco(L, n)
         rgb = np.asarray(Image.open(src).convert('RGB').resize((W, Hh), Image.LANCZOS))
         mh = hsv_de(madre_grade(L, n))
         # la limpieza va primero (sin piel); la piel se mide despues de ella
-        limpio = aplica(rgb, ac, ge, 1.0)
+        limpio = aplica(rgb, ac, ge, 1.0, ch)
         k, a, b = factor_piel(mh, np.asarray(Image.fromarray(limpio).convert('HSV'))
                               .astype(np.float32))
-        Image.fromarray(aplica(limpio, ac, ge, k) if k < 1 else limpio).save(dst)
+        Image.fromarray(aplica(limpio, ac, ge, k, ch) if k < 1 else limpio).save(dst)
         reg = SP.E(L).R[n][1]
         GR.graduar(dst, g, reg, techo=True)
         # 29 oct, Justicia restaurativa: el grade le devolvio el rosado a la mano
@@ -209,9 +214,12 @@ def placas(L):
         mc = SP.medir_color(g)
         if mc['rosado_pct'] > 0.3:
             gr = np.asarray(Image.open(g).convert('RGB'))
-            Image.fromarray(aplica(gr, ac, ge, 1.0)).save(g)
+            Image.fromarray(aplica(gr, ac, ge, 1.0, ch)).save(g)
             SP.w('%s rosado despues del grade %.2f%% -> %.2f%%'
                  % (nm, mc['rosado_pct'], SP.medir_color(g)['rosado_pct']))
+        # 4 nov (C3): la curva gris (`ed_pieza.gris`) NO va aqui sino en
+        # `conformar`, cuadro a cuadro: el crudo `quieto` sale de esta placa y
+        # la llevaria dos veces
         m = GR.medir(g)
         gh = hsv_de(g)
         SP.w('%s %s  acento %-5s  piel madre %.3f det %.3f -> x%.2f -> %.3f  '
@@ -241,6 +249,7 @@ def conformar(L, solo=None):
             continue
         kf = os.path.join(R.sub(L, '01 PLANOS'), 'DETALLE', '_grade', nm + '.png')
         ac, ge = SP.con_acento(L, n)
+        ch = SP.chaleco(L, n)
         n0 = cuadros_de(crudo)
         if nm in CORTE:
             n0 = min(n0, CORTE[nm])
@@ -265,6 +274,8 @@ def conformar(L, solo=None):
                                '-preset', 'medium', '-pix_fmt', 'yuv420p', '-an', out],
                               stdin=subprocess.PIPE)
         mh = hsv_de(madre_grade(L, n))
+        par = getattr(SP.E(L), 'GRIS', None)
+        lut = SP.gris_lut(*par) if par else None
         kfa = np.asarray(Image.open(kf).convert('RGB').resize((W, Hh), Image.LANCZOS))
         i, k, d0, muestras, giro = 0, None, None, {}, 0.0
         while True:
@@ -286,15 +297,18 @@ def conformar(L, solo=None):
                 # el crudo todavia naranja (dentro), el baston del T4 media la
                 # prenda como piel y bajaba las manos x0,52.
                 f0 = gira_acento(fr, giro) if abs(giro) >= 1.0 else fr
-                k, a, b = factor_piel(mh, np.asarray(Image.fromarray(aplica(f0, ac, ge, 1.0))
+                k, a, b = factor_piel(mh, np.asarray(Image.fromarray(aplica(f0, ac, ge, 1.0, ch))
                                                      .convert('HSV')).astype(np.float32))
             if abs(giro) >= 1.0:
                 fr = gira_acento(fr, giro)
-            o = aplica(fr, ac, ge, k)
+            o = aplica(fr, ac, ge, k, ch)
             # el tono ya se igualo a la madre (que lleva el acento de la
             # serie, SP.ACENTO); falta la saturacion
             o = SP.acento_serie(o, L, ac, girar=False, n=n)
             o = SP.cielo(o, L)
+            # 4 nov (C3): la sombra levantada, la misma curva de la madre
+            if lut is not None:
+                o = lut[o]
             if i in (0, n0 // 2, n0 - 1):
                 muestras[i] = o
             wr.stdin.write(o.tobytes())

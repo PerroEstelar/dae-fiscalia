@@ -25,6 +25,9 @@ outro.*
 clip es un corte seco; ninguna transición entre clips puede tener ese arrastre
 fantasmal de la cámara.*
 
+*Ampliadas la §3 y la §11 el 4 de noviembre (Enfoque diferencial, C3): el
+patrullero colombiano lleva su uniforme; nada en negro duro, todo más gris.*
+
 Gobierna el Caso 4 y el Caso 5. Lo que dice aquí manda sobre lo que digan las
 hojas de personaje de cada caso.
 
@@ -99,6 +102,15 @@ y ya hay un chequeo que lo garantiza.
   a las seis de la mañana. Eso no ilustra nada.
 - **Ningún uniforme, insignia, placa, toga, escarapela.** Ningún texto legible.
   Ninguna bandera ni escudo.
+- **Excepción, de Sebastián (4 de noviembre, Enfoque diferencial C3):** un
+  policía de servicio se dibuja **como un patrullero colombiano**, porque si
+  no, no se le cree: *«none of the characters from la Policía Nacional look
+  like Colombian patrulleros regarding their attire»*. El uniforme de servicio
+  de la Policía Nacional —camisa y pantalón verde oliva, chaleco reflectivo
+  verde-amarillo con dos franjas grises, gorra verde— sí entra; lo que sigue
+  fuera es lo de siempre: letras (el «POLICÍA» de la espalda), insignia,
+  escudo, bandera, placa, arma. Y se describe en positivo, lo que lleva, para
+  que ninguna prohibición se dibuje como texto.
 - **Inés y Alba siguen sin dibujarse.** La razón —que el caso discute que no
   están individualizadas— no la toca nada de lo anterior.
 - **Nada de ropa ajustada o reveladora, ninguna postura sugerente.**
@@ -712,6 +724,24 @@ a su registro.
 Las dos banderas (`techo=True`, `POR_PENDIENTE`) entran **apagadas por
 defecto**: lo que ya está conformado se graduó con el guardia viejo y no se
 vuelve a tocar.
+
+### Nada en negro duro: la serie es gris
+
+4 de noviembre, Sebastián, sobre el C3 de Enfoque diferencial: *«there are
+clips graded with too much hard black tones, everything's supposed to be more
+greyish»*. Medido: las placas de noche de la terminal tenían la mediana en 18
+a 31 y más de la mitad del cuadro bajo 30. El techo de esta sección protegía
+la noche legítima, y la protegió de más.
+
+> **La noche se cuenta con gris oscuro, no con negro.** El negro más
+> hondo de una placa queda en gris (p2 ≈ 40), el medio tono de una placa de
+> noche no baja de ~45 y nada del cuadro queda bajo 30.
+
+Lo hace la curva `ed_pieza.gris` (sombra levantada, blancos intactos, sin
+quiebre) y, en las de noche, graduar sin techo. Va en ffmpeg con la misma
+curva para los clips que no se rehacen. Ya era regla que el negro puro casi
+nunca pasa en estos videos (`piso_negro`, 31 oct); esta es la misma regla, más
+arriba.
 
 ## 12 · El plano de detalle, y la pregunta cinematográfica
 

@@ -25,6 +25,7 @@ from piel_ref import piel_ref, medir    # noqa: E402
 from PIL import Image                   # noqa: E402
 
 CON_ACENTO = {'yolanda', 'madre', 'valentina'}
+CHALECO = {'wilmer'}
 QUIENES = (sys.argv[1:] or ['molano', 'yolanda', 'jairo', 'mauricio', 'wilmer',
                            'madre', 'fiscal_c4', 'valentina'])
 
@@ -34,7 +35,8 @@ for q in QUIENES:
     src = os.path.join(R.PERSONAJES, 'ED_HOJA_%s.png' % q)
     dst = os.path.join(dst_d, 'ED_HOJA_%s.png' % q)
     antes = medir(Image.open(src).convert('RGB'))
-    limpia(src, dst, q in CON_ACENTO, True)
+    # 4 nov: Wilmer con el uniforme de la Policia Nacional (verde y chaleco)
+    limpia(src, dst, q in CON_ACENTO, True, q in CHALECO)
     im = piel_ref(Image.open(dst).convert('RGB'))
     im.save(dst)
     print('%-14s piel p50 %.3f -> %.3f  p90 %.3f -> %.3f  rosado %.2f%% -> %.2f%%'

@@ -21,7 +21,10 @@ LO QUE NO SE DIBUJA NUNCA (la regla de toda la serie)
     ningún cuerpo. Los agresores y quien amenaza: SILUETA. La niña de
     Putumayo NO se dibuja: está su camino, sus botas, su morral. Ningún
     uniforme, insignia, placa, escudo ni bandera: los policías van con
-    chaqueta oscura lisa. Ningún texto legible. Ninguna decisión equivocada
+    chaqueta oscura lisa. EXCEPCION (4 nov, Sebastián, C3): los patrulleros
+    de servicio llevan el uniforme de la Policía Nacional -verde oliva y
+    chaleco reflectivo verde-amarillo, `UNIFORME_POLICIA`-, siempre sin
+    letras, insignia, escudo, bandera, placa ni arma. Ningún texto legible. Ninguna decisión equivocada
     cae sobre una cara (biblia §3): el coronel de C2, el fiscal de turno de
     C3 y el funcionario de C5 van de espaldas, sobre el hombro o en manos;
     el fiscal Molano (C1) y el fiscal de C4 sí tienen cara, y el cartón de su
@@ -239,6 +242,28 @@ LUGARES = {
 }
 
 # ------------------------------------------------------------------ reparto
+
+# El uniforme de servicio de la Policia Nacional de Colombia (C3, 4 nov). Va en
+# dos partes: corto dentro del token (que se inserta a mitad de frase) y
+# entero en un parrafo propio que `arma` agrega cuando hay un patrullero.
+UNIFORME_CORTO = ('the Colombian police patrol uniform -dark olive-green shirt and '
+                  'trousers, a lime yellow-green high-visibility vest with two '
+                  'silver-grey reflective bands, a dark olive-green cap with a '
+                  'short black visor-')
+UNIFORME_POLICIA = (
+    'THE POLICE UNIFORM. Every patrolman wears the ordinary patrol uniform of '
+    'the Colombian National Police: a long-sleeved shirt and trousers of plain '
+    'dark olive-green cloth; over the shirt a lime yellow-green high-visibility '
+    'vest of matte fabric whose only marks are two horizontal silver-grey '
+    'reflective bands, one across the chest and one across the waist; a dark '
+    'olive-green police cap with a short black visor; a plain black belt with a '
+    'plain radio pouch; black boots; a plain black handheld radio clipped to the '
+    'vest at the chest. The vest, the shirt, the cap and the sleeves are '
+    'completely plain cloth with nothing sewn, pinned or printed on them '
+    'anywhere. The vest is matte and does not glow: it takes the same light as '
+    'the cloth around it.')
+PATRULLEROS = {'wilmer', 'companero'}
+
 CUERPO = {
  # ---- C1
  'molano': ('EDGAR MOLANO, the prosecutor, a Colombian man of about fifty, '
@@ -292,13 +317,20 @@ CUERPO = {
  'estudiantes': ('A FEW UNIVERSITY STUDENTS seen from behind at their desks, '
                  'small in the frame'),
  # ---- C3
- 'wilmer': ('WILMER, a patrolman, an Afro-Colombian man of about thirty, tall '
-            'and broad-shouldered, very short black hair, clean-shaven, a calm '
-            'steady face, in a plain dark navy field jacket and dark trousers '
-            'of completely plain smooth fabric with nothing sewn, pinned or printed on it anywhere'),
+ # 4 nov, Sebastian (revision del C3): «none of the characters from la Policia
+ # Nacional look like Colombian patrulleros regarding their attire, specially
+ # during the incident at the airport». El uniforme de servicio de la Policia
+ # Nacional (verde oliva y chaleco reflectivo verde-amarillo) se dibuja; lo que
+ # sigue fuera es lo que nunca va: letras, insignia, escudo, bandera, placa,
+ # arma. Se describe en positivo (lo que lleva) para que ninguna prohibicion
+ # se dibuje como texto.
+ 'wilmer': ('WILMER, a patrolman of the Colombian National Police, an '
+            'Afro-Colombian man of about thirty, tall and broad-shouldered, '
+            'very short black hair, clean-shaven, a calm steady face, in '
+            + UNIFORME_CORTO),
  'companero': ('HIS PARTNER, a Colombian patrolman of about forty, short dark '
-               'hair, a dark moustache, in the same dark navy field jacket '
-               'of completely plain smooth fabric with nothing sewn, pinned or printed on it anywhere'),
+               'hair, a dark moustache, in the same Colombian police patrol '
+               'uniform and high-visibility vest'),
  'agresores': ('TWO DRUNK PASSENGERS, men in plain light shirts, seen ONLY AS '
                'DARK SHAPES FROM BEHIND or in shadow: their faces are never '
                'readable'),
@@ -464,6 +496,9 @@ def arma(escena, registro='dia', personas=(), con_acento=None,
         vidas = [VIDA[x] for x in personas if x in VIDA]
         if vidas:
             p.append('WHO THESE PEOPLE ARE. ' + ' '.join(vidas))
+    # 4 nov (C3): el uniforme de la Policia Nacional, entero, en su parrafo
+    if any(x in PATRULLEROS for x in personas):
+        p.append(UNIFORME_POLICIA)
     p.append(REGISTRO['dia_noche'] if (registro == 'dia' and lugar in NOCHE_INTERIOR)
              else REGISTRO[registro])
     con_cara = con_rostro and any(x not in SIN_ROSTRO for x in personas)
