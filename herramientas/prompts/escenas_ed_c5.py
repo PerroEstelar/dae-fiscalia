@@ -274,6 +274,35 @@ REUSA = {
 }
 
 DET = {
+ # 4 nov (revision de Sebastian, marcador 1051: «aqui esta hablando un
+ # funcionario, no ella, it's misleading»). La r05 abre con la pregunta de
+ # Julian (e05, 1037-1094) sobre el primer plano de ella HABLANDO (el Kling de
+ # la boca). Un contraplano del funcionario preguntando -de espaldas, como
+ # siempre- tapa ese tramo: 1029-1100, el corte justo antes de «Valentina
+ # explico» (1105). `abre`: entra en el cuadro 0 de la ranura (un contraplano,
+ # no un detalle a mitad de plano).
+ (5, 'la_pregunta'): dict(cuadros=71, entra=0, abre=True,
+     registro='dia',
+     personas=('funcionario', 'valentina'),
+     hojas=['valentina'],
+     lugar='recepcion',
+     ref=(['ED_C5_r03_la_cedula'], 'mismo', 'It is the SAME counter, the SAME '
+          'official and the SAME woman, from the SAME camera and light; the '
+          'ONLY changes are that he now holds her identity card up beside his '
+          'head as he asks his question, his head turned a little toward her, '
+          'and that she stands still, waiting, her mouth closed.'),
+     escena='Over-the-shoulder shot from BEHIND the reception counter, the '
+            'camera at seated height, perfectly level. In the left '
+            'foreground, the balding back of the head and the pale grey '
+            'shoulder of %(funcionario)s, filling the left third of the frame, '
+            'his head turned a little toward her as he speaks: his face is '
+            'entirely hidden by his own head. His right hand holds her plain '
+            'grey identity card up beside his head, nothing legible on it. '
+            'Across the counter, on the other side of the low pane of plain '
+            'glass, %(valentina)s stands in three-quarter view, very still, '
+            'waiting: her mouth closed in a straight line, her eyes on him, '
+            'her hands at her sides. Flat fluorescent light. She appears ONCE.',
+     gesto='Nothing moves.'),
  (4, 'la_cedula'): dict(cuadros=84, entra=140,
      registro='dia',
      personas=('funcionario',),
@@ -328,6 +357,6 @@ def comprobar():
     if set(LOWER_THIRD) & CARTONES:
         fallos.append('rotulo y carton en la misma ranura: %s' % (set(LOWER_THIRD) & CARTONES))
     for (n, _), d in DET.items():
-        if d['entra'] < 60 or d['entra'] + d['cuadros'] > R[n][0]:
+        if (d['entra'] < 60 and not d.get('abre')) or d['entra'] + d['cuadros'] > R[n][0]:
             fallos.append('detalle r%02d fuera de su ranura' % n)
     return fallos, tot, mejor

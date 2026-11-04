@@ -244,7 +244,8 @@ def conformar(L, solo=None):
             continue
         n, cuad = sp['ranura'], sp['cuadros']
         largo = SP.E(L).R[n][0]
-        assert sp['entra'] >= 30 and sp['entra'] + cuad <= largo, (nm, sp, largo)
+        # 4 nov (C5 r05): un contraplano puede abrir la ranura (`abre`)
+        assert (sp['entra'] >= 30 or sp.get('abre')) and sp['entra'] + cuad <= largo, (nm, sp, largo)
         crudo = os.path.join(CRUDOS, nm + '.mp4')
         if not os.path.exists(crudo):
             SP.w('%s  FALTA crudo' % nm)

@@ -867,8 +867,11 @@ def plan(L):
     voz = os.path.join(R.voces(L), 'ED_%s_NARRADOR.wav' % L)
     # 4 nov (C4, «Taita»): Resolve tiene abierto el master y Windows no deja
     # reescribirlo en su sitio; la version corregida va con sufijo y manda
-    if os.path.exists(voz[:-4] + '_v2.wav'):
-        voz = voz[:-4] + '_v2.wav'
+    # (C5: una segunda correccion va como _v3; manda la mas alta que exista)
+    for k in range(9, 1, -1):
+        if os.path.exists(voz[:-4] + '_v%d.wav' % k):
+            voz = voz[:-4] + '_v%d.wav' % k
+            break
     mus = os.path.join(base, '08 MUSICA', 'ED_%s_MUSICA_cama.wav' % L)
     return v1, v4, v6, voz, mus, ini, fin - ini, t
 
@@ -1159,7 +1162,10 @@ LIGERA = ['-vf', 'scale=1280:720:flags=lanczos', '-c:v', 'libx264', '-crf', '25'
           '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart']
 
 
-def entregas(L, version=1):
+def entregas(L, version=1, solo=None):
+    # `entregas=2` desde la consola: una re-entrega con su propio numero
+    if solo:
+        version = max(solo)
     m = os.path.join(RENDER, 'ED_%s_master.mp4' % L)
     exp = R.sub(L, '05 EXPORTS')
     os.makedirs(exp, exist_ok=True)
@@ -1168,16 +1174,25 @@ def entregas(L, version=1):
     for p in (f, l):
         if os.path.exists(p):
             aparta(p, 'reexportada_%s' % time.strftime('%H%M%S'))
-    subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', m] + FISCALIA + [f], check=True)
-    subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', m] + LIGERA + [l], check=True)
+    # 4 nov (C4): Sebastian corrio la cama 19 cuadros y la linea pasa del outro
+    # (4441 contra 4422); la cola de la cama es silencio digital (medido) y el
+    # video ahi es negro. Se entrega la pieza: hasta el ultimo cuadro del outro.
+    corte = []
+    if cuadros(m) > pieza(L):
+        corte = ['-frames:v', str(pieza(L)), '-t', '%.6f' % (pieza(L) / FPS_N)]
+        w('el master mide %d y la pieza %d: se entrega hasta el %d' % (cuadros(m), pieza(L), pieza(L)))
+    subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', m] + FISCALIA + corte + [f], check=True)
+    subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', m] + LIGERA + corte + [l], check=True)
     a, b, c = cuadros(m), cuadros(f), cuadros(l)
     w('cuadros master %d fiscalia %d ligera %d pieza %d  %s'
-      % (a, b, c, pieza(L), 'OK' if a == b == c == pieza(L) else 'NO CUADRA'))
+      % (a, b, c, pieza(L), 'OK' if b == c == pieza(L) <= a else 'NO CUADRA'))
     w('MB %d / %d / %d' % (os.path.getsize(m) >> 20, os.path.getsize(f) >> 20,
                            os.path.getsize(l) >> 20))
 
 
-def verificar(L, version=1):
+def verificar(L, version=1, solo=None):
+    if solo:
+        version = max(solo)
     exp = R.sub(L, '05 EXPORTS')
     f = os.path.join(exp, 'ED_%s_v%d.mp4' % (L, version))
     n = cuadros(f)

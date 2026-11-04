@@ -249,7 +249,7 @@ def video(clave):
                 'placa_ref_id': PID.get(refs[-1]), 'ref_placa': refs,
                 'ref_ids': [PID.get(x) for x in refs], 'hojas': hojas,
                 'hojas_id': [HOJA_ID[h] for h in hojas], 'cuadros': d['cuadros'],
-                'entra': d['entra'], 'prompt_placa': p,
+                'entra': d['entra'], 'abre': bool(d.get('abre')), 'prompt_placa': p,
                 'prompt_video': d['gesto'] + ' ' + QUIETO}
             continue
         # un detalle es una mano sobre su objeto: sin clausula de rostro

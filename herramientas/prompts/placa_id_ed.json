@@ -8,7 +8,7 @@
  "DH_U1_r10_la_recepcion": "rgT1mzrxtc",
  "ED_C1_r01_el_pasillo": "w481wVv7EI",
  "ED_C1_r02_la_denuncia": "vQ6evJda47",
- "ED_C1_r03_el_vecino": "mE9DmJehJQ",
+ "ED_C1_r03_el_vecino": "SyoZj2BUb8",
  "ED_C1_r07_la_sala_vacia": "s7eqserl8e",
  "ED_C1_r09_la_ventana": "1lTuxm9r4r",
  "ED_C1_r10_la_audiencia": "SyBkwH8Ub8",
@@ -151,5 +151,8 @@
  "ED_C4_r19_en_ejercicio_v1": "N2CUff16D9",
  "ED_C4_r15_la_mesa_det": "lJXiKdugv9",
  "ED_C4_r19_el_contrapicado_det": "JNmGLaMOq4",
- "ED_C4_r19_el_contrapicado_det_s": "SyoRxFyUb8"
+ "ED_C4_r19_el_contrapicado_det_s": "SyoRxFyUb8",
+ "ED_C1_r03_el_vecino_v1": "mE9DmJehJQ",
+ "ED_C1_r03_el_vecino_r": "JNmzsFBOq4",
+ "ED_C5_r05_la_pregunta_det": "XmJFT2qBfo"
 }

@@ -1851,3 +1851,20 @@ retrato comprueba que solo cambió el nombre del archivo).
 `ffmpeg-9.0.2-full_build` (WinGet lo actualizó). Buscarlo con
 `glob(r'C:\Users\call_\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg*\*\bin\ffmpeg.exe')`
 en vez de escribir la ruta.
+
+## Los golpes de aire se miden bajo 60 Hz y se cortan solo donde están (Enfoque diferencial C5, 4 nov 2026)
+
+Sebastián: *«mucho golpeo de aire en el micrófono»* sobre una pregunta de
+Julián (la voz del funcionario). Medido en envolvente de 20 ms: un golpe de
+−7 dBFS bajo 80 Hz, **8 dB por encima del habla** (en Pilar, los graves quedan
+32 dB bajo el habla). Un paso alto de 100 Hz en todo el bloque lo bajó solo a
+8,5 dB bajo el habla. Lo que funcionó (`voz/aire_c5.py`): el paso alto de
+100 Hz en los bloques de esa voz y, **solo en los tramos de 10 ms con energía
+bajo 60 Hz sobre −40 dBFS** (290 ms en el bloque; la voz normal de un hombre
+nunca pasa de −41 ahí), un paso alto de 200 Hz con rampas de 10 ms. Quedó 27 dB
+bajo el habla, el resto del máster idéntico. Un detector por «graves cerca del
+habla» marcaba 1,4 s de los 2,4: la voz de un hombre tiene graves.
+
+Y **los marcadores se leen en las cinco líneas**, no solo en la que él nombra:
+pidió los del C5 y había otro en el C1 ya entregado («missing around this
+part»: la placa del vecino había perdido la silueta que la voz nombra).

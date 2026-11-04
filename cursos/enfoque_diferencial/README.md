@@ -217,6 +217,41 @@ instrucción. Presupuesto apretado: solo stills y la cámara de la casa.
 - Créditos: 776 → **426** (10 stills × 35: la hoja en dos tiradas, cinco
   placas, dos detalles y la segunda tirada del contrapicado, que no se usó).
 
+## Revisión de Sebastián · C5 La denuncia de Valentina y el marcador del C1 (4 nov, tarde) — en SU línea v2, sin remontar
+
+«keep my changes but identify and read markers throughout the timeline with my
+required adjustments in ed c5, then export all 5 cases». Leídos los marcadores
+de las cinco líneas: C5 tiene uno (1051) y el C1 uno (755); los nueve del C4
+ya estaban hechos. Sus cambios a mano, medidos contra el plan, se conservan:
+C1 p01 cortado a 480-653, C4 inserto de la mesa partido en 3145-3198 +
+3198-3283 y la cama corrida 19 cuadros, C5 p12 corrido de 3254 a 3289.
+
+- **C5 · 1051, «mucho golpeo de aire en el micrófono».** Medido por bloque:
+  en e05 (Julián, «¿Ese es su nombre real... o es un apodo?») hay un golpe de
+  aire de −7 dBFS bajo 80 Hz entre «real...» y «o es» —8 dB POR ENCIMA del
+  habla—; e11 (su segunda pregunta) 19 dB bajo el habla; Pilar 32 dB bajo.
+  `voz/aire_c5.py`: paso alto de 100 Hz (cuatro polos) en los dos bloques de
+  Julián y, solo en los tramos con energía bajo 60 Hz sobre −40 dBFS (290 ms en
+  e05, ninguno en e11), paso alto de 200 Hz; el nivel del habla igualado. El
+  golpe queda en −43 dBFS (27 dB bajo el habla); el resto del máster idéntico
+  y del mismo largo. `ED_C5_NARRADOR_v3.wav` por `cirugia_ed cambiar` (la v2,
+  solo con el paso alto, dejaba el golpe 8,5 dB bajo el habla).
+- **C5 · 1051, «aquí está hablando un funcionario, no ella, it's
+  misleading».** La pregunta de Julián (1037-1094) caía sobre el primer plano
+  de Valentina con la boca en movimiento (el Kling de la r05). Contraplano
+  nuevo `la_pregunta` (REF 'mismo' de la r03): sobre el hombro del
+  funcionario, de espaldas como siempre, la cédula de ella en la mano mientras
+  pregunta; ella quieta, esperando, la boca cerrada. V3 1029-1100, el corte
+  justo antes de «Valentina explicó» (1105). `abre`: un contraplano puede
+  entrar en el cuadro 0 de su ranura.
+- **C1 · 755, «missing around this part».** La voz dice «por un vecino del
+  barrio» y la r03 (el vecino) era la calle con la puerta vacía: la placa
+  aprobada había perdido la silueta que el prompt pedía. Mismo plano con el
+  vecino en silueta tras la reja; la primera tirada lo dejó oscuro sobre
+  oscuro, la segunda con el pasillo iluminado detrás de él. Rehorneada en su
+  sitio y relink.
+- Créditos: 426 → **321** (3 stills).
+
 ## Entregas
 
 Con su OK, caso por caso. `ed_pieza <L> v=2 exportar entregas verificar` sobre
@@ -232,9 +267,19 @@ sincroniza, `update_file(parentId=VIDEOS)`.
 | C1 Édgar Molano (4 nov, «you are good to export and upload») | `ED_C1_v1.mp4` | 4964/4964 | −19,2 · −4,1 | 55 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 1 EDGAR MOLANO.mp4` · `1E5jbysh98ZfEXY_n0Nuh3-4XGbd86-a6` |
 | C2 Jairo Montero Salas (4 nov, «export and upload ed c2») | `ED_C2_v1.mp4` | 6046/6046 | −19,1 · −4,1 | 83 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 2 JAIRO MONTERO SALAS.mp4` · `1BZUppd4nYSmb_06Ps86qqYYFDxJXD1-h` |
 | C3 El patrullero Wilmer (4 nov, tras su revisión: «export and upload that one too») | `ED_C3_v1.mp4` | 5347/5347 | −19,2 · −3,5 | 54 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 3 EL PATRULLERO WILMER.mp4` · `13nUHnPO0K35pLLYFIoGPl59IUxAdVcBo` |
+| C1 Édgar Molano, **re-entrega** (4 nov tarde, el vecino de la r03) | `ED_C1_v2.mp4` | 4964/4964 | −19,2 · −4,1 | 55 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 1 EDGAR MOLANO.mp4` · `1y73bAumsCauu1EpopufJZHYtp0wBoCPa` (la v1 a `VIDEOS/_versiones anteriores`, `1E5jbysh98ZfEXY_n0Nuh3-4XGbd86-a6`) |
+| C4 La niña del resguardo de Putumayo (4 nov, «export all 5 cases») | `ED_C4_v1.mp4` | 4422/4422 | −19,3 · −4,2 | 79 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 4 LA NIÑA DEL RESGUARDO DE PUTUMAYO.mp4` · `14W63d4YqaqSkyk-Fva7H0Hcz2Np6gKNn` |
+| C5 La denuncia de Valentina (4 nov, tras su revisión) | `ED_C5_v1.mp4` | 4181/4181 | −19,3 · −4,2 | 47 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 5 LA DENUNCIA DE VALENTINA.mp4` · `1fP0XJPaVtIvyk0mnHuL2C7aZyGsArCOP` |
 
 El único «negro» de cada uno es el último cuadro del respiro (C1 194,44 s;
-C2 239,57 s; C3 210,42 s), el fundido horneado. C4: revisión aplicada el 4 nov, espera su OK para exportar. C5 espera su revisión.
+C2 239,57 s; C3 210,42 s; C4 171,84 s; C5 161,79 s), el fundido horneado.
+**Los cinco están en `VIDEOS`.** C2 y C3 no se reexportaron: sus líneas
+coinciden con el plan y no tienen marcadores, y lo entregado salió de esas
+mismas líneas. El C4 se entrega hasta el último cuadro del outro (4422):
+Sebastián corrió la cama 19 cuadros y la línea mide 4441, pero esos 19 cuadros
+son negro con la cola de la cama, que es silencio digital (medido);
+`ed_pieza.entregas` recorta a la pieza cuando el máster es más largo.
+`entregas=N` / `verificar=N` hacen una re-entrega con su número.
 
 ## Estado
 

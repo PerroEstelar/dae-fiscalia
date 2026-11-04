@@ -75,11 +75,15 @@ R[3] = (137, 'dia', ('vecino',), None, True, 'barrio_andino', '''
 Wide shot of a narrow residential street of the barrio on an overcast
 morning, the camera at standing height on the opposite pavement, perfectly
 level. On the far side of the street, one brick house with a plain metal
-grille door standing half open; in the dark doorway behind the grille stands
-%(vecino)s, small in the frame, a solid dark shape filling the doorway, one
-hand resting on the grille. The street is otherwise empty: a parked small car,
-a utility pole with its knot of cables, the mountains hazy behind the flat
-roofs. The silhouette has no face, no features and no skin tone.
+grille door standing half open; in the doorway, just behind the grille,
+stands %(vecino)s: a man's full figure from head to feet, a solid dark shape
+that reads at once as a person -the head, the shoulders, the two arms, one
+hand resting on the grille-, as tall as the door is high. Behind him the
+narrow hallway of the house is lit from a window at its far end, a plain
+light grey, so that his dark figure stands out sharply against it, framed by
+the bars of the grille. The street is otherwise empty: a parked small
+car, a utility pole with its knot of cables, the mountains hazy behind the
+flat roofs. The silhouette has no face, no features and no skin tone.
 ''')
 
 R[4] = (275, 'dia', ('molano', 'yolanda'), None, False, 'unidad_victimas', '''
@@ -322,7 +326,14 @@ ANCLAS = {1, 2, 3, 5, 7, 9, 10}
 REF_PLACA = {
  1: ([E_OFICINA], 'estilo', ''),
  2: ([E_CUARTO], 'estilo', ''),
- 3: ([E_CALLE], 'estilo', ''),
+ # 4 nov (revision de Sebastian, marcador 755 de su linea: «missing around
+ # this part»): la placa aprobada dejo la puerta vacia; la voz nombra al
+ # vecino. El MISMO plano, con la silueta en la puerta (la primera tirada lo
+ # dejo oscuro sobre oscuro: el pasillo detras de el va iluminado).
+ 3: (['ED_C1_r03_el_vecino'], 'mismo', 'It is the SAME street, the SAME house, '
+     'the SAME camera and light; the ONLY change is that the neighbour now '
+     'stands in the doorway behind the half-open grille door, a dark human '
+     'silhouette from head to feet.'),
  5: ([E_OFICINA], 'estilo', ''),
  7: ([E_CUARTO], 'estilo', ''),
  9: ([E_NOCHE], 'estilo', ''),
