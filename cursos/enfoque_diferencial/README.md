@@ -117,6 +117,23 @@ la reserva de créditos en 1.500. Líneas nuevas `… v2`, la v1 en
   colegas; C5 r05 Valentina responde. 16 clips en 118 ranuras.
 - Créditos: 2.071 → 1.511.
 
+## Entregas
+
+Con su OK, caso por caso. `ed_pieza <L> v=2 exportar entregas verificar` sobre
+SU línea v2 tal como la dejó (máster H.264 NVIDIA 32 Mbps en
+`D:\DAE\_tmp\ed\render`, MP4 receta Fiscalía x264 crf 18 + copia 720p en
+`05 EXPORTS`); el `.drt` de `10 TIMELINE SEBASTIAN` se reexporta después del
+export (el anterior a `_descartes`). Camino al Drive: copia con el nombre de
+entrega (`guion_ed.ENTREGA`) a `G:\My Drive\_ED subidas` (md5 igual), Drive la
+sincroniza, `update_file(parentId=VIDEOS)`.
+
+| | archivo en `05 EXPORTS` | cuadros | LUFS · pico | MB | Drive `VIDEOS` |
+|---|---|---|---|---|---|
+| C1 Édgar Molano (4 nov, «you are good to export and upload») | `ED_C1_v1.mp4` | 4964/4964 | −19,2 · −4,1 | 55 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 1 EDGAR MOLANO.mp4` · `1E5jbysh98ZfEXY_n0Nuh3-4XGbd86-a6` |
+
+El único «negro» del C1 es el último cuadro del respiro (194,44 s, el fundido
+horneado). C2–C5 esperan su revisión.
+
 ## Estado
 
 Ver el documento del proyecto `claude/ED_Enfoque_Diferencial_03_noviembre.md`.
