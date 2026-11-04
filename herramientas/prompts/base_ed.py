@@ -19,7 +19,13 @@ objeto suyo que vuelve; §12: el detalle.
 LO QUE NO SE DIBUJA NUNCA (la regla de toda la serie)
     Ningún golpe, ninguna agresión en acto, ningún arma, ninguna herida,
     ningún cuerpo. Los agresores y quien amenaza: SILUETA. La niña de
-    Putumayo NO se dibuja: está su camino, sus botas, su morral. Ningún
+    Putumayo (Yaneth, C4): hasta el 3 nov no se dibujaba; el 4 nov Sebastián
+    lo pidió («I know it's a minor but it's fictional, please go ahead and
+    create a character sheet»). Va como una niña común en un momento
+    cotidiano (camino a la escuela, de la mano de su madre), vestida de
+    escuela, con dignidad y sin nada subrayado (`C_NINA`); nunca en la casa
+    del Taita ni cerca de él, nunca sola con un adulto que no sea su madre,
+    y el abuso sigue sin imagen. Ningún
     uniforme, insignia, placa, escudo ni bandera: los policías van con
     chaqueta oscura lisa. EXCEPCION (4 nov, Sebastián, C3): los patrulleros
     de servicio llevan el uniforme de la Policía Nacional -verde oliva y
@@ -366,6 +372,16 @@ CUERPO = {
            'hair tied back, a few plain strings of small seed beads around her '
            'neck, in a plain matte mustard-yellow cotton blouse with short '
            'sleeves and a plain dark skirt, rubber boots'),
+ # 4 nov (revision de Sebastian): la nina se dibuja. Ropa de escuela en
+ # grises (el acento del caso es la blusa de la madre), botas, el morral gris
+ # que la madre lleva en las placas donde ella no esta.
+ 'nina': ('YANETH, the daughter, an indigenous girl of about ten from the '
+          'Amazonian foothills of Putumayo, small and slight with a child\'s '
+          'proportions -about six heads tall, her head at the height of an '
+          'adult\'s chest-, long straight black hair in a single plain braid '
+          'down her back, a calm serious face, in a plain light grey cotton '
+          'T-shirt with short sleeves, a plain dark grey skirt to below the '
+          'knee and small black rubber boots'),
  'taita': ('HIPOLITO JACANAMIJOY, the Taita, seen ONLY AS A SOLID DARK '
            'SILHOUETTE: no face, no features, no skin tone; a tall carved '
            'wooden staff of authority in one hand'),
@@ -421,6 +437,8 @@ VIDA = {
  'fiscal_revision': ('The prosecutor who reviewed the case and named it.'),
  'madre': ('She walks the red-earth path every day; she carries her daughter\'s '
            'small school backpack when she goes to ask for justice.'),
+ 'nina': ('She walks the red-earth path to school every day with her small '
+          'plain grey school backpack; she stays close to her mother.'),
  'fiscal_c4': ('A prosecutor of a small river-town office, unsure and '
                'conscientious; he rubs his forehead when he does not know.'),
  'valentina': ('She works and lives on her own; she is composed and direct, '
@@ -478,6 +496,16 @@ C_LIMPIA = ('Clean plate: no legible text, letters or numbers anywhere, no '
 C_NEG = ('Not a photograph, not a 3D render, not painterly, no ink outlines, '
          'no anime eyes, no airbrushed skin, no motion blur. Nothing violent is '
          'shown: no blow, no weapon, no wound, no blood, no body.')
+# 4 nov: la nina (C4) es una nina comun en un momento cotidiano. Y la regla
+# de 8 cabezas es de adultos: con ella en cuadro se dice que es una nina.
+C_FIGURA_NINA = C_FIGURA.replace('Figures 8 to 8.5 heads tall',
+                                 'Adult figures 8 to 8.5 heads tall and the girl '
+                                 'a child of about six heads')
+assert C_FIGURA_NINA != C_FIGURA
+C_NINA = ('The girl is an ordinary child in an everyday moment, plainly and '
+          'fully dressed in her school clothes, drawn with dignity and '
+          'restraint; she is clearly a child, small next to the adults, and '
+          'nothing about her body is emphasized.')
 C_SILUETA = ('The people marked as silhouettes or seen only from behind never '
              'show a readable face.')
 
@@ -503,9 +531,12 @@ def arma(escena, registro='dia', personas=(), con_acento=None,
              else REGISTRO[registro])
     con_cara = con_rostro and any(x not in SIN_ROSTRO for x in personas)
     p.append(C_ESTILO + (C_ROSTRO if con_cara else '')
-             + (C_PIEL if personas else '') + C_FIGURA)
+             + (C_PIEL if personas else '')
+             + (C_FIGURA_NINA if 'nina' in personas else C_FIGURA))
     if silueta or any(x in SIN_ROSTRO for x in personas):
         p.append(C_SILUETA)
+    if 'nina' in personas:
+        p.append(C_NINA)
     if con_acento:
         cual = prenda or (PRENDA[quien[0]] if quien else 'the garment')
         p.append(C_ACENTO % cual)

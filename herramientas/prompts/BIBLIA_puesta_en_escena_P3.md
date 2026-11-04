@@ -113,6 +113,19 @@ y ya hay un chequeo que lo garantiza.
   que ninguna prohibición se dibuje como texto.
 - **Inés y Alba siguen sin dibujarse.** La razón —que el caso discute que no
   están individualizadas— no la toca nada de lo anterior.
+- **Una víctima menor de edad (Enfoque diferencial C4, 4 de noviembre).** Hasta
+  ese día la niña del caso no se dibujaba: estaban su camino, sus botas, su
+  morral. Sebastián lo pidió explícitamente —*«I know it's a minor but it's
+  fictional, so please go ahead and create a character sheet and insert her in
+  this environment»*— y se dibuja **como una niña común en un momento
+  cotidiano**: camino a la escuela, de la mano de su madre, sentada a su lado
+  en un escalón. Vestida de escuela, con dignidad, sin nada de su cuerpo
+  subrayado (`base_ed.C_NINA`), y con proporciones de niña (la regla de las
+  8 cabezas es de adultos). Lo que no cambia: el hecho no se ilustra, ella
+  nunca está en la casa del agresor ni cerca de él, nunca a solas con un
+  adulto que no sea su madre; si comparte cuadro con el agresor es de
+  espaldas, lejos, acompañada. El rótulo la presenta con lo que la voz dice
+  («Niña de la comunidad»).
 - **Nada de ropa ajustada o reveladora, ninguna postura sugerente.**
 
 ### La distinción que faltaba

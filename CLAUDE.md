@@ -1820,3 +1820,34 @@ supposed to be more greyish»*.
   sin chaleco».
 - Subir referencias desde Windows falló dos veces (SSL EOF en el PUT); desde la
   nube con curl salió a la primera: JPEG en `D:\DAE\_tmp\ed\up`, stage, PUT.
+
+## Una palabra mal dicha se injerta, no se regenera el bloque (Enfoque diferencial C4, 4 nov 2026)
+
+Sebastián: *«Taita se pronuncia con tilde en la primera a»*. ElevenLabs había
+dicho «taíta», tres sílabas, en uno solo de los tres bloques (el STT de cada
+toma lo delata: oyó «tahita» en d02 y «Taita» en d06 y d16). Regenerar el
+bloque entero cambia su largo y corre la rejilla, los cartones y la música de
+una línea que él ya tocó.
+
+`herramientas/voz/taita_c4.py` hace la cirugía sobre el máster: toma nueva del
+mismo bloque con «Táita» escrito con tilde (la tilde en el TTS fuerza el
+acento; el cartón verbatim sigue «Taita»), STT de la toma y del máster, y entre
+el final de la palabra anterior y el comienzo de la siguiente se apaga la
+vieja y entra la nueva, **con los bordes por energía** (tramos de 10 ms sobre
+el umbral; el STT da los bordes con ±30 ms), centrada en su lugar, igualada en
+RMS (−19,3 → −19,4 dB) y con fundidos de 12 ms dentro del silencio. El máster
+mide exactamente lo mismo (7.551.604 muestras) y el STT del tramo nuevo dice
+«Taita».
+
+**Resolve tiene abierto el WAV de la voz y Windows no deja reemplazarlo**
+(`PermissionError: Access is denied` en `os.replace`). Los mp4 de las ranuras
+sí se reemplazan en su sitio; el audio no. El corregido va con sufijo
+(`ED_C4_NARRADOR_v2.wav`, que `ed_pieza.plan` prefiere si existe) y entra a la
+línea con `cirugia_ed <L> v=2 cambiar <viejo> <nuevo>` (`ReplaceClip` del
+medio del pool con otra ruta: el item de la línea conserva todo lo demás, y el
+retrato comprueba que solo cambió el nombre del archivo).
+
+**Y ffmpeg cambió de carpeta**: ya no es `ffmpeg-9.0-full_build` sino
+`ffmpeg-9.0.2-full_build` (WinGet lo actualizó). Buscarlo con
+`glob(r'C:\Users\call_\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg*\*\bin\ffmpeg.exe')`
+en vez de escribir la ruta.

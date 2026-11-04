@@ -377,7 +377,11 @@ def calcula(clave):
     rotulos = []
     for e in LTS.LOWERS.get(clave, []):
         r = ran['ranuras'][e[1] - 1]
-        rotulos.append((CABEZA + r['ini'], CABEZA + r['ini'] + r['dur']))
+        # 4 nov (C4): el rotulo de Yaneth entra cuando la voz dice su nombre,
+        # no al abrir la ranura; la ventana que no puede pisar un carton es la
+        # del rotulo en pantalla (entra .. entra + cuadros), no la ranura entera
+        a = CABEZA + r['ini'] + (e[3] if len(e) > 3 else LTS.OFF)
+        rotulos.append((a, a + e[2].get('cuadros', LTS.N)))
     for k, p in enumerate(piezas):
         sig = piezas[k + 1]['ini'] if k + 1 < len(piezas) else None
         mismo = sig is not None and piezas[k + 1]['bloque'] == p['bloque']
@@ -409,8 +413,15 @@ def calcula(clave):
         p['cuadros'] = fin - p['ini']
         p['densidad'] = round(len(p['frase']) / (p['cuadros'] / FPS), 1)
     for n, p in enumerate(piezas, 1):
-        p['archivo'] = 'ED_%s_p%02d_carton.mov' % (clave, n)
+        p['archivo'] = RENOMBRA.get(clave, {}).get(n, 'ED_%s_p%02d_carton.mov' % (clave, n))
     return piezas
+
+
+# 4 nov (C4, revision): un carton que cambia de largo en una linea ya tocada
+# va con otro nombre: el media pool cachea la duracion del archivo y un
+# carton reescrito en su sitio entraria con el largo viejo. El p01 del C4 se
+# corta donde entra el rotulo de Yaneth (236 -> 106 cuadros).
+RENOMBRA = {'C4': {1: 'ED_C4_p01_carton_rotulo.mov'}}
 
 
 def renglones(t):

@@ -253,7 +253,15 @@ def video(clave):
                 'prompt_video': d['gesto'] + ' ' + QUIETO}
             continue
         # un detalle es una mano sobre su objeto: sin clausula de rostro
-        p = S.arma(d['escena'] + '\n\n' + REFERENCIA, registro=d['registro'],
+        esc = d['escena'] % S.TOKENS if '%(' in d['escena'] else d['escena']
+        # 4 nov (C4 r15): un detalle que REHACE otro detalle aprobado lleva ese
+        # detalle como referencia 'mismo' (solo cambia lo dicho), no la madre
+        if d.get('mismo_de'):
+            base = d['mismo_de']
+            esc = esc.strip() + '\n\n' + REF_MISMO % d['cambio'] + REF_PIEL
+        else:
+            esc = esc.strip() + '\n\n' + REFERENCIA
+        p = S.arma(esc, registro=d['registro'],
                    personas=tuple(gente), lugar=out['placas'][madre]['lugar'],
                    con_rostro=False, con_acento=d.get('acento'))
         out['detalles']['ED_%s_r%02d_%s_det' % (clave, n, nom)] = {

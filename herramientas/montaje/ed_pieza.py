@@ -742,6 +742,11 @@ def construir(L, solo=None):
     # se toca (28 oct: E r03/r11 sobre la linea que Sebastian ya ajusto).
     if solo and 1 not in solo:
         return
+    # 4 nov (C4): la r01 cambio (la nina en el camino) y el respiro de la
+    # linea aprobada es la r01 vacia; `RESPIRO_FIJO` lo deja como esta
+    if getattr(E(L), 'RESPIRO_FIJO', False):
+        w('respiro fijo: no se rehace')
+        return
     respiro(L)
 
 
@@ -860,6 +865,10 @@ def plan(L):
           for c in CS.calcula(L)]
     v6 = [(ini, N_MARCA, MARCA), (fin - N_MARCA, N_MARCA, MARCA)]
     voz = os.path.join(R.voces(L), 'ED_%s_NARRADOR.wav' % L)
+    # 4 nov (C4, «Taita»): Resolve tiene abierto el master y Windows no deja
+    # reescribirlo en su sitio; la version corregida va con sufijo y manda
+    if os.path.exists(voz[:-4] + '_v2.wav'):
+        voz = voz[:-4] + '_v2.wav'
     mus = os.path.join(base, '08 MUSICA', 'ED_%s_MUSICA_cama.wav' % L)
     return v1, v4, v6, voz, mus, ini, fin - ini, t
 

@@ -15,12 +15,17 @@ LO QUE SE OYE ENCIMA (cruce_ed.json)
              sigue en su cargo, sin medida de protección para la víctima
 
 LO QUE NO SE DIBUJA, NUNCA
-    La niña. Ni de frente, ni de espaldas, ni de lejos, ni en sombra. Está su
-    camino (r01, las huellas de unas botas pequeñas en el barro rojo) y su
-    morral, que lleva la madre (r05, r10, r17). El abuso no tiene imagen: la
-    r04 es la puerta cerrada al atardecer con el bastón de mando al lado. El
-    Taita es SILUETA siempre: no tiene cara (biblia §3 y la regla de la
-    serie para quien agrede).
+    El abuso no tiene imagen: la r04 es la puerta cerrada al atardecer con el
+    bastón de mando al lado. El Taita es SILUETA siempre: no tiene cara
+    (biblia §3 y la regla de la serie para quien agrede).
+
+LA NIÑA (4 nov, revisión de Sebastián: «I know it's a minor but it's
+fictional, please go ahead and create a character sheet and insert her in
+this environment»). Hasta el pase previo no se dibujaba. Ahora es Yaneth
+(hoja `nina`): una niña común camino a la escuela (r01, con su rótulo) y al
+lado de su madre en el punto muerto (r17, r18, r19). Nunca en la casa del
+Taita ni cerca de él; en la r19 está de espaldas, de la mano de la madre, y
+el Taita lejos, en su porche. `base_ed.C_NINA` va en cada placa donde está.
 
 QUIÉN LLEVA CARA
     La madre, siempre, con su blusa mostaza: es el acento del caso. El
@@ -30,20 +35,39 @@ QUIÉN LLEVA CARA
 
 LA RIMA
     r02 el Taita en su porche al principio; r19 el mismo porche al final, con
-    la madre de espaldas en primer plano: «permanecía en ejercicio de su
-    cargo».
+    la madre y la niña de espaldas en primer plano: «permanecía en ejercicio
+    de su cargo». El contrapicado del Taita (inserto de la r19) cierra.
+
+REVISIÓN DE SEBASTIÁN (4 nov, marcadores en SU línea v2; cirugía, sin
+remontar, solo stills):
+    415  r01  presentar a la niña: hoja + placa 'mismo' con ella en el camino
+              y rótulo «Yaneth Payaguaje · Niña de la comunidad»
+    590  r02  «Taita» con tilde en la primera a: palabra injertada en el
+              máster (`voz/taita_c4.py`)
+    849  r03  otro ángulo: picado general del resguardo desde la ladera
+    1121 r04  muy oscura: GRIS + SIN_TECHO
+    3198 r15  el inserto con manos levantadas sobra después del plano de la
+              votación: la misma mesa con las manos quietas (la_mesa)
+    3466 r17, 3550 r18, 3836 r19  la niña con su madre ('mismo'); la r19
+              además GRIS + SIN_TECHO
+    3979 r19  inserto de apoyo: contrapicado del Taita en sombra
 """
 
 R = {}
 
-R[1] = (254, 'dia', (), None, False, 'resguardo', '''
+R[1] = (254, 'dia', ('nina',), None, False, 'resguardo', '''
 Wide shot of a red-earth path through the reserve on a misty morning, the
 camera at standing height on the path, perfectly level. The path runs from
 the foreground into the distance between tall plantains and chontaduro
 palms, and halfway along it passes in front of a wooden house raised on short
-posts with a plain zinc roof and a wooden porch. The path is wet and empty;
-nothing lies or stands on it. Low cloud on the green hills. Nobody in the
-frame: no child, no person anywhere.
+posts with a plain zinc roof and a wooden porch. On the path, in the middle
+ground between the camera and the house, %(nina)s walks TOWARD the camera on
+her way to school, frontal three-quarter view, mid-stride, the small plain
+grey school backpack on both shoulders, both hands holding its straps, her
+eyes on the path ahead. Her whole figure is visible from her braid to her
+boots, about two fifths of the frame height. The wooden house stays behind
+her, far back on the path. Low cloud on the green hills. She is the only
+person in the frame and appears ONCE.
 ''')
 
 R[2] = (228, 'contraluz', ('taita',), None, True, 'casa_taita', '''
@@ -56,13 +80,16 @@ the bright green forest is the only bright thing in the frame; the porch and
 the house are in deep shadow. He has no face, no features, no skin tone.
 ''')
 
-R[3] = (264, 'contraluz', (), None, False, 'casa_taita', '''
-Shot from INSIDE the dark wooden house, the camera at standing height in the
-room, perfectly level, looking out through the open doorway onto the bright
-red-earth path outside. The doorway is the only bright thing in the frame; the
-plank walls around it are in deep shadow. Leaning against the door frame, in
-dark silhouette, the tall carved staff of authority with its ribbons. On the
-path outside, nobody: only the plantains and the light. Nobody in the frame.
+R[3] = (264, 'dia', (), None, False, 'resguardo', '''
+High wide shot from the green hillside above the reserve, the camera on the
+slope pointing DOWN over the whole community, the horizon level. Below, the
+red-earth path winds between the tall plantains and chontaduro palms past
+scattered wooden houses raised on short posts with plain zinc roofs. In the
+near middle ground, at a bend of the path, the wooden house with its porch;
+further along, the large high thatched roof of the open community house of
+the cabildo; beyond, the wide brown river and the forest, low cloud on the
+far hills. Three or four tiny figures of people of the community far away on
+the path, going about their day, too small to read. Morning daylight.
 ''')
 
 R[4] = (147, 'hero', (), None, False, 'casa_taita', '''
@@ -190,33 +217,41 @@ Beside the envelope, a plain rubber stamp and a pen. Exactly two hands,
 exactly ten fingers. No face. Daylight from one side.
 ''')
 
-R[17] = (98, 'dia', ('madre',), None, False, 'resguardo', '''
-Medium shot of %(madre)s standing alone on the muddy bank of the wide brown
-river, in three-quarter back view, the camera at standing height behind her
-and to her left, perfectly level. The small plain grey backpack hangs from
-her right hand at her side. She looks out at the river, still. The far bank of
-forest and the low cloud. Nobody else. She appears ONCE.
+R[17] = (98, 'dia', ('madre', 'nina'), None, False, 'resguardo', '''
+Medium shot of %(madre)s standing on the muddy bank of the wide brown river,
+in three-quarter back view, the camera at standing height behind her and to
+her left, perfectly level. The small plain grey backpack hangs from her right
+hand at her side. At her left side stands her daughter, %(nina)s, also in
+three-quarter back view, her head at the height of her mother's chest, her
+right hand holding her mother's left hand. Both look out at the river, still.
+The far bank of forest and the low cloud. Nobody else. Each person appears
+ONCE.
 ''')
 
-R[18] = (256, 'dia', ('madre',), None, False, 'fiscalia_pueblo', '''
+R[18] = (256, 'dia', ('madre', 'nina'), None, False, 'fiscalia_pueblo', '''
 Medium shot outside the small Fiscalía office of the river town, the camera
 at seated height on the street, perfectly level. %(madre)s sits on the plain
 concrete step in front of the closed door, three-quarter view, a large plain
-brown envelope lying unopened on her knees under her two hands, the small grey
-backpack on the step beside her. She looks down the hot street, not at the
-envelope, her mouth a straight line. A few parked motorcycles. Hard flat
-daylight. She appears ONCE.
+brown envelope lying unopened on her knees under her two hands. Beside her on
+the step, close against her side, sits her daughter, %(nina)s, the small
+plain grey school backpack on her lap under her hands. Both look down the hot
+street, not at the envelope, their mouths straight lines. A few parked
+motorcycles. Hard flat daylight. Each person appears ONCE.
 ''')
 
-R[19] = (297, 'hero', ('madre', 'taita'), None, True, 'resguardo', '''
+R[19] = (297, 'hero', ('madre', 'nina', 'taita'), None, True, 'resguardo', '''
 Wide shot at dusk on the red-earth path, the camera at standing height,
 perfectly level. In the right foreground, %(madre)s stands in three-quarter
-back view, the small grey backpack in her hand, looking toward the house. In
-the background, on the porch of the wooden house raised on posts, stands
-%(taita)s, a solid dark silhouette with his tall staff of authority upright in
-his hand, still. The light is low and weak and comes from the last grey of
-the sky behind the house; everything else falls into near-black, the
-plantains a dark mass. The silhouette has no face.
+back view, the small grey backpack in her hand, looking toward the house;
+close at her side stands her daughter, %(nina)s, also in three-quarter back
+view, her head at the height of her mother's chest, holding her mother's
+other hand and looking toward the house too. In the background, on the porch
+of the wooden house raised on posts, stands %(taita)s, a solid dark
+silhouette with his tall staff of authority upright in his hand, still, far
+from them. The light is low and weak and comes from the last grey of the sky
+behind the house; the shadows are a deep grey in which the forms can still be
+read, never pure black, the plantains a dark grey mass. The silhouette has no
+face.
 ''')
 
 NOMBRE = {1: 'el_camino', 2: 'el_taita', 3: 'la_puerta_abierta',
@@ -226,7 +261,7 @@ NOMBRE = {1: 'el_camino', 2: 'el_taita', 3: 'la_puerta_abierta',
           14: 'la_gestion', 15: 'la_mesa_tecnica', 16: 'la_remision',
           17: 'punto_muerto', 18: 'el_sobre', 19: 'en_ejercicio'}
 
-CON_PERSONA = set(R) - {1, 3, 4}
+CON_PERSONA = set(R) - {3, 4}
 SILUETAS = {2, 8, 9, 19}
 CARTONES = {2, 4, 7, 9, 11, 13, 15, 16, 18, 19}
 CENITALES = {16}
@@ -236,9 +271,10 @@ TOPE_SIN_GENTE = 3
 TOTAL = 3772
 PIEZA = TOTAL + (182 + 119 + 48 + 119 + 182)
 
-HOJAS = {5: ['madre'], 6: ['madre'], 10: ['madre'], 11: ['fiscal_c4', 'madre'],
-         12: ['fiscal_c4'], 13: ['fiscal_c4'], 14: ['fiscal_c4'],
-         15: ['fiscal_c4'], 17: ['madre'], 18: ['madre'], 19: ['madre']}
+HOJAS = {1: ['nina'], 5: ['madre'], 6: ['madre'], 10: ['madre'],
+         11: ['fiscal_c4', 'madre'], 12: ['fiscal_c4'], 13: ['fiscal_c4'],
+         14: ['fiscal_c4'], 15: ['fiscal_c4'], 17: ['madre', 'nina'],
+         18: ['madre', 'nina'], 19: ['madre', 'nina']}
 
 E_OFICINA = 'LP_U4C1_r01_la_noticia'
 E_CUARTO = 'LP_U4C2_r05_la_sesion'
@@ -247,12 +283,17 @@ E_NOCHE = 'LP_U2C2_r07_la_ventana'
 ANCLAS = {1, 2, 6, 11, 15}
 
 REF_PLACA = {
- 1: ([E_LADERA], 'estilo', ''),
+ # 4 nov (revision): las placas con la nina son el MISMO plano aprobado
+ 1: (['ED_C4_r01_el_camino'], 'mismo', 'It is the SAME path, the SAME house, '
+     'the SAME camera and the SAME light; the ONLY change is the girl walking '
+     'on the path toward the camera.'),
  2: ([E_LADERA], 'estilo', ''),
  6: ([E_LADERA], 'estilo', ''),
  11: ([E_OFICINA], 'estilo', ''),
  15: ([E_CUARTO], 'estilo', ''),
- 3: (['ED_C4_r02_el_taita'], 'lugar', 'It is the SAME wooden house, seen from inside. '),
+ 3: (['ED_C4_r01_el_camino'], 'lugar', 'It is the SAME reserve, the SAME '
+     'red-earth path and the SAME wooden house, now seen from high on the '
+     'hillside above, with the whole community below. '),
  4: (['ED_C4_r02_el_taita'], 'lugar', 'It is the SAME wooden house, now at dusk. '),
  5: (['ED_C4_r01_el_camino'], 'lugar', ''),
  7: (['ED_C4_r06_el_cabildo'], 'lugar', ''),
@@ -263,25 +304,67 @@ REF_PLACA = {
  13: (['ED_C4_r11_el_fiscal'], 'lugar', ''),
  14: (['ED_C4_r11_el_fiscal'], 'lugar', ''),
  16: (['ED_C4_r11_el_fiscal'], 'lugar', ''),
- 17: (['ED_C4_r10_el_rio'], 'lugar', 'It is the SAME wide brown river and the SAME woman, now standing alone on its muddy bank; there is no boat. '),
- 18: (['ED_C4_r11_el_fiscal'], 'lugar', 'It is the SAME office building, seen from the street outside. '),
- 19: (['ED_C4_r02_el_taita'], 'lugar', 'It is the SAME wooden house and porch, now at dusk, seen from farther back on the path. '),
+ 17: (['ED_C4_r17_punto_muerto'], 'mismo', 'It is the SAME river bank, the '
+      'SAME woman in the SAME place and pose, the SAME camera and light; the '
+      'ONLY change is that her daughter now stands at her left side, holding '
+      'her hand.'),
+ 18: (['ED_C4_r18_el_sobre'], 'mismo', 'It is the SAME street, the SAME step, '
+      'the SAME woman with the SAME envelope, the SAME camera and light; the '
+      'ONLY change is that her daughter now sits beside her on the step with '
+      'the small grey backpack on her lap.'),
+ 19: (['ED_C4_r19_en_ejercicio'], 'mismo', 'It is the SAME path at dusk, the '
+      'SAME house and porch with the SAME silhouette, the SAME woman, the SAME '
+      'camera; the ONLY changes are that her daughter now stands close at her '
+      'side holding her hand, and that the shadows are a lighter deep grey '
+      'where the forms can be read, never pure black.'),
 }
 
 REUSA = {}
 
 DET = {
- (15, 'las_manos'): dict(cuadros=90, entra=150,
+ # 4 nov (revision, marcador 3198): el inserto de las manos levantadas venia
+ # pegado al plano de la votacion y se leia raro. La misma mesa, la misma
+ # gente presente, nadie levanta la mano. Es el MISMO plano que el inserto
+ # anterior (`mismo_de`), quieto.
+ (15, 'la_mesa'): dict(cuadros=90, entra=150,
      registro='dia',
      personas=('funcionarios',),
-     escena='Close shot at table height along the long plain table: four or '
-            'five raised open right hands at shoulder height, palms forward, '
-            'of men and women in plain grey sleeves, one behind the other '
-            'down the table, and between them two hands resting flat on '
-            'closed plain folders. No faces: the frame is cut at the '
-            'shoulders. Daylight from the window.',
-     gesto='The raised hands stay up, steady, and one of the resting hands '
-           'slowly rises to join them. Nothing else moves.'),
+     mismo_de='ED_C4_r15_las_manos_det',
+     cambio='It is the SAME close shot along the SAME table with the SAME '
+            'people and the SAME light; the ONLY change is that NOBODY raises '
+            'a hand: every hand rests on the table.',
+     escena='Close shot at table height along the long plain table during the '
+            'meeting: the hands of the men and women in plain grey sleeves rest '
+            'on the table one behind the other down its length -two hands '
+            'folded together, a hand lying flat on a closed plain folder, a '
+            'hand holding a plain pen beside a notepad, a hand next to a glass '
+            'of water-. Every hand rests on the table; nobody raises a hand. '
+            'No faces: the frame is cut at the shoulders. Daylight from the '
+            'window.',
+     gesto='Nothing moves.'),
+ # 4 nov (revision, marcador 3979): el plano de apoyo del final, de abajo
+ # hacia arriba, el Taita en sombra. Hasta el corte al respiro.
+ (19, 'el_contrapicado'): dict(cuadros=94, entra=203,
+     registro='hero',
+     personas=('taita',),
+     # primera tirada: de frente, a la altura del piso del porche, y una
+     # mujer de mostaza al borde derecho. Se pide el angulo por sus efectos.
+     escena='Low-angle shot from the red-earth path at dusk, the camera on '
+            'the ground at the foot of the porch steps and pointing steeply '
+            'UP at %(taita)s, who stands at the top of the steps on the porch '
+            'of his wooden house: we see him from below, his legs and body '
+            'large in the frame and his head small against the zinc roof '
+            'edge and the last grey of the sky; the undersides of the roof '
+            'beams are visible above him. His tall carved staff of authority '
+            'is upright in his right hand, its plain ribbons hanging still, '
+            'the SAME staff as in the reference. Behind him, the dark plank '
+            'wall and the doorway of his house. He is the ONLY person in the '
+            'frame: nobody else anywhere, no woman, no child. He has no face, '
+            'no features, no skin tone: a shadowy shape. The shadows are a '
+            'deep grey where the planks can still be read, never pure black. '
+            'The vertical posts lean in toward the top because the camera '
+            'looks up, but the camera is not rolled.',
+     gesto='Nothing moves.'),
 }
 
 BROLL = {}
@@ -290,10 +373,24 @@ MOV = {
  # 3 nov, pase previo: boca en un plano de habla
  13: 'kling: el fiscal mira a un colega y al otro; los dos hablan con las manos',
  10: 'kling: la lancha avanza por el río; ella quieta con el morral',
- 17: 'kling: el río corre; el viento mueve apenas la ropa; ella quieta',
+ # 17: retirado el 4 nov (la placa nueva lleva a la nina; el clip era de la
+ # madre sola)
 }
 
-LOWER_THIRD = {}
+# 4 nov (revision): la nina tiene nombre en la voz -«Yaneth Payaguaje, niña de
+# la comunidad»- y se presenta en la r01 (lowerthirds_ed, C4)
+LOWER_THIRD = {1: 'Yaneth Payaguaje · Niña de la comunidad'}
+
+# 4 nov (revision, marcadores 1121 y 3836: «graded too dark, blacks are too
+# black»). La regla de la biblia §11 (la serie es gris): la curva de sombra en
+# todo el C4, y las dos que marco sin techo. Medido en su linea (p2/p50):
+# r04 13/16 y r19 15/17; las de dia 22-23/83-86; r02 y r09 (contraluz) 20/60.
+GRIS = (30, 130)
+SIN_TECHO = {4, 19}
+
+# 4 nov: la r01 cambia (Yaneth en el camino) y el respiro de su linea es la
+# r01 vacia: se queda como esta.
+RESPIRO_FIJO = True
 
 
 def comprobar():

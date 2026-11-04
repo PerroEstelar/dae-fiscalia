@@ -205,7 +205,9 @@ def placas(L):
                               .astype(np.float32))
         Image.fromarray(aplica(limpio, ac, ge, k, ch) if k < 1 else limpio).save(dst)
         reg = SP.E(L).R[n][1]
-        GR.graduar(dst, g, reg, techo=True)
+        # 4 nov (C4 r19, el contrapicado al atardecer): el detalle se gradua
+        # como su madre; si la madre va SIN_TECHO, el detalle tambien
+        GR.graduar(dst, g, reg, techo=n not in getattr(SP.E(L), 'SIN_TECHO', set()))
         # 29 oct, Justicia restaurativa: el grade le devolvio el rosado a la mano
         # del sello del T1 (1,34 % de pixeles rosados con la limpieza ya
         # pasada). Como en `ed_pieza.construir`: si despues del grade queda

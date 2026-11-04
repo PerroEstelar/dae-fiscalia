@@ -172,6 +172,51 @@ solo stills y la cámara de la casa.
 - Créditos: 1.336 → **776** (16 stills × 35: la hoja, 12 placas, 2 detalles
   y la tirada descartada del brazo).
 
+## Revisión de Sebastián · C4 La niña del resguardo de Putumayo (4 nov) — marcadores en SU línea v2, sin remontar
+
+Nueve marcadores en la línea general (no en los clips), cada uno con su
+instrucción. Presupuesto apretado: solo stills y la cámara de la casa.
+
+| marcador | ranura | pedido | lo que se hizo |
+|---|---|---|---|
+| 415 (0:17) | r01 | presentar a la niña: hoja de personaje, meterla en el lugar, rótulo | hoja `nina` (Yaneth: niña indígena de unos diez años, trenza, camiseta gris clara, falda gris, botas de caucho, el morral gris); r01 'mismo' con ella caminando hacia cámara por el camino, la casa atrás; rótulo «Yaneth Payaguaje · Niña de la comunidad» en V8 409-529 (la voz dice su nombre en 396-422) |
+| 590 (0:24) | r02 | «Taita se pronuncia con tilde en la primera a» | en d02 ElevenLabs dijo «taíta» (STT: «tahita»); toma nueva con «Táita» y SOLO la palabra injertada en el máster (`voz/taita_c4.py`): bordes por energía, RMS igualado (−19,3 → −19,4 dB), fundidos de 12 ms en el silencio, mismas 7.551.604 muestras. STT del tramo nuevo: «Taita». d06 y d16 ya decían «Taita». Resolve tiene abierto el WAV y Windows no deja reescribirlo: va como `ED_C4_NARRADOR_v2.wav` y entra con `cirugia_ed cambiar` (ReplaceClip) |
+| 849 (0:35) | r03 | otro ángulo, que no se parezca a la anterior | picado general del resguardo desde la ladera (el camino, las casas, la casa del cabildo, el río), de día; antes era el interior oscuro de la casa mirando a la puerta |
+| 1121 (0:46) | r04 | muy oscura, negros demasiado negros | `GRIS = (30, 130)` en todo el C4 y SIN_TECHO en r04 y r19 (medido en su línea: p2/p50 13/16 y 15/17) |
+| 3198 (2:13) | r15 detalle | dos planos seguidos de manos levantadas se ve raro: el mismo plano con la gente solo presente | inserto nuevo `la_mesa` (REF 'mismo' del anterior: misma mesa, nadie levanta la mano), quieto, V3 3145-3235 |
+| 3466 (2:24) | r17 | la niña | 'mismo': de la mano de su madre en la orilla; fuera el Kling de la madre sola (`MOVIMIENTO/_descartes`) |
+| 3550 (2:28) | r18 | la niña | 'mismo': sentada al lado de su madre en el escalón, el morral en sus piernas |
+| 3836 (2:39) | r19 | muy oscura + la niña | 'mismo': las dos de espaldas, de la mano, mirando la casa; el Taita lejos en su porche. Grade sin techo + curva gris |
+| 3979 (2:45) | r19 | inserto de apoyo: contrapicado, figura en sombra del Taita | detalle `el_contrapicado` V3 3979-4073 (hasta el corte al respiro), quieto. Primera tirada recortada al 70 %: al borde derecho había una mujer de mostaza junto a otra casa |
+
+- **La niña se dibuja desde hoy** (antes la regla del curso era no dibujarla):
+  pedido explícito de Sebastián, personaje ficticio. Va como una niña común en
+  un momento cotidiano, vestida de escuela, con dignidad (`base_ed.C_NINA`,
+  y la regla de 8 cabezas dice que ella es una niña de unas seis). Nunca en la
+  casa del Taita ni cerca de él; el abuso sigue sin imagen.
+- **El cartón p01** («En un resguardo indígena cercano a Puerto Guzmán,
+  Putumayo,») se corta donde entra el rótulo: 236 → 106 cuadros. Va con
+  otro nombre (`cartones_ed.RENOMBRA`): el pool cachea la duración. La
+  ventana que un cartón no puede pisar es ahora la del rótulo en pantalla
+  (entra .. entra + cuadros), no la ranura entera. Los otros trece cartones,
+  comprobados idénticos a su línea.
+- **El respiro se queda** (la r01 vacía, `RESPIRO_FIJO`): la r01 cambió y el
+  respiro de su línea es el camino sin nadie.
+- **Kling** de r10 y r13, que se quedan: la misma curva gris en ffmpeg.
+- **La curva gris, medida** (p2/p50 antes → después): días 22-23/83-86 →
+  43/87-89; contraluz r02 y r09 19-20/60 → 41/69; r04 16/36 → 39/52 y r19
+  15/32 → 38/49 (sin techo); nada bajo 30 en ninguna de las 19.
+- Cirugía (`cad_c4_rev.py`): 21 relink (19 ranuras + 2 Kling), 3 quitar
+  (Kling r17, inserto de las manos, p01), 4 poner (la mesa, el contrapicado,
+  p01 cortado, rótulo) y 1 cambiar (la voz). `cirugia_ed retrato`: la línea
+  y el plan coinciden, nada más cambió; largo 4422. `.drt` reexportado (el
+  anterior a `_descartes`).
+- Revisión interna (`D:\DAE\_tmp\ed\revision\ED_C4_v2_REVISION_INTERNA.mp4`):
+  4422/4422 cuadros, −19,3 LUFS, pico −4,0; único negro el último cuadro del
+  respiro (171,84 s).
+- Créditos: 776 → **426** (10 stills × 35: la hoja en dos tiradas, cinco
+  placas, dos detalles y la segunda tirada del contrapicado, que no se usó).
+
 ## Entregas
 
 Con su OK, caso por caso. `ed_pieza <L> v=2 exportar entregas verificar` sobre
@@ -189,7 +234,7 @@ sincroniza, `update_file(parentId=VIDEOS)`.
 | C3 El patrullero Wilmer (4 nov, tras su revisión: «export and upload that one too») | `ED_C3_v1.mp4` | 5347/5347 | −19,2 · −3,5 | 54 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 3 EL PATRULLERO WILMER.mp4` · `13nUHnPO0K35pLLYFIoGPl59IUxAdVcBo` |
 
 El único «negro» de cada uno es el último cuadro del respiro (C1 194,44 s;
-C2 239,57 s; C3 210,42 s), el fundido horneado. C4 y C5 esperan su revisión.
+C2 239,57 s; C3 210,42 s), el fundido horneado. C4: revisión aplicada el 4 nov, espera su OK para exportar. C5 espera su revisión.
 
 ## Estado
 

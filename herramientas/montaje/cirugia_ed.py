@@ -15,6 +15,11 @@ SIN remontar (31 oct, la revision del C2). Complementa a
                                                  en el cuadro `pos` de la linea
     python cirugia_ed.py U2 relink <ruta> [...]  relee archivos reescritos en
                                                  su sitio (ReplaceClip)
+    python cirugia_ed.py U2 cambiar <vieja> <nueva>
+                                                 el medio del pool que apunta a
+                                                 <vieja> pasa a <nueva> (otro
+                                                 nombre); los items de la linea
+                                                 conservan todo lo demas
     python cirugia_ed.py U2 retrato              imprime el retrato de la linea
                                                  contra el plan (que cambio)
 
@@ -174,6 +179,22 @@ def main():
             for it in items:
                 assert it.ReplaceClip(ruta), 'ReplaceClip fallo: %s' % ruta
             w('   releido', os.path.basename(ruta))
+    elif paso == 'cambiar':
+        # 4 nov (C4, «Taita»): el master de voz esta abierto por Resolve y no
+        # se puede reescribir en su sitio; el corregido tiene otro nombre
+        vieja, nueva = args[0], args[1]
+        assert os.path.exists(nueva), nueva
+        mp = pr.GetMediaPool()
+        items = RS.items_de(mp.GetRootFolder(), {RS.norm(vieja)}, [])
+        assert items, 'no esta en el pool: %s' % vieja
+        for it in items:
+            assert it.ReplaceClip(nueva), 'ReplaceClip fallo: %s' % nueva
+        w('   %s -> %s (%d en el pool)' % (os.path.basename(vieja), os.path.basename(nueva),
+                                          len(items)))
+        bv, bn = os.path.basename(vieja), os.path.basename(nueva)
+        esperado_fuera = [x for x in antes if x[5] == bv]
+        esperado_dentro = [x[:5] + (bn,) for x in esperado_fuera]
+        assert esperado_fuera, 'ningun item de la linea usa %s' % bv
     else:
         raise SystemExit('paso?')
     despues = retrato_rel(tl)

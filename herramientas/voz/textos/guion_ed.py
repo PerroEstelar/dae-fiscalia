@@ -418,6 +418,10 @@ BLOQUES['C3'] = [
   None, NORMAL),
 ]
 
+# 4 nov (revision de Sebastian, C4): «Taita se pronuncia con tilde en la
+# primera a». En d02 ElevenLabs dijo «taíta» (tres silabas). En el TTS va
+# «Táita» (el verbatim del carton sigue «Taita»); la toma de d02 se corrigio
+# injertando la palabra (`voz/taita_c4.py`).
 BLOQUES['C4'] = [
  ('d01_el_resguardo', 'Pilar',
   'En un resguardo indígena cercano a Puerto Guzmán, Putumayo, Yaneth '
@@ -430,7 +434,7 @@ BLOQUES['C4'] = [
  ('d02_el_taita', 'Pilar',
   'autoridad indígena (Taita) de un cabildo con una estructura política y '
   'organizativa débil y escasa capacidad de gobierno propio.',
-  'autoridad indígena, Taita, de un cabildo con una estructura política y '
+  'autoridad indígena, Táita, de un cabildo con una estructura política y '
   'organizativa débil y escasa capacidad de gobierno propio.',
   0.35),
  ('d03_la_rutina', 'Pilar',
@@ -452,7 +456,7 @@ BLOQUES['C4'] = [
   'la fuerza política ni los mecanismos internos para actuar contra el Taita,',
   'Estas se reunieron para tratar el caso, como corresponde al procedimiento '
   'propio de la comunidad, pero en la deliberación concluyeron que no tenían '
-  'la fuerza política ni los mecanismos internos para actuar contra el Taita,',
+  'la fuerza política ni los mecanismos internos para actuar contra el Táita,',
   NORMAL),
  ('d07_el_desequilibrio', 'Pilar',
   'dado el desequilibrio de poder que este ostentaba dentro del resguardo: '
@@ -502,7 +506,7 @@ BLOQUES['C4'] = [
   'Ninguna de las dos jurisdicciones lo asumió, mientras el agresor —Taita del '
   'resguardo— permanecía en ejercicio de su cargo, sin que se activara medida '
   'de protección alguna a favor de la víctima.',
-  'Ninguna de las dos jurisdicciones lo asumió, mientras el agresor, Taita del '
+  'Ninguna de las dos jurisdicciones lo asumió, mientras el agresor, Táita del '
   'resguardo, permanecía en ejercicio de su cargo, sin que se activara medida '
   'de protección alguna a favor de la víctima.',
   NORMAL),

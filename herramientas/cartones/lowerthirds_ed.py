@@ -42,7 +42,11 @@ OFF = 14
 # «la pareja de Jairo», «la Policía Nacional», «la denunciante». Sin rotulo:
 # Yolanda (su r02 lleva el carton de «una mujer de 29 años»: la voz dice el
 # nombre y el carton el dato), el coronel (de espaldas: biblia §3), la madre
-# del C4 (el texto no la nombra) y la nina (no se dibuja).
+# del C4 (el texto no la nombra). La nina del C4 no se dibujaba; desde el 4
+# nov (revision de Sebastian, marcador 415: «introduce her character... and
+# also lower thirds») tiene hoja y rotulo. Entra cuando la voz dice su nombre
+# («Yaneth Payaguaje» 3,96-5,06 s del master = cuadros 396-422 de la linea):
+# 108 cuadros despues de abrir la r01 (409-529). El carton p01 se corta ahi.
 LOWERS = {
     # la r01 del C1 dura 122: el rotulo se recorta a 100 para no pisar la r02
     'C1': [('lt01_molano', 1, {'nombre': 'Édgar Molano', 'dato': 'Fiscal',
@@ -52,6 +56,8 @@ LOWERS = {
            ('lt02_mauricio', 22, {'nombre': 'Mauricio Reyes',
                                   'dato': 'Pareja de Jairo'})],
     'C3': [('lt01_wilmer', 1, {'nombre': 'Wilmer', 'dato': 'Policía Nacional'})],
+    'C4': [('lt01_yaneth', 1, {'nombre': 'Yaneth Payaguaje',
+                               'dato': 'Niña de la comunidad'}, 108)],
     'C5': [('lt01_valentina', 2, {'nombre': 'Valentina', 'dato': 'Denunciante'})],
 }
 

@@ -38,6 +38,7 @@ HOJAS = {
  'jairo': 'C2', 'mauricio': 'C2',
  'wilmer': 'C3',
  'madre': 'C4', 'fiscal_c4': 'C4',
+ 'nina': 'C4',          # 4 nov: Yaneth, por pedido de Sebastian
  'valentina': 'C5',
 }
 
@@ -79,6 +80,10 @@ EXTRA = {
  'madre': ('In the three full figures she holds a small plain child\'s school '
            'backpack by its strap.'),
  'fiscal_c4': ('In the three full figures he holds a plain manila case folder.'),
+ 'nina': ('In the three full figures she wears the small plain grey school '
+          'backpack on both shoulders and her hands hang relaxed at her sides; '
+          'she stands like an ordinary schoolchild. The close-up shows her '
+          'calm, serious face.'),
  'valentina': ('In the three full figures she holds a plain identity card in one '
                'hand; the coat hangs open and straight on both sides.'),
 }
@@ -99,7 +104,10 @@ def prompt(quien):
         p.append(S.UNIFORME_POLICIA)
     p.append(LUZ_HOJA)
     # 3 nov (ED): las clausulas cortas de la serie (base_ed.C_*), como las placas
-    p.append(S.C_ESTILO + S.C_ROSTRO + S.C_PIEL + S.C_FIGURA)
+    p.append(S.C_ESTILO + S.C_ROSTRO + S.C_PIEL
+             + (S.C_FIGURA_NINA if quien == 'nina' else S.C_FIGURA))
+    if quien == 'nina':
+        p.append(S.C_NINA)
     if quien in S.CON_ACENTO:
         p.append(S.C_ACENTO % S.PRENDA[quien])
     p.append(S.C_LIMPIA)
