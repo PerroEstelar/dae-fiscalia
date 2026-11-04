@@ -153,7 +153,10 @@ solo stills y la cámara de la casa.
   `escenas.CHALECO` la limpieza deja el verde-amarillo del chaleco a
   s ≤ 0,55 y el verde oliva a s ≤ 0,30 (`ed_pieza.topes_chaleco`; también en
   `detalle_ed` y `hojas_ref_ed`). El chaleco no es acento: no se gira a la
-  mostaza.
+  mostaza. En la revisión interna el chaleco de r02 y r10 salió blanco-gris:
+  graduadas sin techo, el grade les dejó un frío de 0,37-0,39 y la relimpieza
+  se llevó el chaleco. Ahora `construir` le devuelve tono y saturación de la
+  limpia (`reinyectar_acento` en la banda 34-62) y lo vuelve a acotar.
 - **Los negros.** Medido sobre su línea: las placas de noche de la terminal
   tenían p50 18-31 y 53-70 % del cuadro bajo 30 (r02, r08-r11; el detalle del
   brazo 75 %). Dos cosas: SIN_TECHO para las de noche (el registro les sube el

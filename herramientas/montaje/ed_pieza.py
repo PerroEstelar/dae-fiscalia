@@ -435,7 +435,7 @@ def gris_vf(L):
     return 'lutrgb=r=%s:g=%s:b=%s' % (ex, ex, ex)
 
 
-def reinyectar_acento(o, g, etiqueta, banda=(14, 45), piso_s=0.25):
+def reinyectar_acento(o, g, etiqueta, banda=(14, 45), piso_s=0.25, perdida=0.5):
     """31 oct (r12 del C2): el sueter de Camilo ocupa el 39 % del cuadro y la
     neutralizacion del entorno de `graduar_serie` lo tomo por dominante de
     color: la placa graduada quedo con el 2,5 % de pixeles saturados y el
@@ -450,7 +450,7 @@ def reinyectar_acento(o, g, etiqueta, banda=(14, 45), piso_s=0.25):
     b = np.asarray(Image.open(g).convert('HSV')).astype(np.float32)
     ha, sa = a[..., 0], a[..., 1] / 255.0
     sb = b[..., 1] / 255.0
-    m = (sa >= piso_s) & (ha >= banda[0]) & (ha <= banda[1]) & (sb < 0.5 * sa)
+    m = (sa >= piso_s) & (ha >= banda[0]) & (ha <= banda[1]) & (sb < perdida * sa)
     if m.mean() < 0.01:
         return None
     b[..., 0][m] = ha[m]
@@ -656,6 +656,19 @@ def construir(L, solo=None):
         if ac:
             reinyectar_acento(o, g, 'r%02d' % n)
             nivelar_acento(L, g, 'r%02d' % n)
+        if chaleco(L, n):
+            # 4 nov (C3): en las placas de noche que se gradúan sin techo
+            # (r02, r10) el grade dejo el chaleco blanco-gris (frio 0,37 y
+            # 0,39 despues del grade, y la relimpieza del frio se lo llevo).
+            # Se le devuelven tono y saturacion de la limpia, como al acento,
+            # y se acota otra vez.
+            reinyectar_acento(o, g, 'r%02d chaleco' % n, banda=(34, 62), piso_s=0.25,
+                              perdida=0.8)
+            import numpy as np
+            from PIL import Image
+            hsv = np.asarray(Image.open(g).convert('HSV')).astype(np.float32)
+            Image.fromarray(np.clip(topes_chaleco(hsv), 0, 255).astype(np.uint8), 'HSV') \
+                .convert('RGB').save(g)
         if L in CIELO:
             import numpy as np
             from PIL import Image

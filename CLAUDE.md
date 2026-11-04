@@ -1806,7 +1806,9 @@ supposed to be more greyish»*.
 - **La limpieza de color se come el uniforme**: frío x0,08 y amarillo suelto
   x0,15 dejan el verde y el chaleco grises. Esas ranuras van en
   `escenas.CHALECO` (acota a s ≤ 0,55 el chaleco y ≤ 0,30 el verde, sin girar a
-  la mostaza).
+  la mostaza). Y el grade sin techo puede volver a quitárselo (r02, r10 salieron
+  con chaleco blanco): `construir` lo devuelve desde la limpia con
+  `reinyectar_acento(banda=(34, 62), perdida=0.8)`.
 - **Gris, no negro**: `escenas.GRIS = (piso, codo)` levanta la sombra de todo
   el tema con una curva suave (`ed_pieza.gris`; en ffmpeg `gris_vf` para los
   clips que se quedan) y SIN_TECHO para las de noche. Con (30, 130), medido en el C3:
