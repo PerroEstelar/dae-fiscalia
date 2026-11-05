@@ -1868,3 +1868,106 @@ habla» marcaba 1,4 s de los 2,4: la voz de un hombre tiene graves.
 Y **los marcadores se leen en las cinco líneas**, no solo en la que él nombra:
 pidió los del C5 y había otro en el C1 ya entregado («missing around this
 part»: la placa del vecino había perdido la silueta que la voz nombra).
+
+## Cuenta nueva de Magnific: lo de la vieja no existe (Estándares interamericanos, 5 nov 2026)
+
+El curso se hizo con otra cuenta (jpcolombia3, Pro, 300.000 créditos). Para
+cambiarla no hace falta API: se cierra la sesión del conector de Magnific en
+Claude y se inicia con la cuenta nueva. Lo que hay que saber después:
+
+- **Los identificadores de la cuenta vieja dan «not found».** Las anclas de
+  estilo (placas aprobadas de Ley 1826 y Enfoque diferencial) y la hoja de
+  personaje de ED se subieron de disco: `creations_request_upload` → PUT desde
+  la máquina → `creations_finalize_upload`. Quedan en `prompts/placa_id_ei.json`
+  como `EI_ANCLA_*` y `EI_ESTILO_HOJA_*`.
+- **El PUT desde Windows se corta con placas de 2560** («The write operation
+  timed out»). `subir_ei.py` las baja a JPEG de 2048 y usa timeout de 300 s, y
+  la tanda corre en segundo plano (`cad_subir.py`) porque el puente corta a los
+  60 s: de nueve PUT en primer plano llegó uno.
+
+## `AddSubFolder` devuelve None si Resolve está en Deliver
+
+`arbol_ei.py` no creaba ningún bin y no daba error: `AddSubFolder` devolvía
+None. `GetCurrentPage()` decía None y Resolve estaba en la página Deliver.
+`resolve.OpenPage('edit')` antes de tocar el pool, y salieron los 58 bins.
+
+## Una bandera aparece aunque la placa limpia la prohíba (EI S01 r08, 5 nov 2026)
+
+La oficina de la organización salió con una bandera de asta y escudo en el
+rincón, en gris y por eso fácil de pasar por alto en la hoja de contactos. La
+cláusula de placa limpia ya decía «no flags». Se arregló con la placa aprobada
+como referencia y una sola instrucción en positivo —«el rincón del fondo es una
+pared lisa, sin nada delante ni colgado»— (35 cr, dos de dos limpias), y se
+rehízo solo esa ranura (`ei_pieza.py S01 elegir construir=8`).
+**Revisar a resolución completa los rincones de todo interior institucional**
+(oficina, ONG, alcaldía, despacho): es donde el modelo pone la bandera.
+
+## Una placa de referencia propaga sus defectos (EI S01, 5 nov 2026)
+
+La bandera del r08 no se quedó en el r08: esa placa era la referencia de
+LUGAR de r09 a r12 («It is the SAME office»), y las cuatro salieron con su
+bandera en el mismo rincón. Antes de usar una placa como referencia de lugar o
+de estilo, revisarla a resolución completa: un defecto en la madre son cinco
+placas que rehacer (fueron 175 cr en vez de 35).
+
+## Palabras del prompt que se vuelven defectos (EI, 5 nov 2026)
+
+Cuatro placas aprobadas en la hoja de contactos que hubo que rehacer al
+mirarlas a tamaño de línea, y lo que las causó:
+
+- «The window behind him bright with the **last light** over the hills» →
+  cielo rosado de atardecer. Contra la regla de luz neutra; la hora del día no
+  se nombra, se dice «plain overcast neutral grey sky».
+- «a folded sweater, **earth on its folds**» → manchas oscuras que se leían
+  como agujeros en una prenda hallada en una fosa. Se dice «whole and intact,
+  a faint dusting of dry pale earth along one fold, no spots, no holes».
+- «behind her the plain **light box with plain grey films**» (medicina legal)
+  → radiografías con costillas: un cuerpo. En un despacho forense la pared va
+  lisa.
+- Un personaje que «turns his hat in his hands» y además lleva sombrero → dos
+  sombreros. Se dice «bare head, holds his one hat; exactly one hat in the
+  image».
+
+Las cuatro se arreglaron con la placa aprobada como referencia `image`
+(«keep this exact image… only one thing changes»), 35 cr y dos de dos.
+
+## Kling: entrar caminando mueve la cámara; quedarse en su sitio no (EI S01 r08)
+
+«The family comes in through the open door… follow one step behind» y Kling
+siguió a la familia con la cámara: a 1,8 s la abogada ya estaba fuera de
+cuadro y a 4,6 s quedaban figuras transparentes. La segunda tirada, con «says
+a word of welcome… nods back… all four stay in their places in the doorway»,
+salió quieta y con boca. Para un plano de grupo, gesto y habla en sitio; la
+caminata, solo con una persona y hacia algo que ya está en cuadro.
+
+## Una ranura más corta que el crudo se recorta, no se acelera
+
+`mov_ei.kling` hace el retime del crudo ENTERO al largo de la ranura: un
+crudo de 121 cuadros en una ranura de 83 iba a 1,46x, y una boca que habla
+acelerada se nota de inmediato. En `crudos.json` cada clip lleva `hasta` =
+(largo + 2) / 24 s cuando la ranura es más corta que el crudo, y así va a
+velocidad nativa. Once de 25 en EI. El mismo `hasta` corta las colas malas.
+
+Y la rama normal del conformado podía dejar el clip un cuadro corto (82/83):
+ahora repite el último cuadro con `tpad`, igual que la rama de INICIO.
+
+## cartones_ei: no quema nada si hay FALLAS, y dos herramientas nuevas
+
+`cartones_ei.py --quemar` calcula, imprime las FALLAS y **no quema ningún
+cartón** si hay una sola (renglones > 3 o menos de 60 cuadros). En EI la
+cadena dijo «LISTO» con cero cartones en disco; hay que leer la línea FALLAS.
+
+- Un trozo puede cruzar dos bloques de voz seguidos: `'d03_x+d04_y'` en
+  ELEGIDOS (entra con la voz del primero, su bloque termina con el segundo).
+  Sirve cuando la voz parte una enumeración que en el documento es una sola.
+- `DESPLAZA = {(video, n): cuadros}` hace entrar un cartón tarde cuando el
+  anterior se queda sin tiempo de leerse (S06: el anterior pasó de 20,8 a
+  14,5 car/s).
+
+## Los cuadros iniciales de Kling se suben desde la nube
+
+Desde Windows, uno de cinco PUT volvió a dar «EOF occurred in violation of
+protocol» (ya había pasado en ED). El camino que no falló en 25 subidas: el
+JPEG de 2048 se hace en la máquina (`D:\DAE\_tmp\ei\up\kling`), se trae con
+`stage` y el PUT va con curl desde el contenedor. Las URL prefirmadas duran
+una hora.

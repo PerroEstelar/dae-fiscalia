@@ -1,0 +1,106 @@
+{
+ "S01": {
+  "1": "a",
+  "2": "a",
+  "3": "a",
+  "4": "a",
+  "7": "b",
+  "8": "c",
+  "5": "b",
+  "6": "a",
+  "9": "c",
+  "10": "c",
+  "11": "c",
+  "12": "c"
+ },
+ "S04": {
+  "1": "a",
+  "3": "b",
+  "8": "b",
+  "2": "a",
+  "4": "b",
+  "5": "a",
+  "6": "b",
+  "7": "a",
+  "9": "a",
+  "10": "b"
+ },
+ "S06": {
+  "1": "a",
+  "3": "a",
+  "5": "a",
+  "6": "a",
+  "7": "c",
+  "2": "a",
+  "4": "c",
+  "8": "b",
+  "9": "c"
+ },
+ "S07": {
+  "1": "a",
+  "3": "b",
+  "4": "a",
+  "6": "a",
+  "9": "a",
+  "2": "b",
+  "5": "c",
+  "7": "b",
+  "8": "b"
+ },
+ "S08": {
+  "1": "a",
+  "2": "a",
+  "5": "a",
+  "3": "a",
+  "4": "b",
+  "6": "b",
+  "7": "a"
+ },
+ "_detalles": {},
+ "_laminas": {
+  "S02": {
+   "candidata": "EI_S02_img_c_b",
+   "lado": "izq",
+   "ancho": 820,
+   "registro": "hero",
+   "acento": false
+  },
+  "S03": {
+   "candidata": "EI_S03_img_d_b",
+   "lado": "izq",
+   "ancho": 820,
+   "registro": "contraluz",
+   "acento": false,
+   "nota": "5 nov: el panel a la derecha tapaba a la servidora en la escalera; pasa a la izquierda"
+  },
+  "S05": {
+   "candidata": "EI_S05_img_c_b",
+   "lado": "izq",
+   "ancho": 820,
+   "registro": "hero",
+   "acento": true
+  },
+  "S09": {
+   "candidata": "EI_S09_img_c_a",
+   "lado": "izq",
+   "ancho": 860,
+   "registro": "contraluz",
+   "acento": true
+  },
+  "S10": {
+   "candidata": "EI_S10_img_c_a",
+   "lado": "izq",
+   "ancho": 1080,
+   "registro": "contraluz",
+   "acento": false
+  },
+  "S11": {
+   "candidata": "EI_S11_img_c_a",
+   "lado": "izq",
+   "ancho": 900,
+   "registro": "hero",
+   "acento": false
+  }
+ },
+ "_magnific": "cuenta jpcolombia3 (5 nov); ids en /home/claude/ei/gen.json y placa_id_ei.json"
+}

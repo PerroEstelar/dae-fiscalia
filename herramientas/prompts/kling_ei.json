@@ -1,0 +1,221 @@
+{
+ "_nota": "Estándares interamericanos (5 nov). Kling 2.5 (kling-25), 720p, 16:9, 5 s, 140 créditos (cuenta jpcolombia3). Cuadro inicial = placa GRADUADA de la ranura, subida con \"tipo\": \"kling\". Cinco por video (700 cr, bajo el techo de 800 que puso Sebastián): boca en los planos de habla, caminar, vehículos lejos, una mano que mueve SU objeto. 25 clips, 3.500 créditos.",
+ "EI_S01_r01_el_lider": {
+  "prompt": "The community leader in the mustard ruana, standing under the porch, speaks to the seated neighbours, his mouth opening and closing on the words, his open right hand moving slightly on his chest as he talks; two or three of the seated neighbours nod slowly. The hall, the chairs and the mountains stay where they are. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S01_r05_la_investigacion": {
+  "prompt": "The two investigators in dark jackets walk up the red-earth road away from the camera, toward the houses, one unhurried step after another, growing a little smaller; the white pickup truck stays parked and the neighbours on the porch stay still. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": [],
+  "nota": "5 nov: reescrito contra la placa graduada (la primera version describia otra accion)"
+ },
+ "EI_S01_r08_la_organizacion": {
+  "prompt": "The lawyer, holding the door open with her left hand, says a word of welcome, her mouth moving, and nods once; the mother, standing just inside the door with the folder and the folded mustard ruana held against her, lifts her eyes to the lawyer and nods back; the daughter and the son stay standing where they are behind her, breathing, their eyes on the lawyer. All four stay in their places in the doorway. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon, camera pan, camera tracking, transparent figure, ghost",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": [
+   {
+    "clip": "bxWXHsu5Y2",
+    "por": "la familia camina hacia adentro y Kling sigue con la camara: la abogada sale de cuadro a 1,8 s y a 4,6 s quedan figuras transparentes"
+   }
+  ]
+ },
+ "EI_S01_r10_la_pregunta": {
+  "prompt": "The young woman asks her question, her mouth opening and closing on the words, her brows lifting slightly at the end of the sentence, her eyes steady on the lawyer out of frame; she blinks once. The office behind her stays exactly as it is. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S01_r11_el_hijo": {
+  "prompt": "The bearded young man speaks firmly, his mouth opening and closing on the words, leaning a little further forward with both hands flat on the table; beside him his mother keeps her hand on the folded mustard ruana and turns her eyes to him. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S04_r01_la_fiscalia": {
+  "prompt": "The people in office clothes cross the paved forecourt toward the glass entrance, walking steadily, one step after another; the facade, the trees and the hills stay where they are. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S04_r06_la_convencion": {
+  "prompt": "The analyst, standing at the shelf with the open volume in his left hand, turns one page with his right hand and reads on, his eyes moving down the new page. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": [],
+  "nota": "5 nov: reescrito contra la placa graduada (la primera version describia otra accion)"
+ },
+ "EI_S04_r08_la_jurisprudencia": {
+  "prompt": "The analyst walks along the library aisle toward the camera carrying the bound volumes against his chest, one unhurried step after another, coming a little closer; the shelves stay still and the band of light at the far end stays bright. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S04_r09_determinar": {
+  "prompt": "The analyst, his glasses in his hand near his chin, slowly lowers the glasses, his eyes moving across the documents below the frame as he thinks; he breathes in and blinks. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S04_r10_el_analisis": {
+  "prompt": "The analyst writes steadily on the sheet with his pencil, his eyes on the page; once he glances up at the screen and back down to the page. The desk lamp stays steady. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": [],
+  "nota": "5 nov: reescrito contra la placa graduada (la primera version describia otra accion)"
+ },
+ "EI_S06_r01_la_operacion": {
+  "prompt": "Far below in the valley, the two olive-green trucks drive slowly along the unpaved road from left to right; the low mist drifts slowly through the folds of the hills. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S06_r04_la_hoja_de_vida": {
+  "prompt": "The mother speaks to the prosecutor, her mouth opening and closing on the words, holding the clear plastic sleeve out toward him in her hand; the father beside her keeps his eyes down and turns the brim of his straw hat slowly in his fingers. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": [
+   {
+    "clip": "LweaUAcswO",
+    "por": "la placa traia al padre con sombrero puesto y otro en las manos (dos sombreros); en el clip el de las manos cambia de forma. Placa rehecha: cabeza descubierta, un solo sombrero en las manos"
+   }
+  ],
+  "nota": "5 nov: reescrito contra la placa graduada"
+ },
+ "EI_S06_r06_el_testigo": {
+  "prompt": "The old shopkeeper talks to the investigator, his mouth opening and closing on the words, his pointing hand moving slowly along the road outside; the investigator writes a line in his small notebook and lifts his eyes toward the road. The road stays empty. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": [],
+  "nota": "5 nov: reescrito contra la placa graduada"
+ },
+ "EI_S06_r07_la_medica": {
+  "prompt": "The forensic doctor lowers the report a little and lifts her eyes, thinking, then looks back down at the page and makes a short note with her pen. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": [],
+  "nota": "5 nov: placa rehecha sin la caja de luz (las radiografias mostraban costillas: ningun cuerpo ni hueso)"
+ },
+ "EI_S06_r09_el_fiscal": {
+  "prompt": "The prosecutor, his glasses in his hand, looks up and away, thinking; then he slowly lowers the glasses to the desk and breathes out. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": [],
+  "nota": "5 nov: placa rehecha con cielo gris neutro (salio rosado de atardecer)"
+ },
+ "EI_S07_r02_el_operativo": {
+  "prompt": "The three olive-green trucks drive slowly along the mountain road one after another, each continuing in the direction it is already facing; a little dust settles behind them and the low mist drifts over the hills. The houses and the banana plants stay where they are. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": [],
+  "nota": "5 nov: reescrito contra la placa (los camiones no se alejan, bajan por la carretera)"
+ },
+ "EI_S07_r04_el_claro": {
+  "prompt": "The forensic team works in the clearing: the two kneeling figures scrape gently at the earth with small trowels, the figure carrying the grey case walks toward the tent, and the anthropologist moves her pointing hand along the string grid. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S07_r06_el_analista": {
+  "prompt": "The analyst scrolls with the mouse, his eyes moving across the grids of grey thumbnails; he clicks once and leans a little closer to the screen. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S07_r08_las_personas": {
+  "prompt": "The prosecutor leans a little further in and holds his finger toward the enlarged photograph on the screen; the seated analyst turns his head toward him. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S07_r09_la_conservacion": {
+  "prompt": "The prosecutor lowers the sealed evidence bag with the mustard sweater into the open cardboard box, lets go of it and straightens up. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S08_r01_la_estacion": {
+  "prompt": "The patrolman in the lit doorway, his back to the camera, walks inside along the bright corridor and out of sight; a light rain falls through the light of the street lamp and the reflections on the wet pavement shimmer. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S08_r02_la_denuncia": {
+  "prompt": "The sister speaks to the prosecutor, her mouth opening and closing on the words, her eyes on him; the mother tightens both hands on the clear plastic bag with the mustard sweatshirt on her lap. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S08_r03_el_telefono": {
+  "prompt": "The sister holds her phone steady toward the prosecutor; he leans in a little closer to the screen, his brows drawing together. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S08_r05_el_libro_de_minuta": {
+  "prompt": "The investigator moves her finger along the line of the open logbook and lifts her eyes toward the patrolman behind the counter, who stays still with his back to the camera. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ },
+ "EI_S08_r07_los_protocolos": {
+  "prompt": "The prosecutor lifts his eyes from the open booklet toward the bright window, thinking, and lowers the booklet slightly in his hands. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
+  "duracion": 5,
+  "modelo": "kling-25",
+  "resolucion": "720p",
+  "descartes": []
+ }
+}
