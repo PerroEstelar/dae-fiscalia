@@ -55,12 +55,17 @@
   "descartes": []
  },
  "EI_S04_r06_la_convencion": {
-  "prompt": "The analyst, standing at the shelf with the open volume in his left hand, turns one page with his right hand and reads on, his eyes moving down the new page. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
+  "prompt": "Over his shoulder, the analyst reads the open volume held in both hands; his right thumb lifts the right-hand page, turns it over to the left and lays it flat, and his eyes move down the new page. The camera does not move at all and the framing does not change. Every movement travels all the way and arrives; nothing stops halfway. No new hand, face or figure enters the frame. Hands keep their natural arrangement: the fingers never splay and never change in number. Skin stays a flat desaturated warm grey, never pink. The flat graphic illustration style, the light and the near-monochrome palette stay exactly unchanged.",
   "negativo": "turning to the camera, looking at the camera, face morphing, face becoming 3D, smile, grin, laughing, new person, extra person, duplicated person, extra fingers, extra hand, extra arm, pink skin, saturated skin, photorealistic, photograph, 3D render, glossy shading, texture, noise, flicker, colour shift, text, letters, numbers, logo, watermark, badge, insignia, weapon",
   "duracion": 5,
   "modelo": "kling-25",
   "resolucion": "720p",
-  "descartes": [],
+  "descartes": [
+   {
+    "clip": "xSDmr6JjfW",
+    "por": "Sebastian (marcador 813): el folleto se ve raro, no tiene sentido como abre. La placa misma tenia el libro de canto contra la camara con las hojas saliendo por arriba. Placa nueva por encima del hombro, libro abierto de frente"
+   }
+  ],
   "nota": "5 nov: reescrito contra la placa graduada (la primera version describia otra accion)"
  },
  "EI_S04_r08_la_jurisprudencia": {

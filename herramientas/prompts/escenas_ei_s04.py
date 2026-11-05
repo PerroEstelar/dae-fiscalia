@@ -64,12 +64,22 @@ one page while his eyes move to the other book, his pencil in his right hand.
 Concentrated, calm. He appears ONCE.
 ''')
 
+# 5 nov, revision de Sebastian (marcador 813: «the booklet looks off, doesn't
+# make sense how it opens»): la placa tenia el libro de canto contra la camara
+# con las hojas saliendo por arriba. Placa nueva (candidata f, con la vieja
+# como referencia de personaje y lugar): por encima del hombro, el libro
+# abierto de frente en las dos manos. No sobre el escritorio: la r05 ya es el
+# libro abierto sobre la mesa y quedarian dos planos iguales seguidos.
 R[6] = (123, 'dia', ('servidor',), None, False, 'despacho_servidor', '''
-Medium shot of %(servidor)s standing at the tall bookshelf of his office,
-three-quarter view, the camera at standing height, perfectly level. He draws
-out a slim plain blue-grey volume with a blank cover from a row of thick
-books, already half out of the shelf in his right hand, his eyes on it. Light
-from the window at the side. He appears ONCE.
+Over-the-shoulder shot from just behind the left shoulder of %(servidor)s,
+the camera at his shoulder height, perfectly level. His shoulder and the side
+of his head fill the left third of the frame, his face in profile, eyes down
+on the page. He stands at the bookshelf holding a slim volume open in both
+hands at chest height: the two open pages face him and the camera, the spine
+runs vertically down the middle between his hands, his two thumbs rest on the
+lower corners of the pages, his fingers out of sight behind the plain
+blue-grey covers. The pages show only plain grey bars. Behind the book, soft
+painted shapes of the shelf of books. Exactly two hands, exactly one book.
 ''')
 
 R[7] = (103, 'dia', ('servidor',), 'bufanda', False, 'despacho_servidor', '''

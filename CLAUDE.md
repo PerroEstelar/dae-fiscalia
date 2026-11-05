@@ -1971,3 +1971,23 @@ protocol» (ya había pasado en ED). El camino que no falló en 25 subidas: el
 JPEG de 2048 se hace en la máquina (`D:\DAE\_tmp\ei\up\kling`), se trae con
 `stage` y el PUT va con curl desde el contenedor. Las URL prefirmadas duran
 una hora.
+
+## Un libro en la mano se dibuja abierto de frente, no de canto (EI S04 r06, 5 nov 2026)
+
+Sebastián marcó el r06 del S04: *«the booklet looks off, doesn't make sense
+how it opens»*. La placa («draws out a slim volume… half out of the shelf»)
+había salido con el libro de canto contra la cámara y las hojas asomando por
+arriba, y Kling lo hojeó así: un objeto que no se entiende cómo abre. Lo que
+salió legible a la primera, con la placa vieja como referencia de personaje y
+lugar: **por encima del hombro, el libro abierto de frente en las dos manos,
+el lomo vertical en el medio, los pulgares en las esquinas de abajo y los
+dedos detrás de las tapas**. Y Kling pasa la página entera sin romper nada.
+La otra salida obvia —el libro abierto sobre el escritorio— se descartó por
+otra regla: la r05 ya era eso y quedaban dos planos iguales seguidos.
+
+## `cirugia_ei` necesita `reemplazar_en_sitio_ei`
+
+`cirugia_ei.py` importa `reemplazar_en_sitio_ei` (retrato, `items_de`,
+`norm`) y el clon del curso no lo traía: se notó recién al primer `relink`.
+Es `reemplazar_en_sitio_ed.py` con `ei_pieza`. Al clonar las herramientas de
+un curso, clonar también las que importan.

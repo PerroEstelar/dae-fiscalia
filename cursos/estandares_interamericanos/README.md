@@ -126,3 +126,37 @@ debatido: ni el enfrentamiento del informe militar ni la subida al vehículo
 dibujan (camiones lejos, una manga verde oliva lisa); los patrulleros de S08
 van de espaldas con el uniforme de la Policía Nacional; la fuente de S07 sin
 cara.
+
+## Revisión de Sebastián y entrega (5 nov, noche)
+
+Retocó las líneas (lo único medible por API: en S04 acortó el cartón p01 de
+115 a 88 cuadros; nada más cambió de sitio ni de archivo) y dejó un marcador:
+
+- **S04, cuadro 813** (r06 la convención): «the pamphlet or booklet looks off,
+  doesn't make sense how it opens». La placa tenía el libro de canto contra la
+  cámara con las hojas saliendo por arriba, y el Kling lo hojeaba así. Placa
+  nueva por encima del hombro, el libro abierto de frente en las dos manos
+  (candidata f; la opción del libro sobre el escritorio se descartó porque la
+  r05 ya es eso y quedaban dos planos iguales seguidos). Kling nuevo: pasa una
+  página y sigue leyendo. Ranura y movimiento reescritos en su sitio y
+  releídos en SU línea con `cirugia_ei S04 relink` (sin remontar).
+  105 cr de placas + 140 de Kling.
+
+Exportados con la receta Fiscalía (`ei_pieza <S> exportar entregas
+verificar`): `05 EXPORTS\EI_<S>_v1.mp4` + copia 720p.
+
+Drive, con las subcarpetas de disco: `VIDEOS\SITUACION 0n - …\` y
+`IMAGENES\SITUACION 0n - …\`, cada archivo con su nombre de entrega
+(`PRIO 3 - ESTANDARES INTERAMERICANOS - SITUACION 0n …`). Ids de las carpetas
+en el doc del proyecto.
+
+| entrega | cuadros | MB | LUFS · pico | negros |
+|---|---|---|---|---|
+| S01 | 1885 | 26 | −20,0 · −4,2 | el último del respiro |
+| S04 | 1671 | 22 | −20,1 · −4,5 | el del respiro + su fundido desde negro en 472 (r02→r03) |
+| S06 | 1738 | 24 | −20,2 · −4,3 | el último del respiro |
+| S07 | 1623 | 24 | −20,2 · −4,7 | el último del respiro |
+| S08 | 1530 | 20 | −20,4 · −4,1 | el último del respiro |
+
+Las 6 láminas, las PNG de `IMAGENES ENTREGA` (S03 y S09 en su versión
+corregida). Todo comprobado por tamaño contra el disco.
