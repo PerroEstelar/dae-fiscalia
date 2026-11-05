@@ -36,12 +36,30 @@ for lado, libre, lleno in (('izq', 'LEFT', 'right'), ('der', 'RIGHT', 'left')):
             'space -plain wall, sky, tabletop or soft shadow- with no figure, no '
             'face and no important object in it: a block of text will be laid '
             'over it later. Everything that matters sits in the %s %d percent.'
-            % (libre, pct, lleno, resto))
+            % (libre, pct, lleno, resto)
+            # la marca de la serie va arriba en el lado lleno (lamina_ei): S05 y
+            # S11 salieron con una cabeza justo debajo
+            + ' The top %s corner of the frame -the upper quarter of the outer '
+            'fifth- stays plain wall, window or sky: no head and no face there.'
+            % lleno)
 
 AFICHE = ('This is a striking EDITORIAL FILM-POSTER ILLUSTRATION with one bold '
           'graphic idea, strong silhouettes and a clear focal point, in the '
           'flat graphic style of this series. It is ONE single picture: not a '
           'collage of panels, not a comic page, no inset frames, no borders.')
+
+# S05 y S11 (5 nov): las primeras (`c`) eran afiche puro -dos tomos como
+# monolitos con el equipo diminuto, un expediente que pasa entre dos manos sin
+# cuerpo- y Sebastian las vio raras. Las nuevas (`e`, `f`) son UN MOMENTO
+# CORRIENTE, a escala humana, como las que funcionaron (S02, S03, S09).
+LEGIBLE = ('This is a clear, calm EDITORIAL ILLUSTRATION of one ordinary '
+           'working moment, readable at a glance: real people at true human '
+           'scale in a real place, nothing symbolic, nothing oversized, no '
+           'visual metaphor, in the flat graphic style of this series. It is '
+           'ONE single picture: not a collage of panels, not a comic page, no '
+           'inset frames, no borders. Every hand belongs to a person whose '
+           'body is visible in the picture.')
+CABECERA_LEGIBLE = {('S05', 'e'), ('S05', 'f'), ('S11', 'e'), ('S11', 'f')}
 
 ESTILO_REF = ('The LAST reference image is a finished poster illustration from '
               'this same series, of ANOTHER story: use it ONLY for the drawing, '
@@ -63,6 +81,12 @@ CUERPO = {
  'equipo_s05': ('TWO INVESTIGATORS, a Colombian man of about forty in a plain '
                 'grey shirt and a Colombian woman of about thirty-five in a plain '
                 'dark blazer, seen small'),
+ 'investigador_s05': ('AN INVESTIGATOR, a Colombian man of about forty, short '
+                      'dark hair, clean-shaven, in a plain grey shirt with the '
+                      'sleeves rolled to the forearm'),
+ 'investigadora_s05': ('AN INVESTIGATOR, a Colombian woman of about thirty-five, '
+                       'dark hair tied back, in a plain dark grey blazer over a '
+                       'plain white blouse'),
  'madre_s09': ('A MOTHER, a Colombian woman of about sixty-five, small and '
                'upright, grey hair in a low bun, in a plain dark grey cardigan and '
                'a plain dark skirt'),
@@ -70,6 +94,11 @@ CUERPO = {
                      'suit seen from behind'),
  'manos_s11': ('TWO ANONYMOUS HANDS of ordinary adults in plain grey suit cuffs; '
                'no face anywhere'),
+ 'fiscal_s11': ('A PROSECUTOR, a Colombian woman of about forty-five, short '
+                'dark hair, plain thin-rimmed glasses, in a plain charcoal suit '
+                'jacket over a plain light grey blouse'),
+ 'colega_s11': ('A COLLEAGUE, a Colombian man of about thirty, short dark hair, '
+                'in a plain light grey shirt and plain dark trousers'),
  'gente_s11': ('THREE PEOPLE in plain dark office clothes, tiny on the square, '
                'seen from behind'),
 }
@@ -147,6 +176,37 @@ rest one on each volume. At the edge of the table, the closed case folder
 with a sealed clear evidence bag holding a folded matte mustard knitted
 scarf. The window light falls across both open books.
 '''),
+ 'e': ('dia', ('investigadora_s05', 'investigador_s05'), 'ninguno', 'izq',
+       'bufanda', '''
+A plain working office of a Colombian prosecution unit in the daytime, a
+medium shot with the camera at seated eye level and perfectly level,
+everything in the right 55 percent of the frame. At a plain wooden table,
+%(investigadora_s05)s and %(investigador_s05)s sit side by side in
+three-quarter view, both looking down at the same page. In front of them lie
+TWO printed court judgments, two thick stapled documents of plain white
+pages, open side by side: she points with a pen at a paragraph of the left
+one, he holds the right one open with one hand and leans in to compare. The
+pages show only plain grey lines, no letters. At the near corner of the
+table, a closed plain case folder, and lying flat on it a small clear
+evidence bag holding a matte mustard knitted scarf folded FLAT into a neat
+small rectangle, its short fringe visible at one end. Behind them a plain
+bare wall and a window onto a plain overcast sky. Everything at true human
+scale.
+'''),
+ 'f': ('dia', ('investigadora_s05', 'investigador_s05'), 'ninguno', 'izq',
+       'bufanda', '''
+A plain working office of a Colombian prosecution unit, a tall window behind
+the people, a medium shot with the camera at standing chest height and
+perfectly level, everything in the right 55 percent of the frame.
+%(investigadora_s05)s stands by the table holding a thick printed court
+judgment open in both hands, reading a passage aloud; %(investigador_s05)s
+sits at the table and looks up at her, his hand resting on a second printed
+judgment open in front of him, a plain pen on it. The pages show only plain
+grey lines, no letters. On the table, near him, a closed plain case folder
+with a small clear evidence bag lying flat on it, holding a matte mustard
+knitted scarf folded FLAT into a neat small rectangle. Behind them a plain
+bare wall. Everything at true human scale.
+'''),
 }
 
 IM['S09'] = {
@@ -217,13 +277,38 @@ the square toward it, %(gente_s11)s walk apart from one another: one carries
 a thick bound volume, one a plain case folder, one a plain clipboard. Long
 morning shadows. No flag, no statue, no letters.
 '''),
+ 'e': ('dia', ('fiscal_s11', 'colega_s11'), 'ninguno', 'izq', None, '''
+A plain office of a Colombian prosecution unit in the daytime, a medium shot
+with the camera at seated eye level and perfectly level, everything in the
+right 55 percent of the frame. %(fiscal_s11)s sits at her plain desk in
+three-quarter view. Standing beside the desk, %(colega_s11)s hands her a
+SHORT stapled document of three or four plain white pages, and she takes it
+with one hand, already looking at it. On the desk next to her lies the full
+judgment: one very thick bound volume, closed, with a plain blank cover, so
+the thin summary and the thick judgment read clearly side by side. Both
+people are seen whole from the waist up. Behind them a plain bare wall and a
+window onto a plain overcast sky. No letters anywhere.
+'''),
+ 'f': ('dia', ('fiscal_s11',), 'ninguno', 'izq', None, '''
+Over-the-shoulder view from just behind and beside %(fiscal_s11)s, seated at
+her plain desk in front of a tall window, the camera at seated height and
+perfectly level, everything in the right 55 percent of the frame. We see her
+shoulder, her hair and the side of her face in profile. She holds a short
+stapled summary of a few plain white pages; the page facing us shows exactly
+THREE short paragraphs clearly separated by white space, each a small block
+of plain grey lines with a plain small dark square at its left, and the tip
+of her pen rests beside the first block. On the desk next to her, the full
+judgment: one very thick bound volume, closed, with a plain blank cover. No
+letters anywhere, no check marks.
+'''),
 }
 
 
 def prompt(clave, var, con_estilo=True):
     reg, gente, lugar, lado, prenda, txt = IM[clave][var]
     esc = txt % TOKENS if '%(' in txt else txt
-    esc = AFICHE + '\n\n' + esc.strip() + '\n\n' + LADO[lado]
+    cab = LEGIBLE if (clave, var) in CABECERA_LEGIBLE else AFICHE
+    esc = cab + '\n\n' + esc.strip() + '\n\n' + LADO[lado]
     if con_estilo:
         esc += '\n\n' + ESTILO_REF
     silueta_sola = bool(gente) and all(p in SIN_ROSTRO for p in gente)

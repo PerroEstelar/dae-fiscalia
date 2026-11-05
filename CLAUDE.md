@@ -1991,3 +1991,26 @@ otra regla: la r05 ya era eso y quedaban dos planos iguales seguidos.
 `norm`) y el clon del curso no lo traía: se notó recién al primer `relink`.
 Es `reemplazar_en_sitio_ed.py` con `ei_pieza`. Al clonar las herramientas de
 un curso, clonar también las que importan.
+
+## Una lámina se lee si muestra un momento corriente, no una metáfora (EI S05 y S11, 5 nov 2026)
+
+S05 (dos tomos como monolitos con el equipo diminuto entre ellos) y S11 (un
+expediente que pasa entre dos manos sin cuerpo, el palacio de justicia en la
+ventana) pasaron la revisión propia y Sebastián las vio «funny». Las que sí
+funcionaron (S02, S03, S09) muestran a una o dos personas a escala real
+haciendo algo que se reconoce. Las nuevas llevan la cabecera `LEGIBLE` de
+`imagenes_ei.py` en vez de `AFICHE`: un momento de trabajo corriente, nada
+sobredimensionado, ninguna metáfora visual, «cada mano pertenece a una persona
+que se ve». S05: ella lee en voz alta una sentencia y él escucha con la otra
+abierta; la bufanda, plegada plana en su bolsa, sobre el expediente. S11: un
+colega le entrega la síntesis a la fiscal; la sentencia completa, cerrada, en
+el escritorio.
+
+**La marca va arriba en el lado lleno (x > 1530, y < 280 en 1920×1080 con el
+panel a la izquierda): ninguna cabeza ahí.** Las dos tiradas buenas tenían a la
+persona de pie justo debajo. Se arregló con la placa elegida como referencia
+`image` y «change ONLY the framing: the camera pulls back… above the head a
+wide band of plain empty wall; the top right corner plain» (35 cr, dos de dos).
+`LADO` ya pide esa esquina lisa. `images_expand` no sirve para esto: el modo
+por defecto pintó en el margen una interfaz de edición con texto inventado y
+`seedream-4-5` no amplió nada (150 cr perdidos).

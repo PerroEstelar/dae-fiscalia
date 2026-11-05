@@ -160,3 +160,21 @@ en el doc del proyecto.
 
 Las 6 láminas, las PNG de `IMAGENES ENTREGA` (S03 y S09 en su versión
 corregida). Todo comprobado por tamaño contra el disco.
+
+## Láminas S05 y S11 rehechas (5 nov, noche)
+
+Sebastián vio «raras» las ilustraciones de S05 (dos tomos como monolitos con el
+equipo diminuto) y S11 (un expediente que pasa entre dos manos sin cuerpo).
+Las nuevas son un momento de trabajo corriente, a escala humana (cabecera
+`LEGIBLE` en `imagenes_ei.py`, variantes `e` y `f`):
+
+| Lámina | Elegida | Qué se ve |
+|---|---|---|
+| S05 | `EI_S05_img_g_b` | ella lee en voz alta una sentencia; él la escucha con la otra abierta; la bufanda, plegada en su bolsa, sobre el expediente |
+| S11 | `EI_S11_img_g_b` | un colega le entrega la síntesis a la fiscal; la sentencia completa, cerrada, en el escritorio |
+
+Las `g` son `f_b` y `e_a` con la cámara más atrás (referencia `image`): en las
+primeras la cabeza de la persona de pie quedaba debajo de la marca.
+Créditos: 8 tiradas (280) + 4 reencuadres (140) + dos `images_expand` que no
+sirvieron (150) = 570. En Drive las nuevas reemplazan a las de cada carpeta y
+las v1 quedan en `IMAGENES/_versiones anteriores`.

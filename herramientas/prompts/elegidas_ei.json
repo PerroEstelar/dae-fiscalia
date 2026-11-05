@@ -74,11 +74,12 @@
    "nota": "5 nov: el panel a la derecha tapaba a la servidora en la escalera; pasa a la izquierda"
   },
   "S05": {
-   "candidata": "EI_S05_img_c_b",
+   "candidata": "EI_S05_img_g_b",
    "lado": "izq",
    "ancho": 820,
-   "registro": "hero",
-   "acento": true
+   "registro": "dia",
+   "acento": true,
+   "nota": "5 nov: la c_b (dos tomos gigantes con el equipo diminuto) se veía rara. f_b es el equipo a escala: ella lee en voz alta una sentencia, él la escucha con la otra abierta, la bufanda en su bolsa sobre el expediente; pero la cabeza de ella quedaba bajo la marca, y g_b es la misma f_b con la cámara más atrás (referencia image)"
   },
   "S09": {
    "candidata": "EI_S09_img_c_a",
@@ -95,11 +96,12 @@
    "acento": false
   },
   "S11": {
-   "candidata": "EI_S11_img_c_a",
+   "candidata": "EI_S11_img_g_b",
    "lado": "izq",
    "ancho": 900,
-   "registro": "hero",
-   "acento": false
+   "registro": "dia",
+   "acento": false,
+   "nota": "5 nov: la c_a (expediente que pasa entre dos manos sin cuerpo) se veía rara. e_a es un colega que le entrega la síntesis a la fiscal, con la sentencia completa cerrada en el escritorio; la cabeza de él quedaba bajo la marca, y g_b es la misma e_a con la cámara más atrás"
   }
  },
  "_magnific": "cuenta jpcolombia3 (5 nov); ids en /home/claude/ei/gen.json y placa_id_ei.json"
