@@ -374,3 +374,6 @@ for _n, _c in CUADROS.items():
     R[_n] = (_c,) + R[_n][1:]
 TOTAL = 3352
 PIEZA = TOTAL + (182 + 119 + 48 + 119 + 182)
+
+# 7 nov: el respiro sostiene la ultima ranura (las dos firmas), no la r01
+RESPIRO = 23

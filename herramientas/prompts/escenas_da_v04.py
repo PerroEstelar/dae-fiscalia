@@ -258,9 +258,12 @@ KLING = {
  7: ('fija', 'With her pencil she follows the river on the map slowly from the '
      'first small square down to the second one and stops there; she lifts her '
      'eyes from the map and thinks.'),
- 8: ('fija', 'The investigator lifts one arm and points upstream toward the far '
-     'grey hills; the prosecutor turns her head toward him and nods; the river '
-     'flows past them and the trees on the far bank stir in the breeze.'),
+ 8: ('fija', 'The two stand side by side on the bank and look upstream; the '
+     'investigator turns his head to the prosecutor and says a few words, and she '
+     'nods slowly with her eyes on the far hills; the river flows past them and '
+     'the leaves of the trees stir in the breeze.'),
+ # 7 nov: con el brazo que señala, Kling soltó una nube blanca del dedo
+ # r05 (la mina vieja) queda sin clip: Kling le puso humo a la mina abandonada
  9: ('fija', 'The pipe pours its dirty water beside him and the current swirls '
      'around his boots; he holds the probe still in the water, reads the small '
      'meter in his other hand, and looks up toward the pipe.'),
@@ -316,3 +319,6 @@ for _n, _c in CUADROS.items():
     R[_n] = (_c,) + R[_n][1:]
 TOTAL = 2899
 PIEZA = TOTAL + (182 + 119 + 48 + 119 + 182)
+
+# 7 nov: el respiro sostiene la ultima ranura (el rio limpio con el pescador), no la r01
+RESPIRO = 18

@@ -811,7 +811,10 @@ def respiro(L):
     negro del final horneado. Paso aparte para rehacerlo sin tocar ranuras."""
     tl = R.sub(L, '10 TIMELINE SEBASTIAN')
     gd = os.path.join(R.sub(L, '01 PLANOS'), '_grade')
-    g1 = os.path.join(gd, nombre(L, 1) + '.png')
+    # 7 nov (DA V06): la r01 del caso Francisco es la tala con motosierra;
+    # cerrar ahi despues de «proteccion del Amazonas» dice lo contrario. Cada
+    # video puede elegir la placa del respiro (escenas.RESPIRO, por defecto 1)
+    g1 = os.path.join(gd, nombre(L, getattr(E(L), 'RESPIRO', 1)) + '.png')
     rd = os.path.join(tl, 'RESPIRO')
     os.makedirs(rd, exist_ok=True)
     d = os.path.join(rd, 'DA_%s_respiro_v%d.mp4' % (L, N_RESPIRO))
