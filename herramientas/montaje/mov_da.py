@@ -96,7 +96,8 @@ LUZ = {
 # camara; la cabeza toca el borde a los 2,3 s del crudo (se corta a 2,5).
 # 7 nov (DA V02): r01 el archivista camina hacia camara con la pila de
 # carpetas (crudo hasta 3,6 s) y r14 los cuatro por la orilla (crudo entero).
-ABRE = {('V02', 1), ('V02', 14)}
+# V06 r02, los dos patrulleros por el sendero hacia camara (crudo hasta 3 s).
+ABRE = {('V02', 1), ('V02', 14), ('V06', 2)}
 
 
 def encuadre_de(L, n):

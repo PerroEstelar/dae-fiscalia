@@ -1137,7 +1137,13 @@ def _resolve():
 
 def montar(L):
     resolve = _resolve()
-    pr = resolve.GetProjectManager().GetCurrentProject()
+    pm = resolve.GetProjectManager()
+    pr = pm.GetCurrentProject()
+    # 7 nov: tras una reconexion Resolve quedo en «Untitled Project» y en la
+    # pagina Deliver (AddSubFolder devuelve None ahi): se asegura las dos cosas
+    if pr is None or pr.GetName() != 'DAE MASTER - CURSOS':
+        pr = pm.LoadProject('DAE MASTER - CURSOS')
+    resolve.OpenPage('edit')
     w('proyecto:', pr.GetName())
     tl, err = construye(resolve, L)
     largo = (tl.GetEndFrame() - tl.GetStartFrame()) if tl else -1

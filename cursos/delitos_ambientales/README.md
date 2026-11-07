@@ -79,3 +79,37 @@ Placas: 34, Seedream 5 Flash 2k; ids en `prompts/placa_id_da.json`, elegidas
 en `prompts/elegidas_da.json`. Rehechas: r01 (salía foto de dron), r21 (los
 hombres miraban a cámara), r24 (multitud no pedida), r28 (banderines en la
 lancha).
+
+**Estado:** aprobado por Sebastián y entregado (`05 EXPORTS\DA_V01_v1.mp4`,
+Drive `1Xmf3jdG_bM6knGa6rbITPOAE34IO9G4p`).
+
+## V02–V06 (7 nov)
+
+| | narra | ranuras | gráficos (V5) | cartones | Kling |
+|---|---|---|---|---|---|
+| V02 Plan de priorización | Pilar | 26 · 4627 c | pilares, niveles, enfoques, programa, art. 6, consecuencias | 11 | 16 + 3 prestados del V01 |
+| V03 Técnicas especiales | Carlos | 24 · 4455 c | control del juez + nueve rótulos-enlace (arts. 233, 235, 236, 239–244) | 10 | 19 |
+| V04 El río y la fábrica | Pilar | 18 · 3549 c | lesión, −30 % de oxígeno, plan de reparación, medir | 9 | 12 |
+| V05 Raíces Profundas | Carlos | 23 · 4002 c | las cuatro preguntas y las dos firmas | 11 | 18 |
+| V06 El caso Francisco | Pilar | 26 · 4889 c | los ocho pasos del libreto (rompecabezas, preguntas, balanza) | 12 | 16 |
+
+Kling: `escenas_da_v0N.KLING`; los cuadros iniciales son las placas graduadas
+en JPEG 2048 (`prompts/kling_jpg_da.py`) subidas desde la nube. Sin clip las
+ranuras bajo el panel de un gráfico; en V03 los rótulos no llevan panel, así
+que sí llevan clip las ranuras donde lo marcado no se mueve (la pantalla, el
+paquete, el portátil, la orden), y no las que marcan algo que el clip
+movería (el empresario que camina, el lanchero, la lancha).
+
+Lo medido en la tanda (de 66 clips):
+
+- **El papel no se anima.** V02 r02 y r15 hojeaban la carpeta: el crudo entra
+  desde que la carpeta ya está abierta (`desde` en `bajar_mov_da`). El clip
+  cubre la ranura entera en corte seco, así que no tiene que arrancar en la placa.
+- **Kling suma humo donde hay paisaje quieto**: la mina abandonada del V04 r05
+  (queda placa con cámara), la bodega del V03 r10 (poco, se deja), la lona del
+  V03 r01 que se volvía humo (entra desde 3,2 s).
+- **Un brazo que señala a lo lejos suelta algo del dedo** (V04 r08: una nube
+  blanca). Rehecho con «gira la cabeza y dice unas palabras».
+- **«Camina hasta el borde del muelle» la metió al río** (V02 r25). Rehecho con
+  «cada uno se queda donde está» y la caja que pasa de mano en mano.
+- Mirar a cámara al final del gesto (V03 r11, V04 r07, r09): se corta antes.
