@@ -513,13 +513,24 @@ def elegir(L):
         # otra (escena, no placa: biblia §4). Se copia la candidata elegida
         # de la madre con el nombre de la hija y se hornea con otra camara.
         m = reusa[n][0] if n in reusa else n
-        # 31 oct, DH: se aplica lo que ya esta elegido aunque la pieza no este
-        # completa (las placas graduadas sirven de referencia a las que faltan)
-        if str(m) not in el:
+        prest = getattr(E(L), 'PRESTADA', {}).get(n)
+        if prest:
+            # 7 nov: la placa es de otro video del curso (V02 r22 = V01 r03, la
+            # draga que sigue trabajando): la candidata elegida de alla, limpia
+            # con el acento y la gente de esta ranura
+            L2, m2 = prest
+            v = json.load(open(ELEGIDAS, encoding='utf-8'))[L2][str(m2)]
+            src = os.path.join(R.sub(L2, '01 PLANOS'), '_candidatas',
+                               '%s_%s.png' % (nombre(L2, m2), v))
+            v = '%s_r%02d%s' % (L2, m2, v)
+        elif str(m) not in el:
+            # 31 oct, DH: se aplica lo que ya esta elegido aunque la pieza no
+            # este completa (las placas graduadas sirven de referencia)
             w('r%02d sin elegir' % n)
             continue
-        v = el[str(m)]
-        src = os.path.join(cand, '%s_%s.png' % (nombre(L, m), v))
+        else:
+            v = el[str(m)]
+            src = os.path.join(cand, '%s_%s.png' % (nombre(L, m), v))
         dst = os.path.join(pl, nm + '.png')
         assert os.path.exists(src), src
         firma = '%s:%s' % (v, md5(src)[:10])

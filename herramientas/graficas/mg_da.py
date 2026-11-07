@@ -528,7 +528,306 @@ class Cadena(Grafico):
             pega(c, spr, cx + 50, y - 34, o * g, 0)
 
 
-GRAFICOS = [Aluvion, Ideam, Motores, Municipios, Cadena]
+# ------------------------------------------------------------------- V02
+# Plan de priorizacion de la FGN. Los textos son los del Direccionamiento
+# Estrategico 2024-2028 (pilar, niveles, enfoques), los de la leccion U3 L1
+# (programa metodologico, consecuencias) y el articulo 6 de la Constitucion,
+# literal. Mismo estilo que los del V01.
+FUENTE_DE = 'Fuente: Fiscalía General de la Nación, Direccionamiento Estratégico 2024-2028'
+GRIS_TXT = (200, 208, 220)
+
+
+def sprite_col(texto, f, ancho, color_de, sombra=0.55):
+    """Como `sprite`, pero cada palabra con su color: color_de(k) da el color
+    de la palabra k (o None para no dibujarla). Mismo reparto de renglones
+    para todas las llamadas con el mismo texto."""
+    d0 = ImageDraw.Draw(Image.new('RGBA', (8, 8)))
+    pal = texto.split()
+    esp = d0.textlength(' ', font=f)
+    lineas, cur, wcur = [], [], 0
+    for k, p in enumerate(pal):
+        wp = d0.textlength(p, font=f)
+        if cur and wcur + esp + wp > ancho:
+            lineas.append(cur)
+            cur, wcur = [], 0
+        wcur = wcur + (esp if cur else 0) + wp
+        cur.append(k)
+    lineas.append(cur)
+    asc, desc = f.getmetrics()
+    salto = int((asc + desc) * 1.18)
+    m = 24
+    txt = Image.new('RGBA', (int(ancho) + 2 * m, salto * (len(lineas) - 1) + asc + desc + 2 * m),
+                    (0, 0, 0, 0))
+    d = ImageDraw.Draw(txt)
+    for r, ks in enumerate(lineas):
+        x = m
+        for k in ks:
+            col = color_de(k)
+            if col:
+                d.text((x, m + r * salto), pal[k], font=f, fill=col + (255,))
+            x += d0.textlength(pal[k], font=f) + esp
+    if sombra:
+        a = txt.split()[3].filter(ImageFilter.GaussianBlur(7)).point(lambda v: int(v * sombra))
+        sh = Image.new('RGBA', txt.size, (0, 16, 40, 0))
+        sh.putalpha(a)
+        base = Image.new('RGBA', txt.size, (0, 0, 0, 0))
+        base.alpha_composite(sh, (0, 3))
+        base.alpha_composite(txt)
+        txt = base
+    return txt, (-m, -m), len(lineas)
+
+
+class Pilares(Grafico):
+    """r03: el primer pilar del Direccionamiento Estrategico, priorizar con
+    enfoque territorial."""
+    clave = 'pilares'
+    ante = 'Direccionamiento Estratégico 2024-2028'
+    fuente_txt = FUENTE_DE
+    B = 'e02_pilar'
+
+    def ventana(self):
+        return self.v.ranura(self.E, 3)
+
+    def prepara(self):
+        self.t_pilar = self.l(self.v.cuadro(self.B, 'primer pilar'))
+        self.t_prio = self.l(self.v.cuadro(self.B, 'priorizar las investigaciones'))
+        self.t_terr = self.l(self.v.cuadro(self.B, 'enfoque territorial'))
+        self.s_pilar = sprite('Primer pilar', fuente('Bold', 76))
+        self.s_prio = sprite('Priorizar las investigaciones', fuente('Medium', 48))
+        self.s_terr = sprite('con enfoque territorial', fuente('Bold', 58), AMARILLO)
+
+    def dibuja(self, c, i, g):
+        self.barra(c, i, 230, 640, g)
+        o, s = aparece(i, 0)
+        pega(c, self.s_ante, TEXTO_X, 228, o * g, s)
+        o, s = aparece(i, self.t_pilar)
+        pega(c, self.s_pilar, TEXTO_X - 4, 300, o * g, s)
+        o, s = aparece(i, self.t_prio)
+        pega(c, self.s_prio, TEXTO_X, 450, o * g, s)
+        o, s = aparece(i, self.t_terr)
+        pega(c, self.s_terr, TEXTO_X, 530, o * g, s)
+
+
+class Niveles(Grafico):
+    """r05: los tres niveles que trabajan articulados -local, regional,
+    nacional-. Un punto que crece por nivel; la linea que los une entra con
+    «articulados»; el nivel que se nombra, en blanco, los otros atenuados."""
+    clave = 'niveles'
+    ante = 'La priorización, en tres niveles'
+    fuente_txt = FUENTE_DE
+    B = 'e03_niveles'
+    ITEMS = [('el local', 'Local', 'En cada Dirección Seccional'),
+             ('el regional', 'Regional', 'Varias seccionales y direcciones especializadas'),
+             ('el nacional', 'Nacional', 'Fenómenos de impacto en todo el país')]
+
+    def ventana(self):
+        return self.v.ranura(self.E, 5)
+
+    def prepara(self):
+        self.t_art = self.l(self.v.cuadro(self.B, 'articulados'))
+        ft, fs = fuente('Bold', 54), fuente('Medium', 36)
+        self.items = [(self.l(self.v.cuadro(self.B, q)), sprite(t, ft), sprite(sub, fs, GRIS_TXT))
+                      for q, t, sub in self.ITEMS]
+
+    def dibuja(self, c, i, g):
+        y0, paso = 310, 165
+        self.barra(c, i, 230, y0 + paso * 3 - 40, g)
+        o, s = aparece(i, 0)
+        pega(c, self.s_ante, TEXTO_X, 228, o * g, s)
+        d = ImageDraw.Draw(c)
+        cx = TEXTO_X + 26
+        k = suave((i - self.t_art) / 18.0)
+        if k > 0:
+            ya, yb = y0 + 38, y0 + 38 + int(2 * paso * k)
+            d.rectangle([cx - 2, ya, cx + 2, yb], fill=AMARILLO + (int(200 * g),))
+        vig = max([q for q, (t, _, _) in enumerate(self.items) if i >= t] or [0])
+        for q, (t, st, ss) in enumerate(self.items):
+            o, s = aparece(i, t)
+            if o <= 0:
+                continue
+            y = y0 + q * paso
+            r = 12 + 6 * q
+            tenue = 1.0 if q == vig else 0.55
+            col = AMARILLO if q == vig else (150, 160, 175)
+            d.ellipse([cx - r, y + 38 - r + s, cx + r, y + 38 + r + s], fill=col + (int(255 * o * g),))
+            pega(c, st, TEXTO_X + 76, y, o * g * tenue, s)
+            pega(c, ss, TEXTO_X + 78, y + 72, o * g * tenue, s)
+
+
+class Enfoques(Grafico):
+    """r10: los dos enfoques transversales de los planes de priorizacion.
+    Entran los dos con «dos enfoques»; con «comprender» se queda el primero
+    (la r11, el analista con el extracto, cuenta el segundo)."""
+    clave = 'enfoques'
+    ante = 'Dos enfoques transversales'
+    fuente_txt = FUENTE_DE
+    denso, ralo = 0.80, 0.22
+    B = 'e05_enfoques'
+
+    def ventana(self):
+        return self.v.ranura(self.E, 10)
+
+    def prepara(self):
+        self.t_dos = self.l(self.v.cuadro(self.B, 'dos enfoques'))
+        self.t_comp = self.l(self.v.cuadro(self.B, 'comprender'))
+        ft = fuente('Bold', 54)
+        self.s1 = sprite('Delincuencia organizada', ft)
+        self.s2 = sprite('Componente financiero', ft)
+        self.s1b = sprite('Comprender la criminalidad\nen su relación con ella', fuente('Medium', 38),
+                          GRIS_TXT)
+        self.f_n = fuente('Bold', 30)
+
+    def dibuja(self, c, i, g):
+        self.barra(c, i, 230, 700, g)
+        o, s = aparece(i, 0)
+        pega(c, self.s_ante, TEXTO_X, 228, o * g, s)
+        d = ImageDraw.Draw(c)
+        ys = (310, 560)
+        for q, (spr, t) in enumerate(((self.s1, self.t_dos), (self.s2, self.t_dos + 8))):
+            o, s = aparece(i, t)
+            if o <= 0:
+                continue
+            foco = 1.0 if (i < self.t_comp or q == 0) else 0.45
+            cx, cy = TEXTO_X + 22, ys[q] + 34 + s
+            col = AMARILLO if (q == 0 or i < self.t_comp) else (150, 160, 175)
+            d.ellipse([cx - 22, cy - 22, cx + 22, cy + 22], fill=col + (int(255 * o * g),))
+            nn = str(q + 1)
+            tw = d.textlength(nn, font=self.f_n)
+            d.text((cx - tw / 2, cy - 19), nn, font=self.f_n, fill=AZUL + (int(255 * o * g),))
+            pega(c, spr, TEXTO_X + 66, ys[q], o * g * foco, s)
+        o, s = aparece(i, self.t_comp)
+        pega(c, self.s1b, TEXTO_X + 68, ys[0] + 80, o * g, s)
+
+
+class Programa(Grafico):
+    """r13: lo que lleva el programa metodologico, cada casilla con su
+    palabra; cierra «Planear, en lugar de improvisar»."""
+    clave = 'programa'
+    ante = 'Programa metodológico'
+    denso, ralo = 0.82, 0.30
+    B = 'e06_programa'
+    ITEMS = [('hipotesis claras', 'Hipótesis claras'), ('tareas', 'Tareas'),
+             ('responsables', 'Responsables'), ('plazos', 'Plazos'),
+             ('objetivos probatorios', 'Objetivos probatorios')]
+
+    def ventana(self):
+        return self.v.ranura(self.E, 13)
+
+    def prepara(self):
+        f = fuente('Bold', 48)
+        self.items = [(max(0, self.l(self.v.cuadro(self.B, q))), sprite(t, f)) for q, t in self.ITEMS]
+        self.t_plan = self.l(self.v.cuadro(self.B, 'planear'))
+        self.s_plan = sprite('Planear, en lugar de improvisar.', fuente('Bold', 54), AMARILLO)
+
+    def dibuja(self, c, i, g):
+        y0, paso = 300, 86
+        self.barra(c, i, 230, 860, g)
+        o, s = aparece(i, 0)
+        pega(c, self.s_ante, TEXTO_X, 228, o * g, s)
+        d = ImageDraw.Draw(c)
+        for q, (t, spr) in enumerate(self.items):
+            o, s = aparece(i, t)
+            if o <= 0:
+                continue
+            y = y0 + q * paso + s
+            a = int(230 * o * g)
+            d.rectangle([TEXTO_X, y + 8, TEXTO_X + 44, y + 52], outline=BLANCO + (a,), width=4)
+            # el visto se dibuja en 8 cuadros, despues de la casilla
+            k = suave((i - t - 4) / 8.0)
+            if k > 0:
+                p0, p1, p2 = (TEXTO_X + 9, y + 30), (TEXTO_X + 19, y + 42), (TEXTO_X + 38, y + 16)
+                if k < 0.4:
+                    u = k / 0.4
+                    pts = [p0, (p0[0] + (p1[0] - p0[0]) * u, p0[1] + (p1[1] - p0[1]) * u)]
+                else:
+                    u = (k - 0.4) / 0.6
+                    pts = [p0, p1, (p1[0] + (p2[0] - p1[0]) * u, p1[1] + (p2[1] - p1[1]) * u)]
+                d.line(pts, fill=AMARILLO + (int(255 * g),), width=7, joint='curve')
+            pega(c, spr, TEXTO_X + 74, y - s, o * g, s)
+        o, s = aparece(i, self.t_plan)
+        pega(c, self.s_plan, TEXTO_X, y0 + 5 * paso + 40, o * g, s)
+
+
+class Articulo6(Grafico):
+    """r16: el articulo 6 de la Constitucion, literal. La primera oracion
+    atenuada; la segunda en blanco con «servidores publicos», y «por omision
+    o extralimitacion» se enciende en amarillo cuando la voz lo dice."""
+    clave = 'articulo6'
+    ante = 'Constitución Política de Colombia, artículo 6'
+    B = 'e08_disciplinario'
+    O1 = ('Los particulares sólo son responsables ante las autoridades por infringir '
+          'la Constitución y las leyes.')
+    O2 = ('Los servidores públicos lo son por la misma causa y por omisión o '
+          'extralimitación en el ejercicio de sus funciones.')
+
+    def ventana(self):
+        return self.v.ranura(self.E, 16)
+
+    def prepara(self):
+        self.t_serv = self.l(self.v.cuadro(self.B, 'servidores publicos'))
+        self.t_omi = self.l(self.v.cuadro(self.B, 'omision'))
+        f1, f2 = fuente('Medium', 40), fuente('SemiBold', 46)
+        self.s1 = sprite('«' + self.O1, f1, GRIS_TXT, ancho=1180)
+        pal = self.O2.split()
+        res = {k for k, p in enumerate(pal) if k >= pal.index('omisión') - 1 and k <= pal.index('extralimitación')}
+        self.s2 = sprite_col(self.O2 + '»', f2, 1180, lambda k: BLANCO)
+        self.s2r = sprite_col(self.O2 + '»', f2, 1180, lambda k: AMARILLO if k in res else None, sombra=0)
+        self.alto1 = self.s1[0].size[1] - 48
+
+    def dibuja(self, c, i, g):
+        y2 = 300 + self.alto1 + 40
+        self.barra(c, i, 230, y2 + self.s2[0].size[1] - 30, g)
+        o, s = aparece(i, 0)
+        pega(c, self.s_ante, TEXTO_X, 228, o * g, s)
+        pega(c, self.s1, TEXTO_X, 300, o * g, s)
+        o, s = aparece(i, self.t_serv)
+        pega(c, self.s2, TEXTO_X, y2, o * g, s)
+        k = suave((i - self.t_omi) / 10.0)
+        if k > 0:
+            pega(c, self.s2r, TEXTO_X, y2, k * g, s)
+
+
+class Consecuencias(Grafico):
+    """r20: las cuatro consecuencias de investigar mal, cada una con su
+    palabra. La r21 (la fiscal en la sala) entra con «en el juicio oral»."""
+    clave = 'consecuencias'
+    ante = 'Las consecuencias de investigar mal'
+    B = 'e10_consecuencias'
+    ITEMS = [('evidencia excluida', 'Evidencia excluida'),
+             ('cadenas de custodia', 'Cadenas de custodia rotas'),
+             ('nulidades', 'Nulidades'),
+             ('hipotesis', 'Hipótesis que no se sostienen en el juicio')]
+
+    def ventana(self):
+        return self.v.ranura(self.E, 20)
+
+    def prepara(self):
+        f = fuente('Bold', 50)
+        self.items = [(max(0, self.l(self.v.cuadro(self.B, q))), sprite(t, f, ancho=1150))
+                      for q, t in self.ITEMS]
+        self.t_sin = self.l(self.v.cuadro(self.B, 'sin respetar'))
+        self.s_sin = sprite('obtenida sin respetar los derechos fundamentales',
+                            fuente('Medium', 36), GRIS_TXT)
+
+    def dibuja(self, c, i, g):
+        ys = (300, 450, 560, 670)
+        self.barra(c, i, 230, 800, g)
+        o, s = aparece(i, 0)
+        pega(c, self.s_ante, TEXTO_X, 228, o * g, s)
+        d = ImageDraw.Draw(c)
+        for q, (t, spr) in enumerate(self.items):
+            o, s = aparece(i, t)
+            if o <= 0:
+                continue
+            y = ys[q] + s
+            d.rectangle([TEXTO_X, y + 28, TEXTO_X + 30, y + 36], fill=AMARILLO + (int(255 * o * g),))
+            pega(c, spr, TEXTO_X + 52, ys[q], o * g, s)
+        o, s = aparece(i, self.t_sin)
+        pega(c, self.s_sin, TEXTO_X + 54, ys[0] + 70, o * g, s)
+
+
+GRAFICOS = {'V01': [Aluvion, Ideam, Motores, Municipios, Cadena],
+            'V02': [Pilares, Niveles, Enfoques, Programa, Articulo6, Consecuencias]}
 GEO = None
 
 
@@ -585,7 +884,7 @@ def main():
     os.makedirs(sal, exist_ok=True)
     voz = Voz(clave, voces)
     lista = []
-    for G in GRAFICOS:
+    for G in GRAFICOS[clave]:
         gr = G(voz, escenas)
         lista.append({'clave': gr.clave, 'archivo': 'DA_%s_mg_%s.mov' % (clave, gr.clave),
                       'ini': gr.ini, 'cuadros': gr.n})

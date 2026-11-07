@@ -226,14 +226,145 @@ CUERPO = {
  'fiscal': ('THE PROSECUTOR, a Colombian woman of about forty-five, straight '
             'dark hair cut to the jaw, plain thin-framed glasses, in a plain '
             'dark grey blazer over a plain white blouse'),
- 'investigador': ('A CRIMINAL INVESTIGATOR of the prosecution service, a '
+ # 7 nov (V03 r17): en mayúscula y con «nothing printed» al lado, Seedream
+ # le escribió CRIMINAL INVESTIGATOR en la chaqueta. Minúscula y la ropa en
+ # positivo (lección de ED).
+ 'investigador': ('the criminal investigator of the prosecution service, a '
                   'Colombian man of about thirty-eight, short black hair, a '
-                  'short beard, in a plain dark grey field jacket with nothing '
-                  'printed on it, plain dark trousers, rubber boots'),
+                  'short beard, in a dark grey field jacket of completely plain '
+                  'fabric, plain dark trousers, rubber boots'),
  'tecnica': ('AN ENVIRONMENTAL TECHNICIAN, a Colombian woman of about thirty, '
              'dark hair in a ponytail, in a plain light grey long-sleeved '
              'field shirt, plain blue-grey rubber gloves'),
 }
+
+# 7 nov: el reparto y los lugares de V02-V06. De base_ed vienen tal cual el
+# juez, la jueza, la defensora, la sala de audiencias, el archivo y el pasillo
+# (los mismos de la serie: sin toga, sin estrado tallado, sin bandera).
+from base_ed import CUERPO as _C_ED, LUGARES as _L_ED   # noqa: E402
+for _k in ('juez', 'jueza', 'defensora', 'colegas', 'funcionarios'):
+    CUERPO[_k] = _C_ED[_k]
+for _k in ('sala', 'archivo', 'pasillo', 'fiscalia_fachada', 'fiscalia_pueblo'):
+    LUGARES[_k] = _L_ED[_k]
+CUERPO.update({
+ 'analista': ('A FINANCIAL ANALYST of the prosecution service, a Colombian man '
+              'of about thirty-five, short dark hair, plain dark-framed '
+              'glasses, in a plain light grey shirt'),
+ 'auxiliar': ('A YOUNG CLERK, a Colombian man of about twenty-five, short dark '
+              'hair, in a plain white-grey shirt and plain dark trousers'),
+ 'defensor': ('THE DEFENCE LAWYER, a Colombian man of about fifty, grey '
+              'temples, in a plain dark suit and plain grey tie'),
+ 'perito': ('AN ENVIRONMENTAL EXPERT of the environmental authority, a '
+            'Colombian man of about forty-five, short grey-black hair, plain '
+            'glasses, in a plain light grey long-sleeved field shirt and plain '
+            'dark trousers, rubber boots'),
+ 'gerente': ('THE COMPANY MANAGER, a Colombian man of about fifty-five, '
+             'heavy-set, thinning grey hair, in a plain white shirt and plain '
+             'dark trousers'),
+ 'obreros': ('TWO OR THREE CONSTRUCTION WORKERS in plain grey work clothes and '
+             'plain white helmets'),
+ # 7 nov (V05): sin la blusa, Seedream dibujó mujeres con el torso desnudo
+ 'emberas': ('EMBERA INDIGENOUS PEOPLE of the Colombian Pacific, everyone fully '
+             'dressed: women in plain short-sleeved blouses and long plain wrap '
+             'skirts of muted printed cloth with bead collars in muted '
+             'grey-white, men in plain light shirts and plain trousers, '
+             'straight black hair, warm grey skin'),
+ 'gobernador': ('THE CABILDO GOVERNOR, an Embera man of about fifty-five, '
+                'straight black hair cut short, in a plain white shirt and '
+                'plain dark trousers, a plain wooden staff of authority with a '
+                'few plain grey ribbons in his hand'),
+ 'sabedor': ('THE TRADITIONAL HEALER (jaibana), an Embera man of about seventy, '
+             'long straight grey-black hair, in a plain light shirt, a bead '
+             'collar in muted grey-white, a small bundle of medicinal leaves '
+             'in his hand'),
+ 'guardia': ('TWO MEMBERS OF THE INDIGENOUS GUARD, an Embera man of about '
+             'thirty and an Embera woman of about thirty, adults, in plain shirts with a plain dark scarf at '
+             'the neck, each with a plain wooden staff with a few plain grey '
+             'ribbons; no weapon of any kind'),
+ 'francisco': ('FRANCISCO, an indigenous man of about forty-five from the '
+               'Colombian Amazon, thin, short straight black hair, a tired '
+               'kind face, in a worn plain grey-white shirt and plain dark '
+               'trousers, rubber boots'),
+ 'policias': ('TWO PATROLMEN of the Colombian National Police in the plain '
+              'dark olive-green patrol uniform with a matte lime yellow-green '
+              'vest with two plain grey reflective bands, plain dark green '
+              'caps; nothing written, sewn or pinned on them, no badge, no '
+              'weapon visible'),
+ 'corpo': ('A TECHNICIAN of the regional environmental authority, a Colombian '
+           'woman of about forty, dark hair tied back, in a plain light grey '
+           'field shirt and plain dark trousers, rubber boots'),
+ 'jueza_g': ('THE JUDGE, a Colombian woman of about fifty-five, short dark '
+             'hair, in a plain dark grey suit; no gown, no robe, no sash'),
+})
+LUGARES.update({
+ 'sala_reuniones': ('The setting is a plain meeting room in a regional office of '
+                    'the Colombian prosecution service: a long plain table with '
+                    'plain chairs, plain cardboard folders and glasses of water, '
+                    'a large plain map of Colombia on the wall with no names and '
+                    'no lettering, only the outlines of the departments and a '
+                    'few plain grey pins, a window with a plain blind. No logo, '
+                    'no seal, no flag, no lettering anywhere.'),
+ 'sala_analisis': ('The setting is a dim criminal analysis room of the Colombian '
+                   'prosecution service: two rows of plain desks with plain '
+                   'computer screens showing only abstract grey charts and '
+                   'network diagrams of dots and lines, plain office chairs, a '
+                   'window with a plain blind. Nothing legible on any screen, '
+                   'no logo, no lettering anywhere.'),
+ 'fabrica': ('The setting is a large agro-industrial processing plant in the '
+             'flat green countryside of the Colombian Magdalena valley: long '
+             'plain grey metal sheds, steel tanks and silos, a concrete yard '
+             'with trucks, and behind the sheds a slow wide brown-grey river '
+             'lined with trees. No logo, no sign, no lettering anywhere.'),
+ 'desague': ('The setting is the riverbank right below an agro-industrial '
+             'plant: a thick plain concrete drainage pipe comes out of the '
+             'bank and pours a steady stream of dirty grey-brown water into '
+             'the river, a grey foam spreading downstream, low trees and tall '
+             'grass on the bank, the plain metal sheds of the plant above. No '
+             'sign, no lettering anywhere.'),
+ # 7 nov (V04): el río del caso de la fábrica, en el valle del Magdalena
+ 'rio_valle': ('The setting is a slow, wide brown-grey river of the Colombian '
+               'Magdalena valley: flat banks with low trees, tall grass and a '
+               'few palms, a plain grey sky. No sign, no lettering anywhere.'),
+ 'mina_vieja': ('The setting is an abandoned gold mine upstream in the '
+                'Colombian Andean foothills: rusting plain metal sluices and '
+                'a collapsed wooden shed, grey tailings heaped beside the '
+                'river, small trees and bushes growing back over everything. '
+                'No sign, no lettering anywhere.'),
+ 'laboratorio': ('The setting is the plain laboratory of a Colombian regional '
+                 'environmental authority: a long white bench with plain glass '
+                 'flasks and plain water sample bottles, a plain microscope, a '
+                 'plain grey instrument with a blank screen, a window onto '
+                 'trees. No logo, no label, no lettering anywhere.'),
+ 'planta': ('The setting is a new wastewater treatment plant beside the '
+            'agro-industrial sheds: plain round concrete settling tanks with '
+            'grey water, plain metal railings and walkways, plain pipes, the '
+            'river and trees behind. No logo, no sign, no lettering anywhere.'),
+ 'resguardo_choco': ('The setting is an Embera indigenous reserve on a river '
+                     'of the Colombian Pacific rainforest (Choco): wooden '
+                     'stilt houses (tambos) with steep thatched palm roofs and '
+                     'no walls on the upper floor, notched log ladders, dugout '
+                     'canoes pulled up on a sandy bank, the wide river and the '
+                     'dense forest all around, low mist. No sign, no lettering '
+                     'anywhere.'),
+ 'casa_comunal': ('The setting is the community house of the Embera reserve: '
+                  'a large open tambo on stilts with a high thatched palm roof, '
+                  'a floor of split palm boards, plain wooden benches in a '
+                  'circle, the forest and the river visible all around through '
+                  'the open sides. No flag, no emblem, no lettering anywhere.'),
+ 'amazonia_tala': ('The setting is the dense Colombian Amazon rainforest near '
+                   'a river: very tall trees with buttress roots, vines, '
+                   'broad-leaved understory, a small clearing with fresh '
+                   'sawdust and a felled trunk. No sign, no lettering anywhere.'),
+ 'celda': ('The setting is a plain holding room of a Colombian police station '
+           'in an Amazon town: plain painted concrete walls, a plain concrete '
+           'bench, plain metal bars on one side, a high small window with '
+           'flat daylight. Nothing written on the walls, no sign, no lettering.'),
+ 'mesa_restaurativa': ('The setting is a plain meeting room in a small Amazon '
+                       'town: a round plain wooden table with plain chairs, '
+                       'glasses of water, a window onto the green forest. No '
+                       'logo, no flag, no lettering anywhere.'),
+})
+
 
 VIDA = {
  'minero': ('He came from the interior to work the dredge; he sleeps on the '
@@ -254,7 +385,7 @@ VIDA = {
 }
 
 SIN_ROSTRO = {'operador', 'vaquero', 'armados', 'cobrador', 'empresario',
-              'dueno', 'lanchero'}
+              'dueno', 'lanchero', 'obreros'}
 
 REGISTRO = dict(_REGISTRO_ED)
 # contraluz de EXTERIOR: el 'contraluz' de base_ed habla de puertas y pasillos,

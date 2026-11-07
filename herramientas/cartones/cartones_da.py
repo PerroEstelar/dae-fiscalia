@@ -65,6 +65,29 @@ ELEGIDOS = {
    'sigue intacto.'),
   ('d11_infracciones', 'Son fuentes de financiación de estructuras criminales.'),
  ],
+ # V02 (7 nov): nada sobre las seis ranuras de grafico (r03 pilar, r05
+ # niveles, r10 enfoques, r13 programa, r16 articulo 6, r20 consecuencias);
+ # e03 y e10 quedan enteros en su grafico. «Las consecuencias de investigar
+ # mal» no va: es el antetitulo del grafico que entra un segundo despues.
+ 'V02': [
+  ('e01_proposito', 'no puede investigar todos los hechos al mismo tiempo ni con '
+   'la misma intensidad.'),
+  ('e02_pilar', 'cada región identifica los fenómenos criminales que más la '
+   'afectan'),
+  ('e04_ambiente', 'no son hechos aislados: tienen patrones, rutas y '
+   'financiadores.'),
+  ('e05_enfoques', 'buscando los capitales ilícitos y las economías con '
+   'apariencia de legalidad.'),
+  ('e06_programa', 'Priorizar exige método.'),
+  ('e07_equipo', 'trabajando sobre el mismo caso.'),
+  ('e08_disciplinario', 'Dirigir la investigación es una función pública, y '
+   'quien la ejerce responde por ella.'),
+  ('e09_disciplinario_b', 'puede dar lugar a una investigación disciplinaria '
+   'contra quien la dirigió.'),
+  ('e11_dano', 'mientras el proceso fracasa, el daño continúa.'),
+  ('e11_dano', 'la estructura que lo financia sigue intacta.'),
+  ('e12_cierre', 'es la manera de que la acción penal llegue a tiempo.'),
+ ],
 }
 
 

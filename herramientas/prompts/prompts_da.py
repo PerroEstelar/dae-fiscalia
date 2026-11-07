@@ -40,6 +40,21 @@ REF_ESTILO = ('The LAST reference image is a finished plate from this same '
               'the same hand, not like a photograph.')
 REF_PIEL = (' Match its SKIN exactly too: the same flat warm GREY, never warmer, '
             'pinker, more peach or more saturated.')
+REF_GENTE = ('The LAST reference image is a finished plate from this same '
+             'film showing the SAME people: use it ONLY for their faces, hair, '
+             'bodies and clothes and for the drawing, NEVER for the place, the '
+             'light or the framing, which are described above. %sMatch its '
+             'DRAWING exactly: a flat graphic illustration built from broad '
+             'simplified tonal planes, no rendered texture anywhere.')
+REF_IDENTIDAD = ('The FIRST reference image shows THE PROSECUTOR of this film: '
+                 'she must be the SAME woman, with exactly the same face, '
+                 'straight dark jaw-length hair, thin-framed glasses and plain '
+                 'dark grey blazer; use that image ONLY for her, not for the '
+                 'place or the framing.')
+REF_OTRO = ('The FIRST reference image shows %s of this film: he or she must '
+            'be the SAME person, with exactly the same face, hair, build and '
+            'clothes; use that image ONLY for %s, not for the place or the '
+            'framing.')
 UNA_IMAGEN = ('This is ONE single continuous picture that fills the whole frame: '
               'NOT a split screen, NOT a comic page, NO panels, NO inset '
               'pictures, NO dividing borders.')
@@ -84,13 +99,18 @@ def video(clave):
         p = S.arma(esc, registro=reg, personas=gente, acento=acento,
                    lugar=lugar, con_rostro=not manos, fuego=fuego)
         refs = []
+        if n in getattr(mod, 'PRESTADA', {}):
+            continue          # 7 nov: la placa sale de otro video (da_pieza.elegir)
         ref = getattr(mod, 'REF', {}).get(n)
         if ref:
             madre, modo, nota = ref
-            mid = PID.get(nombre(clave, madre))
+            # 7 nov: la madre puede ser de OTRO video del curso: 'DA_V01_r30_la_fiscal'
+            mid = PID.get(madre if isinstance(madre, str) else nombre(clave, madre))
             if mid:
                 refs.append(mid)
                 p += '\n\n' + ((REF_MISMO % nota) if modo == 'mismo'
+                               else (REF_GENTE % ((nota + ' ') if nota else ''))
+                               if modo == 'gente'
                                else (REF_LUGAR % ((nota + ' ') if nota else '')))
                 if gente:
                     p += REF_PIEL
@@ -100,6 +120,17 @@ def video(clave):
             a = getattr(mod, 'ANCLA_DE', {}).get(n, 'rural')
             refs.append(ANCLA[a])
             p += '\n\n' + REF_ESTILO
+        # 7 nov: una segunda madre, de IDENTIDAD (la fiscal del curso), va
+        # PRIMERO; la de lugar o estilo sigue siendo la última
+        r2 = getattr(mod, 'REF2', {}).get(n)
+        # 7 nov: REF2 puede ser (madre, quien) cuando la identidad no es la
+        # fiscal: 'quien' es como se nombra a esa persona en el texto
+        quien = None
+        if isinstance(r2, tuple):
+            r2, quien = r2
+        if r2 and PID.get(r2):
+            refs.insert(0, PID[r2])
+            p += '\n\n' + (REF_IDENTIDAD if not quien else REF_OTRO % (quien, quien))
         out[nombre(clave, n)] = {'ranura': n, 'cuadros': cuad, 'luz': reg,
                                  'gente': list(gente), 'lugar': lugar,
                                  'acento': acento, 'refs': refs,
