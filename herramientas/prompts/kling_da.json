@@ -1,0 +1,171 @@
+{
+ "V01": {
+  "DA_V01_r01_la_selva": {
+   "inicio": "fHZrdUACDY",
+   "clip": "gOoibCkSXO",
+   "hasta": 3.333,
+   "usado": true
+  },
+  "DA_V01_r02_las_dos_aguas": {
+   "inicio": "nVrB9a4YQD",
+   "clip": "4RCYskr9Aa",
+   "hasta": null,
+   "usado": true
+  },
+  "DA_V01_r03_la_draga": {
+   "inicio": "jUe4QAwLD0",
+   "clip": "jUe4QaVLD0",
+   "hasta": 4.25,
+   "usado": true
+  },
+  "DA_V01_r04_la_batea": {
+   "inicio": "mE65MlxhJQ",
+   "clip": "Sy835FOUb8",
+   "hasta": 1.75,
+   "usado": true
+  },
+  "DA_V01_r05_la_descarga": {
+   "inicio": "xSpPu2cjfW",
+   "clip": "s7XNHEhl8e",
+   "hasta": 3.75,
+   "usado": true
+  },
+  "DA_V01_r06_el_pescador": {
+   "inicio": "VXghZHOMMU",
+   "clip": "BhyQcz8oQR",
+   "hasta": 4.625,
+   "usado": true
+  },
+  "DA_V01_r08_la_retro": {
+   "inicio": "xSpPu2qjfW",
+   "clip": "1lMOCvqr4r",
+   "hasta": 3.5,
+   "usado": true
+  },
+  "DA_V01_r10_la_tala": {
+   "inicio": "rgDyE2jxtc",
+   "clip": "jUe4QEpLD0",
+   "hasta": 2.333,
+   "usado": true
+  },
+  "DA_V01_r11_la_quema": {
+   "inicio": "JNhArMROq4",
+   "clip": "ovPFcW4829",
+   "hasta": 2.5,
+   "usado": true
+  },
+  "DA_V01_r13_acaparamiento": {
+   "inicio": "s7XNKrnl8e",
+   "clip": "rgDyqz3xtc",
+   "hasta": 3.6,
+   "usado": true
+  },
+  "DA_V01_r14_ganaderia": {
+   "inicio": "ovPFMei829",
+   "clip": "If9qeS8tvE",
+   "hasta": 2.042,
+   "usado": true
+  },
+  "DA_V01_r15_cultivos": {
+   "inicio": "p8wfWTzehw",
+   "clip": "5j0wu2qKxe",
+   "hasta": 2.292,
+   "usado": true
+  },
+  "DA_V01_r16_vias": {
+   "inicio": "gOoi1LwSXO",
+   "clip": "lJB61Vqgv9",
+   "hasta": 2.208,
+   "usado": true
+  },
+  "DA_V01_r18_madera": {
+   "inicio": "YMxoRGtWeC",
+   "clip": "9ZEWJU9NYZ",
+   "hasta": 3.583,
+   "usado": true
+  },
+  "DA_V01_r19_combustible": {
+   "inicio": "O6vGlweynm",
+   "clip": "lJB61phgv9",
+   "hasta": null,
+   "usado": true
+  },
+  "DA_V01_r20_el_dinero": {
+   "inicio": "ksVJQbV16B",
+   "clip": "aFR186yfSh",
+   "hasta": 4.167,
+   "usado": true
+  },
+  "DA_V01_r21_el_embarcadero": {
+   "inicio": "jUe4b1CLD0",
+   "clip": "p8wfcSrehw",
+   "hasta": 4.5,
+   "usado": true
+  },
+  "DA_V01_r22_el_cobro": {
+   "inicio": "1lMOF55r4r",
+   "clip": "s7XNkdYl8e",
+   "hasta": null,
+   "usado": true
+  },
+  "DA_V01_r24_la_balanza": {
+   "inicio": "N2uc74A6D9",
+   "clip": "DoUaWAfpcl",
+   "hasta": 2.792,
+   "usado": true
+  },
+  "DA_V01_r25_la_finca": {
+   "inicio": "lJB6kLngv9",
+   "clip": "0estGRMTfW",
+   "hasta": 4.292,
+   "usado": true
+  },
+  "DA_V01_r26_la_oficina": {
+   "inicio": "dtJE0pwXSL",
+   "clip": "Cq2xtBpEEy",
+   "hasta": null,
+   "usado": false
+  },
+  "DA_V01_r27_la_maquina_nueva": {
+   "inicio": "ovPFMXR829",
+   "clip": "JNhAljhOq4",
+   "hasta": 4.625,
+   "usado": true
+  },
+  "DA_V01_r28_la_intervencion": {
+   "inicio": "rgDyHkHxtc",
+   "clip": "DoUaWnupcl",
+   "hasta": null,
+   "usado": true
+  },
+  "DA_V01_r30_la_fiscal": {
+   "inicio": "0estActTfW",
+   "clip": "tCNbdpXmZJ",
+   "hasta": null,
+   "usado": true
+  },
+  "DA_V01_r31_la_fiscal_cerca": {
+   "inicio": "O6vGlJXynm",
+   "clip": "ovPFDM4829",
+   "hasta": 4.292,
+   "usado": true
+  },
+  "DA_V01_r32_el_eslabon": {
+   "inicio": "TdlmG0UVNR",
+   "clip": "5j0wuu2Kxe",
+   "hasta": 4.875,
+   "usado": true
+  },
+  "DA_V01_r34_el_rio_limpio": {
+   "inicio": "79m2Lw5JAL",
+   "clip": "1lMOHHKr4r",
+   "hasta": 3.042,
+   "usado": true
+  },
+  "_descartados": {
+   "DA_V01_r06_el_pescador__v1_descartado": "Lwd9FEGswO",
+   "DA_V01_r18_madera__v1_descartado": "EbAjm6AuuO",
+   "DA_V01_r26_la_oficina": "Cq2xtBpEEy"
+  }
+ }
+}
