@@ -284,7 +284,60 @@ SIN_TECHO = set()
 # las cuatro preguntas (una por bloque que la abre) y las dos firmas
 GRAFICOS = {9: 'q1', 12: 'q2', 16: 'q3', 20: 'q4', 23: 'firmas'}
 
-KLING = {}
+KLING = {
+ 1: ('aire', 'The camera glides slowly forward high over the river; the barge with '
+     'the excavator moves slowly upstream, leaving its long wake behind it.'),
+ 2: ('fija', 'The excavator lifts its bucket full of wet earth and roots out of '
+     'the bank, swings it slowly to one side and tips the load out onto the pile; '
+     'mud and water run down into the river.'),
+ 3: ('fija', 'The opaque ochre-grey stream flows slowly between the muddy banks, '
+     'the faint metallic sheen sliding along its surface; the trees on the banks '
+     'stir in a light breeze.'),
+ 4: ('fija', 'She stands at the edge of the clearing and slowly turns her head from '
+     'the stumps toward the river, breathes, and lowers her eyes; a light breeze '
+     'moves the leaves of the trees behind her.'),
+ 5: ('fija', 'The prosecutor walks up the bank from the boat with her folder under '
+     'her arm, two steps toward the excavator; the investigator raises his camera '
+     'and photographs it.'),
+ 6: ('fija', 'The defence lawyer speaks toward the judge, his open hand moving '
+     'slowly as he talks; the judge listens; the man at the table in the '
+     'foreground keeps his head down.'),
+ 7: ('fija', 'The governor speaks to the circle, one hand moving as he talks; the '
+     'people on the benches listen and two of them nod; the prosecutor writes a '
+     'line in her notebook.'),
+ 8: ('fija', 'The governor speaks, his open hand moving slowly toward the river and '
+     'back; the prosecutor listens and writes in her notebook on her knee; the '
+     'woman beside her nods.'),
+ 10: ('fija', 'She lifts the pot full of river water out of the river with both '
+      'hands and sets it down on the stone beside her; behind her the man in the '
+      'canoe pulls his net in.'),
+ 11: ('fija', 'He stands still between the trees, breathes slowly, and lifts the '
+      'bundle of leaves a little closer to his chest while he looks at the '
+      'stumps; a light breeze moves his long grey hair and the leaves of the '
+      'trees.'),
+ 13: ('fija', 'The two men sit side by side and look out at the river; the governor '
+      'turns his head to the elder and says a few words, and the elder nods '
+      'slowly; the river flows past beyond the railing.'),
+ 14: ('fija', 'She breathes slowly and moves her hand gently up and down on the '
+      'sleeping child\'s back; outside the river flows past.'),
+ 15: ('fija', 'The elder turns the leaf slowly in his fingers as he speaks to the '
+      'young people; they look at the leaf and one of them nods.'),
+ 17: ('fija', 'The two technicians drive their shovels into the grey sludge, lift '
+      'it and tip it into the open drum; the woman at the edge writes a line on '
+      'her clipboard.'),
+ 18: ('fija', 'The women press the soil around the seedlings with both hands and '
+      'set the next seedling in the earth; the elder walks slowly between the rows '
+      'and points at the next place to plant.'),
+ 19: ('fija', 'The elder moves the bundle of leaves slowly over the water from side '
+      'to side; the people behind him stand still in their half circle and watch; '
+      'small ripples spread around his legs.'),
+ 21: ('fija', 'She reads the meter in her hand and says the reading; he writes it '
+      'in his notebook with his pen and looks up at her.'),
+ 22: ('fija', 'He reads the open report, his eyes moving down the page to the two '
+      'signature lines at the bottom, and slowly lifts his head. The pages stay '
+      'flat on the desk.'),
+}
+# r09, r12, r16, r20 y r23 van bajo el panel de su pregunta.
 KLING_PRESTADO = {}
 KLING_FIJA = 'Tripod shot: the camera stays where it is.'
 KLING_AIRE = 'The camera moves only forward, smoothly, at the same height.'

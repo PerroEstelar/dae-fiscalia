@@ -79,7 +79,10 @@ ELEGIDOS = {
   ('e05_enfoques', 'buscando los capitales ilícitos y las economías con '
    'apariencia de legalidad.'),
   ('e06_programa', 'Priorizar exige método.'),
-  ('e07_equipo', 'trabajando sobre el mismo caso.'),
+  # 7 nov: «trabajando sobre el mismo caso.» quedaba en 55 cuadros (el p07
+  # entra con la voz); desde «peritos» son 103 cuadros a 14,7 car/s
+  ('e07_equipo', 'peritos y autoridades ambientales trabajando sobre el '
+   'mismo caso.'),
   ('e08_disciplinario', 'Dirigir la investigación es una función pública, y '
    'quien la ejerce responde por ella.'),
   ('e09_disciplinario_b', 'puede dar lugar a una investigación disciplinaria '
@@ -87,6 +90,93 @@ ELEGIDOS = {
   ('e11_dano', 'mientras el proceso fracasa, el daño continúa.'),
   ('e11_dano', 'la estructura que lo financia sigue intacta.'),
   ('e12_cierre', 'es la manera de que la acción penal llegue a tiempo.'),
+ ],
+ # V03-V06 (7 nov): nada dentro de un gráfico (rótulos-enlace del V03, las
+ # preguntas del V05, los pasos del V06); sin siglas en mayúscula (GPS, IP).
+ 'V03': [
+  ('g01_casa', 'no basta con lo que se ve desde afuera.'),
+  ('g02_control', 'Como interfieren con derechos fundamentales, como la intimidad y '
+   'el secreto de las comunicaciones'),
+  ('g05_cosas', 'que se sospecha que se usan para planear delitos, ocultar '
+   'evidencia o almacenar lo que producen.'),
+  ('g06_analisis', 'su estructura, su jerarquía, su forma de operar y sus '
+   'conexiones.'),
+  ('g07_encubierto', 'pero nunca provocar el delito: en Colombia, el agente '
+   'provocador está prohibido.'),
+  ('g08_entrega', 'para identificar a toda la red: desde quien la produce hasta '
+   'quien la recibe y la financia.'),
+  ('g10_interceptacion', 'y debe someterse a control de legalidad ante un juez '
+   'dentro de las 24 horas siguientes.'),
+  ('g12_bases', 'Esta técnica exige siempre la autorización previa del juez.'),
+  ('g13_exclusion', 'es nula de pleno derecho y no puede usarse en el juicio.'),
+  ('g14_porras', 'Escuchemos la experiencia del doctor Jairo Porras.'),
+ ],
+ 'V04': [
+  ('h01_empresa', 'desviando sus aguas residuales, sin tratamiento previo, '
+   'directamente hacia un río local.'),
+  ('h02_pasivo', 'La empresa se niega a reparar el río.'),
+  ('h02_pasivo', 'por los relaves de una antigua mina de oro abandonada río '
+   'arriba.'),
+  ('h04_limites', 'La Fiscalía no puede imputar responsabilidad penal basándose '
+   'únicamente en la violación de la norma administrativa'),
+  ('h04_limites', 'ni obligar a la empresa a limpiar la contaminación histórica '
+   'de la mina.'),
+  ('h05_peritaje', 'La prueba clave es un peritaje'),
+  ('h06_medicion', 'y que desaparecieron dos especies de peces que aún '
+   'sobrevivían a la contaminación minera.'),
+  ('h07_aislar', 'la Fiscalía logra aislar la responsabilidad de la empresa del '
+   'pasivo ambiental histórico.'),
+  ('h08_preacuerdo', 'Se suspende la etapa de juicio oral a cambio de un plan de '
+   'reparación estrictamente proporcional al daño causado.'),
+ ],
+ 'V05': [
+  ('k01_empresa', 'Una empresa fachada, vinculada a una red de criminalidad '
+   'organizada'),
+  ('k03_oportunidad', 'los procesados buscan acogerse a un principio de '
+   'oportunidad reparando el daño.'),
+  ('k04_cabildo', 'deben coordinarse con el Cabildo Gobernador, la autoridad '
+   'indígena'),
+  ('k05_quienes', 'que dependen del río para su consumo de agua y su pesca.'),
+  ('k06_sabedores', 'que perdieron el acceso a un área del bosque considerada '
+   'sagrada para sus rituales de sanación.'),
+  ('k07_como', 'El daño no es solo ecológico o económico; es un daño a su '
+   'cosmovisión.'),
+  ('k08_ninos', 'El río contaminado enfermó a los niños y alteró su seguridad '
+   'alimentaria.'),
+  ('k08_ninos', 'los sabedores ya no tienen dónde enseñar a los jóvenes la '
+   'botánica tradicional.'),
+  ('k11_semillas', 'sino con especies endémicas y con las plantas medicinales que '
+   'exigen los sabedores.'),
+  ('k11_semillas', 'los rituales de armonización y limpieza espiritual del '
+   'territorio.'),
+  # 7 nov: «ellos serán los veedores directos.» no va: entre el grafico de la
+  # cuarta pregunta y el carton de las firmas le quedaban 45 cuadros
+  ('k13_firmas', 'Y para que el juez declare cumplido el acuerdo y se cierre el '
+   'caso penal'),
+ ],
+ 'V06': [
+  ('m01_noticia', 'El origen y la fuente son claros: el informe policial de '
+   'vigilancia.'),
+  ('m01_noticia', 'Se sorprende a Francisco cortando un árbol, rodeado de seis '
+   'tablas de madera'),
+  ('m02_norma', 'La norma seleccionada es el aprovechamiento ilícito.'),
+  ('m02_norma', 'pero... ¿es la respuesta adecuada para este actor en '
+   'particular?'),
+  ('m03_hipotesis', 'Francisco no es el gran determinador.'),
+  ('m03_hipotesis', 'contratado por un empresario maderero que opera en las '
+   'sombras.'),
+  ('m05_utilidad', 'El elemento material probatorio más valioso es la '
+   'caracterización de la situación vital de Francisco.'),
+  ('m06_legalidad', 'la Fiscalía de Medio Ambiente trabajando de la mano con la '
+   'Unidad de Justicia Restaurativa'),
+  ('m07_suficiencia', 'El objetivo ya no es castigar, sino reparar el tejido '
+   'social y ambiental.'),
+  ('m08_viabilidad', 'Francisco, apoyado por la Fiscalía y Corpoamazonia, asume '
+   'compromisos de reparación con su entorno.'),
+  ('m08_viabilidad', 'El juez de control de garantías avala este acuerdo.'),
+  # 7 nov: la frase entera eran cuatro renglones; queda el cierre
+  ('m09_precedente', 'un precedente de justicia restaurativa, sanación y '
+   'protección del Amazonas.'),
  ],
 }
 

@@ -326,7 +326,67 @@ SIN_TECHO = {14, 18}
 GRAFICOS = {4: 'control', 7: 't239', 9: 't240', 11: 't241', 13: 't242',
             15: 't243', 17: 't233', 18: 't235', 20: 't236', 21: 't244'}
 
-KLING = {}
+KLING = {
+ 1: ('fija', 'A light breeze stirs the leaves of the trees and the banana plants '
+     'around the closed house and lifts one edge of the grey tarpaulin over the '
+     'engine; the river flows slowly past in the foreground.'),
+ 2: ('fija', 'She runs the tip of her pencil slowly down the page of the open law '
+     'book, line by line, stops on one line, and lifts her eyes to the '
+     'photograph of the house beside the book.'),
+ 3: ('fija', 'The judge reads the request, her eyes moving slowly along the lines, '
+     'then lowers the pages a little and looks up over them at the prosecutor; '
+     'the prosecutor in the foreground keeps her head level and still.'),
+ 5: ('fija', 'A light breeze moves the palm trees and the banana plants outside the '
+     'window; the wide river beyond flows slowly; the two wooden shutters stay '
+     'as they are.'),
+ 6: ('aire', 'The camera glides slowly forward high over the river toward the '
+     'dredges upriver; the pale ochre-grey plume drifts slowly downstream.'),
+ 8: ('libre', 'The white pickup truck drives steadily along the red-earth road from '
+     'the bottom of the frame toward the top, its shadow travelling beside it. '
+     'The camera hovers in place high above, looking straight down.'),
+ 10: ('fija', 'The small security camera on its pole turns slowly from the shutter '
+      'toward the yard and stops there; a light breeze stirs the trees behind the '
+      'warehouse and ripples the river in the foreground.'),
+ 11: ('fija', 'The analyst leans a little toward the wall screen; the prosecutor, '
+      'her hand on the backrest of his chair, turns her head to him and says a few '
+      'words; he nods once. The screen stays as it is.'),
+ 13: ('fija', 'The men keep working the black suction hose together, swaying it '
+      'slowly as the current pulls; the man beside him talks and he nods; the '
+      'ochre-grey water swirls around the edge of the deck. Every man stays in '
+      'his place on the deck.'),
+ 14: ('fija', 'He writes slowly in the small notebook on his knee, his pen moving '
+      'along the line; he pauses, lifts his head toward the dark doorway for a '
+      'moment, and goes back to writing. The bulb light stays steady.'),
+ 16: ('libre', 'The car drives steadily along the road behind the loaded truck, '
+      'keeping the same distance; the road and the countryside slide slowly '
+      'toward the camera on both sides; the investigator keeps both hands on the '
+      'wheel. The camera rides in the car.'),
+ 17: ('fija', 'She holds the parcel steady on the scale with both hands and looks '
+      'up from it at the investigator; he holds up the order and points at it '
+      'with one finger while he speaks. The parcel stays on the scale.'),
+ 18: ('fija', 'He listens, writes a short line in the notebook with his pen and '
+      'pauses; on the screen the grey waveform scrolls slowly from right to left.'),
+ 19: ('fija', 'The prosecutor walks in from the door to the front of the desk, the '
+      'folder under her arm, and stops there; the judge looks up at her from '
+      'behind the desk.'),
+ 20: ('fija', 'He types a few keys on his keyboard with one hand and watches his '
+      'screen; the grey bars on the screen fill slowly from left to right. The '
+      'seized laptop in its bag stays where it is.'),
+ 21: ('fija', 'She holds out the one-page order and speaks; he lifts his eyes from '
+      'his screen to her face and nods once. The order stays in her hand.'),
+ 22: ('fija', 'The judge sets the folder she holds down apart on the far corner of '
+      'the desk and rests both hands on the desk; at the defence table the lawyer '
+      'leans forward a little and watches her.'),
+ 23: ('fija', 'A light breeze moves the trees at the end of the street and the '
+      'tarpaulin over the engine; the power cables sway slightly. The parked grey '
+      'car in the foreground stays where it is.'),
+ 24: ('fija', 'He breathes slowly and turns his head a little to look further '
+      'along the river, then stays still at the window; outside the river flows '
+      'past.'),
+}
+# r12 (las fotos sobre la mesa) no va: es papel, y el plano es la quietud.
+# r07, r09 y r15 tampoco: el rotulo marca a alguien que el clip moveria
+# (el empresario caminando, el lanchero, la lancha).
 KLING_PRESTADO = {}
 KLING_FIJA = 'Tripod shot: the camera stays where it is.'
 KLING_AIRE = 'The camera moves only forward, smoothly, at the same height.'

@@ -237,7 +237,49 @@ SIN_TECHO = set()
 
 GRAFICOS = {6: 'lesion', 11: 'oxigeno', 15: 'plan', 18: 'medir'}
 
-KLING = {}
+KLING = {
+ 1: ('aire', 'The camera glides slowly forward high over the plant toward the river; '
+     'two trucks drive slowly across the concrete yard; the wide river flows '
+     'slowly behind the sheds.'),
+ 2: ('fija', 'The pipe keeps pouring the dirty grey-brown water into the river and '
+     'the grey foam spreads slowly downstream; the technician fills the sample '
+     'bottle at the water and screws on its cap; the investigator lowers his '
+     'camera and looks at the pipe.'),
+ 3: ('fija', 'The manager in the white shirt takes his hand off the document, leans '
+     'back in his chair and folds his arms; across the table the man in the suit '
+     'keeps his hand flat on his tablet and looks at him. The document stays flat '
+     'on the table.'),
+ 4: ('fija', 'The defence lawyer slides his hand along the row of photographs and '
+     'taps the last one with one finger, then lifts his eyes toward the judge; '
+     'the photographs stay flat on the table.'),
+ 5: ('fija', 'The dull ochre-grey river flows slowly past the tailings; a light '
+     'breeze moves the small trees and bushes growing over the heaps; a little '
+     'grey sand slides slowly down one heap into the water.'),
+ 7: ('fija', 'With her pencil she follows the river on the map slowly from the '
+     'first small square down to the second one and stops there; she lifts her '
+     'eyes from the map and thinks.'),
+ 8: ('fija', 'The investigator lifts one arm and points upstream toward the far '
+     'grey hills; the prosecutor turns her head toward him and nods; the river '
+     'flows past them and the trees on the far bank stir in the breeze.'),
+ 9: ('fija', 'The pipe pours its dirty water beside him and the current swirls '
+     'around his boots; he holds the probe still in the water, reads the small '
+     'meter in his other hand, and looks up toward the pipe.'),
+ 10: ('fija', 'He sets the sample bottle down at the end of the row, lets go of '
+      'it, and writes a short line in his notebook with his pen.'),
+ 12: ('fija', 'He pulls the empty net up out of the water with both hands, water '
+      'running out of its mesh, and lets it hang beside the canoe; the canoe rocks '
+      'gently on the water.'),
+ 13: ('fija', 'She draws the pencil line slowly across the river on the map and '
+      'lifts the pencil; the expert beside her points at the same place on the '
+      'map with one finger and nods. The report stays in his other hand.'),
+ 14: ('fija', 'The judge closes the case folder in front of him with both hands and '
+      'rests his hands on it; at their tables the prosecutor and the defence '
+      'lawyer sit back a little in their chairs.'),
+ 17: ('fija', 'He holds the probe still in the clear water and reads the small '
+      'meter, then nods slowly to himself; small ripples spread from the probe '
+      'across the clear water. The drainage pipe beside him stays dry and still.'),
+}
+# r06, r11, r15-r16 y r18 van bajo el panel de su grafico.
 KLING_PRESTADO = {}
 KLING_FIJA = 'Tripod shot: the camera stays where it is.'
 KLING_AIRE = 'The camera moves only forward, smoothly, at the same height.'

@@ -4,7 +4,7 @@ r"""Baja los crudos de Kling de Delitos ambientales a D:\DAE\_tmp\da\mov\crudos.
     python bajar_mov_da.py crudos.json
 
 crudos.json = {"DA_V01_r03_la_draga": {"url": "...", "hasta": 3.7}, ...}
-`hasta` (segundos, opcional) recorta el crudo por el final ANTES del
+`desde`/`hasta` (segundos, opcionales) recortan; `hasta` recorta el crudo por el final ANTES del
 conformado: Kling a veces mete algo en el ultimo segundo (30 oct, U2 r01:
 la mano del fiscal entra por abajo a los 3,8 s a tomar la taza) y
 `mov_da.kling` hace el retime sobre el largo del crudo, asi que con cortar
@@ -49,11 +49,19 @@ if __name__ == '__main__':
         print(nm, bajar(s['url'], ent), flush=True)
         if not os.path.exists(ent):
             continue
-        if hasta:
-            subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', ent, '-t', '%.3f' % hasta,
-                            '-c:v', 'libx264', '-crf', '12', '-preset', 'medium',
-                            '-pix_fmt', 'yuv420p', '-an', dst], check=True)
-            print(nm, 'recortado a %.2f s' % hasta, flush=True)
+        # 7 nov (V02 r02): `desde` (segundos) corta tambien la cabeza, cuando
+        # lo que sirve empieza con el gesto ya hecho (la carpeta ya abierta:
+        # el papel no se anima). El clip cubre la ranura entera y entra en
+        # corte seco, asi que no tiene que arrancar en la placa.
+        desde = s.get('desde') or 0
+        if hasta or desde:
+            cmd = ['ffmpeg', '-y', '-v', 'error', '-ss', '%.3f' % desde, '-i', ent]
+            if hasta:
+                cmd += ['-t', '%.3f' % (hasta - desde)]
+            subprocess.run(cmd + ['-c:v', 'libx264', '-crf', '12', '-preset', 'medium',
+                                  '-pix_fmt', 'yuv420p', '-an', dst], check=True)
+            print(nm, 'recortado %.2f-%s s' % (desde, '%.2f' % hasta if hasta else 'fin'),
+                  flush=True)
         else:
             import shutil
             shutil.copyfile(ent, dst)

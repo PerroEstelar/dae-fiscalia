@@ -369,10 +369,12 @@ KLING = {
  21: ('fija', 'She breathes out slowly, her shoulders sink a little further, '
       'she closes her eyes for a moment and opens them again, still looking '
       'down at the closed folder under her hands.'),
- 25: ('fija', 'The prosecutor walks across the landing to the edge beside the '
-      'boat and stops; the technician hands the case of sample bottles down to '
-      'the investigator, who takes it with both hands and sets it in the boat; '
-      'mist drifts along the river.'),
+ 25: ('fija', 'The technician holds out the case of sample bottles and the '
+     'prosecutor takes it from her with both hands; the investigator standing in '
+     'the boat watches them; mist drifts slowly along the river. All three stay '
+     'exactly where they are, two on the landing and one in the boat.'),
+ # 7 nov: la primera tirada (cruzar el muelle hasta la lancha) metio a la
+ # fiscal al rio a los 2 s; la segunda deja a cada uno en su sitio
  26: ('libre', 'The boat moves steadily up the river; the far bank and the '
       'forest slide slowly past behind her; she looks ahead toward the forest, '
       'breathes, and her hair moves a little in the wind. The camera rides in '

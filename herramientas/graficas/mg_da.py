@@ -826,8 +826,374 @@ class Consecuencias(Grafico):
         pega(c, self.s_sin, TEXTO_X + 54, ys[0] + 70, o * g, s)
 
 
+# ------------------------------------------------------------ V03-V06
+# Tres familias genericas, parametrizadas por video:
+#   Lista    antetitulo + renglones que entran con su palabra (marca: visto,
+#            punto, numero); opcional una cifra grande arriba
+#   Rotulo   el rotulo-enlace de una tecnica (V03): un circulo sobre la placa
+#            que late y el nombre con su articulo en una caja arriba a la
+#            izquierda, sin panel (virtualizacion lo vuelve clic)
+#   Tarjeta  el titulo de un paso (V06), con su subtitulo del libreto; las
+#            del rompecabezas, las preguntas y la balanza agregan lo suyo
+
+
+def ventana_de(v, E, n, hasta=None):
+    a, b = v.ranura(E, n)
+    if hasta:
+        b = v.ranura(E, hasta)[1]
+    return a, b
+
+
+class Lista(Grafico):
+    B = None            # bloque de voz
+    N = None            # ranura (o (desde, hasta))
+    ITEMS = []          # [(palabras, texto, sub o None)]
+    MARCA = 'punto'     # 'visto' | 'punto' | 'num'
+    CIFRA = None        # (palabras, texto) grande arriba, opcional
+    CIERRE = None       # (palabras, texto) en amarillo al final, opcional
+    TAM = 50
+    PASO = 96
+    denso, ralo = 0.80, 0.26
+
+    def ventana(self):
+        n = self.N if isinstance(self.N, tuple) else (self.N, None)
+        return ventana_de(self.v, self.E, *n)
+
+    def t(self, palabras, n=0):
+        b, p = palabras if isinstance(palabras, tuple) else (self.B, palabras)
+        return max(0, self.l(self.v.cuadro(b, p, n)))
+
+    def prepara(self):
+        f, fs = fuente('Bold', self.TAM), fuente('Medium', 34)
+        self.items = [(self.t(q), sprite(t, f, ancho=1150), sprite(s, fs, GRIS_TXT) if s else None)
+                      for q, t, s in self.ITEMS]
+        self.cifra = (self.t(self.CIFRA[0]), sprite(self.CIFRA[1], fuente('Bold', 96), AMARILLO)) \
+            if self.CIFRA else None
+        self.cierre = (self.t(self.CIERRE[0]), sprite(self.CIERRE[1], fuente('Bold', 52), AMARILLO)) \
+            if self.CIERRE else None
+        self.f_n = fuente('Bold', 30)
+
+    def dibuja(self, c, i, g):
+        y = 300
+        if self.cifra:
+            o, s = aparece(i, self.cifra[0])
+            pega(c, self.cifra[1], TEXTO_X - 4, 280, o * g, s)
+            y = 420
+        alto = y + self.PASO * len(self.items) + (90 if self.cierre else 0)
+        self.barra(c, i, 230, alto - 20, g)
+        o, s = aparece(i, 0)
+        pega(c, self.s_ante, TEXTO_X, 228, o * g, s)
+        d = ImageDraw.Draw(c)
+        yy = y
+        for q, (t, spr, sub) in enumerate(self.items):
+            o, s = aparece(i, t)
+            if o > 0:
+                a = int(255 * o * g)
+                if self.MARCA == 'visto':
+                    d.rectangle([TEXTO_X, yy + 8 + s, TEXTO_X + 44, yy + 52 + s], outline=BLANCO + (a,), width=4)
+                    k = suave((i - t - 4) / 8.0)
+                    if k > 0:
+                        p0, p1, p2 = (TEXTO_X + 9, yy + 30 + s), (TEXTO_X + 19, yy + 42 + s), (TEXTO_X + 38, yy + 16 + s)
+                        pts = [p0, (p0[0] + (p1[0] - p0[0]) * min(1, k / 0.4), p0[1] + (p1[1] - p0[1]) * min(1, k / 0.4))]
+                        if k > 0.4:
+                            u = (k - 0.4) / 0.6
+                            pts = [p0, p1, (p1[0] + (p2[0] - p1[0]) * u, p1[1] + (p2[1] - p1[1]) * u)]
+                        d.line(pts, fill=AMARILLO + (int(255 * g),), width=7, joint='curve')
+                elif self.MARCA == 'num':
+                    cx, cy = TEXTO_X + 22, yy + 34 + s
+                    d.ellipse([cx - 22, cy - 22, cx + 22, cy + 22], fill=AMARILLO + (a,))
+                    nn = str(q + 1)
+                    tw = d.textlength(nn, font=self.f_n)
+                    d.text((cx - tw / 2, cy - 19), nn, font=self.f_n, fill=AZUL + (a,))
+                else:
+                    d.rectangle([TEXTO_X, yy + 28 + s, TEXTO_X + 30, yy + 36 + s], fill=AMARILLO + (a,))
+                pega(c, spr, TEXTO_X + 70, yy, o * g, s)
+                if sub:
+                    pega(c, sub, TEXTO_X + 72, yy + spr[2] * int(self.TAM * 1.2) + 4, o * g, s)
+            yy += self.PASO + (spr[2] - 1) * int(self.TAM * 1.2) + (44 if sub else 0)
+        if self.cierre:
+            o, s = aparece(i, self.cierre[0])
+            pega(c, self.cierre[1], TEXTO_X, yy + 20, o * g, s)
+
+
+class Rotulo(Grafico):
+    """V03: el rotulo-enlace de una tecnica. Sin panel: un circulo que late
+    sobre lo que la placa muestra de esa tecnica, y arriba a la izquierda una
+    caja azul noche con el nombre y el articulo."""
+    B = None
+    N = None
+    PALABRAS = None
+    NOMBRE = ''
+    ARTICULO = ''
+    PUNTO = (960, 540)
+    DURA = 150
+    denso, ralo = 0.0, 0.0
+
+    def ventana(self):
+        a, b = self.v.ranura(self.E, self.N)
+        t0 = self.v.cuadro(self.B, self.PALABRAS) - 4
+        return max(a, t0), min(b, t0 + self.DURA)
+
+    def prepara(self):
+        self.s_nom = sprite(self.NOMBRE, fuente('Bold', 44), ancho=760)
+        self.s_art = sprite(self.ARTICULO, fuente('SemiBold', 30), AMARILLO)
+        w = max(self.s_nom[0].size[0], self.s_art[0].size[0]) - 48 + 80
+        h = self.s_nom[0].size[1] - 48 + 40 + 60
+        self.caja = Image.new('RGBA', (w, h), (0, 0, 0, 0))
+        ImageDraw.Draw(self.caja).rounded_rectangle([0, 0, w - 1, h - 1], 14, fill=AZUL + (215,))
+
+    def dibuja(self, c, i, g):
+        o, s = aparece(i, 0)
+        x0, y0 = BARRA_X, 110
+        if o > 0:
+            cj = self.caja.copy()
+            cj.putalpha(cj.split()[3].point(lambda v: int(v * o * g)))
+            c.alpha_composite(cj, (x0, y0 + s))
+            d = ImageDraw.Draw(c)
+            d.rectangle([x0, y0 + s, x0 + BARRA_W - 1, y0 + s + self.caja.size[1] - 1],
+                        fill=AMARILLO + (int(255 * o * g),))
+            pega(c, self.s_art, x0 + 40, y0 + 18, o * g, s)
+            pega(c, self.s_nom, x0 + 40, y0 + 62, o * g, s)
+        # el circulo: entra creciendo y despues late despacio
+        k = suave((i - 6) / 12.0)
+        if k > 0:
+            d = ImageDraw.Draw(c)
+            px, py = self.PUNTO
+            lat = 1 + 0.08 * math.sin((i - 6) / 24.0 * 2 * math.pi)
+            for rr, w, a in ((46, 6, 255), (64, 3, 130)):
+                r = rr * k * lat
+                d.ellipse([px - r, py - r, px + r, py + r], outline=AMARILLO + (int(a * g),), width=w)
+            d.ellipse([px - 9, py - 9, px + 9, py + 9], fill=AMARILLO + (int(255 * k * g),))
+
+
+class Tarjeta(Grafico):
+    """V06: el titulo de un paso, con su subtitulo del libreto. Dura lo que
+    tarde en leerse (DURA) o la ranura, lo que sea menos."""
+    B = None
+    N = None
+    PASO = 1
+    TITULO = ''
+    SUB = ''
+    DURA = 130
+    HASTA = None
+    denso, ralo = 0.78, 0.22
+
+    def ventana(self):
+        a, b = ventana_de(self.v, self.E, self.N, self.HASTA)
+        return a, (b if self.HASTA else min(b, a + self.DURA))
+
+    def t(self, palabras, n=0):
+        return max(0, self.l(self.v.cuadro(self.B, palabras, n)))
+
+    def prepara(self):
+        self.s_paso = sprite('Paso %d' % self.PASO, fuente('SemiBold', 34), AMARILLO)
+        self.s_tit = sprite(self.TITULO, fuente('Bold', 64), ancho=1100)
+        self.s_sub = sprite(self.SUB, fuente('Medium', 40), GRIS_TXT, ancho=1100)
+        self.alto = 300 + (self.s_tit[2]) * 76 + 20
+        self.extra()
+
+    def extra(self):
+        pass
+
+    def dibuja_extra(self, c, i, g, y):
+        return y
+
+    def dibuja(self, c, i, g):
+        o, s = aparece(i, 0)
+        pega(c, self.s_paso, TEXTO_X, 228, o * g, s)
+        pega(c, self.s_tit, TEXTO_X - 4, 290, o * g, s)
+        o2, s2 = aparece(i, 6)
+        pega(c, self.s_sub, TEXTO_X, self.alto, o2 * g, s2)
+        y = self.dibuja_extra(c, i, g, self.alto + self.s_sub[2] * 48 + 46)
+        self.barra(c, i, 230, max(y, self.alto + 60), g)
+
+
+def lista(clave_, base=Lista, **kw):
+    return type('G_' + clave_, (base,), dict(clave=clave_, **kw))
+
+
+# --- V03
+class Control(Lista):
+    """r04: el control del juez de garantias, antes o inmediatamente despues."""
+    clave = 'control'
+    ante = 'Ley 906 de 2004'
+    B = 'g02_control'
+    N = 4
+    MARCA = 'num'
+    ITEMS = [('juez de control', 'Control del juez de garantías', None),
+             ('antes', 'Antes de la ejecución', None),
+             ('inmediatamente', 'O inmediatamente después', None)]
+
+
+TECNICAS = [  # clave, ranura, bloque, palabras, nombre, articulo, punto en 1920x1080
+    ('t239', 7, 'g04_personas', 'la vigilancia', 'Vigilancia y seguimiento de personas', 239, (1090, 356)),
+    ('t240', 9, 'g05_cosas', 'la vigilancia', 'Vigilancia de cosas', 240, (1125, 620)),
+    ('t241', 11, 'g06_analisis', 'el analisis', 'Análisis e infiltración de organización criminal', 241, (956, 190)),
+    ('t242', 13, 'g07_encubierto', 'agentes encubiertos', 'Actuación de agentes encubiertos', 242, (845, 560)),
+    ('t243', 15, 'g08_entrega', 'la entrega', 'Entrega vigilada', 243, (940, 710)),
+    ('t233', 17, 'g09_correspondencia', 'la retencion', 'Retención de correspondencia', 233, (900, 845)),
+    ('t235', 18, 'g10_interceptacion', 'la interceptacion', 'Interceptación de comunicaciones', 235, (1690, 700)),
+    ('t236', 20, 'g11_internet', 'la recuperacion', 'Recuperación de información en internet', 236, (1460, 710)),
+    ('t244', 21, 'g12_bases', 'la busqueda', 'Búsqueda selectiva en bases de datos', 244, (880, 770)),
+]
+V03 = [Control] + [type('R_' + k, (Rotulo,), dict(clave=k, N=n, B=b, PALABRAS=p, NOMBRE=nm,
+                                                   ARTICULO='Ley 906 de 2004 · artículo %d' % a, PUNTO=pt))
+                   for k, n, b, p, nm, a, pt in TECNICAS]
+
+# --- V04
+V04 = [
+ lista('lesion', ante='Corte Suprema de Justicia', B='h03_lesion', N=6, MARCA='punto',
+       CIFRA=('delito de lesion', 'Delito de lesión'),
+       ITEMS=[('el dano a los recursos', 'El daño a los recursos naturales', None)]),
+ lista('oxigeno', ante='Dictamen técnico de la autoridad ambiental', B='h06_medicion', N=11,
+       MARCA='punto', CIFRA=('30', '−30 % de oxígeno'),
+       ITEMS=[('a partir del tubo', 'A partir del tubo de desagüe de la empresa', None),
+              ('disminuyo', 'El nivel de oxígeno del agua disminuyó', 'adicional a la contaminación de la mina')]),
+ lista('plan', ante='Plan de reparación proporcional al daño', B='h09_plan', N=(15, 16),
+       MARCA='num', denso=0.72, ralo=0.18,
+       ITEMS=[('primero', 'Planta de tratamiento de aguas residuales', 'construcción inmediata, en la fábrica'),
+              ('segundo', 'Repoblamiento de las dos especies afectadas', 'bajo supervisión de la autoridad ambiental')]),
+ lista('medir', ante='Para reparar, primero hay que medir', B='h10_medir', N=18, MARCA='visto',
+       ITEMS=[('que se afecto', 'Qué se afectó', None), ('cual era', 'Cuál era su estado previo', None),
+              ('que alteracion', 'Qué alteración se produjo', None),
+              ('vinculo causal', 'Cuál es su vínculo causal con la conducta', None)]),
+]
+
+# --- V05: las cuatro preguntas y las dos firmas
+def pregunta(k, n, b, num, palabras, texto, cifra=None):
+    return lista(k, ante='Pregunta %d de 4' % num, B=b, N=n, MARCA='punto', TAM=56,
+                 CIFRA=cifra, ITEMS=[(palabras, texto, None)])
+
+
+V05 = [
+ pregunta('q1', 9, 'k05_quienes', 1, 'quienes fueron', '¿Quiénes fueron afectados?',
+          cifra=('120', '120 familias')),
+ pregunta('q2', 12, 'k07_como', 2, 'como afecto', '¿Cómo afectó el daño su territorio y su forma de vida?'),
+ pregunta('q3', 16, 'k09_medidas', 3, 'que medidas', '¿Qué medidas son necesarias para restaurar el daño?'),
+ pregunta('q4', 20, 'k12_guardia', 4, 'como participa', '¿Cómo participa la comunidad en la implementación y el seguimiento?'),
+ lista('firmas', ante='El informe final lleva dos firmas', B='k13_firmas', N=23, MARCA='visto',
+       ITEMS=[('la del perito', 'Perito de la autoridad ambiental', None),
+              ('el aval', 'Aval del Cabildo Gobernador', None)]),
+]
+
+# --- V06: los ocho pasos del libreto
+PASOS = [  # clave, ranura, bloque, n, titulo, subtitulo
+    ('paso1', 1, 'm01_noticia', 1, 'Lectura de la noticia criminal', 'El punto de partida: la flagrancia'),
+    ('paso2', 4, 'm02_norma', 2, 'Selección normativa', 'El molde jurídico: la tipificación inicial'),
+    ('paso3', 8, 'm03_hipotesis', 3, 'Construcción de la hipótesis delictiva', 'El rompecabezas de la teoría del delito: la fractura de la culpabilidad'),
+    ('paso4', 12, 'm04_objeto', 4, 'Objeto de prueba', 'Las grandes preguntas: el giro de la investigación'),
+    ('paso5', 15, 'm05_utilidad', 5, 'Utilidad', 'El arsenal probatorio: la caracterización humana'),
+    ('paso6', 18, 'm06_legalidad', 6, 'Legalidad', 'El escudo de los derechos: la articulación institucional'),
+    ('paso7', 20, 'm07_suficiencia', 7, 'Suficiencia', 'La balanza judicial: la causal 7 y el principio de oportunidad'),
+    ('paso8', 23, 'm08_viabilidad', 8, 'Viabilidad', 'El ajuste final del camino: el acuerdo restaurativo'),
+]
+
+
+class Rompecabezas(Tarjeta):
+    """Paso 3: las tres piezas de la hipotesis; la del reproche de culpabilidad
+    no encaja: entra con «se quiebra» corrida y en gris."""
+    HASTA = None
+    DURA = 10 ** 6
+
+    def extra(self):
+        f = fuente('Bold', 36)
+        self.piezas = [sprite('Tiempo y lugar: Amazonas', f), sprite('Acción: talar', f),
+                       sprite('Reproche de culpabilidad', f, AMARILLO)]
+        self.t_p = [self.t('al construir'), self.t('al construir') + 10, self.t('se quiebra')]
+
+    def dibuja_extra(self, c, i, g, y):
+        d = ImageDraw.Draw(c)
+        x = TEXTO_X
+        for q, (spr, t0) in enumerate(zip(self.piezas, self.t_p)):
+            o, s = aparece(i, t0)
+            if o <= 0:
+                continue
+            w = spr[0].size[0] - 48 + 40
+            dx = 0 if q < 2 else int(18 * suave((i - t0) / 10.0))
+            dy = 0 if q < 2 else int(14 * suave((i - t0) / 10.0))
+            col = (60, 90, 140) if q < 2 else (110, 110, 120)
+            d.rounded_rectangle([x + dx, y + s + dy, x + dx + w, y + s + dy + 70], 10,
+                                fill=col + (int(220 * o * g),), outline=AMARILLO + (int(255 * o * g),), width=3)
+            pega(c, spr, x + dx + 20, y + 14 + dy, o * g, s)
+            x += w + 18
+        return y + 90
+
+
+class Preguntas(Tarjeta):
+    """Paso 4: las tres preguntas, literales, cada una con su voz."""
+    DURA = 10 ** 6
+
+    def extra(self):
+        f = fuente('Medium', 38)
+        self.qs = [(self.t('vale la pena'), sprite('¿Vale la pena llevar a juicio a un eslabón vulnerable?', f, ancho=1150)),
+                   (self.t('quien es'), sprite('¿Quién es el verdadero financiador de la tala?', f, ancho=1150)),
+                   (self.t('que mecanismo'), sprite('¿Qué mecanismo legal repara realmente el daño causado sin destruir aún más la vida del procesado?', f, ancho=1150))]
+
+    def dibuja_extra(self, c, i, g, y):
+        d = ImageDraw.Draw(c)
+        for t0, spr in self.qs:
+            o, s = aparece(i, t0)
+            if o > 0:
+                d.rectangle([TEXTO_X, y + 22 + s, TEXTO_X + 24, y + 30 + s], fill=AMARILLO + (int(255 * o * g),))
+                pega(c, spr, TEXTO_X + 44, y, o * g, s)
+            y += spr[2] * 50 + 24
+        return y
+
+
+class Balanza(Tarjeta):
+    """Paso 7: la balanza. En un plato el juicio y la prision; en el otro la
+    reparacion; con «herramienta superior» la reparacion baja. Debajo, con su
+    palabra, el principio de oportunidad, causal 7."""
+    DURA = 10 ** 6
+
+    def extra(self):
+        self.t_inc = self.t('herramienta superior')
+        self.t_po = self.t('principio de oportunidad')
+        f = fuente('SemiBold', 32)
+        self.s_a = sprite('Juicio y prisión', f)
+        self.s_b = sprite('Reparación', f, AMARILLO)
+        self.s_po = sprite('Principio de oportunidad · causal 7', fuente('Bold', 46), AMARILLO)
+
+    def dibuja_extra(self, c, i, g, y):
+        d = ImageDraw.Draw(c)
+        o, s = aparece(i, 10)
+        if o <= 0:
+            return y
+        a = int(255 * o * g)
+        cx, top = TEXTO_X + 360, y + 10
+        ang = -0.16 * suave((i - self.t_inc) / 24.0)      # baja el plato derecho
+        L = 260
+        dx, dy = L * math.cos(ang), L * math.sin(ang)
+        d.line([cx, top, cx, top + 200], fill=BLANCO + (a,), width=6)
+        d.line([cx - dx, top + 20 + dy, cx + dx, top + 20 - dy], fill=BLANCO + (a,), width=6)
+        for sgn, spr in ((-1, self.s_a), (1, self.s_b)):
+            px, py = cx + sgn * dx, top + 20 - sgn * dy
+            d.line([px, py, px - 50, py + 70], fill=BLANCO + (a,), width=3)
+            d.line([px, py, px + 50, py + 70], fill=BLANCO + (a,), width=3)
+            d.arc([px - 70, py + 40, px + 70, py + 110], 0, 180, fill=(AMARILLO if sgn > 0 else BLANCO) + (a,), width=6)
+            w = spr[0].size[0] - 48
+            pega(c, spr, px - w / 2, py + 118, o * g, 0)
+        o2, s2 = aparece(i, self.t_po)
+        pega(c, self.s_po, TEXTO_X, top + 230, o2 * g, s2)
+        return top + 300
+
+
+V06 = []
+for k, n, b, num, tit, sub in PASOS:
+    base = {3: Rompecabezas, 4: Preguntas, 7: Balanza}.get(num, Tarjeta)
+    extra = {}
+    if num == 7:
+        extra['HASTA'] = 21          # la balanza sigue sobre el vivero (r21, sin gente)
+    elif num == 3:
+        extra['HASTA'] = n           # toda la ranura
+    elif num == 4:
+        # las tres preguntas caen en r12, r13 y r14: el grafico las cubre
+        extra.update(HASTA=14, denso=0.70, ralo=0.15)
+    V06.append(type('P_' + k, (base,), dict(clave=k, N=n, B=b, PASO=num, TITULO=tit, SUB=sub, **extra)))
+
 GRAFICOS = {'V01': [Aluvion, Ideam, Motores, Municipios, Cadena],
-            'V02': [Pilares, Niveles, Enfoques, Programa, Articulo6, Consecuencias]}
+            'V02': [Pilares, Niveles, Enfoques, Programa, Articulo6, Consecuencias],
+            'V03': V03, 'V04': V04, 'V05': V05, 'V06': V06}
 GEO = None
 
 

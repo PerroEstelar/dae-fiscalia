@@ -331,7 +331,52 @@ SIN_TECHO = {4, 14}
 GRAFICOS = {1: 'paso1', 4: 'paso2', 8: 'paso3', 12: 'paso4', 15: 'paso5',
             18: 'paso6', 20: 'paso7', 23: 'paso8'}
 
-KLING = {}
+KLING = {
+ 2: ('fija', 'The two patrol officers keep walking along the path toward the camera '
+     'at a calm pace, one pushing the broad leaf aside with his hand; they stay '
+     'inside the frame.'),
+ 3: ('fija', 'One officer writes in the notebook; the other turns his head from the '
+     'stacked planks to Francisco; Francisco stands still with his empty hands '
+     'lowered and looks down.'),
+ 5: ('fija', 'She reads the open book, her eyes moving along the lines, and makes a '
+     'small mark in the margin with her pencil.'),
+ 6: ('fija', 'The prosecutor reads aloud from the sheet in her hand, her mouth '
+     'moving; the judge listens; Francisco sits very still beside his defender, '
+     'who turns her head to him.'),
+ 7: ('fija', 'He breathes slowly; his eyes stay lowered to his hands; he swallows '
+     'once and his folded hands tighten a little, then relax.'),
+ 9: ('fija', 'A light breeze moves the open plank door a little on its hinges and '
+     'sways the hammock inside; the leaves of the forest stir around the house.'),
+ 10: ('fija', 'He sits still at the end of the pier, breathes, and slowly lowers '
+      'his head; the brown river flows past and the small boats rock gently at the '
+      'pier.'),
+ 11: ('fija', 'The man in the suit lowers his hand after dropping the coins; '
+      'Francisco closes his fingers slowly over the coins in his palm and keeps '
+      'looking down at them.'),
+ 16: ('fija', 'Francisco speaks, his open hand moving slowly on the table; the woman '
+      'listens and writes a line in her folder, then looks up at him.'),
+ 18: ('fija', 'The defender moves her finger slowly along the line on the page while '
+      'she speaks; Francisco follows her finger with his eyes and nods slowly. The '
+      'page stays flat on the table.'),
+ 19: ('fija', 'The prosecutor speaks, her open hand moving over the table; the '
+      'others listen; the man beside Francisco nods and Francisco lifts his eyes '
+      'to the prosecutor.'),
+ 22: ('fija', 'She lets go of the seedling; Francisco holds it in both hands, lifts '
+      'it a little and looks at its leaves.'),
+ 23: ('fija', 'They shake hands firmly across the table, their joined hands moving '
+      'up and down twice, and then let go; the prosecutor between them looks from '
+      'one to the other and nods.'),
+ 24: ('fija', 'The judge finishes his signature with one short stroke of the pen '
+      'and lifts the pen from the page; his other hand stays flat on the page.'),
+ 25: ('fija', 'He presses the earth around the young tree with both hands, smooths '
+      'it, and slowly sits back on his heels to look at the tree; its leaves move '
+      'in a light breeze.'),
+ 26: ('aire', 'The camera glides slowly forward high over the forest along the '
+      'river; the low white mist drifts slowly over the water.'),
+}
+# r17 (la carpeta, cenital) no va: es papel. r01, r04, r08, r12-r15 y r20-r21
+# van bajo el panel de su paso. r18 y r23 si: la tarjeta dura 130 cuadros y la
+# ranura sigue despues con la placa sola.
 KLING_PRESTADO = {}
 KLING_FIJA = 'Tripod shot: the camera stays where it is.'
 KLING_AIRE = 'The camera moves only forward, smoothly, at the same height.'

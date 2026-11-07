@@ -94,7 +94,9 @@ LUZ = {
 # siendo exacto a la ranura horneada (0,88).
 # EI (5 nov): S04 r08, el analista camina por el pasillo de la biblioteca hacia
 # camara; la cabeza toca el borde a los 2,3 s del crudo (se corta a 2,5).
-ABRE = set()
+# 7 nov (DA V02): r01 el archivista camina hacia camara con la pila de
+# carpetas (crudo hasta 3,6 s) y r14 los cuatro por la orilla (crudo entero).
+ABRE = {('V02', 1), ('V02', 14)}
 
 
 def encuadre_de(L, n):
