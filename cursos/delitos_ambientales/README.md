@@ -113,3 +113,17 @@ Lo medido en la tanda (de 66 clips):
 - **«Camina hasta el borde del muelle» la metió al río** (V02 r25). Rehecho con
   «cada uno se queda donde está» y la caja que pasa de mano en mano.
 - Mirar a cámara al final del gesto (V03 r11, V04 r07, r09): se corta antes.
+
+**Estado (7 nov, 16:00):** las cinco líneas montadas en `DAE MASTER - CURSOS`
+con su `.drt` en `10 TIMELINE SEBASTIAN`, revisión interna pasada (cuadros =
+pieza, el único negro es el fundido del respiro, −19,1 a −19,4 LUFS). Sin
+exportar: esperan que Sebastián las vea.
+
+- **El respiro ya no es siempre la r01** (`escenas.RESPIRO`): V04 cierra en el
+  río limpio (r18), V05 en las firmas (r23), V06 en el Amazonas (r26). La r01
+  del V06 es la tala con motosierra y quedaba como última imagen después de
+  «protección del Amazonas».
+- **Un medio reemplazado en su sitio no llega al render**: Resolve siguió
+  sirviendo el respiro viejo con el archivo nuevo en disco. Se copia con nombre
+  nuevo (`DA_V06_respiro_r26_v48.mp4`, `DA_V02_r24_..._mov_v77b.mp4`) y se
+  hace `ReplaceClip` sobre el ítem del pool; el render siguiente ya lo trae.
