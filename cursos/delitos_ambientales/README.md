@@ -127,3 +127,13 @@ exportar: esperan que Sebastián las vea.
   sirviendo el respiro viejo con el archivo nuevo en disco. Se copia con nombre
   nuevo (`DA_V06_respiro_r26_v48.mp4`, `DA_V02_r24_..._mov_v77b.mp4`) y se
   hace `ReplaceClip` sobre el ítem del pool; el render siguiente ya lo trae.
+
+**V02 entregado (7 nov, 16:35).** Sebastián marcó el r05: el mapa de Colombia
+de la pizarra no era el país. La placa se pidió con la pizarra en blanco (la
+r05 como referencia) y el mapa se dibujó encima con los departamentos de
+Natural Earth (`graficas/mapa_pizarra_da.py`, candidata `m`), multiplicado
+sobre la franja de sol de la placa. Export `05 EXPORTS\DA_V02_v1.mp4` (4627 c,
+−19,3 LUFS, md5 `dde992bd…`), en Drive en `VIDEO 02 - Plan de priorizacion de
+la FGN`. Mientras exportaba, D: quedó en 0 GB: el render salió sin `moov`.
+Se movieron a `E:\DAE MASTER\_tmp_movido_de_D\da` las revisiones internas y
+los másters de este curso (8,9 GB libres después).
