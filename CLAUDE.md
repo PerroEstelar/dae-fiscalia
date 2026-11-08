@@ -2014,3 +2014,35 @@ wide band of plain empty wall; the top right corner plain» (35 cr, dos de dos).
 `LADO` ya pide esa esquina lisa. `images_expand` no sirve para esto: el modo
 por defecto pintó en el margen una interfaz de edición con texto inventado y
 `seedream-4-5` no amplió nada (150 cr perdidos).
+
+## Las ranuras sin etiqueta de color se ven más saturadas en Resolve (DA V05, 7 nov 2026)
+
+Sebastián desaturó a mano el arranque del V05 y preguntó qué había pasado con la
+desaturación. Había tres causas, y una vale para toda la serie:
+
+- **ffmpeg codifica RGB → yuv420p con la matriz BT.601 y no etiqueta el
+  archivo.** Resolve lee un HD sin etiqueta como Rec.709 y le sube un 13–15 %
+  la saturación, con un corrimiento leve hacia lo cálido. Verificado sobre la
+  revisión del V05: el render coincide con la fuente decodificada como 709
+  (diferencia media 0,0005) y no como 601 (0,002). Todas las medidas de
+  saturación (`sat_mide`, los grades) decodifican como 601, así que leen un
+  14 % por debajo de lo que él ve en la línea.
+- **Kling devuelve el clip 1,2–1,9× más saturado que su placa**, y más cálido.
+- En la DA, `limpia` acota el verde y el ocre en vez de apagarlos, y la
+  apertura de minería salió en 0,08–0,12.
+
+Para un curso nuevo: codificar las ranuras con
+`-vf ...,scale=out_color_matrix=bt709:out_range=tv` más
+`-colorspace bt709 -color_primaries bt709 -color_trc bt709`, medir
+decodificando como 709, e igualar la saturación de cada clip de Kling a la de su
+placa en el conformado. **No se cambia a mitad de un curso:** un clip reconformado
+saldría un 14 % más gris que sus vecinos.
+
+Su corrección fue un «Saturation, Hue & Lum Mix» en el nodo 1, que en el render
+deja ×0,44–0,49. Para replicarla: `CopyGrades` desde uno de sus ítems, en una
+versión local nueva (`AddVersion(nombre, 0)`), así su «Version 1» queda
+intacta. Se aplicó solo a lo que medía en el rango de lo que él corrigió; lo de
+0,046 para abajo se dejó, porque le gustan algunos de los colores que traen los
+clips. Y se mide en ventanas sin cartón ni gráfico: los cartones y los paneles
+de la DA llevan tinte azul a cuadro completo, y un cuadro a mitad de ranura
+mide 0,67 de saturación azul.

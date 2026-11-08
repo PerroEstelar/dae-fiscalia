@@ -150,3 +150,30 @@ investigacion`.
 **V04 entregado (7 nov, noche)** tal como lo dejó Sebastián (partió el gráfico
 del oxígeno en tres en la V5). `05 EXPORTS\DA_V04_v1.mp4` (3549 c, −19,3 LUFS,
 md5 `f94dde50…`), en Drive en `VIDEO 04 - El rio y la fabrica`.
+
+**V05: la desaturación (7 nov, noche).** Sebastián desaturó a mano r01–r05
+(V1 y V2) con un «Saturation, Hue & Lum Mix» en el nodo 1 (en el render deja
+la saturación en ×0,44–0,49) y pidió revisar el resto. Medido en la revisión,
+en ventanas sin cartón ni gráfico encima: sus cinco entraban entre 0,063 y
+0,16 de saturación media; del resto, en ese mismo rango, r07 (0,055), r11
+(0,065), r13 (0,059) y r17 (0,075), y bajo los paneles r09 (0,066) y r12
+(0,114). A esos seis se les copió su nodo (`CopyGrades` desde r03 V2), en V1 y
+V2, en una versión local nueva «desatura como r01-r05»: la «Version 1» sigue
+ahí. Quedan entre 0,024 y 0,035, como su r04 (0,028). Lo que mide 0,046 o menos
+se dejó con su color. `.drt` reexportado (el anterior en `_descartes`). Sin
+exportar.
+
+Las tres causas, medidas:
+
+- Las placas de la apertura (minería: agua ocre, la retro) ya salieron de
+  `limpia` en 0,08–0,12: la DA deja más color que el resto de la serie.
+- Kling devuelve el clip 1,2–1,9× más saturado que su placa, y más cálido
+  (r15 0,020 → 0,037; r17 0,049 → 0,065).
+- Las ranuras van **sin etiqueta de color y codificadas con la matriz
+  BT.601**, que es lo que hace ffmpeg por defecto desde RGB. Resolve las lee
+  como Rec.709 y les sube un 13–15 % la saturación, con un corrimiento leve
+  hacia lo cálido. El render coincide con la fuente decodificada como 709
+  (diferencia media 0,0005) y no como 601 (0,002).
+
+V06 no se tocó: r01–r03 miden 0,10–0,14 en la fuente, como las que él corrigió
+en V05.
