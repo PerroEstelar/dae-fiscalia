@@ -146,3 +146,7 @@ y suena a −28 dB bajo el outro hasta el corte. Un fundido desde negro suyo en
 el cuadro 741 (entrada del control del juez). `05 EXPORTS\DA_V03_v1.mp4`
 (−19,0 LUFS, md5 `670860df…`), en Drive en `VIDEO 03 - Tecnicas especiales de
 investigacion`.
+
+**V04 entregado (7 nov, noche)** tal como lo dejó Sebastián (partió el gráfico
+del oxígeno en tres en la V5). `05 EXPORTS\DA_V04_v1.mp4` (3549 c, −19,3 LUFS,
+md5 `f94dde50…`), en Drive en `VIDEO 04 - El rio y la fabrica`.
