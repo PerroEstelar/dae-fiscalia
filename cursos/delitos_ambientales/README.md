@@ -137,3 +137,12 @@ sobre la franja de sol de la placa. Export `05 EXPORTS\DA_V02_v1.mp4` (4627 c,
 la FGN`. Mientras exportaba, D: quedó en 0 GB: el render salió sin `moov`.
 Se movieron a `E:\DAE MASTER\_tmp_movido_de_D\da` las revisiones internas y
 los másters de este curso (8,9 GB libres después).
+
+**V03 entregado (7 nov, 19:55).** Exportado como lo dejó Sebastián: la cama
+pasó a una pista nueva (A6) corrida 349 cuadros, así que la línea mide 4804;
+se entrega la pieza hasta el último cuadro del outro (4455). Medido: bajo la
+voz la música sigue en −32,9 dB de mediana (con la cama en su sitio era igual),
+y suena a −28 dB bajo el outro hasta el corte. Un fundido desde negro suyo en
+el cuadro 741 (entrada del control del juez). `05 EXPORTS\DA_V03_v1.mp4`
+(−19,0 LUFS, md5 `670860df…`), en Drive en `VIDEO 03 - Tecnicas especiales de
+investigacion`.
