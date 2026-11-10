@@ -1,0 +1,68 @@
+# Delitos contra el medio ambiente: introducciones de unidad (MA)
+
+Son cinco videos. En cada uno, la docente (Diana Carolina) presenta su unidad a
+cámara. Las líneas están en Resolve: proyecto `DAE MASTER - CURSOS`, bin
+`CURSO 2 - DELITOS CONTRA EL MEDIO AMBIENTE/UNIDAD n`, con el nombre
+`MA - Un - INTRODUCCION`.
+
+## El molde: la U1 como la dejó Sebastián (10 nov 2026)
+
+Sebastián pidió que la U2 a la U5 «queden todo como el video de introducción que
+ya hicimos para la unidad 1». La U1 queda así:
+
+| Pista | Contenido |
+|---|---|
+| V1 | Intro FGN 0–194, clip de la unidad desde el 409, cartón de título de cierre al final del clip (zoom 1,16, pan 145) y outro FGN (el mismo clip del intro, zoom 1,16, pan 145) |
+| V2 `CARTONES` | Cartón de título `carton titulo ambientales unv2.mp4` 194–409, y encima los cartones de caja (cartones_v3: barra amarilla, texto blanco Montserrat a la izquierda) |
+| V3 `MOTION GRAPHICS` | En la U1 está vacía. De la U2 a la U5 lleva las composiciones de After Effects |
+| V4/V5 | Lower third «Diana Carolina Florez Vallona» 413–569 (Text+ y Text) |
+| A1 | Audio del intro, del clip y del outro. No lleva música ni marca de agua |
+
+El 10 de noviembre el intro y el outro de la U1 estaban *offline*: los ítems de la
+línea habían perdido su MediaPoolItem. Se reenlazaron desde el clip del pool y se
+repusieron el zoom y el pan del outro. Antes se guardó un respaldo, la línea
+`ZZ respaldo antes de reenlazar intro - MA - U1 - INTRODUCCION`.
+
+## U2–U5
+
+- **Plan** (`plan_intros.py`): todos los cuadros son de línea, porque el clip
+  empieza en el 409. Los textos salen de la transcripción palabra por palabra
+  de cada clip (Scribe, `UNIDAD n/03 VOCES/stt`). Se corrigieron la puntuación
+  y las mayúsculas, y no se agregó nada que ella no diga. Lo que hay en
+  pantalla cubre entre el 61 % y el 66 % del clip. Los cartones de lecciones
+  y actividades van verbatim.
+- **Cartones de caja**: `herramientas/cartones/cartones_ma.py` dibuja los ítems
+  `carton`. Salen en `UNIDAD n/02 CARTONES/v3/MA_Un_<clave>.mov` (qtrle con
+  alfa, 23,976).
+- **Cartón de título** `carton titulo ambientales u{2..5}v2.mp4`: es el de la U1
+  con el dígito cambiado cuadro a cuadro, en su misma animación
+  (`D:/DAE/_tmp/ma/titulo_ma.py`).
+- **Motion graphics** (`herramientas/motion/mg_ma.py`): se hacen en After
+  Effects a través de aftr (REST `127.0.0.1:8787`). El proyecto es
+  `00 MOTION GRAPHICS/MA_intros_mg.aep`, con una composición
+  `MA_Un_<clave>` por ítem. Se rinden con aerender («High Quality with Alpha»,
+  ProRes 4444 premultiplicado) a `UNIDAD n/02 CARTONES/mg/`. Siguen el
+  lenguaje de los cartones: la misma barra, la misma tipografía, la misma
+  sombra y la misma zona (la parte de arriba nunca pasa del y=250). Hay dos
+  tipos:
+  - `mg_lista`: un título y filas de ícono + rótulo. Cada fila entra con un
+    pop del ícono en el cuadro en que ella nombra la cosa (macrocriminalidad,
+    procedimientos, participación, reparación, mecanismos de terminación).
+  - `mg_act`: la tarjeta de cada actividad, con el ícono a la izquierda de
+    «Actividad n» (en pop), el título en negrita y el cuerpo.
+  - Los íconos son blancos de línea, hechos en Magnific (nano-banana-2-flash).
+    Están en `00 MOTION GRAPHICS/iconos`, 512 px RGBA, y sus hojas en
+    `iconos/hojas`.
+- **Montaje** (`herramientas/montaje/ma_intros.py`, dentro de `run_inline`):
+  `construir(u)` duplica la U1 (y con eso hereda el lower third), le cambia
+  V1/V2/V3/A1 por lo de la unidad y deja la línea en su bin. La línea vieja de
+  cada unidad pasa a llamarse «… (primera pasada)». `importar(u)` sube el
+  cartón de título y los cartones a `UNIDAD n/02 CARTONES`, y los MG a
+  `UNIDAD n/05 MOTION GRAPHICS` (con *Alpha mode* Premultiplied).
+
+En `AppendToTimeline`, el `endFrame` del outro es 194 y no 193. Con 193 la
+línea queda corta por un cuadro, como pasó en la primera corrida de la U2.
+
+Pendiente de Sebastián: el lower third dice «Florez Vallona», pero en los clips
+ella se presenta como «Flórez Bayona». Hay que confirmar cuál es el apellido
+antes de exportar.
