@@ -63,6 +63,6 @@ repusieron el zoom y el pan del outro. Antes se guardó un respaldo, la línea
 En `AppendToTimeline`, el `endFrame` del outro es 194 y no 193. Con 193 la
 línea queda corta por un cuadro, como pasó en la primera corrida de la U2.
 
-Pendiente de Sebastián: el lower third dice «Florez Vallona», pero en los clips
-ella se presenta como «Flórez Bayona». Hay que confirmar cuál es el apellido
-antes de exportar.
+Apellido del lower third: «Florez Vallona», como en la U1. Lo confirmó Sebastián
+el 10 de noviembre, aunque en los clips suena «Bayona». Las cinco líneas lo
+heredan de la U1.
