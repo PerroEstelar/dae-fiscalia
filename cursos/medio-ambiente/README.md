@@ -13,7 +13,7 @@ ya hicimos para la unidad 1». La U1 queda así:
 | Pista | Contenido |
 |---|---|
 | V1 | Intro FGN 0–194, clip de la unidad desde el 409, cartón de título de cierre al final del clip (zoom 1,16, pan 145) y outro FGN (el mismo clip del intro, zoom 1,16, pan 145) |
-| V2 `CARTONES` | Cartón de título `carton titulo ambientales unv2.mp4` 194–409, y encima los cartones de caja (cartones_v3: barra amarilla, texto blanco Montserrat a la izquierda) |
+| V2 `CARTONES` | Cartón de título `carton titulo ambientales unv3.mp4` 194–409, y encima los cartones de caja (cartones_v3: barra amarilla, texto blanco Montserrat a la izquierda) |
 | V3 `MOTION GRAPHICS` | En la U1 está vacía. De la U2 a la U5 lleva las composiciones de After Effects |
 | V4/V5 | Lower third «Diana Carolina Florez Vallona» 413–569 (Text+ y Text) |
 | A1 | Audio del intro, del clip y del outro. No lleva música ni marca de agua |
@@ -34,9 +34,21 @@ repusieron el zoom y el pan del outro. Antes se guardó un respaldo, la línea
 - **Cartones de caja**: `herramientas/cartones/cartones_ma.py` dibuja los ítems
   `carton`. Salen en `UNIDAD n/02 CARTONES/v3/MA_Un_<clave>.mov` (qtrle con
   alfa, 23,976).
-- **Cartón de título** `carton titulo ambientales u{2..5}v2.mp4`: es el de la U1
-  con el dígito cambiado cuadro a cuadro, en su misma animación
-  (`D:/DAE/_tmp/ma/titulo_ma.py`).
+- **Cartón de título** `carton titulo ambientales u{1..5}v3.mp4`. Lo pidió
+  Sebastián el 10 nov: el nombre del curso va en minúscula salvo la primera palabra,
+  «Investigación y judicialización de delitos contra el medio ambiente y los
+  recursos naturales». El subtítulo «Introducción Unidad n» no cambia.
+  - Del cartón original `u1v2` no hay proyecto fuente en disco. Por eso
+    `herramientas/cartones/titulo_ma_v3.py` lo rehace sobre sus propios cuadros:
+    conserva el fondo, la barra, la marca y el subtítulo de cada `unv2` (el dígito
+    viene de `titulo_ma.py`), borra la zona del título y lo vuelve a escribir.
+  - El título reescrito va palabra por palabra, con la animación medida en el
+    original. Fuente: Montserrat Bold 68, color (11, 54, 78), una máscara por
+    línea.
+  - Entrada: una palabra cada 4,5 cuadros, con la curva 41/25/16/10…
+  - Salida: sube y sale por arriba, una palabra cada 1/3 de cuadro.
+  - En el pool se cambió con `ReplaceClip` al archivo nuevo, así que los ítems
+    conservan su sitio y su zoom y pan.
 - **Motion graphics** (`herramientas/motion/mg_ma.py`): se hacen en After
   Effects a través de aftr (REST `127.0.0.1:8787`). El proyecto es
   `00 MOTION GRAPHICS/MA_intros_mg.aep`, con una composición
@@ -70,7 +82,10 @@ heredan de la U1.
 ## Entrega (10 nov 2026)
 
 Las exportó con el mismo formato que la U1 que había entregado Sebastián
-(`delitosambientales - U1 - INTRODUCCION-v2.mov`):
+(`delitosambientales - U1 - INTRODUCCION-v2.mov`). Después del cambio de nombre
+del curso se volvieron a exportar las cinco como **U1 v3 y U2–U5 v2**. En Drive
+se mandaron a la papelera las versiones anteriores (U1 v1 y v2, U2–U5 v1), para
+que no se confundan con las nuevas:
 
 - QuickTime H.264 High, 1920×1080, 23,976 fps, tope de 6.000 kb/s, AAC 48 kHz estéreo.
 - Archivos `UNIDAD n/05 EXPORTS/delitosambientales - Un - INTRODUCCION-v1.mov`.

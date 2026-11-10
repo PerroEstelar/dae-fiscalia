@@ -64,7 +64,7 @@ def linea(n):
 def importar(u):
     """Cartón de título, cartones de caja (v3) y MG al pool; devuelve {nombre: mpi}."""
     out = {}
-    bins = (('02 CARTONES', ['%s/UNIDAD %d/02 CARTONES/carton titulo ambientales u%dv2.mp4' % (CURSO, u, u)] +
+    bins = (('02 CARTONES', ['%s/UNIDAD %d/02 CARTONES/carton titulo ambientales u%dv3.mp4' % (CURSO, u, u)] +
              ['%s/UNIDAD %d/02 CARTONES/v3/MA_U%d_%s.mov' % (CURSO, u, u, c)
               for c, tipo, *_ in P.UNIDADES[u]['items'] if tipo == 'carton']),
             ('05 MOTION GRAPHICS', ['%s/UNIDAD %d/02 CARTONES/mg/MA_U%d_%s.mov' % (CURSO, u, u, c)
@@ -142,7 +142,7 @@ def construir(u):
     if not tl.GetItemListInTrack('audio', 1)[-1].GetName().startswith('Introduccion'):
         poner(tl, clip, 1, P.CLIP0, tipo=2)
 
-    titulo = pool['carton titulo ambientales u%dv2.mp4' % u]
+    titulo = pool['carton titulo ambientales u%dv3.mp4' % u]
     poner(tl, titulo, 2, TIT_INI, tipo=1)
     cierre = poner(tl, titulo, 1, fin, tipo=1)
     encuadre(cierre)
