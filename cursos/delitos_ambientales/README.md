@@ -177,3 +177,20 @@ Las tres causas, medidas:
 
 V06 no se tocó: r01–r03 miden 0,10–0,14 en la fuente, como las que él corrigió
 en V05.
+
+**V05 y V06 entregados (10 nov)**, con su OK, tal como los dejó (V05 con la
+desaturación). El primer render salió **sin audio**: el render de control de
+la desaturación había dejado `ExportAudio: False` en los ajustes del proyecto y
+`exportar` no lo fijaba. Se notó al medir antes de subir; la copia muda que
+alcanzó a sincronizar quedó en la papelera de su Drive. Ahora `exportar` fija
+`ExportVideo`/`ExportAudio`, `entregas` no codifica un máster sin audio y
+`verificar` imprime `audio OK/FALLA`.
+
+| | cuadros | LUFS · pico | MB | md5 | Drive |
+|---|---|---|---|---|---|
+| V05 `DA_V05_v1.mp4` | 4002 | −19,4 · −4,0 | 76 | `37a13216…` | `1uAEvnUkD2xnqZse-DifMQUslPOpECKNc` |
+| V06 `DA_V06_v1.mp4` | 4889 | −19,1 · −4,1 | 68 | `b3070c6a…` | `1BK8lxgBAQvLwoL0OzUvqk_0tcOoqTHVK` |
+
+Único negro en los dos: el último cuadro del respiro. `.drt` reexportados
+después del export (los anteriores en `_descartes`). **Los seis videos del
+curso, entregados.**

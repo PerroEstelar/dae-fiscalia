@@ -2046,3 +2046,23 @@ intacta. Se aplicó solo a lo que medía en el rango de lo que él corrigió; lo
 clips. Y se mide en ventanas sin cartón ni gráfico: los cartones y los paneles
 de la DA llevan tinte azul a cuadro completo, y un cuadro a mitad de ranura
 mide 0,67 de saturación azul.
+
+## Los ajustes de render son del proyecto: un render sin audio deja mudo al siguiente (DA, 10 nov 2026)
+
+Para medir la desaturación del V05 rendí un tramo de control con
+`SetRenderSettings({'ExportAudio': False, ...})`. Esos ajustes quedan guardados
+en el proyecto, y `da_pieza.exportar` no fijaba `ExportAudio`: el máster del
+V05 y el del V06 salieron **sin pista de audio**. `verificar` no lo notó,
+porque el `ebur128` sobre un archivo sin audio no imprime nada y no falla.
+Se vio al medir la sonoridad a mano antes de subir; la copia que ya estaba en
+`G:\My Drive\_DA subidas` se sacó antes de moverla a la carpeta compartida.
+
+- Todo `exportar` fija **`'ExportVideo': True, 'ExportAudio': True`** de forma
+  explícita. Nunca se confía en lo que dejó el render anterior.
+- `entregas` se niega a codificar un máster sin audio, y `verificar` imprime
+  una línea `audio OK / FALLA`.
+- Después de un render de control (sin audio, con MarkIn/MarkOut) se
+  devuelven en el acto `ExportAudio: True` y `SelectAllFrames: True`.
+
+Los demás `*_pieza.exportar` (ed, ei, lp, dh, jr, gj, sit) tienen la misma
+forma y la misma trampa latente.

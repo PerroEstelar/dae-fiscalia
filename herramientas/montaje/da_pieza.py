@@ -1190,9 +1190,13 @@ def exportar(L, destino=None, nm=None):
     m = os.path.join(destino, nm + '.mp4')
     if os.path.exists(m):
         aparta(m, 'rerender_%s' % time.strftime('%H%M%S'))
+    # ExportVideo/ExportAudio van siempre explicitos: los ajustes de render son
+    # del proyecto y una revision sin audio deja ExportAudio en False para el
+    # render siguiente (V05 y V06 salieron mudos el 10 nov).
     ok = pr.SetRenderSettings({'SelectAllFrames': True, 'TargetDir': destino,
                                'CustomName': nm, 'FormatWidth': 1920,
                                'FormatHeight': 1080, 'VideoQuality': 80000,
+                               'ExportVideo': True, 'ExportAudio': True,
                                'AudioCodec': 'lpcm', 'AudioBitDepth': 24,
                                'AudioSampleRate': 48000})
     pr.SetCurrentRenderFormatAndCodec('mp4', 'H264_NVIDIA')
@@ -1216,11 +1220,20 @@ LIGERA = ['-vf', 'scale=1280:720:flags=lanczos', '-c:v', 'libx264', '-crf', '25'
           '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart']
 
 
+def tiene_audio(p):
+    r = subprocess.run(['ffprobe', '-v', 'error', '-select_streams', 'a',
+                        '-show_entries', 'stream=codec_type', '-of', 'csv=p=0', p],
+                       capture_output=True, text=True)
+    return 'audio' in r.stdout
+
+
 def entregas(L, version=1, solo=None):
     # `entregas=2` desde la consola: una re-entrega con su propio numero
     if solo:
         version = max(solo)
     m = os.path.join(RENDER, 'DA_%s_master.mp4' % L)
+    if not tiene_audio(m):
+        raise SystemExit('FALLA: el master %s no tiene audio; no se entrega' % m)
     exp = R.sub(L, '05 EXPORTS')
     os.makedirs(exp, exist_ok=True)
     f = os.path.join(exp, 'DA_%s_v%d.mp4' % (L, version))
@@ -1251,6 +1264,7 @@ def verificar(L, version=1, solo=None):
     f = os.path.join(exp, 'DA_%s_v%d.mp4' % (L, version))
     n = cuadros(f)
     w('cuadros %d / pieza %d  %s' % (n, pieza(L), 'OK' if n == pieza(L) else 'FALLA'))
+    w('audio', 'OK' if tiene_audio(f) else 'FALLA: el archivo no tiene pista de audio')
     r = subprocess.run(['ffmpeg', '-v', 'info', '-i', f, '-vf',
                         'blackdetect=d=0.04:pix_th=0.06', '-an', '-f', 'null', '-'],
                        capture_output=True, text=True).stderr
