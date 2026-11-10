@@ -66,3 +66,45 @@ línea queda corta por un cuadro, como pasó en la primera corrida de la U2.
 Apellido del lower third: «Florez Vallona», como en la U1. Lo confirmó Sebastián
 el 10 de noviembre, aunque en los clips suena «Bayona». Las cinco líneas lo
 heredan de la U1.
+
+## Entrega (10 nov 2026)
+
+Las exportó con el mismo formato que la U1 que había entregado Sebastián
+(`delitosambientales - U1 - INTRODUCCION-v2.mov`):
+
+- QuickTime H.264 High, 1920×1080, 23,976 fps, tope de 6.000 kb/s, AAC 48 kHz estéreo.
+- Archivos `UNIDAD n/05 EXPORTS/delitosambientales - Un - INTRODUCCION-v1.mov`.
+- Subidas a Drive: carpeta del curso → `VIDEOS` → `VIDEOS UNIDADES` → `videos exportados`,
+  donde ya estaban la v1 y la v2 de la U1.
+
+| | cuadros | sonoridad | pico |
+|---|---|---|---|
+| U2 | 8370 | −19,1 LUFS | −1,1 dBTP |
+| U3 | 8010 | −19,5 LUFS | −1,4 dBTP |
+| U4 | 9072 | −19,0 LUFS | −0,6 dBTP |
+| U5 | 8386 | −19,1 LUFS | −0,7 dBTP |
+
+**Los clips de la docente no llegan todos al mismo nivel.** Medidos en crudo:
+
+| | sonoridad | pico |
+|---|---|---|
+| U1 | −19,0 LUFS | −0,8 dBTP |
+| U2 | −17,2 LUFS | +0,7 dBTP |
+| U3 | −21,1 LUFS | −2,7 dBTP |
+| U4 | −18,9 LUFS | −0,8 dBTP |
+| U5 | −17,2 LUFS | +0,3 dBTP |
+
+La U1 se entregó sin tocar el nivel. Para que las otras quedaran como ella, se hizo
+una copia del clip con ganancia fija:
+
+- U2: −1,8 dB.
+- U3: +1,7 dB. No llega a +2,1 para no pasar de −1 dBTP.
+- U5: −1,8 dB.
+
+Las copias se llaman `Introduccion_delitos_ambientales_unidad-n_nivel19.mp4` y
+tienen el video copiado tal cual y la misma duración. Reemplazaron al clip en V1/A1
+de las líneas nuevas, en el cuadro 409 y con el mismo final. La U4 quedó como
+venía. Los primeros renders de U2, U3 y U5 con el nivel crudo están en
+`05 EXPORTS/_descartes`. El de la U2, que llegó a copiarse a la carpeta de subida,
+está en `D:/DAE/_tmp/ma/_descartes`.
+
