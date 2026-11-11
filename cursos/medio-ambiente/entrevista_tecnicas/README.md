@@ -51,6 +51,14 @@ Es el procedimiento de los videos de profes del curso SRPA.
 
   El primer export midió +0,3 dBTP después del AAC de Resolve. El audio v2 lleva
   el techo en −3 dBTP y ese export quedó en `05 EXPORTS/_descartes`.
+
+  Con el v2 el export de Resolve siguió en −0,4 dBTP. No era la mezcla: el AAC de
+  Resolve sale a 185 kb/s y a ese caudal sobrepasa unos 2,5 dB en los
+  transitorios. `herramientas/montaje/te_limita.py` deja el video del export tal
+  cual (copia de stream) y rehace el audio con un limitador a −2,5 dBFS, a
+  192 kHz, y AAC a 320 kb/s. Resultado: −16,3 LUFS y −2,5 dBTP, 22.363 cuadros,
+  H.264 High. El export de Resolve sin limitar quedó en `_descartes`, con el
+  sufijo `_resolve_sin_limitar`.
 - **Gráficos.** Son 31:
   - 2 lower thirds;
   - 20 cartones de caja verbatim;
@@ -58,3 +66,11 @@ Es el procedimiento de los videos de profes del curso SRPA.
 - **Cartón de título:** se hizo con `titulo_dema`, sobre la base u3v2. El
   subtítulo dice «Entrevista: técnicas especiales de investigación».
 - **Cierre y outro:** a 1:1.
+
+## Entrega
+
+- **Disco:** `05 EXPORTS/delitosambientales - U3 - ENTREVISTA TECNICAS
+  ESPECIALES-v1.mov` (15:33, 729 MB).
+- **Drive:** en la carpeta `ENTREVISTA - Técnicas especiales de investigación`.
+- **Línea:** `MA - U3 - ENTREVISTA TECNICAS ESPECIALES`, con su `.drt` en
+  `10 TIMELINE SEBASTIAN`.

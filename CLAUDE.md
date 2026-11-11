@@ -2066,3 +2066,19 @@ Se vio al medir la sonoridad a mano antes de subir; la copia que ya estaba en
 
 Los demás `*_pieza.exportar` (ed, ei, lp, dh, jr, gj, sit) tienen la misma
 forma y la misma trampa latente.
+
+## El AAC de Resolve sobrepasa 2,5 dB en los transitorios (entrevista TE, 11 nov 2026)
+
+El compuesto de la entrevista de técnicas especiales llegaba a Resolve con el
+techo en −2,9 dBTP y el export salía en −0,4: medido con astats a 192 kHz, el
+pico del export cae en otro sitio que el del compuesto. No era la mezcla ni una
+capa con audio: **Resolve codifica el AAC a 185 kb/s** y a ese caudal los
+transitorios de una voz comprimida sobrepasan unos 2,5 dB.
+
+La salida, sin volver a rendir: `herramientas/montaje/te_limita.py`. El video del
+export se copia tal cual (`-c:v copy`) y el audio se rehace con un limitador a
+−2,5 dBFS sobremuestreado a 192 kHz, en AAC a 320 kb/s. Quedó en −2,5 dBTP y
+−16,3 LUFS, con el mismo número de cuadros y el arranque de los dos streams en 0.
+El export crudo va a `_descartes`. Para una pieza de profe hablando, que no
+lleva música, dejar el compuesto en −3 dBTP no alcanza: el techo se garantiza
+después del export, no antes.
