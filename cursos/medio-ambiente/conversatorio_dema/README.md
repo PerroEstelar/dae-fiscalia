@@ -79,3 +79,20 @@ arriba en y=725. Los textos son verbatim de la transcripción
 
 La palabra que Scribe transcribió «Convertimiento» (minuto 5) se puso como
 «Vertimiento» en el cartón c08.
+
+## Revisión y entrega (11 nov 2026)
+
+- **Render de revisión** (`D:/DAE/_tmp/ma/dema/REV_DEMA.mp4`):
+  - 28.622 cuadros, la línea entera, con audio a −19,1 LUFS y pico de
+    −3,8 dBTP.
+  - La hoja de contacto toma un cuadro a mitad de cada uno de los 47 ítems,
+    más el intro, el título, el cierre y el outro. En todos se ve el gráfico
+    donde va.
+  - El primer render quedó cortado (sin `moov`) cuando se cayó el puente con
+    el computador. Está en `_tmp/ma/_descartes`.
+- **Cargos de los lower thirds:** Sebastián los dejó como están.
+- **Entrega:** `05 EXPORTS/delitosambientales - U1 - CONVERSATORIO DEMA y
+  DECOC-v1.mov`, con el mismo formato que las introducciones: mov H.264
+  High, tope de 6.000 kb/s y AAC 48 kHz.
+- **Drive:** curso → `VIDEOS/VIDEOS UNIDADES/videos exportados/CONVERSATORIO -
+  Articulación DEMA y DECOC`.
