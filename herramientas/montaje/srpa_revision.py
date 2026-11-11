@@ -29,7 +29,11 @@ REV = 'D:/DAE/_tmp/srpa/rev'
 FPS = P.FPS
 
 
-def export(clave, n=1):
+def export(clave):
+    """El export de versión más alta que haya en 05 EXPORTS."""
+    n = 1
+    while os.path.exists('%s/05 EXPORTS/%s.mov' % (S.carpeta(clave), S.nombre_export(clave, n + 1))):
+        n += 1
     return '%s/05 EXPORTS/%s.mov' % (S.carpeta(clave), S.nombre_export(clave, n))
 
 
@@ -68,7 +72,8 @@ def hoja(clave):
     for item, tipo, t0, t1, _c in P.ITEMS[clave]:
         a, b = P.cuadro(clave, t0), P.cuadro(clave, t1)
         marcas.append((item, (a + b) // 2))
-    marcas += [('cierre', fin_clip + 100), ('outro', fin_clip + 215 + 100)]
+    marcas += [('cierre', fin_clip + 30), ('cierre', fin_clip + 120), ('cierre', fin_clip + 200),
+               ('outro', fin_clip + 215 + 60), ('outro', fin_clip + 215 + 150), ('outro', fin_clip + 215 + 190)]
     os.makedirs(REV + '/tmp', exist_ok=True)
     col = 6
     filas = (len(marcas) + col - 1) // col

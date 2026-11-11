@@ -90,3 +90,27 @@ El esqueleto es el del conversatorio DEMA y DECOC:
 
 **Entrega:** `05 EXPORTS/srpa - U3 - CIERRE-v1.mov`, con los ajustes de la serie
 (mov H.264 High, tope de 6.000 kb/s, AAC 48 kHz).
+
+## Ronda 2 (11 nov 2026, la tarde)
+
+Sebastián: «los cartones de salida, la marca de agua hacia el final y el outro,
+todo está como si se hubiera ampliado… y siento que la voz de los profes está
+débil».
+
+- **Cierre y outro a 1:1.** El zoom 1,16 con pan 145 venía de la plantilla
+  (`MA - U1 - INTRODUCCION`) y recortaba el título de cierre, la marca APRENDE CON
+  LA DAE y el outro FGN. Se dejaron en zoom 1, pan 0 en las siete líneas, y
+  `srpa_linea.py` ya no lo aplica.
+- **Audio v2** (`herramientas/montaje/srpa_audio.py`). Se rehace desde el
+  original con:
+  - paso alto a 80 Hz;
+  - −2 dB en 250 Hz;
+  - +3 dB en 3 kHz;
+  - compresor de 3:1 con el umbral en −26 dB;
+  - loudnorm en dos pasadas a −16 LUFS, con techo de −1,5 dBTP.
+
+  El LRA bajó de unos 6,5 LU a unos 3. El compuesto v2 lleva el mismo video,
+  copiado, y entra en la línea con `ReplaceClip`.
+- **Exports v2.** Se revisaron con hojas que incluyen tres cuadros del cierre y
+  tres del outro. Se subieron a las mismas carpetas de Drive y los v1 se mandaron
+  a la papelera.

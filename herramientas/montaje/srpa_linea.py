@@ -11,7 +11,8 @@ restaurativa (dentro de run_inline).
 El esqueleto es el de las introducciones de Delitos ambientales y el del
 conversatorio DEMA y DECOC (`dema_linea.py`):
 - V1 VIDEO: intro FGN 0–194, el clip compuesto desde el 409, el cartón de título
-  de cierre al final del clip (zoom 1,16, pan 145) y el outro FGN (igual).
+  de cierre al final del clip y el outro FGN, los dos a 1:1. El zoom 1,16 que
+  traían en la plantilla recortaba los títulos, la marca de agua y el outro.
 - V2 CARTONES: el cartón de título 194–409 y los cartones de caja.
 - V3 MOTION GRAPHICS: las composiciones de After Effects (alfa premultiplicado).
 - V4 LOWER THIRD.
@@ -134,8 +135,11 @@ def construir(clave):
     clip = poner(tl, pool[S.compuesto(clave)], 1, P.CLIP0, tipo=1)
     poner(tl, pool[S.compuesto(clave)], 1, P.CLIP0, tipo=2)
     fin = clip.GetEnd() - tl.GetStartFrame()
-    encuadre(poner(tl, titulo, 1, fin, tipo=1))
-    encuadre(poner(tl, intro, 1, fin + TIT_DUR, tipo=1, src_fin=INTRO_DUR))
+    # El cierre y el outro van a 1:1. El zoom 1,16 / pan 145 que traía la plantilla
+    # de Delitos ambientales recortaba los títulos, la marca y el outro (Sebastián,
+    # 11 nov 2026).
+    poner(tl, titulo, 1, fin, tipo=1)
+    poner(tl, intro, 1, fin + TIT_DUR, tipo=1, src_fin=INTRO_DUR)
     poner(tl, intro, 1, fin + TIT_DUR, tipo=2, src_fin=INTRO_DUR)
 
     for item, tipo, t0, t1, _c in P.ITEMS[clave]:
