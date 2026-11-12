@@ -206,9 +206,20 @@ def topes_chaleco(hsv):
 
 
 def limpia(src, dst, acento, gente, con_chaleco=False):
+    from PIL import Image
+    out = Image.fromarray(limpia_rgb(Image.open(src).convert('RGB'), acento, gente, con_chaleco))
+    out.save(dst)
+    return medir_color(dst)
+
+
+def limpia_rgb(im, acento, gente, con_chaleco=False):
+    """La limpieza por bandas sobre una imagen PIL o un array rgb uint8;
+    devuelve el array. Es la misma de la placa: `mov_sr` la pasa cuadro a
+    cuadro a los clips de Kling."""
     import numpy as np
     from PIL import Image, ImageFilter
-    im = Image.open(src).convert('RGB')
+    if not isinstance(im, Image.Image):
+        im = Image.fromarray(im)
     hsv = np.asarray(im.convert('HSV')).astype(np.float32)
     h, s = hsv[..., 0], hsv[..., 1]
     k = np.ones_like(s)
@@ -227,9 +238,8 @@ def limpia(src, dst, acento, gente, con_chaleco=False):
     if con_chaleco:
         hsv = topes_chaleco(hsv)
     hsv = topes_piel(hsv, acento)
-    out = Image.fromarray(np.clip(hsv, 0, 255).astype(np.uint8), 'HSV').convert('RGB')
-    out.save(dst)
-    return medir_color(dst)
+    return np.asarray(Image.fromarray(np.clip(hsv, 0, 255).astype(np.uint8), 'HSV')
+                      .convert('RGB'))
 
 
 def topes_piel(hsv, acento):

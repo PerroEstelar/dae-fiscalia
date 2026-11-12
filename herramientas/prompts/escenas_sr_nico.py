@@ -789,7 +789,152 @@ RESPIRO = 74
 # chaleco en vez de apagarlos (la lección del C3 de Enfoque diferencial).
 CHALECO = {34, 35, 36, 37, 38, 39, 40}
 
-KLING = {}
+# 12 nov: el movimiento (V2, Kling 2.5 a 720p, 5 s, desde la placa GRADUADA
+# como cuadro inicial). La regla de la casa: al modelo se le dice que pasa,
+# con su destino, no que no pasa; la camara quieta se dice una vez; nadie
+# queda «a punto de» tocar algo; el papel no se anima; para un grupo, gesto y
+# habla en su sitio. Sin clip, con la camara de la casa:
+#   - las ranuras bajo las listas de After Effects (22-23, 37-39, 48, 57-60,
+#     65-68): el tinte las cubre;
+#   - las de solo manos (10, 49, 51, 71) y las que valen por quietas (17 los
+#     recipientes, 29 el caldo en el suelo, 66 los zapatos);
+#   - la agresion (30-33): el corro, los gritos, el celular y el suelo. Kling
+#     completa los gestos y ahi completaria un golpe (biblia: nada violento
+#     en acto). Quietas se leen; en movimiento no se controla.
+# 'aire' = toma alta que avanza (r01).
+KLING = {
+ 1: ('aire', 'The camera glides slowly forward high over the small town toward the '
+     'covered market; the grey mist drifts along the green mountains; tiny '
+     'townspeople walk along the streets and a small bus drives along the main road.'),
+ 2: ('fija', 'People in woollen ruanas walk down the steps of the footbridge and '
+     'along it, crossing from one side to the other; the boy sitting on the low '
+     'steps follows them with his eyes, breathing slowly, his hands resting on '
+     'his knees.'),
+ 3: ('fija', 'The boy slowly lowers his eyes, then lifts them again toward '
+     'something passing beyond the frame; a light breeze moves a few strands of '
+     'his long hair; he breathes slowly.'),
+ 4: ('fija', 'A family walks along the footbridge above, the mother holding a small '
+     'child by the hand; the small bus drives along the road below and out of '
+     'the frame; the boy sitting on the steps turns his head to watch them go.'),
+ 5: ('fija', 'The schoolchildren walk past the boy laughing and talking, their '
+     'backpacks bouncing, and carry on walking out of the frame on the right; the '
+     'boy stays seated and turns his head to follow them.'),
+ 6: ('fija', 'The boy walks down the footbridge steps one step at a time, his hands '
+     'in the pouch of his sweatshirt, and reaches the bottom of the stairs; a '
+     'motorcycle drives by on the road.'),
+ 7: ('fija', 'The boy pulls the grey blanket up over his shoulder, lies down on the '
+     'cardboard, rests his head on his arm and closes his eyes.'),
+ 8: ('fija', 'The boy walks slowly along the market aisle, his head turned toward the '
+     'fruit; around him the shoppers in ruanas choose vegetables, a vendor weighs '
+     'potatoes, people pass behind him.'),
+ 9: ('fija', 'The cook hands the bowl across the counter and the boy takes it in both '
+     'hands and draws it toward himself; steam rises from the big pot; she smiles '
+     'a little and turns back to her griddle.'),
+ 11: ('fija', 'The boy eats the soup from the bowl with a spoon, bending over it; '
+      'beside him the cook stirs the big pot with a ladle; steam rises.'),
+ 12: ('fija', 'At the market entrance the boy takes two slow steps inside and looks '
+      'around at the stalls; in the foreground the merchant, seen from behind, '
+      'folds his arms across his chest.'),
+ 13: ('fija', 'Far down the aisle the boy walks slowly between the stalls; in the '
+      'foreground the two merchants, seen from behind, watch him, and one turns his '
+      'head toward the other and says something.'),
+ 14: ('fija', 'The cook sets a plate of breakfast down on the table in front of a '
+      'customer; the diners eat with spoons and lift their cups; steam rises from '
+      'the pots behind them.'),
+ 15: ('fija', 'The boy runs between the tables with the tamal in his hands and out of '
+      'the frame; the diners at the tables turn their heads to look after him.'),
+ 16: ('fija', 'The three dark silhouettes argue in their places: one shakes his open '
+      'hand in complaint, one shakes his head, the third shifts his weight with '
+      'his hands on his hips.'),
+ 18: ('fija', 'The cook wipes the empty table with a cloth in long slow strokes and '
+      'straightens up; behind her the diners at the other tables keep eating.'),
+ 19: ('fija', 'The men under the single bare bulb talk in their loose circle; one '
+      'nods, another gestures with an open hand; the bulb sways very slightly on '
+      'its cable.'),
+ 20: ('fija', 'The man in the middle of the group raises his arm and points toward the '
+      'open entrance of the market; the others turn their heads to look where he '
+      'points.'),
+ 21: ('fija', 'The busy Sunday food hall: diners eat and talk at the long tables, the '
+      'cooks stir the pots and turn arepas on the griddles, steam rises, people '
+      'walk along the aisle.'),
+ 24: ('fija', 'The man laughs and talks to his wife with an open hand; his wife '
+      'smiles and answers; the girl looks from one to the other; behind them the '
+      'boy stands still, his eyes on the plate, breathing.'),
+ 25: ('fija', 'The boy runs off down the aisle with the tamal and the container of '
+      'broth and out of the frame; the man turns his head and shoulders to look '
+      'after him, surprised.'),
+ 26: ('fija', 'The man shouts after the boy with his arm raised high, calling for '
+      'help; his wife pulls the girl close against her; the people at the next '
+      'tables turn their heads.'),
+ 27: ('fija', 'The merchants run down the aisle away from the camera after the boy, '
+      'their aprons flapping; far ahead the boy keeps running; the women at the '
+      'stalls step back.'),
+ 28: ('fija', 'The merchants run across the pavement away from the camera toward the '
+      'boy in the distance; the townspeople step aside to let them pass.'),
+ 34: ('fija', 'The two patrolmen stand by the pickup and look toward the market; one '
+      'of them says something to the other and adjusts his cap; townspeople walk '
+      'past behind them.'),
+ 35: ('fija', 'The two merchants walk the boy toward the patrolmen; one merchant points '
+      'back toward the market with his free hand as he explains; the patrolmen '
+      'step forward to meet them; the boy keeps his head down.'),
+ 36: ('fija', 'The bending patrolman places the container and the tamal into the clear '
+      'plastic bag and ties it; the other patrolman writes in his small notebook '
+      'while the merchant talks.'),
+ 40: ('fija', 'The boy looks up at the patrolman and talks, his mouth moving, his open '
+      'hand lifting from his knee; the patrolman writes a line in his notebook.'),
+ 41: ('fija', 'The pickup is driving: outside the side window the brick houses and the '
+      'misty mountains slide past; the boy sways gently with the vehicle and keeps '
+      'looking out of the window.'),
+ 42: ('fija', 'The patrolman walks the boy along the corridor toward the camera, one '
+      'hand on the boy\'s shoulder; they walk at an even pace; a staff member '
+      'crosses the far end of the corridor.'),
+ 43: ('fija', 'The public defender walks along the corridor toward the camera, '
+      'glances at his watch and lowers his arm, keeping his stride.'),
+ 44: ('fija', 'The lawyer talks to the boy across the table with a small open-hand '
+      'gesture; the boy listens and nods once.'),
+ 45: ('fija', 'The boy speaks quietly, his mouth moving, his eyes lowered, his thumbs '
+      'rubbing his own wrists.'),
+ 46: ('fija', 'The boy talks across the table, his mouth moving, and moves his raised '
+      'hand as he explains; the lawyer\'s head nods slightly in the foreground.'),
+ 47: ('fija', 'The lawyer leans back in his chair and talks, moving his open hand over '
+      'the closed folder; the boy listens without moving.'),
+ 50: ('fija', 'The boy listens to the lawyer without moving, blinks slowly and '
+      'swallows; the lawyer\'s shoulder shifts slightly in the foreground.'),
+ 52: ('fija', 'The boy keeps looking up at the high window; the grey daylight brightens '
+      'a little on his face; he breathes in slowly and lets the breath out.'),
+ 53: ('fija', 'The boy asks a question, his mouth moving, his brows drawn together, '
+      'leaning a little further over the table.'),
+ 54: ('fija', 'Across the table the lawyer lifts both palms and his shoulders, '
+      'glances toward the window, then lowers his hands back to the table.'),
+ 55: ('fija', 'The lawyer leans in over the table and talks, tapping his flat hand '
+      'once on the table; the boy leans back in his chair.'),
+ 56: ('fija', 'The boy nods slowly twice, his eyes down, his lips pressed together, '
+      'his clasped hands tightening on the table.'),
+ 61: ('fija', 'On the bench the lawyer says a few words without looking up from his '
+      'phone; the boy turns his face toward him and waits.'),
+ 62: ('fija', 'The boy looks at the closed door, his jaw tight; he breathes in, his '
+      'shoulders rising and falling once.'),
+ 63: ('fija', 'The boy standing by the van turns his head toward the gate of the '
+      'centre; the leaves of the trees stir in the wind; the mist moves slowly '
+      'over the mountains.'),
+ 64: ('fija', 'The staff member at the desk looks up at the boy and speaks, her mouth '
+      'moving; the boy keeps his eyes down and holds his plastic bag in both '
+      'hands.'),
+ 69: ('fija', 'The two staff members talk to each other in the foreground, seen from '
+      'behind; the woman tilts her head toward the half-open door; through the '
+      'doorway the boy sits still on the examination couch.'),
+ 70: ('fija', 'The other adolescents play: two spin the rods of the table football, '
+      'another moves a chess piece; none of them looks toward the door.'),
+ 72: ('fija', 'The hand with the electric clipper passes slowly over the boy\'s head '
+      'from front to back, and tufts of black hair fall onto the grey cape; the '
+      'boy keeps his eyes down and does not move.'),
+ 73: ('fija', 'The hand pulls the grey steel door and the door swings shut and closes; '
+      'the hand lets go and leaves the frame.'),
+ 74: ('fija', 'The boy sits curled on the bed, his arms around his knees; he breathes '
+      'slowly and lowers his forehead toward his knees; the light from the small '
+      'window lies still on the wall.'),
+}
+# caminatas hacia camara: el encuadre se abre en el conformado (`mov_sr.ABRE`)
 KLING_PRESTADO = {}
 KLING_FIJA = 'Tripod shot: the camera stays where it is.'
 KLING_AIRE = 'The camera moves only forward, smoothly, at the same height.'
