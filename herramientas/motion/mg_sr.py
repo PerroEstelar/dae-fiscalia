@@ -103,6 +103,10 @@ ITEMS = {
 }
 # el título de la valoración entra con su bloque (lo dice la voz)
 TITULO_EN = {('NICO', 'valoracion'): ('n37_valoracion', 'En la valoración inicial')}
+# una lista que se queda en pantalla mas alla de su ultimo bloque: la del CAE
+# duraba 120 cuadros y la ultima fila se leia 32; sigue durante n27 («Según la
+# conversación…», sin cartón: las manos sobre la carpeta)
+HASTA = {('NICO', 'cae'): 'n27_relato'}
 
 
 def nombre_comp(L, clave):
@@ -153,7 +157,7 @@ def tiempos(L):
             bl, q = TITULO_EN[(L, clave)]
             t_tit = CS.entra(L, bl, tx[bl], q)[0]
         ini = (t_tit if t_tit is not None else fr[0]) - ANTES
-        ultimo = filas[-1][2][0]
+        ultimo = HASTA.get((L, clave), filas[-1][2][0])
         fin = CABEZA + int(round(tr[idx[ultimo]]['sale'] * FPS)) + DESPUES
         if idx[ultimo] + 1 < len(tr):
             fin = min(fin, CABEZA + int(round(tr[idx[ultimo] + 1]['entra'] * FPS)))

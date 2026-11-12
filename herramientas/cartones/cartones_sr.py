@@ -27,7 +27,7 @@ import sys
 import unicodedata
 
 H = r'D:\DAE\_repo\herramientas'
-for sub in ('cartones', 'montaje', os.path.join('voz', 'textos')):
+for sub in ('cartones', 'montaje', 'motion', 'prompts', os.path.join('voz', 'textos')):
     sys.path.insert(0, os.path.join(H, sub))
 
 from guion_sr import VIDEOS, bloques            # noqa: E402
