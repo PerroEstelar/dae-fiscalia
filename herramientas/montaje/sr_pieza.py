@@ -1072,6 +1072,13 @@ def construye(resolve, L):
     if faltan:
         return None, 'no entraron al pool: %s' % faltan[:3]
 
+    # las listas de After Effects salen de aerender en ProRes 4444 con el
+    # alfa PREMULTIPLICADO: leidas como alfa directo, el tinte se oscurece a
+    # la mitad (medido: el azul de la lista salia navy al lado del carton)
+    for _, _, p in v5:
+        it = pool.get(os.path.basename(p))
+        if it is not None:
+            it.SetClipProperty('Alpha mode', 'Premultiplied')
     mp.SetCurrentFolder(_asegura(carp, '10 TIMELINE SEBASTIAN'))
     tl = mp.CreateEmptyTimeline(nl)
     pr.SetCurrentTimeline(tl)
