@@ -26,6 +26,8 @@ LO NUEVO EN ESTE CURSO (12 nov)
        factor (tope 1,0: nunca se satura) a todo el clip, en RGB alrededor de
        la luminancia, para que el corte entre placa y clip no salte.
     6. Rec.709 ETIQUETADO, como las ranuras (`sr_pieza.BT709`).
+    7. ESTIRAR MAS DE 1,4x INTERPOLA (minterpolate mci) en vez de repetir
+       cuadros: la r72, recortada a 3 s, llena una ranura de 5,6 s.
     No se vuelve a pasar la curva GRIS: el cuadro inicial de Kling es la placa
     graduada, que ya la lleva.
 """
@@ -162,7 +164,14 @@ def kling(L, solo=None):
         ch = SP.chaleco(L, n)
         n0 = SP.cuadros(crudo)
         rt = os.path.join(TMP, nm + '.mp4')
-        wr = escritor(rt, '24', 'setpts=%.9f*PTS,fps=%s' % (float(largo) / n0, FPS), largo)
+        # 12 nov (r72, recortado a 3 s por el pelo que vuelve): estirar 72
+        # cuadros a 134 con fps= repite cada cuadro casi dos veces y el clip
+        # tiembla. Pasado 1,4x se interpolan los cuadros intermedios.
+        if float(largo) / n0 > 1.4:
+            cad = 'minterpolate=fps=%s:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1' % FPS
+        else:
+            cad = 'fps=%s' % FPS
+        wr = escritor(rt, '24', 'setpts=%.9f*PTS,%s' % (float(largo) / n0, cad), largo)
         abre = (L, n) in ABRE
         if abre:
             vf = 'scale=%d:%d:flags=lanczos' % (W, Hh)
