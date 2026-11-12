@@ -685,6 +685,11 @@ def construir(L, solo=None):
             w('r%02d cielo apagado' % n)
         piso_negro(g, 'r%02d' % n)
         gris(g, L, 'r%02d' % n)
+        # 12 nov (Nico): la curva GRIS va despues de nivelar y le corre el
+        # tono al buzo (r45 quedo a 29,6 grados, naranja; r49 a 31,1; r07 y
+        # r42 a 33,9; el resto a 35-42). Se vuelve a nivelar al final.
+        if ac:
+            nivelar_acento(L, g, 'r%02d despues de GRIS' % n)
         v = GR.medir(g)
         sal = os.path.join(ran, '%s_v%d.mp4' % (nm, largo))
         if os.path.exists(sal):
