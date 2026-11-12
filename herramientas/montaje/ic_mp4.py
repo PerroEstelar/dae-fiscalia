@@ -27,8 +27,11 @@ import subprocess
 import sys
 import time
 
-sys.path.insert(0, r'D:\DAE\_repo\cursos\medio-ambiente\introduccion_curso')
-import plan_ic as P  # noqa: E402
+import importlib as _il  # noqa: E402
+for _d in ('introduccion_curso', 'cierre_curso'):
+    sys.path.insert(0, r'D:\DAE\_repo\cursos\medio-ambiente' + '\\' + _d)
+# el plan sale de DAE_PLAN: plan_ic (introducción al curso) o plan_cc (cierre del curso)
+P = _il.import_module(os.environ.get('DAE_PLAN', 'plan_ic'))  # noqa: E402
 
 FB = glob.glob(os.path.expanduser('~') + '/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg*/*/bin')[0]
 FISCALIA = ['-c:v', 'libx264', '-crf', '18', '-preset', 'slow', '-tune', 'animation',

@@ -1,8 +1,11 @@
 # Remux final de la introducción al curso (es te_limita.py con plan_ic): video del export de Resolve copiado tal cual y audio con un limitador.
 # El AAC de Resolve dejó picos de -0,4 dBTP donde el compuesto tenía -2,9; aquí se limita y se mide.
 import glob, os, re, shutil, subprocess, sys, time
-sys.path.insert(0, r'D:\DAE\_repo\cursos\medio-ambiente\introduccion_curso')
-import plan_ic as P
+import importlib as _il  # noqa: E402
+for _d in ('introduccion_curso', 'cierre_curso'):
+    sys.path.insert(0, r'D:\DAE\_repo\cursos\medio-ambiente' + '\\' + _d)
+# el plan sale de DAE_PLAN: plan_ic (introducción al curso) o plan_cc (cierre del curso)
+P = _il.import_module(os.environ.get('DAE_PLAN', 'plan_ic'))  # noqa: E402
 LOG = open(P.TMP + '/ic_limita.log', 'w', encoding='utf-8', buffering=1)
 def log(*a):
     print(*a, file=LOG, flush=True)

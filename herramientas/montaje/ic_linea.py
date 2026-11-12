@@ -16,9 +16,12 @@ import os
 import sys
 import importlib
 
-sys.path.insert(0, r'D:\DAE\_repo\cursos\medio-ambiente\introduccion_curso')
-import plan_ic as P  # noqa: E402
-importlib.reload(P)
+import importlib as _il  # noqa: E402
+for _d in ('introduccion_curso', 'cierre_curso'):
+    sys.path.insert(0, r'D:\DAE\_repo\cursos\medio-ambiente' + '\\' + _d)
+# el plan sale de DAE_PLAN: plan_ic (introducción al curso) o plan_cc (cierre del curso)
+P = _il.import_module(os.environ.get('DAE_PLAN', 'plan_ic'))  # noqa: E402
+P = importlib.reload(P)
 
 TIT_INI, TIT_DUR, INTRO_DUR = 194, 215, 194
 PISTA = {'carton': 2, 'mg_act': 3, 'mg_lista': 3, 'lt': 4}

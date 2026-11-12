@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 r"""Introducción al curso de Delitos ambientales (12 nov 2026). Es `te_pieza` con
-el plan `cursos/medio-ambiente/introduccion_curso/plan_ic.py`.
+el plan de `DAE_PLAN`: `introduccion_curso/plan_ic.py` (por defecto) o
+`cierre_curso/plan_cc.py`.
 
 - la composición (ventana, Rec.709) y el audio v2 de los profes en un solo paso
   (ecualizado, comprimido, −16 LUFS con techo −3 dBTP: el AAC de Resolve sobrepasa);
@@ -25,11 +26,14 @@ import subprocess
 import sys
 import time
 
-sys.path.insert(0, r'D:\DAE\_repo\cursos\medio-ambiente\introduccion_curso')
 sys.path.insert(0, r'D:\DAE\_repo\herramientas\montaje')
 sys.path.insert(0, r'D:\DAE\_repo\herramientas\cartones')
 sys.path.insert(0, r'D:\DAE\_repo\herramientas\motion')
-import plan_ic as P  # noqa: E402
+import importlib as _il  # noqa: E402
+for _d in ('introduccion_curso', 'cierre_curso'):
+    sys.path.insert(0, r'D:\DAE\_repo\cursos\medio-ambiente' + '\\' + _d)
+# el plan sale de DAE_PLAN: plan_ic (introducción al curso) o plan_cc (cierre del curso)
+P = _il.import_module(os.environ.get('DAE_PLAN', 'plan_ic'))  # noqa: E402
 
 
 def prueba(t):

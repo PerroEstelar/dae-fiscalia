@@ -1,10 +1,13 @@
-# Hoja de revisión del export de la introducción al curso (es te_revision.py con plan_ic).
+# Hoja de revisión de la entrega MP4 de la introducción o del cierre del curso (te_revision.py con el plan de DAE_PLAN).
 import glob, json, os, re, subprocess, sys
-sys.path.insert(0, r'D:\DAE\_repo\cursos\medio-ambiente\introduccion_curso')
-import plan_ic as P
+import importlib as _il  # noqa: E402
+for _d in ('introduccion_curso', 'cierre_curso'):
+    sys.path.insert(0, r'D:\DAE\_repo\cursos\medio-ambiente' + '\\' + _d)
+# el plan sale de DAE_PLAN: plan_ic (introducción al curso) o plan_cc (cierre del curso)
+P = _il.import_module(os.environ.get('DAE_PLAN', 'plan_ic'))  # noqa: E402
 from PIL import Image, ImageDraw, ImageFont
 FB = glob.glob(os.path.expanduser('~') + '/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg*/*/bin')[0]
-f = '%s/05 EXPORTS/%s.mov' % (P.R, P.EXPORT % int(sys.argv[1]))
+f = '%s/05 EXPORTS/%s.mp4' % (P.R, P.EXPORT % int(sys.argv[1]))   # la entrega es MP4
 j = json.loads(subprocess.run([FB + '/ffprobe.exe', '-v', 'error', '-count_packets', '-show_streams', '-of', 'json', f], capture_output=True, text=True).stdout)
 v = [s for s in j['streams'] if s['codec_type'] == 'video'][0]
 a = [s for s in j['streams'] if s['codec_type'] == 'audio']
