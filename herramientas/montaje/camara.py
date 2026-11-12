@@ -136,10 +136,18 @@ def render(t, ffmpeg="ffmpeg"):
     sx, sy = señal(n, r, vib)
 
     os.makedirs(os.path.dirname(salida), exist_ok=True)
+    # 12 nov (SRPA, Caso Nico): `bt709` opcional. rgb24 -> yuv420p sin matriz
+    # sale en BT.601 sin etiqueta; con la opcion sale Rec.709 etiquetado, como
+    # los cartones de titulo. Lo que no la pide queda exactamente igual.
+    color = []
+    if t.get("bt709"):
+        color = ["-vf", "scale=out_color_matrix=bt709:out_range=tv",
+                 "-colorspace", "bt709", "-color_primaries", "bt709",
+                 "-color_trc", "bt709"]
     p = subprocess.Popen(
         [ffmpeg, "-loglevel", "error", "-y", "-f", "rawvideo",
          "-pix_fmt", "rgb24", "-s", "%dx%d" % (SALIDA_AN, SALIDA_AL),
-         "-r", FPS, "-i", "-", "-an", "-c:v", "libx264", "-preset", "fast",
+         "-r", FPS, "-i", "-", "-an"] + color + ["-c:v", "libx264", "-preset", "fast",
          "-crf", "14", "-pix_fmt", "yuv420p", "-g", "600", "-keyint_min", "600",
          "-sc_threshold", "0", "-r", FPS, salida], stdin=subprocess.PIPE)
 

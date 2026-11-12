@@ -263,6 +263,24 @@ CUERPO = {
  'escolares': ('schoolchildren of about twelve in plain grey school tracksuits '
                'with plain backpacks, walking in a small group'),
 }
+# 12 nov: cuando la hoja de personaje va como referencia de identidad, el
+# token largo sobra (la hoja ya dice la cara, el pelo y la ropa): va el corto.
+CORTO_ID = {
+ 'nico': ('the boy (the one of the character sheet: a thin fifteen-year-old '
+          'with long uneven black hair, in his worn matte mustard-yellow hooded '
+          'sweatshirt, grey tracksuit trousers and old grey canvas sneakers)'),
+ 'nico_rapado': ('the boy (the one of the character sheet: a thin '
+                 'fifteen-year-old with his head shaved to the scalp, in his worn '
+                 'matte mustard-yellow hooded sweatshirt)'),
+ 'defensor': ('the public defender (the one of the character sheet: heavy-set, '
+              'grey-black hair, reading glasses, plain grey suit jacket, no tie)'),
+ 'vendedora': ('the market cook (the one of the character sheet: a sturdy woman '
+               'of about fifty-five, white kerchief, white apron over a grey '
+               'sweater)'),
+ 'enfermera': ('the nurse (the one of the character sheet: dark curly hair tied '
+               'up, plain white-grey tunic, pale blue-grey gloves)'),
+}
+
 # las prendas del acento, para las cláusulas
 PRENDA = {'nico': 'his hooded sweatshirt', 'nico_rapado': 'his hooded sweatshirt'}
 CON_ACENTO = {'nico', 'nico_rapado'}

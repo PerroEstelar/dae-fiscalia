@@ -784,6 +784,10 @@ PIEZA = TOTAL + (182 + 119 + 48 + 119 + 182)
 GRIS = (30, 130)
 SIN_TECHO = set()
 RESPIRO = 74
+# 12 nov: los patrulleros de la Policía Nacional (r34-r40; la r38 es la
+# camioneta con su franja verde). La limpieza ACOTA el verde oliva y el
+# chaleco en vez de apagarlos (la lección del C3 de Enfoque diferencial).
+CHALECO = {34, 35, 36, 37, 38, 39, 40}
 
 KLING = {}
 KLING_PRESTADO = {}
