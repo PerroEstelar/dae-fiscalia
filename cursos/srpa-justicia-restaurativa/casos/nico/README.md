@@ -74,6 +74,10 @@ Son 74 ranuras cortadas sobre las palabras de Scribe
   no apagados (`escenas.CHALECO`).
 - **Color:** todo va en Rec.709 etiquetado (ranuras, respiro, clips,
   entregas).
+- **El buzo después de la curva GRIS:** la curva va después de nivelar el
+  acento y le corre el tono. La r45 quedó a 29,6° (naranja), la r49 a 31,1° y
+  la r07 y la r42 a 33,9°, contra 35-42° en el resto. Ahora `construir` vuelve
+  a nivelar al final, y esas cuatro se rehornearon (quedaron a 39,5-40,9°).
 
 ## Movimiento (V2, Kling 2.5, 720p)
 
@@ -101,7 +105,9 @@ subida desde la nube.
 **Recortados:**
 
 - r28 a 3,6 s: después, la cámara se mete en la plaza.
-- r72 a 3,0 s: después, el pelo vuelve a aparecer.
+- r72 a 3,0 s: después, el pelo vuelve a aparecer. Esos 72 cuadros llenan
+  una ranura de 134, así que `mov_sr` interpola los intermedios (minterpolate)
+  en vez de repetir cuadros. Pasa con cualquier estiramiento de más de 1,4x.
 
 **Conformado** (`montaje/mov_sr.py`): el corte al 88 %, la limpieza de la
 placa, la saturación igualada a la placa y el acento llevado al tono de la
@@ -150,3 +156,33 @@ placa. En r45 Kling había corrido la mostaza al naranja.
   | A1 | narrador |
   | A4 | sonido del intro y del outro |
   | A5 | música |
+
+## Montaje y entrega (12 nov)
+
+- **Línea:** `SRPA - U1 - CASO NICO` mide 12.584 cuadros (8:44,9) y no tiene
+  huecos.
+
+  | pista | clips |
+  |---|---|
+  | V1 | 79 |
+  | V2 | 45 |
+  | V4 | 35 |
+  | V5 | 5 (premultiplicadas) |
+  | V6 | 2 |
+  | V8 | 1 |
+
+  El `.drt` está en `10 TIMELINE SEBASTIAN`.
+- **Revisión interna** (`revisar`, en `D:\DAE\_tmp\sr\revision`): se hizo
+  antes de exportar y la hoja ya muestra las listas de AE (V5).
+- **Entrega:** `05 EXPORTS\SR_NICO_v1.mp4`, de 170 MB, y la de revisión en
+  720p, de 34 MB. Los dos miden 12.584 cuadros, igual que la pieza, y llevan
+  audio.
+  - Sonoridad: −19,0 LUFS, LRA 3,7 LU, pico −4,1 dBFS.
+  - El único negro es el último cuadro del respiro (512,26 s), y es a
+    propósito.
+- **Drive:** VIDEOS FINALIZADOS › unidad 1 ›
+  [PRIO 1 - SRPA - U1 - CASO NICO PRINCIPIO DE CULPABILIDAD.mp4](https://drive.google.com/file/d/1a3eWFXNrIVdGM58Y4zBcHaSHWNpkoa15/view).
+- **Magnific:** unos 13.000 créditos.
+  - 164 imágenes (hojas, madres, hijas y rehechas) en Seedream 5 flash.
+  - Dos hojas de íconos.
+  - 48 clips de Kling de 5 s y 2 de 10 s.
