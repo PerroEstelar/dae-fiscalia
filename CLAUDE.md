@@ -2083,7 +2083,7 @@ El export crudo va a `_descartes`. Para una pieza de profe hablando, que no
 lleva música, dejar el compuesto en −3 dBTP no alcanza: el techo se garantiza
 después del export, no antes.
 
-## Caso Nico (SRPA, 12 nov 2026): cinco cosas nuevas
+## Caso Nico (SRPA, 12 nov 2026): seis cosas nuevas
 
 - **AE se abre con un script, no con aftr.** aftr no tiene `openProject`. Lo
   que funciona es `AfterFX.exe -r abrir.jsx`, y el jsx abre el proyecto con
@@ -2096,10 +2096,23 @@ después del export, no antes.
   del azul de los cartones. En Resolve el clip lleva
   `SetClipProperty('Alpha mode', 'Premultiplied')`, y `sr_pieza.construye` lo
   fija.
-- **Kling corre el acento.** En la r45 la mostaza del buzo salió naranja desde
-  el cuadro 0. `mov_sr` mide el acento del cuadro 0 contra el de la placa
-  graduada; si se va más de 4°, gira todo el clip al tono de la placa.
-  También iguala la saturación media del clip a la de la placa (×0,8–0,97).
+- **El naranja de la r45 venía de la placa, no de Kling.** Lo había atribuido
+  a Kling, y medido después resultó otra cosa: la placa graduada estaba a
+  29,6° y el clip a 28°. La causa es la curva GRIS, que va DESPUÉS de
+  `nivelar_acento` y le corre el tono al buzo. Así quedaron la r45 a 29,6°, la
+  r49 a 31,1° y la r07 y la r42 a 33,9°, contra 35–42° en el resto.
+  - `construir` ahora vuelve a nivelar después de GRIS. Las cuatro se
+    rehornearon y quedaron entre 39,5° y 40,9°.
+  - `mov_sr` igual mide el acento del cuadro 0 contra la placa y gira el clip
+    si se va más de 4°. También iguala la saturación media del clip a la de la
+    placa (×0,76–1,0).
+  - **Antes de culpar a Kling por un color, se mide la placa.**
+- **Estirar más de 1,4x se interpola.** La r72, recortada a 3 s (72 cuadros)
+  porque después el pelo vuelve a crecer, llena una ranura de 134. Con
+  `setpts` + `fps` cada cuadro se repite casi dos veces y el clip tiembla.
+  `mov_sr` usa `minterpolate` (mci, aobmc, bidir) cuando estira más de 1,4x:
+  la diferencia entre cuadros sale pareja (0,3–2,8) y no queda ninguno
+  repetido.
 - **Caminata hacia cámara a 10 s: pasan la cámara.** En la r42 (el patrullero
   y Nico) a los 4 s ya habían pasado y el pasillo quedaba vacío. En la r43 el
   defensor da media vuelta a los 3 s. La ventana útil era de 3 s para
