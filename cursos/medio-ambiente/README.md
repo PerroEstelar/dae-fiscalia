@@ -2,7 +2,9 @@
 
 > La **introducción al curso** (la presentación del curso con la misma docente,
 > 12 nov 2026) está en `introduccion_curso/`: línea `MA - CURSO - INTRODUCCION`,
-> export `delitosambientales - CURSO - INTRODUCCION-v1.mov`.
+> export `delitosambientales - CURSO - INTRODUCCION-v1.mp4`. El **cierre del curso**
+> está en `cierre_curso/`: línea `MA - CURSO - CIERRE`, export
+> `delitosambientales - CURSO - CIERRE-v1.mp4`.
 
 Son cinco videos. En cada uno, la docente (Diana Carolina) presenta su unidad a
 cámara. Las líneas están en Resolve: proyecto `DAE MASTER - CURSOS`, bin
