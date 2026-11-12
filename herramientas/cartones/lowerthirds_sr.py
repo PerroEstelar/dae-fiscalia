@@ -14,8 +14,10 @@ LAS REGLAS DE LA SERIE
 CASO NICO (12 nov)
     Nico, en la r02 (la primera placa con su cara). El dato es el de la voz:
     «vivía un adolescente de aproximadamente 15 años» (con la mayúscula
-    inicial, el único arreglo permitido). Entra cuando la voz dice «como
-    "Nico"» (Scribe), no al abrir la ranura, y dura 120 cuadros.
+    inicial, el único arreglo permitido). Entra 14 cuadros después de abrir
+    la r02, mientras la voz dice «un adolescente de aproximadamente 15
+    años», y dura 120 cuadros. Anclado al nombre («como "Nico"», al final de
+    n01) pisaba el primer cartón de n02 («no había sido reconocido…»).
 """
 import os
 import sys
@@ -34,8 +36,7 @@ CABEZA = 182 + 119
 LOWERS = {
     'NICO': [('lt01_nico', 2, {
         'nombre': 'Nico',
-        'dato': 'Un adolescente de aproximadamente 15 años'},
-        ('n01_nico', 'como «Nico».'))],
+        'dato': 'Un adolescente de aproximadamente 15 años'})],
 }
 
 
