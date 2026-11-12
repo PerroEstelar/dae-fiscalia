@@ -46,7 +46,7 @@ def cuadros(p):
     r = subprocess.run([FB + '/ffprobe.exe', '-v', 'error', '-count_packets', '-select_streams', 'v',
                         '-show_entries', 'stream=nb_read_packets', '-of', 'csv=p=0', p],
                        capture_output=True, text=True)
-    return int(r.stdout.strip() or 0)
+    return int((r.stdout.split() or ['0'])[0])     # ffprobe repite el valor en otra línea
 
 
 def medir(p):
@@ -72,7 +72,8 @@ def master(nombre):
     os.makedirs(dst, exist_ok=True)
     nm = nombre + '_master_32mbps'
     if os.path.exists('%s/%s.mp4' % (dst, nm)):
-        raise SystemExit('ya existe el máster ' + nm)
+        w('el máster ya está: se usa ese (%s)' % nm)
+        return '%s/%s.mp4' % (dst, nm), largo
     pr.SetCurrentTimeline(tl)
     resolve.OpenPage('deliver')
     pr.DeleteAllRenderJobs()
