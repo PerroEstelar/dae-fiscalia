@@ -198,7 +198,9 @@
   },
   "SR_NICO_r72_el_corte": {
    "inicio": "3zqJGmwREY",
-   "clip": "s7Bb7cRl8e"
+   "clip": "s7Bb7cRl8e",
+   "hasta": 3.0,
+   "nota": "desde ~3,4 s el pelo vuelve a aparecer (morphing): se corta en 3,0 s"
   },
   "SR_NICO_r73_la_puerta_cerrada": {
    "inicio": "LwXqUWzswO",

@@ -114,3 +114,13 @@ débil».
 - **Exports v2.** Se revisaron con hojas que incluyen tres cuadros del cierre y
   tres del outro. Se subieron a las mismas carpetas de Drive y los v1 se mandaron
   a la papelera.
+
+## Casos (12 nov 2026)
+
+Además de los videos de profes, el curso tiene casos narrados con la receta de
+los cursos de casos: voz de ElevenLabs, placas de Magnific, Kling, cartones
+verbatim y listas de After Effects. Van en su unidad, al lado de los videos de
+profes.
+
+- **Caso Nico** (U1, principio de culpabilidad): `casos/nico/README.md`.
+  Receta: `herramientas/montaje/sr_pieza.py`.
