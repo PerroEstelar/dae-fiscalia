@@ -86,12 +86,14 @@ ELEGIDOS = {
    'hambre.'),
   ('n26_cae', 'si aceptaba los cargos, probablemente sería enviado a un Centro de '
    'Atención Especializada (CAE),'),
-  ('n28_mire', '«Mire, usted no tiene dónde vivir, no tiene familia y está pasando '
-   'muchas necesidades.'),
+  # 12 nov, primera corrida: Julián dice la cita rápido. Con «Mire, usted no
+  # tiene dónde vivir…» (85 cuadros, 24,5 car/s) y la cita entera (21,5) no
+  # se leía nada. Va lo que el caso discute: la condición («Si acepta…») y
+  # el remate de n29.
   ('n28_mire', 'Si acepta lo que hizo y no se pone a discutir el proceso, puede '
    'quedarse en un lugar donde le van a dar comida, techo y atención.»'),
-  ('n29_afuera', '«Afuera no tiene nada. Piénselo bien, porque tal vez esto sea lo '
-   'mejor que le pueda pasar.»'),
+  ('n29_afuera', 'Piénselo bien, porque tal vez esto sea lo mejor que le pueda '
+   'pasar.»'),
   ('n30_pregunta', 'tendría que regresar a vivir debajo del puente.'),
   ('n31_respuesta', 'eso dependería de las decisiones que adoptaran las autoridades'),
   ('n32_dispuesto', 'estaba dispuesto a aceptar todo lo que le imputaran, siempre '
@@ -303,7 +305,11 @@ RENOMBRA = {}
 # El p04 del S04 («Y a diferentes decisiones...») entra 24 cuadros tarde para
 # que las dos convenciones (117 caracteres, tres renglones) bajen de 18,6 a
 # ~16 car/s.
-DESPLAZA = {}
+# Caso Nico (12 nov): cuadros NEGATIVOS = el cartón entra antes de su primera
+# palabra, mientras la voz dice la atribución («Uno de ellos sugirió que
+# debían…»; «…muchas necesidades.»). La cita del comerciante quedaba a 16,4
+# car/s en tres renglones y la del defensor a 21,5.
+DESPLAZA = {('NICO', 9): -30, ('NICO', 24): -36}
 
 
 def renglones(t):
