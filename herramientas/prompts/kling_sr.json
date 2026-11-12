@@ -1,0 +1,212 @@
+{
+ "NICO": {
+  "SR_NICO_r01_el_pueblo": {
+   "inicio": "UPtkbSQwny",
+   "clip": "gO85qj0SXO"
+  },
+  "SR_NICO_r02_nico": {
+   "inicio": "TdgZiTQVNR",
+   "clip": "3zq7U6kREY"
+  },
+  "SR_NICO_r03_su_cara": {
+   "inicio": "aFZdDazfSh",
+   "clip": "DowGAeIpcl"
+  },
+  "SR_NICO_r04_las_familias": {
+   "inicio": "cps3Ncc0eP",
+   "clip": "EbGoBH8uuO"
+  },
+  "SR_NICO_r05_la_escuela": {
+   "inicio": "79hrkO8JAL",
+   "clip": "s7BqHOil8e"
+  },
+  "SR_NICO_r06_el_puente": {
+   "inicio": "0elRiVYTfW",
+   "clip": "ksMCfUz16B"
+  },
+  "SR_NICO_r07_los_cartones": {
+   "inicio": "ksMCax316B",
+   "clip": "dtOYnb7XSL"
+  },
+  "SR_NICO_r08_la_plaza": {
+   "inicio": "WDLiNTRcXe",
+   "clip": "tC6MVT9mZJ"
+  },
+  "SR_NICO_r09_las_sobras": {
+   "inicio": "w4m1Kyp7EI",
+   "clip": "5jTavfxKxe"
+  },
+  "SR_NICO_r52_la_ventana": {
+   "inicio": "1lDEfLEr4r",
+   "clip": "ksMCfQw16B",
+   "descartado": "vaho visible saliendo de la boca y un rayo de luz que aparece: queda la camara de la casa"
+  },
+  "SR_NICO_r53_pregunta": {
+   "inicio": "IfNV0aLtvE",
+   "clip": "ksMCfHJ16B"
+  },
+  "SR_NICO_r54_dependeria": {
+   "inicio": "yifLx6rPW9",
+   "clip": "lJobqLSgv9"
+  },
+  "SR_NICO_r55_insiste": {
+   "inicio": "MBUAZB1DCm",
+   "clip": "ksMCfk916B"
+  },
+  "SR_NICO_r11_la_ayuda": {
+   "inicio": "MBUAz9VDCm",
+   "clip": "ksMCQTX16B"
+  },
+  "SR_NICO_r12_otros": {
+   "inicio": "lJobKCdgv9",
+   "clip": "DowGY7Opcl",
+   "descartado": "Nico sale de cuadro a los 2 s; la ranura dura 171: queda la camara de la casa"
+  },
+  "SR_NICO_r13_lo_vigilan": {
+   "inicio": "JNvxLbNOq4",
+   "clip": "jUdFb8SLD0"
+  },
+  "SR_NICO_r14_los_desayunos": {
+   "inicio": "N2QSwxf6D9",
+   "clip": "nVxN3SUYQD"
+  },
+  "SR_NICO_r15_sale_corriendo": {
+   "inicio": "ksMCutu16B",
+   "clip": "jUdFbvsLD0"
+  },
+  "SR_NICO_r16_las_discusiones": {
+   "inicio": "N2QSwjC6D9",
+   "clip": "N2QS7jf6D9"
+  },
+  "SR_NICO_r18_la_mesa_vacia": {
+   "inicio": "CqAB8p7EEy",
+   "clip": "mEiDdTrhJQ"
+  },
+  "SR_NICO_r19_la_reunion": {
+   "inicio": "jUdFqEwLD0",
+   "clip": "ov40DLZ829"
+  },
+  "SR_NICO_r20_atraparlo": {
+   "inicio": "VXS2G3OMMU",
+   "clip": "jUdF5WvLD0"
+  },
+  "SR_NICO_r21_el_domingo": {
+   "inicio": "w4m1xK97EI",
+   "clip": "0elRG1CTfW"
+  },
+  "SR_NICO_r24_se_acerca": {
+   "inicio": "bx0vfmI5Y2",
+   "clip": "KLVfQWCkqp"
+  },
+  "SR_NICO_r25_la_huida": {
+   "inicio": "aFZdBe7fSh",
+   "clip": "ksMCFVX16B"
+  },
+  "SR_NICO_r26_el_grito": {
+   "inicio": "DowGnAnpcl",
+   "clip": "tC6MdZxmZJ"
+  },
+  "SR_NICO_r28_treinta_metros": {
+   "inicio": "yifLlLIPW9",
+   "clip": "ksMCFoF16B",
+   "hasta": 3.6
+  },
+  "SR_NICO_r27_lo_persiguen": {
+   "inicio": "gO85sRkSXO",
+   "clip": "EbGoCShuuO",
+   "descartado": "Nico corre hacia camara, los comerciantes desaparecen y entra un objeto por arriba"
+  },
+  "SR_NICO_r34_la_patrulla": {
+   "inicio": "gO85sZ1SXO",
+   "clip": "P3CsyDh42C"
+  },
+  "SR_NICO_r35_la_entrega": {
+   "inicio": "vQRemjYa47",
+   "clip": "jUdFxGhLD0"
+  },
+  "SR_NICO_r36_los_alimentos": {
+   "inicio": "5jTaqPiKxe",
+   "clip": "N2QS9IZ6D9"
+  },
+  "SR_NICO_r40_quince_anos": {
+   "inicio": "3zq76dUREY",
+   "clip": "P3Csy8Q42C"
+  },
+  "SR_NICO_r41_el_traslado": {
+   "inicio": "u5z8CwLQLD",
+   "clip": "lJobspcgv9"
+  },
+  "SR_NICO_r42_el_cip": {
+   "inicio": "KLVfb9Vkqp",
+   "clip": "s7BqLeMl8e",
+   "seg": 10,
+   "descartado": "a los 4 s pasan la camara y el pasillo queda vacio; util 3 s para 262 cuadros (3x lento)"
+  },
+  "SR_NICO_r43_el_defensor": {
+   "inicio": "tC6M8xdmZJ",
+   "clip": "5jTa5xsKxe",
+   "seg": 10,
+   "descartado": "a los 3 s el defensor da media vuelta y se va de espaldas"
+  },
+  "SR_NICO_r44_la_sala": {
+   "inicio": "DowGVHupcl",
+   "clip": "1lDE1g8r4r"
+  },
+  "SR_NICO_r45_el_hambre": {
+   "inicio": "s7BqjAal8e",
+   "clip": "EbGoE1euuO"
+  },
+  "SR_NICO_r46_otras_veces": {
+   "inicio": "N2QS4eN6D9",
+   "clip": "O6ajOGZynm"
+  },
+  "SR_NICO_r47_le_explica": {
+   "inicio": "w4m1ScI7EI",
+   "clip": "JNvxJnoOq4"
+  },
+  "SR_NICO_r50_mire": {
+   "inicio": "cps3Yuo0eP",
+   "clip": "LwXHLZdswO"
+  },
+  "SR_NICO_r56_acepta": {
+   "inicio": "ksMELiZ16B",
+   "clip": "lJo5Jyxgv9"
+  },
+  "SR_NICO_r61_el_telefono": {
+   "inicio": "SyIkOW7Ub8",
+   "clip": "P3Cl3Gc42C"
+  },
+  "SR_NICO_r62_la_puerta": {
+   "inicio": "vQRduSna47",
+   "clip": "8a9VaHSIrU"
+  },
+  "SR_NICO_r63_el_cae": {
+   "inicio": "xSeFgA6jfW",
+   "clip": "hu3euravqL"
+  },
+  "SR_NICO_r64_la_recepcion": {
+   "inicio": "lJo57Ysgv9",
+   "clip": "lJo5J2kgv9"
+  },
+  "SR_NICO_r69_los_funcionarios": {
+   "inicio": "4REg3Xj9Aa",
+   "clip": "Dowzoqhpcl"
+  },
+  "SR_NICO_r70_los_demas": {
+   "inicio": "XmyctjKBfo",
+   "clip": "fH2BH7aCDY"
+  },
+  "SR_NICO_r72_el_corte": {
+   "inicio": "3zqJGmwREY",
+   "clip": "s7Bb7cRl8e"
+  },
+  "SR_NICO_r73_la_puerta_cerrada": {
+   "inicio": "LwXqUWzswO",
+   "clip": "rgpQgXBxtc"
+  },
+  "SR_NICO_r74_el_aislamiento": {
+   "inicio": "yifs6XlPW9",
+   "clip": "1lDulolr4r"
+  }
+ }
+}

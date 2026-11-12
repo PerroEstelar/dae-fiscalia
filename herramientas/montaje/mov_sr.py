@@ -109,6 +109,17 @@ def satura(rgb, k):
     return np.clip(y + k * (f - y) + 0.5, 0, 255).astype(np.uint8)
 
 
+def acento_de(rgb):
+    """(tono en grados, saturacion mediana) del acento de un cuadro, o None
+    (la misma banda que `sr_pieza.medir_acento`)."""
+    hsv = np.asarray(Image.fromarray(rgb).convert('HSV')).reshape(-1, 3).astype(np.float32)
+    h, s = hsv[:, 0], hsv[:, 1] / 255.0
+    m = (h >= 12) & (h <= 45) & (s > 0.30)
+    if m.mean() < 0.003:
+        return None
+    return float(np.median(h[m])) * 360 / 255, float(np.median(s[m]))
+
+
 def suave(x):
     x = min(1.0, max(0.0, x))
     return x * x * (3 - 2 * x)
@@ -174,7 +185,19 @@ def kling(L, solo=None):
             if k is None:
                 s0 = sat_media(o[::4, ::4])
                 k = min(1.0, s_placa / s0) if s0 > 0 else 1.0
+                # 12 nov (r45): Kling corrio la mostaza del buzo hacia el
+                # naranja desde el cuadro 0. Si el acento del clip se va mas
+                # de 4 grados del de la placa graduada, se gira todo el clip
+                # al tono de la placa (y a su saturacion), como `nivelar_acento`.
+                giro = None
+                if ac:
+                    a_clip, a_placa = acento_de(o[::2, ::2]), acento_de(placa)
+                    if a_clip and a_placa and abs(a_clip[0] - a_placa[0]) > 4.0:
+                        giro = (max(-12.0, min(12.0, (a_placa[0] - a_clip[0]) * 255.0 / 360.0)),
+                                min(1.0, a_placa[1] / a_clip[1]))
             o = satura(o, k)
+            if giro:
+                o = SP.acento_serie(o, L, True, par=giro)
             if primero is None:
                 primero = o
             if i % 12 == 0:
@@ -191,8 +214,9 @@ def kling(L, solo=None):
                         '-c:v', 'libx264', '-crf', '14', '-preset', 'slow',
                         '-pix_fmt', 'yuv420p'] + SP.BT709 + ['-an', d], check=True)
         n1 = SP.cuadros(d)
-        SP.w('%-40s crudo %3d -> %3d/%3d %s  sat x%.2f  cuadro0 vs ranura %5.1f  movimiento %s'
-             % (nm, n0, n1, largo, 'OK' if n1 == largo else 'FALLA', k, d0,
+        SP.w('%-40s crudo %3d -> %3d/%3d %s  sat x%.2f  giro %s  cuadro0 vs ranura %5.1f  movimiento %s'
+             % (nm, n0, n1, largo, 'OK' if n1 == largo else 'FALLA', k,
+                '%+.1f/%.2f' % giro if giro else '-', d0,
                 ' '.join('%.1f' % x for x in movs[:12])))
 
 
