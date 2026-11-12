@@ -181,8 +181,22 @@ placa. En r45 Kling había corrido la mostaza al naranja.
   - El único negro es el último cuadro del respiro (512,26 s), y es a
     propósito.
 - **Drive:** VIDEOS FINALIZADOS › unidad 1 ›
-  [PRIO 1 - SRPA - U1 - CASO NICO PRINCIPIO DE CULPABILIDAD.mp4](https://drive.google.com/file/d/1a3eWFXNrIVdGM58Y4zBcHaSHWNpkoa15/view).
+  [PRIO 1 - SRPA - U1 - CASO NICO PRINCIPIO DE CULPABILIDAD.mp4](https://drive.google.com/file/d/1d_VRGsS3M5PQY2kCO-6IhPXMMsyxK3U4/view).
 - **Magnific:** unos 13.000 créditos.
   - 164 imágenes (hojas, madres, hijas y rehechas) en Seedream 5 flash.
   - Dos hojas de íconos.
   - 48 clips de Kling de 5 s y 2 de 10 s.
+
+### v2 (12 nov, con los ajustes de Sebastián)
+
+Sebastián hizo tres cambios a mano en la línea:
+- quitó el clip de movimiento de r05, r28 y r35;
+- sacó de V1 la placa del respiro;
+- estiró el clip de r74 en V2 (151 cuadros) para que cubra el respiro.
+
+Se re-exportó sin tocar su línea. Las medidas son las mismas que en v1:
+12.584 cuadros, −19,0 LUFS, pico −4,1 dBFS y audio OK.
+- **Archivos:** `05 EXPORTS\SR_NICO_v2.mp4`, de 167 MB, y la de 720p, de
+  33 MB. Los de v1 se pasaron a `_descartes`.
+- **Drive:** la v1 se mandó a la papelera y la v2 ocupa su lugar, con el mismo
+  nombre.
