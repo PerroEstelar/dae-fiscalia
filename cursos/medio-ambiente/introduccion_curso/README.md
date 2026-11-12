@@ -71,13 +71,27 @@ de este video.
   - Cada ítem está en el cuadro y con la duración del plan.
   - El último cartón termina en el 5861 y el clip en el 5866.
 
-## Entrega
+## Entrega (en MP4, como quedó acordado)
 
-- **Disco:** `05 EXPORTS/delitosambientales - CURSO - INTRODUCCION-v1.mov`.
-  - Formato: H.264 High, 1920×1080, 23,976.
-  - Son 6.275 cuadros, los mismos que la línea, y pesa 189 MB.
-  - El audio mide −16,1 LUFS, con pico −2,9 dBTP. No hizo falta el limitador.
-  - No hay cuadros negros. Los dos silencios son los cartones de título, como en
-    las introducciones.
+Primero se subió un `.mov` H.264 de 6 Mb/s, el formato que se había copiado de
+los exports a mano de la U1. Sebastián: «¿por qué lo subiste en .mov? Quedamos
+en subir mp4 sin pérdida». Se rehízo con la receta de
+`Entrega_MP4_Fiscalia_Receta.md` (`herramientas/montaje/ic_mp4.py`):
+
+1. **Máster:** Resolve, MP4 / H.264 NVIDIA, `VideoQuality` 80000, AAC.
+   Queda en `05 EXPORTS/_master/…_master_32mbps.mp4` (985 MB).
+2. **Entrega:** x264 CRF 18, `preset slow`, `tune animation`, High L4.0,
+   keyint 48, el audio copiado, `+faststart` y Rec.709 etiquetado.
+
+- **Archivo:** `05 EXPORTS/delitosambientales - CURSO - INTRODUCCION-v1.mp4`.
+  - Formato: H.264 High L4.0, 1920×1080, 23,976.
+  - Son 6.275 cuadros, los mismos que la línea, y pesa 191 MB.
+  - Audio AAC 48 kHz estéreo, −16,1 LUFS, pico −2,9 dBTP.
+  - PSNR contra el máster: 48,9 dB de media y 43,6 de mínimo. Por encima de 40
+    ya no se distingue.
+- **Lo demás que se midió:** no hay cuadros negros. Los dos silencios son los
+  cartones de título, igual que en las introducciones.
+- **El `.mov`:** quedó en `05 EXPORTS/_descartes`, y el de Drive se mandó a la
+  papelera.
 - **Drive:** curso → `VIDEOS/VIDEOS UNIDADES/videos exportados`, junto a las
   introducciones de unidad.
