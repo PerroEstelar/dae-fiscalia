@@ -30,7 +30,9 @@ introducciones de esta docente:
 Los tiempos son segundos de la fuente (sin cortes). En la línea:
 cuadro = 409 + round(t · 23,976). Textos verbatim de la transcripción (Scribe), sin
 muletillas. Se corrigió «afecciones» por «afectaciones» (U2) y el nombre del curso
-va como en el cartón de título (ella dice «delitos con el medio ambiente»).
+va como en el cartón de título (ella dice «delitos con el medio ambiente»). Los
+rótulos de las listas de AE son las palabras de ella recortadas para que la lista
+quepa en la caja (cima ≥ 250): con los rótulos enteros llegaban a la y=94.
 """
 
 CLIP0 = 409
@@ -79,6 +81,11 @@ def c_unidad(n, titulo, cuerpo=None):
     return c_ante('Unidad %d' % n, titulo, cuerpo)
 
 
+def c_cuerpo(t):
+    # una frase larga sola, en mediana: con título encima se salía de la caja (cima < 250)
+    return [(t, 'med', CUE, 0)]
+
+
 def c_suelta(t):
     return [(t, 'bold', SUELTA, 0)]
 
@@ -91,16 +98,14 @@ ITEMS = [
     ('lt01', 'lt', 0.6, 10.4, PROFE),
     ('c01_bienvenida', 'carton', 21.0, 31.8, c_ante('Bienvenida al curso', NOMBRE_CURSO)),
     ('m01_experiencia', 'mg_lista', 34.6, 52.2, lista(
-        'Con la experiencia',
-        ('mazo', 'Fiscal especializada en el sistema penal oral acusatorio', 37.94),
+        'Experiencia',
+        ('mazo', 'Fiscal especializada', 37.94),
         ('mundo', 'Asesora legal en proyectos de cooperación internacional', 40.28),
-        ('libro_ley', 'Formulación de políticas públicas en política criminal y justicia '
-                      'transicional', 45.02))),
-    ('c02_proposito', 'carton', 78.2, 96.9, c_tit(
-        'Tiene como propósito',
-        'Fortalecer los conocimientos y las herramientas para comprender y abordar desafíos que '
-        'plantea la investigación y judicialización de las conductas que afectan el medio ambiente '
-        'y los recursos naturales en Colombia.')),
+        ('libro_ley', 'Política criminal y justicia transicional', 48.40))),
+    ('c02_proposito', 'carton', 78.2, 96.9, c_cuerpo(
+        'Tiene como propósito fortalecer los conocimientos y las herramientas para comprender y '
+        'abordar desafíos que plantea la investigación y judicialización de las conductas que '
+        'afectan el medio ambiente y los recursos naturales en Colombia.')),
     ('c03_cinco', 'carton', 97.6, 103.1, c_suelta('Cinco unidades')),
     ('c04_u1', 'carton', 103.3, 113.8, c_unidad(
         1, 'Los desafíos del derecho penal ambiental', 'Y su relación con la Constitución Ecológica.')),
@@ -111,12 +116,11 @@ ITEMS = [
         'Con especial atención a',
         ('mineria', 'La extracción ilícita de minerales', 124.22),
         ('tala', 'La deforestación', 127.38),
-        ('grupos', 'Las afectaciones ambientales asociadas a grupos armados organizados', 129.16))),
-    ('c06_u3', 'carton', 135.4, 141.4, c_unidad(
+        ('grupos', 'Afectaciones asociadas a grupos armados organizados', 129.16))),
+    ('c06_u3', 'carton', 135.4, 144.9, c_unidad(
         3, 'Estrategias y técnicas de investigación en los delitos ambientales')),
-    ('m03_u3', 'mg_lista', 141.5, 155.0, lista(
+    ('m03_u3', 'mg_lista', 145.0, 155.0, lista(
         None,
-        ('binoculares', 'La dirección de la investigación', 141.7),
         ('lupa_doc', 'Hechos jurídicamente relevantes', 145.76),
         ('huella', 'Procedimientos de policía judicial', 148.36),
         ('red', 'La investigación en contexto', 151.16),
@@ -128,16 +132,14 @@ ITEMS = [
         5, 'Las terminaciones anticipadas del proceso penal',
         'Y sus particularidades en el contexto de la criminalidad ambiental.')),
     ('m04_recorrido', 'mg_lista', 186.4, 206.2, lista(
-        'Que este recorrido les permita',
+        'Este recorrido les permita',
         ('libros', 'Profundizar en sus conocimientos', 188.9),
-        ('bombilla', 'Reflexionar sobre los retos que enfrenta la investigación de los delitos '
-                     'ambientales', 191.54),
-        ('engranaje', 'Fortalecer sus capacidades para abordar estos fenómenos', 197.94))),
-    ('c09_invito', 'carton', 206.4, 221.7, c_tit(
-        'Les invito',
-        'A participar activamente en todas las actividades propuestas, aprovechar los recursos de '
-        'aprendizaje y relacionar todos los contenidos con los desafíos que se encuentran en el '
-        'ejercicio de sus funciones.')),
+        ('bombilla', 'Reflexionar sobre los retos de la investigación', 191.54),
+        ('engranaje', 'Fortalecer sus capacidades', 197.94))),
+    ('c09_invito', 'carton', 206.4, 221.7, c_cuerpo(
+        'Les invito a participar activamente en todas las actividades propuestas, aprovechar los '
+        'recursos de aprendizaje y relacionar todos los contenidos con los desafíos que se '
+        'encuentran en el ejercicio de sus funciones.')),
     ('c10_bienvenidos', 'carton', 221.9, 227.4, [
         ('Les deseo muchísimos éxitos en este proceso', 'med', ANTE, 0),
         ('Bienvenidos y bienvenidas', 'bold', SUELTA, GAP_ANTE)]),

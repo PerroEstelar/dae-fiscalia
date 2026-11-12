@@ -2125,3 +2125,19 @@ después del export, no antes.
   3. un solo `creations_finalize_upload` con `uploads`.
 
   Son tres llamadas por tanda en vez de tres por imagen.
+
+## Scribe puede devolver basura con un mp3 (introducción al curso DA, 12 nov 2026)
+
+La transcripción del video de presentación del curso volvió con
+`language_probability` 1,0 y `language_code` spa, pero eran 141 «palabras» en
+chino, ruso e inglés para 3:47 de voz. El audio estaba bien: el espectrograma
+era de habla y el ebur128 daba −18,9 LUFS. La entrada era un mp3 mono a
+44,1 kHz y 96 kb/s, la misma receta de siempre.
+
+Con el mismo audio en WAV mono a 16 kHz (`pcm_s16le`) salió bien a la primera:
+430 palabras.
+
+- **No basta con la probabilidad.** Antes de usar una transcripción se mira el
+  número de palabras contra la duración (unas 2 por segundo) y se leen las
+  primeras líneas.
+- **Para Scribe, WAV a 16 kHz.**

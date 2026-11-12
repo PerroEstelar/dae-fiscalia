@@ -1,5 +1,9 @@
 # Delitos contra el medio ambiente: introducciones de unidad (MA)
 
+> La **introducción al curso** (la presentación del curso con la misma docente,
+> 12 nov 2026) está en `introduccion_curso/`: línea `MA - CURSO - INTRODUCCION`,
+> export `delitosambientales - CURSO - INTRODUCCION-v1.mov`.
+
 Son cinco videos. En cada uno, la docente (Diana Carolina) presenta su unidad a
 cámara. Las líneas están en Resolve: proyecto `DAE MASTER - CURSOS`, bin
 `CURSO 2 - DELITOS CONTRA EL MEDIO AMBIENTE/UNIDAD n`, con el nombre
