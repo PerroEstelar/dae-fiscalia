@@ -1300,6 +1300,9 @@ def revisar(L):
     marcas += [('V2', pos + largo // 2) for pos, largo, _ in v2]
     marcas += [('V3', pos + largo // 2) for pos, largo, _ in v3]
     marcas += [('V8', pos + 60) for pos, largo, _ in v8]
+    # 12 nov (Nico): las listas de AE, con todas sus filas ya entradas
+    v5 = motion(L)
+    marcas += [('V5', a + n * 3 // 4) for a, n, _ in v5]
     marcas.sort(key=lambda x: x[1])
     hoja = Image.new('RGB', (4 * 480, ((len(marcas) + 3) // 4) * 270), (20, 20, 20))
     d = ImageDraw.Draw(hoja)
@@ -1312,7 +1315,7 @@ def revisar(L):
         d.text((x + 6, y + 4), '%s %d' % (k, q), fill=(255, 255, 0))
     hp = os.path.join(TMP, 'revision_%s_v%d.jpg' % (L, VERSION))
     hoja.save(hp, quality=85)
-    w('hoja', hp, ' V2 %d  V3 %d  V8 %d' % (len(v2), len(v3), len(v8)))
+    w('hoja', hp, ' V2 %d  V3 %d  V5 %d  V8 %d' % (len(v2), len(v3), len(v5), len(v8)))
 
 
 def inicios(L):

@@ -2082,3 +2082,33 @@ export se copia tal cual (`-c:v copy`) y el audio se rehace con un limitador a
 El export crudo va a `_descartes`. Para una pieza de profe hablando, que no
 lleva música, dejar el compuesto en −3 dBTP no alcanza: el techo se garantiza
 después del export, no antes.
+
+## Caso Nico (SRPA, 12 nov 2026): cinco cosas nuevas
+
+- **AE se abre con un script, no con aftr.** aftr no tiene `openProject`. Lo
+  que funciona es `AfterFX.exe -r abrir.jsx`, y el jsx abre el proyecto con
+  `app.open(f)` **solo si `app.project.dirty` es falso**. Así no aparece
+  ningún diálogo de guardar y no se pierde nada de lo que Sebastián tenga
+  abierto. Escribe el resultado en un txt. Si el proyecto está sucio, se le
+  pide a él.
+- **Las listas de aerender salen premultiplicadas.** ProRes 4444 «High Quality
+  with Alpha»: leído como alfa directo, el tinte del panel sale navy, al lado
+  del azul de los cartones. En Resolve el clip lleva
+  `SetClipProperty('Alpha mode', 'Premultiplied')`, y `sr_pieza.construye` lo
+  fija.
+- **Kling corre el acento.** En la r45 la mostaza del buzo salió naranja desde
+  el cuadro 0. `mov_sr` mide el acento del cuadro 0 contra el de la placa
+  graduada; si se va más de 4°, gira todo el clip al tono de la placa.
+  También iguala la saturación media del clip a la de la placa (×0,8–0,97).
+- **Caminata hacia cámara a 10 s: pasan la cámara.** En la r42 (el patrullero
+  y Nico) a los 4 s ya habían pasado y el pasillo quedaba vacío. En la r43 el
+  defensor da media vuelta a los 3 s. La ventana útil era de 3 s para
+  ranuras de 215–262 cuadros, así que se quedaron con la cámara de la casa.
+  Una ranura larga de caminata no se resuelve con Kling.
+- **Los JPEG de Kling se suben en tanda.** Va así:
+  1. `creations_request_upload` con `count` (hasta 100);
+  2. PUT con curl desde la nube, leyendo las URL del transcripto
+     (`/home/claude/sr/put.py`, sin copiarlas a mano);
+  3. un solo `creations_finalize_upload` con `uploads`.
+
+  Son tres llamadas por tanda en vez de tres por imagen.
