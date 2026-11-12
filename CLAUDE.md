@@ -948,6 +948,18 @@ recibe el contenido incrustado en la llamada y los renders pesan de 50 a 190 MB.
 
 ## Los ajustes de render de la serie
 
+> **CORRECCIÓN (Sebastián, 12 nov 2026: «¿por qué lo subiste en .mov? Quedamos
+> en subir mp4 sin pérdida»).** Lo que se entrega es **MP4**, con la receta de
+> `Entrega_MP4_Fiscalia_Receta.md` (proyecto de claude.ai, 23 oct):
+> 1. máster de archivo MP4 / H.264 NVIDIA a `VideoQuality` 80000 (~32 Mb/s) con AAC;
+> 2. x264 CRF 18, `preset slow`, `tune animation`, High L4.0, keyint 48,
+>    `-c:a copy` y `+faststart`.
+>
+> Ya lo hacen `sr_pieza.exportar` + `entregas` y `herramientas/montaje/ic_mp4.py`.
+> El `.mov` de 6.000 kb/s de abajo es el formato de los exports a mano de la U1
+> de medio ambiente y de TA. Se copió a los videos de profes (SRPA, entrevista
+> TE, conversatorio DEMA, introducciones MA) y **no es la entrega**.
+
 QuickTime `.mov`, H.264 **High**, 1920×1080, 23,976, tope de **6.000 kb/s** de
 video, audio AAC 48 kHz estéreo. Medidos sobre los exports que hizo él a mano.
 
