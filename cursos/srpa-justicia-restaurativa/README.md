@@ -124,3 +124,61 @@ profes.
 
 - **Caso Nico** (U1, principio de culpabilidad): `casos/nico/README.md`.
   Receta: `herramientas/montaje/sr_pieza.py`.
+
+## Inicio y cierre del curso (13 nov 2026)
+
+Sebastián pidió «el video de inicio y cierre de curso srpa», con el formato de
+profe a cámara y en la misma línea.
+
+### Inicio
+
+Es el mismo `Inicio Curso.mp4` del 11 nov (mismo archivo, 368.437.056 bytes):
+la presentación del curso, que ya estaba hecha. Se había entregado como
+`srpa - CURSO - PRESENTACION-v2.mov`. Sebastián eligió reentregarlo en MP4.
+
+- La línea `SRPA - CURSO - PRESENTACION` se revisó antes de rendir:
+  - el compuesto v2, sin medios fuera de línea;
+  - V1 entera a 1:1;
+  - ningún gráfico con zoom.
+- Se rindió con `herramientas/montaje/mp4_entrega.py`, que es `ic_mp4` sin plan:
+  la línea, la carpeta y el nombre van por argumento. El máster midió −1,4 dBTP,
+  así que el audio se copió.
+
+### Cierre (`cc`)
+
+- **Fuente:** Drive, curso → `VIDEOS/UNIDADES/srpa-cierre-curso.mp4`.
+  - Formato: 7:25, 1280×720 a 30 fps, AAC 44,1 kHz dual-mono a −18,9 LUFS.
+  - Profe: Estanislao Escalante Barreto («les habló en este caso Estanislao
+    Escalante»).
+  - Transcripción: Scribe sobre WAV a 16 kHz. Son 1.165 palabras, una sola voz.
+  - Disco: `CIERRE DEL CURSO\` con las carpetas de siempre.
+- **Ventana propia.** El profe está centrado y cerca de la cámara.
+  - Se midió en 178 cuadros, con el fondo calculado como la mediana. El borde
+    izquierdo de la cabeza va de x 416 (p2) a 470 (p50), y los hombros empiezan
+    en y≈460.
+  - Con la ventana de los otros videos (1143×643 desde x=12) la cabeza entraba
+    en la caja.
+  - Va 1024×576 desde (0, 40), ×1,875. La cabeza queda desde x≈810 y los hombros
+    bajo y=720.
+  - Este fondo no trae el filete blanco. El panel DAE/Fiscalía entra entero.
+- **Audio v2** (`srpa_audio.py`): −16,0 LUFS, pico −1,5 dBTP, LRA 2,1.
+- **Cartón de título:** «Cierre del curso» (`titulo_srpa.py cc`), en
+  `carton titulo srpa cierre curso.mp4`.
+- **Gráficos.** Son 27 y cubren el 68 % de la caja:
+  - 2 lower thirds;
+  - 16 cartones verbatim, a 9–15 car/s, con la cima en 385 o más;
+  - 9 tarjetas y listas de AE.
+- **Medición antes de rendir.** Las listas se midieron primero. Cuatro se subían
+  de la zona:
+  - la del segundo lugar, a 236;
+  - «Hemos encontrado», a 249;
+  - la de justicia restaurativa, a 39;
+  - la del hurto de comida, a 204.
+
+  Quedaron entre 259 y 401, sin título o con sus palabras recortadas.
+- **AE:** si After Effects no está abierto, se arranca solo `AfterFX.exe` y se
+  espera a que cargue. Después se manda `ae_abrir.jsx` con `-r`, y por último
+  se levanta el controlador de aftr (`node controller/src/server.js` en
+  `C:\Users\call_\aftr`), y el panel se conecta solo.
+  - Lanzar `AfterFX.exe -r script` con AE cerrado lo dejó colgado y se cerró
+    sin abrir el proyecto.
