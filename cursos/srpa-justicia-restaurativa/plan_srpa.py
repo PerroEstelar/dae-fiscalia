@@ -702,6 +702,9 @@ ITEMS['u5c'] = [
 # transcripción de Scribe (`D:\DAE\_tmp\srpa\cc\stt_full.json`, WAV a 16 kHz,
 # 1.165 palabras, una sola voz). Se quitan las muletillas y las repeticiones, y
 # se corrige la concordancia de «se gestionan la delincuencia» → «se gestiona».
+# Las listas se midieron antes de rendir (cima ≥ 250): la m01 va sin título,
+# la m03 y la m04 con los rótulos recortados a sus palabras y la m06 con el
+# hurto en el antetítulo.
 ITEMS['cc'] = [
     ('lt01', 'lt', 3.9, 12.8, S.ESTANISLAO),
     ('c01_viejas', 'carton', 25.7, 35.2, cita(
@@ -714,7 +717,7 @@ ITEMS['cc'] = [
         'Elementos normativos, constitucionales, filosóficos que nos permiten comprender la ley de '
         'infancia y adolescencia de otra manera.')),
     ('m01_segundo', 'mg_lista', 56.5, 73.1, lista(
-        'En segundo lugar',
+        None,
         ('edificio', 'Las autoridades', 57.7),
         ('personas', 'Los enfoques diferenciales', 58.9),
         ('escudo', 'Cómo prevenir la delincuencia juvenil', 64.6),
@@ -744,7 +747,7 @@ ITEMS['cc'] = [
         'Hemos encontrado',
         ('candado', 'Celdas de aislamiento y celdas de castigo', 167.0),
         ('curita', 'Castigo físico y castigos académicos', 172.7),
-        ('balanza', 'Circunstancias que rayan en tratos crueles, inhumanos e injustos', 178.5))),
+        ('balanza', 'Tratos crueles, inhumanos e injustos', 178.5))),
     ('c10_valoracion', 'carton', 195.5, 204.9, cita(
         'Debemos hacer una valoración muy seria de lo que es el sistema, cómo funciona el sistema y '
         'para quién funciona el sistema.')),
@@ -752,8 +755,7 @@ ITEMS['cc'] = [
         'Una justicia restaurativa que permita',
         ('dialogo', 'Resolver los conflictos sociales', 215.6),
         ('libros', 'Materializar el principio pedagógico', 221.9),
-        ('familia', 'Adolescente, familia, sociedad y víctimas hacen parte del proceso', 223.8),
-        ('mano_corazon', 'Restablecimiento de derechos y reparación de daños', 232.1))),
+        ('mano_corazon', 'Reparación de daños', 232.1))),
     ('c11_judicializacion', 'carton', 235.7, 242.8, cita(
         'Evitemos a toda costa la judicialización de los adolescentes que terminan involucrados en '
         'un círculo vicioso.')),
@@ -763,7 +765,7 @@ ITEMS['cc'] = [
         'Sufrió injustamente una privación de la libertad y la responsabilidad penal por un hecho que '
         'seguramente podía no haber sido punible.')),
     ('m06_comida', 'mg_act', 276.4, 291.0, act(
-        'plato', 'Aprendamos de los casos', 'Un adolescente que hurtaba comida para subsistir',
+        'plato', 'Un adolescente que hurtaba comida', None,
         'No tuvo nunca la ayuda del Estado, la sociedad y la familia: la culpabilidad allí debería '
         'verse disminuida.')),
     ('c13_reproche', 'carton', 291.2, 304.0, cita(
