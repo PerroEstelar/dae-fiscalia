@@ -14,6 +14,9 @@ principio y al final, igual que en las líneas de Resolve.
 **El cierre:**
 
 - Viene en 1280×720 a 24 fps.
+- Termina con una tarjeta de «Gemini Notebook», 3,5–4 s en silencio. Sebastián
+  pidió quitarla («sí, quítala de las 5»). `inicio_tarjeta` encuentra el corte
+  seco a esa tarjeta, y el cierre termina un cuadro antes.
 - Se escala a 1920×1080 con lanczos (Rec.709 de entrada y de salida).
 - Se pasa a 23,976 con `fps`, que descarta un cuadro cada ~42 s; en diapositivas
   no se nota y el sonido no se mueve.
@@ -93,13 +96,48 @@ def medir(p):
     return dict(re.findall(r'(I|LRA|Peak):\s+(-?[\d.]+)', r[r.rfind('Summary'):]))
 
 
+def inicio_tarjeta(p, dur):
+    """Segundo en que entra la tarjeta final de «Gemini Notebook».
+
+    Es un corte seco desde la última diapositiva a una tarjeta clara y quieta
+    (luma media ~227) que dura hasta el final. El score de escena del corte va
+    de 0,15 (U3, diapositiva casi blanca) a 0,38: el umbral es 0,08 y vale el
+    último corte, siempre que lo que sigue sea la tarjeta quieta.
+    """
+    t0 = max(0.0, dur - 12)
+    r = subprocess.run([FB + '/ffmpeg.exe', '-hide_banner', '-ss', '%.3f' % t0, '-i', p, '-an', '-vf',
+                        "select='gte(scene,0)',signalstats,metadata=print:file=-", '-f', 'null', '-'],
+                       capture_output=True, text=True, errors='replace').stdout
+    filas = []
+    for linea in r.splitlines():
+        if linea.startswith('frame:'):
+            filas.append({'t': t0 + float(linea.split('pts_time:')[1]), 's': 0.0, 'y': 0.0})
+        elif 'scene_score' in linea:
+            filas[-1]['s'] = float(linea.split('=')[1])
+        elif 'YAVG' in linea:
+            filas[-1]['y'] = float(linea.split('=')[1])
+    cortes = [i for i, f in enumerate(filas) if f['s'] > 0.08]
+    if not cortes:
+        raise SystemExit('no encuentro la tarjeta final en ' + p)
+    i = cortes[-1]
+    yf = filas[-1]['y']
+    if yf < 215 or any(abs(f['y'] - yf) > 4 for f in filas[i:]):
+        raise SystemExit('lo que sigue al último corte no es la tarjeta quieta (%s)' % p)
+    return filas[i]['t']
+
+
 def largo_cierre(p):
-    """Cuadros del cierre a 23,976: los que caben en el más corto de video y audio."""
+    """Cuadros del cierre a 23,976, sin la tarjeta final de Gemini Notebook.
+
+    Termina un cuadro (de 24) antes de la tarjeta, para que el `fps` no la
+    alcance al redondear al cuadro más cercano.
+    """
     j = sonda(p)
     v = [s for s in j['streams'] if s['codec_type'] == 'video'][0]
     a = [s for s in j['streams'] if s['codec_type'] == 'audio'][0]
     dur = min(float(v['duration']), float(a['duration']))
-    return int(dur * 24000 / 1001)
+    fin = inicio_tarjeta(p, dur) - 1.0 / 24
+    return int(fin * 24000 / 1001), fin, dur
 
 
 def cadena_cierre(n):
@@ -114,8 +152,10 @@ def armar(u):
         w('U%d ya existe %s' % (u, dst))
         return
     os.makedirs(os.path.dirname(dst), exist_ok=True)
-    n = largo_cierre(src)
-    intro = ('[{i}:v]trim=end_frame=%d,setpts=PTS-STARTPTS,setsar=1,format=yuv420p[{k}v];'
+    n, fin, dur = largo_cierre(src)
+    w('U%d  la tarjeta de Gemini Notebook entra en el %.3f s de %.3f: se quitan %.2f s' % (
+        u, fin + 1.0 / 24, dur, dur - fin))
+    intro =('[{i}:v]trim=end_frame=%d,setpts=PTS-STARTPTS,setsar=1,format=yuv420p[{k}v];'
              '[{i}:a]aresample=48000,apad,atrim=end_sample=%d,asetpts=PTS-STARTPTS[{k}a]'
              % (N_INTRO, N_INTRO * MUESTRAS))
     fc = ';'.join([intro.format(i=0, k='i0'), cadena_cierre(n), intro.format(i=2, k='i2'),

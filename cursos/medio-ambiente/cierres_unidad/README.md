@@ -18,7 +18,11 @@ En Drive van a la carpeta de los cierres, dentro de una carpeta nueva
 - **Qué son:** videos de diapositivas animadas con voz en off.
   - Formato: 1280×720 a 24 fps, Rec.709, AAC 44,1 kHz mono.
   - Empiezan en el título de la unidad («Unidad 3: Investigación»).
-  - Terminan en una pregunta, con unos 3,9 s de silencio.
+  - Terminan en una pregunta. Después, en silencio, viene una tarjeta de
+    **«Gemini Notebook»** de 3 s. La diapositiva entra con un corte seco y
+    queda quieta hasta el final.
+  - Todas las diapositivas llevan esa marca, chiquita, abajo a la derecha. Está
+    quemada en la imagen y no se toca.
   - No traen intro ni outro propios.
 
 | Unidad | Largo | Sonoridad | Pico |
@@ -42,6 +46,19 @@ pegar tres clips.
 - **Intro y outro:** son los primeros 194 cuadros (8,09 s) de
   `00 COMUNES\INTRO\FGN_intro_version7.mp4`. Van al principio y al final, igual
   que en las líneas de las introducciones.
+- **La tarjeta de Gemini Notebook se quita.**
+  - La primera tanda la dejaba, por el «solo eso». Al verla, Sebastián pidió
+    «sí, quítala de las 5».
+  - `inicio_tarjeta` busca el último corte de escena de los 12 s finales y
+    comprueba que lo que sigue sea la tarjeta quieta, con luma media de ~227.
+  - El score del corte va de 0,15 a 0,38. La U3 es la más baja porque su última
+    diapositiva es casi blanca. Por eso el umbral es 0,08.
+  - El cierre termina un cuadro antes de la tarjeta, para que el `fps` no la
+    alcance al redondear.
+  - Se quitan 3,04–3,08 s por unidad. La voz termina unos 0,9 s antes, así que
+    la última diapositiva respira un poco antes del outro.
+  - La primera tanda quedó en `05 EXPORTS\_descartes` como
+    «… con tarjeta Gemini.mp4». Las copias de Drive se mandaron a la papelera.
 - **Imagen del cierre:**
   - Se escala a 1920×1080 con lanczos, en Rec.709 de entrada y de salida.
   - Pasa de 24 a 23,976 con `fps`: se descarta un cuadro cada ~42 s. En
