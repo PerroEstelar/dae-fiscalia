@@ -2187,3 +2187,38 @@ la misma cadena. Dio 53–55 dB.
   `\r` y el filtro no encuentra nada. Un proceso colgado de la tanda vieja volvió
   a copiar la U2 a `_MA subidas` después de que Drive la había quitado, y Drive
   la subió como archivo nuevo.
+
+## Un profe centrado necesita su propia ventana (cierre del curso SRPA, 13 nov 2026)
+
+La ventana de los videos de profes (1143×643 desde x=12) supone que el profe ya
+está corrido a la derecha. En el cierre del curso de SRPA, Estanislao está
+centrado y cerca de la cámara, y con esa ventana la cabeza caía dentro de la caja
+de cartones (x 62–790).
+
+- **Se mide antes de elegir.** Se toman 178 cuadros, uno cada 2,5 s, a media
+  resolución. El fondo es la mediana por píxel: el profe casi nunca está a la
+  izquierda, y ahí la mediana es el fondo virtual. Por cada fila, el borde
+  izquierdo de la persona es la primera corrida de 8 píxeles que difiere más de
+  60 del fondo. Se leen p2, p10 y p50 por fila.
+- **La ventana sale de los números.**
+  - La cabeza iba de x 416 (p2) a 470 (p50), y los hombros empezaban en y≈460.
+  - Con 1024×576 desde (0, 40), ×1,875, la cabeza queda desde x≈810 (p10) y
+    los hombros bajo y=720.
+  - El panel DAE/Fiscalía del fondo entra entero.
+  - Se puede arrancar en x=0 porque este fondo no trae el filete blanco: hay
+    que mirarlo en cada video.
+- **Va por tramo:** `srpa.TRAMOS['cc'] = [(0.0, None, (0, 40, 1024, 576))]`. No
+  hace falta código nuevo.
+
+## AE cerrado: primero se abre, después el script, después aftr
+
+`AfterFX.exe -r ae_abrir.jsx` con After Effects cerrado escribió la primera línea
+del log («existe true sucio false») y el proceso se cerró sin abrir el proyecto.
+Lo que funciona:
+
+1. Arrancar `AfterFX.exe` solo y esperar a que cargue: pasa de ~140 MB a ~1 GB.
+2. Mandar `-r ae_abrir.jsx`, que abre el `.aep` porque el proyecto sin título no
+   está sucio.
+3. Levantar el controlador de aftr (`node controller/src/server.js` en
+   `C:\Users\call_\aftr`). El panel de AE se conecta solo: el log dice
+   «Panel connected».

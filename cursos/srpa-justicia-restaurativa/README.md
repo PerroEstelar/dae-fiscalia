@@ -182,3 +182,27 @@ la presentación del curso, que ya estaba hecha. Se había entregado como
   `C:\Users\call_\aftr`), y el panel se conecta solo.
   - Lanzar `AfterFX.exe -r script` con AE cerrado lo dejó colgado y se cerró
     sin abrir el proyecto.
+
+### Entregas (MP4, receta del 23 oct, `mp4_entrega.py`)
+
+| archivo | cuadros | sonido | pico | PSNR medio / mínimo | peso |
+|---|---|---|---|---|---|
+| `PRESENTACION DEL CURSO/05 EXPORTS/srpa - CURSO - PRESENTACION-v2.mp4` | 22.903 = línea | −16,0 LUFS | −1,4 dBTP | 49,2 / 44,2 dB | 641 MB |
+| `CIERRE DEL CURSO/05 EXPORTS/srpa - CURSO - CIERRE-v1.mp4` | 11.494 = línea | −16,1 LUFS | −1,5 dBTP | 48,6 / 44,2 dB | 390 MB |
+
+- **Audio:** en las dos se copió del máster, porque no pasaba de −1 dBTP.
+- **Cierre, hojas de revisión** (`D:\DAE\_tmp\srpa\rev\cc.jpg` y `cc_zoom.png`):
+  - En los recortes a tamaño real, el texto termina en x≈773 y la cara empieza
+    en x≈840–920.
+  - El título «Cierre del curso» y el outro entran enteros.
+  - No hay cuadros negros. Los silencios son los dos cartones de título.
+- **Cierre, línea:** `SRPA - CURSO - CIERRE`, con su `.drt` en `10 TIMELINE SEBASTIAN`.
+- **Drive** (curso → `VIDEOS FINALIZADOS`):
+  - el inicio, en «presentación del curso». El `.mov` v2 se mandó a la papelera,
+    y en disco quedó en `05 EXPORTS/_descartes`;
+  - el cierre, en la carpeta nueva «cierre del curso».
+- **`srpa_revision.py`:**
+  - lee el MP4 si existe;
+  - el último cuadro del outro pasó a +180, porque con un `-ss` en los últimos
+    cuadros ffmpeg no devuelve nada;
+  - si falta un cuadro, la hoja lo salta.

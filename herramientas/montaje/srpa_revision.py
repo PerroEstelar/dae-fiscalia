@@ -77,7 +77,7 @@ def hoja(clave):
         a, b = P.cuadro(clave, t0), P.cuadro(clave, t1)
         marcas.append((item, (a + b) // 2))
     marcas += [('cierre', fin_clip + 30), ('cierre', fin_clip + 120), ('cierre', fin_clip + 200),
-               ('outro', fin_clip + 215 + 60), ('outro', fin_clip + 215 + 150), ('outro', fin_clip + 215 + 190)]
+               ('outro', fin_clip + 215 + 60), ('outro', fin_clip + 215 + 150), ('outro', fin_clip + 215 + 180)]
     os.makedirs(REV + '/tmp', exist_ok=True)
     col = 6
     filas = (len(marcas) + col - 1) // col
@@ -86,9 +86,12 @@ def hoja(clave):
     fn = ImageFont.truetype(os.path.expanduser('~') + '/AppData/Local/Microsoft/Windows/Fonts/Montserrat-Medium.ttf', 18)
     for i, (nm, fr) in enumerate(marcas):
         p = '%s/tmp/%s_%03d.png' % (REV, clave, i)
+        if os.path.exists(p):
+            os.remove(p)
         cuadro(f, fr / FPS, p)
         x, y = (i % col) * 480, (i // col) * 300
-        out.paste(Image.open(p), (x, y))
+        if os.path.exists(p):           # un -ss en los últimos cuadros puede no devolver nada
+            out.paste(Image.open(p), (x, y))
         d.text((x + 6, y + 274), '%s  %d' % (nm, fr), font=fn, fill='white')
     dst = '%s/%s.jpg' % (REV, clave)
     out.save(dst, quality=82)
