@@ -2153,3 +2153,37 @@ Con el mismo audio en WAV mono a 16 kHz (`pcm_s16le`) salió bien a la primera:
   número de palabras contra la duración (unas 2 por segundo) y se leen las
   primeras líneas.
 - **Para Scribe, WAV a 16 kHz.**
+
+## Pegar intro y outro a un video ajeno: ffmpeg, no Resolve (cierres de unidad DA, 13 nov 2026)
+
+Los cierres de unidad de Delitos ambientales eran videos de diapositivas de
+Gemini Notebook a 1280×720 y 24 fps, y solo llevaban nuestra intro y nuestro
+outro. `herramientas/montaje/cierres_unidad.py` lo hace en una sola
+codificación con la receta de entrega:
+
+- escala a 1080 con lanczos en Rec.709;
+- `fps=24000/1001`;
+- audio a 48 kHz dual-mono;
+- concat con los 194 cuadros del intro en los dos extremos.
+
+Es una generación menos que el máster de Resolve y no hace falta armar líneas.
+La verificación es por PSNR del tramo del cierre contra la fuente escalada con
+la misma cadena. Dio 53–55 dB.
+
+- **Los videos de Gemini Notebook terminan con una tarjeta de la marca**, de 3 s
+  y en silencio. Sebastián la mandó a quitar. `inicio_tarjeta` la encuentra por
+  el último corte de escena. Si la última diapositiva es casi blanca, el score
+  del corte baja a 0,15, así que el umbral es 0,08 más la comprobación de que
+  lo que sigue es la tarjeta quieta.
+- **Un cuadro a 23,976 son 2002 muestras a 48 kHz.** Cortando video y audio en
+  esas unidades, los dos quedan del mismo largo exacto y el concat no
+  desincroniza.
+- **Un `-ss` en el último cuadro de un archivo no devuelve nada.** Con `xstack`,
+  esa entrada vacía deja a ffmpeg sin salida y con código 0, o colgado. La hoja
+  toma `total-12` como último cuadro y escribe con `-update 1`.
+- **Antes de rehacer una tanda, se mata todo lo de la anterior.** Hay que pasar
+  `taskkill /T` por PID, sacando los PID de
+  `wmic … get ProcessId,CommandLine /format:csv`, porque la salida `list` trae
+  `\r` y el filtro no encuentra nada. Un proceso colgado de la tanda vieja volvió
+  a copiar la U2 a `_MA subidas` después de que Drive la había quitado, y Drive
+  la subió como archivo nuevo.

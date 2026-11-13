@@ -75,5 +75,48 @@ pegar tres clips.
 
 ## Entrega
 
-Pendiente: se completa con la verificación de cada unidad (cuadros, sonido, PSNR
-contra la fuente escalada y hoja de empalmes).
+**Archivos:** `05 EXPORTS\unidad n cierre intro-outro.mp4`.
+
+- Windows no acepta la «/» del nombre que pidió Sebastián, así que se usó un
+  guion.
+- Formato: H.264 High L4.0, 1920×1080, 23,976, Rec.709, AAC 48 kHz estéreo.
+
+| Unidad | Cuadros | Largo | Peso | Sonoridad | Pico | PSNR medio / mínimo |
+|---|---|---|---|---|---|---|
+| 1 | 10.855 | 7:32,7 | 127 MB | −16,5 LUFS | −0,2 dBTP | 53,4 / 42,4 dB |
+| 2 | 13.336 | 9:16,2 | 100 MB | −16,2 LUFS | +0,1 dBTP | 54,8 / 47,8 dB |
+| 3 | 9.666 | 6:43,2 | 66 MB | −18,9 LUFS | −0,1 dBTP | 55,4 / 49,2 dB |
+| 4 | 11.795 | 8:12,0 | 99 MB | −16,3 LUFS | 0,0 dBTP | 54,3 / 45,5 dB |
+| 5 | 10.682 | 7:25,5 | 85 MB | −18,4 LUFS | −0,4 dBTP | 54,7 / 42,2 dB |
+
+- **Cuadros:** son 194 de intro, más los del cierre, más 194 de outro. Coinciden
+  en las cinco.
+- **Audio:** dura lo mismo que el video, al milisegundo.
+- **PSNR:** se midió el tramo del cierre contra la fuente escalada con la misma
+  cadena. Por encima de 40 dB ya no se distingue.
+- **Sonido:** el nivel es el de la fuente.
+  - La U3 y la U5 quedan unos 2 LU por debajo de las otras.
+  - Los picos rondan los 0 dBTP, como en los originales.
+  - No se niveló porque no se pidió. Si se pide, es un paso de loudnorm.
+- **Hoja de empalmes** (`D:\DAE\_tmp\ma\cu\rev2_un.png`): cada una tiene diez
+  cuadros.
+  - La intro arranca y termina en blanco.
+  - Después va el título de la unidad.
+  - La última diapositiva pasa directo al outro, sin la tarjeta de Gemini.
+- **Drive:** los cierres están en `1YeYJfdz6Kdg80Mo5TOnenBklzROuezBB`, en la
+  carpeta `VIDEOS EXPORTADOS` (`1NTcuKQJmFcqMQXLT-f8n99muflcJx7_L`).
+  - La subida pasó por `G:\My Drive\_MA subidas`, y de ahí se movieron con
+    `update_file`.
+  - Las copias de las fuentes que habían quedado en `_MA subidas` se mandaron a
+    la papelera.
+
+**Una trampa de la subida.** Un proceso de revisión de la primera tanda quedó
+colgado y no se mató a tiempo. Cuando Drive borró la copia local de la U2, ya
+movida, ese proceso la volvió a copiar a `_MA subidas`, y Drive la subió como un
+archivo nuevo.
+
+- Antes de copiar con el mismo nombre, hay que matar con `taskkill /T` todo lo
+  que quede de la tanda anterior.
+- Después hay que buscar duplicados en `_MA subidas`.
+- `rehacer.py` espera a que el nombre desaparezca de la carpeta local antes de
+  copiar.
