@@ -17,6 +17,7 @@ su fondo, su barra y su marca APRENDE CON LA DAE tomados de los cuadros de
     python titulo_srpa.py medir         alto del bloque y renglones de cada cartón
     python titulo_srpa.py               los cinco: curso, U1, U3, U4, U5
     python titulo_srpa.py 0 3           solo esos (0 = curso)
+    python titulo_srpa.py cc            el cierre del curso («Cierre del curso», 13 nov 2026)
 """
 import os
 import subprocess
@@ -70,7 +71,10 @@ def partir(texto, font, maxw):
 
 def maqueta(u):
     """Renglones [(texto, fuente, color, base, mascara, tipo)] centrados en la barra."""
-    sub = 'Presentación del curso' if u == 0 else 'Unidad %d. %s' % (u, S.UNIDADES[u])
+    if u == 'cc':
+        sub = 'Cierre del curso'
+    else:
+        sub = 'Presentación del curso' if u == 0 else 'Unidad %d. %s' % (u, S.UNIDADES[u])
     subs = partir(sub, F_SUB, SUB_MAXW)
     asc_t = -F_TIT.getbbox('Ád', anchor='ls')[1]      # alto sobre la base (con tilde)
     desc_s = F_SUB.getbbox('gjpq', anchor='ls')[3]
@@ -138,6 +142,8 @@ def capa(renglones, pals, r, n):
 
 
 def destino(u):
+    if u == 'cc':
+        return S.titulo_carton('cc')
     if u == 0:
         return '%s/PRESENTACION DEL CURSO/02 CARTONES/carton titulo srpa curso.mp4' % S.RAIZ
     return '%s/UNIDAD %d/02 CARTONES/carton titulo srpa u%d.mp4' % (S.RAIZ, u, u)
@@ -184,5 +190,5 @@ if __name__ == '__main__':
     if sys.argv[1:2] == ['medir']:
         medir()
     else:
-        for u in [int(x) for x in sys.argv[1:]] or [0, 1, 3, 4, 5]:
+        for u in [x if x == 'cc' else int(x) for x in sys.argv[1:]] or [0, 1, 3, 4, 5]:
             rendir(u)

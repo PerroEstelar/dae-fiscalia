@@ -30,11 +30,15 @@ FPS = P.FPS
 
 
 def export(clave):
-    """El export de versión más alta que haya en 05 EXPORTS."""
+    """El export de versión más alta que haya en 05 EXPORTS. La entrega es MP4
+    (receta del 23 oct); si una versión solo existe en .mov, se toma el .mov."""
+    def ruta(n):
+        base = '%s/05 EXPORTS/%s' % (S.carpeta(clave), S.nombre_export(clave, n))
+        return base + '.mp4' if os.path.exists(base + '.mp4') else base + '.mov'
     n = 1
-    while os.path.exists('%s/05 EXPORTS/%s.mov' % (S.carpeta(clave), S.nombre_export(clave, n + 1))):
+    while os.path.exists(ruta(n + 1)):
         n += 1
-    return '%s/05 EXPORTS/%s.mov' % (S.carpeta(clave), S.nombre_export(clave, n))
+    return ruta(n)
 
 
 def sonda(f):
@@ -61,7 +65,7 @@ def cuadro(f, seg, out):
 
 def largo_clip(clave):
     return float(subprocess.run([FB + '/ffprobe.exe', '-v', 'error', '-show_entries', 'format=duration', '-of',
-                                 'csv=p=0', S.compuesto(clave)], capture_output=True, text=True).stdout)
+                                 'csv=p=0', S.compuesto_final(clave)], capture_output=True, text=True).stdout)
 
 
 def hoja(clave):

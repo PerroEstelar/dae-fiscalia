@@ -16,7 +16,9 @@ conversatorio DEMA y DECOC (`dema_linea.py`):
 - V2 CARTONES: el cartón de título 194–409 y los cartones de caja.
 - V3 MOTION GRAPHICS: las composiciones de After Effects (alfa premultiplicado).
 - V4 LOWER THIRD.
-- A1 VIDEO: el audio del intro, del clip (ya a −19 LUFS) y del outro.
+- A1 VIDEO: el audio del intro, del clip y del outro. El clip es el compuesto
+  con el audio v2 si ya existe (`srpa.compuesto_final`); las siete líneas del
+  11 nov entraron con el v1 y pasaron al v2 con `ReplaceClip`.
 """
 import os
 import sys
@@ -70,7 +72,7 @@ def archivo(clave, item, tipo):
 
 
 def importar(clave):
-    lotes = {'01 VIDEO': [S.compuesto(clave)], '02 CARTONES': [S.titulo_carton(clave)], '09 MOTION GRAPHICS': []}
+    lotes = {'01 VIDEO': [S.compuesto_final(clave)], '02 CARTONES': [S.titulo_carton(clave)], '09 MOTION GRAPHICS': []}
     for item, tipo, *_ in P.ITEMS[clave]:
         lotes['09 MOTION GRAPHICS' if tipo.startswith('mg') else '02 CARTONES'].append(archivo(clave, item, tipo))
     pool = {}
@@ -132,8 +134,8 @@ def construir(clave):
     poner(tl, intro, 1, 0, tipo=2, src_fin=INTRO_DUR)
     titulo = pool[S.titulo_carton(clave)]
     poner(tl, titulo, 2, TIT_INI, tipo=1)
-    clip = poner(tl, pool[S.compuesto(clave)], 1, P.CLIP0, tipo=1)
-    poner(tl, pool[S.compuesto(clave)], 1, P.CLIP0, tipo=2)
+    clip = poner(tl, pool[S.compuesto_final(clave)], 1, P.CLIP0, tipo=1)
+    poner(tl, pool[S.compuesto_final(clave)], 1, P.CLIP0, tipo=2)
     fin = clip.GetEnd() - tl.GetStartFrame()
     # El cierre y el outro van a 1:1. El zoom 1,16 / pan 145 que traía la plantilla
     # de Delitos ambientales recortaba los títulos, la marca y el outro (Sebastián,

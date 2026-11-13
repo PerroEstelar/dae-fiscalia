@@ -695,3 +695,103 @@ ITEMS['u5c'] = [
         'la sanción impuesta.')),
     ('lt02', 'lt', 1055.4, 1063.0, S.CARLOS),
 ]
+
+# --------------------------------------------------------------------------
+# Cierre del curso — Estanislao Escalante Barreto (7:25). Pedido del 13 nov 2026.
+# Va a la ventana propia de `srpa.TRAMOS['cc']`. Los textos salen de la
+# transcripción de Scribe (`D:\DAE\_tmp\srpa\cc\stt_full.json`, WAV a 16 kHz,
+# 1.165 palabras, una sola voz). Se quitan las muletillas y las repeticiones, y
+# se corrige la concordancia de «se gestionan la delincuencia» → «se gestiona».
+ITEMS['cc'] = [
+    ('lt01', 'lt', 3.9, 12.8, S.ESTANISLAO),
+    ('c01_viejas', 'carton', 25.7, 35.2, cita(
+        'Quitando todas esas viejas ideas del menor como un sujeto criminal, como un sujeto '
+        'peligroso o en situación irregular.')),
+    ('c02_sujeto', 'carton', 35.4, 47.3, cita(
+        'Un adolescente como sujeto de derechos, a quien se le debe escuchar y se le debe permitir '
+        'participar en la construcción social de su propia realidad.')),
+    ('c03_normativos', 'carton', 47.6, 56.2, cita(
+        'Elementos normativos, constitucionales, filosóficos que nos permiten comprender la ley de '
+        'infancia y adolescencia de otra manera.')),
+    ('m01_segundo', 'mg_lista', 56.5, 73.1, lista(
+        'En segundo lugar',
+        ('edificio', 'Las autoridades', 57.7),
+        ('personas', 'Los enfoques diferenciales', 58.9),
+        ('escudo', 'Cómo prevenir la delincuencia juvenil', 64.6),
+        ('libros', 'Los principios pedagógicos, educativos y restaurativos', 68.8))),
+    ('c04_no_merece', 'carton', 73.4, 83.2, cita(
+        'La infancia y la adolescencia no merece la privación de la libertad por el solo hecho de '
+        'la comisión de una conducta.')),
+    ('c05_tipica', 'carton', 83.4, 93.0, cita(
+        'Esa conducta, al igual que en adultos, debe ser típica, antijurídica y culpable para que '
+        'merezca una sanción privativa de la libertad.')),
+    ('c06_circulo', 'carton', 94.3, 106.9, cita(
+        'Debemos preferir otro tipo de medidas que eviten que los adolescentes entren en ese '
+        'círculo vicioso que es la privación de la libertad y la criminalización de la pobreza.')),
+    ('m02_estratos', 'mg_act', 113.0, 127.4, act(
+        'torta', 'Los jóvenes privados de la libertad', 'Estratos 1 y 2',
+        'En muy poca medida, estrato 3. Nunca encontramos jóvenes de estrato 4, 5 o 6.')),
+    ('c07_gestiona', 'carton', 128.3, 136.3, cita(
+        'No es porque allí no se cometa el delito, sino porque se gestiona el conflicto social de '
+        'una manera distinta.')),
+    ('c08_vulnerables', 'carton', 136.6, 147.2, cita(
+        'Un sistema que está diseñado de cierta manera para criminalizar casi siempre a los más '
+        'vulnerables.')),
+    ('c09_carceles', 'carton', 147.6, 162.9, cita(
+        'Centros de privación de la libertad que funcionan como si fueran cárceles de adultos, pero '
+        'donde se priva la libertad a menores de edad.')),
+    ('m03_encontrado', 'mg_lista', 163.3, 184.5, lista(
+        'Hemos encontrado',
+        ('candado', 'Celdas de aislamiento y celdas de castigo', 167.0),
+        ('curita', 'Castigo físico y castigos académicos', 172.7),
+        ('balanza', 'Circunstancias que rayan en tratos crueles, inhumanos e injustos', 178.5))),
+    ('c10_valoracion', 'carton', 195.5, 204.9, cita(
+        'Debemos hacer una valoración muy seria de lo que es el sistema, cómo funciona el sistema y '
+        'para quién funciona el sistema.')),
+    ('m04_restaurativa', 'mg_lista', 212.8, 235.4, lista(
+        'Una justicia restaurativa que permita',
+        ('dialogo', 'Resolver los conflictos sociales', 215.6),
+        ('libros', 'Materializar el principio pedagógico', 221.9),
+        ('familia', 'Adolescente, familia, sociedad y víctimas hacen parte del proceso', 223.8),
+        ('mano_corazon', 'Restablecimiento de derechos y reparación de daños', 232.1))),
+    ('c11_judicializacion', 'carton', 235.7, 242.8, cita(
+        'Evitemos a toda costa la judicialización de los adolescentes que terminan involucrados en '
+        'un círculo vicioso.')),
+    ('c12_reflexion', 'carton', 259.4, 263.7, cita('Que haya dejado elementos para su reflexión.')),
+    ('m05_ipanema', 'mg_act', 266.7, 276.2, act(
+        'carpeta', 'Aprendamos de los casos', 'Ipanema',
+        'Sufrió injustamente una privación de la libertad y la responsabilidad penal por un hecho que '
+        'seguramente podía no haber sido punible.')),
+    ('m06_comida', 'mg_act', 276.4, 291.0, act(
+        'plato', 'Aprendamos de los casos', 'Un adolescente que hurtaba comida para subsistir',
+        'No tuvo nunca la ayuda del Estado, la sociedad y la familia: la culpabilidad allí debería '
+        'verse disminuida.')),
+    ('c13_reproche', 'carton', 291.2, 304.0, cita(
+        '¿Cómo exigirle un comportamiento conforme a la norma o hacerle un juicio de reproche cuando '
+        'la familia, el Estado y la sociedad no le han dado nada?')),
+    ('c14_iniciativa', 'carton', 325.7, 336.4, cita(
+        'Que haya despertado en ustedes una iniciativa por comprender mejor los derechos y la '
+        'situación de la infancia y la adolescencia en este país.')),
+    ('m07_por_fuera', 'mg_lista', 341.0, 352.9, lista(
+        'Resolver su conflicto',
+        ('puerta_salida', 'Por fuera de la cárcel', 345.2),
+        ('candado', 'Por fuera de la privación de la libertad', 346.4),
+        ('libro_ley', 'Por fuera de las medidas restrictivas de derechos', 349.1))),
+    ('c15_verdaderas', 'carton', 359.5, 367.7, cita(
+        'Si visitamos los centros de internamiento, veremos que algunos son verdaderas cárceles para '
+        'infancia y adolescencia.')),
+    ('m08_llamado', 'mg_lista', 367.9, 386.4, lista(
+        'Mi llamado de atención',
+        ('ojo', 'Evitemos los eufemismos', 370.8),
+        ('libro_ley', 'Que la ley de infancia y adolescencia se materialice', 373.1),
+        ('bifurcacion', 'Hay alternativas para la solución del conflicto social', 381.5))),
+    ('m09_invitamos', 'mg_lista', 387.6, 405.0, lista(
+        'Los invitamos',
+        ('doc_check', 'A hacer la evaluación del curso', 388.7),
+        ('lista', 'A responder la encuesta', 393.2),
+        ('birrete', 'A obtener su respectiva certificación', 401.8))),
+    ('c16_privilegio', 'carton', 412.5, 421.3, cita(
+        'Es un verdadero privilegio haber podido hacer parte de este proceso de formación y haber '
+        'podido contarles nuestro pensamiento.')),
+    ('lt02', 'lt', 426.5, 436.6, S.ESTANISLAO),
+]

@@ -28,6 +28,8 @@ nombre genérico del sistema (así lo escribe el artículo 139 de la Ley 1098),
 no un título.
 """
 
+import os
+
 CURSO_NOMBRE = 'Sistema de responsabilidad penal para adolescentes y justicia restaurativa'
 CURSO_LINEAS = ['Sistema de responsabilidad penal para', 'adolescentes y justicia restaurativa']
 
@@ -75,6 +77,12 @@ VIDEOS = {
             'original': 'Unidad 4 - cierre.mp4', 'profe': CARLOS, 'xy': (12, 40), 'ganancia': -4.9},
     'u5c': {'carpeta': 'UNIDAD 5/CIERRE', 'unidad': 5, 'tipo': 'CIERRE',
             'original': 'Unidad 5 - cierre.mp4', 'profe': CARLOS, 'xy': (12, 40), 'ganancia': -3.1},
+    # Cierre del curso (pedido del 13 nov 2026): Drive, curso → VIDEOS/UNIDADES,
+    # `srpa-cierre-curso.mp4`. 7:25, Estanislao («les habló en este caso
+    # Estanislao Escalante»). Original a −18,9 LUFS, dual-mono. La ventana es otra:
+    # ver TRAMOS.
+    'cc': {'carpeta': 'CIERRE DEL CURSO', 'unidad': 0, 'tipo': 'CIERRE',
+           'original': 'srpa-cierre-curso.mp4', 'profe': ESTANISLAO, 'xy': (0, 40), 'ganancia': -0.1},
 }
 
 # Tramos de la fuente que se quedan, en segundos. Un tramo puede llevar su propia
@@ -86,9 +94,17 @@ VIDEOS = {
 #        para que el salto se lea como cambio de plano.
 #   u3d: al final el profe le habla al técnico («Profe, ¿me escucha?»). Se corta
 #        después de «Muchas gracias.».
+#   cc:  en el cierre del curso el profe está centrado y cerca de la cámara.
+#        Medido sobre 178 cuadros (fondo = mediana): el borde izquierdo de la
+#        cabeza va de x 416 (p2) a 470 (p50) en la fuente, y los hombros empiezan
+#        en y≈460. Con 1024×576 desde (0, 40) (×1,875) la cabeza queda desde
+#        x≈810 (p10) y los hombros bajo y=720, fuera de la caja (x 62–790,
+#        y 250–720). El panel DAE/Fiscalía del fondo entra entero (x 238–1116,
+#        y 22–219). Este fondo no trae el filete blanco: se puede empezar en x=0.
 TRAMOS = {
     'u1b': [(0.0, 256.55, None), (277.10, 303.80, (150, 110, 920, 518)), (303.80, None, None)],
     'u3d': [(0.0, 2363.0, None)],
+    'cc': [(0.0, None, (0, 40, 1024, 576))],
 }
 
 
@@ -116,16 +132,26 @@ def compuesto(clave):
     return '%s/01 VIDEO/SRPA_%s_compuesto_v1.mp4' % (carpeta(clave), clave)
 
 
+def compuesto_final(clave):
+    """El compuesto con el audio v2 (`srpa_audio.py`) si ya existe; si no, el v1."""
+    v2 = compuesto(clave).replace('_compuesto_v1.mp4', '_compuesto_v2.mp4')
+    return v2 if os.path.exists(v2) else compuesto(clave)
+
+
 def subtitulo(clave):
     u = VIDEOS[clave]['unidad']
+    if clave == 'cc':
+        return 'Cierre del curso'
     if u == 0:
         return 'Presentación del curso'
     return 'Unidad %d. %s' % (u, UNIDADES[u])
 
 
 def titulo_carton(clave):
-    """El cartón de título es uno por unidad (y uno del curso)."""
+    """El cartón de título es uno por unidad, uno de la presentación y uno del cierre del curso."""
     u = VIDEOS[clave]['unidad']
+    if clave == 'cc':
+        return '%s/02 CARTONES/carton titulo srpa cierre curso.mp4' % carpeta(clave)
     if u == 0:
         return '%s/02 CARTONES/carton titulo srpa curso.mp4' % carpeta(clave)
     return '%s/UNIDAD %d/02 CARTONES/carton titulo srpa u%d.mp4' % (RAIZ, u, u)
