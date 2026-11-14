@@ -2222,3 +2222,130 @@ Lo que funciona:
 3. Levantar el controlador de aftr (`node controller/src/server.js` en
    `C:\Users\call_\aftr`). El panel de AE se conecta solo: el log dice
    «Panel connected».
+
+## La ventana se mide también hacia abajo: el mentón (Bienes, 14 nov 2026)
+
+En la introducción del curso de Bienes el profe está centrado, muy cerca de la
+cámara, y a ratos se inclina hacia ella. Se probaron tres ventanas:
+
+1. **960×540 desde (0, 40), ×2.** Era la que pedía el perfil de la cabeza (borde
+   izquierdo por fila) para dejar libre la caja de cartones. Cortaba la cara por
+   la boca.
+2. **1143×643 desde (0, 40), ×1,68, la estándar.** Termina en y=683 de la
+   fuente. Se llegó a entregar una v1. En la hoja de revisión, cuando el profe
+   se inclina (c10, 5:59), el mentón se salía del cuadro. La fuente no lo
+   cortaba: lo cortábamos nosotros.
+3. **1198×674 desde (0, 46), ×1,60.** Es la que quedó. Llega hasta y=720, el
+   borde inferior de la fuente, así que no corta nada que la fuente no corte.
+   El panel DAE/Fiscalía (y 52–157) entra entero, a 10 px del borde superior.
+
+Lo que queda de regla:
+
+- **La ventana no puede cortar por abajo más que la fuente** cuando el profe
+  está cerca: `y0 + alto = 720`, con `y0 ≤ 52` para que entre el panel. Eso da
+  un alto ≥ 668 y un ancho ≥ 1188.
+- **Antes de componer, una prueba con la caja dibujada** en varios cuadros,
+  incluidos los momentos en que se inclina. El perfil mide el borde izquierdo,
+  no el mentón.
+- **Si la caja y la cara no caben, se angosta la columna; no se corta la cara.**
+  El plan puede traer:
+  - `MAXW`: el ancho del texto de cartones y listas (estándar 615);
+  - `LT = (px del nombre, ancho del cargo)`: el lower third (estándar 48 y 900).
+  `ic_pieza.ajustes()` los aplica a `cartones_ma`, `mg_ma` y `cartones_srpa`.
+  En la introducción de Bienes quedó `MAXW` = 470 y `LT` = (40, 520).
+- **Se simula antes de rendir.** Se dibujan el cartón más ancho y el lower third
+  sobre nueve cuadros compuestos, con las mismas fuentes
+  (`cartones_ma.componer` y los textos del plan).
+- **Con la columna angosta las listas de cuatro filas no llevan título.** Cada
+  fila entra en dos renglones como mucho: los rótulos son de 386 px, unos 18
+  caracteres por renglón.
+- **Una entrega descartada no se pisa.** La v1 quedó en `_descartes` (cartones,
+  listas, compuesto, entrega, `.drt`), el máster en `D:\DAE\_masters_archivo`,
+  y la línea de Resolve renombrada «… (ventana 1143, descartada)». Los archivos
+  nuevos llevan otro prefijo (`BI2_`), para que Resolve no confunda los clips.
+
+## Renglones equilibrados en los cartones (`balanceo.py`)
+
+El corte voraz de `componer` deja palabras solas abajo («Conclusión de la unidad
+/ 3»). Los títulos en negrita a 46 px tienen unos 22 caracteres por renglón y les
+pasa mucho.
+
+`herramientas/cartones/balanceo.py` reparte las palabras en la misma cantidad de
+renglones, lo más parejos posible: minimiza la suma de los cuadrados de lo que
+cada renglón se aparta del largo medio. Los planes de Bienes lo usan en `cita`,
+`c_tit`, `c_ante` y `c_suelta`, con un trozo por renglón y gap 0 entre ellos.
+- El alto no cambia, así que la cima medida sigue valiendo.
+- Un `\n` en el texto fuerza un párrafo («Medidas cautelares\ncon fines de…»).
+- La primera versión minimizaba solo el renglón más largo. Dejaba primeros
+  renglones de dos palabras («La adecuada / gestión de los bienes…»). Se vio en
+  la hoja de revisión y se cambió; los 18 cartones del cierre que cambiaban se
+  rindieron de nuevo.
+
+## Un máster que no entra en E:
+
+El cierre de Bienes dura 43 min: el máster de 32 Mb/s pesa ~10 GB y E: tenía 8 GB.
+- `mp4_entrega.py … <carpeta del máster>` lo manda a
+  `D:\DAE\_masters_archivo\…` y deja un `LEER` en `05 EXPORTS\_master`.
+- Para tener aire se movió `E:\DAE MASTER\_tmp_movido_de_D` (8,9 GB) a
+  `D:\DAE\_masters_archivo\` con robocopy `/MOVE`. Quedó un `LEER` en su lugar.
+- Los motion graphics en ProRes 4444 pesan ~7 MB/s. Hay que sumarlos antes de
+  rendir: en el cierre fueron ~640 s, unos 4,5 GB.
+
+## El plano cerrado de un corte se revisa cuadro a cuadro (cierre de Bienes, 14 nov 2026)
+
+En el cierre de Bienes hay un arranque en falso. Se cortó, y la frase repetida iba
+entera en un plano más cerrado (1024×576 desde (96, 40)) para disimular el salto.
+En el último segundo de esa frase el profe baja la cabeza, y el mentón se salía del
+plano cerrado. En el plano abierto entraba.
+
+- **El plano cerrado tiene menos margen abajo** (termina en y=616 de la fuente) y
+  no se puede bajar: el panel DAE/Fiscalía tiene que entrar entero.
+- **Se mira todo el tramo, a 4 cuadros por segundo**, antes de dar por bueno el
+  corte. Una prueba en un solo cuadro no alcanza.
+- **El plano cerrado termina donde el profe todavía está derecho**, en una pausa
+  entre palabras. Quedó de 2498,7 a 2503,35: «La adecuada intervención
+  patrimonial no consiste simplemente en».
+- **`ic_pieza.py reimagen <compuesto anterior>`** rehace solo la imagen con los
+  `TRAMOS` nuevos y copia el audio del compuesto anterior. El audio no depende de
+  la ventana, y así no se repiten las dos pasadas de loudnorm.
+- **Scribe sobre 60 s del compuesto** confirma que el corte quedó limpio: la
+  frase sale una sola vez.
+
+## La última fila de una lista queda al menos 4 s
+
+Cuando el profe enumera rápido, la última fila entra cerca del final de la frase.
+Si la lista termina con la frase, esa fila dura 2 s y no se lee.
+
+- En los planes de Bienes se midió `fin − entrada de la última fila` en cada
+  lista. Las que daban menos de 4 s se alargaron sobre la frase siguiente, y el
+  cartón que seguía entra más tarde.
+- En el cierre, la lista final (cinco filas en 8 s) se queda hasta «…durante este
+  proceso de aprendizaje». El lower third va después, sobre la despedida.
+
+## Una línea larga se arma con `ic_linea_externa.py`
+
+`run_inline` corta a los 58 s y mata el proceso. Con 30 ítems la importación al
+pool ya llega a ese límite; con 117 no termina.
+
+`herramientas/montaje/ic_linea_externa.py` se conecta a Resolve con
+`DaVinciResolveScript` y ejecuta `ic_linea.py` igual que `run_inline`, pero
+lanzado con `Popen`, sin límite. La línea del cierre de Bienes (122 clips) se
+armó en 60 s.
+
+## El lower third también se mide contra la persona (cierre de Bienes, 14 nov 2026)
+
+El lower third estándar (nombre a 48 px, cargo de hasta 900 px de ancho) llega a
+x≈1020. En el cierre de Bienes el profe se inclina a la izquierda en los
+primeros segundos y «Penal», la última palabra del primer renglón del cargo, le
+tocaba el mentón. Se vio en los cuadros a tamaño completo de la primera entrega,
+no en la hoja de contactos.
+
+- **Antes de rendir un lower third, simularlo sobre ocho cuadros limpios** del
+  compuesto, repartidos en los segundos en que va a estar en pantalla. Un cuadro
+  solo no alcanza: el profe se mueve.
+- Con `LT = (44, 560)` el cargo va en tres renglones y termina en x≈690; el
+  nombre termina en x≈790. Queda libre de la cara y casi libre del saco.
+- **Un clip que se rehace con el mismo largo lleva otro nombre** (`lt01_v2`).
+  En la línea se borran los dos ítems viejos y se ponen los nuevos en el mismo
+  cuadro (`DeleteClips` + `AppendToTimeline`); `revisar` confirma que todo lo
+  demás quedó igual.
