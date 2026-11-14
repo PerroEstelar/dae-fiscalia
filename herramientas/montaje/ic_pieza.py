@@ -11,6 +11,7 @@ el plan de `DAE_PLAN`: `introduccion_curso/plan_ic.py` (por defecto) o
 
     python ic_pieza.py prueba 20     un cuadro compuesto en el segundo 20 de la fuente
     python ic_pieza.py componer      clip compuesto (video + audio v2)
+    python ic_pieza.py reimagen <compuesto anterior>   solo la imagen; el audio, del anterior
     python ic_pieza.py titulo        cartón de entrada y salida
     python ic_pieza.py medir         alto, cima y car/s de cada cartón, sin rendir
     python ic_pieza.py cartones      cartones y lower third
@@ -95,6 +96,40 @@ def componer():
                         'ebur128=peak=true', '-f', 'null', '-'], capture_output=True, text=True, errors='replace').stderr
     print('COMPUESTO  original I %s LRA %s  ->' % (m['input_i'], m['input_lra']),
           ' '.join(r[r.rfind('Summary'):].split())[:300], flush=True)
+
+
+def reimagen(previo):
+    """Recompone solo la imagen, con las ventanas de `P.TRAMOS`, y toma el audio de un
+    compuesto anterior del mismo corte. Sirve cuando solo cambia una ventana: el audio v2
+    (dos pasadas de loudnorm) ya estaba hecho y no depende de la imagen.
+
+    En el cierre de Bienes el plano cerrado de la frase repetida duraba hasta 2507,9 y en
+    su último segundo el profe baja la cabeza: el mentón se salía del cuadro. Se acortó a
+    2503,35 y se rehízo la imagen así."""
+    import srpa_composicion as K
+    if os.path.exists(P.COMPUESTO):
+        raise SystemExit('ya existe ' + P.COMPUESTO)
+    fin = K.duracion(P.ORIGINAL)
+    g = tramos_vf(K, fin)
+    os.makedirs(P.TMP, exist_ok=True)
+    tmp = '%s/%s_imagen.mp4' % (P.TMP, os.path.splitext(os.path.basename(P.COMPUESTO))[0])
+    subprocess.run([K.FB + '/ffmpeg.exe', '-y', '-v', 'error', '-i', P.ORIGINAL, '-filter_complex',
+                    g + ';[vc]format=yuv420p[v];[ac]anullsink', '-map', '[v]', '-r', '30',
+                    '-c:v', 'libx264', '-crf', '16', '-preset', 'fast', '-pix_fmt', 'yuv420p',
+                    '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709',
+                    '-f', 'mp4', tmp], check=True)
+    subprocess.run([K.FB + '/ffmpeg.exe', '-y', '-v', 'error', '-i', tmp, '-i', previo,
+                    '-map', '0:v', '-map', '1:a', '-c', 'copy', '-movflags', '+faststart', '-f', 'mp4',
+                    P.COMPUESTO + '.parcial'], check=True)
+    os.replace(P.COMPUESTO + '.parcial', P.COMPUESTO)
+
+    def cuenta(x, sel):
+        r = subprocess.run([K.FB + '/ffprobe.exe', '-v', 'error', '-count_packets', '-select_streams', sel,
+                            '-show_entries', 'stream=nb_read_packets,duration', '-of', 'csv=p=0', x],
+                           capture_output=True, text=True).stdout.split()
+        return r[0] if r else '?'
+    print('REIMAGEN  imagen %s (antes %s)  audio %s (antes %s)' % (
+        cuenta(P.COMPUESTO, 'v'), cuenta(previo, 'v'), cuenta(P.COMPUESTO, 'a'), cuenta(previo, 'a')), flush=True)
 
 
 def titulo():
@@ -232,6 +267,8 @@ if __name__ == '__main__':
         cartones(sys.argv[2:])
     elif sys.argv[1] == 'prueba':
         prueba(sys.argv[2])
+    elif sys.argv[1] == 'reimagen':
+        reimagen(sys.argv[2])
     else:
         {'componer': componer, 'titulo': titulo, 'medir': medir, 'mg_armar': mg_armar,
          'mg_render': mg_render}[sys.argv[1]]()

@@ -18,11 +18,17 @@ de apoyo y gráficos de AE.
 **Un arranque en falso.** En 2493,1 dice «La adecuada intervención patrimonial…», se
 detiene y la repite entera en 2499,0.
 - Se cortan 6,3 s (2492,4 → 2498,7) con `TRAMOS`.
-- La frase repetida va en un plano más cerrado (ventana 1024×576 desde (96, 40),
-  ×1,875) hasta 2507,9. Eso disimula el salto y subraya la frase.
-- El panel DAE/Fiscalía entra entero también en ese plano.
+- El comienzo de la frase repetida («La adecuada intervención patrimonial no consiste
+  simplemente en») va en un plano más cerrado: ventana 1024×576 desde (96, 40),
+  ×1,875, hasta 2503,35. Eso disimula el salto y subraya la frase.
+  - La primera composición lo llevaba hasta el final de la frase (2507,9). En su
+    último segundo el profe baja la cabeza y el mentón se salía de ese plano. Se
+    acortó y se rehízo la imagen (`ic_pieza reimagen`); el audio es el mismo.
+  - El plano cerrado no puede bajar más: el panel DAE/Fiscalía tiene que entrar entero.
 - En el corte de audio hay fundidos de 15 ms.
-- Ese tramo no lleva gráficos.
+- De 2492,4 a 2507,9 no hay gráficos.
+- Scribe sobre el compuesto confirma la frase limpia: «…una reflexión final
+  fundamental. La adecuada intervención patrimonial no consiste simplemente en…».
 - Los tiempos del plan son de la fuente; `cuadro` los pasa a la línea descontando
   el corte.
 
@@ -81,7 +87,7 @@ CURSO = 'E:/DAE MASTER/CURSO 5 - Bienes en el proceso penal'
 R = CURSO + '/CIERRE DEL CURSO'
 BIN = ['C5 BIENES EN EL PROCESO PENAL', 'CIERRE DEL CURSO']
 ORIGINAL = R + '/01 VIDEO/bienes_cierre_curso.mp4'
-COMPUESTO = R + '/01 VIDEO/BC_compuesto_v1.mp4'
+COMPUESTO = R + '/01 VIDEO/BC_compuesto_v2.mp4'      # v1: plano cerrado hasta 2507,9, en _descartes
 TITULO = R + '/02 CARTONES/carton titulo bienes cierre del curso.mp4'
 TITULO_BASE = None
 CURSO_LINEAS = ['Bienes en el proceso penal']
@@ -97,8 +103,9 @@ ICONOS = CURSO + '/00 MOTION GRAPHICS/iconos'
 MASTER_DIR = 'D:/DAE/_masters_archivo/CURSO 5 - Bienes en el proceso penal/CIERRE DEL CURSO'
 
 CORTE = (2492.4, 2498.7)              # arranque en falso de «La adecuada intervención patrimonial…»
-PLANO_CERRADO = (96, 40, 1024, 576)   # la frase repetida, hasta 2507,9
-TRAMOS = [(0.0, CORTE[0], None), (CORTE[1], 2507.9, PLANO_CERRADO), (2507.9, None, None)]
+PLANO_CERRADO = (96, 40, 1024, 576)   # el comienzo de la frase repetida
+FIN_CERRADO = 2503.35                 # antes de «identificar, incautar…»: después baja la cabeza
+TRAMOS = [(0.0, CORTE[0], None), (CORTE[1], FIN_CERRADO, PLANO_CERRADO), (FIN_CERRADO, None, None)]
 
 ANCHO = 615                # ancho de la columna de texto de los cartones (cartones_ma.MAXW)
 NOMBRE_CURSO = 'Bienes en el proceso penal'
@@ -567,7 +574,7 @@ ITEMS = [
         ('balanza', 'Función, prueba y finalidad', 2460.1),
         ('mazo', 'Medida, competencias y controles', 2468.8),
         ('casa_lote', 'Conservación y destinación', 2479.7))),
-    # 2492,4–2507,9: el corte y el plano cerrado, sin gráficos
+    # 2492,4–2507,9: el corte, el plano cerrado y el final de la frase, sin gráficos
     ('c81_consiste', 'carton', 2508.2, 2520.8, c_tit(
         'La adecuada intervención patrimonial',
         'Consiste en decisiones jurídicamente fundamentadas, probatoriamente sustentadas y '
