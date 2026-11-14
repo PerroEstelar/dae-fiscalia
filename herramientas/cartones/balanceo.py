@@ -7,7 +7,7 @@ caracteres por renglón) eso deja muchas veces una palabra sola abajo («Conclus
 la unidad / 3», «¿Qué se hace con los / bienes…»).
 
 `piezas` reparte las palabras en la misma cantidad de renglones que el corte voraz,
-pero con el renglón más largo lo más corto posible. Devuelve un trozo por renglón,
+pero parejos: lo más cerca posible del largo medio. Devuelve un trozo por renglón,
 con el formato de las líneas de `componer`: `(texto, peso, px, gap)`, donde el
 primero lleva el gap pedido y los demás 0. Así `componer` los apila con el mismo
 interlineado y no los vuelve a cortar.
@@ -51,8 +51,9 @@ def voraz(texto, peso, px, ancho):
 
 
 def equilibrar(texto, peso, px, ancho):
-    """Los renglones del corte voraz, repartidos para que el más largo sea el más corto
-    posible (y, a igual máximo, con el último renglón lo más lleno posible)."""
+    """Los renglones del corte voraz, repartidos para que queden parejos: se minimiza la
+    suma de los cuadrados de lo que cada renglón se aparta del largo medio. (Minimizar
+    solo el renglón más largo dejaba a veces un primer renglón de dos palabras.)"""
     k = len(voraz(texto, peso, px, ancho))
     ws = texto.split()
     if k <= 1:
@@ -66,17 +67,18 @@ def equilibrar(texto, peso, px, ancho):
             largo[(i, j)] = _d.textlength(' '.join(ws[i:j]), font=f)
         return largo[(i, j)]
 
-    # mejor[(i, r)] = (máximo, -último, cortes) para ws[i:] en r renglones
-    mejor = {}
+    medio = lw(0, n) / k
+    mejor = {}      # (i, r) -> (costo, cortes) para ws[i:] en r renglones
 
     def resolver(i, r):
         if (i, r) in mejor:
             return mejor[(i, r)]
+        res = None
         if r == 1:
             x = lw(i, n)
-            res = (x, -x, [n]) if x <= ancho else None
+            if x <= ancho:
+                res = ((x - medio) ** 2, [n])
         else:
-            res = None
             for j in range(i + 1, n - r + 2):
                 x = lw(i, j)
                 if x > ancho:
@@ -84,9 +86,9 @@ def equilibrar(texto, peso, px, ancho):
                 sub = resolver(j, r - 1)
                 if sub is None:
                     continue
-                cand = (max(x, sub[0]), sub[1], [j] + sub[2])
-                if res is None or cand[:2] < res[:2]:
-                    res = cand
+                costo = (x - medio) ** 2 + sub[0]
+                if res is None or costo < res[0]:
+                    res = (costo, [j] + sub[1])
         mejor[(i, r)] = res
         return res
 
@@ -94,7 +96,7 @@ def equilibrar(texto, peso, px, ancho):
     if sol is None:
         return voraz(texto, peso, px, ancho)
     out, i = [], 0
-    for j in sol[2]:
+    for j in sol[1]:
         out.append(' '.join(ws[i:j]))
         i = j
     return out

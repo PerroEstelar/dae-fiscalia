@@ -35,31 +35,38 @@ mismas herramientas: `ic_pieza`, `ic_linea`, `ic_revision` y `mp4_entrega`, con
   (`CURSO_LINEAS`, `titulo_srpa.rendir_fijo`) sobre el mismo fondo, la misma barra y
   la misma marca.
 - **AE:** las comps van en su propio proyecto, `00 MOTION GRAPHICS/BIENES_intros_mg.aep`.
-- **Ventana:** 1143×643 desde (0, 40), ×1,68. Es la estándar, la misma del cierre.
-  - El profe está centrado y muy cerca de la cámara. Se midió sobre 152 cuadros,
-    con el fondo calculado como la mediana:
+- **Ventana:** 1198×674 desde (0, 46), ×1,60. Llega hasta el borde inferior de
+  la fuente.
+  - El profe está centrado y muy cerca de la cámara, y a ratos se inclina
+    hacia ella. Se midió sobre 152 cuadros, con el fondo calculado como la
+    mediana:
     - la cabeza empieza en y≈270, con el borde izquierdo en x 392–434 (p2),
       406–456 (p10) y 442–482 (p50);
-    - el mentón llega a y≈630 y los hombros abren desde y≈560.
-  - La primera prueba (960×540, ×2) dejaba la caja libre, pero cortaba la cara
-    por la boca. Se descartó.
-  - Con ×1,68 entra el mentón con aire, pero la cabeza queda desde x≈660 de
-    salida (p2) en las filas de la caja, y la cara llega hasta y≈990.
-  - Por eso la columna de cartones y listas se angosta: `MAXW` = 500, con el
-    texto hasta x≈670. El estándar es 615, hasta x 785.
-  - El lower third lleva el nombre a 42 px y el cargo a 540 de ancho
-    (`LT`). El estándar es 48 y 900. Así «Zamora» no pisa la mandíbula. Se
-    simuló sobre seis cuadros.
-  - El panel DAE/Fiscalía del fondo entra entero.
+    - el mentón llega a y≈630 normalmente y a y≈690 cuando se inclina.
+  - Se probaron tres ventanas:
+    1. 960×540, ×2: dejaba la caja libre, pero cortaba la cara por la boca.
+    2. 1143×643 desde (0, 40), ×1,68, la estándar: termina en y=683 de la
+       fuente. Se llegó a entregar una v1 así, y en la hoja de revisión el
+       mentón se salía del cuadro cuando se inclina (c10, 5:59). Está en
+       `_descartes`.
+    3. La que quedó: termina en y=720, así que no corta nada que la fuente no
+       corte. El panel DAE/Fiscalía entra entero, con su borde a 10 px del
+       borde superior.
+  - Con ×1,60 la cabeza queda desde x≈630 de salida (p2) en las filas de la
+    caja. Por eso la columna de cartones y listas se angosta: `MAXW` = 470,
+    con el texto hasta x≈640. Con 470 «Medidas cautelares» entra en un renglón. El estándar es 615, hasta x 785.
+  - El lower third lleva el nombre a 40 px y el cargo a 520 de ancho (`LT`).
+    El estándar es 48 y 900. Así «Zamora» no pisa la mandíbula. Se simuló
+    sobre nueve cuadros.
   - Este fondo no trae filete blanco.
 
 Los tiempos están en segundos de la fuente. En la línea, cuadro = 409 + round(t · 23,976).
 Los textos salen de Scribe (WAV a 16 kHz, 817 palabras, una voz), sin muletillas.
 Los rótulos de las listas son sus palabras recortadas para caber en la caja: se
 midieron antes de armar (cima ≥ 250) con las mismas fuentes y el mismo `maquetar`.
-Con la columna angosta (`MAXW` 500, rótulos de 416 px) cada fila entra en dos renglones
+Con la columna angosta (`MAXW` 470, rótulos de 386 px) cada fila entra en dos renglones
 como mucho, y las listas de cuatro filas van sin título:
-- m01 lleva los títulos abreviados («Especialista en Penal, Procesal y Casación»).
+- m01 lleva los títulos abreviados («Especialista en Penal y Casación»).
 - m02, m07 y m08 van sin título; m07 con «Analizar su relación con el delito».
 - c10 va entera en mediana, sin título (con título se salía de la caja).
 """
@@ -80,18 +87,18 @@ CURSO = 'E:/DAE MASTER/CURSO 5 - Bienes en el proceso penal'
 R = CURSO + '/INTRODUCCION AL CURSO'
 BIN = ['C5 BIENES EN EL PROCESO PENAL', 'INTRODUCCION AL CURSO']
 ORIGINAL = R + '/01 VIDEO/bienes_iniciocurso.mp4'
-COMPUESTO = R + '/01 VIDEO/BI_compuesto_v1.mp4'
+COMPUESTO = R + '/01 VIDEO/BI_compuesto_v2.mp4'      # v1: ventana 1143, en _descartes
 TITULO = R + '/02 CARTONES/carton titulo bienes introduccion al curso.mp4'
 TITULO_BASE = None
 CURSO_LINEAS = ['Bienes en el proceso penal']
 SUB = 'Introducción al curso'
 NOMBRE_LINEA = 'BIENES - CURSO - INTRODUCCION'
 EXPORT = 'bienes - CURSO - INTRODUCCION-v%d'
-PREFIJO = 'BI'
+PREFIJO = 'BI2'            # los BI_* son de la ventana 1143 (en _descartes)
 TMP = 'D:/DAE/_tmp/bienes/bi'
-XY, VENTANA = (0, 40), (1143, 643)
-MAXW = 500                 # columna de cartones y listas (estándar 615): la cara está centrada
-LT = (42, 540)             # lower third: px del nombre y ancho del cargo (estándar 48 y 900)
+XY, VENTANA = (0, 46), (1198, 674)
+MAXW = 470                 # columna de cartones y listas (estándar 615): la cara está centrada
+LT = (40, 520)             # lower third: px del nombre y ancho del cargo (estándar 48 y 900)
 AUDIO_META = 'I=-16:TP=-3:LRA=7'
 AEP = CURSO + '/00 MOTION GRAPHICS/BIENES_intros_mg.aep'
 ICONOS = CURSO + '/00 MOTION GRAPHICS/iconos'
@@ -143,7 +150,7 @@ ITEMS = [
     ('lt01', 'lt', 0.6, 8.6, PROFE),
     ('m01_recorrido', 'mg_lista', 18.5, 39.1, lista(
         None,
-        ('birrete', 'Especialista en Penal, Procesal y Casación', 21.2),
+        ('birrete', 'Especialista en Penal y Casación', 21.2),
         ('libros', 'Magíster en Penal y Derechos Humanos', 25.7),
         ('birrete', 'Doctor en Derecho Público', 29.6),
         ('mazo', 'Litigio, docencia e investigación', 31.8))),
@@ -153,8 +160,8 @@ ITEMS = [
     ('c01b_ejemplos', 'carton', 53.0, 62.3, cita(
         'Un vehículo, un inmueble, una suma de dinero, una cuenta bancaria o incluso un activo digital.')),
     ('c02_no_significa', 'carton', 73.7, 85.4, cita(
-        'Identificar un bien relacionado con una investigación no significa que automáticamente pueda '
-        'ser incautado, embargado, secuestrado o sometido a extinción de dominio.')),
+        'Identificar un bien no significa que automáticamente pueda ser incautado, embargado, '
+        'secuestrado o sometido a extinción de dominio.')),
     ('m02_exige', 'mg_lista', 85.8, 99.5, lista(
         None,
         ('ojo', 'Reconocer su finalidad', 88.4),
@@ -175,15 +182,15 @@ ITEMS = [
         '¿Qué función cumple un determinado bien dentro de la actuación penal y cuál es el '
         'tratamiento jurídico que le corresponde?')),
     ('c06_u2', 'carton', 161.5, 173.4, c_ante(
-        'Unidad 2', 'Medidas cautelares con fines de reparación')),
+        'Unidad 2', 'Medidas cautelares\ncon fines de reparación')),
     ('m04_u2', 'mg_lista', 173.6, 187.7, lista(
         None,
         ('lista', 'Requisitos de procedencia', 173.8),
         ('lupa_doc', 'Presupuestos probatorios', 176.6),
         ('candado', 'El embargo y el secuestro', 178.4),
-        ('escudo', 'Garantías en su solicitud y ejecución', 182.1))),
+        ('escudo', 'Las garantías de la medida', 182.1))),
     ('c07_u3', 'carton', 200.0, 212.2, c_ante(
-        'Unidad 3', 'Medidas cautelares con fines de comiso y administración de bienes')),
+        'Unidad 3', 'Medidas cautelares\ncon fines de comiso y administración de bienes')),
     ('m05_u3', 'mg_lista', 212.4, 221.7, lista(
         None,
         ('mano_corazon', 'La incautación', 212.4),
@@ -194,7 +201,7 @@ ITEMS = [
         'No basta con afectar jurídicamente un bien: resulta necesario garantizar su adecuada '
         'conservación, administración y destinación.')),
     ('c09_u4', 'carton', 246.2, 251.6, c_ante(
-        'Unidad 4', 'Medidas cautelares con fines de extinción del derecho de dominio')),
+        'Unidad 4', 'Medidas cautelares\ncon fines de extinción del derecho de dominio')),
     ('m06_u4', 'mg_lista', 251.8, 274.0, lista(
         None,
         ('libro_ley', 'Su naturaleza autónoma', 251.8),
@@ -204,7 +211,7 @@ ITEMS = [
     ('m07_herramientas', 'mg_lista', 289.5, 309.4, lista(
         None,
         ('ojo', 'Identificar su función jurídica', 294.7),
-        ('ruta', 'Determinar su origen y trazabilidad', 297.6),
+        ('ruta', 'Determinar su origen', 297.6),
         ('lupa_doc', 'Analizar su relación con el delito', 300.1),
         ('balanza', 'Sustentar las medidas', 302.9))),
     ('m08_metodologia', 'mg_lista', 323.2, 337.8, lista(
@@ -214,8 +221,7 @@ ITEMS = [
         ('engranaje', 'Ejercicios de aplicación', 334.4),
         ('doc_check', 'Actividades evaluativas', 336.1))),
     ('c10_gestion', 'carton', 351.8, 367.7, cita(
-        'La adecuada gestión de los bienes fortalece la eficacia de la investigación, protege los '
-        'derechos de las víctimas y mantiene las actuaciones dentro de los límites constitucionales '
-        'y legales.')),
+        'La adecuada gestión de los bienes fortalece la investigación, protege a las víctimas y '
+        'mantiene las actuaciones dentro de los límites constitucionales y legales.')),
     ('lt02', 'lt', 368.2, 376.6, PROFE),
 ]
