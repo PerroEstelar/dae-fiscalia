@@ -22,6 +22,10 @@ línea, la carpeta y el nombre van por argumento.
    - PSNR de la entrega contra el máster.
 
     python mp4_entrega.py "SRPA - CURSO - PRESENTACION" "E:/.../PRESENTACION DEL CURSO" "srpa - CURSO - PRESENTACION-v3"
+
+Un cuarto argumento opcional manda el máster a otra carpeta (el cierre de Bienes, de
+43 min, da un máster de ~10 GB que no entra en E:). En `05 EXPORTS/_master` queda un
+`LEER - <máster>.txt` que dice dónde está.
 """
 import glob
 import json
@@ -59,7 +63,7 @@ def medir(p):
     return dict(re.findall(r'(I|LRA|Peak):\s+(-?[\d.]+)', r[r.rfind('Summary'):]))
 
 
-def master(linea, carpeta, nombre):
+def master(linea, carpeta, nombre, mdir=None):
     import DaVinciResolveScript as dvr
     resolve = dvr.scriptapp('Resolve')
     pr = resolve.GetProjectManager().GetCurrentProject()
@@ -74,6 +78,11 @@ def master(linea, carpeta, nombre):
     dst = '%s/05 EXPORTS/_master' % carpeta
     os.makedirs(dst, exist_ok=True)
     nm = nombre + '_master_32mbps'
+    if mdir:
+        open('%s/LEER - %s.txt' % (dst, nm), 'w', encoding='utf-8').write(
+            'El máster %s.mp4 está en\n%s\n(no entra en E:).\n' % (nm, mdir))
+        dst = mdir
+        os.makedirs(dst, exist_ok=True)
     if os.path.exists('%s/%s.mp4' % (dst, nm)):
         w('el máster ya está: se usa ese (%s)' % nm)
         return '%s/%s.mp4' % (dst, nm), largo
@@ -98,8 +107,8 @@ def master(linea, carpeta, nombre):
     return '%s/%s.mp4' % (dst, nm), largo
 
 
-def entrega(linea, carpeta, nombre):
-    m, largo = master(linea, carpeta, nombre)
+def entrega(linea, carpeta, nombre, mdir=None):
+    m, largo = master(linea, carpeta, nombre, mdir)
     if cuadros(m) != largo:
         raise SystemExit('el máster mide %d y la línea %d' % (cuadros(m), largo))
     sm = medir(m)
@@ -136,4 +145,4 @@ def entrega(linea, carpeta, nombre):
 
 
 if __name__ == '__main__':
-    entrega(sys.argv[1], sys.argv[2], sys.argv[3])
+    entrega(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4] if len(sys.argv) > 4 else None)
