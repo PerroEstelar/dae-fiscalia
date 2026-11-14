@@ -212,7 +212,22 @@ def mg_render():
     print('RENDER LISTO', flush=True)
 
 
+def ajustes():
+    """Anchos propios del plan. En la introducción de Bienes el profe está centrado y bajo
+    (la cara llega a y≈990 de salida): la columna de cartones y listas se angosta
+    (`P.MAXW`) y el lower third lleva el nombre más chico y el cargo más angosto
+    (`P.LT` = (px del nombre, ancho del cargo)), para no tapar la cara."""
+    if getattr(P, 'MAXW', None):
+        import cartones_ma as C0
+        import mg_ma as M0
+        C0.MAXW = M0.MAXW = P.MAXW
+    if getattr(P, 'LT', None):
+        import cartones_srpa as CS
+        CS.LT_NOMBRE, CS.LT_ANCHO = P.LT
+
+
 if __name__ == '__main__':
+    ajustes()
     if sys.argv[1] == 'cartones':
         cartones(sys.argv[2:])
     elif sys.argv[1] == 'prueba':

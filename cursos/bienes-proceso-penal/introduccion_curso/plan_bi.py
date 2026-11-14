@@ -35,13 +35,21 @@ mismas herramientas: `ic_pieza`, `ic_linea`, `ic_revision` y `mp4_entrega`, con
   (`CURSO_LINEAS`, `titulo_srpa.rendir_fijo`) sobre el mismo fondo, la misma barra y
   la misma marca.
 - **AE:** las comps van en su propio proyecto, `00 MOTION GRAPHICS/BIENES_intros_mg.aep`.
-- **Ventana:** 960×540 desde (0, 40), ×2.
-  - Se midió sobre 152 cuadros, con el fondo calculado como la mediana. La cabeza
-    empieza en y≈270, con el borde izquierdo en x 392–434 (p2), 406–456 (p10) y
-    442–482 (p50).
-  - Los hombros empiezan en y≈560.
-  - La caja (x 62–790, y 250–720) corresponde a las filas de la fuente hasta 400.
-    Ahí la cabeza queda desde x≈810 (p10).
+- **Ventana:** 1143×643 desde (0, 40), ×1,68. Es la estándar, la misma del cierre.
+  - El profe está centrado y muy cerca de la cámara. Se midió sobre 152 cuadros,
+    con el fondo calculado como la mediana:
+    - la cabeza empieza en y≈270, con el borde izquierdo en x 392–434 (p2),
+      406–456 (p10) y 442–482 (p50);
+    - el mentón llega a y≈630 y los hombros abren desde y≈560.
+  - La primera prueba (960×540, ×2) dejaba la caja libre, pero cortaba la cara
+    por la boca. Se descartó.
+  - Con ×1,68 entra el mentón con aire, pero la cabeza queda desde x≈660 de
+    salida (p2) en las filas de la caja, y la cara llega hasta y≈990.
+  - Por eso la columna de cartones y listas se angosta: `MAXW` = 500, con el
+    texto hasta x≈670. El estándar es 615, hasta x 785.
+  - El lower third lleva el nombre a 42 px y el cargo a 540 de ancho
+    (`LT`). El estándar es 48 y 900. Así «Zamora» no pisa la mandíbula. Se
+    simuló sobre seis cuadros.
   - El panel DAE/Fiscalía del fondo entra entero.
   - Este fondo no trae filete blanco.
 
@@ -49,10 +57,19 @@ Los tiempos están en segundos de la fuente. En la línea, cuadro = 409 + round(
 Los textos salen de Scribe (WAV a 16 kHz, 817 palabras, una voz), sin muletillas.
 Los rótulos de las listas son sus palabras recortadas para caber en la caja: se
 midieron antes de armar (cima ≥ 250) con las mismas fuentes y el mismo `maquetar`.
-- m01 lleva los títulos abreviados («Especialista en Penal, Procesal y Casación Penal»).
-- m02 y m08 llevan los rótulos cortos; m07 va sin título.
+Con la columna angosta (`MAXW` 500, rótulos de 416 px) cada fila entra en dos renglones
+como mucho, y las listas de cuatro filas van sin título:
+- m01 lleva los títulos abreviados («Especialista en Penal, Procesal y Casación»).
+- m02, m07 y m08 van sin título; m07 con «Analizar su relación con el delito».
 - c10 va entera en mediana, sin título (con título se salía de la caja).
 """
+
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', 'herramientas',
+                                'cartones'))
+import balanceo as B  # noqa: E402
 
 CLIP0 = 409
 FPS = 24000 / 1001
@@ -72,11 +89,14 @@ NOMBRE_LINEA = 'BIENES - CURSO - INTRODUCCION'
 EXPORT = 'bienes - CURSO - INTRODUCCION-v%d'
 PREFIJO = 'BI'
 TMP = 'D:/DAE/_tmp/bienes/bi'
-XY, VENTANA = (0, 40), (960, 540)
+XY, VENTANA = (0, 40), (1143, 643)
+MAXW = 500                 # columna de cartones y listas (estándar 615): la cara está centrada
+LT = (42, 540)             # lower third: px del nombre y ancho del cargo (estándar 48 y 900)
 AUDIO_META = 'I=-16:TP=-3:LRA=7'
 AEP = CURSO + '/00 MOTION GRAPHICS/BIENES_intros_mg.aep'
 ICONOS = CURSO + '/00 MOTION GRAPHICS/iconos'
 
+ANCHO = MAXW                # ancho de la columna de texto de los cartones (cartones_ma.MAXW)
 NOMBRE_CURSO = 'Bienes en el proceso penal'
 PROFE = ('Sergio Andrés López Zamora',
          'Abogado, doctor en Derecho Público, magíster en Derecho Penal y Procesal Penal y en '
@@ -87,23 +107,28 @@ def cuadro(t):
     return CLIP0 + int(round(t * FPS))
 
 
+def _p(texto, peso, px, gap):
+    # renglones equilibrados (herramientas/cartones/balanceo.py): sin palabras solas abajo
+    return B.piezas(texto, peso, px, gap, ANCHO)
+
+
 def cita(t):
-    return [(t, 'bold', TIT, 0)] if len(t) <= 78 else [(t, 'med', CUE, 0)]
+    return _p(t, 'bold', TIT, 0) if len(t) <= 78 else _p(t, 'med', CUE, 0)
 
 
 def c_tit(titulo, cuerpo):
-    return [(titulo, 'bold', TIT, 0), (cuerpo, 'med', CUE, GAP_TIT)]
+    return _p(titulo, 'bold', TIT, 0) + _p(cuerpo, 'med', CUE, GAP_TIT)
 
 
 def c_ante(ante, titulo, cuerpo=None):
-    ls = [(ante, 'med', ANTE, 0), (titulo, 'bold', TIT, GAP_ANTE)]
+    ls = _p(ante, 'med', ANTE, 0) + _p(titulo, 'bold', TIT, GAP_ANTE)
     if cuerpo:
-        ls.append((cuerpo, 'med', CUE, GAP_CUE + 8))
+        ls += _p(cuerpo, 'med', CUE, GAP_CUE + 8)
     return ls
 
 
 def c_suelta(t):
-    return [(t, 'bold', SUELTA, 0)]
+    return _p(t, 'bold', SUELTA, 0)
 
 
 def lista(titulo, *filas):
@@ -118,10 +143,10 @@ ITEMS = [
     ('lt01', 'lt', 0.6, 8.6, PROFE),
     ('m01_recorrido', 'mg_lista', 18.5, 39.1, lista(
         None,
-        ('birrete', 'Especialista en Penal, Procesal y Casación Penal', 21.2),
-        ('libros', 'Magíster en Penal, Procesal Penal y Derechos Humanos', 25.7),
+        ('birrete', 'Especialista en Penal, Procesal y Casación', 21.2),
+        ('libros', 'Magíster en Penal y Derechos Humanos', 25.7),
         ('birrete', 'Doctor en Derecho Público', 29.6),
-        ('mazo', 'Litigio penal, docencia e investigación jurídica', 31.8))),
+        ('mazo', 'Litigio, docencia e investigación', 31.8))),
     ('c01_funciones', 'carton', 44.4, 52.7, cita(
         'En el desarrollo de una investigación penal, los bienes pueden desempeñar diferentes '
         'funciones, tanto jurídicas como probatorias.')),
@@ -131,21 +156,21 @@ ITEMS = [
         'Identificar un bien relacionado con una investigación no significa que automáticamente pueda '
         'ser incautado, embargado, secuestrado o sometido a extinción de dominio.')),
     ('m02_exige', 'mg_lista', 85.8, 99.5, lista(
-        'Cada intervención exige',
+        None,
         ('ojo', 'Reconocer su finalidad', 88.4),
-        ('libro_ley', 'Su fundamento jurídico', 90.4),
-        ('lupa_doc', 'Su soporte probatorio', 93.3),
-        ('escudo', 'Garantizar los derechos de los involucrados', 95.8))),
+        ('libro_ley', 'Establecer su fundamento', 90.4),
+        ('lupa_doc', 'Construir su soporte probatorio', 93.3),
+        ('escudo', 'Garantizar los derechos', 95.8))),
     ('c03_proposito', 'carton', 99.8, 111.3, cita(
-        'Este curso pretende proporcionar herramientas para adoptar decisiones patrimoniales '
-        'jurídicamente fundamentadas, eficaces y respetuosas del debido proceso.')),
+        'Herramientas para adoptar decisiones patrimoniales jurídicamente fundamentadas, eficaces '
+        'y respetuosas del debido proceso.')),
     ('c04_u1', 'carton', 125.4, 131.8, c_ante('Unidad 1', 'Función del bien')),
     ('m03_u1', 'mg_lista', 132.0, 149.6, lista(
         None,
         ('lista', 'Sus diferentes funciones', 132.1),
         ('balanza', 'Los estándares probatorios', 133.6),
-        ('lupa_doc', 'Identificación, trazabilidad y análisis financiero', 139.0),
-        ('escudo', 'Víctimas y terceros de buena fe, exentos de culpa', 143.7))),
+        ('lupa_doc', 'Trazabilidad y análisis financiero', 139.0),
+        ('escudo', 'Víctimas y terceros de buena fe', 143.7))),
     ('c05_pregunta', 'carton', 149.9, 161.2, cita(
         '¿Qué función cumple un determinado bien dentro de la actuación penal y cuál es el '
         'tratamiento jurídico que le corresponde?')),
@@ -156,7 +181,7 @@ ITEMS = [
         ('lista', 'Requisitos de procedencia', 173.8),
         ('lupa_doc', 'Presupuestos probatorios', 176.6),
         ('candado', 'El embargo y el secuestro', 178.4),
-        ('escudo', 'Las garantías en su solicitud, imposición y ejecución', 182.1))),
+        ('escudo', 'Garantías en su solicitud y ejecución', 182.1))),
     ('c07_u3', 'carton', 200.0, 212.2, c_ante(
         'Unidad 3', 'Medidas cautelares con fines de comiso y administración de bienes')),
     ('m05_u3', 'mg_lista', 212.4, 221.7, lista(
@@ -172,18 +197,18 @@ ITEMS = [
         'Unidad 4', 'Medidas cautelares con fines de extinción del derecho de dominio')),
     ('m06_u4', 'mg_lista', 251.8, 274.0, lista(
         None,
-        ('libro_ley', 'La naturaleza autónoma de esta acción', 251.8),
-        ('lista', 'Las causales de extinción de dominio', 257.0),
-        ('candado', 'La imposición de medidas cautelares', 265.9),
-        ('apreton', 'Negociación y terminación anticipada', 269.1))),
+        ('libro_ley', 'Su naturaleza autónoma', 251.8),
+        ('lista', 'Las causales', 257.0),
+        ('candado', 'Las medidas cautelares', 265.9),
+        ('apreton', 'Terminación anticipada', 269.1))),
     ('m07_herramientas', 'mg_lista', 289.5, 309.4, lista(
         None,
-        ('ojo', 'Identificar la función jurídica de los bienes', 294.7),
+        ('ojo', 'Identificar su función jurídica', 294.7),
         ('ruta', 'Determinar su origen y trazabilidad', 297.6),
-        ('lupa_doc', 'Analizar su relación con actividades delictivas', 300.1),
-        ('balanza', 'Sustentar las medidas de afectación patrimonial', 302.9))),
+        ('lupa_doc', 'Analizar su relación con el delito', 300.1),
+        ('balanza', 'Sustentar las medidas', 302.9))),
     ('m08_metodologia', 'mg_lista', 323.2, 337.8, lista(
-        'Una metodología virtual',
+        None,
         ('libros', 'Lecturas y audiovisuales', 329.8),
         ('libro_ley', 'Análisis normativo', 331.3),
         ('engranaje', 'Ejercicios de aplicación', 334.4),

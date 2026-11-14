@@ -62,6 +62,13 @@ Los tiempos están en segundos de la fuente. En la línea, cuadro = 409 +
 round(a_salida(t) · 23,976).
 """
 
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', 'herramientas',
+                                'cartones'))
+import balanceo as B  # noqa: E402
+
 CLIP0 = 409
 FPS = 24000 / 1001
 ANTE, TIT, CUE, SUELTA = 29, 46, 37, 54
@@ -90,6 +97,7 @@ CORTE = (2492.4, 2498.7)              # arranque en falso de «La adecuada inter
 PLANO_CERRADO = (96, 40, 1024, 576)   # la frase repetida, hasta 2507,9
 TRAMOS = [(0.0, CORTE[0], None), (CORTE[1], 2507.9, PLANO_CERRADO), (2507.9, None, None)]
 
+ANCHO = 615                # ancho de la columna de texto de los cartones (cartones_ma.MAXW)
 NOMBRE_CURSO = 'Bienes en el proceso penal'
 PROFE = ('Sergio Andrés López Zamora',
          'Abogado, doctor en Derecho Público, magíster en Derecho Penal y Procesal Penal y en '
@@ -107,23 +115,28 @@ def cuadro(t):
     return CLIP0 + int(round(a_salida(t) * FPS))
 
 
+def _p(texto, peso, px, gap):
+    # renglones equilibrados (herramientas/cartones/balanceo.py): sin palabras solas abajo
+    return B.piezas(texto, peso, px, gap, ANCHO)
+
+
 def cita(t):
-    return [(t, 'bold', TIT, 0)] if len(t) <= 78 else [(t, 'med', CUE, 0)]
+    return _p(t, 'bold', TIT, 0) if len(t) <= 78 else _p(t, 'med', CUE, 0)
 
 
 def c_tit(titulo, cuerpo):
-    return [(titulo, 'bold', TIT, 0), (cuerpo, 'med', CUE, GAP_TIT)]
+    return _p(titulo, 'bold', TIT, 0) + _p(cuerpo, 'med', CUE, GAP_TIT)
 
 
 def c_ante(ante, titulo, cuerpo=None):
-    ls = [(ante, 'med', ANTE, 0), (titulo, 'bold', TIT, GAP_ANTE)]
+    ls = _p(ante, 'med', ANTE, 0) + _p(titulo, 'bold', TIT, GAP_ANTE)
     if cuerpo:
-        ls.append((cuerpo, 'med', CUE, GAP_CUE + 8))
+        ls += _p(cuerpo, 'med', CUE, GAP_CUE + 8)
     return ls
 
 
 def c_suelta(t):
-    return [(t, 'bold', SUELTA, 0)]
+    return _p(t, 'bold', SUELTA, 0)
 
 
 def lista(titulo, *filas):
@@ -226,14 +239,14 @@ ITEMS = [
     ('c20_estandares', 'carton', 444.4, 453.2, c_ante(
         'Otro aprendizaje fundamental', 'Los estándares probatorios y las cargas argumentativas')),
     ('c21_no_basta', 'carton', 462.6, 475.3, cita(
-        'La simple indagación o investigación penal no constituye por sí misma un fundamento '
-        'suficiente para afectar patrimonialmente un bien.')),
+        'La simple indagación o investigación penal no basta, por sí misma, para afectar '
+        'patrimonialmente un bien.')),
     ('c22_respaldo', 'carton', 477.7, 488.6, cita(
         'Toda intervención debe estar respaldada por elementos fácticos, jurídicos y probatorios '
         'que justifiquen la medida.')),
     ('c23_hipotesis', 'carton', 489.3, 500.9, c_tit(
-        'Hipótesis patrimoniales verificables',
-        'Y relaciones jurídicamente relevantes entre los activos y los hechos investigados.')),
+        'Hipótesis verificables',
+        'Relaciones jurídicamente relevantes entre los activos y los hechos investigados.')),
     ('c24_terceros', 'carton', 502.4, 517.1, c_tit(
         'Víctimas y terceros',
         'La eficacia de la investigación debe armonizarse con el debido proceso, el derecho de '
@@ -243,8 +256,8 @@ ITEMS = [
         ('ruta', 'Su origen y su titularidad', 528.8),
         ('ciclo', 'Su circulación y transformación', 531.3),
         ('lupa_doc', 'Su destinación', 534.2))),
-    ('c25_conclusion_u1', 'carton', 537.6, 551.9, c_tit(
-        'Conclusión de la unidad 1',
+    ('c25_conclusion_u1', 'carton', 537.6, 551.9, c_ante(
+        'Unidad 1', 'Conclusión',
         'La correcta intervención sobre un bien comienza por identificar su función jurídica y la '
         'finalidad legítima de la actuación estatal.')),
     ('c26_base', 'carton', 552.6, 562.8, cita(
@@ -284,11 +297,11 @@ ITEMS = [
         ('engranaje', 'Adecuación', 726.3),
         ('reloj_arena', 'Proporcionalidad', 727.5))),
     ('c33_estafa', 'carton', 742.5, 756.2, c_tit(
-        'Una investigación por estafa',
+        'Un caso de estafa',
         'Antes de afectar inmuebles y vehículos se examinan la cuantía de los perjuicios y la '
         'situación jurídica de los bienes.')),
-    ('c34_indiscriminadas', 'carton', 763.4, 768.9, cita(
-        'La reparación no autoriza restricciones patrimoniales indiscriminadas.')),
+    ('c34_indiscriminadas', 'carton', 763.4, 770.6, cita(
+        'La finalidad de reparación no autoriza restricciones patrimoniales indiscriminadas.')),
     ('m10_embargo', 'mg_lista', 771.0, 788.7, lista(
         'Embargo y secuestro',
         ('libro_ley', 'Embargo: restringe la disposición', 774.0),
@@ -306,8 +319,8 @@ ITEMS = [
     ('c38_ley975', 'carton', 851.3, 861.0, c_tit(
         'Ley 975 de 2005',
         'Un régimen especial para los bienes destinados a la reparación de las víctimas.')),
-    ('c39_conclusion_u2', 'carton', 864.2, 879.4, c_tit(
-        'Conclusión de la unidad 2',
+    ('c39_conclusion_u2', 'carton', 864.2, 879.4, c_ante(
+        'Unidad 2', 'Conclusión',
         'Las medidas cautelares preservan los derechos patrimoniales de las víctimas, pero exigen '
         'una justificación jurídica y probatoria suficiente.')),
     ('m11_solicitud', 'mg_lista', 892.6, 907.0, lista(
@@ -344,17 +357,17 @@ ITEMS = [
         'conservación y demás circunstancias de la diligencia. Así se mantiene la trazabilidad del '
         'activo.')),
     ('c46_administracion', 'carton', 1110.3, 1124.0, c_tit(
-        'Administración provisional',
+        'La administración provisional',
         'Los bienes afectados pueden deteriorarse, depreciarse o generar gastos considerables si no '
         'se adoptan medidas oportunas.')),
     ('c47_almacenamiento', 'carton', 1162.4, 1175.6, c_tit(
-        'No es simple almacenamiento',
+        'Más que almacenar',
         'Comprende la conservación, el seguimiento y el tratamiento de los activos, conforme con las '
         'competencias de ley.')),
     ('c48_ley1615', 'carton', 1182.5, 1193.5, c_tit(
         'Ley 1615 de 2013',
-        'El Fondo Especial para la Administración de Bienes de la Fiscalía General de la Nación '
-        '(FEAB).')),
+        'El FEAB: Fondo Especial para la Administración de Bienes de la Fiscalía General de la '
+        'Nación.')),
     ('m13_funciones', 'mg_lista', 1213.7, 1229.8, lista(
         'Funciones distintas',
         ('lupa_doc', 'Almacenes de evidencia: preservación probatoria', 1216.7),
@@ -362,8 +375,8 @@ ITEMS = [
     ('c49_informacion', 'carton', 1240.3, 1252.6, cita(
         'La coordinación exige información suficiente y verificable sobre la identidad, el estado y '
         'la situación jurídica de los bienes.')),
-    ('c50_conclusion_u3', 'carton', 1263.0, 1278.9, c_tit(
-        'Conclusión de la unidad 3',
+    ('c50_conclusion_u3', 'carton', 1263.0, 1278.9, c_ante(
+        'Unidad 3', 'Conclusión',
         'La intervención no termina con la incautación, la ocupación o la suspensión: exige la '
         'conservación, administración y destinación legal de los bienes.')),
 
@@ -412,13 +425,13 @@ ITEMS = [
         'El control judicial de legalidad: una garantía frente a las restricciones patrimoniales.')),
     ('c58_sae', 'carton', 1528.4, 1538.7, c_tit(
         'SAE y FRISCO',
-        'La Sociedad de Activos Especiales administra el FRISCO, una estructura distinta del FEAB.')),
+        'El FRISCO lo administra la Sociedad de Activos Especiales; es distinto del FEAB.')),
     ('c59_terminacion', 'carton', 1550.3, 1562.9, c_tit(
         'Terminación anticipada',
         'Sentencia anticipada y negociación patrimonial, dentro de los requisitos, límites y '
         'controles del legislador.')),
-    ('c60_conclusion_u4', 'carton', 1581.3, 1596.7, c_tit(
-        'Conclusión de la unidad 4',
+    ('c60_conclusion_u4', 'carton', 1581.3, 1596.7, c_ante(
+        'Unidad 4', 'Conclusión',
         'La extinción de dominio es autónoma: exige identificar la causal, construir el soporte '
         'probatorio y respetar a terceros y garantías judiciales.')),
     ('c61_estado', 'carton', 1607.6, 1618.5, c_tit(
@@ -427,7 +440,7 @@ ITEMS = [
 
     # ---------------------------------------------------------------- ejercicio
     ('c62_ejercicio', 'carton', 1634.1, 1640.6, c_ante(
-        'Ejercicio práctico', 'Integrar las cuatro unidades')),
+        'Ejercicio práctico', 'Integrar lo aprendido')),
     ('c63_caso', 'carton', 1651.9, 1662.6, c_tit(
         'El caso',
         'Una organización criminal dedicada a la estafa y al lavado de activos. Se identifican '
@@ -442,7 +455,7 @@ ITEMS = [
     ('c64_p1', 'carton', 1746.9, 1755.4, c_ante(
         'Primera pregunta', '¿Todos los bienes deben recibir el mismo tratamiento jurídico?')),
     ('c65_funcion', 'carton', 1755.6, 1763.6, cita(
-        'Hay que identificar individualmente la función jurídica de cada activo.')),
+        'La función jurídica de cada activo se identifica individualmente.')),
     ('m19_funciones', 'mg_lista', 1764.1, 1804.4, lista(
         None,
         ('vehiculo', 'Vehículo: prueba o comiso', 1764.1),
@@ -461,8 +474,8 @@ ITEMS = [
         ('doc_check', 'Verificar los presupuestos', 1846.2),
         ('mazo', 'Acudir ante el juez competente', 1851.7))),
     ('c68_no_exige', 'carton', 1860.8, 1870.5, cita(
-        'La reparación no exige demostrar que todos los bienes se adquirieron con recursos del '
-        'delito.')),
+        'La finalidad de reparación no exige demostrar que todos los bienes se adquirieron con '
+        'recursos del delito.')),
     ('c69_p3', 'carton', 1881.5, 1889.8, c_ante(
         'Tercera pregunta', '¿Y si el vehículo fue instrumento de la conducta delictiva?')),
     ('c70_p3_resp', 'carton', 1894.7, 1908.7, cita(
@@ -484,7 +497,7 @@ ITEMS = [
         '¿Las operaciones cuestionadas permiten declarar automáticamente la extinción?',
         'No.')),
     ('c74_p5_resp', 'carton', 2014.1, 2027.7, c_tit(
-        'Una causal legal y su prueba',
+        'Una causal y su prueba',
         'Las inconsistencias patrimoniales orientan la investigación, pero no sustituyen la '
         'acreditación de los presupuestos.')),
     ('c75_nexo', 'carton', 2038.9, 2048.3, cita(
@@ -492,10 +505,10 @@ ITEMS = [
     ('c76_p6', 'carton', 2054.9, 2063.6, c_ante(
         'Sexta pregunta', '¿Y si un tercero afirma haber adquirido legítimamente el inmueble?')),
     ('c77_p6_resp', 'carton', 2068.8, 2083.1, cita(
-        'Examinar la adquisición, la titularidad y la utilización del activo, con contradicción, '
-        'defensa y respeto por los terceros de buena fe, exentos de culpa.')),
+        'Examinar la adquisición, la titularidad y el uso del activo, garantizar contradicción y '
+        'defensa, y respetar a los terceros de buena fe exentos de culpa.')),
     ('c78_p7', 'carton', 2098.3, 2106.1, c_ante(
-        'Séptima pregunta', '¿Qué importancia tiene la coordinación institucional?')),
+        'Séptima pregunta', '¿Qué importancia tiene la coordinación entre fiscales, asistentes y policía judicial?')),
     ('m22_roles', 'mg_lista', 2119.0, 2140.7, lista(
         None,
         ('mazo', 'Fiscales: orientan jurídicamente', 2119.0),
@@ -560,8 +573,8 @@ ITEMS = [
         'La protección de las víctimas, la eficacia de la persecución penal y las garantías '
         'constitucionales no son objetivos incompatibles.')),
     ('c83_detras', 'carton', 2558.5, 2568.2, cita(
-        'Detrás de cada actuación patrimonial hay derechos, intereses legítimos y responsabilidades '
-        'institucionales.')),
+        'Detrás de cada actuación patrimonial existen derechos, intereses legítimos y '
+        'responsabilidades institucionales que deben considerarse.')),
     ('m27_eficaz', 'mg_lista', 2568.3, 2582.4, lista(
         None,
         ('libro_ley', 'Conocimiento normativo', 2572.1),
