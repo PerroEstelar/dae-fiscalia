@@ -41,6 +41,12 @@ detiene y la repite entera en 2499,0.
   fuente) no entran.
 - El panel DAE/Fiscalía (x 127–595, y 52–157) entra entero.
 
+**Lower third.** Lleva el nombre a 44 px y el cargo a 560 de ancho, en tres renglones
+(`LT`). Con el estándar (48 y 900) el cargo llegaba a x≈1020: en el primero el profe se
+inclina hacia la izquierda y «Penal» le tocaba el mentón. Se vio en la revisión de la
+primera entrega, que quedó en `_descartes`. Los nuevos se llaman `lt01_v2` y `lt02_v2`
+para que Resolve no confunda los clips; se simularon sobre ocho cuadros.
+
 **Textos.** Salen de Scribe (WAV a 16 kHz, una voz), sin muletillas. Se corrigieron
 estos errores de transcripción:
 - «votar» → «adoptar» (decisiones);
@@ -100,6 +106,7 @@ XY, VENTANA = (0, 40), (1143, 643)
 AUDIO_META = 'I=-16:TP=-3:LRA=7'
 AEP = CURSO + '/00 MOTION GRAPHICS/BIENES_intros_mg.aep'
 ICONOS = CURSO + '/00 MOTION GRAPHICS/iconos'
+LT = (44, 560)             # lower third: px del nombre y ancho del cargo (estándar 48 y 900)
 MASTER_DIR = 'D:/DAE/_masters_archivo/CURSO 5 - Bienes en el proceso penal/CIERRE DEL CURSO'
 
 CORTE = (2492.4, 2498.7)              # arranque en falso de «La adecuada intervención patrimonial…»
@@ -159,7 +166,7 @@ def act(icono, ante, titulo, cuerpo=None):
 
 ITEMS = [
     # ---------------------------------------------------------------- apertura
-    ('lt01', 'lt', 2.7, 10.8, PROFE),
+    ('lt01_v2', 'lt', 2.7, 10.8, PROFE),
     ('c01_dimension', 'carton', 35.6, 48.3, c_tit(
         'A lo largo del curso',
         'Examinamos el tratamiento jurídico, probatorio y administrativo de los bienes relacionados '
@@ -594,5 +601,5 @@ ITEMS = [
         ('escudo', 'Respeto por las garantías', 2579.9))),
     # la lista se queda hasta «…durante este proceso de aprendizaje»; el lower third va sobre
     # las felicitaciones y los buenos deseos, y termina antes de «Muchas gracias»
-    ('lt02', 'lt', 2586.3, 2594.5, PROFE),
+    ('lt02_v2', 'lt', 2586.3, 2594.5, PROFE),
 ]
