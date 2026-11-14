@@ -162,13 +162,13 @@ ITEMS = [
     ('c02_no_significa', 'carton', 73.7, 85.4, cita(
         'Identificar un bien no significa que automáticamente pueda ser incautado, embargado, '
         'secuestrado o sometido a extinción de dominio.')),
-    ('m02_exige', 'mg_lista', 85.8, 99.5, lista(
+    ('m02_exige', 'mg_lista', 85.8, 101.5, lista(
         None,
         ('ojo', 'Reconocer su finalidad', 88.4),
         ('libro_ley', 'Establecer su fundamento', 90.4),
         ('lupa_doc', 'Construir su soporte probatorio', 93.3),
         ('escudo', 'Garantizar los derechos', 95.8))),
-    ('c03_proposito', 'carton', 99.8, 111.3, cita(
+    ('c03_proposito', 'carton', 101.9, 111.3, cita(
         'Herramientas para adoptar decisiones patrimoniales jurídicamente fundamentadas, eficaces '
         'y respetuosas del debido proceso.')),
     ('c04_u1', 'carton', 125.4, 131.8, c_ante('Unidad 1', 'Función del bien')),
@@ -191,7 +191,7 @@ ITEMS = [
         ('escudo', 'Las garantías de la medida', 182.1))),
     ('c07_u3', 'carton', 200.0, 212.2, c_ante(
         'Unidad 3', 'Medidas cautelares\ncon fines de comiso y administración de bienes')),
-    ('m05_u3', 'mg_lista', 212.4, 221.7, lista(
+    ('m05_u3', 'mg_lista', 212.4, 224.5, lista(
         None,
         ('mano_corazon', 'La incautación', 212.4),
         ('edificio', 'La ocupación', 214.1),
@@ -214,7 +214,7 @@ ITEMS = [
         ('ruta', 'Determinar su origen', 297.6),
         ('lupa_doc', 'Analizar su relación con el delito', 300.1),
         ('balanza', 'Sustentar las medidas', 302.9))),
-    ('m08_metodologia', 'mg_lista', 323.2, 337.8, lista(
+    ('m08_metodologia', 'mg_lista', 323.2, 342.5, lista(
         None,
         ('libros', 'Lecturas y audiovisuales', 329.8),
         ('libro_ley', 'Análisis normativo', 331.3),

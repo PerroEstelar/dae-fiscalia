@@ -55,6 +55,9 @@ No se ponen en pantalla dos frases que dicen otra cosa de lo que quiere decir:
   fuentes y el mismo `maquetar`. Los rótulos son sus palabras recortadas.
 - El ícono `vehiculo` se dibujó en el estilo de los de SRPA
   (`herramientas/motion/icono_vehiculo.py`), porque ese juego no traía ninguno.
+- La última fila de cada lista queda al menos 4 s en pantalla. Donde el profe
+  enumera rápido, la lista se alarga sobre la frase siguiente y el cartón que
+  sigue entra más tarde (m04, m06, m11, m14, m27).
 - Son casi todos cartones, porque pesan poco. Hay listas de AE donde enumera, y
   tarjetas (`mg_act`) para las competencias.
 
@@ -220,13 +223,13 @@ ITEMS = [
         'responden a finalidades jurídicas distintas.')),
     ('c17_mod5', 'carton', 376.2, 383.5, c_ante(
         'Quinta modalidad', 'Bienes para la extinción del derecho de dominio')),
-    ('m04_naturaleza', 'mg_lista', 389.5, 399.2, lista(
+    ('m04_naturaleza', 'mg_lista', 389.5, 402.9, lista(
         'Una acción',
         ('libro_ley', 'Constitucional', 392.5),
         ('casa_lote', 'Real', 394.2),
         ('billete', 'Patrimonial', 395.2),
         ('bifurcacion', 'Autónoma frente al proceso penal', 396.9))),
-    ('c18_ley1708', 'carton', 399.8, 410.6, c_tit(
+    ('c18_ley1708', 'carton', 403.3, 413.4, c_tit(
         'Ley 1708 de 2014',
         'Su aplicación exige verificar las causales y los procedimientos específicos de este '
         'régimen.')),
@@ -251,12 +254,12 @@ ITEMS = [
         'Víctimas y terceros',
         'La eficacia de la investigación debe armonizarse con el debido proceso, el derecho de '
         'propiedad y los intereses legítimos sobre los bienes.')),
-    ('m06_trazabilidad', 'mg_lista', 525.8, 536.2, lista(
+    ('m06_trazabilidad', 'mg_lista', 525.8, 539.6, lista(
         'Reconstruir el activo',
         ('ruta', 'Su origen y su titularidad', 528.8),
         ('ciclo', 'Su circulación y transformación', 531.3),
         ('lupa_doc', 'Su destinación', 534.2))),
-    ('c25_conclusion_u1', 'carton', 537.6, 551.9, c_ante(
+    ('c25_conclusion_u1', 'carton', 540.0, 551.9, c_ante(
         'Unidad 1', 'Conclusión',
         'La correcta intervención sobre un bien comienza por identificar su función jurídica y la '
         'finalidad legítima de la actuación estatal.')),
@@ -323,7 +326,7 @@ ITEMS = [
         'Unidad 2', 'Conclusión',
         'Las medidas cautelares preservan los derechos patrimoniales de las víctimas, pero exigen '
         'una justificación jurídica y probatoria suficiente.')),
-    ('m11_solicitud', 'mg_lista', 892.6, 907.0, lista(
+    ('m11_solicitud', 'mg_lista', 892.6, 908.6, lista(
         'Una solicitud explica',
         ('balanza', 'Por qué la medida es procedente', 895.6),
         ('ojo', 'Qué finalidad persigue', 900.2),
@@ -392,7 +395,7 @@ ITEMS = [
     ('c54_absolucion', 'carton', 1328.4, 1339.9, cita(
         'Una absolución por insuficiencia de pruebas no determina automáticamente la improcedencia '
         'de la extinción de dominio.')),
-    ('m14_causales', 'mg_lista', 1353.8, 1367.7, lista(
+    ('m14_causales', 'mg_lista', 1353.8, 1370.5, lista(
         'Causales del artículo 16',
         ('ruta', 'El origen ilícito de los bienes', 1356.8),
         ('engranaje', 'Su utilización o destinación ilícita', 1358.8),
@@ -575,14 +578,14 @@ ITEMS = [
     ('c83_detras', 'carton', 2558.5, 2568.2, cita(
         'Detrás de cada actuación patrimonial existen derechos, intereses legítimos y '
         'responsabilidades institucionales que deben considerarse.')),
-    ('m27_eficaz', 'mg_lista', 2568.3, 2582.4, lista(
+    ('m27_eficaz', 'mg_lista', 2568.3, 2585.8, lista(
         None,
         ('libro_ley', 'Conocimiento normativo', 2572.1),
         ('balanza', 'Criterio jurídico', 2574.5),
         ('lupa_doc', 'Rigor probatorio', 2576.2),
         ('apreton', 'Coordinación institucional', 2577.7),
         ('escudo', 'Respeto por las garantías', 2579.9))),
-    ('lt02', 'lt', 2582.6, 2590.2, PROFE),
-    ('c84_exitos', 'carton', 2590.4, 2597.3, cita(
-        'Les deseo muchos éxitos en el ejercicio de sus funciones.')),
+    # la lista se queda hasta «…durante este proceso de aprendizaje»; el lower third va sobre
+    # las felicitaciones y los buenos deseos, y termina antes de «Muchas gracias»
+    ('lt02', 'lt', 2586.3, 2594.5, PROFE),
 ]
