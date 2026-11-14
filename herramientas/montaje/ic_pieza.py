@@ -30,8 +30,9 @@ sys.path.insert(0, r'D:\DAE\_repo\herramientas\montaje')
 sys.path.insert(0, r'D:\DAE\_repo\herramientas\cartones')
 sys.path.insert(0, r'D:\DAE\_repo\herramientas\motion')
 import importlib as _il  # noqa: E402
-for _d in ('introduccion_curso', 'cierre_curso'):
-    sys.path.insert(0, r'D:\DAE\_repo\cursos\medio-ambiente' + '\\' + _d)
+for _c in ('medio-ambiente', 'bienes-proceso-penal'):      # plan_ic/plan_cc · plan_bi/plan_bc
+    for _d in ('introduccion_curso', 'cierre_curso'):
+        sys.path.insert(0, r'D:\DAE\_repo\cursos' + '\\' + _c + '\\' + _d)
 # el plan sale de DAE_PLAN: plan_ic (introducción al curso) o plan_cc (cierre del curso)
 P = _il.import_module(os.environ.get('DAE_PLAN', 'plan_ic'))  # noqa: E402
 
@@ -46,24 +47,45 @@ def prueba(t):
     print(out, flush=True)
 
 
+def tramos_vf(K, fin):
+    """Video y audio de los tramos de P.TRAMOS (cortes de tomas falsas), cada uno con su
+    ventana (x, y, w, h) o la del plan. Devuelve el grafo hasta [vc] y [ac] (el audio
+    crudo, antes de la cadena v2); los cortes de audio llevan fundidos de 15 ms."""
+    w, h = P.VENTANA
+    x, y = P.XY
+    tr = getattr(P, 'TRAMOS', None) or [(0.0, None, None)]
+    v, a = [], []
+    for i, (t0, t1, win) in enumerate(tr):
+        t1 = fin if t1 is None else t1
+        v.append('[0:v]trim=start=%.3f:end=%.3f,setpts=PTS-STARTPTS,%s[v%d]' % (t0, t1, K.escala(*(win or (x, y, w, h))), i))
+        af = 'atrim=start=%.3f:end=%.3f,asetpts=PTS-STARTPTS' % (t0, t1)
+        if i > 0 and tr[i - 1][1] != t0:
+            af += ',afade=t=in:d=0.015'
+        if i < len(tr) - 1 and tr[i + 1][0] != t1:
+            af += ',afade=t=out:st=%.3f:d=0.015' % (t1 - t0 - 0.015)
+        a.append('[0:a]%s[a%d]' % (af, i))
+    n = len(tr)
+    return ';'.join(v + a) + ';%sconcat=n=%d:v=1:a=1[vc][ac]' % (''.join('[v%d][a%d]' % (i, i) for i in range(n)), n)
+
+
 def componer():
     import srpa_composicion as K
     import srpa_audio as A
     if os.path.exists(P.COMPUESTO):
         raise SystemExit('ya existe ' + P.COMPUESTO)
-    w, h = P.VENTANA
-    x, y = P.XY
     fin = K.duracion(P.ORIGINAL)
-    base = '[0:a]aresample=48000,' + A.CADENA
+    g = tramos_vf(K, fin)
+    base = '[ac]aresample=48000,' + A.CADENA
     r = subprocess.run([K.FB + '/ffmpeg.exe', '-hide_banner', '-nostats', '-i', P.ORIGINAL, '-filter_complex',
-                        base + ',loudnorm=%s:print_format=json[a]' % P.AUDIO_META, '-map', '[a]', '-f', 'null', '-'],
+                        g + ';' + base + ',loudnorm=%s:print_format=json[a];[vc]nullsink' % P.AUDIO_META,
+                        '-map', '[a]', '-f', 'null', '-'],
                        capture_output=True, text=True, errors='replace').stderr
     m = json.loads(r[r.rfind('{'):r.rfind('}') + 1])
     ln = ('loudnorm=%s:measured_I=%s:measured_TP=%s:measured_LRA=%s:measured_thresh=%s:offset=%s:linear=true'
           % (P.AUDIO_META, m['input_i'], m['input_tp'], m['input_lra'], m['input_thresh'], m['target_offset']))
     subprocess.run([K.FB + '/ffmpeg.exe', '-y', '-v', 'error', '-i', P.ORIGINAL, '-filter_complex',
-                    '[0:v]%s,format=yuv420p[v];%s,%s,aresample=48000[a]' % (K.escala(x, y, w, h), base, ln),
-                    '-map', '[v]', '-map', '[a]', '-r', '30', '-t', '%.3f' % fin,
+                    g + ';[vc]format=yuv420p[v];%s,%s,aresample=48000[a]' % (base, ln),
+                    '-map', '[v]', '-map', '[a]', '-r', '30',
                     '-c:v', 'libx264', '-crf', '16', '-preset', 'fast', '-pix_fmt', 'yuv420p',
                     '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709',
                     '-c:a', 'aac', '-b:a', '256k', '-movflags', '+faststart', '-f', 'mp4',
@@ -76,6 +98,11 @@ def componer():
 
 
 def titulo():
+    if getattr(P, 'CURSO_LINEAS', None):
+        # otro curso: el nombre del curso se reescribe (titulo_srpa sobre el mismo fondo u1v2)
+        import titulo_srpa as TS
+        TS.rendir_fijo(P.CURSO_LINEAS, P.SUB, P.TITULO)
+        return
     import titulo_dema as TD
     TD.SUB = P.SUB
     TD.SRC = P.TITULO_BASE
@@ -121,12 +148,19 @@ def nombre_comp(clave):
     return '%s_%s' % (P.PREFIJO, clave)
 
 
+def aep_iconos():
+    """El proyecto de AE y la carpeta de íconos del plan; por defecto los de Delitos ambientales."""
+    import mg_srpa as G
+    return getattr(P, 'AEP', G.M.AEP), getattr(P, 'ICONOS', G.M.ICONOS)
+
+
 def mg_armar():
     import mg_srpa as G
     M = G.M
+    AEP, ICONOS = aep_iconos()
     info = M.cmd('getProjectInfo', {})
-    if os.path.normcase(os.path.normpath(info.get('path') or '')) != os.path.normcase(os.path.normpath(M.AEP)):
-        raise SystemExit('AE tiene abierto %r y no %s' % (info.get('path'), M.AEP))
+    if os.path.normcase(os.path.normpath(info.get('path') or '')) != os.path.normcase(os.path.normpath(AEP)):
+        raise SystemExit('AE tiene abierto %r y no %s' % (info.get('path'), AEP))
     r = M.cmd('getProjectItems', {})
     existentes = {it['name'] for it in (r['items'] if isinstance(r, dict) else r)}
     usados = set()
@@ -135,10 +169,12 @@ def mg_armar():
             usados.add(d['icono'])
         elif tipo == 'mg_lista':
             usados |= {f[0] for f in d['filas']}
+    os.makedirs(ICONOS, exist_ok=True)
     for ico in sorted(usados):
-        dst = '%s/%s.png' % (M.ICONOS, ico)
+        dst = '%s/%s.png' % (ICONOS, ico)
         if not os.path.exists(dst):
-            shutil.copy2('%s/%s.png' % (G.ICONOS, ico), dst)       # íconos de SRPA
+            src = '%s/%s.png' % (G.ICONOS, ico)                    # íconos de SRPA
+            shutil.copy2(src if os.path.exists(src) else '%s/%s.png' % (M.ICONOS, ico), dst)
         if 'ico_' + ico not in existentes:
             M.cmd('importFootage', {'path': dst, 'name': 'ico_' + ico})
     for clave, tipo, t0, t1, d in P.ITEMS:
@@ -155,13 +191,14 @@ def mg_armar():
         M.batch(c.c)
         print('%-18s %4d f  %3d capas  cima %d%s' % (clave, n, c.k, cima,
                                                     '  <-- SE SUBE DE LA ZONA' if cima < 250 else ''), flush=True)
-    M.cmd('saveProject', {'path': M.AEP})
+    M.cmd('saveProject', {'path': AEP})
     print('ARMADO', flush=True)
 
 
 def mg_render():
     import mg_srpa as G
     M = G.M
+    AEP = aep_iconos()[0]
     for clave, tipo, t0, t1, d in P.ITEMS:
         if tipo not in ('mg_act', 'mg_lista'):
             continue
@@ -169,7 +206,7 @@ def mg_render():
         if os.path.exists(out) and os.path.getsize(out) > 0:
             continue
         t = time.time()
-        subprocess.run([M.AERENDER, '-project', M.AEP.replace('/', '\\'), '-comp', nombre_comp(clave),
+        subprocess.run([M.AERENDER, '-project', AEP.replace('/', '\\'), '-comp', nombre_comp(clave),
                         '-OMtemplate', M.OM, '-output', out.replace('/', '\\')], capture_output=True)
         print('%-18s %s %.0f s' % (clave, 'OK' if os.path.exists(out) else 'FALLA', time.time() - t), flush=True)
     print('RENDER LISTO', flush=True)

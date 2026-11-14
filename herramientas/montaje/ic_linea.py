@@ -17,8 +17,9 @@ import sys
 import importlib
 
 import importlib as _il  # noqa: E402
-for _d in ('introduccion_curso', 'cierre_curso'):
-    sys.path.insert(0, r'D:\DAE\_repo\cursos\medio-ambiente' + '\\' + _d)
+for _c in ('medio-ambiente', 'bienes-proceso-penal'):      # plan_ic/plan_cc · plan_bi/plan_bc
+    for _d in ('introduccion_curso', 'cierre_curso'):
+        sys.path.insert(0, r'D:\DAE\_repo\cursos' + '\\' + _c + '\\' + _d)
 # el plan sale de DAE_PLAN: plan_ic (introducción al curso) o plan_cc (cierre del curso)
 P = _il.import_module(os.environ.get('DAE_PLAN', 'plan_ic'))  # noqa: E402
 P = importlib.reload(P)

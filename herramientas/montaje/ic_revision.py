@@ -1,8 +1,9 @@
 # Hoja de revisión de la entrega MP4 de la introducción o del cierre del curso (te_revision.py con el plan de DAE_PLAN).
 import glob, json, os, re, subprocess, sys
 import importlib as _il  # noqa: E402
-for _d in ('introduccion_curso', 'cierre_curso'):
-    sys.path.insert(0, r'D:\DAE\_repo\cursos\medio-ambiente' + '\\' + _d)
+for _c in ('medio-ambiente', 'bienes-proceso-penal'):      # plan_ic/plan_cc · plan_bi/plan_bc
+    for _d in ('introduccion_curso', 'cierre_curso'):
+        sys.path.insert(0, r'D:\DAE\_repo\cursos' + '\\' + _c + '\\' + _d)
 # el plan sale de DAE_PLAN: plan_ic (introducción al curso) o plan_cc (cierre del curso)
 P = _il.import_module(os.environ.get('DAE_PLAN', 'plan_ic'))  # noqa: E402
 from PIL import Image, ImageDraw, ImageFont
@@ -17,13 +18,17 @@ print(v['codec_name'], v.get('profile'), v['width'], v['height'], v['nb_read_pac
 clip = float(subprocess.run([FB + '/ffprobe.exe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', P.COMPUESTO], capture_output=True, text=True).stdout)
 fin = P.CLIP0 + int(round(clip * P.FPS))
 marcas = [('intro', 100), ('titulo', 300)] + [(c, (P.cuadro(a) + P.cuadro(b)) // 2 if t == 'carton' else P.cuadro(b) - 20) for c, t, a, b, _ in P.ITEMS]
-marcas += [('cierre', fin + 30), ('cierre', fin + 120), ('cierre', fin + 200), ('outro', fin + 275), ('outro', fin + 365)]
+marcas += [('cierre', fin + 30), ('cierre', fin + 120), ('cierre', fin + 200), ('outro', fin + 275), ('outro', fin + 365), ('outro', fin + 395)]
 os.makedirs(P.TMP + '/rev', exist_ok=True)
 col = 6; out = Image.new('RGB', (480 * col, 300 * ((len(marcas) + col - 1) // col)), 'black'); d = ImageDraw.Draw(out)
 for i, (nm, fr) in enumerate(marcas):
     p = P.TMP + '/rev/%03d.png' % i
+    if os.path.exists(p):
+        os.remove(p)
     subprocess.run([FB + '/ffmpeg.exe', '-y', '-v', 'error', '-ss', '%.3f' % (fr / P.FPS), '-i', f, '-frames:v', '1', '-vf', 'scale=480:270', p])
     x, y = (i % col) * 480, (i // col) * 300
-    out.paste(Image.open(p), (x, y)); d.text((x + 6, y + 276), '%s %d' % (nm, fr), fill='white')
+    if os.path.exists(p):      # un -ss en los últimos cuadros puede no devolver nada
+        out.paste(Image.open(p), (x, y))
+    d.text((x + 6, y + 276), '%s %d' % (nm, fr), fill='white')
 out.save(P.TMP + '/hoja_rev_%s.jpg' % sys.argv[1], quality=82)
 print('hoja lista')

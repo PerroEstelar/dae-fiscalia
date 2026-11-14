@@ -69,9 +69,25 @@ def partir(texto, font, maxw):
     return mejor[1]
 
 
+SUB_FIJO = None          # rendir_fijo: subtítulo y destino dados (otro curso)
+DESTINO_FIJO = None
+
+
+def rendir_fijo(curso_lineas, sub, dst):
+    """El cartón con el nombre de OTRO curso (`curso_lineas`, uno o dos renglones) y su
+    subtítulo, sobre el mismo fondo, barra y marca. Lo usa `ic_pieza titulo` cuando el
+    plan trae CURSO_LINEAS (Bienes en el proceso penal, 14 nov 2026)."""
+    global SUB_FIJO, DESTINO_FIJO
+    S.CURSO_LINEAS = list(curso_lineas)
+    SUB_FIJO, DESTINO_FIJO = sub, dst
+    rendir('fijo')
+
+
 def maqueta(u):
     """Renglones [(texto, fuente, color, base, mascara, tipo)] centrados en la barra."""
-    if u == 'cc':
+    if u == 'fijo':
+        sub = SUB_FIJO
+    elif u == 'cc':
         sub = 'Cierre del curso'
     else:
         sub = 'Presentación del curso' if u == 0 else 'Unidad %d. %s' % (u, S.UNIDADES[u])
@@ -142,6 +158,8 @@ def capa(renglones, pals, r, n):
 
 
 def destino(u):
+    if u == 'fijo':
+        return DESTINO_FIJO
     if u == 'cc':
         return S.titulo_carton('cc')
     if u == 0:

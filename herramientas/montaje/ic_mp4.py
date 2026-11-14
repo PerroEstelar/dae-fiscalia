@@ -7,7 +7,8 @@ visible, no .mov.
 
 1. **Máster de archivo** desde Resolve:
    - MP4 / H.264 NVIDIA, `VideoQuality` 80000 (~32 Mb/s), con audio AAC;
-   - va a `05 EXPORTS/_master/<nombre>_master_32mbps.mp4`.
+   - va a `05 EXPORTS/_master/<nombre>_master_32mbps.mp4`, o a `P.MASTER_DIR` si el
+     plan lo trae (con un LEER en `_master`).
 2. **Entrega** con x264:
    - CRF 18, preset slow, tune animation, High L4.0, keyint 48;
    - audio copiado (`-c:a copy`, una sola pasada de AAC), faststart;
@@ -28,8 +29,9 @@ import sys
 import time
 
 import importlib as _il  # noqa: E402
-for _d in ('introduccion_curso', 'cierre_curso'):
-    sys.path.insert(0, r'D:\DAE\_repo\cursos\medio-ambiente' + '\\' + _d)
+for _c in ('medio-ambiente', 'bienes-proceso-penal'):      # plan_ic/plan_cc · plan_bi/plan_bc
+    for _d in ('introduccion_curso', 'cierre_curso'):
+        sys.path.insert(0, r'D:\DAE\_repo\cursos' + '\\' + _c + '\\' + _d)
 # el plan sale de DAE_PLAN: plan_ic (introducción al curso) o plan_cc (cierre del curso)
 P = _il.import_module(os.environ.get('DAE_PLAN', 'plan_ic'))  # noqa: E402
 
@@ -71,9 +73,15 @@ def master(nombre):
     if tl is None:
         raise SystemExit('no está la línea ' + P.NOMBRE_LINEA)
     largo = tl.GetEndFrame() - tl.GetStartFrame()
+    nm = nombre + '_master_32mbps'
     dst = '%s/05 EXPORTS/_master' % P.R
     os.makedirs(dst, exist_ok=True)
-    nm = nombre + '_master_32mbps'
+    if getattr(P, 'MASTER_DIR', None):
+        # máster largo (el cierre de Bienes, 43 min ≈ 10 GB): va a D: y en _master queda un aviso
+        open('%s/LEER - %s.txt' % (dst, nm), 'w', encoding='utf-8').write(
+            'El máster %s.mp4 está en\n%s\n(no entra en E:).\n' % (nm, P.MASTER_DIR))
+        dst = P.MASTER_DIR
+        os.makedirs(dst, exist_ok=True)
     if os.path.exists('%s/%s.mp4' % (dst, nm)):
         w('el máster ya está: se usa ese (%s)' % nm)
         return '%s/%s.mp4' % (dst, nm), largo
