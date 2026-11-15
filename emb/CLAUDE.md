@@ -41,6 +41,15 @@ Empresa Metro de Bogotá S.A. Las fuentes viven en el Drive de JP (ver `cursos/*
    cifras y normas **en letras** («Ley mil setecientos doce de dos mil catorce»).
 8. **Duración:** sin mínimo. Si queda corto, mejor.
 
+9. **Estilo de ilustración** (referencia de Sebastián, 14 nov 2026): ilustración urbana a mano,
+   tinta suelta de grosor vivo sobre color plano con textura de gouache, paleta apagada (cielo
+   gris verdoso, verdes salvia, concreto, ladrillo desvaído) y ciudad llena de detalle: cables,
+   antenas, tanques, rejas, matas. Encuadre de cine: primer plano que enmarca, diagonales que
+   llevan al acento. Reemplaza el estilo plano sin contorno de la Fiscalía.
+10. **Lenguaje de animación:** dinámico, expresivo, cinematográfico, al nivel más profesional.
+   Las ilustraciones no se cortan: entran y salen integradas con el motion (máscaras, cámara 2.5D,
+   líneas guía que se dibujan sobre la escena, transiciones con el tren).
+
 ## Lo que se mantiene de la casa
 
 - Voz primero → rejilla por proporción de caracteres → placas → loops → cartones → música.

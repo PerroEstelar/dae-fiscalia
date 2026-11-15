@@ -1,22 +1,28 @@
 # M1 · Video 1 — prompts de hojas de personaje y keyshots (v1)
 
-Para Magnific (Seedream/Flux, lo que use la cuenta). Estilo: el de la serie de la Fiscalía
-(ilustración editorial plana, planos tonales amplios, sin contorno de tinta), **pero a color**,
+Para Magnific. **Estilo nuevo (14 nov, referencia de Sebastián):** ilustración urbana a mano,
+tinta suelta sobre color plano con textura de gouache, paleta apagada y ciudad llena de detalle
+(cables, antenas, rejas, tanques). Sustituye el estilo plano sin contorno de la Fiscalía. **A color**,
 con rojo y amarillo de la marca como acentos que dirigen la mirada (`emb/CLAUDE.md`).
-Ancla de estilo: subir una placa aprobada de la Fiscalía como referencia `style` (Sebastián
-elige cuál: la de Enfoque diferencial o Ley 1826 es la más cercana). Formato 16:9 a 2560×1440.
+Ancla de estilo: la imagen de referencia de Sebastián (`emb/marca/referencias/`, solo en disco)
+como referencia `style`. Su texto y sus letreros NO se heredan: placa limpia. Formato 16:9 a 2560×1440.
 
 ## Bloques comunes
 
 ```
-STYLE: stylized editorial illustration, flat graphic treatment, no ink outline anywhere:
-forms built from broad soft tonal planes, never rendered shading, texture or brush marks.
-Large surfaces smooth; a smooth gradient of light is allowed. Natural, gently muted full
-colour — real Bogotá colours: brick, concrete, overcast sky, green hills — never grey-only.
-Faces simplified and graphic: clear eyes with iris and highlight, brow, simple nose and mouth,
-flat tonal planes with hard edges, warm natural skin in the person's real tone, no caricature.
-Figures 8 to 8.5 heads tall, Colombian features carried by structure and hair.
-Perfectly level camera, no dutch tilt, no fisheye, no lens flare, no bokeh discs.
+STYLE: hand-drawn urban illustration — loose, confident dark ink linework with irregular,
+lively line weight (brush pen / felt tip), over flat digital colour fills with a subtle dry
+gouache texture and gentle painterly variation inside each shape. Muted, sun-washed palette:
+teal-grey sky, sage and olive greens, chalky concrete, faded brick and terracotta, soft
+shadows in cool blue-grey. Rich lived-in urban detail drawn with the same loose line: tangles
+of overhead cables, antennas, water tanks, air-conditioning units, window grilles, balcony
+railings, potted plants, street trees. Faces simplified but expressive, clear eyes, natural
+warm skin in each person's real tone, no caricature. Figures 8 to 8.5 heads tall, Colombian
+features carried by structure and hair.
+CINEMATIC CAMERA: compose like a film frame — strong foreground framing (a pole, a fence, a
+shoulder), clear mid-ground action, deep background; wide lens at human eye level or a
+low angle; diagonal leading lines (cables, kerbs, the viaduct) that pull the eye to the
+accent. Level horizon, no fisheye, no lens flare, no bokeh discs.
 
 COLOUR RULE: the brand red (#DF1F15) and brand yellow (#FFC400) appear ONLY on the one element
 named in the shot; everything else avoids saturated red and yellow — no red cars, no yellow
@@ -31,7 +37,7 @@ CLEAN PLATE: no legible text, letters or numbers anywhere, no logo, emblem, badg
 coat of arms — not on clothes, not on the train, not on construction fences; any sign is a
 plain flat panel with no marks.
 
-NEGATIVE: photograph, 3D render, painterly brush, ink outline, anime eyes, airbrushed skin,
+NEGATIVE: photograph, 3D render, glossy digital painting, anime eyes, airbrushed skin,
 text, letters, numbers, logo, watermark, golden hour, sunset, orange sky, neon, lens flare,
 bokeh, England, European architecture, pitched tiled roofs, chimneys.
 ```

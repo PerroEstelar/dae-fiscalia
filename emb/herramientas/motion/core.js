@@ -31,6 +31,12 @@ function trazo(path,t,desde=0){
   path.style.strokeDasharray=`${L} ${L}`;
   path.style.strokeDashoffset=L*(1-t)+L*desde;
 }
+// trazo visible solo entre las fracciones a y b del recorrido
+function trazoRango(path,a,b){
+  const L=path.__L||(path.__L=path.getTotalLength());
+  path.style.strokeDasharray=`0 ${a*L} ${Math.max(0,(b-a)*L)} ${L*2}`;
+  path.style.strokeDashoffset=0;
+}
 // ruido determinista
 function rnd(i){const x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x);}
 window.__listo=true;

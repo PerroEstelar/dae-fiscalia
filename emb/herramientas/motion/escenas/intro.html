@@ -56,12 +56,15 @@ window.ESCENA={cuadros:120,
   let d='M -200 230';for(let x=-200;x<=2200;x+=40){d+=` L ${x} ${210-60*Math.sin(x/260)-35*Math.sin(x/97)+18*rnd(x)}`}
   c.setAttribute('d',d);mapa.appendChild(c);
   // ruta: entra desde abajo a la izquierda y llega tangente al anillo
-  const dr=`M -140 1010 C 160 990, 300 930, 420 840 S 520 640, ${CX-CR} ${CY}`;
+  const tramoRuta=`M -140 1010 C 200 1000, 380 930, 470 860 C 540 805, ${CX-CR} 740, ${CX-CR} ${CY}`;
+  const anillo=` A ${CR} ${CR} 0 1 1 ${CX+CR} ${CY} A ${CR} ${CR} 0 1 1 ${CX-CR} ${CY}`;
+  const dr=tramoRuta+anillo;
   $('#ruta').setAttribute('d',dr);$('#ruta-glow').setAttribute('d',dr);
-  $('#anillo').setAttribute('d',`M ${CX-CR} ${CY} A ${CR} ${CR} 0 1 1 ${CX+CR} ${CY} A ${CR} ${CR} 0 1 1 ${CX-CR} ${CY}`);
+  const tmp=document.createElementNS(NS,'path');tmp.setAttribute('d',tramoRuta);
+  window.FR=tmp.getTotalLength()/$('#ruta').getTotalLength();   // fracción del recorrido que es ruta
   const ruta=$('#ruta'),L=ruta.getTotalLength();
-  for(let i=1;i<=7;i++){const p=ruta.getPointAtLength(L*i/8.2);const e=document.createElementNS(NS,'circle');
-    e.setAttribute('class','est');e.setAttribute('cx',p.x);e.setAttribute('cy',p.y);e.setAttribute('r',13);e.dataset.t=i/8.2;$('#estaciones').appendChild(e);}
+  for(let i=1;i<=6;i++){const p=ruta.getPointAtLength(L*FR*i/7);const e=document.createElementNS(NS,'circle');
+    e.setAttribute('class','est');e.setAttribute('cx',p.x);e.setAttribute('cy',p.y);e.setAttribute('r',13);e.dataset.t=FR*i/7;$('#estaciones').appendChild(e);}
   // logo real, por capas
   const svg=await (await fetch('file:///home/claude/emb/marca/logos/logo_metro.svg')).text();
   const doc=new DOMParser().parseFromString(svg,'image/svg+xml');
@@ -77,28 +80,31 @@ window.ESCENA={cuadros:120,
  },
  render(f){
   const ruta=$('#ruta'),L=ruta.__L||ruta.getTotalLength();
-  // trazo de la ruta y el tren en su punta
-  const tr=E.inOutCubic(R(f,4,52));
-  trazo(ruta,tr);trazo($('#ruta-glow'),tr);
-  const p=ruta.getPointAtLength(L*tr),p2=ruta.getPointAtLength(Math.min(L,L*tr+2));
-  const ang=Math.atan2(p2.y-p.y,p2.x-p.x)*180/Math.PI;
-  $('#tren').setAttribute('transform',`translate(${p.x} ${p.y}) rotate(${ang})`);
-  $('#tren').style.opacity=tr>0&&tr<1?1:0;
-  // estaciones: aparecen cuando pasa el tren
-  $$('.est').forEach(e=>{const k=E.outBack(R(tr,+e.dataset.t-0.01,+e.dataset.t+0.06),3);e.setAttribute('r',13*k);});
+  // un solo recorrido: ruta + anillo; la cola se recoge y queda el anillo
+  const tr=E.inOutCubic(R(f,4,68));
+  const cola=E.inOutCubic(R(f,46,74))*FR;
+  trazoRango(ruta,cola,tr);trazoRango($('#ruta-glow'),cola,tr);
+  const p=ruta.getPointAtLength(L*tr),p2=ruta.getPointAtLength(Math.min(L,L*tr+2)),p0=ruta.getPointAtLength(Math.max(0,L*tr-2));
+  const ang=Math.atan2(p2.y-p0.y,p2.x-p0.x)*180/Math.PI;
+  const fin=E.inOutCubic(R(tr,FR+(1-FR)*0.55,0.985));   // el tren se funde en el anillo antes de cerrar la vuelta
+  $('#tren').setAttribute('transform',`translate(${p.x} ${p.y}) rotate(${ang}) scale(${1-0.6*fin} ${1-0.3*fin})`);
+  $('#tren').style.opacity=tr>0?1-fin:0;
+  // estaciones: aparecen cuando pasa el tren y se van con la cola
+  $$('.est').forEach(e=>{const t0=+e.dataset.t;const k=E.outBack(R(tr,t0-0.01,t0+0.05),3)*(1-R(cola,t0-0.02,t0+0.02));e.setAttribute('r',13*k);});
   // mapa: calles se dibujan con desfase, luego se van
   $$('.calle').forEach((l,i)=>{const k=E.outCubic(R(f,+l.dataset.k*18,+l.dataset.k*18+26));trazo(l,k);});
   trazo($('.cerro'),E.inOutCubic(R(f,8,46)));
   const sal=E.inOutCubic(R(f,56,84));
-  $('#mapa').style.opacity=1-sal;$('#estaciones').style.opacity=1-sal;$('#ruta').style.opacity=1-E.lin(R(f,70,86));$('#ruta-glow').style.opacity=.12*(1-sal);
-  // cámara: acompaña al tren y se asienta en el encuadre final
-  const cam=E.inOutCubic(R(f,0,70)), s=lerp(1.55,1.0,cam);
-  const fx=lerp(p.x,960,E.inOutCubic(R(f,26,70))), fy=lerp(p.y,540,E.inOutCubic(R(f,26,70)));
+  $('#mapa').style.opacity=1-sal;$('#ruta-glow').style.opacity=.12*(1-sal);
+  $('#ruta').style.opacity=1-E.inOutCubic(R(f,80,90));
+  // cámara: acompaña al tren y se asienta en el encuadre final, sin saltos
+  const s=lerp(1.55,1.0,E.inOutCubic(R(f,0,62)));
+  const k=E.inOutCubic(R(f,18,62));
+  const fx=lerp(p.x,960,k), fy=lerp(p.y,540,k);
   $('#cam').setAttribute('transform',`translate(960 540) scale(${s}) translate(${-fx} ${-fy})`);
-  // el anillo del emblema sigue la línea
-  const an=E.inOutCubic(R(f,48,72));trazo($('#anillo'),an);$('#anillo').style.opacity=1-R(f,80,88);
+  $('#anillo').style.opacity=0;
   // las montañas suben con máscara
-  const em=E.outExpo(R(f,62,84));
+  const em=E.outExpo(R(f,66,88));
   $('#clipEmbR').setAttribute('y',219*(1-em)-10);$('#clipEmbR').setAttribute('height',219*em+20);
   // METRO letra por letra, desde abajo con rebote corto
   letrasM.forEach((w,i)=>{const k=R(f,70+i*3,86+i*3);w.setAttribute('transform',`translate(0 ${70*(1-E.outBack(k,1.4))})`);w.style.opacity=E.outCubic(k);});
