@@ -1,11 +1,13 @@
 # Hoja de revisión de la entrega MP4 de la introducción o del cierre del curso (te_revision.py con el plan de DAE_PLAN).
 import glob, json, os, re, subprocess, sys
 import importlib as _il  # noqa: E402
-for _c in ('medio-ambiente', 'bienes-proceso-penal'):      # plan_ic/plan_cc · plan_bi/plan_bc
-    for _d in ('introduccion_curso', 'cierre_curso'):
-        sys.path.insert(0, r'D:\DAE\_repo\cursos' + '\\' + _c + '\\' + _d)
-# el plan sale de DAE_PLAN: plan_ic (introducción al curso) o plan_cc (cierre del curso)
-P = _il.import_module(os.environ.get('DAE_PLAN', 'plan_ic'))  # noqa: E402
+# el plan sale de DAE_PLAN (plan_ic, plan_cc, plan_bi, plan_bc, plan_u4l1…): se busca en cursos/
+_plan = os.environ.get('DAE_PLAN', 'plan_ic')
+for _r, _ds, _fs in os.walk(r'D:\DAE\_repo\cursos'):
+    if _plan + '.py' in _fs:
+        sys.path.insert(0, _r)
+        break
+P = _il.import_module(_plan)  # noqa: E402
 from PIL import Image, ImageDraw, ImageFont
 FB = glob.glob(os.path.expanduser('~') + '/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg*/*/bin')[0]
 f = '%s/05 EXPORTS/%s.mp4' % (P.R, P.EXPORT % int(sys.argv[1]))   # la entrega es MP4

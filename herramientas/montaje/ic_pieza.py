@@ -21,6 +21,7 @@ el plan de `DAE_PLAN`: `introduccion_curso/plan_ic.py` (por defecto) o
 La línea de Resolve se arma con `ic_linea.py` (dentro de run_inline).
 """
 import json
+import math
 import os
 import shutil
 import subprocess
@@ -31,11 +32,13 @@ sys.path.insert(0, r'D:\DAE\_repo\herramientas\montaje')
 sys.path.insert(0, r'D:\DAE\_repo\herramientas\cartones')
 sys.path.insert(0, r'D:\DAE\_repo\herramientas\motion')
 import importlib as _il  # noqa: E402
-for _c in ('medio-ambiente', 'bienes-proceso-penal'):      # plan_ic/plan_cc · plan_bi/plan_bc
-    for _d in ('introduccion_curso', 'cierre_curso'):
-        sys.path.insert(0, r'D:\DAE\_repo\cursos' + '\\' + _c + '\\' + _d)
-# el plan sale de DAE_PLAN: plan_ic (introducción al curso) o plan_cc (cierre del curso)
-P = _il.import_module(os.environ.get('DAE_PLAN', 'plan_ic'))  # noqa: E402
+# el plan sale de DAE_PLAN (plan_ic, plan_cc, plan_bi, plan_bc, plan_u4l1…): se busca en cursos/
+_plan = os.environ.get('DAE_PLAN', 'plan_ic')
+for _r, _ds, _fs in os.walk(r'D:\DAE\_repo\cursos'):
+    if _plan + '.py' in _fs:
+        sys.path.insert(0, _r)
+        break
+P = _il.import_module(_plan)  # noqa: E402
 
 
 def prueba(t):
@@ -55,10 +58,29 @@ def tramos_vf(K, fin):
     w, h = P.VENTANA
     x, y = P.XY
     tr = getattr(P, 'TRAMOS', None) or [(0.0, None, None)]
+    # CONGELA [(a, b)]: sobre [a, b) se ve quieto el cuadro de b (una transición horneada en la
+    # fuente); el audio sigue corrido. Los bordes se llevan a la rejilla de la fuente.
+    fq = getattr(P, 'FPS_FUENTE', 30)
+    cong = [(math.floor(c0 * fq + 1e-6) / fq, math.ceil(c1 * fq - 1e-6) / fq) for c0, c1 in getattr(P, 'CONGELA', [])]
     v, a = [], []
     for i, (t0, t1, win) in enumerate(tr):
         t1 = fin if t1 is None else t1
-        v.append('[0:v]trim=start=%.3f:end=%.3f,setpts=PTS-STARTPTS,%s[v%d]' % (t0, t1, K.escala(*(win or (x, y, w, h))), i))
+        esc = K.escala(*(win or (x, y, w, h)))
+        dentro = [(c0, c1) for c0, c1 in cong if t0 < c0 < c1 < t1]
+        if not dentro:
+            v.append('[0:v]trim=start=%.3f:end=%.3f,setpts=PTS-STARTPTS,%s[v%d]' % (t0, t1, esc, i))
+        else:
+            ps, t = [], t0
+            for j, (c0, c1) in enumerate(dentro):
+                ps.append('[0:v]trim=start=%.4f:end=%.4f,setpts=PTS-STARTPTS,%s[v%dn%d]' % (t, c0, esc, i, j))
+                ps.append('[0:v]trim=start=%.4f,setpts=PTS-STARTPTS,trim=end_frame=1,%s,'
+                          'tpad=stop_mode=clone:stop_duration=%.4f,trim=duration=%.4f,setpts=PTS-STARTPTS[v%dq%d]'
+                          % (c1, esc, c1 - c0, c1 - c0, i, j))
+                t = c1
+            ps.append('[0:v]trim=start=%.4f:end=%.3f,setpts=PTS-STARTPTS,%s[v%dz]' % (t, t1, esc, i))
+            et = ''.join('[v%dn%d][v%dq%d]' % (i, j, i, j) for j in range(len(dentro))) + '[v%dz]' % i
+            ps.append('%sconcat=n=%d:v=1:a=0[v%d]' % (et, 2 * len(dentro) + 1, i))
+            v.extend(ps)
         af = 'atrim=start=%.3f:end=%.3f,asetpts=PTS-STARTPTS' % (t0, t1)
         if i > 0 and tr[i - 1][1] != t0:
             af += ',afade=t=in:d=0.015'

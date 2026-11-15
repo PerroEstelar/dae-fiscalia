@@ -17,11 +17,13 @@ import sys
 import importlib
 
 import importlib as _il  # noqa: E402
-for _c in ('medio-ambiente', 'bienes-proceso-penal'):      # plan_ic/plan_cc · plan_bi/plan_bc
-    for _d in ('introduccion_curso', 'cierre_curso'):
-        sys.path.insert(0, r'D:\DAE\_repo\cursos' + '\\' + _c + '\\' + _d)
-# el plan sale de DAE_PLAN: plan_ic (introducción al curso) o plan_cc (cierre del curso)
-P = _il.import_module(os.environ.get('DAE_PLAN', 'plan_ic'))  # noqa: E402
+# el plan sale de DAE_PLAN (plan_ic, plan_cc, plan_bi, plan_bc, plan_u4l1…): se busca en cursos/
+_plan = os.environ.get('DAE_PLAN', 'plan_ic')
+for _r, _ds, _fs in os.walk(r'D:\DAE\_repo\cursos'):
+    if _plan + '.py' in _fs:
+        sys.path.insert(0, _r)
+        break
+P = _il.import_module(_plan)  # noqa: E402
 P = importlib.reload(P)
 
 TIT_INI, TIT_DUR, INTRO_DUR = 194, 215, 194
