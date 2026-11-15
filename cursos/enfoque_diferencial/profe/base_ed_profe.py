@@ -110,6 +110,11 @@ def c_ante(ante, titulo, cuerpo=None):
     return ls
 
 
+def c_nota(ante, cuerpo):
+    # antetítulo y cuerpo, sin título: para una cita larga con su fuente (un artículo, una sentencia)
+    return _p(ante, 'med', ANTE, 0) + _p(cuerpo, 'med', CUE, GAP_ANTE)
+
+
 def c_suelta(t):
     return _p(t, 'bold', SUELTA, 0)
 
