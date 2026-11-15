@@ -95,3 +95,21 @@ un punto medio». Dos niveles de estilización, 160 créditos más (total gastad
 | hp06 ingeniero | `79vaoNEJAL` | `gOIteyhSXO` | la elegida tiene una cinta roja en el plano enrollado: quitar en placas |
 | hp07 residente | `5jVMns2Kxe` | `jUXBV7dLD0` | cuatro cuerpos enteros |
 | hp08 vecino crítico | `cplg1X80eP` | `VXUwj88MMU` | la alternativa tiene un reflejo rojo en las gafas |
+
+**Paso 2 — keyshots (Sebastián aprueba las hojas, 22:57).** Precio real de Seedream 5.5: 40 + 10
+por cada referencia. Ronda 1 (generales madre) 460, correcciones 200, ronda 2 (planos cerrados
+con su madre como referencia) 800. Total del paso: 1.460. **Total gastado: 2.480.**
+
+| plano | elegida | nota |
+|---|---|---|
+| a01 viaducto | `rgedn6jxtc` (ancla) · `Ebzn44OuuO` | dos encuadres de ambiente |
+| A1 convocatoria, general | `bxTVnkL5Y2` | corrección de `Bh49wZ3oQR`: el modelo escribió «SALÓN COMUNAL»; letrero en blanco |
+| A2 primer plano de la vecina | `gOItdRJSXO` | |
+| A3 detalle del teléfono | `yiCEmYyPW9` | subjetivo de ella: las dos manos, pantalla apagada |
+| B1 desvío, general | `jUXBVaZLD0` | `vQZ290wa47` le puso gafas: descartada |
+| B2 detalle de la rueda | `Bh497bFoQR` | banda amarilla en el borde |
+| B3 primer plano de la cuidadora | `fHAGilxCDY` | del brazo con el señor |
+| C1 cierre peatonal, general | `tCi3PvDmZJ` | corrección de `TdSUx68VNR`: barreras naranja pasadas a blanco |
+| C2 medio sobre el hombro | `s7o8p2kl8e` | la mano abierta hacia la persiana |
+| C3 primer plano del vecino | `jUXBMZfLD0` | |
+| C4 detalle de la persiana | `O6fCtVmynm` | el delantal colgado adentro es el único amarillo |
