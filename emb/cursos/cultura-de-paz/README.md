@@ -59,7 +59,7 @@ reparto y locaciones fijas (`personajes.md`).
 - [x] Lectura completa de los 4 módulos (14 nov 2026)
 - [x] Propuestas de cantidad de videos (`propuestas_videos.md`)
 - [x] Guiones del Módulo 1, primera versión (`m1/guiones_m1.md`)
-- [ ] Elegir propuesta de cantidad con Sebastián
+- [x] Propuesta elegida: **P5**, máximo 4 videos por módulo, 14 en total (14 nov 2026)
 - [ ] Hojas de personaje y locaciones
 - [ ] Prueba de Magnific Move: intro y comparador de 1.1.1
 - [ ] Voces M1 en ElevenLabs

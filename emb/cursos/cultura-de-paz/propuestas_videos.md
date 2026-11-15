@@ -49,7 +49,7 @@ están en `m1/guiones_m1.md`. Si el tiempo no alcanza, el orden de prioridad es:
 
 ---
 
-## P5 · Máximo 4 por módulo, uno por capítulo — 14 videos (M1: 4)
+## P5 · Máximo 4 por módulo, uno por capítulo — 14 videos (M1: 4)  ← ELEGIDA
 
 Pedido de Sebastián (14 nov 2026): como mucho 4 videos por módulo, menos si el módulo no los
 necesita. Regla de reparto: **un video por capítulo**, que junta la lección de concepto y la de
