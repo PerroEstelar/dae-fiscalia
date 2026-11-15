@@ -36,7 +36,7 @@ const NS='http://www.w3.org/2000/svg';
 const LX=510, LY=334, LS=900/478;               // logo: 900 px de ancho, centrado
 const CX=LX+108.8*LS, CY=LY+107.0*LS, CR=146;    // centro y radio del anillo del emblema
 let letrasM=[], letrasB=[], emb;
-window.ESCENA={cuadros:120,
+window.ESCENA={cuadros:112,
  async init(){
   // mapa de calles: retícula girada, con avenidas
   const mapa=$('#mapa');
@@ -81,8 +81,8 @@ window.ESCENA={cuadros:120,
  render(f){
   const ruta=$('#ruta'),L=ruta.__L||ruta.getTotalLength();
   // un solo recorrido: ruta + anillo; la cola se recoge y queda el anillo
-  const tr=E.inOutCubic(R(f,4,68));
-  const cola=E.inOutCubic(R(f,46,74))*FR;
+  const tr=E.inOutCubic(R(f,4,62));
+  const cola=E.inOutCubic(R(f,38,60))*FR;
   trazoRango(ruta,cola,tr);trazoRango($('#ruta-glow'),cola,tr);
   const p=ruta.getPointAtLength(L*tr),p2=ruta.getPointAtLength(Math.min(L,L*tr+2)),p0=ruta.getPointAtLength(Math.max(0,L*tr-2));
   const ang=Math.atan2(p2.y-p0.y,p2.x-p0.x)*180/Math.PI;
@@ -94,24 +94,24 @@ window.ESCENA={cuadros:120,
   // mapa: calles se dibujan con desfase, luego se van
   $$('.calle').forEach((l,i)=>{const k=E.outCubic(R(f,+l.dataset.k*18,+l.dataset.k*18+26));trazo(l,k);});
   trazo($('.cerro'),E.inOutCubic(R(f,8,46)));
-  const sal=E.inOutCubic(R(f,56,84));
+  const sal=E.inOutCubic(R(f,48,72));
   $('#mapa').style.opacity=1-sal;$('#ruta-glow').style.opacity=.12*(1-sal);
-  $('#ruta').style.opacity=1-E.inOutCubic(R(f,80,90));
+  $('#ruta').style.opacity=1-E.inOutCubic(R(f,62,68));
   // cámara: acompaña al tren y se asienta en el encuadre final, sin saltos
-  const s=lerp(1.55,1.0,E.inOutCubic(R(f,0,62)));
-  const k=E.inOutCubic(R(f,18,62));
+  const s=lerp(1.55,1.0,E.inOutCubic(R(f,0,56)));
+  const k=E.inOutCubic(R(f,16,56));
   const fx=lerp(p.x,960,k), fy=lerp(p.y,540,k);
   $('#cam').setAttribute('transform',`translate(960 540) scale(${s}) translate(${-fx} ${-fy})`);
   $('#anillo').style.opacity=0;
   // las montañas suben con máscara
-  const em=E.outExpo(R(f,66,88));
+  const em=E.outExpo(R(f,56,70));
   $('#clipEmbR').setAttribute('y',219*(1-em)-10);$('#clipEmbR').setAttribute('height',219*em+20);
   // METRO letra por letra, desde abajo con rebote corto
-  letrasM.forEach((w,i)=>{const k=R(f,70+i*3,86+i*3);w.setAttribute('transform',`translate(0 ${70*(1-E.outBack(k,1.4))})`);w.style.opacity=E.outCubic(k);});
+  letrasM.forEach((w,i)=>{const k=R(f,60+i*3,76+i*3);w.setAttribute('transform',`translate(0 ${70*(1-E.outBack(k,1.4))})`);w.style.opacity=E.outCubic(k);});
   // BOGOTÁ: el espaciado se cierra
-  letrasB.forEach((w,i)=>{const k=E.outExpo(R(f,80+i*2,100+i*2));w.setAttribute('transform',`translate(${(i-2.5)*26*(1-k)} 0)`);w.style.opacity=k;});
+  letrasB.forEach((w,i)=>{const k=E.outExpo(R(f,68+i*2,88+i*2));w.setAttribute('transform',`translate(${(i-2.5)*26*(1-k)} 0)`);w.style.opacity=k;});
   // destello que cruza el logo
-  const b=E.inOutCubic(R(f,98,116));$('#barrido').setAttribute('x',-600+2500*b);
+  const b=E.inOutCubic(R(f,86,102));$('#barrido').setAttribute('x',-600+2500*b);
   // grano
   const g=$('#grano').getContext('2d'),im=g.createImageData(960,540);
   for(let i=0;i<im.data.length;i+=4){const v=rnd(i*0.37+Math.floor(f)*13.1)*255;im.data[i]=im.data[i+1]=im.data[i+2]=v;im.data[i+3]=255;}
