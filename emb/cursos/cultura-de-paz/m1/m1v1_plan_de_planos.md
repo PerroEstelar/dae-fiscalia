@@ -80,3 +80,18 @@ un punto medio». Dos niveles de estilización, 160 créditos más (total gastad
 | `s7o80Rxl8e` | tinta + caricatura | alternativa, más tinta; trae un taxi amarillo y una sombrilla roja (corregir en prompt) |
 | `gOItVG3SXO` | casi Pixar | volumen suave, más limpio; se aleja de la tinta |
 | `N2FHtpM6D9` | casi Pixar | pintado; carro rojo (rompe la regla de color) |
+
+**Ancla de estilo elegida por Sebastián (22:54):** `rgedn6jxtc`.
+
+**Paso 1 — hojas de personaje (Seedream 5.5 + ancla como `style`; con referencia cuesta 50, no 40).**
+14 imágenes, 700 créditos. Total gastado: 1.020.
+
+| personaje | elegida | alternativa | nota |
+|---|---|---|---|
+| hp02 comerciante | `1lpecjfr4r` | `aF2ANETfSh` | la alternativa trae zapatos rojos |
+| hp03 cuidadora | `1lpecLCr4r` | `79vaoPaJAL` | la elegida tiene el tono de piel pedido |
+| hp04 adulto mayor | `yiCEt6sPW9` | `p8JOlo3ehw` | gorra marrón, ruana, bastón |
+| hp05 usuaria de silla | `rged0gaxtc` | `1lpeclur4r` | la alternativa trae bujes rojos y chaqueta verde |
+| hp06 ingeniero | `79vaoNEJAL` | `gOIteyhSXO` | la elegida tiene una cinta roja en el plano enrollado: quitar en placas |
+| hp07 residente | `5jVMns2Kxe` | `jUXBV7dLD0` | cuatro cuerpos enteros |
+| hp08 vecino crítico | `cplg1X80eP` | `VXUwj88MMU` | la alternativa tiene un reflejo rojo en las gafas |
