@@ -1,6 +1,6 @@
 <!doctype html><html><head><meta charset="utf-8">
 <!-- M1 · Video 1 — Violencias y conflictos. Corte sin voz (tiempos provisionales a 1,6 cuadros por carácter). -->
-<link rel="stylesheet" href="../base.css"><script src="../core.js"></script>
+<link rel="stylesheet" href="../base.css"><script src="../core.js"></script><script src="voz_m1v1.js" onerror="window.VOZ=null"></script>
 <style>
  body{background:#fff}
  .sec{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden}
@@ -45,15 +45,26 @@ B6:'En el cierre peatonal hay un conflicto sobre accesibilidad, seguridad y conf
 B7:'Para responder, separe tres cosas. El cierre es un hecho que se puede documentar. Decir que busca perjudicar al comercio es una interpretación que hay que contrastar. Y la preocupación es una experiencia que merece escucha.',
 B8:'En la actividad, responda: quiénes intervienen, qué necesita cada parte y qué hechos deben verificarse.'};
 const T={};for(const k in TX)T[k]=blk(TX[k]);
-T.B8.d+=72;   // la actividad se queda en pantalla
+// con la voz medida: la duración de cada bloque y la ubicación de cada frase salen del mapa carácter → cuadro
+function interp(m,c){if(c<=m[0][0])return m[0][1];for(let i=1;i<m.length;i++)if(c<=m[i][0]){const a=m[i-1],b=m[i];return a[1]+(b[1]-a[1])*(b[0]>a[0]?(c-a[0])/(b[0]-a[0]):0);}return m[m.length-1][1];}
+if(window.VOZ)for(const k in TX){const V=window.VOZ[k],txt=TX[k];T[k]={d:V.d,k:p=>{const i=txt.indexOf(p);if(i<0)throw new Error('frase: '+p);return Math.round(interp(V.mapa,i))+2;}};}
+T.B8.d+=window.VOZ?60:72;   // la actividad se queda en pantalla
 
 function etiqueta(root){return el('div','etq',root,'Situación hipotética con fines pedagógicos');}
 function etqDraw(e,t,d){e.style.opacity=E.outCubic(R(t,18,34))*(1-R(t,d-6,d));}
 
+// barrido del vagón (el mismo de B3): la toma nueva queda detrás de su cola
+function tren(r,cont){const s=sv('svg',r,{class:'ov',width:1920,height:1080});const g=sv('g',s,{});
+ sv('rect',g,{x:-2400,y:-60,width:2400,height:1200,fill:'#DF1F15'});
+ sv('path',g,{d:'M 0 -60 L 140 -60 Q 330 -60 330 300 L 330 780 Q 330 1140 140 1140 L 0 1140 Z',fill:'#DF1F15'});
+ for(let i=0;i<5;i++)sv('rect',g,{x:-2300+i*440,y:300,width:330,height:300,rx:40,fill:'#fff',opacity:.92});
+ sv('rect',g,{x:-2400,y:740,width:2560,height:26,fill:'#FFC400'});sv('rect',g,{x:60,y:300,width:190,height:300,rx:60,fill:'#fff',opacity:.92});
+ return {draw(t){const x=lerp(-400,1920+2500,E.inOutCubic(R(t,0,24)));g.setAttribute('transform',`translate(${x} 0)`);cont.style.clipPath=t<24?`inset(0 ${Math.max(0,1920-(x-2400))}px 0 0)`:'none';s.style.display=t<26?'':'none';}};}
+
 // ───────────────────────── secciones ─────────────────────────
 const S=[];
 // T · título: la ventana redondeada se abre desde la línea roja
-S.push({id:'T',d:130,ov:0,
+S.push({id:'T',d:104,ov:0,
  build(r){r.style.background='#fff';
   this.win=el('div','',r);Object.assign(this.win.style,{position:'absolute',overflow:'hidden'});
   this.v=el('img','',this.win);Object.assign(this.v.style,{position:'absolute',width:'1920px',height:'1080px',objectFit:'cover'});
@@ -63,26 +74,24 @@ S.push({id:'T',d:130,ov:0,
   const l1=el('span','lin',this.tit,'Violencias'),l2=el('span','lin',this.tit,'y conflictos');
   this.L=[...partir(l1),...partir(l2)];},
  draw(t){
-  trazo(this.lin,E.outExpo(R(t,0,22))*(1-E.inOutCubic(R(t,84,104))));
+  trazo(this.lin,E.outExpo(R(t,0,22))*(1-E.inOutCubic(R(t,70,90))));
   const op=E.outExpo(R(t,10,40));        // la ventana sube desde la línea
-  const ex=E.inOutCubic(R(t,84,112));    // y se abre a cuadro completo
+  const ex=E.inOutCubic(R(t,70,98));    // y se abre a cuadro completo
   const x=lerp(760,0,ex),w=lerp(1040,1920,ex),b=lerp(870,1080,ex),h=lerp(700*op,1080,ex),rad=lerp(30,0,ex);
   Object.assign(this.win.style,{left:x+'px',top:(b-h)+'px',width:w+'px',height:h+'px',borderRadius:rad+'px'});
   // la imagen no se encoge: el encuadre se abre alrededor del tren
-  const s=lerp(1.14,1.0,E.inOutCubic(R(t,0,130)));
+  const s=lerp(1.14,1.0,E.inOutCubic(R(t,0,128)));
   this.v.style.left=(-x)+'px';this.v.style.top=(-(b-h))+'px';this.v.style.transform=`scale(${s})`;
-  src(this.v,C('a01_tren',t));
-  this.ante.style.opacity=E.outCubic(R(t,14,30))*(1-E.inOutCubic(R(t,82,98)));
-  this.ante.style.transform=`translate(${-60*E.inOutCubic(R(t,82,100))}px,0)`;
+  src(this.v,C('a01_tren',Math.min(120,t)));
+  this.ante.style.opacity=E.outCubic(R(t,14,30))*(1-E.inOutCubic(R(t,68,84)));
+  this.ante.style.transform=`translate(${-60*E.inOutCubic(R(t,68,86))}px,0)`;
   letras(this.L,t,18,1.0,16);
-  this.tit.style.opacity=1-E.inOutCubic(R(t,84,100));this.tit.style.transform=`translate(${-90*E.inOutCubic(R(t,84,104))}px,0)`;
- },subs:[[84,112]]});
+  this.tit.style.opacity=1-E.inOutCubic(R(t,70,86));this.tit.style.transform=`translate(${-90*E.inOutCubic(R(t,70,90))}px,0)`;
+ },subs:[[70,98]]});
 
-// B1 · la convocatoria: iris desde una estación → A1 → A3 → A2
-S.push({id:'B1',d:T.B1.d,ov:28,
+// B1 · la convocatoria: entra con el vagón → A1 → A3 → A2
+S.push({id:'B1',d:T.B1.d,ov:24,
  build(r){this.a1=capa(r);this.a3=capa(r);this.a2=capa(r);
-  const s=sv('svg',r,{class:'ov',width:1920,height:1080});this.aro=sv('circle',s,{cx:1240,cy:560,r:0,fill:'none',stroke:'#DF1F15','stroke-width':14});
-  this.est=sv('circle',s,{cx:1240,cy:560,r:0,fill:'#fff',stroke:'#DF1F15','stroke-width':8});
   this.not=el('div','tarj',r,`<div style="display:flex;gap:26px;align-items:center;padding:26px 34px">
    <svg width="74" height="74" viewBox="0 0 74 74"><rect x="18" y="4" width="38" height="66" rx="8" fill="none" stroke="#DF1F15" stroke-width="5"/><circle cx="37" cy="58" r="3.5" fill="#DF1F15"/></svg>
    <div><div style="font:600 24px 'Work Sans';color:#6C757D">Convocatoria</div><div style="font:700 36px Montserrat;line-height:1.15">Solo por una<br>plataforma digital</div></div></div>`);
@@ -93,17 +102,15 @@ S.push({id:'B1',d:T.B1.d,ov:28,
   this.som=el('div','lay',r);this.som.style.background='linear-gradient(0deg,rgba(15,18,22,.78) 0%,rgba(15,18,22,0) 55%)';
   r.appendChild(this.q1);r.appendChild(this.q2);
   this.e=etiqueta(r);
+  this.cont=el('div','sec',r);[...r.children].filter(c=>c!==this.cont).forEach(c=>this.cont.appendChild(c));this.ent=tren(r,this.cont);
   const k=T.B1.k;this.c3=k('solo por una')-4;this.c2=k('y que varias')+14;this.kq=k('La primera pregunta');this.kq2=k('Es si pudo');},
  draw(t,r){const d=this.d;
-  // iris: la estación aparece y se abre en círculo
-  const io=E.inOutExpo(R(t,4,28));const rad=io*1200;
-  r.style.clipPath=t<28?`circle(${Math.max(0.1,rad)}px at 1240px 560px)`:'none';
-  this.est.setAttribute('r',22*E.outBack(R(t,0,8),3)*(1-R(t,6,12)));
-  this.aro.setAttribute('r',rad);this.aro.style.opacity=1-R(t,18,28);
+  // entra con el vagón: la toma nueva queda detrás de su cola
+  this.ent.draw(t);
   const A1=t<this.c3,A3=t>=this.c3&&t<this.c2,A2=t>=this.c2;
   vis(this.a1.box,A1);vis(this.a3.box,A3);vis(this.a2.box,A2);
   if(A1){src(this.a1.im,C('A1_convocatoria',t));kb(this.a1.im,lerp(1.16,1.05,E.outCubic(R(t,0,this.c3))));}
-  if(A3){const u=t-this.c3;src(this.a3.im,C('A3_telefono',u));kb(this.a3.im,1.04+0.04*u/80);}
+  if(A3){const u=t-this.c3;src(this.a3.im,C('A3b_telefono',u));kb(this.a3.im,1.02+0.03*u/80);}
   if(A2){const u=t-this.c2;src(this.a2.im,P('A2_vecina'));kb(this.a2.im,lerp(1.02,1.16,E.inOutCubic(R(u,0,d-this.c2))),lerp(40,-30,R(u,0,d-this.c2)),0);}
   // tarjeta de convocatoria sobre el teléfono
   const n=E.outBack(R(t,this.c3+8,this.c3+24),1.3),no=E.inOutCubic(R(t,this.c2-10,this.c2));
@@ -114,12 +121,12 @@ S.push({id:'B1',d:T.B1.d,ov:28,
   this.q1.style.opacity=(+this.q1.style.opacity)*(1-0.55*R(t,this.kq2,this.kq2+10));
   sube(this.q2,t,this.kq2,d-14,60,18);
   etqDraw(this.e,t,d);
- },subs:[[0,30]]});
+ },subs:[[0,24]]});
 
 // B2 · tres violencias: A1 en duotono rojo, tarjetas en perspectiva
 S.push({id:'B2',d:T.B2.d,ov:16,
- build(r){this.bg=capa(r);src(this.bg.im,P('A1_duo'));
-  this.cab=el('div','abs',r,`<div style="font:800 60px Montserrat;color:#fff">Tres formas de violencia</div><div style="font:500 28px 'Work Sans';color:rgba(255,255,255,.82);margin-top:8px">Johan Galtung (1969, 1990)</div>`);Object.assign(this.cab.style,{left:'120px',top:'96px'});
+ build(r){this.bg=capa(r);src(this.bg.im,P('A1_duoY'));
+  this.cab=el('div','abs',r,`<div style="font:800 60px Montserrat;color:#212529">Tres formas de violencia</div><div style="font:500 28px 'Work Sans';color:rgba(33,37,41,.8);margin-top:8px">Johan Galtung (1969, 1990)</div>`);Object.assign(this.cab.style,{left:'120px',top:'96px'});
   this.esc=el('div','abs',r);Object.assign(this.esc.style,{left:0,top:0,width:'1920px',height:'1080px',perspective:'1700px',perspectiveOrigin:'960px 520px'});
   const D=[['Directa','Una conducta que causa daño','Insultar o amenazar durante una atención','M30 18 L66 18 L48 52 L76 52 L38 106 L50 64 L26 64 Z'],
            ['Estructural','Un arreglo que reproduce una exclusión','Un único canal digital que deja por fuera a quien no tiene conectividad','M14 14h26v26h-26zM48 14h26v26h-26zM82 14h26v26h-26zM14 48h26v26h-26zM82 48h26v26h-26zM14 82h26v26h-26zM48 82h26v26h-26zM82 82h26v26h-26z'],
@@ -237,7 +244,7 @@ S.push({id:'B5',d:T.B5.d,ov:22,
  build(r){r.style.background='#F7F7F8';
   this.esc=el('div','abs',r);Object.assign(this.esc.style,{left:0,top:0,width:'1920px',height:'1080px',perspective:'1800px',perspectiveOrigin:'1500px 540px'});
   this.card=el('div','abs',this.esc);Object.assign(this.card.style,{left:0,top:0,width:'1920px',height:'1080px',overflow:'hidden',transformOrigin:'50% 50%'});
-  this.im=el('img','',this.card);Object.assign(this.im.style,{width:'1920px',height:'1080px',objectFit:'cover'});src(this.im,P('C1_cierre'));
+  this.im=el('img','',this.card);Object.assign(this.im.style,{width:'1920px',height:'1080px',objectFit:'cover'});src(this.im,C('C1_cierre',52));
   const D=[['Desacuerdo','Una diferencia de opinión','Se aclara con razones e información'],['Conflicto','Una incompatibilidad, real o percibida','Identificar actores y afectaciones'],['Crisis','Un riesgo urgente','Contener y coordinar'],['Violencia','Daño','Proteger derechos y activar procedimientos']];
   const s=sv('svg',r,{class:'ov',width:1920,height:1080});
   let fd='';for(let i=0;i<4;i++){const x=104+i*54,y0=770-i*160+136,y1=770-i*160+20;fd+=(i?` L ${x} ${y0}`:`M ${x} ${y0+40}`)+` L ${x} ${y1}`+(i<3?` L ${x+54} ${y1}`:'');}
@@ -252,22 +259,22 @@ S.push({id:'B5',d:T.B5.d,ov:22,
   // 2.5D: la toma retrocede y gira hasta quedar a la derecha como una tarjeta
   const p=E.inOutExpo(R(t,0,26));
   const tx=lerp(0,520,p),s=lerp(1,0.5,p),ry=lerp(0,-16,p),rad=lerp(0,36/0.5,p);
-  this.card.style.transform=`translate3d(${tx}px,${-20*p}px,0) rotateY(${ry+Math.sin(t/60)*1.2}deg) scale(${s})`;
+  this.card.style.transform=`translate3d(${tx}px,${-20*p}px,0) rotateY(${ry}deg) scale(${s})`;
   this.card.style.borderRadius=rad+'px';this.card.style.boxShadow=`0 40px 90px rgba(0,0,0,${0.25*p})`;
-  this.im.style.transform=`scale(${1+0.06*R(t,0,d)})`;
-  this.st.forEach((o,i)=>{const a=E.outExpo(R(t,this.ks[i]-6,this.ks[i]+16));o.c.style.opacity=R(t,this.ks[i]-6,this.ks[i]);
-   o.c.style.transform=`translate(${-40*(1-a)}px,${30*(1-a)}px) scaleX(${0.6+0.4*a})`;
+  this.im.style.transform=`scale(${1.06+0.04*R(t,0,d)})`;
+  this.st.forEach((o,i)=>{const a=E.outCubic(R(t,this.ks[i]-4,this.ks[i]+10));o.c.style.opacity=Math.min(1,a*1.6)*(1-R(t,d-16,d-2));
+   o.c.style.transform=`translate(${-28*(1-a)}px,${18*(1-a)}px)`;o.c.style.clipPath=`inset(0 ${(1-a)*100}% 0 0 round 26px)`;
    const on=(i===3||t<(this.ks[i+1]||1e9))?1:0;
    o.r.style.opacity=E.outCubic(R(t,this.kr[i],this.kr[i]+12));
    o.b.style.background=(t>=this.ks[i]&&on)||i===3?'#DF1F15':'#CED4DA';});
-  trazo(this.flecha,E.inOutCubic(R(t,this.ks[0],this.ks[3]+20)));
+  trazo(this.flecha,E.inOutCubic(R(t,this.ks[0],this.ks[3]+20)));this.flecha.style.opacity=1-R(t,d-16,d-2);
   r.style.opacity=1;
  },subs:[[0,26]]});
 
 // B6 · regreso a C1 con líneas guía
-S.push({id:'B6',d:T.B6.d,ov:24,
+S.push({id:'B6',d:T.B6.d,ov:0,
  build(r){this.cam=el('div','abs',r);Object.assign(this.cam.style,{left:0,top:0,width:'1920px',height:'1080px',overflow:'hidden',transformOrigin:'50% 50%'});
-  this.im=el('img','',this.cam);Object.assign(this.im.style,{width:'1920px',height:'1080px',objectFit:'cover'});src(this.im,P('C1_cierre'));
+  this.im=el('img','',this.cam);Object.assign(this.im.style,{width:'1920px',height:'1080px',objectFit:'cover'});src(this.im,C('C1_cierre',52));
   const s=sv('svg',this.cam,{class:'ov',width:1920,height:1080});
   const G=[['Accesibilidad',540,600,330,260],['Seguridad',780,560,900,170],['Confianza',1620,530,1680,320]];
   this.g=G.map(x=>{const l=sv('path',s,{d:`M ${x[1]} ${x[2]} L ${x[1]} ${x[4]+40} Q ${x[1]} ${x[4]} ${x[1]+(x[3]>x[1]?40:-40)} ${x[4]} L ${x[3]} ${x[4]}`,fill:'none',stroke:'#fff','stroke-width':5,'stroke-linecap':'round'});
@@ -281,22 +288,23 @@ S.push({id:'B6',d:T.B6.d,ov:24,
   this.e=etiqueta(r);
   const k=T.B6.k;this.ks=[k('accesibilidad'),k('seguridad'),k('confianza')];this.kc=k('un conflicto');this.ki=k('La intensidad');},
  draw(t,r){const d=this.d;
-  const p=E.inOutExpo(R(t,0,24));  // vuelve de tarjeta a cuadro completo
+  const p=E.inOutCubic(R(t,0,30));  // vuelve de tarjeta a cuadro completo, desde el estado exacto en que quedó
+  this.im.style.transform=`scale(${lerp(1.10,1.0,p)})`;r.style.background=p<1?'#F7F7F8':'transparent';
   const s=lerp(0.5,1,p),tx=lerp(520,0,p),ry=lerp(-16,0,p);
   r.style.perspective='1800px';r.style.perspectiveOrigin='1500px 540px';
   const push=1+0.05*E.inOutCubic(R(t,24,d));
   this.cam.style.transform=`translate3d(${tx}px,${-20*(1-p)}px,0) rotateY(${ry}deg) scale(${s*push})`;
-  this.cam.style.borderRadius=lerp(72,0,p)+'px';
+  this.cam.style.borderRadius=lerp(72,0,p)+'px';this.cam.style.boxShadow=`0 40px 90px rgba(0,0,0,${0.25*(1-p)})`;
   this.g.forEach((o,i)=>{const a=this.ks[i];trazo(o.l,E.inOutCubic(R(t,a,a+18)));o.dot.setAttribute('r',13*E.outBack(R(t,a-4,a+6),2.5));
    const k=E.outBack(R(t,a+12,a+26),1.6);o.p.style.opacity=R(t,a+12,a+18);
    o.p.style.transform=(o.right?'':'translateX(-100%) ')+`scale(${0.7+0.3*k})`;o.p.style.transformOrigin=o.right?'0 50%':'100% 50%';});
   this.som.style.opacity=R(t,this.kc-6,this.kc+6);
   sube(this.sub,t,this.kc+6,this.ki-12,30);sube(this.fr,t,this.ki,d-12,60,18);
   etqDraw(this.e,t,d);
- },subs:[[0,24]]});
+ },subs:[[0,30]]});
 
 // B7 · C4 tres veces (hecho / interpretación) y C3 (emoción), con puertas de vagón
-S.push({id:'B7',d:T.B7.d,ov:12,
+S.push({id:'B7',d:T.B7.d,ov:20,
  build(r){this.p=el('div','sec',r);this.c4=capa(this.p);this.c3=capa(this.p);
   this.warm=el('div','lay',this.p);this.warm.style.background='radial-gradient(ellipse 900px 700px at 1000px 420px,rgba(255,196,0,.42),rgba(255,140,0,0) 70%)';this.warm.style.mixBlendMode='soft-light';
   const s=sv('svg',this.p,{class:'ov',width:1920,height:1080});
@@ -313,10 +321,10 @@ S.push({id:'B7',d:T.B7.d,ov:12,
   const k=T.B7.k;this.cs=[0,k('Decir que')-4,k('Y la preocupación')-4];},
  draw(t){const d=this.d;
   // puertas: cierran antes de cada cambio y abren con la toma nueva
-  let cl=0;this.cs.forEach((c,i)=>{const a=i===0?R(t,0,10):R(t,c-10,c),b=R(t,c,c+14);if(t<c+14&&t>=c-10)cl=E.inOutCubic(a)*(1-E.inOutCubic(b));});
+  let cl=0;this.cs.forEach((c,i)=>{const a=R(t,c-18,c),b=R(t,c+4,c+26);if(t<c+26&&t>=c-18)cl=E.inOutCubic(a)*(1-E.inOutCubic(b));});
   this.pu[0].style.transform=`translate(${-960*(1-cl)}px,0)`;this.pu[1].style.transform=`translate(${960*(1-cl)}px,0)`;
   vis(this.pu[0],cl>0);vis(this.pu[1],cl>0);
-  this.p.style.opacity=t<10?0:1;
+  this.p.style.opacity=t<0?0:1;
   const sh=t<this.cs[1]?0:t<this.cs[2]?1:2;
   vis(this.c4.box,sh<2);vis(this.c3.box,sh===2);vis(this.warm,sh===2);
   src(this.c4.im,P('C4_persiana'));src(this.c3.im,P('C3_vecino'));
@@ -330,7 +338,7 @@ S.push({id:'B7',d:T.B7.d,ov:12,
   this.som.style.opacity=1;
   sube(this.sep,t,14,this.cs[0]+24+30,30);
   etqDraw(this.e,t,d);
- },subs:[[0,14]]});
+ },subs:[[0,26]]});
 
 // B8 · actividad: el vagón amarillo entra desde la derecha
 S.push({id:'B8',d:T.B8.d,ov:20,

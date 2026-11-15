@@ -69,3 +69,25 @@ línea de motion graphics, intro/outro y Magnific Move.
 
 Este apartado `emb/` es solo texto y se empuja de una, como el resto del repo. Medios en
 disco, en una carpeta propia del EMB (por definir con Sebastián, p. ej. `E:\EMB MASTER`).
+
+## Revisión del Video 1, corte sin voz (Sebastián, 15 nov 2026)
+
+- **Fondos de tarjetas en duotono amarillo, no rojo.** El rojo intenso a cuadro completo pesa
+  demasiado cuando se habla de violencia. Los `*_duoY.jpg` se hacen desde la placa con desenfoque
+  de 16 px y tres paradas (#2E2406 → #D6A000 → #FFF0C4); la cabecera va en #212529.
+- **Su transición favorita es el vagón** (barrido del tren rojo). Reemplaza al iris.
+- **Nada de pausas muertas**: el clip del título no se congela; la ventana se abre antes (d=104).
+- **Una mano en primer plano tiene que salir del cuadro con su brazo.** El A3 tenía manos
+  flotando en medio del cuadro; se rehizo por encima del hombro, los antebrazos entrando por el
+  borde inferior y la manga continua fuera de cuadro.
+- **Un elemento que pasa de una sección a otra no puede saltar.** La tarjeta 2.5D de la escalera
+  vuelve a cuadro completo desde su estado exacto (mismo cuadro del clip, misma escala, sin
+  vaivén) y sin solape de dos copias; la escalera se desvanece antes del relevo.
+- **Las puertas del vagón necesitan tiempo para leerse**: cierran en 18 cuadros, quedan
+  cerradas 4 y abren en 22.
+- **Movimiento de Kling: pedir la escena entera**, no solo el gesto. Una cámara que avanza suave
+  sobre el hombro, alguien que cruza al fondo, hojas que se mueven; el resultado es más orgánico.
+  Sigue valiendo que todo movimiento llegue a destino.
+- La voz la genera él en su cuenta. `herramientas/voz/calzar_emb.py` reparte los bloques sobre la
+  voz medida (fronteras en las pausas más cercanas a la proporción de caracteres) y
+  `voz_a_escena.py` lo convierte en `window.VOZ` para la escena.

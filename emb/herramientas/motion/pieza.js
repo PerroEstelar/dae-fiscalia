@@ -114,12 +114,12 @@ function S_planos(o){const T=blk(o.txt,o.cola);return {id:o.id,d:T.d+(o.extra||0
   if(this.e)etqDraw(this.e,t,d);
  },subs:[[0,({iris:28,tren:24,amarillo:18,puertas:24,fundido:16}[o.entrada]||0)]]};}
 
-// tarjetas: fondo en duotono rojo, cabecera y n tarjetas en perspectiva que se activan con la voz
+// tarjetas: fondo en duotono amarillo (Sebastián: el rojo intenso pesa demasiado), cabecera y n tarjetas en perspectiva que se activan con la voz
 // o={id, txt, fondo, cab:{tit,sub}, items:[{tit, def, ej, ico, en, rojo}], banda:{html,en}, alto}
 function S_tarjetas(o){const T=blk(o.txt,o.cola);const n=o.items.length;return {id:o.id,d:T.d,ov:16,
  build(r){this.bg=capa(r);src(this.bg.im,P(o.fondo));
-  this.cab=el('div','abs',r,`<div style="font:800 60px Montserrat;color:#fff">${o.cab.tit}</div>`+(o.cab.sub?`<div style="font:500 28px 'Work Sans';color:rgba(255,255,255,.85);margin-top:8px;max-width:1500px">${o.cab.sub}</div>`:''));
-  Object.assign(this.cab.style,{left:'120px',top:'92px',textShadow:'0 2px 22px rgba(0,0,0,.55)'});
+  this.cab=el('div','abs',r,`<div style="font:800 60px Montserrat;color:#212529">${o.cab.tit}</div>`+(o.cab.sub?`<div style="font:500 28px 'Work Sans';color:rgba(33,37,41,.82);margin-top:8px;max-width:1500px">${o.cab.sub}</div>`:''));
+  Object.assign(this.cab.style,{left:'120px',top:'92px'});
   this.esc=el('div','abs',r);Object.assign(this.esc.style,{left:0,top:0,width:'1920px',height:'1080px',perspective:'1700px',perspectiveOrigin:'960px 560px'});
   const gap=40,w=Math.min(520,(1680-(n-1)*gap)/n),x0=(1920-(n*w+(n-1)*gap))/2,top=o.top||(o.cab.sub?350:320),h=o.alto||560;
   const fs=n>=4?44:54,fd=n>=4?29:33;
