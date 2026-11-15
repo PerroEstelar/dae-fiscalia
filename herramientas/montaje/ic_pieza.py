@@ -66,47 +66,51 @@ def prueba(t):
 def tramos_vf(K, fin):
     """Video y audio de los tramos de P.TRAMOS (cortes de tomas falsas), cada uno con su
     ventana (x, y, w, h) o la del plan. Devuelve el grafo hasta [vc] y [ac] (el audio
-    crudo, antes de la cadena v2); los cortes de audio llevan fundidos de 15 ms."""
+    crudo, antes de la cadena v2); los cortes de audio llevan fundidos de 15 ms.
+
+    El video se corta por número de cuadro (`trim=start_frame/end_frame`), no por tiempo:
+    `trim=start=` pasa los segundos a la base de tiempo del stream redondeando, y un borde
+    a mitad de cuadro o con cuatro decimales se llevaba un cuadro de más (U3 L4: 9.122
+    cuadros en vez de 9.117). El audio se corta en los mismos tiempos que el video, así que
+    cada tramo queda en sincronía al cuadro.
+
+    CONGELA [(a, b)]: sobre [a, b) se ve quieto el cuadro de b (una transición horneada en la
+    fuente); el audio sigue corrido. a se lleva al cuadro de abajo y b al de arriba."""
     w, h = P.VENTANA
     x, y = P.XY
-    tr = getattr(P, 'TRAMOS', None) or [(0.0, None, None)]
-    # CONGELA [(a, b)]: sobre [a, b) se ve quieto el cuadro de b (una transición horneada en la
-    # fuente); el audio sigue corrido. Los bordes se llevan a la rejilla de la fuente.
     fq = getattr(P, 'FPS_FUENTE', 30)
-    cong = [(math.floor(c0 * fq + 1e-6) / fq, math.ceil(c1 * fq - 1e-6) / fq) for c0, c1 in getattr(P, 'CONGELA', [])]
+    tr = getattr(P, 'TRAMOS', None) or [(0.0, None, None)]
+    cong = [(int(math.floor(c0 * fq + 1e-6)), int(math.ceil(c1 * fq - 1e-6))) for c0, c1 in getattr(P, 'CONGELA', [])]
+    cuadros = [(int(math.ceil(t0 * fq - 1e-6)), int(math.ceil(((fin if t1 is None else t1)) * fq - 1e-6)), win)
+               for t0, t1, win in tr]
     v, a = [], []
-    for i, (t0, t1, win) in enumerate(tr):
-        t1 = fin if t1 is None else t1
+    for i, (f0, f1, win) in enumerate(cuadros):
         esc = escala(K, *(win or (x, y, w, h)))
-        dentro = [(c0, c1) for c0, c1 in cong if t0 - 1e-6 <= c0 < c1 < t1]
+        dentro = [(k0, k1) for k0, k1 in cong if f0 <= k0 < k1 < f1]
+        piezas, f = [], f0
+        for j, (k0, k1) in enumerate(dentro):
+            if k0 > f:                  # un congelado al arranque del tramo no tiene «antes»
+                v.append('[0:v]trim=start_frame=%d:end_frame=%d,setpts=PTS-STARTPTS,%s[v%dn%d]' % (f, k0, esc, i, j))
+                piezas.append('[v%dn%d]' % (i, j))
+            v.append('[0:v]trim=start_frame=%d:end_frame=%d,setpts=PTS-STARTPTS,%s,'
+                     'tpad=stop_mode=clone:stop=%d,trim=end_frame=%d,setpts=PTS-STARTPTS[v%dq%d]'
+                     % (k1, k1 + 1, esc, k1 - k0, k1 - k0, i, j))
+            piezas.append('[v%dq%d]' % (i, j))
+            f = k1
         if not dentro:
-            v.append('[0:v]trim=start=%.3f:end=%.3f,setpts=PTS-STARTPTS,%s[v%d]' % (t0, t1, esc, i))
+            v.append('[0:v]trim=start_frame=%d:end_frame=%d,setpts=PTS-STARTPTS,%s[v%d]' % (f0, f1, esc, i))
         else:
-            ps, t = [], t0
-            pre = []
-            for j, (c0, c1) in enumerate(dentro):
-                if c0 - t > 1e-3:       # un congelado al arranque del tramo no tiene «antes»
-                    ps.append('[0:v]trim=start=%.4f:end=%.4f,setpts=PTS-STARTPTS,%s[v%dn%d]' % (t, c0, esc, i, j))
-                    pre.append('[v%dn%d]' % (i, j))
-                # en cuadros, no en segundos: trim=duration con 4 decimales dejaba un cuadro de
-                # más cuando el largo redondeaba hacia arriba (0,1667 > 5/30)
-                nq = int(round((c1 - c0) * fq))
-                ps.append('[0:v]trim=start=%.4f,setpts=PTS-STARTPTS,trim=end_frame=1,%s,'
-                          'tpad=stop_mode=clone:stop=%d,trim=end_frame=%d,setpts=PTS-STARTPTS[v%dq%d]'
-                          % (c1, esc, nq, nq, i, j))
-                pre.append('[v%dq%d]' % (i, j))
-                t = c1
-            ps.append('[0:v]trim=start=%.4f:end=%.3f,setpts=PTS-STARTPTS,%s[v%dz]' % (t, t1, esc, i))
-            et = ''.join(pre) + '[v%dz]' % i
-            ps.append('%sconcat=n=%d:v=1:a=0[v%d]' % (et, len(pre) + 1, i))
-            v.extend(ps)
-        af = 'atrim=start=%.3f:end=%.3f,asetpts=PTS-STARTPTS' % (t0, t1)
-        if (i > 0 and tr[i - 1][1] != t0) or (i == 0 and t0 > 0):
+            v.append('[0:v]trim=start_frame=%d:end_frame=%d,setpts=PTS-STARTPTS,%s[v%dz]' % (f, f1, esc, i))
+            piezas.append('[v%dz]' % i)
+            v.append('%sconcat=n=%d:v=1:a=0[v%d]' % (''.join(piezas), len(piezas), i))
+        ta, tb = f0 / fq, f1 / fq
+        af = 'atrim=start=%.6f:end=%.6f,asetpts=PTS-STARTPTS' % (ta, tb)
+        if (i > 0 and cuadros[i - 1][1] != f0) or (i == 0 and f0 > 0):
             af += ',afade=t=in:d=0.015'
-        if (i < len(tr) - 1 and tr[i + 1][0] != t1) or (i == len(tr) - 1 and t1 < fin - 0.05):
-            af += ',afade=t=out:st=%.3f:d=0.015' % (t1 - t0 - 0.015)
+        if (i < len(cuadros) - 1 and cuadros[i + 1][0] != f1) or (i == len(cuadros) - 1 and tb < fin - 0.05):
+            af += ',afade=t=out:st=%.6f:d=0.015' % (tb - ta - 0.015)
         a.append('[0:a]%s[a%d]' % (af, i))
-    n = len(tr)
+    n = len(cuadros)
     return ';'.join(v + a) + ';%sconcat=n=%d:v=1:a=1[vc][ac]' % (''.join('[v%d][a%d]' % (i, i) for i in range(n)), n)
 
 
