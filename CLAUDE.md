@@ -2455,3 +2455,86 @@ desde negro, el panel volvió a su mediana en el cuadro 4366, pero el cielo y la
 siguieron con manchas negras del fondo virtual hasta el 4370. Lo que lo delató fue
 la tira de cuadros de cada corte. Se mide también la fracción de píxeles oscuros de
 la mitad de arriba.
+
+## Profe grabado con teléfono: cadencia irregular y audio mono (Enfoque diferencial, 15 nov 2026)
+
+Los 12 videos de Camilo Borrero eran grabaciones de teléfono:
+- HEVC a 1080×1920 con rotación;
+- audio AAC mono;
+- 30 fps declarados, con algún cuadro de 35 ms.
+
+En 28 min eso son 26 cuadros menos que 30 × duración. Tres cosas que cambian:
+
+- **Cortar por número de cuadro corre el video.** `trim=start_frame` cuenta cuadros, y el
+  audio se corta en cuadro/30.
+  - Con la cadencia irregular, el final del video quedaba casi un segundo después que el del
+    audio.
+  - `POR_TIEMPO = True` en el plan hace que `ic_pieza._trim` corte por tiempo en la rejilla
+    de 30. Con base de tiempo 1/600, f/30 cae exacto en un tick.
+  - Se mide el compuesto con ffprobe: cuadros = tramo ±1 y audio del mismo largo.
+- **Mono → dual-mono antes de medir** (`ic_pieza.base_audio`, automático si la fuente tiene
+  un canal). Si no, en la línea suena solo por la izquierda. Si se duplica después de
+  normalizar, la medida sube 3 dB.
+- **El perfil de la cabeza no sirve con un profe quieto.** `perfil2/3` toma la mediana por
+  píxel como fondo, y si el profe casi no se mueve, la mediana es el profe.
+  - Se eligió la ventana con la caja dibujada sobre 8 cuadros de cada video (`caja_ed.py`).
+  - Después se simularon el cartón más ancho y el lower third sobre cuadros del compuesto.
+
+## «Esos ya los hicimos»: mirar el archivo antes de saltarlo
+
+Le dijeron a Sebastián que el inicio y el cierre de Enfoque diferencial ya estaban. En otra
+carpeta del Drive (PRIORIDAD 2 › Enfoque diferencial › VIDEOS) había dos MP4 de JP:
+`enfoque_diferencial_inicio_curso.mp4` y `…_bienes_cierre_curso.mp4`.
+- Se copiaron a «Mi unidad», se midieron, se armó una hoja de cuadros y se transcribieron.
+- Eran la **misma toma cruda** recortada y bajada a 720p: sin intro, título, lower third ni
+  cartones.
+- Se hicieron igual.
+- Un nombre de archivo no dice si un video está terminado; se abre.
+
+## Máster de paso: la papelera no libera espacio
+
+Con la decisión de Sebastián de no guardar el máster de 32 Mb/s, el máster se manda a la
+papelera de Windows después de verificar la entrega:
+`Microsoft.VisualBasic.FileIO.FileSystem.DeleteFile(…, 'OnlyErrorDialogs', 'SendToRecycleBin')`.
+
+Pero la papelera ocupa el mismo disco hasta que se vacía, y la de D: tiene un tope de ~25 GB
+(`HKCU\…\BitBucket\Volume\{GUID}\MaxCapacity`). Pasado el tope, Windows borra para siempre
+los más viejos.
+- `ed_entrega` calcula lo que necesita el máster más la entrega y, si D: no alcanza, espera y
+  lo dice en el log.
+- Nunca vacía la papelera por su cuenta: eso lo decide Sebastián.
+
+## El puente puede escribir el contenido viejo de un archivo de outputs
+
+Ya estaba escrito que `device_commit_files` puede decir «escrito» y dejar los bytes viejos. En
+Enfoque diferencial pasó con un `stagedPath` reusado, **incluso hacia un `devicePath` nuevo**:
+`ed_entrega.py` editado en `/mnt/user-data/outputs` llegó a la máquina con el contenido de la
+primera versión.
+- Cada versión de un script que cruza va con **otro nombre** en outputs (`ed_entrega_v2.py`).
+- Del otro lado se verifica por md5 o por una cadena que solo tiene la versión nueva, antes de
+  lanzarlo.
+- Un zip que entra al repo ya lo verifica `aplicar.py`.
+
+## Bytecode viejo al regenerar un plan dentro del mismo segundo
+
+`gen_plan.py` escribe el plan y `ajusta.py` lo reescribe con números del mismo largo en el
+mismo segundo. Así, el `.pyc` de `__pycache__` (que se valida por fecha y tamaño) seguía
+valiendo y `medir_plan` medía el plan anterior.
+- En el contenedor, `PYTHONDONTWRITEBYTECODE=1`.
+- Si una medida no cambia después de editar, primero se borra `__pycache__`.
+
+## aftr corta a los 30 s cuando la máquina está cargada (Enfoque diferencial, 15 nov 2026)
+
+El `batch` de una comp de lista suele tardar unos 7 s. Con aerender, un render de Resolve y
+x264 corriendo a la vez, el del contenido de la U1 pasó de 30 s y el controlador de aftr
+respondió `Command "batch" timed out after 30000ms`. Pasó dos veces.
+- El REST (`POST /command`) no deja pedir otro tiempo.
+- **AE termina la comp igual**, después del timeout: la primera quedó hecha y `mg_render` la
+  rindió.
+- `mg_armar` se corta en la primera y las demás no se arman. La línea falla después con
+  «FALTA EN DISCO».
+
+Qué hacer:
+- `mg_armar` va con la máquina libre, no en paralelo a renders.
+- Si se corta, se vuelve a correr: borra y rearma cada comp.
+- Lo que se rindió de una comp terminada fuera de tiempo va a `_descartes` y se rinde otra vez.
