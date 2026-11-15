@@ -70,3 +70,13 @@ aprobada pasa a ser el ancla `style` de todo lo demás.
 | 0 | `UPmhMMzwny` | a01, variante A — buses rojos y grafiti en la columna: rompe la regla de color | descartada |
 
 Gastado: 160 créditos.
+
+**Paso 0b (14 nov, 22:40)** — Sebastián: «demasiado realista; más caricaturesco, casi Pixar,
+un punto medio». Dos niveles de estilización, 160 créditos más (total gastado: 320).
+
+| id | nivel | lectura |
+|---|---|---|
+| `rgedn6jxtc` | tinta + caricatura | **propuesta como ancla**: formas redondeadas y encantadoras, tinta y pintura a mano, el punto medio |
+| `s7o80Rxl8e` | tinta + caricatura | alternativa, más tinta; trae un taxi amarillo y una sombrilla roja (corregir en prompt) |
+| `gOItVG3SXO` | casi Pixar | volumen suave, más limpio; se aleja de la tinta |
+| `N2FHtpM6D9` | casi Pixar | pintado; carro rojo (rompe la regla de color) |
