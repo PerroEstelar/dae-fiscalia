@@ -10,7 +10,7 @@ const G=(t,c='#fff',fs=60)=>`<div style="font:800 ${fs}px/1.08 Montserrat;color:
 const PL=t=>`<div style="font:600 32px 'Work Sans';color:#212529;background:#fff;padding:14px 28px;border-radius:40px;box-shadow:0 14px 34px rgba(0,0,0,.25)">${t}</div>`;
 
 // mapa del módulo: un nodo central, tres acciones arriba y tres ramas abajo, unidos por trazos
-function S_mapa(o){const T=blk(o.txt,o.cola);return {id:'MAPA',d:T.d,ov:16,
+function S_mapa(o){const T=blk(o.txt,o.cola);return {voz:T.voz,id:'MAPA',d:T.d,ov:16,
  build(r){r.style.background='#F7F7F8';this.cam=el('div','abs',r);Object.assign(this.cam.style,{left:0,top:0,width:'1920px',height:'1080px',transformOrigin:'960px 520px'});
   this.cab=el('div','abs',this.cam,`<div style="font:600 28px 'Work Sans';color:#6C757D">Mapa del Módulo 1</div>`);Object.assign(this.cab.style,{left:'120px',top:'80px'});
   const s=sv('svg',this.cam,{class:'ov',width:1920,height:1080});
