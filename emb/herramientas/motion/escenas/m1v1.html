@@ -1,0 +1,374 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- M1 · Video 1 — Violencias y conflictos. Corte sin voz (tiempos provisionales a 1,6 cuadros por carácter). -->
+<link rel="stylesheet" href="../base.css"><script src="../core.js"></script>
+<style>
+ body{background:#fff}
+ .sec{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden}
+ .lay{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden}
+ .lay img{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:cover;transform-origin:50% 50%}
+ svg.ov{position:absolute;left:0;top:0;overflow:visible}
+ .etq{position:absolute;right:56px;top:46px;font:500 21px 'Work Sans';color:var(--tinta);background:rgba(255,255,255,.88);padding:9px 18px;border-radius:30px;letter-spacing:.01em}
+ .tarj{position:absolute;background:#fff;border-radius:26px;box-shadow:0 24px 60px rgba(0,0,0,.28);color:var(--tinta)}
+ .k1{font:800 92px/1.02 Montserrat;color:var(--tinta);letter-spacing:-.02em}
+ .ante{font:600 30px 'Work Sans';color:var(--rojo);letter-spacing:.01em}
+ .pill{position:absolute;font:700 30px Montserrat;padding:14px 28px;border-radius:40px;white-space:nowrap}
+ .lin{display:block}
+</style></head><body>
+<div id="raiz"></div>
+<canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
+<script>
+const A='file:///home/claude/emb/m1v1_assets/';
+const P=n=>A+'placas/'+n+'.jpg';
+const C=(n,i)=>A+'clips/'+n+'/'+String(Math.max(0,Math.min(120,Math.floor(i)))).padStart(3,'0')+'.jpg';
+const NS='http://www.w3.org/2000/svg';
+let pend=[];
+function src(im,u){if(im.__u!==u){im.__u=u;im.src=u;pend.push(im.decode().catch(()=>{}));}}
+function el(tag,cls,par,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;par.appendChild(e);return e;}
+function sv(tag,par,at){const e=document.createElementNS(NS,tag);for(const k in at)e.setAttribute(k,at[k]);par.appendChild(e);return e;}
+function capa(par){const box=el('div','lay',par);const im=el('img','',box);return {box,im};}
+function kb(im,s,x=0,y=0){im.style.transform=`translate(${x}px,${y}px) scale(${s})`;}
+function vis(e,on){e.style.display=on?'':'none';}
+// texto cinético: entra desde abajo con máscara y sale
+function sube(e,t,t0,t1=1e9,dy=46,dur=16){const a=E.outCubic(R(t,t0,t0+dur)),b=E.inOutCubic(R(t,t1,t1+12));
+  e.style.opacity=a*(1-b);e.style.transform=`translate(0,${dy*(1-a)-dy*0.5*b}px)`;}
+function letras(arr,t,t0,paso=1.1,dur=14){arr.forEach((u,i)=>{const k=E.outCubic(R(t,t0+i*paso,t0+i*paso+dur));u.style.transform=`translate(0,${105*(1-k)}%)`;});}
+// tiempos provisionales: 1,6 cuadros por carácter (se reemplazan con la voz medida)
+const FPC=1.6;
+function blk(txt,cola=36){return {d:Math.round(txt.length*FPC)+cola,k:p=>{const i=txt.indexOf(p);if(i<0)throw new Error('frase: '+p);return Math.round(i*FPC)+6;}};}
+const TX={
+B1:'Una comunidad informa que la reunión sobre un acceso peatonal se convocó solo por una plataforma digital, y que varias personas mayores no la usan. La primera pregunta no es si la comunidad se opone al proyecto. Es si pudo enterarse y participar.',
+B2:'Johan Galtung propone reconocer tres formas de violencia. La directa es una conducta que causa daño, como insultar o amenazar durante una atención. La estructural es un arreglo que reproduce una exclusión, como un único canal digital que deja por fuera, una y otra vez, a quien no tiene conectividad. Y la cultural es un significado que legitima el daño, como afirmar que ciertos barrios no merecen ser escuchados.',
+B3:'Reconocerlas no es acusar: una falla ocasional, una restricción técnicamente justificada y una exclusión persistente necesitan explicaciones distintas. Y un mismo cambio de recorrido puede ser una incomodidad para unos y una barrera para otros; por eso conviene preguntar a quienes la enfrentan cómo la viven, en lugar de hablar en su nombre.',
+B4:'Ahora, otra situación. Se anuncia un cierre peatonal temporal. Los comerciantes piden mantener el acceso a sus negocios. El equipo técnico advierte restricciones de seguridad. Una residente propone una ruta alternativa. Y otro participante afirma que la entidad oculta información. Nadie amenaza ni agrede. Entonces, ¿qué está pasando?',
+B5:'Un desacuerdo es una diferencia de opinión: se aclara con razones e información. Un conflicto es una incompatibilidad, real o percibida, entre intereses o necesidades: pide identificar actores y afectaciones. Una crisis es un riesgo urgente: exige contener y coordinar. Y la violencia es daño: obliga a proteger derechos y activar procedimientos.',
+B6:'En el cierre peatonal hay un conflicto sobre accesibilidad, seguridad y confianza, con desacuerdos sobre las alternativas. La intensidad de las opiniones no demuestra violencia.',
+B7:'Para responder, separe tres cosas. El cierre es un hecho que se puede documentar. Decir que busca perjudicar al comercio es una interpretación que hay que contrastar. Y la preocupación es una experiencia que merece escucha.',
+B8:'En la actividad, responda: quiénes intervienen, qué necesita cada parte y qué hechos deben verificarse.'};
+const T={};for(const k in TX)T[k]=blk(TX[k]);
+T.B8.d+=72;   // la actividad se queda en pantalla
+
+function etiqueta(root){return el('div','etq',root,'Situación hipotética con fines pedagógicos');}
+function etqDraw(e,t,d){e.style.opacity=E.outCubic(R(t,18,34))*(1-R(t,d-6,d));}
+
+// ───────────────────────── secciones ─────────────────────────
+const S=[];
+// T · título: la ventana redondeada se abre desde la línea roja
+S.push({id:'T',d:130,ov:0,
+ build(r){r.style.background='#fff';
+  this.win=el('div','',r);Object.assign(this.win.style,{position:'absolute',overflow:'hidden'});
+  this.v=el('img','',this.win);Object.assign(this.v.style,{position:'absolute',width:'1920px',height:'1080px',objectFit:'cover'});
+  const s=sv('svg',r,{class:'ov',width:1920,height:1080});this.lin=sv('path',s,{d:'M 120 880 L 1800 880',stroke:'#DF1F15','stroke-width':10,'stroke-linecap':'round',fill:'none'});
+  this.ante=el('div','ante abs',r,'Módulo 1 · Lecciones 1.1.1 y 1.1.2');Object.assign(this.ante.style,{left:'120px',top:'402px'});
+  this.tit=el('div','k1 abs',r);Object.assign(this.tit.style,{left:'114px',top:'452px'});
+  const l1=el('span','lin',this.tit,'Violencias'),l2=el('span','lin',this.tit,'y conflictos');
+  this.L=[...partir(l1),...partir(l2)];},
+ draw(t){
+  trazo(this.lin,E.outExpo(R(t,0,22))*(1-E.inOutCubic(R(t,84,104))));
+  const op=E.outExpo(R(t,10,40));        // la ventana sube desde la línea
+  const ex=E.inOutCubic(R(t,84,112));    // y se abre a cuadro completo
+  const x=lerp(760,0,ex),w=lerp(1040,1920,ex),b=lerp(870,1080,ex),h=lerp(700*op,1080,ex),rad=lerp(30,0,ex);
+  Object.assign(this.win.style,{left:x+'px',top:(b-h)+'px',width:w+'px',height:h+'px',borderRadius:rad+'px'});
+  // la imagen no se encoge: el encuadre se abre alrededor del tren
+  const s=lerp(1.14,1.0,E.inOutCubic(R(t,0,130)));
+  this.v.style.left=(-x)+'px';this.v.style.top=(-(b-h))+'px';this.v.style.transform=`scale(${s})`;
+  src(this.v,C('a01_tren',t));
+  this.ante.style.opacity=E.outCubic(R(t,14,30))*(1-E.inOutCubic(R(t,82,98)));
+  this.ante.style.transform=`translate(${-60*E.inOutCubic(R(t,82,100))}px,0)`;
+  letras(this.L,t,18,1.0,16);
+  this.tit.style.opacity=1-E.inOutCubic(R(t,84,100));this.tit.style.transform=`translate(${-90*E.inOutCubic(R(t,84,104))}px,0)`;
+ },subs:[[84,112]]});
+
+// B1 · la convocatoria: iris desde una estación → A1 → A3 → A2
+S.push({id:'B1',d:T.B1.d,ov:28,
+ build(r){this.a1=capa(r);this.a3=capa(r);this.a2=capa(r);
+  const s=sv('svg',r,{class:'ov',width:1920,height:1080});this.aro=sv('circle',s,{cx:1240,cy:560,r:0,fill:'none',stroke:'#DF1F15','stroke-width':14});
+  this.est=sv('circle',s,{cx:1240,cy:560,r:0,fill:'#fff',stroke:'#DF1F15','stroke-width':8});
+  this.not=el('div','tarj',r,`<div style="display:flex;gap:26px;align-items:center;padding:26px 34px">
+   <svg width="74" height="74" viewBox="0 0 74 74"><rect x="18" y="4" width="38" height="66" rx="8" fill="none" stroke="#DF1F15" stroke-width="5"/><circle cx="37" cy="58" r="3.5" fill="#DF1F15"/></svg>
+   <div><div style="font:600 24px 'Work Sans';color:#6C757D">Convocatoria</div><div style="font:700 36px Montserrat;line-height:1.15">Solo por una<br>plataforma digital</div></div></div>`);
+  Object.assign(this.not.style,{left:'1150px',top:'150px'});
+  this.q1=el('div','abs',r,'<span style="font:700 44px Montserrat;color:#fff">¿Se opone al proyecto?</span>');Object.assign(this.q1.style,{left:'120px',top:'740px'});
+  this.tach=el('div','abs',this.q1);Object.assign(this.tach.style,{left:'-6px',top:'30px',height:'6px',background:'#DF1F15',width:'0px',borderRadius:'3px'});
+  this.q2=el('div','abs',r,'<span style="font:800 66px/1.05 Montserrat;color:#fff">¿Pudo enterarse<br>y <span style="color:#FFC400">participar</span>?</span>');Object.assign(this.q2.style,{left:'120px',top:'820px'});
+  this.som=el('div','lay',r);this.som.style.background='linear-gradient(0deg,rgba(15,18,22,.78) 0%,rgba(15,18,22,0) 55%)';
+  r.appendChild(this.q1);r.appendChild(this.q2);
+  this.e=etiqueta(r);
+  const k=T.B1.k;this.c3=k('solo por una')-4;this.c2=k('y que varias')+14;this.kq=k('La primera pregunta');this.kq2=k('Es si pudo');},
+ draw(t,r){const d=this.d;
+  // iris: la estación aparece y se abre en círculo
+  const io=E.inOutExpo(R(t,4,28));const rad=io*1200;
+  r.style.clipPath=t<28?`circle(${Math.max(0.1,rad)}px at 1240px 560px)`:'none';
+  this.est.setAttribute('r',22*E.outBack(R(t,0,8),3)*(1-R(t,6,12)));
+  this.aro.setAttribute('r',rad);this.aro.style.opacity=1-R(t,18,28);
+  const A1=t<this.c3,A3=t>=this.c3&&t<this.c2,A2=t>=this.c2;
+  vis(this.a1.box,A1);vis(this.a3.box,A3);vis(this.a2.box,A2);
+  if(A1){src(this.a1.im,C('A1_convocatoria',t));kb(this.a1.im,lerp(1.16,1.05,E.outCubic(R(t,0,this.c3))));}
+  if(A3){const u=t-this.c3;src(this.a3.im,C('A3_telefono',u));kb(this.a3.im,1.04+0.04*u/80);}
+  if(A2){const u=t-this.c2;src(this.a2.im,P('A2_vecina'));kb(this.a2.im,lerp(1.02,1.16,E.inOutCubic(R(u,0,d-this.c2))),lerp(40,-30,R(u,0,d-this.c2)),0);}
+  // tarjeta de convocatoria sobre el teléfono
+  const n=E.outBack(R(t,this.c3+8,this.c3+24),1.3),no=E.inOutCubic(R(t,this.c2-10,this.c2));
+  this.not.style.opacity=R(t,this.c3+8,this.c3+14)*(1-no);this.not.style.transform=`translate(${80*(1-n)}px,0) scale(${0.9+0.1*n})`;
+  // la pregunta que no es / la que sí
+  this.som.style.opacity=E.outCubic(R(t,this.kq-14,this.kq+6));
+  sube(this.q1,t,this.kq,d-14);this.tach.style.width=(420*E.inOutCubic(R(t,this.kq2-14,this.kq2)))+'px';
+  this.q1.style.opacity=(+this.q1.style.opacity)*(1-0.55*R(t,this.kq2,this.kq2+10));
+  sube(this.q2,t,this.kq2,d-14,60,18);
+  etqDraw(this.e,t,d);
+ },subs:[[0,30]]});
+
+// B2 · tres violencias: A1 en duotono rojo, tarjetas en perspectiva
+S.push({id:'B2',d:T.B2.d,ov:16,
+ build(r){this.bg=capa(r);src(this.bg.im,P('A1_duo'));
+  this.cab=el('div','abs',r,`<div style="font:800 60px Montserrat;color:#fff">Tres formas de violencia</div><div style="font:500 28px 'Work Sans';color:rgba(255,255,255,.82);margin-top:8px">Johan Galtung (1969, 1990)</div>`);Object.assign(this.cab.style,{left:'120px',top:'96px'});
+  this.esc=el('div','abs',r);Object.assign(this.esc.style,{left:0,top:0,width:'1920px',height:'1080px',perspective:'1700px',perspectiveOrigin:'960px 520px'});
+  const D=[['Directa','Una conducta que causa daño','Insultar o amenazar durante una atención','M30 18 L66 18 L48 52 L76 52 L38 106 L50 64 L26 64 Z'],
+           ['Estructural','Un arreglo que reproduce una exclusión','Un único canal digital que deja por fuera a quien no tiene conectividad','M14 14h26v26h-26zM48 14h26v26h-26zM82 14h26v26h-26zM14 48h26v26h-26zM82 48h26v26h-26zM14 82h26v26h-26zM48 82h26v26h-26zM82 82h26v26h-26z'],
+           ['Cultural','Un significado que legitima el daño','Afirmar que ciertos barrios no merecen ser escuchados','M16 20 h90 a10 10 0 0 1 10 10 v44 a10 10 0 0 1 -10 10 h-50 l-22 20 v-20 h-18 a10 10 0 0 1 -10 -10 v-44 a10 10 0 0 1 10 -10 Z M34 42 h56 M34 60 h38']];
+  this.cs=D.map((x,i)=>{const c=el('div','tarj',this.esc);Object.assign(c.style,{left:(170+i*540)+'px',top:'330px',width:'500px',height:'580px',padding:'44px 42px',transformOrigin:'50% 60%',overflow:'hidden'});
+   c.innerHTML=`<div class="barra" style="position:absolute;left:0;top:0;height:12px;width:100%;background:#DF1F15;transform-origin:0 0"></div>
+   <svg width="122" height="122" viewBox="0 0 122 122"><path class="ico" d="${x[3]}" fill="none" stroke="#DF1F15" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></svg>
+   <div style="font:800 54px Montserrat;margin-top:18px">${x[0]}</div>
+   <div style="font:500 33px/1.25 'Work Sans';margin-top:14px">${x[1]}</div>
+   <div class="ej" style="font:italic 400 27px/1.3 'Work Sans';color:#495057;margin-top:26px;padding-top:22px;border-top:2px solid #E9ECEF">${x[2]}</div>`;
+   return {c,barra:c.querySelector('.barra'),ico:c.querySelector('.ico'),ej:c.querySelector('.ej')};});
+  const k=T.B2.k;this.act=[k('La directa'),k('La estructural'),k('Y la cultural')];this.k0=k('tres formas');},
+ draw(t,r){const d=this.d;
+  // entrada: la imagen se desenfoca hacia el rojo desde la toma anterior
+  r.style.opacity=E.inOutCubic(R(t,0,16));
+  kb(this.bg.im,lerp(1.22,1.1,E.outCubic(R(t,0,40)))+0.04*R(t,40,d),lerp(0,-40,R(t,0,d)),0);
+  sube(this.cab,t,8,d-16,40,18);
+  const cam=Math.sin(t/70)*3;           // la escena respira en 3D
+  const a=this.act.findIndex((x,i)=>t>=x&&(i===2||t<this.act[i+1]));
+  this.cs.forEach((o,i)=>{const e=E.outExpo(R(t,this.k0+i*7,this.k0+i*7+26));
+   const on=a===i?E.outCubic(R(t,this.act[i],this.act[i]+14)):0;
+   const fueOn=(a>i||a===-1)?0:0;
+   const ry=lerp(-75,0,e)+(i-1)*-9+cam*(i===1?0.6:1);
+   const z=lerp(-600,0,e)+on*90-(a>=0&&a!==i?60:0);
+   const s=1+(a>=0&&a!==i?-0.04:0);
+   o.c.style.transform=`translate3d(0,${(1-e)*120}px,${z}px) rotateY(${ry}deg) scale(${s})`;
+   o.c.style.opacity=e*(a>=0&&a!==i?0.62:1)*(1-R(t,d-14,d));
+   o.barra.style.transform=`scaleX(${on})`;
+   trazo(o.ico,E.inOutCubic(R(t,this.act[i]-2,this.act[i]+24)));if(t<this.act[i]-2){o.ico.style.strokeDashoffset=o.ico.__L;}
+   o.ej.style.opacity=E.outCubic(R(t,this.act[i]+18,this.act[i]+32));
+   o.c.style.boxShadow=`0 ${24+30*on}px ${60+40*on}px rgba(0,0,0,${0.28+0.2*on})`;});
+ },subs:[[0,16]]});
+
+// B3 · barrido del tren → B1 → B3 → B2 → B1 abierto
+S.push({id:'B3',d:T.B3.d,ov:24,
+ build(r){this.p=el('div','sec',r);this.b1=capa(this.p);this.b3=capa(this.p);this.b2=capa(this.p);this.bw=capa(this.p);
+  this.som=el('div','lay',this.p);this.som.style.background='linear-gradient(0deg,rgba(15,18,22,.72) 0%,rgba(15,18,22,0) 50%)';
+  this.t1=el('div','abs',this.p,'<div style="font:800 64px Montserrat;color:#fff">Reconocerlas<br>no es acusar</div>');Object.assign(this.t1.style,{left:'120px',top:'740px'});
+  this.ch=['Una falla ocasional','Una restricción técnicamente justificada','Una exclusión persistente'].map((x,i)=>{const c=el('div','pill',this.p,x);Object.assign(c.style,{left:'120px',top:(120+i*92)+'px',background:'#fff',color:'#212529',font:"600 30px 'Work Sans'"});return c;});
+  this.ch2=el('div','pill',this.p,'Necesitan explicaciones distintas');Object.assign(this.ch2.style,{left:'120px',top:'396px',background:'#DF1F15',color:'#fff'});
+  this.t2=el('div','abs',this.p,'<div style="font:700 50px Montserrat;color:#fff">Una incomodidad para unos</div>');Object.assign(this.t2.style,{left:'120px',top:'770px'});
+  this.t3=el('div','abs',this.p,'<div style="font:800 64px Montserrat;color:#fff">Una <span style="background:#FFC400;color:#212529;padding:0 14px;border-radius:12px">barrera</span> para otros</div>');Object.assign(this.t3.style,{left:'120px',top:'846px'});
+  this.t4=el('div','abs',this.p,'<div style="font:800 62px/1.08 Montserrat;color:#fff">Preguntar a quienes<br>la enfrentan</div><div style="font:500 34px \'Work Sans\';color:rgba(255,255,255,.9);margin-top:14px">en lugar de hablar en su nombre</div>');Object.assign(this.t4.style,{left:'120px',top:'700px'});
+  this.e=etiqueta(this.p);
+  const s=sv('svg',r,{class:'ov',width:1920,height:1080});this.tren=sv('g',s,{});
+  sv('rect',this.tren,{x:-2400,y:-60,width:2400,height:1200,rx:0,fill:'#DF1F15'});
+  sv('path',this.tren,{d:'M 0 -60 L 140 -60 Q 330 -60 330 300 L 330 780 Q 330 1140 140 1140 L 0 1140 Z',fill:'#DF1F15'});
+  for(let i=0;i<5;i++)sv('rect',this.tren,{x:-2300+i*440,y:300,width:330,height:300,rx:40,fill:'#fff',opacity:.92});
+  sv('rect',this.tren,{x:-2400,y:740,width:2560,height:26,fill:'#FFC400'});
+  sv('rect',this.tren,{x:60,y:300,width:190,height:300,rx:60,fill:'#fff',opacity:.92});
+  const k=T.B3.k;this.c3=150;this.c2=k('Y un mismo')-6;this.cw=k('por eso conviene')-8;this.kf=k('una falla');this.kn=k('necesitan');this.ki=k('una incomodidad');this.kb=k('una barrera');},
+ draw(t){const d=this.d;
+  // el tren cruza y deja la toma nueva detrás de su cola
+  const x=lerp(-400,1920+2500,E.inOutCubic(R(t,0,24)));
+  this.tren.setAttribute('transform',`translate(${x} 0)`);
+  const cola=x-2400;this.p.style.clipPath=t<24?`inset(0 ${Math.max(0,1920-cola)}px 0 0)`:'none';
+  const sh=t<this.c3?1:t<this.c2?3:t<this.cw?2:4;
+  vis(this.b1.box,sh===1);vis(this.b3.box,sh===3);vis(this.b2.box,sh===2);vis(this.bw.box,sh===4);
+  if(sh===1){src(this.b1.im,C('B1_desvio',t));kb(this.b1.im,1.03+0.05*t/this.c3);}
+  if(sh===3){const u=t-this.c3;src(this.b3.im,P('B3_cuidadora'));kb(this.b3.im,lerp(1.04,1.14,u/(this.c2-this.c3)),lerp(-30,20,u/(this.c2-this.c3)),0);}
+  if(sh===2){const u=t-this.c2;src(this.b2.im,C('B2_rueda',Math.min(u,64)));kb(this.b2.im,1.02+0.08*E.outCubic(R(u,0,this.cw-this.c2)));}
+  if(sh===4){const u=t-this.cw;src(this.bw.im,P('B1_desvio'));kb(this.bw.im,lerp(1.18,1.04,E.outCubic(R(u,0,d-this.cw))));}
+  this.som.style.opacity=(t>this.c3-10&&t<this.c3+4)?1:(sh===1?R(t,10,24):1);
+  sube(this.t1,t,20,this.c3-12);
+  this.ch.forEach((c,i)=>{const a=this.kf+[0,26,74][i];sube(c,t,a,this.c2-14,30,14);});
+  sube(this.ch2,t,this.kn,this.c2-14,30,14);
+  sube(this.t2,t,this.ki,this.cw-14);sube(this.t3,t,this.kb,this.cw-14,60,18);
+  sube(this.t4,t,this.cw+10,d-14,60,18);
+  etqDraw(this.e,t,d);
+ },subs:[[0,24]]});
+
+// B4 · cierre peatonal: C1 → pantalla partida en tres → C1
+S.push({id:'B4',d:T.B4.d,ov:18,
+ build(r){this.c1=capa(r);
+  this.panes=[0,1,2].map(i=>{const b=el('div','lay',r);Object.assign(b.style,{left:(i*640)+'px',width:'640px'});const im=el('img','',b);
+   const g=el('div','lay',b);g.style.background='linear-gradient(0deg,rgba(15,18,22,.85) 0%,rgba(15,18,22,0) 45%)';
+   const tx=el('div','abs',b);Object.assign(tx.style,{left:'44px',bottom:'60px',right:'40px',color:'#fff'});
+   if(i<2){const sep=el('div','abs',b);Object.assign(sep.style,{right:0,top:0,width:'6px',height:'1080px',background:'#fff'});}
+   return {b,im,tx};});
+  const L=(a,b)=>`<div class="l"><div style="font:800 40px Montserrat">${a}</div><div style="font:500 28px/1.25 'Work Sans';opacity:.92;margin-top:6px">${b}</div></div>`;
+  this.panes[0].tx.innerHTML=L('Comerciantes','Mantener el acceso a sus negocios')+'<div style="height:26px"></div>'+L('Equipo técnico','Restricciones de seguridad');
+  this.panes[1].tx.innerHTML=L('Una residente','Propone una ruta alternativa');
+  this.panes[2].tx.innerHTML=L('Otro participante','«La entidad oculta información»');
+  this.ls=this.panes.map(p=>[...p.tx.querySelectorAll('.l')]);
+  this.som=el('div','lay',r);this.som.style.background='linear-gradient(0deg,rgba(15,18,22,.8) 0%,rgba(15,18,22,0) 50%)';
+  this.ti=el('div','abs',r,'<div style="font:600 30px \'Work Sans\';color:#FFC400">Otra situación</div><div style="font:800 60px Montserrat;color:#fff;margin-top:6px">Un cierre peatonal temporal</div>');Object.assign(this.ti.style,{left:'120px',top:'800px'});
+  this.n1=el('div','abs',r,'<div style="font:600 40px \'Work Sans\';color:#fff">Nadie amenaza ni agrede.</div>');Object.assign(this.n1.style,{left:'120px',top:'740px'});
+  this.n2=el('div','abs',r,'<div style="font:800 96px Montserrat;color:#fff">¿Qué está <span style="color:#FFC400">pasando</span>?</div>');Object.assign(this.n2.style,{left:'112px',top:'806px'});
+  // barrido amarillo de entrada
+  this.bar=el('div','abs',r);Object.assign(this.bar.style,{left:0,top:0,width:'2400px',height:'1080px',background:'#FFC400'});
+  this.e=etiqueta(r);
+  const k=T.B4.k;this.ka=k('Se anuncia');this.kp=[k('Los comerciantes'),k('Una residente'),k('Y otro participante')];this.kt=k('El equipo técnico');this.kn=k('Nadie amenaza');this.kq=k('Entonces');},
+ draw(t,r){const d=this.d;
+  const w=E.inOutExpo(R(t,0,18));this.bar.style.transform=`translate(${lerp(1920,-2500,w)}px,0) skewX(-12deg)`;
+  r.style.clipPath=t<18?`inset(0 0 0 ${Math.max(0,lerp(1920,-2500,w)+240)}px)`:'none';
+  src(this.c1.im,C('C1_cierre',Math.min(t,52)));
+  const sal=this.kn-4;   // los paneles se van
+  kb(this.c1.im,lerp(1.12,1.0,E.outCubic(R(t,0,this.kp[0])))+0.06*E.inOutCubic(R(t,sal,d)));
+  this.c1.im.style.filter=`brightness(${1-0.35*R(t,this.kp[0],this.kp[0]+12)*(1-R(t,sal,sal+14))})`;
+  const crop=[{n:'C2_comerciante',cl:true,x:-1030,y:0,s:1.0},{n:'C1_cierre',cl:false,x:-64,y:-430,s:1.6},{n:'C3_vecino',cl:false,x:-670,y:0,s:1.0}];
+  this.panes.forEach((p,i)=>{const a=E.outExpo(R(t,this.kp[i],this.kp[i]+20)),b=E.inOutExpo(R(t,sal+i*4,sal+i*4+18));
+   vis(p.b,a>0&&b<1);p.b.style.clipPath=`inset(${(1-a)*100}% 0 ${b*100}% 0)`;
+   const c=crop[i],u=t-this.kp[i];
+   if(c.cl)src(p.im,C(c.n,Math.min(u,60)));else src(p.im,P(c.n));
+   p.im.style.transformOrigin='0 0';p.im.style.transform=`translate(${c.x+(i===1?-20:-10)*u/100}px,${c.y+(1-a)*80}px) scale(${c.s*(1+0.04*u/200)})`;
+   this.ls[i].forEach((l,j)=>sube(l,t,(i===0&&j===1)?this.kt:this.kp[i]+12,1e9,30,14));});
+  this.som.style.opacity=Math.max(1-R(t,this.kp[0]-8,this.kp[0]),R(t,this.kn-6,this.kn+6));
+  sube(this.ti,t,this.ka-4,this.kp[0]-12);
+  sube(this.n1,t,this.kn+8,d-14,30);sube(this.n2,t,this.kq,d-14,70,18);
+  etqDraw(this.e,t,d);
+ },subs:[[0,18]]});
+
+// B5 · escalera: C1 se aleja en profundidad y la escalera crece
+S.push({id:'B5',d:T.B5.d,ov:22,
+ build(r){r.style.background='#F7F7F8';
+  this.esc=el('div','abs',r);Object.assign(this.esc.style,{left:0,top:0,width:'1920px',height:'1080px',perspective:'1800px',perspectiveOrigin:'1500px 540px'});
+  this.card=el('div','abs',this.esc);Object.assign(this.card.style,{left:0,top:0,width:'1920px',height:'1080px',overflow:'hidden',transformOrigin:'50% 50%'});
+  this.im=el('img','',this.card);Object.assign(this.im.style,{width:'1920px',height:'1080px',objectFit:'cover'});src(this.im,P('C1_cierre'));
+  const D=[['Desacuerdo','Una diferencia de opinión','Se aclara con razones e información'],['Conflicto','Una incompatibilidad, real o percibida','Identificar actores y afectaciones'],['Crisis','Un riesgo urgente','Contener y coordinar'],['Violencia','Daño','Proteger derechos y activar procedimientos']];
+  const s=sv('svg',r,{class:'ov',width:1920,height:1080});
+  let fd='';for(let i=0;i<4;i++){const x=104+i*54,y0=770-i*160+136,y1=770-i*160+20;fd+=(i?` L ${x} ${y0}`:`M ${x} ${y0+40}`)+` L ${x} ${y1}`+(i<3?` L ${x+54} ${y1}`:'');}
+  this.flecha=sv('path',s,{d:fd,fill:'none',stroke:'#DF1F15','stroke-width':6,'stroke-linecap':'round'});
+  this.st=D.map((x,i)=>{const c=el('div','tarj',r);Object.assign(c.style,{left:(130+i*54)+'px',top:(770-i*160)+'px',width:'800px',height:'136px',padding:'22px 34px 0 46px',transformOrigin:'0 50%',boxShadow:'0 14px 34px rgba(0,0,0,.12)'});
+   c.innerHTML=`<div class="b" style="position:absolute;left:0;top:0;bottom:0;width:12px;background:${i===3?'#DF1F15':'#CED4DA'};border-radius:26px 0 0 26px"></div>
+   <div style="display:flex;align-items:baseline;gap:20px"><span style="font:800 44px Montserrat;color:${i===3?'#DF1F15':'#212529'}">${x[0]}</span><span style="font:500 26px 'Work Sans';color:#495057">${x[1]}</span></div>
+   <div class="r" style="font:600 28px 'Work Sans';color:#212529;margin-top:10px">→ ${x[2]}</div>`;
+   return {c,b:c.querySelector('.b'),r:c.querySelector('.r')};});
+  const k=T.B5.k;this.ks=[k('Un desacuerdo'),k('Un conflicto'),k('Una crisis'),k('Y la violencia')];this.kr=[k('se aclara'),k('pide identificar'),k('exige contener'),k('obliga a proteger')];},
+ draw(t,r){const d=this.d;
+  // 2.5D: la toma retrocede y gira hasta quedar a la derecha como una tarjeta
+  const p=E.inOutExpo(R(t,0,26));
+  const tx=lerp(0,520,p),s=lerp(1,0.5,p),ry=lerp(0,-16,p),rad=lerp(0,36/0.5,p);
+  this.card.style.transform=`translate3d(${tx}px,${-20*p}px,0) rotateY(${ry+Math.sin(t/60)*1.2}deg) scale(${s})`;
+  this.card.style.borderRadius=rad+'px';this.card.style.boxShadow=`0 40px 90px rgba(0,0,0,${0.25*p})`;
+  this.im.style.transform=`scale(${1+0.06*R(t,0,d)})`;
+  this.st.forEach((o,i)=>{const a=E.outExpo(R(t,this.ks[i]-6,this.ks[i]+16));o.c.style.opacity=R(t,this.ks[i]-6,this.ks[i]);
+   o.c.style.transform=`translate(${-40*(1-a)}px,${30*(1-a)}px) scaleX(${0.6+0.4*a})`;
+   const on=(i===3||t<(this.ks[i+1]||1e9))?1:0;
+   o.r.style.opacity=E.outCubic(R(t,this.kr[i],this.kr[i]+12));
+   o.b.style.background=(t>=this.ks[i]&&on)||i===3?'#DF1F15':'#CED4DA';});
+  trazo(this.flecha,E.inOutCubic(R(t,this.ks[0],this.ks[3]+20)));
+  r.style.opacity=1;
+ },subs:[[0,26]]});
+
+// B6 · regreso a C1 con líneas guía
+S.push({id:'B6',d:T.B6.d,ov:24,
+ build(r){this.cam=el('div','abs',r);Object.assign(this.cam.style,{left:0,top:0,width:'1920px',height:'1080px',overflow:'hidden',transformOrigin:'50% 50%'});
+  this.im=el('img','',this.cam);Object.assign(this.im.style,{width:'1920px',height:'1080px',objectFit:'cover'});src(this.im,P('C1_cierre'));
+  const s=sv('svg',this.cam,{class:'ov',width:1920,height:1080});
+  const G=[['Accesibilidad',540,600,330,260],['Seguridad',780,560,900,170],['Confianza',1620,530,1680,320]];
+  this.g=G.map(x=>{const l=sv('path',s,{d:`M ${x[1]} ${x[2]} L ${x[1]} ${x[4]+40} Q ${x[1]} ${x[4]} ${x[1]+(x[3]>x[1]?40:-40)} ${x[4]} L ${x[3]} ${x[4]}`,fill:'none',stroke:'#fff','stroke-width':5,'stroke-linecap':'round'});
+   const dot=sv('circle',s,{cx:x[1],cy:x[2],r:0,fill:'#DF1F15',stroke:'#fff','stroke-width':5});
+   const p=el('div','pill',this.cam,x[0]);Object.assign(p.style,{background:'#DF1F15',color:'#fff',top:(x[4]-38)+'px'});
+   if(x[3]>x[1])p.style.left=x[3]+'px';else{p.style.left=(x[3]-10)+'px';p.style.transform='translateX(-100%)';}
+   return {l,dot,p,right:x[3]>x[1]};});
+  this.som=el('div','lay',r);this.som.style.background='linear-gradient(0deg,rgba(15,18,22,.82) 0%,rgba(15,18,22,0) 50%)';
+  this.fr=el('div','abs',r,'<div style="font:800 58px/1.1 Montserrat;color:#fff">La intensidad de las opiniones<br><span style="color:#FFC400">no demuestra violencia</span></div>');Object.assign(this.fr.style,{left:'120px',top:'790px'});
+  this.sub=el('div','abs',r,'<div style="font:700 44px Montserrat;color:#fff">Un conflicto</div><div style="font:500 30px \'Work Sans\';color:rgba(255,255,255,.9);margin-top:6px">con desacuerdos sobre las alternativas</div>');Object.assign(this.sub.style,{left:'120px',top:'830px'});
+  this.e=etiqueta(r);
+  const k=T.B6.k;this.ks=[k('accesibilidad'),k('seguridad'),k('confianza')];this.kc=k('un conflicto');this.ki=k('La intensidad');},
+ draw(t,r){const d=this.d;
+  const p=E.inOutExpo(R(t,0,24));  // vuelve de tarjeta a cuadro completo
+  const s=lerp(0.5,1,p),tx=lerp(520,0,p),ry=lerp(-16,0,p);
+  r.style.perspective='1800px';r.style.perspectiveOrigin='1500px 540px';
+  const push=1+0.05*E.inOutCubic(R(t,24,d));
+  this.cam.style.transform=`translate3d(${tx}px,${-20*(1-p)}px,0) rotateY(${ry}deg) scale(${s*push})`;
+  this.cam.style.borderRadius=lerp(72,0,p)+'px';
+  this.g.forEach((o,i)=>{const a=this.ks[i];trazo(o.l,E.inOutCubic(R(t,a,a+18)));o.dot.setAttribute('r',13*E.outBack(R(t,a-4,a+6),2.5));
+   const k=E.outBack(R(t,a+12,a+26),1.6);o.p.style.opacity=R(t,a+12,a+18);
+   o.p.style.transform=(o.right?'':'translateX(-100%) ')+`scale(${0.7+0.3*k})`;o.p.style.transformOrigin=o.right?'0 50%':'100% 50%';});
+  this.som.style.opacity=R(t,this.kc-6,this.kc+6);
+  sube(this.sub,t,this.kc+6,this.ki-12,30);sube(this.fr,t,this.ki,d-12,60,18);
+  etqDraw(this.e,t,d);
+ },subs:[[0,24]]});
+
+// B7 · C4 tres veces (hecho / interpretación) y C3 (emoción), con puertas de vagón
+S.push({id:'B7',d:T.B7.d,ov:12,
+ build(r){this.p=el('div','sec',r);this.c4=capa(this.p);this.c3=capa(this.p);
+  this.warm=el('div','lay',this.p);this.warm.style.background='radial-gradient(ellipse 900px 700px at 1000px 420px,rgba(255,196,0,.42),rgba(255,140,0,0) 70%)';this.warm.style.mixBlendMode='soft-light';
+  const s=sv('svg',this.p,{class:'ov',width:1920,height:1080});
+  this.m=[sv('path',s,{d:'M 460 610 L 1374 610 M 460 590 L 460 630 M 1374 590 L 1374 630',fill:'none',stroke:'#fff','stroke-width':5,'stroke-linecap':'round'}),
+          sv('path',s,{d:'M 420 236 L 420 590 M 400 236 L 440 236 M 400 590 L 440 590',fill:'none',stroke:'#fff','stroke-width':5,'stroke-linecap':'round'})];
+  this.glob=el('div','abs',this.p,`<div style="background:#fff;border-radius:34px;padding:30px 40px;font:700 42px/1.2 Montserrat;color:#212529;box-shadow:0 24px 60px rgba(0,0,0,.3)">«Busca perjudicar<br>al comercio»</div><svg width="80" height="50" style="position:absolute;left:60px;bottom:-44px"><path d="M0 0 L 70 0 L 10 46 Z" fill="#fff"/></svg>`);Object.assign(this.glob.style,{left:'1180px',top:'150px',transformOrigin:'20% 100%'});
+  this.som=el('div','lay',this.p);this.som.style.background='linear-gradient(0deg,rgba(15,18,22,.8) 0%,rgba(15,18,22,0) 45%)';
+  const L=(a,b)=>{const e=el('div','abs',this.p,`<div style="font:800 76px Montserrat;color:#fff">${a}</div><div style="font:600 38px 'Work Sans';color:#FFC400;margin-top:4px">${b}</div>`);Object.assign(e.style,{left:'120px',top:'806px'});return e;};
+  this.l=[L('Un hecho','se documenta'),L('Una interpretación','se contrasta'),L('Una emoción','se escucha')];
+  this.sep=el('div','abs',this.p,'<div style="font:600 34px \'Work Sans\';color:#fff;background:rgba(33,37,41,.55);padding:14px 26px;border-radius:40px">Separe tres cosas</div>');Object.assign(this.sep.style,{left:'120px',top:'120px'});
+  this.e=etiqueta(this.p);
+  this.pu=[0,1].map(i=>{const d=el('div','abs',r);Object.assign(d.style,{top:0,width:'960px',height:'1080px',background:'#E9ECEF',left:(i*960)+'px'});
+   d.innerHTML=`<div style="position:absolute;${i?'left':'right'}:0;top:0;width:18px;height:100%;background:#FFC400"></div><div style="position:absolute;${i?'left':'right'}:140px;top:210px;width:300px;height:420px;border-radius:40px;background:#CED4DA"></div><div style="position:absolute;left:0;right:0;top:820px;height:30px;background:#DF1F15"></div>`;return d;});
+  const k=T.B7.k;this.cs=[0,k('Decir que')-4,k('Y la preocupación')-4];},
+ draw(t){const d=this.d;
+  // puertas: cierran antes de cada cambio y abren con la toma nueva
+  let cl=0;this.cs.forEach((c,i)=>{const a=i===0?R(t,0,10):R(t,c-10,c),b=R(t,c,c+14);if(t<c+14&&t>=c-10)cl=E.inOutCubic(a)*(1-E.inOutCubic(b));});
+  this.pu[0].style.transform=`translate(${-960*(1-cl)}px,0)`;this.pu[1].style.transform=`translate(${960*(1-cl)}px,0)`;
+  vis(this.pu[0],cl>0);vis(this.pu[1],cl>0);
+  this.p.style.opacity=t<10?0:1;
+  const sh=t<this.cs[1]?0:t<this.cs[2]?1:2;
+  vis(this.c4.box,sh<2);vis(this.c3.box,sh===2);vis(this.warm,sh===2);
+  src(this.c4.im,P('C4_persiana'));src(this.c3.im,P('C3_vecino'));
+  const u=t-this.cs[sh],D=(sh<2?this.cs[sh+1]:d)-this.cs[sh];
+  if(sh===0){kb(this.c4.im,lerp(1.02,1.08,u/D));this.c4.im.style.filter='none';}
+  if(sh===1){kb(this.c4.im,lerp(1.12,1.04,E.outCubic(u/D)),-60*u/D,0);this.c4.im.style.filter='grayscale(.75) brightness(.92)';}
+  if(sh===2){kb(this.c3.im,lerp(1.04,1.14,u/D),0,lerp(10,-10,u/D));this.warm.style.opacity=E.inOutCubic(R(u,10,50));}
+  this.m.forEach((m,i)=>{trazo(m,sh===0?E.inOutCubic(R(t,24+i*12,52+i*12)):0);});
+  const g=E.outBack(R(t,this.cs[1]+18,this.cs[1]+34),1.5);this.glob.style.opacity=sh===1?R(t,this.cs[1]+18,this.cs[1]+24):0;this.glob.style.transform=`scale(${g})`;
+  this.l.forEach((l,i)=>{sube(l,t,this.cs[i]+(i===0?26:16),i<2?this.cs[i+1]-12:d-12,50,16);});
+  this.som.style.opacity=1;
+  sube(this.sep,t,14,this.cs[0]+24+30,30);
+  etqDraw(this.e,t,d);
+ },subs:[[0,14]]});
+
+// B8 · actividad: el vagón amarillo entra desde la derecha
+S.push({id:'B8',d:T.B8.d,ov:20,
+ build(r){this.pan=el('div','abs',r);Object.assign(this.pan.style,{left:0,top:0,width:'2300px',height:'1080px',background:'#FFC400',borderRadius:'120px 0 0 120px'});
+  el('div','abs',this.pan).style.cssText='left:0;right:0;top:960px;height:22px;background:#DF1F15';
+  this.tit=el('div','abs',r,'<div style="font:800 76px Montserrat;color:#212529">En la actividad</div><div style="font:500 34px \'Work Sans\';color:#212529;margin-top:8px">responda:</div>');Object.assign(this.tit.style,{left:'160px',top:'170px'});
+  this.q=['¿Quiénes intervienen?','¿Qué necesita cada parte?','¿Qué hechos deben verificarse?'].map((x,i)=>{const c=el('div','abs',r);Object.assign(c.style,{left:'160px',top:(420+i*150)+'px',display:'flex',alignItems:'center',gap:'34px'});
+   const n=el('div','',c,String(i+1));Object.assign(n.style,{width:'86px',height:'86px',borderRadius:'50%',background:'#DF1F15',color:'#fff',font:'800 46px Montserrat',display:'flex',alignItems:'center',justifyContent:'center'});
+   const t=el('div','',c,x);Object.assign(t.style,{font:'700 58px Montserrat',color:'#212529'});return {c,n,L:partir(t)};});
+  const k=T.B8.k;this.kq=[k('quiénes'),k('qué necesita'),k('qué hechos')];},
+ draw(t,r){const d=this.d;
+  const e=E.inOutExpo(R(t,0,20));this.pan.style.transform=`translate(${lerp(1920,0,e)-0}px,0)`;
+  r.style.background='transparent';
+  sube(this.tit,t,14,1e9,40,18);
+  this.q.forEach((o,i)=>{const a=this.kq[i];const k=E.outBack(R(t,a,a+12),2.2);o.n.style.transform=`scale(${k})`;o.c.style.opacity=t>=a?1:0;letras(o.L,t,a+4,0.7,12);});
+  r.style.opacity=1-R(t,d-8,d);
+ },subs:[[0,20]]});
+
+// ───────────────────────── línea de tiempo ─────────────────────────
+let ini=0;S.forEach((s,i)=>{s.ini=i===0?0:ini;ini=s.ini+s.d;});
+// la sección i empieza a verse ov cuadros antes de su inicio (se monta sobre la anterior)
+S.forEach((s,i)=>{s.desde=s.ini-(s.ov||0);s.hasta=s.ini+s.d+(S[i+1]?(S[i+1].ov||0):0);});
+const N=ini;
+const subs=new Array(N).fill(1);
+S.forEach(s=>(s.subs||[]).forEach(([a,b])=>{for(let f=s.ini+a-(s.ov||0)*0;f<s.ini+b&&f<N;f++)if(f>=0)subs[f]=2;}));
+const raiz=document.getElementById('raiz');
+const grano=[];
+window.ESCENA={cuadros:N,subs,
+ async init(){
+  S.forEach(s=>{s.r=el('div','sec',raiz);s.build(s.r);s.r.style.display='none';});
+  for(let i=0;i<6;i++){const c=document.createElement('canvas');c.width=960;c.height=540;const g=c.getContext('2d'),im=g.createImageData(960,540);
+   for(let j=0;j<im.data.length;j+=4){const v=rnd(j*0.37+i*13.1)*255;im.data[j]=im.data[j+1]=im.data[j+2]=v;im.data[j+3]=255;}g.putImageData(im,0,0);grano.push(c);}
+  await document.fonts.ready;return true;},
+ async render(f){pend=[];
+  for(const s of S){const on=f>=s.desde&&f<s.hasta;s.r.style.display=on?'':'none';if(on){s.draw(f-s.ini,s.r);}}
+  const g=document.getElementById('grano').getContext('2d');g.drawImage(grano[Math.floor(f)%6],0,0);
+  await Promise.all(pend);
+  return true;},
+ tabla(){return S.map(s=>[s.id,s.ini,s.d]);}};
+window.__listo=true;
+</script></body></html>

@@ -17,6 +17,7 @@ with sync_playwright() as p:
     pg.evaluate(f'window.ESCENA.init && window.ESCENA.init({a.params})')
     pg.evaluate('document.fonts.ready'); pg.wait_for_timeout(300)
     n=pg.evaluate('window.ESCENA.cuadros'); hasta=a.hasta or n
+    subs=pg.evaluate('window.ESCENA.subs||null')   # sub-cuadros por cuadro, si la escena los pide
     if a.alfa:
         enc=['-c:v','qtrle','-pix_fmt','argb']; fmt='rgba'
     else:
@@ -26,12 +27,13 @@ with sync_playwright() as p:
     t=time.time()
     for f in range(a.desde,hasta):
         acc=None
-        for k in range(a.sub):
-            fr=f+(k/a.sub-0.5*(a.sub-1)/a.sub) if a.sub>1 else f
+        ns=max(a.sub,subs[f]) if subs else a.sub
+        for k in range(ns):
+            fr=f+(k/ns-0.5*(ns-1)/ns) if ns>1 else f
             pg.evaluate(f'window.ESCENA.render({fr})')
             png=pg.screenshot(omit_background=a.alfa)
             im=np.asarray(Image.open(io.BytesIO(png)).convert('RGBA' if a.alfa else 'RGB'),dtype=np.float32)
             acc=im if acc is None else acc+im
-        ff.stdin.write((acc/a.sub+0.5).astype(np.uint8).tobytes())
+        ff.stdin.write((acc/ns+0.5).astype(np.uint8).tobytes())
     ff.stdin.close(); ff.wait(); b.close()
     print(a.salida,hasta-a.desde,'cuadros',round((hasta-a.desde)/(time.time()-t),1),'cps')

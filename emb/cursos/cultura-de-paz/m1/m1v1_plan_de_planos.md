@@ -113,3 +113,28 @@ con su madre como referencia) 800. Total del paso: 1.460. **Total gastado: 2.480
 | C2 medio sobre el hombro | `s7o8p2kl8e` | la mano abierta hacia la persiana |
 | C3 primer plano del vecino | `jUXBMZfLD0` | |
 | C4 detalle de la persiana | `O6fCtVmynm` | el delantal colgado adentro es el único amarillo |
+
+**Paso 3 — movimiento (Kling 2.5, 720p, 5 s, 140 c/u).** 7 clips, 980 créditos. **Total gastado: 3.460.**
+
+| plano | clip | ventana útil | nota |
+|---|---|---|---|
+| a01 | `jUXBMFnLD0` | 0–120 | el tren cruza; la cámara empuja y entra un bus verde: sirve entero para el título |
+| A1 | `Do7JlT8pcl` | 0–120 | conversación en sitio, sin defectos |
+| A3 | `Bh497eMoQR` | 0–65 | desde el 60 la mano izquierda se va y el teléfono baja: se corta antes |
+| B1 | `rgedTkXxtc` | 0–120 | la silla avanza hasta el borde; la cámara se acerca sola |
+| B2 | `s7o8ps4l8e` | 0–64 | desde el 70 la rueda baja del sardinel: se congela en el borde |
+| C1 | `s7o8eg9l8e` | 0–52 | hacia el 60 aparece una talanquera roja y blanca que no estaba en la placa |
+| C2 | `rgedVZ8xtc` | 0–60 | desde el 90 la persiana se cierra sola |
+
+Ninguno se repitió: los cinco con defecto se recortan gratis y la ranura se completa congelando el
+último cuadro bajo el empuje de cámara del motion.
+
+## Corte sin voz (15 nov 2026)
+
+`herramientas/motion/escenas/m1v1.html`: toda la pieza en una sola escena HTML, con tiempos
+provisionales a 1,6 cuadros por carácter de la locución (`blk()`); al llegar la voz se cambian
+por los medidos. 3.988 cuadros (2:46) más intro (112) y outro (108).
+Cada sección dibuja su propia capa y se monta `ov` cuadros sobre la anterior: así las
+transiciones (iris, barrido del tren, barrido amarillo, cámara 2.5D, puertas del vagón, vagón
+de la actividad) son de verdad entre dos tomas vivas. Sub-cuadros (desenfoque de movimiento)
+solo en las transiciones: `ESCENA.subs`, que `render_html.py` ya lee.
