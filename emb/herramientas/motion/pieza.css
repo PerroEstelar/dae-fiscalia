@@ -1,0 +1,12 @@
+
+ body{background:#fff}
+ .sec{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden}
+ .lay{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden}
+ .lay img{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:cover;transform-origin:50% 50%}
+ svg.ov{position:absolute;left:0;top:0;overflow:visible}
+ .etq{position:absolute;right:56px;top:46px;font:500 21px 'Work Sans';color:var(--tinta);background:rgba(255,255,255,.88);padding:9px 18px;border-radius:30px;letter-spacing:.01em}
+ .tarj{position:absolute;background:#fff;border-radius:26px;box-shadow:0 24px 60px rgba(0,0,0,.28);color:var(--tinta)}
+ .k1{font:800 92px/1.02 Montserrat;color:var(--tinta);letter-spacing:-.02em}
+ .ante{font:600 30px 'Work Sans';color:var(--rojo);letter-spacing:.01em}
+ .pill{position:absolute;font:700 30px Montserrat;padding:14px 28px;border-radius:40px;white-space:nowrap}
+ .lin{display:block}

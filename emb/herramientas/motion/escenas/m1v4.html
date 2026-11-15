@@ -1,0 +1,83 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- M1 · Video 4 — Confianza (1.3.2) + mapa del módulo y cierre. Corte sin voz, tiempos provisionales. -->
+<link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="../pieza.css">
+<script src="../core.js"></script><script src="../pieza.js"></script>
+</head><body><div id="raiz"></div>
+<canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
+<script>
+const L2=(a,b)=>`<div style="font:600 30px 'Work Sans';color:#FFC400">${a}</div><div style="font:800 58px/1.08 Montserrat;color:#fff;margin-top:6px">${b}</div>`;
+const G=(t,c='#fff',fs=60)=>`<div style="font:800 ${fs}px/1.08 Montserrat;color:${c}">${t}</div>`;
+const PL=t=>`<div style="font:600 32px 'Work Sans';color:#212529;background:#fff;padding:14px 28px;border-radius:40px;box-shadow:0 14px 34px rgba(0,0,0,.25)">${t}</div>`;
+
+// mapa del módulo: un nodo central, tres acciones arriba y tres ramas abajo, unidos por trazos
+function S_mapa(o){const T=blk(o.txt,o.cola);return {id:'MAPA',d:T.d,ov:16,
+ build(r){r.style.background='#F7F7F8';this.cam=el('div','abs',r);Object.assign(this.cam.style,{left:0,top:0,width:'1920px',height:'1080px',transformOrigin:'960px 520px'});
+  this.cab=el('div','abs',this.cam,`<div style="font:600 28px 'Work Sans';color:#6C757D">Mapa del Módulo 1</div>`);Object.assign(this.cab.style,{left:'120px',top:'80px'});
+  const s=sv('svg',this.cam,{class:'ov',width:1920,height:1080});
+  const C0={x:960,y:520};
+  this.cen=el('div','abs',this.cam,`<div style="background:#DF1F15;color:#fff;border-radius:34px;padding:30px 46px;font:800 46px/1.1 Montserrat;text-align:center;box-shadow:0 24px 60px rgba(223,31,21,.35)">Cultura de paz<br>en la gestión pública</div>`);
+  Object.assign(this.cen.style,{left:C0.x+'px',top:C0.y+'px'});
+  const arriba=[['Examina los daños','examina'],['Escucha las diferencias','escucha'],['Comunica decisiones justificadas','comunica']];
+  const abajo=[['Noviolencia','orienta los medios','La noviolencia'],['Paces','valoran avances y pendientes','Las distintas paces'],['Confianza','actuaciones que se pueden verificar','Y la confianza']];
+  const X=[400,930,1490];
+  this.n=[];
+  arriba.forEach((a,i)=>{const p={x:X[i],y:230};const l=sv('path',s,{d:`M ${C0.x} ${C0.y-70} C ${C0.x} ${C0.y-170}, ${p.x} ${p.y+150}, ${p.x} ${p.y+50}`,fill:'none',stroke:'#CED4DA','stroke-width':5,'stroke-linecap':'round'});
+   const e=el('div','abs',this.cam,`<div style="background:#fff;border:3px solid #DF1F15;border-radius:28px;padding:18px 30px;font:700 32px Montserrat;color:#212529;white-space:nowrap;box-shadow:0 14px 34px rgba(0,0,0,.1)">${a[0]}</div>`);
+   Object.assign(e.style,{left:p.x+'px',top:p.y+'px'});this.n.push({e,l,a:T.k(a[1])});});
+  abajo.forEach((a,i)=>{const p={x:X[i],y:840};const l=sv('path',s,{d:`M ${C0.x} ${C0.y+70} C ${C0.x} ${C0.y+170}, ${p.x} ${p.y-170}, ${p.x} ${p.y-70}`,fill:'none',stroke:'#CED4DA','stroke-width':5,'stroke-linecap':'round'});
+   const e=el('div','abs',this.cam,`<div style="background:#fff;border-radius:28px;padding:24px 34px;text-align:center;box-shadow:0 18px 40px rgba(0,0,0,.12);border-top:12px solid #FFC400"><div style="font:800 40px Montserrat;color:#212529">${a[0]}</div><div style="font:500 28px 'Work Sans';color:#495057;margin-top:6px;white-space:nowrap">${a[1]}</div></div>`);
+   Object.assign(e.style,{left:p.x+'px',top:p.y+'px'});this.n.push({e,l,a:T.k(a[2])});});},
+ draw(t,r){const d=this.d;r.style.opacity=E.inOutCubic(R(t,0,16));
+  this.cam.style.transform=`scale(${lerp(1.06,1.0,E.outCubic(R(t,0,d)))})`;
+  sube(this.cab,t,6,1e9,20,14);
+  const k=E.outBack(R(t,6,24),1.6);this.cen.style.transform=`translate(-50%,-50%) scale(${0.5+0.5*k})`;this.cen.style.opacity=R(t,6,12);
+  let act=-1;this.n.forEach((n,i)=>{if(t>=n.a)act=i;});
+  this.n.forEach((n,i)=>{trazo(n.l,E.inOutCubic(R(t,n.a-8,n.a+12)));const kk=E.outBack(R(t,n.a,n.a+16),1.8);
+   const on=i===act;n.l.setAttribute('stroke',t>=n.a?(on?'#DF1F15':'#ADB5BD'):'#CED4DA');
+   n.e.style.opacity=R(t,n.a,n.a+6);n.e.style.transform=`translate(-50%,-50%) scale(${(0.6+0.4*kk)*(on?1.06:1)})`;});
+  r.style.filter=`opacity(${1-R(t,d-10,d)})`;
+ },subs:[[0,16]]};}
+
+montar([
+ S_titulo({ante:'Módulo 1 · Lección 1.3.2',lineas:['Confianza'],clip:'G1'}),
+ S_planos({id:'B1',entrada:'iris',entradaOpt:{x:1180,y:500},
+  txt:'Un equipo anuncia que entregará una explicación sobre un acceso provisional, pero no cumple la fecha. La comunidad interpreta el silencio como indiferencia.',
+  planos:[{clip:'G1',s:[1.14,1.04]},{clip:'G2',en:'La comunidad interpreta',s:[1.02,1.1]}],
+  textos:[{html:L2('Se anuncia una explicación…','pero no se cumple la fecha'),en:'Un equipo',hasta:'La comunidad interpreta',top:790},
+          {html:G('La comunidad interpreta el silencio','#fff',54)+G('como indiferencia','#FFC400',54),en:'La comunidad interpreta',top:770}]}),
+ S_tarjetas({id:'B2',fondo:'G1_duo',en0:0,alto:470,
+  txt:'La confianza se construye cuando hay razones para creer en una actuación. Mayer, Davis y Schoorman la relacionan con capacidad, consideración por las personas e integridad. Y en lo público se suma la continuidad: registros y responsables que sostienen un compromiso aunque cambie el equipo.',
+  cab:{tit:'La confianza se construye con razones',sub:'Mayer, Davis y Schoorman (1995)'},
+  items:[{tit:'Capacidad',def:'Confirmar antes de comunicar.',ico:'check',en:'capacidad'},
+         {tit:'Consideración',def:'Examinar necesidades y barreras.',ico:'ojo',en:'consideración'},
+         {tit:'Integridad',def:'Prometer solo lo posible.',ico:'escudo',en:'integridad'},
+         {tit:'Continuidad',def:'Registros y responsables que sostienen el compromiso.',ico:'registro',en:'la continuidad'}]}),
+ S_planos({id:'B3',entrada:'tren',
+  txt:'La confianza no es aprobación permanente. Alguien puede cuestionar una decisión y, aun así, confiar en que recibirá información y un trato respetuoso.',
+  planos:[{clip:'G3',s:[1.04,1.12]},{placa:'G5',en:'confiar en que',s:[1.02,1.14],x:[-20,20]}],
+  textos:[{html:G('La confianza no es<br>aprobación permanente'),en:0,hasta:'Alguien',top:740},
+          {html:L2('Se puede cuestionar una decisión…','y confiar en recibir información<br>y un trato respetuoso'),en:'Alguien',top:740}]}),
+ S_planos({id:'B4',entrada:'amarillo',
+  txt:'¿Qué hacer en el caso? Primero, confirmar el estado de la gestión. Luego, reconocer la demora, explicar lo que se puede verificar y acordar la próxima actualización con quien pueda asumirla. Sin prometer una fecha que no se conoce.',
+  planos:[{clip:'D5',s:[1.08,1.02]},{clip:'G4',en:'Luego',s:[1.03,1.1]}],
+  textos:[{html:G('¿Qué hacer en el caso?'),en:0,hasta:'Luego',top:820},
+          {html:PL('1 · Confirmar el estado de la gestión'),en:'Primero',top:110},
+          {html:PL('2 · Reconocer la demora'),en:'reconocer la demora',top:200},
+          {html:PL('3 · Explicar lo que se puede verificar'),en:'explicar lo que',top:290},
+          {html:PL('4 · Acordar la próxima actualización'),en:'acordar',top:380},
+          {html:G('Sin prometer una fecha que no se conoce','#FFC400',52),en:'Sin prometer',top:820}]}),
+ S_tarjetas({id:'B5',fondo:'G2_duo',en0:0,alto:420,
+  txt:'Si hubo información equivocada, hay que corregirla ante quienes la recibieron. Y ojo: que disminuyan las quejas no prueba que aumentó la confianza; también puede haber barreras para presentarlas.',
+  cab:{tit:'Dos cosas para tener presentes'},
+  items:[{tit:'Si hubo un error',def:'se corrige ante quienes recibieron la información.',ico:'check',en:'Si hubo'},
+         {tit:'Menos quejas no siempre es más confianza',def:'También puede haber barreras para presentarlas.',ico:'pregunta',en:'que disminuyan'}]}),
+ S_actividad({titulo:'En la actividad',sub:'Formule su respuesta al caso.',
+  txt:'En la actividad, formule su respuesta al caso: distinga hechos de interpretaciones, reconozca la afectación, respete las competencias y defina el seguimiento.',
+  lineas:[{t:'Distinga hechos de interpretaciones',en:'distinga'},{t:'Reconozca la afectación',en:'reconozca'},{t:'Respete las competencias',en:'respete'},{t:'Defina el seguimiento',en:'defina'}]}),
+ S_mapa({txt:'Una gestión orientada por la cultura de paz examina los daños, escucha las diferencias y comunica decisiones justificadas. La noviolencia orienta los medios. Las distintas paces permiten valorar avances y pendientes. Y la confianza se sostiene con actuaciones que se pueden verificar.'}),
+ S_planos({id:'FIN',entrada:'fundido',etiqueta:false,
+  txt:'Antes de pasar al Módulo 2, aplique estas ideas a una situación de su trabajo.',cola:60,
+  planos:[{clip:'a01_tren',s:[1.12,1.0]}],
+  textos:[{html:G('Antes de pasar al Módulo 2,','#fff',58)+G('aplique estas ideas a una situación de su trabajo','#FFC400',44),en:0,top:790}]})
+]);
+</script></body></html>
