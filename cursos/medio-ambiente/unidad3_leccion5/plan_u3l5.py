@@ -73,7 +73,7 @@ CURSO = 'E:/DAE MASTER/CURSO 2 - DELITOS CONTRA EL MEDIO AMBIENTE'
 R = CURSO + '/UNIDAD 3/LECCION 5'
 BIN = ['CURSO 2 - DELITOS CONTRA EL MEDIO AMBIENTE', 'UNIDAD 3', 'LECCION 5']
 ORIGINAL = R + '/01 VIDEO/ambiental_unidad3_leccion5.mov'
-COMPUESTO = R + '/01 VIDEO/U3L5_compuesto_v1.mp4'
+COMPUESTO = R + '/01 VIDEO/U3L5_compuesto_v2.mp4'
 TITULO = R + '/02 CARTONES/carton titulo ambientales u3 leccion 5.mp4'
 TITULO_BASE = CURSO + '/UNIDAD 1/02 CARTONES/carton titulo ambientales u1v2.mp4'
 SUB = 'Unidad 3. Lección 5'
@@ -82,7 +82,10 @@ EXPORT = 'delitosambientales - U3 - LECCION 5-v%d'
 PREFIJO = 'U3L5'
 TMP = 'D:/DAE/_tmp/ma/u3l5'
 XY, VENTANA = (0, 50), (1472, 828)
-TRAMOS = [(T0, T1, None)]       # sin el intro, el cuadro de paso ni el outro del montaje viejo
+# sin el intro, el cuadro de paso ni el outro del montaje viejo. Los bordes van a mitad de cuadro:
+# con T1 justo en el borde, el trim (que redondea a 3 decimales) se llevó el primer cuadro negro
+# (el compuesto v1, en _descartes, tenía 9.561 cuadros y el último negro)
+TRAMOS = [(194.5 / FPS, 9754.5 / FPS, None)]
 MATRIZ_FUENTE = 'bt709'
 FPS_FUENTE = FPS
 FPS_COMPUESTO = '24000/1001'
