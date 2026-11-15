@@ -247,7 +247,7 @@ function S_actividad(o){const T=blk(o.txt,o.cola);return {voz:T.voz,id:o.id||'AC
  build(r){this.pan=el('div','abs',r);Object.assign(this.pan.style,{left:0,top:0,width:'2300px',height:'1080px',background:'#FFC400',borderRadius:'120px 0 0 120px'});
   el('div','abs',this.pan).style.cssText='left:0;right:0;top:960px;height:22px;background:#DF1F15';
   this.tit=el('div','abs',r,`<div style="font:800 72px Montserrat;color:#212529">${o.titulo}</div>`+(o.sub?`<div style="font:500 34px/1.3 'Work Sans';color:#212529;margin-top:10px;max-width:1500px">${o.sub}</div>`:''));Object.assign(this.tit.style,{left:'160px',top:'140px'});
-  const y0=o.sub?(o.lineas.length>3?400:430):380,dy=o.lineas.length>3?120:140;
+  const y0=o.sub?(o.lineas.length>4?385:o.lineas.length>3?400:430):380,dy=o.lineas.length>4?104:o.lineas.length>3?120:140;
   this.q=o.lineas.map((x,i)=>{const c=el('div','abs',r);Object.assign(c.style,{left:'160px',top:(y0+i*dy)+'px',display:'flex',alignItems:'center',gap:'34px'});
    const n=el('div','',c,x.n||String(i+1));Object.assign(n.style,{width:'80px',height:'80px',borderRadius:'50%',background:'#DF1F15',color:'#fff',font:'800 42px Montserrat',display:'flex',alignItems:'center',justifyContent:'center',flex:'none'});
    const tt=el('div','',c,x.t);Object.assign(tt.style,{font:`700 ${o.lineas.length>3?48:54}px Montserrat`,color:'#212529',maxWidth:'1500px'});return {c,n,L:partir(tt,true),a:T.k(x.en)};});
@@ -323,7 +323,7 @@ function S_matriz(o){const T=blk(o.txt,o.cola);const n=o.filas.length,nc=o.cols.
   this.fs=o.filas.map((f,j)=>{const y=top+hc+j*(h+gap);
    const cel=f.c.map((t,i)=>{const e=el('div','abs',this.cont);Object.assign(e.style,{left:cx[i]+'px',top:y+'px',width:cw[i]+'px',height:h+'px',borderRadius:'22px',background:i===0?'#fff':'rgba(255,255,255,.94)',boxShadow:'0 14px 34px rgba(0,0,0,.12)',display:'flex',alignItems:'center',overflow:'hidden',transformOrigin:'0 50%'});
     e.innerHTML=(i===0?`<div class="b" style="position:absolute;left:0;top:0;bottom:0;width:12px;background:#CED4DA"></div>`+(f.ico?`<svg width="64" height="64" viewBox="0 0 122 122" style="flex:none;margin-left:34px"><path class="ico" d="${ICO[f.ico]||f.ico}" fill="none" stroke="#DF1F15" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/></svg>`:''):'')+
-     `<div style="padding:0 26px 0 ${i===0?(f.ico?22:36):28}px;font:${i===0?'800':'500'} ${i===0?(o.fs0||34):(o.fs||29)}px/1.2 ${i===0?'Montserrat':"'Work Sans'"};color:#212529">${t}</div>`;return e;});
+     `<div style="padding:0 26px 0 ${i===0?(f.ico?22:36):28}px;font:${i===0?'800':'500'} ${i===0?(o.fs0||38):(o.fs||33)}px/1.2 ${i===0?'Montserrat':"'Work Sans'"};color:#212529">${t}</div>`;return e;});
    const li=cel.slice(1).map((_,i)=>sv('path',s,{d:`M ${cx[i]+cw[i]-4} ${y+h/2} L ${cx[i+1]+4} ${y+h/2}`,stroke:'#DF1F15','stroke-width':5,'stroke-linecap':'round',fill:'none'}));
    const en=T.k(f.en),re=f.re!=null?[].concat(f.re).map(x=>T.k(x)):[en+18];
    return {cel,li,en,re,b:cel[0].querySelector('.b'),ico:cel[0].querySelector('.ico')};});
@@ -361,7 +361,7 @@ function S_red(o){const T=blk(o.txt,o.cola);return {voz:T.voz,id:o.id,d:T.d,ov:{
     const q=p.getPointAtLength(p.getTotalLength()*(e.rotEn||0.5));Object.assign(lab.style,{left:q.x+'px',top:q.y+'px'});}
    return {e,base,p,dots,lab,a:T.k(e.en),h:e.hasta?T.k(e.hasta):1e9,L:p.getTotalLength()};});
   this.nd=o.nodos.map(n=>{const g=el('div','abs',this.cam);Object.assign(g.style,{left:n.x+'px',top:n.y+'px'});
-   g.innerHTML=`<div class="aro" style="position:absolute;left:50%;top:50%;width:${n.r*2||190}px;height:${n.r*2||190}px;margin:-${n.r||95}px 0 0 -${n.r||95}px;border-radius:50%;border:6px solid #DF1F15;opacity:0"></div>
+   g.innerHTML=`<div class="aro" style="position:absolute;left:0;top:0;width:${n.r*2||190}px;height:${n.r*2||190}px;margin:-${n.r||95}px 0 0 -${n.r||95}px;border-radius:50%;border:6px solid #DF1F15;opacity:0"></div>
    <div class="c" style="position:relative;transform:translate(-50%,-50%);background:#fff;border-radius:34px;padding:22px 34px 22px 26px;display:flex;align-items:center;gap:20px;box-shadow:0 22px 54px rgba(0,0,0,.16);border-top:10px solid ${n.color||'#DF1F15'};white-space:nowrap">
    ${n.ico?`<svg width="76" height="76" viewBox="0 0 122 122"><path class="ico" d="${ICO[n.ico]||n.ico}" fill="none" stroke="${n.color==='#FFC400'?'#212529':'#DF1F15'}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/></svg>`:''}
    <div><div style="font:800 40px Montserrat;color:#212529">${n.tit}</div>${n.sub?`<div style="font:500 26px 'Work Sans';color:#495057;margin-top:4px">${n.sub}</div>`:''}</div></div>`;
