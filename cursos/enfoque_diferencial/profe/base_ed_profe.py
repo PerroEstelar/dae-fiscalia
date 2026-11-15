@@ -60,6 +60,9 @@ CURSO_LINEAS = ['Enfoque diferencial en', 'la práctica del fiscal']
 TITULO_BASE = None
 XY, VENTANA = (0, 40), (1440, 810)
 MATRIZ_FUENTE = 'bt709'
+# 30 fps declarados con algún cuadro de 35 ms (29,98 de media): se corta por tiempo, no por número
+# de cuadro (`ic_pieza._trim`). El audio es mono y `componer` lo arma en dual-mono.
+POR_TIEMPO = True
 MAXW = 560
 ANCHO = MAXW
 LT = (40, 440)

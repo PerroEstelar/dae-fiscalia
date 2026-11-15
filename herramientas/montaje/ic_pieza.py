@@ -63,6 +63,34 @@ def prueba(t):
     print(out, flush=True)
 
 
+def _trim(f0, f1, fq):
+    """El corte de video de un tramo. Por defecto por número de cuadro; con `POR_TIEMPO` en el
+    plan, por tiempo en la rejilla de `fq`. Una grabación de teléfono (Enfoque diferencial, 15
+    nov 2026) declara 30 fps pero tiene algún cuadro de 35 ms: en 28 min van 26 cuadros menos
+    que 30 × duración, y cortar por número de cuadro corre el final casi un segundo respecto
+    del audio. Con la base de tiempo 1/600 de esas fuentes, f/30 cae exacto en un tick y no
+    hay redondeo."""
+    if getattr(P, 'POR_TIEMPO', False):
+        return 'trim=start=%.6f:end=%.6f' % (f0 / fq, f1 / fq)
+    return 'trim=start_frame=%d:end_frame=%d' % (f0, f1)
+
+
+def canales(f):
+    import srpa_composicion as K
+    r = subprocess.run([K.FB + '/ffprobe.exe', '-v', 'error', '-select_streams', 'a:0', '-show_entries',
+                        'stream=channels', '-of', 'csv=p=0', f], capture_output=True, text=True).stdout.split()
+    return int(r[0]) if r else 0
+
+
+def base_audio():
+    """La cadena v2 de los profes. Una fuente mono (teléfono) se arma en dual-mono ANTES de
+    medir: un clip mono en una línea estéreo suena solo por la izquierda, y duplicar el canal
+    después de normalizar sube 3 dB la medida."""
+    import srpa_audio as A
+    dual = 'pan=stereo|c0=c0|c1=c0,' if canales(P.ORIGINAL) == 1 else ''
+    return '[ac]aresample=48000,' + dual + A.CADENA
+
+
 def tramos_vf(K, fin):
     """Video y audio de los tramos de P.TRAMOS (cortes de tomas falsas), cada uno con su
     ventana (x, y, w, h) o la del plan. Devuelve el grafo hasta [vc] y [ac] (el audio
@@ -90,17 +118,17 @@ def tramos_vf(K, fin):
         piezas, f = [], f0
         for j, (k0, k1) in enumerate(dentro):
             if k0 > f:                  # un congelado al arranque del tramo no tiene «antes»
-                v.append('[0:v]trim=start_frame=%d:end_frame=%d,setpts=PTS-STARTPTS,%s[v%dn%d]' % (f, k0, esc, i, j))
+                v.append('[0:v]%s,setpts=PTS-STARTPTS,%s[v%dn%d]' % (_trim(f, k0, fq), esc, i, j))
                 piezas.append('[v%dn%d]' % (i, j))
-            v.append('[0:v]trim=start_frame=%d:end_frame=%d,setpts=PTS-STARTPTS,%s,'
+            v.append('[0:v]%s,setpts=PTS-STARTPTS,%s,'
                      'tpad=stop_mode=clone:stop=%d,trim=end_frame=%d,setpts=PTS-STARTPTS[v%dq%d]'
-                     % (k1, k1 + 1, esc, k1 - k0, k1 - k0, i, j))
+                     % (_trim(k1, k1 + 1, fq), esc, k1 - k0, k1 - k0, i, j))
             piezas.append('[v%dq%d]' % (i, j))
             f = k1
         if not dentro:
-            v.append('[0:v]trim=start_frame=%d:end_frame=%d,setpts=PTS-STARTPTS,%s[v%d]' % (f0, f1, esc, i))
+            v.append('[0:v]%s,setpts=PTS-STARTPTS,%s[v%d]' % (_trim(f0, f1, fq), esc, i))
         else:
-            v.append('[0:v]trim=start_frame=%d:end_frame=%d,setpts=PTS-STARTPTS,%s[v%dz]' % (f, f1, esc, i))
+            v.append('[0:v]%s,setpts=PTS-STARTPTS,%s[v%dz]' % (_trim(f, f1, fq), esc, i))
             piezas.append('[v%dz]' % i)
             v.append('%sconcat=n=%d:v=1:a=0[v%d]' % (''.join(piezas), len(piezas), i))
         ta, tb = f0 / fq, f1 / fq
@@ -116,12 +144,11 @@ def tramos_vf(K, fin):
 
 def componer():
     import srpa_composicion as K
-    import srpa_audio as A
     if os.path.exists(P.COMPUESTO):
         raise SystemExit('ya existe ' + P.COMPUESTO)
     fin = K.duracion(P.ORIGINAL)
     g = tramos_vf(K, fin)
-    base = '[ac]aresample=48000,' + A.CADENA
+    base = base_audio()
     r = subprocess.run([K.FB + '/ffmpeg.exe', '-hide_banner', '-nostats', '-i', P.ORIGINAL, '-filter_complex',
                         g + ';' + base + ',loudnorm=%s:print_format=json[a];[vc]nullsink' % P.AUDIO_META,
                         '-map', '[a]', '-f', 'null', '-'],
