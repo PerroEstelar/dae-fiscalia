@@ -60,6 +60,9 @@ reparto y locaciones fijas (`personajes.md`).
 - [x] Propuestas de cantidad de videos (`propuestas_videos.md`)
 - [x] Guiones del Módulo 1, primera versión (`m1/guiones_m1.md`)
 - [x] Propuesta elegida: **P5**, máximo 4 videos por módulo, 14 en total (14 nov 2026)
+- [x] Módulo 1: cuatro videos con voz y música (15 nov 2026)
+- [x] Módulo 2: guiones, bloques de voz, placas, clips y escenas (15 nov 2026) — `m2/`
+- [ ] Módulo 2: voz de Sebastián, corte con voz y música
 - [ ] Hojas de personaje y locaciones
 - [ ] Prueba de Magnific Move: intro y comparador de 1.1.1
 - [ ] Voces M1 en ElevenLabs
