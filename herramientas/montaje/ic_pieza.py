@@ -88,9 +88,12 @@ def tramos_vf(K, fin):
                 if c0 - t > 1e-3:       # un congelado al arranque del tramo no tiene «antes»
                     ps.append('[0:v]trim=start=%.4f:end=%.4f,setpts=PTS-STARTPTS,%s[v%dn%d]' % (t, c0, esc, i, j))
                     pre.append('[v%dn%d]' % (i, j))
+                # en cuadros, no en segundos: trim=duration con 4 decimales dejaba un cuadro de
+                # más cuando el largo redondeaba hacia arriba (0,1667 > 5/30)
+                nq = int(round((c1 - c0) * fq))
                 ps.append('[0:v]trim=start=%.4f,setpts=PTS-STARTPTS,trim=end_frame=1,%s,'
-                          'tpad=stop_mode=clone:stop_duration=%.4f,trim=duration=%.4f,setpts=PTS-STARTPTS[v%dq%d]'
-                          % (c1, esc, c1 - c0, c1 - c0, i, j))
+                          'tpad=stop_mode=clone:stop=%d,trim=end_frame=%d,setpts=PTS-STARTPTS[v%dq%d]'
+                          % (c1, esc, nq, nq, i, j))
                 pre.append('[v%dq%d]' % (i, j))
                 t = c1
             ps.append('[0:v]trim=start=%.4f:end=%.3f,setpts=PTS-STARTPTS,%s[v%dz]' % (t, t1, esc, i))
