@@ -9,7 +9,9 @@
 > intro y outro, 13 nov 2026) están en `cierres_unidad/`. La **Unidad 4, lección 1**
 > (justicia restaurativa, con Daniela Escallón, 15 nov 2026) está en
 > `unidad4_leccion1/`: línea `MA - U4 - LECCION 1`, export
-> `delitosambientales - U4 - LECCION 1-v1.mp4`.
+> `delitosambientales - U4 - LECCION 1-v1.mp4`. La **Unidad 3, lección 5** (la prueba pericial,
+> con Hugo Ascencio Salazar, 15 nov 2026) está en `unidad3_leccion5/`: línea
+> `MA - U3 - LECCION 5`, export `delitosambientales - U3 - LECCION 5-v1.mp4`.
 
 Son cinco videos. En cada uno, la docente (Diana Carolina) presenta su unidad a
 cámara. Las líneas están en Resolve: proyecto `DAE MASTER - CURSOS`, bin

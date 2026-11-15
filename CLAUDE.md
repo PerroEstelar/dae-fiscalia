@@ -2383,3 +2383,29 @@ de la caja (cima < 250) y se acortaron. Una lista con título y tres filas de do
 renglones cabe solo si el título va en un renglón (unos 21 caracteres en negrita a
 46 px); si no, una de las filas tiene que entrar en un renglón (unos 22 caracteres
 a 37 px en los 476 px del rótulo).
+
+## Una fuente que ya es un montaje: se toma el tramo del profe y se rearma (DA U3 L5, 15 nov 2026)
+
+La U3 L5 llegó como un montaje de septiembre: export HD a 23,976 con el intro FGN, el
+profe con un rótulo azul en mayúsculas quemado abajo a la izquierda, y el outro. «Ya
+tiene intro» no quería decir «ya está»: le faltaban cartón de título, lower third de
+la serie, cartones y AE.
+
+- **Se busca dónde empieza y termina el profe** con detección de escena (cortes en
+  8,09 y 406,86 s) y luma cuadro a cuadro alrededor: el cuadro 194 era uno de paso
+  oscuro, y desde el 9755 venía el negro del outro. El audio se mira en RMS de 20 ms
+  para no cortar la última palabra ni meter el sonido del outro.
+- **Los bordes del tramo van a mitad de cuadro** (`194,5/FPS`, `9754,5/FPS`).
+  `tramos_vf` escribe los tiempos con tres decimales: 9755/23,976 = 406,8648, y un
+  borde en 406,865 se llevó el primer cuadro negro. El compuesto v1 salió con un
+  cuadro de más y negro al final.
+- **El rótulo quemado se deja fuera de la ventana**, no se tapa: la ventana termina
+  en y=878 y el rótulo empieza en y≈980.
+- **`MATRIZ_FUENTE` y `FPS_COMPUESTO`** en el plan. `srpa_composicion.escala` supone
+  una grabación de Teams en BT.601, y `componer` escribe a 30 fps. Para un export HD
+  hay que poner bt709 y 24000/1001; si no, se corre el color y se duplican cuadros.
+- **`perfil2.py`** (`D:\DAE\_tmp\ma\u3l5`) es `perfil.py` con un tramo de tiempo,
+  para cualquier tamaño de fuente y con el borde derecho. El ancho de la ventana
+  salió del borde derecho de la cabeza (máx. 1474): con menos, se le corta la cabeza
+  cuando se corre. `perfil.py` supone 1280×720 y, sobre el archivo entero, mide
+  también el intro.
