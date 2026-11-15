@@ -2409,3 +2409,49 @@ la serie, cartones y AE.
   salió del borde derecho de la cabeza (máx. 1474): con menos, se le corta la cabeza
   cuando se corre. `perfil.py` supone 1280×720 y, sobre el archivo entero, mide
   también el intro.
+
+## Una grabación armada con tomas: transiciones, negros y frases repetidas (DA U3 L4, 15 nov 2026)
+
+La U3 L4 venía editada a partir de varias tomas: cubos 3D entre ellas, un fundido
+desde blanco, negros al principio y al final, y dos frases dichas dos veces con la
+primera toma sin quitar. La detección de escena (umbral 0,25) solo vio los negros:
+los cubos son graduales.
+
+- **Se mide el panel DAE/Fiscalía cuadro a cuadro.** Se toma la diferencia media
+  contra su mediana, sobre un recorte de 560×160 bajado a 112×32. Lo normal es 0,6;
+  un cubo sube de 14 a 60, y un negro marca 174. Los bordes salen exactos al
+  cuadro.
+- **Se lee la transcripción buscando frases repetidas**, no solo palabras: una
+  oración que vuelve a empezar igual unos segundos después es una toma que quedó.
+  Se queda la limpia, y el corte cae en una pausa medida en RMS de 20 ms.
+- **Si la toma buena arranca sobre negro**, el comienzo de la frase se toma de la
+  toma vieja cuando es igual («Posteriormente,»), y se corta a la buena en la pausa
+  siguiente.
+- **Después de un corte de toma va el plano cerrado** hasta el final de la frase.
+  Se revisa a 4 cuadros por segundo y ahí no va ningún cartón.
+- **Un cubo entre bloques se tapa con el cuadro limpio quieto** (`CONGELA`), como
+  en la U4 L1. En una pausa no se nota, y no hace falta cortar audio.
+- **Lo que se dice sobre negro al arranque no se congela.** Si la imagen arranca
+  tarde («Cordial saludo» sobre un segundo de negro), el clip empieza en la
+  frase siguiente: un rostro quieto que habla se nota más que un saludo de menos.
+
+## El video se corta por número de cuadro, no por segundos (U3 L4, 15 nov 2026)
+
+`tramos_vf` cortaba con `trim=start=…:end=…` en segundos. Hubo tres errores:
+- con cuatro decimales, cada congelado dejaba un cuadro de más cuando el largo
+  redondeaba hacia arriba (0,1667 > 5/30);
+- con bordes a mitad de cuadro, `trim` pasa los segundos a la base de tiempo del
+  stream **redondeando** al más cercano, así que 7166,49 cuadros quedan en 7166;
+- en la U4 L1 ya entregada, el congelado de 17 cuadros dejó uno de más (49.697 contra
+  49.696 de la fuente). Desde 15:38 el video va un cuadro (33 ms) detrás del audio.
+
+Ahora el video va con `trim=start_frame/end_frame` y el audio se corta en los mismos
+tiempos (cuadro/fps). Se verifica con un generador de prueba que cuenta cuadros por
+tramo, y con `ffprobe` sobre el compuesto: cuadros esperados = suma de los tramos,
+y audio del mismo largo.
+
+**El congelado se elige mirando el cuadro entero, no solo el panel.** En un fundido
+desde negro, el panel volvió a su mediana en el cuadro 4366, pero el cielo y la cara
+siguieron con manchas negras del fondo virtual hasta el 4370. Lo que lo delató fue
+la tira de cuadros de cada corte. Se mide también la fracción de píxeles oscuros de
+la mitad de arriba.
