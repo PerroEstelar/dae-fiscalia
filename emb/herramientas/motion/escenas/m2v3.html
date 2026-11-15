@@ -1,0 +1,75 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- M2 · Video 3 — Prevenir y transformar (2.3.1 + 2.3.2) + mapa del módulo. -->
+<link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="../pieza.css">
+<script src="../core.js"></script><script src="../pieza.js"></script><script src="voz_m2v3.js" onerror="window.VOZ=null"></script>
+</head><body><div id="raiz"></div>
+<canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
+<script>
+const L2=(a,b)=>`<div style="font:600 30px 'Work Sans';color:#FFC400">${a}</div><div style="font:800 58px/1.08 Montserrat;color:#fff;margin-top:6px">${b}</div>`;
+const G=(t,c='#fff',fs=60)=>`<div style="font:800 ${fs}px/1.08 Montserrat;color:${c}">${t}</div>`;
+const PL=t=>`<div style="font:600 32px 'Work Sans';color:#212529;background:#fff;padding:14px 28px;border-radius:40px;box-shadow:0 14px 34px rgba(0,0,0,.25)">${t}</div>`;
+const NOTA=t=>`<div style="background:#FFC400;border-radius:22px;padding:16px 28px;font:700 30px/1.2 Montserrat;color:#212529;box-shadow:0 16px 40px rgba(0,0,0,.16);white-space:nowrap">${t}</div>`;
+const PARADAS=['Identificar a tiempo','Expectativas y barreras','Contener, resolver, transformar','El mapa del módulo'];
+montar([
+ S_titulo({ante:'Módulo 2 · Lecciones 2.3.1 y 2.3.2',lineas:['Prevenir','y transformar'],clip:'L1'}),
+ S_ruta({id:'RUTA1',ante:'Prevenir y transformar',titulo:'En este video',modo:'agenda',entrada:'tren',paradas:PARADAS}),
+ S_partida({id:'B1',entrada:'iris',entradaOpt:{x:960,y:540},base:{clip:'L1',ventana:[20,120]},salen:'fin',
+  txt:'Antes de modificar un recorrido cercano a un equipamiento comunitario, el equipo recibe preguntas sobre el acceso, las entregas comerciales y el desplazamiento de personas mayores.',
+  panes:[{clip:'L7',s:1.2,x:-530,y:-110,tit:'El acceso',sub:'¿por dónde se entra ahora?',en:'el acceso'},
+         {clip:'L2',s:1.15,x:-180,y:-80,tit:'Las entregas comerciales',sub:'¿cómo llega la mercancía?',en:'las entregas'},
+         {clip:'L3',s:1.6,x:-290,y:-500,tit:'Las personas mayores',sub:'¿cómo se desplazan?',en:'el desplazamiento'}]}),
+ S_planos({id:'B2',entrada:'tren',
+  txt:'Prevenir es reconocer a tiempo las condiciones que podrían producir daño, exclusión o escalamiento. No consiste en eliminar la crítica ni en vigilar a quienes participan.',
+  planos:[{clip:'L4',s:[1.02,1.12]}],
+  textos:[{html:L2('Prevenir es reconocer a tiempo','las condiciones que podrían producir…'),en:0,hasta:'No consiste'},
+          {html:PL('Daño'),en:'daño',hasta:'No consiste',top:110},{html:PL('Exclusión'),en:'exclusión',hasta:'No consiste',top:200},{html:PL('Escalamiento'),en:'escalamiento',hasta:'No consiste',top:290},
+          {html:'<div style="font:800 52px/1.1 Montserrat;color:#212529;max-width:1300px">No consiste en eliminar la crítica<br>ni en vigilar a quienes participan</div>',en:'No consiste',banda:true,top:800,alto:210}]}),
+ S_matriz({id:'B3',entrada:'amarillo',fondo:'blanco',cab:{tit:'Identificación temprana'},cols:['Aspecto','Pregunta preventiva'],anchos:[0.55,1.45],fs:31,
+  txt:'Cinco preguntas ayudan. ¿Quién usa el lugar y quién falta por escuchar? ¿Qué cambio se espera y por qué? ¿Qué dificulta conocer o discutir la decisión? ¿Qué áreas o entidades deben intervenir? ¿Y cómo podrá conocerse la respuesta?',
+  filas:[{c:['Actores afectados','¿Quién usa el lugar y quién falta por escuchar?'],ico:'persona',en:'¿Quién usa',re:'¿Quién usa'},
+         {c:['Expectativas','¿Qué cambio se espera y por qué?'],ico:'ojo',en:'¿Qué cambio',re:'¿Qué cambio'},
+         {c:['Barreras','¿Qué dificulta conocer o discutir la decisión?'],ico:'reja',en:'¿Qué dificulta',re:'¿Qué dificulta'},
+         {c:['Coordinación','¿Qué áreas o entidades deben intervenir?'],ico:'eslabon',en:'¿Qué áreas',re:'¿Qué áreas'},
+         {c:['Seguimiento','¿Cómo podrá conocerse la respuesta?'],ico:'sobre',en:'¿Y cómo',re:'¿Y cómo'}]}),
+ S_planos({id:'B4',entrada:'tren',
+  txt:'Una convocatoria general puede dejar por fuera a quienes trabajan en ese horario. Y no ordene a los actores por su capacidad de presión: quien tiene menos visibilidad puede enfrentar la barrera más grave.',
+  planos:[{clip:'L5',s:[1.02,1.12]},{clip:'L6',en:'Y no ordene',s:[1.0,1.1],x:[0,-60]}],
+  textos:[{html:L2('Una convocatoria general puede dejar por fuera','a quienes trabajan en ese horario'),en:0,hasta:'Y no ordene'},
+          {html:G('Quien tiene menos visibilidad','#fff',54)+G('puede enfrentar la barrera más grave','#FFC400',40),en:'quien tiene menos',top:810}]}),
+ S_tarjetas({id:'B5',fondo:'L6_duoY',en0:0,alto:440,
+  txt:'Una expectativa no es un compromiso: pregunte de dónde viene y contraste los registros. La ausencia de quejas no demuestra ausencia de dificultades; puede indicar que el canal es desconocido o inaccesible. Por eso la Ley mil setecientos cincuenta y siete de dos mil quince protege la participación democrática: posibilidades reales de expresar necesidades, no solo presencia formal.',
+  cab:{tit:'Tres precisiones'},
+  items:[{tit:'Una expectativa no es un compromiso',def:'Pregunte de dónde viene y contraste los registros.',ico:'pregunta',en:0},
+         {tit:'Sin quejas no significa sin dificultades',def:'El canal puede ser desconocido o inaccesible.',ico:'sobre',en:'La ausencia'},
+         {tit:'Participación democrática',pre:'Ley 1757 de 2015',def:'Posibilidades reales de expresar necesidades.',ico:'megafono',en:'Por eso'}]}),
+ S_escalera({id:'B6',clip:'L7',desde:20,rotulo:'Lederach (2003)',ov:20,
+  txt:'Contener, resolver y transformar son propósitos distintos. Contener atiende un riesgo inmediato: detener amenazas y activar protección. Resolver tramita una dificultad específica: aclarar un acceso con información verificada. Y transformar, como propone Lederach, modifica el patrón: coordinar cómo se validan y se actualizan los mensajes.',
+  items:[{tit:'Contener',def:'Un riesgo inmediato',resp:'Detener amenazas y activar protección',en:'Contener atiende',re:'detener'},
+         {tit:'Resolver',def:'Una dificultad específica',resp:'Aclarar un acceso con información verificada',en:'Resolver tramita',re:'aclarar'},
+         {tit:'Transformar',def:'El patrón que la sostiene',resp:'Coordinar cómo se validan y actualizan los mensajes',en:'Y transformar',re:'coordinar'}]}),
+ S_planos({id:'B7',entrada:'tren',
+  txt:'Un caso de cierre: una señalización confusa, respuestas que discrepan y una comunidad que pide cambios. La ruta puede empezar por verificar el acceso y atender cualquier riesgo. Después, coordinar la información, recoger las dificultades concretas y evaluar opciones con los responsables competentes. Y al final, comprobar si las personas encuentran el recorrido.',
+  planos:[{clip:'L8',s:[1.02,1.1]},{clip:'L7',en:'Y al final',ventana:[30,120],s:[1.1,1.02]}],
+  textos:[{html:L2('Un caso de cierre','Señalización confusa, respuestas que discrepan'),en:0,hasta:'La ruta'},
+          {html:PL('1 · Verificar el acceso y atender riesgos'),en:'verificar',hasta:'Y al final',top:90},{html:PL('2 · Coordinar la información'),en:'coordinar',hasta:'Y al final',top:176},{html:PL('3 · Recoger las dificultades concretas'),en:'recoger',hasta:'Y al final',top:262},{html:PL('4 · Evaluar opciones con responsables competentes'),en:'evaluar',hasta:'Y al final',top:348},
+          {html:G('5 · Comprobar','#FFC400',40)+G('si las personas encuentran el recorrido','#fff',54),en:'comprobar',top:800}]}),
+ S_planos({id:'B8',entrada:'amarillo',
+  txt:'Registrar una reunión muestra que ocurrió, no que la dificultad se resolvió. Y una pregunta restaurativa: ¿qué afectación produjo nuestra manera de responder, y qué acción puede corregirla?',
+  planos:[{clip:'L5',ventana:[60,120],s:[1.14,1.06]},{clip:'L8',en:'Y una pregunta',ventana:[40,120],s:[1.12,1.04]}],
+  textos:[{html:L2('Registrar una reunión muestra que ocurrió','no que la dificultad se resolvió'),en:0,hasta:'Y una pregunta'},
+          {html:PL('Una pregunta restaurativa'),en:'Y una pregunta',top:120},
+          {html:'<div style="font:800 46px/1.12 Montserrat;color:#212529;max-width:1320px">¿Qué afectación produjo nuestra manera de responder,<br>y qué acción puede corregirla?</div>',en:'¿qué afectación',banda:true,top:810,alto:200,ancho:1640}]}),
+ S_actividad({titulo:'En la actividad',sub:'Redacte una ruta de cinco actuaciones.',
+  txt:'En la actividad, redacte una ruta de cinco actuaciones: diagnóstico, competencia, herramienta, compromiso y evidencia de seguimiento.',
+  lineas:[{t:'Diagnóstico',en:'diagnóstico'},{t:'Competencia',en:'competencia'},{t:'Herramienta',en:'herramienta'},{t:'Compromiso',en:'compromiso'},{t:'Evidencia de seguimiento',en:'evidencia'}]}),
+ S_mapaMod({titulo:'Mapa del Módulo 2',centro:'Transformar y resolver<br>conflictos',
+  txt:'En resumen. Analizar un conflicto es distinguir actores, posiciones, intereses, necesidades y percepciones, y leer el poder y las señales de escalamiento. Negociar y mediar permite explorar opciones y construir acuerdos precisos. Y prevenir y transformar cambia las condiciones que sostienen el conflicto.',
+  arriba:[['Actores, posiciones, intereses,<br>necesidades y percepciones','distinguir'],['Poder y señales<br>de escalamiento','y leer'],['Opciones y<br>acuerdos precisos','explorar']],
+  abajo:[['Analizar','comprender qué está en discusión','Analizar un conflicto'],['Negociar y mediar','construir respuestas con otros','Negociar y mediar'],['Prevenir y transformar','cambiar las condiciones','Y prevenir']]}),
+ S_planos({id:'FIN',entrada:'fundido',etiqueta:false,
+  txt:'Antes de pasar al Módulo tres, aplique estas ideas a una situación de su trabajo.',cola:60,
+  cierre:'puertas',extra:70,
+  planos:[{clip:'L9',s:[1.1,1.0]}],
+  textos:[{html:G('Antes de pasar al Módulo 3,','#fff',56)+G('aplique estas ideas a una situación de su trabajo','#FFC400',40),en:0,top:800}]})
+]);
+</script></body></html>

@@ -1,0 +1,71 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- M2 · Video 1 — Analizar el conflicto (2.1.1 + 2.1.2). -->
+<link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="../pieza.css">
+<script src="../core.js"></script><script src="../pieza.js"></script><script src="voz_m2v1.js" onerror="window.VOZ=null"></script>
+</head><body><div id="raiz"></div>
+<canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
+<script>
+const L2=(a,b)=>`<div style="font:600 30px 'Work Sans';color:#FFC400">${a}</div><div style="font:800 58px/1.08 Montserrat;color:#fff;margin-top:6px">${b}</div>`;
+const G=(t,c='#fff',fs=60)=>`<div style="font:800 ${fs}px/1.08 Montserrat;color:${c}">${t}</div>`;
+const PL=t=>`<div style="font:600 32px 'Work Sans';color:#212529;background:#fff;padding:14px 28px;border-radius:40px;box-shadow:0 14px 34px rgba(0,0,0,.25)">${t}</div>`;
+const NOTA=t=>`<div style="background:#FFC400;border-radius:22px;padding:16px 28px;font:700 30px/1.2 Montserrat;color:#212529;box-shadow:0 16px 40px rgba(0,0,0,.16);white-space:nowrap">${t}</div>`;
+const PARADAS=['Quién, qué pide y por qué','Poder y causas','Señales de escalamiento','Un mapa del conflicto'];
+montar([
+ S_titulo({ante:'Módulo 2 · Lecciones 2.1.1 y 2.1.2',lineas:['Analizar','el conflicto'],clip:'J1'}),
+ S_ruta({id:'RUTA1',ante:'Analizar el conflicto',titulo:'En este video',modo:'agenda',entrada:'tren',paradas:PARADAS}),
+ S_partida({id:'B1',entrada:'iris',entradaOpt:{x:960,y:540},base:{clip:'J1',ventana:[20,120]},salen:'fin',
+  txt:'Se anuncia un acceso provisional. Los comerciantes piden conservar el ingreso habitual. El equipo técnico pide restringirlo por seguridad. Y las personas cuidadoras advierten dificultades para acompañar a niñas, niños y personas mayores.',
+  panes:[{clip:'J2',s:1.1,x:-440,y:-20,tit:'Los comerciantes',sub:'piden conservar el ingreso habitual',en:'Los comerciantes'},
+         {clip:'J3',s:1.15,x:-342,y:-20,tit:'El equipo técnico',sub:'pide restringirlo por seguridad',en:'El equipo técnico'},
+         {clip:'J4',s:1.5,x:-1030,y:-432,tit:'Las personas cuidadoras',sub:'advierten dificultades para acompañar',en:'Y las personas cuidadoras'}]}),
+ S_planos({id:'B2',entrada:'tren',
+  txt:'Analizar un conflicto empieza por reconocer a quienes participan y a quienes viven sus consecuencias. Y estar en una reunión no basta para representar a un grupo: pregunte qué pueden decidir y a quiénes representan.',
+  planos:[{clip:'J5',s:[1.02,1.12]}],
+  textos:[{html:L2('Analizar un conflicto empieza por reconocer','a quienes participan y a quienes viven sus consecuencias'),en:0,hasta:'Y estar'},
+          {html:G('Estar en una reunión no basta<br>para representar a un grupo','#fff',54),en:'Y estar',top:760},
+          {html:PL('¿Qué pueden decidir?'),en:'qué pueden decidir',top:110},{html:PL('¿A quiénes representan?'),en:'a quiénes representan',top:200}]}),
+ S_escalera({id:'B3',clip:'J2',desde:100,rotulo:'Fisher, Ury y Patton (2011)',ultimoRojo:false,
+  txt:'Fisher, Ury y Patton distinguen posiciones e intereses. La posición es la solución que alguien pide: mantener abierto un acceso. El interés explica por qué la pide: conservar el ingreso de clientes. A eso sumamos la necesidad, una condición que requiere atención, como un recorrido seguro y accesible. Y la percepción: cómo interpreta la persona lo ocurrido; por ejemplo, que su preocupación fue ignorada.',
+  items:[{tit:'Posición',def:'La solución que alguien pide',resp:'Mantener abierto un acceso',en:'La posición',re:'mantener abierto'},
+         {tit:'Interés',def:'Por qué la pide',resp:'Conservar el ingreso de clientes',en:'El interés',re:'conservar el ingreso'},
+         {tit:'Necesidad',def:'Una condición que requiere atención',resp:'Un recorrido seguro y accesible',en:'A eso sumamos',re:'como un recorrido'},
+         {tit:'Percepción',def:'Cómo se interpreta lo ocurrido',resp:'«Mi preocupación fue ignorada»',en:'Y la percepción',re:'por ejemplo'}]}),
+ S_planos({id:'B4',entrada:'amarillo',
+  txt:'Las necesidades no se deducen solo desde la institución. Preguntar qué dificultad produce el cambio da más información que pedir que se acepte o se rechace una alternativa. Y registre por separado lo que se afirma y lo que se ha verificado.',
+  planos:[{clip:'J6',s:[1.04,1.12]}],
+  textos:[{html:L2('Las necesidades no se deducen','solo desde la institución'),en:0,hasta:'Preguntar'},
+          {html:PL('«¿Qué dificultad le produce el cambio?»'),en:'Preguntar',hasta:'Y registre',top:120},
+          {html:'<div style="font:800 52px/1.1 Montserrat;color:#212529;max-width:1300px">Por separado: lo que se afirma<br>y lo que se ha verificado</div>',en:'Y registre',banda:true,top:800,alto:210}]}),
+ S_tarjetas({id:'B5',fondo:'J5_duoG',en0:0,alto:300,
+  txt:'Ahora, el poder. Se expresa en la capacidad de decidir, controlar información, movilizar apoyos o definir las condiciones de una conversación. Ofrecer el mismo espacio formal no borra las diferencias: quién tiene tiempo para participar, quién comprende los documentos y quién puede acceder a asesoría.',
+  cab:{tit:'El poder se expresa en la capacidad de…'},
+  items:[{tit:'Decidir',ico:'check',en:'decidir'},{tit:'Controlar información',ico:'doc',en:'controlar'},{tit:'Movilizar apoyos',ico:'megafono',en:'movilizar'},{tit:'Definir las condiciones',ico:'reloj',en:'definir'}],
+  banda:{html:'El mismo espacio formal no borra las diferencias: tiempo para participar, comprensión de los documentos, acceso a asesoría.',en:'Ofrecer'}}),
+ S_planos({id:'B6',entrada:'tren',
+  txt:'Distinga el detonante, las causas y lo que mantiene la tensión. Un mensaje tardío puede detonar el reclamo. La falta de coordinación entre áreas puede explicar que se repita. Y los rumores o las promesas contradictorias pueden mantenerlo.',
+  planos:[{clip:'J8',s:[1.04,1.1]},{clip:'J9',en:'La falta',s:[1.0,1.08]},{clip:'J10',en:'Y los rumores',s:[1.04,1.12]}],
+  textos:[{html:PL('Detonante · Causas · Lo que mantiene la tensión'),en:0,top:120},
+          {html:L2('El detonante','Un mensaje tardío'),en:'Un mensaje',hasta:'La falta'},
+          {html:L2('Una causa posible','La falta de coordinación entre áreas'),en:'La falta',hasta:'Y los rumores'},
+          {html:L2('Lo que lo mantiene','Rumores o promesas contradictorias'),en:'Y los rumores'}]}),
+ S_matriz({id:'B7',entrada:'amarillo',fondo:'blanco',cab:{tit:'Señales de escalamiento'},cols:['Señal observable','Respuesta inicial'],anchos:[1,1.15],
+  txt:'Hay señales de escalamiento que conviene atender a tiempo. Si se repiten solicitudes sin respuesta útil, revise el estado y comunique información verificable. Si aparecen descalificaciones generales, vuelva a los hechos, los efectos y las necesidades. Si circulan versiones contradictorias, contraste datos y coordine mensajes. Y si surgen amenazas concretas, proteja y active la ruta competente.',
+  filas:[{c:['Solicitudes repetidas sin respuesta útil','Revisar el estado y comunicar información verificable'],ico:'sobre',en:'Si se repiten',re:'revise'},
+         {c:['Descalificaciones generales','Volver a los hechos, los efectos y las necesidades'],ico:'globo',en:'Si aparecen',re:'vuelva'},
+         {c:['Versiones contradictorias','Contrastar datos y coordinar mensajes'],ico:'pregunta',en:'Si circulan',re:'contraste'},
+         {c:['Amenazas concretas','Proteger y activar la ruta competente'],ico:'escudo',en:'Y si surgen',re:'proteja'}]}),
+ S_red({id:'B8',entrada:'tren',cab:{ante:'Un ejemplo',tit:'Dos áreas, un mismo recorrido'},
+  txt:'Un ejemplo. Dos áreas difunden instrucciones distintas sobre el mismo recorrido. La ciudadanía recibe respuestas incompatibles y el reclamo crece. Antes de pedirle moderación a quien pregunta, corresponde revisar cómo se valida y se actualiza la información.',
+  nodos:[{id:'a',x:480,y:400,tit:'Área 1',sub:'difunde una instrucción',ico:'doc',en:'Dos áreas'},
+         {id:'b',x:1440,y:400,tit:'Área 2',sub:'difunde otra distinta',ico:'doc',color:'#FFC400',en:'Dos áreas'},
+         {id:'c',x:960,y:820,tit:'La ciudadanía',sub:'recibe respuestas incompatibles',ico:'persona',en:'La ciudadanía',alerta:'el reclamo crece',r:150}],
+  enlaces:[{a:'a',b:'c',en:'instrucciones',flujo:true,curva:-60,rot:'Versión 1',rotEn:0.45},
+           {a:'b',b:'c',en:'instrucciones',flujo:true,curva:60,color:'#FFC400',rot:'Versión 2',rotEn:0.45},
+           {a:'a',b:'b',en:'corresponde revisar',color:'#212529',rot:'¿Cómo se valida y se actualiza?'}],
+  notas:[{html:NOTA('El reclamo crece'),en:'el reclamo crece',hasta:'Antes de',x:1180,y:900}]}),
+ S_ruta({id:'RUTA2',ante:'Analizar el conflicto',titulo:'Lo que vimos',modo:'repaso',entrada:'fundido',paradas:PARADAS}),
+ S_actividad({titulo:'En la actividad',sub:'Construya un mapa con cuatro actores.',
+  txt:'En la actividad, construya un mapa con cuatro actores: trace las conexiones, indique qué circula entre ellos y señale un detonante, una causa posible y una condición que mantenga la tensión.',
+  lineas:[{t:'Trace las conexiones',en:'trace'},{t:'Indique qué circula entre ellos',en:'indique'},{t:'Señale detonante, causa y lo que mantiene la tensión',en:'señale'}]})
+]);
+</script></body></html>

@@ -1,0 +1,76 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- M2 · Video 2 — Negociar y mediar (2.2.1 + 2.2.2). -->
+<link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="../pieza.css">
+<script src="../core.js"></script><script src="../pieza.js"></script><script src="voz_m2v2.js" onerror="window.VOZ=null"></script>
+</head><body><div id="raiz"></div>
+<canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
+<script>
+const L2=(a,b)=>`<div style="font:600 30px 'Work Sans';color:#FFC400">${a}</div><div style="font:800 58px/1.08 Montserrat;color:#fff;margin-top:6px">${b}</div>`;
+const G=(t,c='#fff',fs=60)=>`<div style="font:800 ${fs}px/1.08 Montserrat;color:${c}">${t}</div>`;
+const PL=t=>`<div style="font:600 32px 'Work Sans';color:#212529;background:#fff;padding:14px 28px;border-radius:40px;box-shadow:0 14px 34px rgba(0,0,0,.25)">${t}</div>`;
+const NOTA=t=>`<div style="background:#FFC400;border-radius:22px;padding:16px 28px;font:700 30px/1.2 Montserrat;color:#212529;box-shadow:0 16px 40px rgba(0,0,0,.16);white-space:nowrap">${t}</div>`;
+const PARADAS=['Negociar por intereses','Opciones, criterios y MAAN','Mediación y escucha','Un compromiso útil'];
+montar([
+ S_titulo({ante:'Módulo 2 · Lecciones 2.2.1 y 2.2.2',lineas:['Negociar','y mediar'],clip:'K1'}),
+ S_ruta({id:'RUTA1',ante:'Negociar y mediar',titulo:'En este video',modo:'agenda',entrada:'tren',paradas:PARADAS}),
+ S_planos({id:'B1',entrada:'iris',entradaOpt:{x:960,y:540},cola:50,
+  txt:'En el conflicto del acceso, las posiciones parecen incompatibles: conservar el paso o cerrarlo.',
+  planos:[{clip:'K1',ventana:[20,120],s:[1.12,1.02]}],
+  textos:[{html:G('Las posiciones parecen incompatibles','#fff',56),en:'las posiciones',top:700},
+          {html:PL('Conservar el paso'),en:'conservar',top:830,left:120},{html:PL('Cerrarlo'),en:'cerrarlo',top:830,left:520}]}),
+ S_tarjetas({id:'B2',fondo:'K1_duoY',en0:0,alto:360,
+  txt:'Fisher, Ury y Patton proponen una negociación basada en principios: separar a las personas del problema, atender los intereses, generar opciones de beneficio mutuo y usar criterios objetivos.',
+  cab:{tit:'Negociación basada en principios',sub:'Fisher, Ury y Patton (2011)'},
+  items:[{tit:'Separar a las personas del problema',ico:'persona',en:'separar'},{tit:'Atender los intereses',ico:'ojo',en:'atender'},{tit:'Generar opciones de beneficio mutuo',ico:'manos',en:'generar'},{tit:'Usar criterios objetivos',ico:'balanza',en:'usar'}]}),
+ S_planos({id:'B3',entrada:'tren',
+  txt:'La negociación empieza antes de la reunión. Determine qué puede decidir, qué requiere autorización y qué condiciones son obligatorias. Así evita ofrecer compromisos que después otra dependencia tendría que desconocer.',
+  planos:[{clip:'K2',s:[1.03,1.12]}],
+  textos:[{html:L2('La negociación empieza','antes de la reunión'),en:0,hasta:'Así evita'},
+          {html:PL('¿Qué puedo decidir?'),en:'qué puede decidir',hasta:'Así evita',top:110},{html:PL('¿Qué requiere autorización?'),en:'qué requiere',hasta:'Así evita',top:200},{html:PL('¿Qué condiciones son obligatorias?'),en:'qué condiciones',hasta:'Así evita',top:290},
+          {html:G('Así evita ofrecer compromisos','#fff',54)+G('que otra dependencia tendría que desconocer','#FFC400',38),en:'Así evita',top:810}]}),
+ S_matriz({id:'B4',entrada:'amarillo',fondo:'K3_duoG',cab:{tit:'Opciones por examinar',sub:'Sin prometer viabilidad'},cols:['Opción','Interés que atiende','Por verificar'],anchos:[0.9,1,1.1],
+  txt:'Sin prometer viabilidad, se pueden examinar opciones. Mejorar la señalización, para encontrar el acceso disponible. Ajustar el recorrido, para reducir barreras de desplazamiento. O revisar horarios, para mantener ciertas actividades. Generar opciones es formular posibilidades para evaluarlas, no anunciar decisiones aprobadas.',
+  filas:[{c:['Mejorar la señalización','Encontrar el acceso disponible','Ubicación, comprensión y autorización'],ico:'flecha',en:'Mejorar',re:['para encontrar','para encontrar']},
+         {c:['Ajustar el recorrido','Reducir barreras de desplazamiento','Seguridad y accesibilidad efectiva'],ico:'eslabon',en:'Ajustar',re:['para reducir','para reducir']},
+         {c:['Revisar horarios','Mantener ciertas actividades','Compatibilidad técnica y operativa'],ico:'reloj',en:'O revisar',re:['para mantener','para mantener']}],
+  banda:{html:'Generar opciones es formular posibilidades para evaluarlas, no anunciar decisiones aprobadas.',en:'Generar opciones'}}),
+ S_cita({id:'B5',fondo:'K3',fuente:'Para comparar las opciones',tit:'Criterios objetivos',
+  txt:'Para compararlas sirven criterios objetivos: seguridad, accesibilidad, competencia, recursos disponibles y efectos sobre otras personas. Y hay que explicarlos: invocar criterios técnicos sin aclarar su contenido cierra la conversación.',
+  chips:[{t:'Seguridad',en:'seguridad'},{t:'Accesibilidad',en:'accesibilidad'},{t:'Competencia',en:'competencia'},{t:'Recursos disponibles',en:'recursos'},{t:'Efectos sobre otras personas',en:'efectos'},{t:'Y hay que explicarlos',en:'Y hay que'}]}),
+ S_planos({id:'B6',entrada:'tren',
+  txt:'La MAAN es la mejor alternativa a un acuerdo negociado: lo que podría hacerse si no hay acuerdo. En una entidad pública debe ser legal, factible y compatible con sus deberes. No es una amenaza, ni autoriza abandonar la obligación de responder.',
+  planos:[{clip:'K4',s:[1.02,1.1]}],
+  textos:[{html:L2('MAAN','La mejor alternativa a un acuerdo negociado'),en:0,hasta:'En una entidad'},
+          {html:PL('Legal'),en:'legal',hasta:'No es',top:110},{html:PL('Factible'),en:'factible',hasta:'No es',top:200},{html:PL('Compatible con sus deberes'),en:'compatible',hasta:'No es',top:290},
+          {html:'<div style="font:800 52px/1.1 Montserrat;color:#212529;max-width:1300px">No es una amenaza, ni autoriza<br>abandonar la obligación de responder</div>',en:'No es',banda:true,top:800,alto:210}]}),
+ S_planos({id:'B7',entrada:'puertas',
+  txt:'Cuando la comunicación directa está deteriorada, puede ayudar la mediación: una tercera persona organiza la conversación sin decidir por las partes. Si pertenece a la entidad involucrada, no puede presumirse neutral por su cargo: debe transparentar su vínculo.',
+  planos:[{clip:'K5',s:[1.0,1.1]},{clip:'K6',en:'Si pertenece',s:[1.04,1.1]}],
+  textos:[{html:L2('La mediación','Una tercera persona organiza la conversación'),en:'puede ayudar',hasta:'Si pertenece'},
+          {html:PL('Sin decidir por las partes'),en:'sin decidir',hasta:'Si pertenece',top:120},
+          {html:G('No puede presumirse neutral por su cargo','#fff',52)+G('debe transparentar su vínculo','#FFC400',40),en:'no puede presumirse',top:810}]}),
+ S_tarjetas({id:'B8',fondo:'blanco',en0:0,alto:440,
+  txt:'Son herramientas distintas. En la negociación, las partes intercambian propuestas. En la mediación, lo hacen con apoyo de un tercero que facilita y no impone. Y la conciliación legal, regulada por la Ley dos mil doscientos veinte de dos mil veintidós, tiene requisitos y efectos propios: una reunión no se vuelve conciliación por llamarse así o por producir un acta.',
+  cab:{tit:'Herramientas distintas'},
+  items:[{tit:'Negociación',def:'Las partes intercambian propuestas.',ico:'manos',en:'En la negociación'},
+         {tit:'Mediación',def:'Con apoyo de un tercero que facilita y no impone.',ico:'persona',en:'En la mediación'},
+         {tit:'Conciliación legal',pre:'Ley 2220 de 2022',def:'Tiene requisitos y efectos propios.',ico:'balanza',en:'Y la conciliación'}],
+  banda:{html:'Una reunión no se vuelve conciliación por llamarse así o por producir un acta.',en:'una reunión'}}),
+ S_planos({id:'B9',entrada:'tren',
+  txt:'Escuchar también es una herramienta. Reformule lo que entendió y pida confirmación: «Entiendo que la principal dificultad está en encontrar el ingreso; ¿es correcto?». Y recuerde: el silencio no demuestra consentimiento.',
+  planos:[{clip:'K6',ventana:[40,120],s:[1.1,1.02]},{clip:'K5',en:'Y recuerde',ventana:[50,120],s:[1.1,1.16]}],
+  textos:[{html:L2('Escuchar también es una herramienta','Reformule y pida confirmación'),en:0,hasta:'Y recuerde'},
+          {html:PL('«Entiendo que la principal dificultad está en encontrar el ingreso; ¿es correcto?»'),en:'«Entiendo',hasta:'Y recuerde',top:120},
+          {html:'<div style="font:800 54px/1.1 Montserrat;color:#212529">El silencio no demuestra consentimiento</div>',en:'el silencio',banda:true,top:830,alto:150}]}),
+ S_planos({id:'B10',entrada:'amarillo',
+  txt:'Alguien propone firmar: «resolveremos todos los problemas de acceso». Es amplio y no tiene responsables. Un compromiso útil especifica la acción, el responsable competente, un plazo validado, la evidencia y el seguimiento.',
+  planos:[{clip:'K7',s:[1.0,1.1]}],
+  textos:[{html:G('«Resolveremos todos los problemas de acceso»','#fff',50)+G('Es amplio y no tiene responsables','#FFC400',38),en:'«resolveremos',hasta:'Un compromiso',top:810},
+          {html:G('Un compromiso útil especifica…','#fff',50),en:'Un compromiso',top:860},
+          {html:PL('1 · La acción'),en:'la acción',top:90},{html:PL('2 · El responsable competente'),en:'el responsable',top:176},{html:PL('3 · Un plazo validado'),en:'un plazo',top:262},{html:PL('4 · La evidencia'),en:'la evidencia',top:348},{html:PL('5 · El seguimiento'),en:'el seguimiento',top:434}]}),
+ S_ruta({id:'RUTA2',ante:'Negociar y mediar',titulo:'Lo que vimos',modo:'repaso',entrada:'fundido',paradas:PARADAS}),
+ S_actividad({titulo:'En la actividad',sub:'Reformule el compromiso del caso.',
+  txt:'En la actividad, reformule el compromiso del caso y explique si necesita negociación directa, facilitación o consulta jurídica.',
+  lineas:[{t:'¿Negociación directa?',en:'negociación directa'},{t:'¿Facilitación?',en:'facilitación'},{t:'¿Consulta jurídica?',en:'consulta'}]})
+]);
+</script></body></html>
