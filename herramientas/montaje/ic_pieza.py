@@ -41,13 +41,25 @@ for _r, _ds, _fs in os.walk(r'D:\DAE\_repo\cursos'):
 P = _il.import_module(_plan)  # noqa: E402
 
 
+def escala(K, x, y, w, h):
+    """El recorte y la subida a 1080 de `srpa_composicion`. Las grabaciones de Teams vienen
+    en BT.601; una fuente que ya es un export en HD (U3 L5) viene en BT.709 (`MATRIZ_FUENTE`)."""
+    m = getattr(P, 'MATRIZ_FUENTE', 'bt601')
+    return K.escala(x, y, w, h).replace('in_color_matrix=bt601', 'in_color_matrix=' + m)
+
+
+def fps_compuesto():
+    # 30 para las grabaciones de Teams; una fuente a 23,976 se compone a 23,976 (sin duplicar cuadros)
+    return str(getattr(P, 'FPS_COMPUESTO', '30'))
+
+
 def prueba(t):
     import srpa_composicion as K
     w, h = P.VENTANA
     x, y = P.XY
     out = '%s/prueba_%s.png' % (P.TMP, t)
     subprocess.run([K.FB + '/ffmpeg.exe', '-y', '-v', 'error', '-ss', str(t), '-i', P.ORIGINAL,
-                    '-vf', K.escala(x, y, w, h), '-frames:v', '1', out], check=True)
+                    '-vf', escala(K, x, y, w, h), '-frames:v', '1', out], check=True)
     print(out, flush=True)
 
 
@@ -65,7 +77,7 @@ def tramos_vf(K, fin):
     v, a = [], []
     for i, (t0, t1, win) in enumerate(tr):
         t1 = fin if t1 is None else t1
-        esc = K.escala(*(win or (x, y, w, h)))
+        esc = escala(K, *(win or (x, y, w, h)))
         dentro = [(c0, c1) for c0, c1 in cong if t0 < c0 < c1 < t1]
         if not dentro:
             v.append('[0:v]trim=start=%.3f:end=%.3f,setpts=PTS-STARTPTS,%s[v%d]' % (t0, t1, esc, i))
@@ -108,7 +120,7 @@ def componer():
           % (P.AUDIO_META, m['input_i'], m['input_tp'], m['input_lra'], m['input_thresh'], m['target_offset']))
     subprocess.run([K.FB + '/ffmpeg.exe', '-y', '-v', 'error', '-i', P.ORIGINAL, '-filter_complex',
                     g + ';[vc]format=yuv420p[v];%s,%s,aresample=48000[a]' % (base, ln),
-                    '-map', '[v]', '-map', '[a]', '-r', '30',
+                    '-map', '[v]', '-map', '[a]', '-r', fps_compuesto(),
                     '-c:v', 'libx264', '-crf', '16', '-preset', 'fast', '-pix_fmt', 'yuv420p',
                     '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709',
                     '-c:a', 'aac', '-b:a', '256k', '-movflags', '+faststart', '-f', 'mp4',
@@ -136,7 +148,7 @@ def reimagen(previo):
     os.makedirs(P.TMP, exist_ok=True)
     tmp = '%s/%s_imagen.mp4' % (P.TMP, os.path.splitext(os.path.basename(P.COMPUESTO))[0])
     subprocess.run([K.FB + '/ffmpeg.exe', '-y', '-v', 'error', '-i', P.ORIGINAL, '-filter_complex',
-                    g + ';[vc]format=yuv420p[v];[ac]anullsink', '-map', '[v]', '-r', '30',
+                    g + ';[vc]format=yuv420p[v];[ac]anullsink', '-map', '[v]', '-r', fps_compuesto(),
                     '-c:v', 'libx264', '-crf', '16', '-preset', 'fast', '-pix_fmt', 'yuv420p',
                     '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709',
                     '-f', 'mp4', tmp], check=True)
