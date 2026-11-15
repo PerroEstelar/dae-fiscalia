@@ -53,3 +53,20 @@ Etiqueta «Situación hipotética con fines pedagógicos» fija en toda escena c
 
 Saldo al momento: 206.840 créditos. Si Seedream no sostiene a los personajes, el respaldo es
 Nano Banana 2.1 (65 por imagen): sube el paso 2 a ≈ 1.300 y el total a ≈ 3.660.
+
+## Registro de Magnific
+
+Proyecto: «EMB · Cultura de Paz» (`dbaa6c7b-0000-4c58-bcea-84ca7994e284`).
+
+La referencia de estilo de Sebastián no se pudo subir: el proxy de la nube y el de la VM del Mac
+rechazan `ak-data.magnific.com`. Salida: el estilo va descrito en el prompt y la primera placa
+aprobada pasa a ser el ancla `style` de todo lo demás.
+
+| paso | id | qué | estado |
+|---|---|---|---|
+| 0 | `Ebzn44OuuO` | a01 viaducto, variante C — la tinta más suelta | **propuesta como ancla** |
+| 0 | `tCi3UUjmZJ` | a01, variante B — tren grande en primer término | alternativa |
+| 0 | `fHAGyy4CDY` | a01, variante D — más limpia, menos tinta | — |
+| 0 | `UPmhMMzwny` | a01, variante A — buses rojos y grafiti en la columna: rompe la regla de color | descartada |
+
+Gastado: 160 créditos.
