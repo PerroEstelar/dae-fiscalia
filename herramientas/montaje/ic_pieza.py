@@ -78,25 +78,29 @@ def tramos_vf(K, fin):
     for i, (t0, t1, win) in enumerate(tr):
         t1 = fin if t1 is None else t1
         esc = escala(K, *(win or (x, y, w, h)))
-        dentro = [(c0, c1) for c0, c1 in cong if t0 < c0 < c1 < t1]
+        dentro = [(c0, c1) for c0, c1 in cong if t0 - 1e-6 <= c0 < c1 < t1]
         if not dentro:
             v.append('[0:v]trim=start=%.3f:end=%.3f,setpts=PTS-STARTPTS,%s[v%d]' % (t0, t1, esc, i))
         else:
             ps, t = [], t0
+            pre = []
             for j, (c0, c1) in enumerate(dentro):
-                ps.append('[0:v]trim=start=%.4f:end=%.4f,setpts=PTS-STARTPTS,%s[v%dn%d]' % (t, c0, esc, i, j))
+                if c0 - t > 1e-3:       # un congelado al arranque del tramo no tiene «antes»
+                    ps.append('[0:v]trim=start=%.4f:end=%.4f,setpts=PTS-STARTPTS,%s[v%dn%d]' % (t, c0, esc, i, j))
+                    pre.append('[v%dn%d]' % (i, j))
                 ps.append('[0:v]trim=start=%.4f,setpts=PTS-STARTPTS,trim=end_frame=1,%s,'
                           'tpad=stop_mode=clone:stop_duration=%.4f,trim=duration=%.4f,setpts=PTS-STARTPTS[v%dq%d]'
                           % (c1, esc, c1 - c0, c1 - c0, i, j))
+                pre.append('[v%dq%d]' % (i, j))
                 t = c1
             ps.append('[0:v]trim=start=%.4f:end=%.3f,setpts=PTS-STARTPTS,%s[v%dz]' % (t, t1, esc, i))
-            et = ''.join('[v%dn%d][v%dq%d]' % (i, j, i, j) for j in range(len(dentro))) + '[v%dz]' % i
-            ps.append('%sconcat=n=%d:v=1:a=0[v%d]' % (et, 2 * len(dentro) + 1, i))
+            et = ''.join(pre) + '[v%dz]' % i
+            ps.append('%sconcat=n=%d:v=1:a=0[v%d]' % (et, len(pre) + 1, i))
             v.extend(ps)
         af = 'atrim=start=%.3f:end=%.3f,asetpts=PTS-STARTPTS' % (t0, t1)
-        if i > 0 and tr[i - 1][1] != t0:
+        if (i > 0 and tr[i - 1][1] != t0) or (i == 0 and t0 > 0):
             af += ',afade=t=in:d=0.015'
-        if i < len(tr) - 1 and tr[i + 1][0] != t1:
+        if (i < len(tr) - 1 and tr[i + 1][0] != t1) or (i == len(tr) - 1 and t1 < fin - 0.05):
             af += ',afade=t=out:st=%.3f:d=0.015' % (t1 - t0 - 0.015)
         a.append('[0:a]%s[a%d]' % (af, i))
     n = len(tr)
