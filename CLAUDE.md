@@ -2349,3 +2349,37 @@ no en la hoja de contactos.
   En la línea se borran los dos ítems viejos y se ponen los nuevos en el mismo
   cuadro (`DeleteClips` + `AppendToTimeline`); `revisar` confirma que todo lo
   demás quedó igual.
+
+## Una transición horneada en la fuente se tapa con el cuadro limpio, quieto (DA U4 L1, 15 nov 2026)
+
+La grabación de la U4 L1 trae los dos bloques de la clase en un solo archivo, y
+entre ellos una transición de cubo 3D de medio segundo (937,65–938,20) que deforma
+el panel DAE/Fiscalía y lo saca de cuadro. Con la ventana puesta se ve como un
+error nuestro.
+
+- **No se corta tiempo:** el audio sigue corrido, y en ese medio segundo hay pausa
+  y el arranque de la frase siguiente. Lo que se cambia es solo la imagen: sobre
+  [a, b) se ve quieto el primer cuadro limpio después de la transición (b).
+- En el plan: `CONGELA = [(a, b)]`. `ic_pieza.tramos_vf` parte el tramo en tres
+  (antes, el cuadro de b clonado con `tpad`, después) y los concatena. Los bordes
+  se llevan a la rejilla de la fuente (`FPS_FUENTE`, 30 por defecto): a hacia
+  atrás y b hacia adelante, para que no se cuele ni un cuadro de la transición.
+- Se verificó en una prueba sin pérdida (ffv1): los cuadros de la congelada son
+  idénticos al de b y el total no cambia.
+- **Se busca antes de componer.** En una fuente de más de un bloque, mirar el
+  empalme cuadro a cuadro: un salto de escena que no está en el habla es una
+  transición del editor de la grabación.
+
+## Una profe muy cerca de la cámara: ventana desde y=0 y columna de 560 (DA U4 L1)
+
+La ventana estándar (1143×643 desde y=40) dejaba la coronilla de la profe a 15 px
+del borde. Desde y=0 quedan 80 px, abajo solo se corta pecho y el panel
+DAE/Fiscalía entra entero. Pero la cara queda más grande, y cuando ella se inclina
+el pelo llega a x≈730 de salida: la columna de cartones bajó a 560 (`MAXW`) y el
+cargo del lower third a 460 de ancho (`LT`).
+
+Con la columna en 560 hay que medir cada cartón antes de rendir: cinco se salían
+de la caja (cima < 250) y se acortaron. Una lista con título y tres filas de dos
+renglones cabe solo si el título va en un renglón (unos 21 caracteres en negrita a
+46 px); si no, una de las filas tiene que entrar en un renglón (unos 22 caracteres
+a 37 px en los 476 px del rótulo).
