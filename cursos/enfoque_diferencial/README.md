@@ -284,3 +284,12 @@ son negro con la cola de la cama, que es silencio digital (medido);
 ## Estado
 
 Ver el documento del proyecto `claude/ED_Enfoque_Diferencial_03_noviembre.md`.
+
+## Videos de profe · Camilo Borrero García (15 nov 2026)
+
+Doce videos «de pe a pa»: presentación del curso, presentación y contenido de las unidades
+1 a 5, y conclusiones. Tienen intro y outro, cartón de título con el nombre del curso, lower
+third, cartones de caja y listas de AE. Están en Drive, en `VIDEOS / VIDEOS PROFE - Camilo
+Borrero García` (`1LNFO7X0A15EnIifpRpEycKcGW1LIqYLA`). Planes, decisiones y entregas en
+[`profe/README.md`](profe/README.md). Árbol en `D:\DAE MASTER\PRIORIDAD 2\CURSO - ENFOQUE
+DIFERENCIAL\VIDEOS PROFE\`, porque E: no tenía espacio; hay un `LEER` en E:.
