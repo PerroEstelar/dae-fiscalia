@@ -14,7 +14,8 @@
   1. cuadros 0–30: negro, mientras ella dice «Cordial saludo»;
   2. 799–827 (26,6 s): un cubo 3D entre tomas, con el audio en silencio digital;
   3. 1921–1949 (64,0 s): otro cubo;
-  4. 4355–4365 (145,2 s): un fundido desde blanco;
+  4. 4355–4370 (145,2 s): un fundido desde negro, con manchas negras del fondo virtual
+     hasta el 4370 (el panel ya se ve limpio en el 4366);
   5. 8592–8620 (286,4 s): un cubo, dentro de una toma repetida;
   6. 8753–8792 (291,8 s): 1,3 s de negro;
   7. 9820–9821: negro al final.
@@ -82,7 +83,7 @@ CURSO = 'E:/DAE MASTER/CURSO 2 - DELITOS CONTRA EL MEDIO AMBIENTE'
 R = CURSO + '/UNIDAD 3/LECCION 4'
 BIN = ['CURSO 2 - DELITOS CONTRA EL MEDIO AMBIENTE', 'UNIDAD 3', 'LECCION 4']
 ORIGINAL = R + '/01 VIDEO/ambiental_unidad3_leccion4.mp4'
-COMPUESTO = R + '/01 VIDEO/U3L4_compuesto_v3.mp4'   # v1 y v2 (en _descartes) tenían 5 y 1 cuadros de más: el trim por tiempo redondea
+COMPUESTO = R + '/01 VIDEO/U3L4_compuesto_v4.mp4'   # v1–v3 en _descartes (cuadros de más; manchas negras en 2:24)
 TITULO = R + '/02 CARTONES/carton titulo ambientales u3 leccion 4.mp4'
 TITULO_BASE = CURSO + '/UNIDAD 1/02 CARTONES/carton titulo ambientales u1v2.mp4'
 SUB = 'Unidad 3. Lección 4'
@@ -112,7 +113,7 @@ TRAMOS = [
 CONGELA = [(26 / FQ, 31 / FQ),          # el final del negro del arranque
            (799 / FQ, 828 / FQ),        # cubo
            (1921 / FQ, 1950 / FQ),      # cubo
-           (4355 / FQ, 4366 / FQ)]      # fundido desde blanco
+           (4355 / FQ, 4372 / FQ)]      # fundido desde negro: el panel queda limpio en 4366, el cielo en 4371
 
 ANCHO = 615
 NOMBRE_CURSO = ('Investigación y judicialización de delitos contra el medio ambiente y los '
