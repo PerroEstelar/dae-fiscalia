@@ -1,0 +1,9 @@
+@font-face{font-family:'Work Sans';src:url('file:///home/claude/emb/fuentes/WorkSans[wght].ttf');font-weight:100 900}
+@font-face{font-family:'Montserrat';src:url('file:///home/claude/emb/fuentes/Montserrat[wght].ttf');font-weight:100 900}
+:root{--rojo:#DF1F15;--amarillo:#FFC400;--tinta:#212529;--azul:#1B418B;--gris:#E9ECEF;--medio:#6C757D;--fondo:#F7F7F8}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#fff;font-family:Montserrat;color:var(--tinta);-webkit-font-smoothing:antialiased}
+.mask{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .02em .12em}
+.u{display:inline-block;will-change:transform}
+.abs{position:absolute}
+#grano{position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:multiply}

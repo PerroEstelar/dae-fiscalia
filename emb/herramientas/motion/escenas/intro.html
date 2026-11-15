@@ -1,0 +1,114 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../base.css"><script src="../core.js"></script>
+<style>
+ body{background:#fff}
+ svg{position:absolute;inset:0}
+ .calle{stroke:#DADDE1;fill:none}
+ .cerro{stroke:#CBD0D5;fill:none;stroke-width:3;stroke-linecap:round}
+ #ruta{stroke:var(--rojo);fill:none;stroke-width:14;stroke-linecap:round;stroke-linejoin:round}
+ #ruta-glow{stroke:var(--rojo);fill:none;stroke-width:40;opacity:.12;stroke-linecap:round;filter:blur(6px)}
+ .est{fill:#fff;stroke:var(--rojo);stroke-width:6}
+ #anillo{fill:none;stroke:var(--rojo);stroke-width:16}
+</style></head><body>
+<svg viewBox="0 0 1920 1080" width="1920" height="1080">
+ <defs>
+  <clipPath id="clipEmb"><rect id="clipEmbR" x="-20" y="0" width="520" height="0"/></clipPath>
+  <clipPath id="clipMetro"><rect x="0" y="0" width="1920" height="1080"/></clipPath>
+  <linearGradient id="brillo" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  <mask id="mLogo"><g id="mascLogo"></g></mask>
+ </defs>
+ <g id="cam">
+  <g id="mapa"></g>
+  <path id="ruta-glow"/>
+  <path id="ruta"/>
+  <g id="estaciones"></g>
+  <g id="tren"><rect x="-70" y="-15" width="140" height="30" rx="15" fill="#DF1F15"/>
+    <rect x="-52" y="-5" width="104" height="8" rx="4" fill="#fff" opacity=".9"/>
+    <g id="estela"></g></g>
+ </g>
+ <path id="anillo"/>
+ <g id="logo"></g>
+ <g mask="url(#mLogo)"><rect id="barrido" x="-600" y="300" width="420" height="480" fill="url(#brillo)" transform="skewX(-18)"/></g>
+</svg>
+<canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
+<script>
+const NS='http://www.w3.org/2000/svg';
+const LX=510, LY=334, LS=900/478;               // logo: 900 px de ancho, centrado
+const CX=LX+108.8*LS, CY=LY+107.0*LS, CR=146;    // centro y radio del anillo del emblema
+let letrasM=[], letrasB=[], emb;
+window.ESCENA={cuadros:120,
+ async init(){
+  // mapa de calles: retícula girada, con avenidas
+  const mapa=$('#mapa');
+  for(let i=-14;i<=26;i++){
+    for(const dir of [0,1]){
+      const l=document.createElementNS(NS,'line');
+      const o=i*95;
+      if(dir){l.setAttribute('x1',-400);l.setAttribute('y1',o);l.setAttribute('x2',2600);l.setAttribute('y2',o-420);}
+      else{l.setAttribute('x1',o);l.setAttribute('y1',-300);l.setAttribute('x2',o+380);l.setAttribute('y2',1500);}
+      const av=(i%5===0);
+      l.setAttribute('class','calle');l.setAttribute('stroke-width',av?5:2);l.dataset.k=rnd(i*7+dir);
+      mapa.appendChild(l);
+    }
+  }
+  // cerros orientales
+  const c=document.createElementNS(NS,'path');c.setAttribute('class','cerro');
+  let d='M -200 230';for(let x=-200;x<=2200;x+=40){d+=` L ${x} ${210-60*Math.sin(x/260)-35*Math.sin(x/97)+18*rnd(x)}`}
+  c.setAttribute('d',d);mapa.appendChild(c);
+  // ruta: entra desde abajo a la izquierda y llega tangente al anillo
+  const dr=`M -140 1010 C 160 990, 300 930, 420 840 S 520 640, ${CX-CR} ${CY}`;
+  $('#ruta').setAttribute('d',dr);$('#ruta-glow').setAttribute('d',dr);
+  $('#anillo').setAttribute('d',`M ${CX-CR} ${CY} A ${CR} ${CR} 0 1 1 ${CX+CR} ${CY} A ${CR} ${CR} 0 1 1 ${CX-CR} ${CY}`);
+  const ruta=$('#ruta'),L=ruta.getTotalLength();
+  for(let i=1;i<=7;i++){const p=ruta.getPointAtLength(L*i/8.2);const e=document.createElementNS(NS,'circle');
+    e.setAttribute('class','est');e.setAttribute('cx',p.x);e.setAttribute('cy',p.y);e.setAttribute('r',13);e.dataset.t=i/8.2;$('#estaciones').appendChild(e);}
+  // logo real, por capas
+  const svg=await (await fetch('file:///home/claude/emb/marca/logos/logo_metro.svg')).text();
+  const doc=new DOMParser().parseFromString(svg,'image/svg+xml');
+  const paths=[...doc.querySelectorAll('path')];
+  const g=$('#logo');g.setAttribute('transform',`translate(${LX} ${LY}) scale(${LS})`);
+  const gm=$('#mascLogo');gm.setAttribute('transform',g.getAttribute('transform'));
+  paths.forEach((p,i)=>{const amarillo=p.getAttribute('class')==='st0';const q=document.createElementNS(NS,'path');
+    q.setAttribute('d',p.getAttribute('d'));q.setAttribute('fill',amarillo?'#FFC400':'#DF1F15');
+    const w=document.createElementNS(NS,'g');w.appendChild(q);g.appendChild(w);
+    const m=q.cloneNode();m.setAttribute('fill','#fff');gm.appendChild(m);
+    if(amarillo)letrasB.push(w);else if(i===paths.length-1){emb=w;w.setAttribute('clip-path','url(#clipEmb)');}else letrasM.push(w);});
+  return true;
+ },
+ render(f){
+  const ruta=$('#ruta'),L=ruta.__L||ruta.getTotalLength();
+  // trazo de la ruta y el tren en su punta
+  const tr=E.inOutCubic(R(f,4,52));
+  trazo(ruta,tr);trazo($('#ruta-glow'),tr);
+  const p=ruta.getPointAtLength(L*tr),p2=ruta.getPointAtLength(Math.min(L,L*tr+2));
+  const ang=Math.atan2(p2.y-p.y,p2.x-p.x)*180/Math.PI;
+  $('#tren').setAttribute('transform',`translate(${p.x} ${p.y}) rotate(${ang})`);
+  $('#tren').style.opacity=tr>0&&tr<1?1:0;
+  // estaciones: aparecen cuando pasa el tren
+  $$('.est').forEach(e=>{const k=E.outBack(R(tr,+e.dataset.t-0.01,+e.dataset.t+0.06),3);e.setAttribute('r',13*k);});
+  // mapa: calles se dibujan con desfase, luego se van
+  $$('.calle').forEach((l,i)=>{const k=E.outCubic(R(f,+l.dataset.k*18,+l.dataset.k*18+26));trazo(l,k);});
+  trazo($('.cerro'),E.inOutCubic(R(f,8,46)));
+  const sal=E.inOutCubic(R(f,56,84));
+  $('#mapa').style.opacity=1-sal;$('#estaciones').style.opacity=1-sal;$('#ruta').style.opacity=1-E.lin(R(f,70,86));$('#ruta-glow').style.opacity=.12*(1-sal);
+  // cámara: acompaña al tren y se asienta en el encuadre final
+  const cam=E.inOutCubic(R(f,0,70)), s=lerp(1.55,1.0,cam);
+  const fx=lerp(p.x,960,E.inOutCubic(R(f,26,70))), fy=lerp(p.y,540,E.inOutCubic(R(f,26,70)));
+  $('#cam').setAttribute('transform',`translate(960 540) scale(${s}) translate(${-fx} ${-fy})`);
+  // el anillo del emblema sigue la línea
+  const an=E.inOutCubic(R(f,48,72));trazo($('#anillo'),an);$('#anillo').style.opacity=1-R(f,80,88);
+  // las montañas suben con máscara
+  const em=E.outExpo(R(f,62,84));
+  $('#clipEmbR').setAttribute('y',219*(1-em)-10);$('#clipEmbR').setAttribute('height',219*em+20);
+  // METRO letra por letra, desde abajo con rebote corto
+  letrasM.forEach((w,i)=>{const k=R(f,70+i*3,86+i*3);w.setAttribute('transform',`translate(0 ${70*(1-E.outBack(k,1.4))})`);w.style.opacity=E.outCubic(k);});
+  // BOGOTÁ: el espaciado se cierra
+  letrasB.forEach((w,i)=>{const k=E.outExpo(R(f,80+i*2,100+i*2));w.setAttribute('transform',`translate(${(i-2.5)*26*(1-k)} 0)`);w.style.opacity=k;});
+  // destello que cruza el logo
+  const b=E.inOutCubic(R(f,98,116));$('#barrido').setAttribute('x',-600+2500*b);
+  // grano
+  const g=$('#grano').getContext('2d'),im=g.createImageData(960,540);
+  for(let i=0;i<im.data.length;i+=4){const v=rnd(i*0.37+Math.floor(f)*13.1)*255;im.data[i]=im.data[i+1]=im.data[i+2]=v;im.data[i+3]=255;}
+  g.putImageData(im,0,0);
+ }};
+</script></body></html>
