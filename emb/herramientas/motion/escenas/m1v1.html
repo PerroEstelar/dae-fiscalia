@@ -1,6 +1,6 @@
 <!doctype html><html><head><meta charset="utf-8">
 <!-- M1 · Video 1 — Violencias y conflictos. Corte sin voz (tiempos provisionales a 1,6 cuadros por carácter). -->
-<link rel="stylesheet" href="../base.css"><script src="../core.js"></script><script src="voz_m1v1.js" onerror="window.VOZ=null"></script>
+<link rel="stylesheet" href="../base.css"><script src="../core.js"></script><script src="../pieza.js"></script><script src="voz_m1v1.js" onerror="window.VOZ=null"></script>
 <style>
  body{background:#fff}
  .sec{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden}
@@ -17,24 +17,7 @@
 <div id="raiz"></div>
 <canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
 <script>
-const A='file:///home/claude/emb/m1v1_assets/';
-const P=n=>A+'placas/'+n+'.jpg';
-const C=(n,i)=>A+'clips/'+n+'/'+String(Math.max(0,Math.min(120,Math.floor(i)))).padStart(3,'0')+'.jpg';
-const NS='http://www.w3.org/2000/svg';
-let pend=[];
-function src(im,u){if(im.__u!==u){im.__u=u;im.src=u;pend.push(im.decode().catch(()=>{}));}}
-function el(tag,cls,par,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;par.appendChild(e);return e;}
-function sv(tag,par,at){const e=document.createElementNS(NS,tag);for(const k in at)e.setAttribute(k,at[k]);par.appendChild(e);return e;}
-function capa(par){const box=el('div','lay',par);const im=el('img','',box);return {box,im};}
-function kb(im,s,x=0,y=0){im.style.transform=`translate(${x}px,${y}px) scale(${s})`;}
-function vis(e,on){e.style.display=on?'':'none';}
-// texto cinético: entra desde abajo con máscara y sale
-function sube(e,t,t0,t1=1e9,dy=46,dur=16){const a=E.outCubic(R(t,t0,t0+dur)),b=E.inOutCubic(R(t,t1,t1+12));
-  e.style.opacity=a*(1-b);e.style.transform=`translate(0,${dy*(1-a)-dy*0.5*b}px)`;}
-function letras(arr,t,t0,paso=1.1,dur=14){arr.forEach((u,i)=>{const k=E.outCubic(R(t,t0+i*paso,t0+i*paso+dur));u.style.transform=`translate(0,${105*(1-k)}%)`;});}
-// tiempos provisionales: 1,6 cuadros por carácter (se reemplazan con la voz medida)
-const FPC=1.6;
-function blk(txt,cola=36){return {d:Math.round(txt.length*FPC)+cola,k:p=>{const i=txt.indexOf(p);if(i<0)throw new Error('frase: '+p);return Math.round(i*FPC)+6;}};}
+// las utilidades (src, capa, sube, blk…) vienen de pieza.js
 const TX={
 B1:'Una comunidad informa que la reunión sobre un acceso peatonal se convocó solo por una plataforma digital, y que varias personas mayores no la usan. La primera pregunta no es si la comunidad se opone al proyecto. Es si pudo enterarse y participar.',
 B2:'Johan Galtung propone reconocer tres formas de violencia. La directa es una conducta que causa daño, como insultar o amenazar durante una atención. La estructural es un arreglo que reproduce una exclusión, como un único canal digital que deja por fuera, una y otra vez, a quien no tiene conectividad. Y la cultural es un significado que legitima el daño, como afirmar que ciertos barrios no merecen ser escuchados.',
@@ -50,8 +33,6 @@ function interp(m,c){if(c<=m[0][0])return m[0][1];for(let i=1;i<m.length;i++)if(
 if(window.VOZ)for(const k in TX){const V=window.VOZ[k],txt=TX[k];T[k]={d:V.d,k:p=>{const i=txt.indexOf(p);if(i<0)throw new Error('frase: '+p);return Math.round(interp(V.mapa,i))+2;}};}
 T.B8.d+=window.VOZ?60:72;   // la actividad se queda en pantalla
 
-function etiqueta(root){return el('div','etq',root,'Situación hipotética con fines pedagógicos');}
-function etqDraw(e,t,d){e.style.opacity=E.outCubic(R(t,18,34))*(1-R(t,d-6,d));}
 
 // barrido del vagón (el mismo de B3): la toma nueva queda detrás de su cola
 function tren(r,cont){const s=sv('svg',r,{class:'ov',width:1920,height:1080});const g=sv('g',s,{});
@@ -67,7 +48,7 @@ const S=[];
 S.push({id:'T',d:104,ov:0,
  build(r){r.style.background='#fff';
   this.win=el('div','',r);Object.assign(this.win.style,{position:'absolute',overflow:'hidden'});
-  this.v=el('img','',this.win);Object.assign(this.v.style,{position:'absolute',width:'1920px',height:'1080px',objectFit:'cover'});
+  this.v=el('img','',this.win);Object.assign(this.v.style,{position:'absolute',width:'1920px',height:'1080px',objectFit:'cover'});this.v2=el('img','',this.win);Object.assign(this.v2.style,{position:'absolute',width:'1920px',height:'1080px',objectFit:'cover',opacity:0});
   const s=sv('svg',r,{class:'ov',width:1920,height:1080});this.lin=sv('path',s,{d:'M 120 880 L 1800 880',stroke:'#DF1F15','stroke-width':10,'stroke-linecap':'round',fill:'none'});
   this.ante=el('div','ante abs',r,'Módulo 1 · Lecciones 1.1.1 y 1.1.2');Object.assign(this.ante.style,{left:'120px',top:'402px'});
   this.tit=el('div','k1 abs',r);Object.assign(this.tit.style,{left:'114px',top:'452px'});
@@ -82,15 +63,17 @@ S.push({id:'T',d:104,ov:0,
   // la imagen no se encoge: el encuadre se abre alrededor del tren
   const s=lerp(1.14,1.0,E.inOutCubic(R(t,0,128)));
   this.v.style.left=(-x)+'px';this.v.style.top=(-(b-h))+'px';this.v.style.transform=`scale(${s})`;
-  src(this.v,C('a01_tren',Math.min(120,t)));
+  this.v2.style.left=this.v.style.left;this.v2.style.top=this.v.style.top;this.v2.style.transform=this.v.style.transform;clipF({im:this.v,im2:this.v2},'a01n',Math.min(60,t*60/128));
   this.ante.style.opacity=E.outCubic(R(t,14,30))*(1-E.inOutCubic(R(t,68,84)));
   this.ante.style.transform=`translate(${-60*E.inOutCubic(R(t,68,86))}px,0)`;
   letras(this.L,t,18,1.0,16);
   this.tit.style.opacity=1-E.inOutCubic(R(t,70,86));this.tit.style.transform=`translate(${-90*E.inOutCubic(R(t,70,90))}px,0)`;
  },subs:[[70,98]]});
 
+S.push(S_ruta({id:'RUTA1',ante:'Violencias y conflictos',titulo:'En este video',modo:'agenda',entrada:'tren',paradas:['Tres formas de violencia','Del desacuerdo a la violencia','Hecho, interpretación y emoción']}));
+
 // B1 · la convocatoria: entra con el vagón → A1 → A3 → A2
-S.push({id:'B1',d:T.B1.d,ov:24,
+S.push({id:'B1',d:T.B1.d,ov:28,
  build(r){this.a1=capa(r);this.a3=capa(r);this.a2=capa(r);
   this.not=el('div','tarj',r,`<div style="display:flex;gap:26px;align-items:center;padding:26px 34px">
    <svg width="74" height="74" viewBox="0 0 74 74"><rect x="18" y="4" width="38" height="66" rx="8" fill="none" stroke="#DF1F15" stroke-width="5"/><circle cx="37" cy="58" r="3.5" fill="#DF1F15"/></svg>
@@ -102,14 +85,14 @@ S.push({id:'B1',d:T.B1.d,ov:24,
   this.som=el('div','lay',r);this.som.style.background='linear-gradient(0deg,rgba(15,18,22,.78) 0%,rgba(15,18,22,0) 55%)';
   r.appendChild(this.q1);r.appendChild(this.q2);
   this.e=etiqueta(r);
-  this.cont=el('div','sec',r);[...r.children].filter(c=>c!==this.cont).forEach(c=>this.cont.appendChild(c));this.ent=tren(r,this.cont);
+  this.cont=el('div','sec',r);[...r.children].filter(c=>c!==this.cont).forEach(c=>this.cont.appendChild(c));this.ent=entradaBuild(r,this.cont,'iris',{x:960,y:540});
   const k=T.B1.k;this.c3=k('solo por una')-4;this.c2=k('y que varias')+14;this.kq=k('La primera pregunta');this.kq2=k('Es si pudo');},
  draw(t,r){const d=this.d;
   // entra con el vagón: la toma nueva queda detrás de su cola
   this.ent.draw(t);
   const A1=t<this.c3,A3=t>=this.c3&&t<this.c2,A2=t>=this.c2;
   vis(this.a1.box,A1);vis(this.a3.box,A3);vis(this.a2.box,A2);
-  if(A1){src(this.a1.im,C('A1_convocatoria',t));kb(this.a1.im,lerp(1.16,1.05,E.outCubic(R(t,0,this.c3))));}
+  if(A1){clipF(this.a1,'A1_convocatoria',t*velAuto([0,120],this.c3));kb2(this.a1,lerp(1.16,1.05,E.outCubic(R(t,0,this.c3))));}
   if(A3){const u=t-this.c3;src(this.a3.im,C('A3b_telefono',u));kb(this.a3.im,1.02+0.03*u/80);}
   if(A2){const u=t-this.c2;src(this.a2.im,P('A2_vecina'));kb(this.a2.im,lerp(1.02,1.16,E.inOutCubic(R(u,0,d-this.c2))),lerp(40,-30,R(u,0,d-this.c2)),0);}
   // tarjeta de convocatoria sobre el teléfono
@@ -185,9 +168,9 @@ S.push({id:'B3',d:T.B3.d,ov:24,
   const cola=x-2400;this.p.style.clipPath=t<24?`inset(0 ${Math.max(0,1920-cola)}px 0 0)`:'none';
   const sh=t<this.c3?1:t<this.c2?3:t<this.cw?2:4;
   vis(this.b1.box,sh===1);vis(this.b3.box,sh===3);vis(this.b2.box,sh===2);vis(this.bw.box,sh===4);
-  if(sh===1){src(this.b1.im,C('B1_desvio',t));kb(this.b1.im,1.03+0.05*t/this.c3);}
+  if(sh===1){clipF(this.b1,'B1_desvio',t*velAuto([0,120],this.c3));kb2(this.b1,1.03+0.05*t/this.c3);}
   if(sh===3){const u=t-this.c3;src(this.b3.im,P('B3_cuidadora'));kb(this.b3.im,lerp(1.04,1.14,u/(this.c2-this.c3)),lerp(-30,20,u/(this.c2-this.c3)),0);}
-  if(sh===2){const u=t-this.c2;src(this.b2.im,C('B2_rueda',Math.min(u,64)));kb(this.b2.im,1.02+0.08*E.outCubic(R(u,0,this.cw-this.c2)));}
+  if(sh===2){const u=t-this.c2;clipF(this.b2,'B2_rueda',Math.min(64,u*velAuto([0,64],this.cw-this.c2)));kb2(this.b2,1.02+0.08*E.outCubic(R(u,0,this.cw-this.c2)));}
   if(sh===4){const u=t-this.cw;src(this.bw.im,P('B1_desvio'));kb(this.bw.im,lerp(1.18,1.04,E.outCubic(R(u,0,d-this.cw))));}
   this.som.style.opacity=(t>this.c3-10&&t<this.c3+4)?1:(sh===1?R(t,10,24):1);
   sube(this.t1,t,20,this.c3-12);
@@ -340,6 +323,8 @@ S.push({id:'B7',d:T.B7.d,ov:20,
   etqDraw(this.e,t,d);
  },subs:[[0,26]]});
 
+S.push(S_ruta({id:'RUTA2',ante:'Violencias y conflictos',titulo:'Lo que vimos',modo:'repaso',entrada:'fundido',paradas:['Tres formas de violencia','Del desacuerdo a la violencia','Hecho, interpretación y emoción']}));
+
 // B8 · actividad: el vagón amarillo entra desde la derecha
 S.push({id:'B8',d:T.B8.d,ov:20,
  build(r){this.pan=el('div','abs',r);Object.assign(this.pan.style,{left:0,top:0,width:'2300px',height:'1080px',background:'#FFC400',borderRadius:'120px 0 0 120px'});
@@ -377,6 +362,7 @@ window.ESCENA={cuadros:N,subs,
   const g=document.getElementById('grano').getContext('2d');g.drawImage(grano[Math.floor(f)%6],0,0);
   await Promise.all(pend);
   return true;},
- tabla(){return S.map(s=>[s.id,s.ini,s.d]);}};
+ tabla(){return S.map(s=>[s.id,s.ini,s.d]);},
+ voz(){return S.filter(s=>/^B\d$/.test(s.id)&&window.VOZ).map(s=>{const V=window.VOZ[s.id];return [V.i,s.ini+V.off];});}};
 window.__listo=true;
 </script></body></html>

@@ -1,7 +1,7 @@
 <!doctype html><html><head><meta charset="utf-8">
 <!-- M1 · Video 3 — Noviolencia (1.3.1, la cápsula). Corte sin voz, tiempos provisionales. -->
 <link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="../pieza.css">
-<script src="../core.js"></script><script src="../pieza.js"></script>
+<script src="../core.js"></script><script src="../pieza.js"></script><script src="voz_m1v3.js" onerror="window.VOZ=null"></script>
 </head><body><div id="raiz"></div>
 <canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
 <script>
@@ -9,10 +9,11 @@ const L2=(a,b)=>`<div style="font:600 30px 'Work Sans';color:#FFC400">${a}</div>
 const G=(t,c='#fff',fs=60)=>`<div style="font:800 ${fs}px/1.08 Montserrat;color:${c}">${t}</div>`;
 const PL=t=>`<div style="font:600 32px 'Work Sans';color:#212529;background:#fff;padding:14px 28px;border-radius:40px;box-shadow:0 14px 34px rgba(0,0,0,.25)">${t}</div>`;
 montar([
- S_titulo({ante:'Módulo 1 · Lección 1.3.1',lineas:['Noviolencia'],clip:'F1'}),
- S_planos({id:'B1',entrada:'iris',entradaOpt:{x:620,y:420},
+ S_titulo({ante:'Módulo 1 · Lección 1.3.1',lineas:['Noviolencia'],clip:'F1n'}),
+ S_ruta({id:'RUTA1',ante:'Noviolencia',titulo:'En este video',modo:'agenda',entrada:'tren',paradas:['La noviolencia','Tres tradiciones','Evadir, imponer o responder']}),
+ S_planos({id:'B1',entrada:'iris',entradaOpt:{x:960,y:540},
   txt:'Una comunidad expresa su rechazo a un cambio temporal de circulación.',cola:70,
-  planos:[{clip:'F1',s:[1.16,1.04]}],
+  planos:[{clip:'F1n',s:[1.1,1.02]}],
   textos:[{html:L2('Una comunidad','expresa su rechazo a un cambio<br>temporal de circulación'),en:0,top:760}]}),
  S_tarjetas({id:'B2',fondo:'F1_duoY',en0:0,alto:520,
   txt:'La noviolencia es una orientación ética y una forma de acción para transformar injusticias sin recurrir a la violencia. Gandhi relaciona los medios con los fines: un propósito valioso no borra la responsabilidad por el modo de actuar. Martin Luther King la presenta como una acción firme frente a la injusticia, que se opone a un sistema sin destruir a las personas. Y Gene Sharp describe sus repertorios: protesta y persuasión, no cooperación e intervención noviolenta.',
@@ -25,8 +26,8 @@ montar([
   planos:[{placa:'F1',s:[1.3,1.0],y:[-40,0]}],
   textos:[{html:G('Conocer estas tradiciones ayuda a<br>no estigmatizar una expresión crítica','#fff',50),en:0,hasta:'La Constitución',top:770},
           {html:L2('La Constitución protege','la reunión y la manifestación pública y pacífica'),en:'La Constitución',hasta:'una protesta pacífica',top:790},
-          {html:G('Una protesta pacífica')+G('no es violencia','#FFC400',72),en:'una protesta pacífica',top:760}]}),
- S_tarjetas({id:'B4',fondo:'F4_duoY',en0:0,alto:590,top:300,
+          {html:'<div style="font:800 70px/1.1 Montserrat;color:#212529;max-width:1300px">Una protesta pacífica<br>no es violencia</div>',en:'una protesta pacífica',top:780,banda:true,alto:230}]}),
+ S_tarjetas({id:'B4',fondo:'F4_duoG',en0:0,alto:590,top:300,
   txt:'Ante un desacuerdo se puede evadir, y el malestar se acumula. Se puede imponer, y la relación se deteriora. O se puede responder de forma noviolenta y responsable: escuchar, verificar, explicar los límites y revisar opciones.',
   cab:{tit:'Ante un desacuerdo…'},
   items:[{tit:'Evadir',def:'El malestar se acumula.',ico:'reloj',en:'se puede evadir'},
@@ -40,6 +41,7 @@ montar([
           {html:PL('Explicar las restricciones verificadas'),en:'explicar las restricciones',hasta:'El respeto',top:290},
           {html:G('El respeto no obliga a aceptar toda exigencia','#fff',52),en:'El respeto',top:770},
           {html:G('Negativa fundada · alternativas · canales abiertos','#FFC400',38),en:'permite comunicar',top:850}]}),
+ S_ruta({id:'RUTA2',ante:'Noviolencia',titulo:'Lo que vimos',modo:'repaso',entrada:'fundido',paradas:['La noviolencia','Tres tradiciones','Evadir, imponer o responder']}),
  S_actividad({titulo:'En la actividad',sub:'Ante una solicitud que excede su competencia, ¿qué haría usted? Elija una opción y justifíquela.',extra:130,
   txt:'Ahora, la actividad: ante una solicitud que excede su competencia, ¿qué haría usted? Elija una opción y justifíquela.',
   lineas:[{n:'A',t:'Promete su aprobación',en:'ante una solicitud'},{n:'B',t:'Responde que no es su problema',en:'qué haría'},{n:'C',t:'Explica el límite y orienta el trámite con seguimiento',en:'Elija'}]})

@@ -91,3 +91,13 @@ disco, en una carpeta propia del EMB (por definir con Sebastián, p. ej. `E:\EMB
 - La voz la genera él en su cuenta. `herramientas/voz/calzar_emb.py` reparte los bloques sobre la
   voz medida (fronteras en las pausas más cercanas a la proporción de caracteres) y
   `voz_a_escena.py` lo convierte en `window.VOZ` para la escena.
+
+## Kling con multitudes, y la palabra «sigh» (revisión V2–V4, 15 nov 2026)
+
+- Una multitud a la que se le pide «reacciona» reacciona al unísono: aplauden todos o giran
+  todos juntos, y se lee robótico. Se pide una acción distinta por persona, en un momento
+  distinto, y «nadie aplaude».
+- «Sigh» o «exhala» producen un soplo de vapor delante de la boca: la persona parece fumar.
+  No se escribe; la respiración se pide como «los hombros suben y bajan apenas».
+- Dos trenes que se funden en uno: el plano de metro se pide con un solo tren, en una sola
+  dirección, y se mira la cola (en a01n aparece un rótulo desde el cuadro 55).

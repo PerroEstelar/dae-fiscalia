@@ -1,7 +1,7 @@
 <!doctype html><html><head><meta charset="utf-8">
 <!-- M1 · Video 2 — Paces y cultura de paz (1.2.1 + 1.2.2). Corte sin voz, tiempos provisionales. -->
 <link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="../pieza.css">
-<script src="../core.js"></script><script src="../pieza.js"></script>
+<script src="../core.js"></script><script src="../pieza.js"></script><script src="voz_m1v2.js" onerror="window.VOZ=null"></script>
 </head><body><div id="raiz"></div>
 <canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
 <script>
@@ -9,8 +9,9 @@ const L2=(a,b)=>`<div style="font:600 30px 'Work Sans';color:#FFC400">${a}</div>
 const G=(t,c='#fff',fs=60)=>`<div style="font:800 ${fs}px/1.08 Montserrat;color:${c}">${t}</div>`;
 const PL=t=>`<div style="font:600 32px 'Work Sans';color:#212529;background:#fff;padding:14px 28px;border-radius:40px;box-shadow:0 14px 34px rgba(0,0,0,.25)">${t}</div>`;
 montar([
- S_titulo({ante:'Módulo 1 · Lecciones 1.2.1 y 1.2.2',lineas:['Paces y','cultura de paz'],clip:'D4'}),
- S_planos({id:'B1',entrada:'iris',entradaOpt:{x:1100,y:420},
+ S_titulo({ante:'Módulo 1 · Lecciones 1.2.1 y 1.2.2',lineas:['Paces y','cultura de paz'],clip:'D4n'}),
+ S_ruta({id:'RUTA1',ante:'Paces y cultura de paz',titulo:'En este video',modo:'agenda',entrada:'tren',paradas:['Cuatro preguntas sobre la paz','Actuaciones que se complementan','Información y respuesta','Grupos de interés']}),
+ S_planos({id:'B1',entrada:'iris',entradaOpt:{x:960,y:540},
   txt:'¿Qué significa hablar de paz en una entidad pública? Depende de la pregunta que se haga.',
   planos:[{clip:'D1',s:[1.14,1.04]}],
   textos:[{html:G('¿Qué significa hablar de paz<br>en una entidad pública?','#fff',58),en:0,top:720},{html:G('Depende de la pregunta que se haga.','#FFC400',42),en:'Depende',top:880}]}),
@@ -22,7 +23,7 @@ montar([
          {tit:'Cultura de paz',def:'Volver la mejora costumbre',resp:'Una práctica de todos los días',en:'Y la cultura de paz',re:'cómo convertir'}]}),
  S_planos({id:'B3',entrada:'tren',
   txt:'Suspender una conversación en la que hay amenazas contiene el daño inmediato. Reprogramarla con condiciones de seguridad permite retomarla. Cambiar la convocatoria para incluir a quienes estaban por fuera atiende una desigualdad. Y revisar el acceso de forma periódica sostiene el aprendizaje. Son actuaciones que se complementan, con propósitos distintos.',
-  planos:[{clip:'D2',s:[1.03,1.1]},{placa:'D3',en:'Reprogramarla',s:[1.0,1.12],x:[0,-40]},{clip:'D4',en:'Cambiar la convocatoria',s:[1.12,1.04]},{clip:'D5',en:'Y revisar',s:[1.04,1.1]}],
+  planos:[{clip:'D2',s:[1.03,1.1]},{placa:'D3',en:'Reprogramarla',s:[1.0,1.12],x:[0,-40]},{clip:'D4n',en:'Cambiar la convocatoria',s:[1.08,1.02]},{clip:'D5',en:'Y revisar',s:[1.04,1.1]}],
   textos:[{html:L2('Suspender','contiene el daño inmediato'),en:'Suspender',hasta:'Reprogramarla'},
           {html:L2('Reprogramar con seguridad','permite retomarla'),en:'Reprogramarla',hasta:'Cambiar la convocatoria'},
           {html:L2('Cambiar la convocatoria','atiende una desigualdad'),en:'Cambiar la convocatoria',hasta:'Y revisar'},
@@ -39,8 +40,8 @@ montar([
   txt:'Una intervención se informa con un documento técnicamente correcto, pero que no explica el recorrido peatonal alternativo. La información existe, pero no le sirve a quien tiene que caminar por ahí.',
   planos:[{clip:'E1',ventana:[0,75],s:[1.1,1.03]},{placa:'E2',en:'La información existe',s:[1.02,1.14],x:[20,-30]}],
   textos:[{html:L2('Un documento técnicamente correcto…','que no explica el recorrido alternativo'),en:'un documento',hasta:'La información existe'},
-          {html:G('La información existe,')+G('pero no le sirve a quien camina por ahí','#FFC400',44),en:'La información existe'}]}),
- S_tarjetas({id:'B7',fondo:'E1_duoY',en0:0,alto:470,
+          {html:'<div style="font:800 54px/1.1 Montserrat;color:#212529;max-width:1300px">La información existe, pero no le sirve<br>a quien tiene que caminar por ahí</div>',en:'La información existe',banda:true,top:800,alto:210}]}),
+ S_tarjetas({id:'B7',fondo:'blanco',en0:0,alto:470,
   txt:'La Constitución de mil novecientos noventa y uno reconoce la paz como derecho y deber, y orienta la función administrativa al interés general. La Ley mil setecientos doce de dos mil catorce regula el acceso a la información pública, y la Ley mil setecientos cincuenta y cinco de dos mil quince, el derecho de petición. La ciudadanía tiene derecho a información y a respuesta; no es solo destinataria de mensajes.',
   cab:{tit:'Información y respuesta'},
   items:[{tit:'Constitución de 1991',def:'La paz como derecho y deber. La función administrativa, al interés general.',ico:'balanza',en:'La Constitución'},
@@ -51,9 +52,9 @@ montar([
   txt:'Cada grupo de interés aporta un saber distinto. Quien vive en el barrio conoce su día a día; el equipo técnico, las restricciones de diseño; quien tiene un negocio, los cambios en el acceso. Reconocerlos completa el diagnóstico, aunque no convierte cada solicitud en una decisión obligatoria.',
   panes:[{placa:'E5',s:1.6,x:-1184,y:-680,tit:'Quien vive en el barrio',sub:'conoce su día a día',en:'Quien vive'},
          {clip:'E3',s:1.0,x:-800,y:0,tit:'El equipo técnico',sub:'conoce las restricciones de diseño',en:'el equipo técnico'},
-         {clip:'E4',ventana:[0,50],s:1.2,x:-832,y:-90,tit:'Quien tiene un negocio',sub:'conoce los cambios en el acceso',en:'quien tiene un negocio'}],
+         {placa:'E4',s:1.2,x:-832,y:-90,tit:'Quien tiene un negocio',sub:'conoce los cambios en el acceso',en:'quien tiene un negocio'}],
   cierre:[{html:G('Reconocerlos completa el diagnóstico'),en:'Reconocerlos',top:770},{html:G('aunque no convierte cada solicitud en una decisión obligatoria','#FFC400',38),en:'aunque',top:860}]}),
- S_tarjetas({id:'B9',fondo:'E5_duoY',en0:0,alto:330,
+ S_tarjetas({id:'B9',fondo:'E5_duoG',en0:0,alto:330,
   txt:'La participación tiene sentido cuando queda claro qué se puede discutir, quién decide y cómo se va a responder.',
   cab:{tit:'La participación tiene sentido cuando queda claro…'},
   items:[{tit:'¿Qué se puede discutir?',ico:'globo',en:'qué se puede discutir'},{tit:'¿Quién decide?',ico:'persona',en:'quién decide'},{tit:'¿Cómo se va a responder?',ico:'sobre',en:'cómo se va a responder'}]}),
@@ -62,6 +63,7 @@ montar([
   planos:[{clip:'E6',s:[1.04,1.12]}],
   textos:[{html:PL('Explique los términos'),en:'explique',hasta:'Pedir que',top:110},{html:PL('Use ejemplos'),en:'use ejemplos',hasta:'Pedir que',top:200},{html:PL('Compruebe que se entendió'),en:'compruebe',hasta:'Pedir que',top:290},
           {html:G('Pedir que alguien exprese su duda',`#fff`,54)+G('sirve más que interpretar el silencio como aceptación','#FFC400',38),en:'Pedir que',top:810}]}),
+ S_ruta({id:'RUTA2',ante:'Paces y cultura de paz',titulo:'Lo que vimos',modo:'repaso',entrada:'fundido',paradas:['Cuatro preguntas sobre la paz','Actuaciones que se complementan','Información y respuesta','Grupos de interés']}),
  S_actividad({titulo:'En la actividad',sub:'Redacte una respuesta breve a quien pide aclarar el recorrido.',
   txt:'En la actividad, redacte una respuesta breve a quien pide aclarar el recorrido: reconozca la dificultad, comunique lo verificado e indique cómo se tramita lo que requiere revisión.',
   lineas:[{t:'Reconozca la dificultad',en:'reconozca'},{t:'Comunique lo verificado',en:'comunique'},{t:'Indique cómo se tramita lo pendiente',en:'indique'}]})

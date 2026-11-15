@@ -57,3 +57,32 @@ barrido amarillo, puertas o fundido), `S_tarjetas` (tarjetas en perspectiva sobr
 `S_escalera` (la toma retrocede en 2.5D y crece la escalera), `S_partida` (pantalla partida),
 `S_cita`, `S_actividad` y `montar`. Cada video es un HTML con su texto y su lista de secciones.
 El Video 4 trae además `S_mapa`, el mapa del módulo que se arma nodo a nodo.
+
+## Revisión de los videos 2 a 4 (15 nov 2026)
+
+Notas de Sebastián sobre el corte sin voz, y cómo se resolvió cada una.
+
+| nota | arreglo |
+|---|---|
+| D4: vecinos aplauden al unísono, caras borrosas | nuevo clip D4n (`8aNAWjGIrU`): cada vecino hace otra cosa en otro momento, nadie aplaude |
+| F1 robótico | nuevo clip F1n (`LwBvucDswO`), movimiento de escena completa con cámara suave |
+| G1: la multitud gira al unísono | G1n (`P3E5xIb42C`), ventana 0–80 (al final se dan vuelta) |
+| G2 repite la misma escena | placa nueva G2n (`KLMohpHkqp`, clip `rgetC1Yxtc`) en otro sitio |
+| café en cenital, mismo lugar, luz y gente | G3n (`rgetfoExtc`, clip `JNaHryWOq4`) |
+| D5 reusado a 0:58 | oficina H1 (`5jVBm8fKxe`, clip `rgetEsOxtc`) |
+| la comerciante «fuma» (E1, E4) | vapor de respiración: recortado o reemplazado. No escribir «sigh» en el prompt |
+| primera transición = vagón | `S_ruta` entra con el tren después del título, en los cuatro |
+| dos infografías de metro por video | `S_ruta` modo agenda (al principio, zoom a la primera estación) y modo repaso (antes del cierre) |
+| fondos de tarjeta rojos | duotono amarillo `_duoY`, gris `_duoG` o blanco; el rojo queda de acento |
+| banda diagonal de 3/4 | opción `banda` de `S_planos` (skew −16°, amarillo) |
+| chips montados | contenedor flex-wrap de 1300 px |
+| escalera: la línea roja va con las píldoras, y estas con la voz | la línea se dibuja paso a paso, tiempos desde `window.VOZ` |
+| V4 cierra con puertas hacia los logos | `cierre:'puertas'` en el último `S_planos` |
+| clip de tren con dos trenes (2:04) | a01n (`Do7NZHFpcl`), ventana 0–55 (después aparece un rótulo) |
+
+Música: Lyria 3 Pro, `KLMoCcmkqp` (174,5 s), en bucle con fundido cruzado de 4 s, −26 LUFS,
+−6 dB bajo la voz. Segunda pista `p8J6Wtlehw` sin usar. Lyria bloqueó tres prompts que
+nombraban «corporate», «public sector» o «metro»; el que pasó describía solo la música.
+
+Créditos de esta ronda: ≈ 3.100 (placas ≈ 540, Kling 11 × 140, música 3 × 160 contando los
+bloqueados).
