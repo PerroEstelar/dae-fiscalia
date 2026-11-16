@@ -31,7 +31,7 @@ Drive del curso (de JP) → `VIDEOS` (`16xDO2LgXTBunKGEeu8BQzzMZ6pY-kX6w`):
 | `07. Video Cierre U3.mp4` | cierre U3, toma cruda 1620×1080, 2:37,7 | **entregado** (`plan_dh3c`) |
 | `08. Video Inicio U4.mp4` | inicio U4, toma cruda 1620×1080, 4:10,1 | **entregado** (`plan_dh4i`) |
 | `09. Video Cierre U4.mp4` | cierre U4, toma cruda 1620×1080, 2:58,2 | **entregado** (`plan_dh4c`) |
-| `10. Video Inicio U5.mp4` | inicio U5, subido por JP el 16 nov | sin procesar (no pedido aún) |
+| `10. Video Inicio U5.mp4` | inicio U5, toma cruda 1620×1080, 2:50,7 | **entregado** (`plan_dh5i`) |
 | `11. Video Cierre U5.mp4` | cierre U5, subido por JP el 16 nov | sin procesar (no pedido aún) |
 | `12. Video Cierre del Curso.mp4` | cierre del curso, toma cruda 1620×1080, 1:16,6 | **entregado** (`plan_dhcc`) |
 
@@ -61,6 +61,7 @@ Torrado Verjel» (`1O1O4kbtNFGO4N7vtb-Ydph5K4PUZ3EQ1`).
 | Cierre de la unidad 3 | `plan_dh3c` | `DH - U3 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 3 CIERRE-v1.mp4` |
 | Inicio de la unidad 4 | `plan_dh4i` | `DH - U4 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 4 INICIO-v2.mp4` |
 | Cierre de la unidad 4 | `plan_dh4c` | `DH - U4 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 4 CIERRE-v1.mp4` |
+| Inicio de la unidad 5 | `plan_dh5i` | `DH - U5 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 5 INICIO-v1.mp4` |
 | Cierre del curso | `plan_dhcc` | `DH - CURSO - CIERRE` | `PRIO 2 - DERECHOS HUMANOS - CIERRE DEL CURSO-v1.mp4` |
 
 **Presentación del curso (16 nov 2026).** 6447 cuadros (4:28,9) = la línea; −16,1 LUFS, pico
@@ -198,3 +199,22 @@ de 0,8 GB en `D:\DAE\_masters_archivo`).
   se queda hasta «Gracias y hasta pronto». Cobertura ≈ 72 % (pieza de 76 s).
 - Después de mover el máster a D:, E: quedó con 2,9 GB: por debajo de los 3 GB que pide
   `dh_cadena` para la pieza siguiente.
+
+**Inicio de la unidad 5 (16 nov 2026).** 4908 cuadros (3:24,7) = la línea; −16,2 LUFS, pico
+−2,9 dBTP; PSNR contra el máster 50,3 dB; 111 MB (`1Rq4kFP9Kc8CtBh02c0jO_9_ngngZE7UN`). Disco:
+`…\UNIDAD 5 - INICIO PROFE\` (`.drt` en `10 TIMELINE SEBASTIAN`, fuente en `01 VIDEO`; el máster
+de 781 MB en `D:\DAE\_masters_archivo`).
+- Cartón de título: «Unidad 5. Decidir como garante: integración, control de convencionalidad
+  aplicado y transferencia al despacho» (ficha).
+- Sin arranques en falso, frases repetidas ni pausas largas (la más larga, 1,4 s): va entera.
+- Él reescribe bastante el guion de bienvenida de la ficha. Dos frases donde el STT no es
+  confiable no van en pantalla: «Esta unidad no integra estándares nuevos. Los integra…» (la ficha:
+  «no agrega estándares nuevos: los integra») y «reponderar si empezar de cero» (la ficha:
+  «reponderar sin empezar de cero»).
+- 7 cartones (un antetítulo por lección) y 3 listas de AE: lo que hay en la carpeta (cinco filas
+  de un renglón, sin título), lo que hay que resolver desde el rol y los productos de la unidad
+  (cuatro filas, sin título). Quedan sin gráfico «Wilmer Acosta está detenido…», «La Fiscalía debe
+  tomar una decisión de fondo» y las dos objeciones («Alguien propondrá…»). Cobertura ≈ 79 %.
+- Antes de empezar, E: tenía 2,9 GB (la cadena pide 3). Se movió a D: el máster de la
+  introducción del curso de Bienes (1,4 GB, mismo procedimiento, con su `LEER`). Después de
+  mover también este máster, E: quedó con 3,3 GB.

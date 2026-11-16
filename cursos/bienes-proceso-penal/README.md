@@ -133,7 +133,7 @@ estéreo con el audio copiado del máster.
 | sonoridad / pico | −16,1 LUFS / −2,4 dBTP | −16,0 LUFS / −3,0 dBTP |
 | PSNR contra el máster (medio / mínimo) | 49,4 / 43,8 dB | 49,8 / 44,1 dB |
 | gráficos | 2 lower thirds, 11 cartones, 8 listas | 2 lower thirds, 83 cartones, 27 listas, 5 tarjetas |
-| máster | `05 EXPORTS\_master` (1,4 GB) | `D:\DAE\_masters_archivo\…\CIERRE DEL CURSO` (7,6 GB) |
+| máster | `D:\DAE\_masters_archivo\…\INTRODUCCION AL CURSO` (1,4 GB; movido desde E: el 16 nov, con un `LEER` en `05 EXPORTS\_master`) | `D:\DAE\_masters_archivo\…\CIERRE DEL CURSO` (7,6 GB) |
 
 - **Estructura de las dos:** intro (194 cuadros), cartón de título «Bienes en el
   proceso penal / Introducción al curso» o «… / Cierre del curso» (215), el
