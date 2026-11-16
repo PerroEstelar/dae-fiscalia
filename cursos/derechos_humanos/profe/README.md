@@ -26,7 +26,7 @@ Drive del curso (de JP) → `VIDEOS` (`16xDO2LgXTBunKGEeu8BQzzMZ6pY-kX6w`):
 | `DDHH_funcion_cierre_unidad1/` | la misma toma del cierre U1, a 720p | no se usa |
 | `3. Video Cierre U1.mp4` | cierre U1, toma cruda 1620×1080, 2:29,2 | **entregado** (`plan_dh1c`) |
 | `4. Video Inicio U2.mp4` | inicio U2, toma cruda 1620×1080, 4:24,1 | **entregado** (`plan_dh2i`) |
-| `05. Video Cierre U2.mp4` | cierre U2 | sin procesar |
+| `05. Video Cierre U2.mp4` | cierre U2, toma cruda 1620×1080, 3:03,4 | **entregado** (`plan_dh2c`) |
 | `06. Video Inicio U3.mp4`, `07. Video Cierre U3.mp4` | U3 | sin procesar |
 | `08. Video Inicio U4.mp4`, `09. Video Cierre U4.mp4` | U4 (cierre 2:58) | sin procesar |
 
@@ -51,6 +51,7 @@ Torrado Verjel» (`1O1O4kbtNFGO4N7vtb-Ydph5K4PUZ3EQ1`).
 | Presentación del curso | `plan_dh00` | `DH - CURSO - PRESENTACION` | `PRIO 2 - DERECHOS HUMANOS - PRESENTACION DEL CURSO-v1.mp4` |
 | Cierre de la unidad 1 | `plan_dh1c` | `DH - U1 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 1 CIERRE-v1.mp4` |
 | Inicio de la unidad 2 | `plan_dh2i` | `DH - U2 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 2 INICIO-v1.mp4` |
+| Cierre de la unidad 2 | `plan_dh2c` | `DH - U2 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 2 CIERRE-v1.mp4` |
 
 **Presentación del curso (16 nov 2026).** 6447 cuadros (4:28,9) = la línea; −16,1 LUFS, pico
 −2,0 dBTP; PSNR contra el máster 50,3 dB; 136 MB (`12hd2DkrGdZq__PXacd_fJYTTqe7yaJU7`). El
@@ -91,3 +92,18 @@ máster de 32 Mb/s (901 MB) queda en `05 EXPORTS\_master`, el `.drt` en `10 TIME
   filas, sin título. Cobertura ≈ 77 %.
 - After Effects y Resolve se habían cerrado entre esta pieza y la anterior (ver CLAUDE.md): se
   volvieron a abrir, se cargó `DAE MASTER - CURSOS` y se rehízo solo lo que faltaba.
+
+**Cierre de la unidad 2 (16 nov 2026).** 4551 cuadros (3:09,8) = la línea; −16,2 LUFS, pico
+−1,6 dBTP; PSNR contra el máster 50,3 dB; 98 MB (`1I_1aW3cSIjiDOYoKrr7rQpJf8HR_MKJC`). Disco:
+`…\UNIDAD 2 - CIERRE PROFE\` (máster de 684 MB en `05 EXPORTS\_master`, `.drt` en
+`10 TIMELINE SEBASTIAN`, fuente en `01 VIDEO`).
+- La apertura está grabada dos veces seguidas, igual («Felicitaciones. Ha completado la segunda
+  unidad…», 0,18–22,70 y 22,98–45,52): se queda la segunda. Después, un arranque en falso con
+  claqueta («Hoy sabe por lo que-- un, dos, tres.», 46,12–50,42), cortado de 45,62 a 50,52.
+  Los bordes de los dos cortes caen en silencio (digital en el arranque en falso, −180 dB; RMS
+  en ventanas de 50 ms). Lo que sigue al corte va en plano cerrado hasta el final de la frase,
+  sin gráficos.
+- 10 cartones (uno con antetítulo por cada parte del repaso), 2 listas de AE sin título (quién
+  interpreta en cada sistema, los cuatro pasos del control de convencionalidad) y el lower third.
+  Las tres reacciones van en cartón: la tercera fila de una lista quedaba 2 s antes del corte.
+  Cobertura ≈ 76 %.
