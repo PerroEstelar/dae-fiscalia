@@ -2538,3 +2538,28 @@ Qué hacer:
 - `mg_armar` va con la máquina libre, no en paralelo a renders.
 - Si se corta, se vuelve a correr: borra y rearma cada comp.
 - Lo que se rindió de una comp terminada fuera de tiempo va a `_descartes` y se rinde otra vez.
+
+## Un profe que no dice su nombre (presentación de Derechos humanos, 16 nov 2026)
+
+El profe de la presentación del curso de Derechos humanos no se presenta, y ni la ficha, ni los
+documentos de las unidades, ni el paquete de Camtasia de JP dicen quién graba. La ficha lista
+tres autores, y uno era Estanislao, el profe de SRPA: con un cuadro de su video al lado se
+descartaba. Se transcribieron el principio y el final de dos cierres de unidad del mismo profe
+(«les habló…» suele estar ahí): tampoco.
+
+- **Un nombre de lower third no se infiere por descarte.** Se arma todo lo demás y se le
+  pregunta a Sebastián. Confirmó a Yefri Yoel Torrado Verjel y pidió de cargo «coautor del curso
+  y el nombre del curso».
+- Lo que sale de la ficha (el nombre del curso, los nombres cortos de las unidades) sí entra a
+  los cartones: lo escribieron los profes.
+
+## After Effects tarda en abrir un proyecto grande: no se relanza el jsx
+
+`AfterFX.exe -r ae_abrir.jsx` con un `.aep` de 28 MB y 363 ítems dejó a AE «Not Responding»
+dos minutos, con la barra de «Open Project». aftr no responde mientras tanto (timeout de 30 s).
+El jsx tiene abierto su log hasta que `app.open` vuelve, así que el archivo queda vacío.
+
+- Relanzar el jsx encima da un diálogo modal en AE: «Unable to execute script at line 7.
+  Permission denied», porque el log todavía está tomado. Hay que cerrarlo a mano.
+- Se espera: `tasklist /V` muestra el título de la ventana con el proyecto nuevo cuando
+  terminó, y `getProjectInfo` vuelve a responder.

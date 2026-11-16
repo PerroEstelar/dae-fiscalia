@@ -18,6 +18,12 @@ cinco documentos, uno por unidad. Las entregas van a su subcarpeta «Videos»
 (00 DOCUMENTOS FUENTE, 00 PERSONAJES, UNIDAD 1..5 con las diez carpetas de la
 serie). Bins iguales en el proyecto de Resolve `DAE MASTER - CURSOS`.
 
+## Videos de profe a cámara
+
+En `profe/` (README propio): la presentación del curso de Yefri Yoel Torrado Verjel, entregada
+el 16 nov 2026 en «Videos» → «VIDEOS PROFE - Yefri Yoel Torrado Verjel». Los inicios y cierres
+de las unidades 1 a 4 (Drive de JP, `VIDEOS`) están sin procesar.
+
 ## Sin preguntas
 
 Sebastián, 31 oct: ninguno de los videos lleva secciones de preguntas ni
