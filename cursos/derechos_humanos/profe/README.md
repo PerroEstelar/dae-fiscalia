@@ -27,7 +27,8 @@ Drive del curso (de JP) → `VIDEOS` (`16xDO2LgXTBunKGEeu8BQzzMZ6pY-kX6w`):
 | `3. Video Cierre U1.mp4` | cierre U1, toma cruda 1620×1080, 2:29,2 | **entregado** (`plan_dh1c`) |
 | `4. Video Inicio U2.mp4` | inicio U2, toma cruda 1620×1080, 4:24,1 | **entregado** (`plan_dh2i`) |
 | `05. Video Cierre U2.mp4` | cierre U2, toma cruda 1620×1080, 3:03,4 | **entregado** (`plan_dh2c`) |
-| `06. Video Inicio U3.mp4`, `07. Video Cierre U3.mp4` | U3 | sin procesar |
+| `06. Video Inicio U3.mp4` | inicio U3, toma cruda 1620×1080, 4:04,9 | **entregado** (`plan_dh3i`) |
+| `07. Video Cierre U3.mp4` | cierre U3 | sin procesar |
 | `08. Video Inicio U4.mp4`, `09. Video Cierre U4.mp4` | U4 (cierre 2:58) | sin procesar |
 
 Los cierres de la U1 y la U4 se transcribieron al principio y al final buscando el nombre del
@@ -52,6 +53,7 @@ Torrado Verjel» (`1O1O4kbtNFGO4N7vtb-Ydph5K4PUZ3EQ1`).
 | Cierre de la unidad 1 | `plan_dh1c` | `DH - U1 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 1 CIERRE-v1.mp4` |
 | Inicio de la unidad 2 | `plan_dh2i` | `DH - U2 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 2 INICIO-v1.mp4` |
 | Cierre de la unidad 2 | `plan_dh2c` | `DH - U2 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 2 CIERRE-v1.mp4` |
+| Inicio de la unidad 3 | `plan_dh3i` | `DH - U3 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 3 INICIO-v1.mp4` |
 
 **Presentación del curso (16 nov 2026).** 6447 cuadros (4:28,9) = la línea; −16,1 LUFS, pico
 −2,0 dBTP; PSNR contra el máster 50,3 dB; 136 MB (`12hd2DkrGdZq__PXacd_fJYTTqe7yaJU7`). El
@@ -107,3 +109,20 @@ máster de 32 Mb/s (901 MB) queda en `05 EXPORTS\_master`, el `.drt` en `10 TIME
   interpreta en cada sistema, los cuatro pasos del control de convencionalidad) y el lower third.
   Las tres reacciones van en cartón: la tercera fila de una lista quedaba 2 s antes del corte.
   Cobertura ≈ 76 %.
+
+**Inicio de la unidad 3 (16 nov 2026).** 6636 cuadros (4:36,8) = la línea; −16,1 LUFS, pico
+−2,6 dBTP; PSNR contra el máster 49,9 dB; 158 MB (`1DVdevh-4CN7L76NSmKCFgTHET3MMNua3`). Disco:
+`…\UNIDAD 3 - INICIO PROFE\` (máster de 1,1 GB en `05 EXPORTS\_master`, `.drt` en
+`10 TIMELINE SEBASTIAN`, fuente en `01 VIDEO`).
+- Cartón de título: «Unidad 3. Proteger con debida diligencia: investigación, víctimas y enfoques
+  diferenciales» (ficha).
+- Sin arranques en falso ni frases repetidas. Un corte, en la pausa de 3,4 s antes de «Cerrará
+  esta unidad…» (205,70–207,90, en silencio digital): queda 1,2 s. El plano cerrado va hasta la
+  pausa entre «…que debe terminar» y «con la ruta de protección…» (214,95), con el profe derecho.
+- Él amplía bastante el guion de la ficha. Las cuatro fallas de la primera entrevista se
+  cotejaron con el guion del audiodrama de la U3 (`herramientas/voz/textos/guion_dh.py`):
+  «seguir hablando al aire» es literal. «Construidos a través de situaciones reales» no va
+  literal: el cartón dice «basados en situaciones reales».
+- 12 cartones (un antetítulo por lección) y 4 listas de AE: el contexto nuevo, las cuatro fallas
+  de la primera versión y lo que hace la segunda (sin título) y la versión reforzada del
+  estándar. Cobertura ≈ 78 %.
