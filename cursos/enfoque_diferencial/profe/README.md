@@ -142,19 +142,29 @@ Drive: carpeta VIDEOS del curso →
 (`1LNFO7X0A15EnIifpRpEycKcGW1LIqYLA`). Los 12 archivos están juntos y el tamaño de cada uno
 se comprobó contra el disco.
 
+**Nombres en Drive (16 nov 2026).** Sebastián pidió «inicio» en vez de «presentación» y
+«cierre» en vez de «contenido». Se renombraron los 11 archivos en Drive (mismos ids, mismo
+contenido); `CURSO - CONCLUSIONES` quedó igual. Las copias locales en `05 EXPORTS` y los
+`EXPORT` de los planes conservan los nombres viejos (`PRESENTACION`, `CONTENIDO`). La revisión
+de ese día: los 12 están en la carpeta, cada uno con el tamaño de su entrega, y no hay nada suelto
+en esa carpeta, en `VIDEOS` ni en las carpetas de paso (`G:\My Drive\_* subidas` vacías). La
+carpeta del profe (`1dTALmfoD-P3cyiIoO39tg-0-3rTOy7mJ`) tiene sus 12 grabaciones crudas, enteras
+(nombres de la grabadora con fecha y hora, como «Presentación General Cur-20261110-095521.mov»);
+son de él y no se tocan.
+
 | entrega | largo | cuadros = línea | LUFS · pico | PSNR | MiB | Drive |
 |---|---|---|---|---|---|---|
-| `enfoquediferencial - CURSO - PRESENTACION-v1.mp4` | 2:22 | 3.406 | −16,3 · −3,0 | 49,8 | 74 | `1lSvKUu6o8Wg_uV__Zr2XOcypOjpFvbZg` |
-| `… - U1 - PRESENTACION-v1.mp4` | 1:17 | 1.857 | −16,6 · −3,0 | 50,4 | 36 | `1EUmd6gAbBTfiPgwGDyFfuW8GY6BEaBuU` |
-| `… - U1 - CONTENIDO-v1.mp4` | 22:42 | 32.647 | −16,0 · −2,3 | 49,4 | 773 | `13gvB9TLcKEme07XxgfjDag5c5jE2gE2Y` |
-| `… - U2 - PRESENTACION-v1.mp4` | 1:16 | 1.815 | −16,5 · −3,0 | 50,3 | 37 | `1wsYqIRFtpnShTdlxRfjC8gSlKaFQ8erF` |
-| `… - U2 - CONTENIDO-v1.mp4` | 22:14 | 31.986 | −16,0 · −2,8 | 49,0 | 830 | `1gNVmlOlWn1jxplYcP2GDzD67_R9IFTul` |
-| `… - U3 - PRESENTACION-v1.mp4` | 1:23 | 1.983 | −16,5 · −3,0 | 50,2 | 40 | `1xZAwjK8GO_aMcts5xNRIs76h4uoxg9xz` |
-| `… - U3 - CONTENIDO-v1.mp4` | 26:48 | 38.558 | −16,0 · −2,8 | 48,4 | 1.175 | `1rTn58-92E7RYSyGVtAC681tQe4XNuDod` |
-| `… - U4 - PRESENTACION-v1.mp4` | 1:13 | 1.744 | −16,6 · −3,0 | 50,7 | 32 | `1uk3vRgrQRy3QMVjFe6Hz6A2DoW1mBgNk` |
-| `… - U4 - CONTENIDO-v1.mp4` | 26:23 | 37.952 | −16,0 · −2,0 | 49,4 | 906 | `1ff2KuM-qABxpZuO9jinr16Pvtz6aCtIZ` |
-| `… - U5 - PRESENTACION-v1.mp4` | 1:12 | 1.723 | −16,5 · −3,0 | 50,6 | 32 | `1ocq9p5tTdy98OdJlN6xClXh0RoNvCtgu` |
-| `… - U5 - CONTENIDO-v1.mp4` | 28:26 | 40.892 | −16,0 · −2,2 | 48,9 | 1.131 | `12nFMusviNbgCg_h_6R8v5QoRKfticxFB` |
+| `enfoquediferencial - CURSO - INICIO-v1.mp4` | 2:22 | 3.406 | −16,3 · −3,0 | 49,8 | 74 | `1lSvKUu6o8Wg_uV__Zr2XOcypOjpFvbZg` |
+| `… - U1 - INICIO-v1.mp4` | 1:17 | 1.857 | −16,6 · −3,0 | 50,4 | 36 | `1EUmd6gAbBTfiPgwGDyFfuW8GY6BEaBuU` |
+| `… - U1 - CIERRE-v1.mp4` | 22:42 | 32.647 | −16,0 · −2,3 | 49,4 | 773 | `13gvB9TLcKEme07XxgfjDag5c5jE2gE2Y` |
+| `… - U2 - INICIO-v1.mp4` | 1:16 | 1.815 | −16,5 · −3,0 | 50,3 | 37 | `1wsYqIRFtpnShTdlxRfjC8gSlKaFQ8erF` |
+| `… - U2 - CIERRE-v1.mp4` | 22:14 | 31.986 | −16,0 · −2,8 | 49,0 | 830 | `1gNVmlOlWn1jxplYcP2GDzD67_R9IFTul` |
+| `… - U3 - INICIO-v1.mp4` | 1:23 | 1.983 | −16,5 · −3,0 | 50,2 | 40 | `1xZAwjK8GO_aMcts5xNRIs76h4uoxg9xz` |
+| `… - U3 - CIERRE-v1.mp4` | 26:48 | 38.558 | −16,0 · −2,8 | 48,4 | 1.175 | `1rTn58-92E7RYSyGVtAC681tQe4XNuDod` |
+| `… - U4 - INICIO-v1.mp4` | 1:13 | 1.744 | −16,6 · −3,0 | 50,7 | 32 | `1uk3vRgrQRy3QMVjFe6Hz6A2DoW1mBgNk` |
+| `… - U4 - CIERRE-v1.mp4` | 26:23 | 37.952 | −16,0 · −2,0 | 49,4 | 906 | `1ff2KuM-qABxpZuO9jinr16Pvtz6aCtIZ` |
+| `… - U5 - INICIO-v1.mp4` | 1:12 | 1.723 | −16,5 · −3,0 | 50,6 | 32 | `1ocq9p5tTdy98OdJlN6xClXh0RoNvCtgu` |
+| `… - U5 - CIERRE-v1.mp4` | 28:26 | 40.892 | −16,0 · −2,2 | 48,9 | 1.131 | `12nFMusviNbgCg_h_6R8v5QoRKfticxFB` |
 | `enfoquediferencial - CURSO - CONCLUSIONES-v1.mp4` | 2:35 | 3.708 | −16,2 · −3,0 | 49,7 | 87 | `1chY2F2Rl_E_WjQXb4tD7KHGPEdCAabZM` |
 
 Todas son H.264 High L4.0, 1920×1080, Rec.709 y 23,976, con audio AAC 48 kHz estéreo. El
