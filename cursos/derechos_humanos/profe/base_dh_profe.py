@@ -57,7 +57,10 @@ CERRADO = (0, 40, 1472, 828)
 MATRIZ_FUENTE = 'bt709'
 MAXW = 520
 ANCHO = MAXW
-LT = (40, 440)
+# el cargo a 410 de ancho: «Coautor del curso Derechos / humanos aplicados a la / función judicial»
+# (a 440 quedaba «judicial» solo en el tercer renglón). Simulado sobre cuatro cuadros del compuesto:
+# termina en x≈620, sobre la plaza y el hombro del saco, lejos de la cara.
+LT = (40, 410)
 AUDIO_META = 'I=-16:TP=-3:LRA=7'
 
 
