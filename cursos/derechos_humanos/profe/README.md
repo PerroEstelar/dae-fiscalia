@@ -25,7 +25,8 @@ Drive del curso (de JP) → `VIDEOS` (`16xDO2LgXTBunKGEeu8BQzzMZ6pY-kX6w`):
 | `DDHH_funcion_inio_unidad1/` | paquete de Camtasia del inicio de la U1 (4:11 según su xml) | **falta el mp4**: solo están el html, el xml y las carpetas; tampoco hay crudo «02» |
 | `DDHH_funcion_cierre_unidad1/` | la misma toma del cierre U1, a 720p | no se usa |
 | `3. Video Cierre U1.mp4` | cierre U1, toma cruda 1620×1080, 2:29,2 | **entregado** (`plan_dh1c`) |
-| `4. Video Inicio U2.mp4`, `05. Video Cierre U2.mp4` | U2 | sin procesar |
+| `4. Video Inicio U2.mp4` | inicio U2, toma cruda 1620×1080, 4:24,1 | **entregado** (`plan_dh2i`) |
+| `05. Video Cierre U2.mp4` | cierre U2 | sin procesar |
 | `06. Video Inicio U3.mp4`, `07. Video Cierre U3.mp4` | U3 | sin procesar |
 | `08. Video Inicio U4.mp4`, `09. Video Cierre U4.mp4` | U4 (cierre 2:58) | sin procesar |
 
@@ -49,6 +50,7 @@ Torrado Verjel» (`1O1O4kbtNFGO4N7vtb-Ydph5K4PUZ3EQ1`).
 |---|---|---|---|
 | Presentación del curso | `plan_dh00` | `DH - CURSO - PRESENTACION` | `PRIO 2 - DERECHOS HUMANOS - PRESENTACION DEL CURSO-v1.mp4` |
 | Cierre de la unidad 1 | `plan_dh1c` | `DH - U1 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 1 CIERRE-v1.mp4` |
+| Inicio de la unidad 2 | `plan_dh2i` | `DH - U2 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 2 INICIO-v1.mp4` |
 
 **Presentación del curso (16 nov 2026).** 6447 cuadros (4:28,9) = la línea; −16,1 LUFS, pico
 −2,0 dBTP; PSNR contra el máster 50,3 dB; 136 MB (`12hd2DkrGdZq__PXacd_fJYTTqe7yaJU7`). El
@@ -73,3 +75,19 @@ máster de 32 Mb/s (901 MB) queda en `05 EXPORTS\_master`, el `.drt` en `10 TIME
 - El primer `mg_armar` cortó por el timeout de 30 s de aftr (importaba los íconos nuevos). Se
   mataron la cadena y la entrega que esperaba, no se había rendido nada, y se volvió a correr con
   la máquina libre: 37 s.
+
+**Inicio de la unidad 2 (16 nov 2026).** 7102 cuadros (4:56,2) = la línea; −16,1 LUFS, pico
+−3,0 dBTP; PSNR contra el máster 50,4 dB; 156 MB (`1irKnEjGkaKelt176jh9nQ7wAKHJ7hTjz`). Disco:
+`…\UNIDAD 2 - INICIO PROFE\` (máster de 1,1 GB en `05 EXPORTS\_master`, `.drt` en
+`10 TIMELINE SEBASTIAN`, fuente en `01 VIDEO`).
+- Sin versión de Camtasia para comparar: los cortes salen del STT y de los cuadros. Un solo
+  corte, la pausa de 3,1 s antes de «La pregunta de esta unidad…» (143,35–145,35), con plano
+  cerrado hasta el final de la frase.
+- Textos contrastados con el guion de la ficha de la U2. No van en pantalla «El sistema es
+  subordinado» (STT; la ficha dice «subsidiario») ni «exige responder» (la ficha: «exigente de
+  responder»).
+- 15 cartones y 4 listas de AE (los tratados que invoca la defensa, el análisis completo, quién
+  interpreta en cada sistema, los cuatro pasos del control de convencionalidad). Las de cuatro
+  filas, sin título. Cobertura ≈ 77 %.
+- After Effects y Resolve se habían cerrado entre esta pieza y la anterior (ver CLAUDE.md): se
+  volvieron a abrir, se cargó `DAE MASTER - CURSOS` y se rehízo solo lo que faltaba.

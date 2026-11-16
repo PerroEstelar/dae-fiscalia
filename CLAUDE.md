@@ -2563,3 +2563,26 @@ El jsx tiene abierto su log hasta que `app.open` vuelve, así que el archivo que
   Permission denied», porque el log todavía está tomado. Hay que cerrarlo a mano.
 - Se espera: `tasklist /V` muestra el título de la ventana con el proyecto nuevo cuando
   terminó, y `getProjectInfo` vuelve a responder.
+
+## Si After Effects o Resolve se cerraron a mitad de una cadena (inicio de la U2 de DH, 16 nov 2026)
+
+Entre una pieza y la siguiente, After Effects y Resolve se cerraron (o se reiniciaron). La
+cadena no lo sabía y falló en dos sitios con errores que no dicen eso:
+
+- **`mg_armar`: `URLError [WinError 10061] … actively refused it`.** No es el timeout de 30 s:
+  es que el controlador de aftr no está escuchando. `tasklist` no mostraba `AfterFX.exe`, y de
+  node solo corrían los `mcp.js`, no el `server.js`.
+  - Se levanta en el orden de siempre: `AfterFX.exe` solo (hasta ~1 GB); `-r` con el jsx que
+    abre el `.aep` (esta vez abrió en segundos); `node controller/src/server.js` en
+    `C:\Users\call_\aftr`, con su log, hasta «Panel connected».
+  - El primer `getProjectInfo` después de levantar puede dar «Bad JSON from host»; el segundo
+    ya responde.
+- **La línea: `'NoneType' object has no attribute 'GetSubFolderList'` en `carpeta_pool`.**
+  Resolve estaba en un «Untitled Project» vacío (raíz del pool sin carpetas, 0 líneas, página
+  None), así que `AddSubFolder` devolvía None. Se cargó `DAE MASTER - CURSOS` con
+  `LoadProject` (tarda más de 58 s: `run_inline` corta, pero la carga sigue; se espera
+  preguntando `GetCurrentProject().GetName()`). Las líneas ya entregadas seguían ahí.
+- **`dh_cadena` no deja seguir a la entrega si el gráfico falla**: escribe «MG FALLO» en vez de
+  «LOTE LISTO», y la entrega que espera ese log no arma una línea a medias. Las que quedaron
+  esperando se matan por PID (`Get-CimInstance Win32_Process` con `-match`, porque `wmic … csv`
+  parte mal las líneas de comando que llevan comas).
