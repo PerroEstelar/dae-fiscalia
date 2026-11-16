@@ -28,7 +28,7 @@ Drive del curso (de JP) → `VIDEOS` (`16xDO2LgXTBunKGEeu8BQzzMZ6pY-kX6w`):
 | `4. Video Inicio U2.mp4` | inicio U2, toma cruda 1620×1080, 4:24,1 | **entregado** (`plan_dh2i`) |
 | `05. Video Cierre U2.mp4` | cierre U2, toma cruda 1620×1080, 3:03,4 | **entregado** (`plan_dh2c`) |
 | `06. Video Inicio U3.mp4` | inicio U3, toma cruda 1620×1080, 4:04,9 | **entregado** (`plan_dh3i`) |
-| `07. Video Cierre U3.mp4` | cierre U3 | sin procesar |
+| `07. Video Cierre U3.mp4` | cierre U3, toma cruda 1620×1080, 2:37,7 | **entregado** (`plan_dh3c`) |
 | `08. Video Inicio U4.mp4`, `09. Video Cierre U4.mp4` | U4 (cierre 2:58) | sin procesar |
 
 Los cierres de la U1 y la U4 se transcribieron al principio y al final buscando el nombre del
@@ -54,6 +54,7 @@ Torrado Verjel» (`1O1O4kbtNFGO4N7vtb-Ydph5K4PUZ3EQ1`).
 | Inicio de la unidad 2 | `plan_dh2i` | `DH - U2 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 2 INICIO-v1.mp4` |
 | Cierre de la unidad 2 | `plan_dh2c` | `DH - U2 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 2 CIERRE-v1.mp4` |
 | Inicio de la unidad 3 | `plan_dh3i` | `DH - U3 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 3 INICIO-v1.mp4` |
+| Cierre de la unidad 3 | `plan_dh3c` | `DH - U3 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 3 CIERRE-v1.mp4` |
 
 **Presentación del curso (16 nov 2026).** 6447 cuadros (4:28,9) = la línea; −16,1 LUFS, pico
 −2,0 dBTP; PSNR contra el máster 50,3 dB; 136 MB (`12hd2DkrGdZq__PXacd_fJYTTqe7yaJU7`). El
@@ -126,3 +127,16 @@ máster de 32 Mb/s (901 MB) queda en `05 EXPORTS\_master`, el `.drt` en `10 TIME
 - 12 cartones (un antetítulo por lección) y 4 listas de AE: el contexto nuevo, las cuatro fallas
   de la primera versión y lo que hace la segunda (sin título) y la versión reforzada del
   estándar. Cobertura ≈ 78 %.
+
+**Cierre de la unidad 3 (16 nov 2026).** 4596 cuadros (3:11,7) = la línea; −16,2 LUFS, pico
+−2,9 dBTP; PSNR contra el máster 50,1 dB; 107 MB (`1FXRuY55f_uR7icwvirFHJIx9kxN8sUoh`). Disco:
+`…\UNIDAD 3 - CIERRE PROFE\` (máster de 748 MB en `05 EXPORTS\_master`, `.drt` en
+`10 TIMELINE SEBASTIAN`, fuente en `01 VIDEO`).
+- Sin arranques en falso, frases repetidas ni pausas largas (la más larga, 1,8 s): va entera.
+- Sigue casi al pie de la letra el guion de cierre de la ficha. En «Oportunidad» el STT oye «la
+  diligencia es la diligencia a tiempo» (la ficha: «la diligencia debida…»), así que esa frase no
+  va en pantalla. No menciona el cuestionario: el último cartón es la decisión que viene y la cita
+  en la unidad 4.
+- 7 cartones y 2 listas de AE: los cinco componentes de la debida diligencia (una palabra por
+  fila, sin título; el cartón de antes dice «Cinco componentes, que funcionan como un sistema») y
+  la idea del inicio hecha método. Cobertura ≈ 79 %.
