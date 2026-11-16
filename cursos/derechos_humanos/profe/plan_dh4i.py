@@ -23,6 +23,12 @@ título: con título no cabían), lo que la Fiscalía decide si pide, las tres c
 cuatro preguntas del test de Chaparro Álvarez (sin título). Quedan sin gráfico la extracción del teléfono, la audiencia con la
 abogada Salgado y el producto de la unidad, para no pasar del 80 % de cobertura.
 
+**v2 (16 nov 2026).** En la v1 la última fila de dos listas quedaba menos de 4 s: «Solicitud de
+medida de aseguramiento» 2,9 s y «O se abstiene de pedirla» 1,8 s, y la lista ya se estaba yendo.
+Se alargaron sobre la frase siguiente (`m01b`, `m03b`) y el cartón que sigue entra más tarde
+(`c02b`, `c05b`); las claves nuevas dan archivos nuevos, para que Resolve no use la duración vieja
+que tiene en caché. La v1 quedó en `_descartes`.
+
 Los tiempos están en segundos de la fuente.
 """
 import os
@@ -41,6 +47,7 @@ SUB = ('Unidad 4. Restringir con legitimidad: medidas de aseguramiento, privaci�
        'efectivo de los derechos de las Personas Privadas de la Libertad – PPL')
 NOMBRE_LINEA = 'DH - U4 - INICIO PROFE'
 EXPORT = 'PRIO 2 - DERECHOS HUMANOS - UNIDAD 4 INICIO-v%d'
+VERSION = 2
 PREFIJO = 'DH4I'
 TMP = 'D:/DAE/_tmp/dh_profe/dh4i'
 
@@ -55,12 +62,12 @@ ITEMS = [
     ('c01_captura', 'carton', 7.3, 21.4, c_ante(
         'Semana diez', 'Wilmer Acosta, capturado en flagrancia',
         'Dejaba un nuevo panfleto en la emisora. Llevaba un arma de fuego sin permiso.')),
-    ('m01_audiencias', 'mg_lista', 37.6, 45.6, lista(
+    ('m01b_audiencias', 'mg_lista', 37.6, 46.8, lista(
         None,
         ('mazo', 'Legalización de captura', 38.6),
         ('firma', 'Formulación de imputación', 40.7),
         ('balanza', 'Solicitud de medida de aseguramiento', 42.7))),
-    ('c02_libertad', 'carton', 45.7, 53.6, c_ante(
+    ('c02b_libertad', 'carton', 46.8, 53.6, c_ante(
         'El momento más delicado de la función', 'Decidir sobre la libertad de una persona')),
     ('c03_otra_cara', 'carton', 54.7, 64.7, c_ante(
         'Hasta ahora, proteger', 'La otra cara de la doble incidencia: restringir derechos con legitimidad')),
@@ -72,12 +79,12 @@ ITEMS = [
         ('persona', 'La libertad es la regla', 81.6),
         ('balanza', 'Su restricción es la excepción', 83.3),
         ('mazo', 'Ninguna medida anterior a la condena es un castigo anticipado', 85.3))),
-    ('m03_decide', 'mg_lista', 101.2, 110.9, lista(
+    ('m03b_decide', 'mg_lista', 101.2, 113.1, lista(
         'La Fiscalía decide si pide',
         ('carpeta', 'Una medida privativa de la libertad', 104.9),
         ('ruta', 'Una no privativa', 107.2),
         ('doc_check', 'O se abstiene de pedirla', 109.1))),
-    ('c05_detenida', 'carton', 111.0, 117.4, cita('Sin olvidar la perspectiva de la persona detenida.')),
+    ('c05b_detenida', 'carton', 113.2, 117.4, cita('Sin olvidar la perspectiva de la persona detenida.')),
     ('c06_incomodo', 'carton', 122.7, 135.5, c_ante(
         'Un ejercicio más incómodo y más útil', 'Los tres mejores argumentos contra su propia solicitud')),
     ('c07_primero', 'carton', 137.1, 145.8, c_ante(
