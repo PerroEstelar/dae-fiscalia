@@ -6,10 +6,10 @@ Empieza «Bienvenida y bienvenido al curso de Derechos Humanos Aplicados a la Fu
 de la Dirección de Altos Estudios de la Fiscalía General de la Nación» y termina «El expediente
 ya está sobre su escritorio».
 
-**Profe.** No dice su nombre y ningún documento del Drive lo nombra. La ficha del curso lista
-tres autores: Estanislao Escalante Barreto, Yefri Yoel Torrado Verjel y Laura Juliana Galvez
-Depablos. No es Estanislao, que es el profe de SRPA. El nombre del lower third lo confirma
-Sebastián (`PROFE`).
+**Profe.** Yefri Yoel Torrado Verjel. No dice su nombre en el video y ningún documento del
+Drive dice quién graba; la ficha lista tres autores (Estanislao Escalante Barreto, Yefri Yoel
+Torrado Verjel y Laura Juliana Galvez Depablos) y no es Estanislao, que es el profe de SRPA.
+Lo confirmó Sebastián (16 nov), y pidió de cargo «coautor del curso y el nombre del curso».
 
 **Dos cortes** (Scribe sobre WAV a 16 kHz, una voz):
 - un arranque en falso: después de «…una herramienta que usted domina.» (44,92) dice «Aquí no
@@ -47,8 +47,7 @@ EXPORT = 'PRIO 2 - DERECHOS HUMANOS - PRESENTACION DEL CURSO-v%d'
 PREFIJO = 'DH00'
 TMP = 'D:/DAE/_tmp/dh_profe/dh00'
 
-# el nombre lo confirma Sebastián (ver arriba); sin confirmar, no hay lower third
-PROFE = None
+PROFE = ('Yefri Yoel Torrado Verjel', 'Coautor del curso Derechos humanos aplicados a la función judicial')
 
 TRAMOS = [
     (0.0, 45.50, None),
