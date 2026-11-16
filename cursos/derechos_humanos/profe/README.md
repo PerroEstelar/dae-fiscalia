@@ -30,7 +30,7 @@ Drive del curso (de JP) → `VIDEOS` (`16xDO2LgXTBunKGEeu8BQzzMZ6pY-kX6w`):
 | `06. Video Inicio U3.mp4` | inicio U3, toma cruda 1620×1080, 4:04,9 | **entregado** (`plan_dh3i`) |
 | `07. Video Cierre U3.mp4` | cierre U3, toma cruda 1620×1080, 2:37,7 | **entregado** (`plan_dh3c`) |
 | `08. Video Inicio U4.mp4` | inicio U4, toma cruda 1620×1080, 4:10,1 | **entregado** (`plan_dh4i`) |
-| `09. Video Cierre U4.mp4` | cierre U4 (2:58) | sin procesar |
+| `09. Video Cierre U4.mp4` | cierre U4, toma cruda 1620×1080, 2:58,2 | **entregado** (`plan_dh4c`) |
 
 Los cierres de la U1 y la U4 se transcribieron al principio y al final buscando el nombre del
 profe: no lo dice.
@@ -57,6 +57,7 @@ Torrado Verjel» (`1O1O4kbtNFGO4N7vtb-Ydph5K4PUZ3EQ1`).
 | Inicio de la unidad 3 | `plan_dh3i` | `DH - U3 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 3 INICIO-v1.mp4` |
 | Cierre de la unidad 3 | `plan_dh3c` | `DH - U3 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 3 CIERRE-v1.mp4` |
 | Inicio de la unidad 4 | `plan_dh4i` | `DH - U4 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 4 INICIO-v2.mp4` |
+| Cierre de la unidad 4 | `plan_dh4c` | `DH - U4 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 4 CIERRE-v1.mp4` |
 
 **Presentación del curso (16 nov 2026).** 6447 cuadros (4:28,9) = la línea; −16,1 LUFS, pico
 −2,0 dBTP; PSNR contra el máster 50,3 dB; 136 MB (`12hd2DkrGdZq__PXacd_fJYTTqe7yaJU7`). El
@@ -165,3 +166,16 @@ de 1,1 GB en `D:\DAE\_masters_archivo`).
 - A mitad de esta pieza E: se llenó (ver CLAUDE.md). Los másters de las siete piezas de esta
   tanda están en `D:\DAE\_masters_archivo\PRIORIDAD 2\CURSO - DERECHOS HUMANOS APLICADOS A LA
   FUNCION JUDICIAL\<pieza>\`, con un `LEER` en cada `05 EXPORTS\_master`.
+
+**Cierre de la unidad 4 (16 nov 2026).** 5088 cuadros (3:32,2) = la línea; −16,2 LUFS, pico
+−2,5 dBTP; PSNR contra el máster 50,2 dB; 114 MB (`1VzSQ6iBcBxT8wTS_LCmrwD6JH-LCeZju`). Disco:
+`…\UNIDAD 4 - CIERRE PROFE\` (`.drt` en `10 TIMELINE SEBASTIAN`, fuente en `01 VIDEO`; el máster
+de 0,8 GB en `D:\DAE\_masters_archivo`).
+- El máster salió con pico de −0,8 dBTP (el AAC de Resolve): `mp4_entrega` limitó el audio de la
+  entrega, que quedó en −2,5 dBTP.
+- Sin arranques en falso, frases repetidas ni pausas largas (la más larga, 2,2 s): va entera.
+- Amplía el guion de cierre de la ficha («los elementos materiales probatorios e información
+  legalmente obtenida», «la señal de calidad de su sustentación…»). «36 horas» va en cifras.
+- 8 cartones y 2 listas de AE: por qué resistió la detención (fin, necesidad, proporcionalidad) y
+  lo que el capturado debe poder hacer desde la aprehensión (cuatro filas sin título, después de
+  la cita «La legitimidad también se juega antes de la audiencia»). Cobertura ≈ 75 %.
