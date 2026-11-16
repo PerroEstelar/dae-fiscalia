@@ -225,6 +225,10 @@ def medir():
     import cartones_srpa as CS
     C = CS.C
     for clave, tipo, t0, t1, cont in P.ITEMS:
+        if tipo == 'mg_lista' and cont.get('filas'):
+            ultima = t1 - cont['filas'][-1][2]
+            print('%-18s %5.1f s  última fila %.1f s%s' % (
+                clave, t1 - t0, ultima, '  <-- MENOS DE 4 s' if ultima < 4 else ''), flush=True)
         if tipo != 'carton':
             continue
         _c, _b, total, off = C.componer(cont)
@@ -296,8 +300,10 @@ def mg_armar():
         else:
             c, cima = G.mg_lista(nm, n, [int(round((f[2] - t0) * P.FPS)) for f in d['filas']], d)
         M.batch(c.c)
-        print('%-18s %4d f  %3d capas  cima %d%s' % (clave, n, c.k, cima,
-                                                    '  <-- SE SUBE DE LA ZONA' if cima < 250 else ''), flush=True)
+        ultima = t1 - d['filas'][-1][2] if tipo == 'mg_lista' and d.get('filas') else 99
+        print('%-18s %4d f  %3d capas  cima %d%s%s' % (
+            clave, n, c.k, cima, '  <-- SE SUBE DE LA ZONA' if cima < 250 else '',
+            '  <-- ULTIMA FILA %.1f s (mínimo 4)' % ultima if ultima < 4 else ''), flush=True)
     M.cmd('saveProject', {'path': AEP})
     print('ARMADO', flush=True)
 

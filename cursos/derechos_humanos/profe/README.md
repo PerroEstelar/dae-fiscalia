@@ -29,7 +29,8 @@ Drive del curso (de JP) → `VIDEOS` (`16xDO2LgXTBunKGEeu8BQzzMZ6pY-kX6w`):
 | `05. Video Cierre U2.mp4` | cierre U2, toma cruda 1620×1080, 3:03,4 | **entregado** (`plan_dh2c`) |
 | `06. Video Inicio U3.mp4` | inicio U3, toma cruda 1620×1080, 4:04,9 | **entregado** (`plan_dh3i`) |
 | `07. Video Cierre U3.mp4` | cierre U3, toma cruda 1620×1080, 2:37,7 | **entregado** (`plan_dh3c`) |
-| `08. Video Inicio U4.mp4`, `09. Video Cierre U4.mp4` | U4 (cierre 2:58) | sin procesar |
+| `08. Video Inicio U4.mp4` | inicio U4, toma cruda 1620×1080, 4:10,1 | **entregado** (`plan_dh4i`) |
+| `09. Video Cierre U4.mp4` | cierre U4 (2:58) | sin procesar |
 
 Los cierres de la U1 y la U4 se transcribieron al principio y al final buscando el nombre del
 profe: no lo dice.
@@ -55,6 +56,7 @@ Torrado Verjel» (`1O1O4kbtNFGO4N7vtb-Ydph5K4PUZ3EQ1`).
 | Cierre de la unidad 2 | `plan_dh2c` | `DH - U2 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 2 CIERRE-v1.mp4` |
 | Inicio de la unidad 3 | `plan_dh3i` | `DH - U3 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 3 INICIO-v1.mp4` |
 | Cierre de la unidad 3 | `plan_dh3c` | `DH - U3 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 3 CIERRE-v1.mp4` |
+| Inicio de la unidad 4 | `plan_dh4i` | `DH - U4 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 4 INICIO-v2.mp4` |
 
 **Presentación del curso (16 nov 2026).** 6447 cuadros (4:28,9) = la línea; −16,1 LUFS, pico
 −2,0 dBTP; PSNR contra el máster 50,3 dB; 136 MB (`12hd2DkrGdZq__PXacd_fJYTTqe7yaJU7`). El
@@ -140,3 +142,26 @@ máster de 32 Mb/s (901 MB) queda en `05 EXPORTS\_master`, el `.drt` en `10 TIME
 - 7 cartones y 2 listas de AE: los cinco componentes de la debida diligencia (una palabra por
   fila, sin título; el cartón de antes dice «Cinco componentes, que funcionan como un sistema») y
   la idea del inicio hecha método. Cobertura ≈ 79 %.
+
+**Inicio de la unidad 4 (16 nov 2026).** v2: 6814 cuadros (4:44,2) = la línea; −16,1 LUFS, pico
+−3,0 dBTP; PSNR contra el máster 50,3 dB; 152 MB (`17y3yBoRrsLkMXnAGR0RHVWbWXrJ06ld_`). Disco:
+`…\UNIDAD 4 - INICIO PROFE\` (`.drt` en `10 TIMELINE SEBASTIAN`, fuente en `01 VIDEO`; el máster
+de 1,1 GB en `D:\DAE\_masters_archivo`).
+- Cartón de título: «Unidad 4. Restringir con legitimidad: medidas de aseguramiento, privación
+  de la libertad y goce efectivo de los derechos de las Personas Privadas de la Libertad – PPL»
+  (ficha, tal cual).
+- Sin arranques en falso, frases repetidas ni pausas largas (la más larga, 1,7 s): va entera.
+- Él amplía mucho el guion de la ficha. El STT oye «inferencia razonable de autoridad o
+  participación»; en pantalla va «de autoría o participación», que es la primera carga de la
+  ficha (art. 308 de la Ley 906).
+- 13 cartones (un antetítulo por cada cosa que entrega la cartilla) y 5 listas de AE: las tres
+  audiencias, la regla y la excepción, lo que la Fiscalía decide si pide, las tres cargas en
+  orden y las cuatro preguntas del test de Chaparro Álvarez. Quedan sin gráfico la extracción
+  del teléfono, la audiencia con la abogada Salgado y el producto de la unidad. Cobertura ≈ 78 %.
+- La v1 no se entregó: en dos listas la última fila quedaba menos de 4 s (2,9 y 1,8 s). La v2
+  las alarga sobre la frase siguiente. La v1 (entrega, cuatro clips, `.drt`) está en
+  `_descartes\v1 (ultima fila corta)`, la línea vieja renombrada «… (v1, ultima fila corta,
+  descartada)» y su máster en `D:\DAE\_masters_archivo`.
+- A mitad de esta pieza E: se llenó (ver CLAUDE.md). Los másters de las siete piezas de esta
+  tanda están en `D:\DAE\_masters_archivo\PRIORIDAD 2\CURSO - DERECHOS HUMANOS APLICADOS A LA
+  FUNCION JUDICIAL\<pieza>\`, con un `LEER` en cada `05 EXPORTS\_master`.

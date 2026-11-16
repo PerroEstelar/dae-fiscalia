@@ -22,8 +22,8 @@ serie). Bins iguales en el proyecto de Resolve `DAE MASTER - CURSOS`.
 
 En `profe/` (README propio), de Yefri Yoel Torrado Verjel, en «Videos» → «VIDEOS PROFE - Yefri
 Yoel Torrado Verjel»: la presentación del curso, el cierre de la U1, el inicio y el cierre de la
-U2 y el inicio y el cierre de la U3 (16 nov 2026). El inicio de la U1 no está en el Drive (falta
-el mp4); el inicio y el cierre de la U4 están sin procesar.
+U2 y de la U3 y el inicio de la U4 (16 nov 2026). El inicio de la U1 no está en el Drive (falta
+el mp4); el cierre de la U4 está sin procesar.
 
 ## Sin preguntas
 

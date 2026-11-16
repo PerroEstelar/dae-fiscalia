@@ -2321,6 +2321,11 @@ Si la lista termina con la frase, esa fila dura 2 s y no se lee.
   cartón que seguía entra más tarde.
 - En el cierre, la lista final (cinco filas en 8 s) se queda hasta «…durante este
   proceso de aprendizaje». El lower third va después, sobre la despedida.
+- **Se escapó en el inicio de la U4 de DH** (16 nov 2026): «Solicitud de medida de
+  aseguramiento» quedaba 2,9 s y «O se abstiene de pedirla» 1,8 s, con la lista ya saliendo. Se
+  vio en los cuadros a tamaño completo de la entrega, no en la medida del plan, que no lo
+  miraba. Ahora `ic_pieza.py medir` y `mg_armar` imprimen «ÚLTIMA FILA x s» cuando baja de 4.
+  La v2 lleva claves nuevas (`m01b`, `c02b`…) para que Resolve no use la duración vieja en caché.
 
 ## Una línea larga se arma con `ic_linea_externa.py`
 
@@ -2586,3 +2591,28 @@ cadena no lo sabía y falló en dos sitios con errores que no dicen eso:
   «LOTE LISTO», y la entrega que espera ese log no arma una línea a medias. Las que quedaron
   esperando se matan por PID (`Get-CimInstance Win32_Process` con `-match`, porque `wmic … csv`
   parte mal las líneas de comando que llevan comas).
+
+## E: se llena en una tanda de profes (inicio de la U4 de DH, 16 nov 2026)
+
+Seis piezas de profe de DH en una tarde y E: quedó en 0,0 GB a mitad de la séptima. Cada pieza
+deja en E: entre 1,4 y 2,7 GB: el máster de 32 Mb/s (0,7–1,2 GB), el compuesto, la fuente, los
+cartones en qtrle y las listas en ProRes 4444. El fallo no dice «disco»:
+
+- `componer` y `cartones`: ffmpeg «No space left on device» y, en el lower third,
+  `OSError: [Errno 22] Invalid argument` al escribir al pipe.
+- `mg_armar`: `saveProject` corta a los 30 s de aftr, y After Effects queda con un aviso modal
+  «Error with file: …\DH_profe_mg.<pid>.<n>.aep». AE guarda en un temporal: el `.aep` bueno no se
+  tocó, y el temporal truncado (126 KB) lo borró AE solo.
+- **El aviso tapa el panel de aftr**: hasta cerrarlo, aftr responde «timed out». Ojo al cerrarlo
+  con un clic: el centro del visor vacío de AE es el botón «New Composition», y un clic de más
+  creó una «Comp 1» (se quitó con `deleteItem`).
+
+Qué se hizo y qué queda:
+
+- Los seis másters de la tanda pasaron a `D:\DAE\_masters_archivo\PRIORIDAD 2\CURSO - DERECHOS
+  HUMANOS APLICADOS A LA FUNCION JUDICIAL\<pieza>\` (copia, tamaño igual, recién entonces se
+  quita el de E:), con un `LEER - el master esta en D.txt` en cada `_master`. Liberó 5,45 GB.
+- `dh_cadena.py` ahora mide E: antes de empezar (pide 3 GB) y corta con «LOTE FALLO» si falla
+  `componer`, `titulo` o `cartones`. Antes solo cortaba si fallaba el gráfico, y una entrega
+  podía armar la línea con el compuesto a medias.
+- Los logs de la corrida fallida quedan como `*_fallo_disco_E.log`.
