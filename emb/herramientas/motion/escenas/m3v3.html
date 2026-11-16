@@ -1,0 +1,77 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- M3 · Video 3 — Diálogo y consensos (3.3.1 + 3.3.2 + mapa del módulo). -->
+<link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="../pieza.css">
+<script src="../core.js"></script><script src="../pieza.js"></script><script src="voz_m3v3.js" onerror="window.VOZ=null"></script>
+</head><body><div id="raiz"></div>
+<canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
+<script>
+const L2=(a,b)=>`<div style="font:600 30px 'Work Sans';color:#FFC400">${a}</div><div style="font:800 58px/1.08 Montserrat;color:#fff;margin-top:6px">${b}</div>`;
+const G=(t,c='#fff',fs=60)=>`<div style="font:800 ${fs}px/1.08 Montserrat;color:${c}">${t}</div>`;
+const PL=t=>`<div style="font:600 32px 'Work Sans';color:#212529;background:#fff;padding:14px 28px;border-radius:40px;box-shadow:0 14px 34px rgba(0,0,0,.25)">${t}</div>`;
+const Q=t=>`<div style="font:italic 600 46px/1.18 'Work Sans';color:#fff;max-width:1500px">${t}</div>`;
+const PARADAS=['Condiciones para el diálogo','Quien facilita','Intereses y opciones','Consensos y compromisos'];
+montar([
+ S_titulo({ante:'Módulo 3 · Lecciones 3.3.1 y 3.3.2',lineas:['Diálogo y','consensos'],clip:'P1'}),
+ S_ruta({id:'RUTA1',ante:'Diálogo y consensos',titulo:'En este video',modo:'agenda',entrada:'tren',paradas:PARADAS}),
+ S_planos({id:'B1',entrada:'iris',entradaOpt:{x:960,y:440},txt:"Un equipo técnico, representantes del comercio y personas usuarias examinan la señalización de un recorrido provisional. Comparten el interés de encontrar el ingreso, pero discrepan sobre dónde ubicar el aviso.",
+  planos:[{clip:'P1',s:[1.1,1.02]},{clip:'P2',en:'Comparten',ventana:[0,55],s:[1.02,1.1]}],
+  textos:[{html:PL('Equipo técnico'),en:'Un equipo',hasta:'Comparten',top:110},{html:PL('Representantes del comercio'),en:'representantes',hasta:'Comparten',top:200},{html:PL('Personas usuarias'),en:'personas usuarias',hasta:'Comparten',top:290},
+          {html:G('Comparten el interés de encontrar el ingreso','#fff',52)+G('pero discrepan sobre dónde ubicar el aviso','#FFC400',40),en:'Comparten',top:800}]}),
+ S_tarjetas({id:'B2',fondo:'P1_duoY',en0:0,alto:400,txt:"Pruitt y Thomas destacan cuatro orientaciones para el diálogo: inclusividad, apropiación compartida, aprendizaje y humanidad.",
+  cab:{tit:'Orientaciones para el diálogo',sub:'Pruitt y Thomas (2008)'},
+  items:[{tit:'Inclusividad',ico:'persona',en:'inclusividad'},{tit:'Apropiación compartida',ico:'manos',en:'apropiación'},{tit:'Aprendizaje',ico:'libro',en:'aprendizaje'},{tit:'Humanidad',ico:'ojo',en:'humanidad'}]}),
+ S_tarjetas({id:'B3',fondo:'P3_duoG',en0:0,alto:400,txt:"Distinga informar, dialogar y decidir. Informar comunica contenidos. Dialogar explora significados y alternativas. Decidir supone una competencia determinada. Anunciar diálogo cuando solo se va a comunicar una decisión aumenta la desconfianza.",
+  cab:{tit:'Informar, dialogar y decidir'},
+  items:[{tit:'Informar',def:'Comunica contenidos.',ico:'megafono',en:'Informar comunica'},{tit:'Dialogar',def:'Explora significados y alternativas.',ico:'globo',en:'Dialogar'},{tit:'Decidir',def:'Supone una competencia determinada.',ico:'balanza',en:'Decidir'}],
+  banda:{html:'Anunciar diálogo cuando solo se va a comunicar una decisión aumenta la desconfianza.',en:'Anunciar'}}),
+ S_planos({id:'B4',entrada:'tren',txt:"Antes de reunirse, verifique cinco condiciones: un propósito delimitado, los actores pertinentes, información comprensible, reglas compartidas y la conexión con quien decide. Y no suponga que todos tienen el mismo tiempo, acceso o facilidad para hablar: una reunión virtual amplía el acceso para unas personas y excluye a otras.",
+  planos:[{clip:'P3',ventana:[0,75],s:[1.04,1.12]},{clip:'P4',en:'Y no suponga',s:[1.02,1.1]}],
+  textos:[{html:L2('Antes de reunirse','verifique cinco condiciones'),en:0,hasta:'Y no suponga'},
+          {html:PL('Un propósito delimitado'),en:'un propósito',hasta:'Y no suponga',top:110},{html:PL('Los actores pertinentes'),en:'los actores',hasta:'Y no suponga',top:196},{html:PL('Información comprensible'),en:'información',hasta:'Y no suponga',top:282},{html:PL('Reglas compartidas'),en:'reglas',hasta:'Y no suponga',top:368},{html:PL('La conexión con quien decide'),en:'la conexión',hasta:'Y no suponga',top:454},
+          {html:G('No todos tienen el mismo tiempo, acceso o facilidad para hablar','#fff',46),en:'Y no suponga',hasta:'una reunión virtual',top:820},
+          {html:'<div style="font:800 42px/1.14 Montserrat;color:#212529;max-width:1560px">Una reunión virtual amplía el acceso para unas personas<br>y excluye a otras</div>',en:'una reunión virtual',banda:true,top:820,alto:180}]}),
+ S_planos({id:'B5',entrada:'amarillo',txt:"Quien facilita explica su vínculo con la entidad y hace visible su interés, si lo tiene. No atribuye a la comunidad una postura que solo expresó una vocería, ni declara acuerdo cuando hay objeciones sin registrar.",
+  planos:[{clip:'P1',ventana:[40,120],s:[1.16,1.08],x:[-140,-100]}],
+  textos:[{html:L2('Quien facilita','explica su vínculo con la entidad'),en:0,hasta:'No atribuye'},
+          {html:PL('Hace visible su interés, si lo tiene'),en:'hace visible',hasta:'No atribuye',top:130},
+          {html:PL('No atribuye a la comunidad lo que dijo una vocería'),en:'No atribuye',top:120},
+          {html:'<div style="font:800 44px/1.14 Montserrat;color:#212529;max-width:1500px">No declara acuerdo<br>cuando hay objeciones sin registrar</div>',en:'ni declara',banda:true,top:820,alto:180}]}),
+ S_planos({id:'B6',entrada:'tren',txt:"Cuando surja una afirmación discutida, identifique qué puede verificarse. Un recorrido conjunto puede ser más útil que insistir en quién tiene razón.",
+  planos:[{clip:'P5',s:[1.02,1.1]}],
+  textos:[{html:L2('Una afirmación discutida','¿Qué puede verificarse?'),en:0,hasta:'Un recorrido'},
+          {html:G('Un recorrido conjunto','#fff',56)+G('puede ser más útil que insistir en quién tiene razón','#FFC400',40),en:'Un recorrido',top:800}]}),
+ S_planos({id:'B7',entrada:'amarillo',txt:"Fisher, Ury y Patton distinguen intereses y posiciones. Una posición pide mover el aviso; otra, conservarlo. El interés compartido es orientar con claridad sin comprometer la seguridad. Y las opciones, revisar el texto, examinar otra ubicación o sumar orientación complementaria, se evalúan antes de anunciarse.",
+  planos:[{clip:'P6',ventana:[0,45],s:[1.04,1.12]}],
+  textos:[{html:L2('Fisher, Ury y Patton','Intereses y posiciones'),en:0,hasta:'Una posición'},
+          {html:PL('Posición · mover el aviso'),en:'Una posición',hasta:'Y las opciones',top:120,left:120},{html:PL('Posición · conservarlo'),en:'otra, conservarlo',hasta:'Y las opciones',top:120,left:720},
+          {html:'<div style="font:800 42px/1.14 Montserrat;color:#212529;max-width:1560px">Interés compartido: orientar con claridad<br>sin comprometer la seguridad</div>',en:'El interés compartido',hasta:'Y las opciones',banda:true,top:820,alto:180},
+          {html:PL('Revisar el texto'),en:'revisar el texto',top:120},{html:PL('Examinar otra ubicación'),en:'examinar',top:210},{html:PL('Sumar orientación complementaria'),en:'sumar',top:300},
+          {html:G('Se evalúan antes de anunciarse','#fff',54),en:'se evalúan',top:840}]}),
+ S_planos({id:'B8',entrada:'tren',txt:"El consenso es explícito y delimitado. Pregunte qué acepta cada parte y qué objeciones conserva. El silencio no es consentimiento, y un acuerdo sobre un aviso no aprueba todo el proyecto.",
+  planos:[{clip:'P7',s:[1.04,1.12]}],
+  textos:[{html:L2('El consenso','es explícito y delimitado'),en:0,hasta:'El silencio'},
+          {html:PL('¿Qué acepta cada parte?'),en:'qué acepta',hasta:'El silencio',top:130},{html:PL('¿Qué objeciones conserva?'),en:'qué objeciones',hasta:'El silencio',top:220},
+          {html:'<div style="font:800 44px/1.14 Montserrat;color:#212529;max-width:1560px">El silencio no es consentimiento</div>',en:'El silencio',hasta:'y un acuerdo',banda:true,top:830,alto:150},
+          {html:G('Un acuerdo sobre un aviso','#fff',54)+G('no aprueba todo el proyecto','#FFC400',42),en:'y un acuerdo',top:810}]}),
+ S_reescribe({id:'B9',entrada:'tren',plano:{clip:'P8'},cab:{ante:'Un compromiso viable',tit:'De lo general a lo verificable'},txt:"Un compromiso viable precisa acción, responsable competente, plazo validado, evidencia y forma de revisión. «Mejorar todo el acceso» se convierte en «revisar la comprensión del aviso identificado». Y «lo antes posible», en una fecha compatible con las actuaciones.",
+  filas:[{campo:'Acción',antes:'Mejorar todo el acceso.',despues:'Revisar la comprensión del aviso identificado.',en:'acción',en2:'«Mejorar'},
+         {campo:'Responsable',antes:'La entidad lo hará.',despues:'Identificar el área competente y su aceptación.',en:'responsable',en2:'«Mejorar'},
+         {campo:'Plazo',antes:'Lo antes posible.',despues:'Una fecha compatible con las actuaciones.',en:'plazo',en2:'«lo antes'},
+         {campo:'Evidencia',antes:'El asunto queda resuelto.',despues:'Comunicar resultado y cambios autorizados.',en:'evidencia',en2:'«lo antes'},
+         {campo:'Revisión',antes:'No volver a discutir.',despues:'Comprobar si persiste la dificultad reportada.',en:'forma de revisión',en2:'«lo antes'}]}),
+ S_planos({id:'B10',entrada:'amarillo',txt:"El seguimiento examina efectos. Publicar un aviso corregido demuestra una acción; comprobar que las personas identifican el ingreso muestra su utilidad. Si la dificultad persiste, se revisa el diagnóstico.",
+  planos:[{clip:'P9',s:[1.02,1.1]}],
+  textos:[{html:L2('El seguimiento','examina efectos'),en:0,hasta:'Si la dificultad'},
+          {html:PL('Publicar un aviso corregido · demuestra una acción'),en:'Publicar',hasta:'Si la dificultad',top:130},
+          {html:PL('Comprobar que lo identifican · muestra su utilidad'),en:'comprobar que',hasta:'Si la dificultad',top:220},
+          {html:'<div style="font:800 46px/1.1 Montserrat;color:#212529">Si la dificultad persiste, se revisa el diagnóstico</div>',en:'Si la dificultad',banda:true,top:830,alto:150}]}),
+ S_actividad({titulo:'En la actividad',sub:'Del diálogo a un compromiso.',txt:"En la actividad, compare dos opciones, redacte un compromiso con una objeción pendiente y explique cómo comprobará su efecto.",
+  lineas:[{t:'Compare dos opciones',en:'compare'},{t:'Redacte un compromiso con una objeción pendiente',en:'redacte'},{t:'Explique cómo comprobará su efecto',en:'explique'}]}),
+ S_mapaMod({titulo:'Mapa del Módulo 3',centro:'Conversaciones que producen<br>comprensión y decisiones',txt:"En resumen. Escuchar es comprender y verificar antes de responder, y comunicar los límites con claridad. La justicia restaurativa reconoce el daño y busca responsabilización, reparación y no repetición. Y el diálogo construye consensos explícitos, con compromisos que se pueden verificar.",
+  arriba:[['Comprender y verificar<br>antes de responder','comprender'],['Daño, responsabilización,<br>reparación y no repetición','reconoce'],['Consensos explícitos y<br>compromisos verificables','consensos']],
+  abajo:[['Escuchar','y comunicar límites','Escuchar'],['Justicia restaurativa','reconocer y reparar','La justicia'],['Diálogo','construir consensos','Y el diálogo']]}),
+ S_planos({id:'FIN',entrada:'fundido',etiqueta:false,txt:"Antes de pasar al Módulo cuatro, aplique estas ideas a una conversación de su trabajo.",cola:60,cierre:'puertas',extra:70,
+  planos:[{clip:'L9',s:[1.1,1.0]}],
+  textos:[{html:G('Antes de pasar al Módulo 4,','#fff',56)+G('aplique estas ideas a una conversación de su trabajo','#FFC400',40),en:0,top:800}]})
+]);
+</script></body></html>

@@ -1,0 +1,68 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- M3 · Video 1 — Escuchar y poner límites (3.1.1 + 3.1.2). -->
+<link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="../pieza.css">
+<script src="../core.js"></script><script src="../pieza.js"></script><script src="voz_m3v1.js" onerror="window.VOZ=null"></script>
+</head><body><div id="raiz"></div>
+<canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
+<script>
+const L2=(a,b)=>`<div style="font:600 30px 'Work Sans';color:#FFC400">${a}</div><div style="font:800 58px/1.08 Montserrat;color:#fff;margin-top:6px">${b}</div>`;
+const G=(t,c='#fff',fs=60)=>`<div style="font:800 ${fs}px/1.08 Montserrat;color:${c}">${t}</div>`;
+const PL=t=>`<div style="font:600 32px 'Work Sans';color:#212529;background:#fff;padding:14px 28px;border-radius:40px;box-shadow:0 14px 34px rgba(0,0,0,.25)">${t}</div>`;
+const Q=t=>`<div style="font:italic 600 46px/1.18 'Work Sans';color:#fff;max-width:1500px">${t}</div>`;
+const PARADAS=['Escuchar para comprender','Cinco recursos','Comunicar un límite','El mensaje y el desacuerdo'];
+montar([
+ S_titulo({ante:'Módulo 3 · Lecciones 3.1.1 y 3.1.2',lineas:['Escuchar y','poner límites'],clip:'M2'}),
+ S_ruta({id:'RUTA1',ante:'Escuchar y poner límites',titulo:'En este video',modo:'agenda',entrada:'tren',paradas:PARADAS}),
+ S_planos({id:'B1',entrada:'iris',entradaOpt:{x:600,y:520},txt:"Una persona llega a la atención y dice: «Nos hicieron perder la mañana y nadie responde». La reacción defensiva sería discutir la palabra «nadie». La respuesta útil empieza por escuchar.",
+  planos:[{clip:'M1',ventana:[0,50],s:[1.12,1.02]},{clip:'M2',en:'La reacción',s:[1.02,1.1]}],
+  textos:[{html:Q('«Nos hicieron perder la mañana<br>y nadie responde»'),en:'«Nos',hasta:'La reacción',top:800},
+          {html:PL('Reacción defensiva: discutir la palabra «nadie»'),en:'La reacción',hasta:'La respuesta útil',top:120},
+          {html:'<div style="font:800 54px/1.1 Montserrat;color:#212529">La respuesta útil empieza por escuchar</div>',en:'La respuesta útil',banda:true,top:830,alto:150}]}),
+ S_planos({id:'B2',entrada:'tren',txt:"La escucha activa es una disposición para comprender y verificar lo que se expresa antes de responder. Pide atención, preguntas pertinentes y comprobar lo entendido. Así se sabe si la dificultad es falta de información, una barrera concreta, un compromiso pendiente o una mezcla de situaciones.",
+  planos:[{clip:'M3',s:[1.04,1.14]},{clip:'M4',en:'Así se sabe',s:[1.02,1.1]}],
+  textos:[{html:L2('Escucha activa','Comprender y verificar antes de responder'),en:0,hasta:'Así se sabe'},
+          {html:PL('Atención'),en:'Pide atención',hasta:'Así se sabe',top:110},{html:PL('Preguntas pertinentes'),en:'preguntas',hasta:'Así se sabe',top:200},{html:PL('Comprobar lo entendido'),en:'comprobar',hasta:'Así se sabe',top:290},
+          {html:G('¿Qué es la dificultad?','#FFC400',40),en:'Así se sabe',top:640},
+          {html:PL('Falta de información'),en:'falta de',top:720,left:120},{html:PL('Una barrera concreta'),en:'una barrera',top:720,left:560},{html:PL('Un compromiso pendiente'),en:'un compromiso',top:820,left:120},{html:PL('Una mezcla de situaciones'),en:'o una mezcla',top:820,left:600}]}),
+ S_cita({id:'B3',fondo:'M3',fuente:'Walden (s. f.)',tit:'Presencia empática',txt:"Walden relaciona la presencia empática con comprender significados, sentimientos y necesidades sin juzgar a quien habla. Y comprender la experiencia del otro no exige aceptar como comprobado todo lo que afirma.",
+  chips:[{t:'Comprender significados',en:'significados'},{t:'Sentimientos',en:'sentimientos'},{t:'Necesidades',en:'necesidades'},{t:'Sin juzgar a quien habla',en:'sin juzgar'},{t:'Comprender no es aceptar todo como comprobado',en:'Y comprender'}]}),
+ S_tarjetas({id:'B4',fondo:'M2_duoY',en0:0,alto:430,txt:"Rosenberg propone distinguir observaciones, sentimientos, necesidades y peticiones: describir conductas específicas, reconocer emociones sin diagnosticarlas y formular solicitudes realizables. Con lenguaje natural, no como una fórmula recitada.",
+  cab:{tit:'Cuatro distinciones',sub:'Rosenberg (2015) · con lenguaje natural, no como una fórmula recitada'},
+  items:[{tit:'Observaciones',def:'Describir conductas específicas.',ico:'ojo',en:'observaciones'},{tit:'Sentimientos',def:'Reconocer emociones sin diagnosticarlas.',ico:'globo',en:'sentimientos'},
+         {tit:'Necesidades',def:'Lo que la persona requiere.',ico:'manos',en:'necesidades'},{tit:'Peticiones',def:'Formular solicitudes realizables.',ico:'flecha',en:'peticiones'}]}),
+ S_matriz({id:'B5',entrada:'tren',fondo:'M5_duoG',cab:{tit:'Escuchar para precisar la dificultad',sub:'Cinco recursos · ejemplos hipotéticos'},cols:['Recurso','Función','Ejemplo'],anchos:[0.8,0.8,1.5],fs0:34,fs:29,
+  txt:"Cinco recursos ayudan. La pregunta abierta amplía la descripción: «¿Qué dificultad encontró al buscar el ingreso?». La pregunta de precisión ubica hechos verificables. La paráfrasis comprueba lo comprendido. El reconocimiento emocional acoge lo expresado: «Usted menciona frustración por tener que regresar». Y la síntesis delimita el paso siguiente.",
+  filas:[{c:['Pregunta abierta','Ampliar la descripción','¿Qué dificultad encontró al buscar el ingreso?'],ico:'pregunta',en:'La pregunta abierta',re:['amplía','«¿Qué']},
+         {c:['Pregunta de precisión','Ubicar hechos verificables','¿En qué aviso consultó ese horario?'],ico:'ojo',en:'La pregunta de precisión',re:['ubica','ubica']},
+         {c:['Paráfrasis','Comprobar lo comprendido','Entiendo que recibió dos indicaciones distintas; ¿es correcto?'],ico:'globo',en:'La paráfrasis',re:['comprueba','comprueba']},
+         {c:['Reconocimiento emocional','Acoger lo expresado','Usted menciona frustración por tener que regresar.'],ico:'manos',en:'El reconocimiento',re:['acoge','«Usted']},
+         {c:['Síntesis','Delimitar el paso siguiente','Revisaremos el aviso y el estado de su solicitud.'],ico:'check',en:'Y la síntesis',re:['delimita','delimita']}]}),
+ S_espectro({id:'B6',entrada:'amarillo',plano:{clip:'M2',ventana:[30,120]},cab:{ante:'Reconocer la emoción',tit:'Vincularlo con lo escuchado'},txt:"Evite decir «sé exactamente cómo se siente»: las experiencias son distintas. Prefiera algo vinculado con lo escuchado: «Por lo que cuenta, regresar le produjo una dificultad importante». Si la persona corrige su interpretación, ajuste la síntesis sin discutir su emoción.",
+  items:[{tit:'Supone',cita:'«Sé exactamente cómo se siente»',en:'«sé exactamente',bien:false,nota:'Las experiencias son distintas.'},
+         {tit:'Vincula',cita:'«Por lo que cuenta, regresar le produjo una dificultad importante»',en:'«Por lo que',bien:true}],
+  banda:{html:'Si la persona corrige su interpretación, ajuste la síntesis sin discutir su emoción.',en:'Si la persona'}}),
+ S_espectro({id:'B7',entrada:'tren',plano:{clip:'M7',ventana:[0,70]},cab:{ante:'Comunicar un límite',tit:'Tres formas de decir lo mismo'},txt:"Ahora, comunicar un límite. La respuesta evasiva, «después veremos qué se puede hacer», oculta el alcance. La descalificadora, «eso es imposible; usted no entiende», desautoriza a la persona. La asertiva precisa el límite y ofrece un paso: «Ese cambio requiere revisión técnica; puedo explicar qué información se evaluará».",
+  items:[{tit:'Evasiva',cita:'«Después veremos qué se puede hacer»',en:'La respuesta evasiva',bien:false,nota:'Oculta el alcance.'},
+         {tit:'Descalificadora',cita:'«Eso es imposible; usted no entiende»',en:'La descalificadora',bien:false,nota:'Desautoriza a la persona.'},
+         {tit:'Asertiva',cita:'«Ese cambio requiere revisión técnica; puedo explicar qué información se evaluará»',en:'La asertiva',bien:true,nota:'Precisa el límite y ofrece un paso.'}]}),
+ S_tarjetas({id:'B8',fondo:'M8_duoY',en0:0,alto:400,txt:"Antes de la conversación, separe cuatro contenidos: la decisión confirmada, las razones verificadas, los asuntos pendientes y las posibilidades de revisión. Si desconoce una razón, no improvise una explicación técnica.",
+  cab:{tit:'Antes de la conversación',sub:'Separe cuatro contenidos'},
+  items:[{tit:'Decisión confirmada',ico:'check',en:'la decisión'},{tit:'Razones verificadas',ico:'ojo',en:'las razones'},{tit:'Asuntos pendientes',ico:'reloj',en:'los asuntos'},{tit:'Posibilidades de revisión',ico:'registro',en:'las posibilidades'}],
+  banda:{html:'Si desconoce una razón, no improvise una explicación técnica.',en:'Si desconoce'}}),
+ S_mensaje({id:'B9',entrada:'tren',plano:{clip:'M6',ventana:[0,80]},intro:{hasta:'El mensaje'},cab:{ante:'Respuesta a la comunidad',tit:'Sobre el paso restringido'},txt:"Una comunidad pide reabrir un paso restringido, y usted no puede autorizarlo. El mensaje podría decir: «El paso permanece restringido según la información validada. Comprendo que el recorrido alternativo afecta su desplazamiento. No tengo competencia para autorizar su apertura; sí puedo registrar la barrera que describe y coordinar su revisión con el área competente».",
+  frases:[{t:'El paso permanece restringido según la información validada.',en:'«El paso',tag:'Decisión confirmada'},
+          {t:'Comprendo que el recorrido alternativo afecta su desplazamiento.',en:'Comprendo',tag:'Reconocimiento'},
+          {t:'No tengo competencia para autorizar su apertura;',en:'No tengo',tag:'Límite de competencia'},
+          {t:'sí puedo registrar la barrera que describe y coordinar su revisión con el área competente.',en:'sí puedo',tag:'Siguiente actuación'}]}),
+ S_planos({id:'B10',entrada:'amarillo',txt:"Si hay desacuerdo, delimite su objeto: «no coincidimos sobre el recorrido propuesto». Y si aparecen insultos, señale la conducta y proponga una condición: «Podemos revisar el problema si evitamos descalificaciones personales». Un límite protege la conversación; no sirve para silenciar una crítica legítima.",
+  planos:[{clip:'M7',ventana:[0,70],s:[1.1,1.02]},{clip:'M9',en:'Y si aparecen',s:[1.02,1.12]}],
+  textos:[{html:L2('Si hay desacuerdo','delimite su objeto'),en:0,hasta:'Y si aparecen'},
+          {html:PL('«No coincidimos sobre el recorrido propuesto»'),en:'«no coincidimos',hasta:'Y si aparecen',top:130},
+          {html:PL('Señale la conducta y proponga una condición'),en:'señale',hasta:'Un límite',top:120},
+          {html:Q('«Podemos revisar el problema si evitamos descalificaciones personales»'),en:'«Podemos',hasta:'Un límite',top:800},
+          {html:'<div style="font:800 46px/1.12 Montserrat;color:#212529;max-width:1500px">Un límite protege la conversación;<br>no sirve para silenciar una crítica legítima</div>',en:'Un límite',banda:true,top:810,alto:190}]}),
+ S_ruta({id:'RUTA2',ante:'Escuchar y poner límites',titulo:'Lo que vimos',modo:'repaso',entrada:'fundido',paradas:PARADAS}),
+ S_actividad({titulo:'En la actividad',sub:'Redacte una respuesta breve con cinco partes.',txt:"En la actividad, redacte una respuesta breve con cinco partes: la decisión, la razón disponible, el reconocimiento de la dificultad, el límite de competencia y la siguiente actuación.",
+  lineas:[{t:'La decisión',en:'la decisión'},{t:'La razón disponible',en:'la razón'},{t:'El reconocimiento de la dificultad',en:'el reconocimiento'},{t:'El límite de competencia',en:'el límite'},{t:'La siguiente actuación',en:'la siguiente'}]})
+]);
+</script></body></html>

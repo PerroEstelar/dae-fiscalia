@@ -1,0 +1,70 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- M3 · Video 2 — Justicia restaurativa (3.2.1 + 3.2.2). -->
+<link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="../pieza.css">
+<script src="../core.js"></script><script src="../pieza.js"></script><script src="voz_m3v2.js" onerror="window.VOZ=null"></script>
+</head><body><div id="raiz"></div>
+<canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
+<script>
+const L2=(a,b)=>`<div style="font:600 30px 'Work Sans';color:#FFC400">${a}</div><div style="font:800 58px/1.08 Montserrat;color:#fff;margin-top:6px">${b}</div>`;
+const G=(t,c='#fff',fs=60)=>`<div style="font:800 ${fs}px/1.08 Montserrat;color:${c}">${t}</div>`;
+const PL=t=>`<div style="font:600 32px 'Work Sans';color:#212529;background:#fff;padding:14px 28px;border-radius:40px;box-shadow:0 14px 34px rgba(0,0,0,.25)">${t}</div>`;
+const Q=t=>`<div style="font:italic 600 46px/1.18 'Work Sans';color:#fff;max-width:1500px">${t}</div>`;
+const PARADAS=['Daño y necesidades','Cinco conceptos','Responsabilizarse y reparar','Preparar un encuentro'];
+montar([
+ S_titulo({ante:'Módulo 3 · Lecciones 3.2.1 y 3.2.2',lineas:['Justicia','restaurativa'],clip:'N2'}),
+ S_ruta({id:'RUTA1',ante:'Justicia restaurativa',titulo:'En este video',modo:'agenda',entrada:'tren',paradas:PARADAS}),
+ S_planos({id:'B1',entrada:'iris',entradaOpt:{x:1000,y:420},txt:"Durante una reunión, una persona con responsabilidad de coordinación ridiculiza la pregunta de otra integrante. Después propone «hablar para olvidar el asunto». La persona afectada teme consecuencias si expresa su inconformidad.",
+  planos:[{clip:'N1',ventana:[0,50],s:[1.1,1.02]},{clip:'N3',en:'Después propone',s:[1.02,1.1]},{clip:'N2',en:'La persona afectada',s:[1.04,1.12]}],
+  textos:[{html:L2('Durante una reunión','Una persona con responsabilidad de coordinación ridiculiza una pregunta'),en:'ridiculiza',hasta:'Después propone'},
+          {html:Q('«Hablar para olvidar el asunto»'),en:'«hablar',hasta:'La persona afectada',top:820},
+          {html:'<div style="font:800 50px/1.1 Montserrat;color:#212529">La persona afectada teme consecuencias</div>',en:'teme',banda:true,top:830,alto:150}]}),
+ S_cita({id:'B2',fondo:'N5',fuente:'Zehr (2015)',tit:'La justicia restaurativa orienta la atención hacia…',txt:"La justicia restaurativa orienta la atención hacia las afectaciones, las necesidades de quienes las vivieron y las responsabilidades para responder. Zehr destaca el reconocimiento del daño y la participación de las personas involucradas.",
+  chips:[{t:'Las afectaciones',en:'las afectaciones'},{t:'Las necesidades de quienes las vivieron',en:'las necesidades'},{t:'Las responsabilidades para responder',en:'las responsabilidades'},{t:'Reconocer el daño',en:'el reconocimiento'},{t:'Participación de las personas involucradas',en:'la participación'}]}),
+ S_tarjetas({id:'B3',fondo:'N2_duoG',en0:0,alto:420,txt:"No todo desacuerdo es un daño. Una diferencia sobre prioridades puede requerir negociación; una respuesta humillante puede afectar la dignidad y la confianza. Y reconocer una afectación reportada no equivale a determinar responsabilidad jurídica en una conversación informal.",
+  cab:{tit:'No todo desacuerdo es un daño'},
+  items:[{tit:'Una diferencia sobre prioridades',def:'Puede requerir negociación.',ico:'balanza',en:'Una diferencia',rojo:false},{tit:'Una respuesta humillante',def:'Puede afectar la dignidad y la confianza.',ico:'rayo',en:'una respuesta humillante'}],
+  banda:{html:'Reconocer una afectación reportada no equivale a determinar responsabilidad jurídica en una conversación informal.',en:'Y reconocer'}}),
+ S_matriz({id:'B4',entrada:'tren',fondo:'blanco',cab:{tit:'Cinco conceptos para una respuesta restaurativa',sub:'Aplicaciones hipotéticas, informadas por Zehr (2015); no establecen consecuencias jurídicas'},cols:['Concepto','Pregunta de análisis','Aplicación hipotética'],anchos:[0.75,1,1.35],fs0:34,fs:29,
+  txt:"Cinco conceptos ordenan la respuesta. El daño: qué afectación se produjo. La necesidad: qué requiere quien resultó afectado. La responsabilización: qué actuación propia debe reconocerse. La reparación: qué acción puede atender esa afectación. Y la no repetición: qué condición debe cambiar.",
+  filas:[{c:['Daño','¿Qué afectación se produjo?','Una respuesta descalificadora deterioró el vínculo.'],ico:'rayo',en:'El daño'},
+         {c:['Necesidad','¿Qué requiere quien resultó afectado?','Ser escuchado y recibir información comprensible.'],ico:'manos',en:'La necesidad'},
+         {c:['Responsabilización','¿Qué actuación propia debe reconocerse?','Admitir que el mensaje emitido fue inadecuado.'],ico:'persona',en:'La responsabilización'},
+         {c:['Reparación','¿Qué acción puede atender esa afectación?','Rectificar el mensaje y explicar la corrección.'],ico:'check',en:'La reparación'},
+         {c:['No repetición','¿Qué condición debe cambiar?','Revisar cómo se validan las respuestas.'],ico:'escudo',en:'Y la no repetición'}]}),
+ S_espectro({id:'B5',entrada:'amarillo',plano:{clip:'N9',ventana:[0,90]},cab:{ante:'Responsabilizarse',tit:'Identificar la contribución propia'},txt:"Responsabilizarse es identificar la contribución propia y actuar sobre ella. Una disculpa que agrega «pero ustedes también provocaron» desplaza el reconocimiento. Compare «lamentamos que se haya sentido mal» con «la respuesta utilizó una expresión descalificadora; corresponde corregirla». La segunda identifica una actuación.",
+  items:[{tit:'Desplaza',cita:'«…pero ustedes también provocaron»',en:'«pero',bien:false,nota:'La disculpa condiciona el reconocimiento.'},
+         {tit:'Se queda en la reacción',cita:'«Lamentamos que se haya sentido mal»',en:'«lamentamos',bien:false},
+         {tit:'Identifica una actuación',cita:'«La respuesta utilizó una expresión descalificadora; corresponde corregirla»',en:'«la respuesta',bien:true}]}),
+ S_planos({id:'B6',entrada:'tren',txt:"La reparación se relaciona con la afectación: si un mensaje equivocado circuló entre varios equipos, corregirlo ante una sola persona deja intacto el problema. Y la no repetición revisa condiciones: quién valida la información y cómo se comunica una actualización.",
+  planos:[{clip:'N4',s:[1.02,1.12]},{clip:'M8',en:'Y la no repetición',ventana:[0,40],s:[1.1,1.02]}],
+  textos:[{html:L2('Reparación','Se relaciona con la afectación'),en:0,hasta:'Y la no repetición'},
+          {html:'<div style="font:800 44px/1.14 Montserrat;color:#212529;max-width:1500px">Corregirlo ante una sola persona<br>deja intacto el problema</div>',en:'corregirlo',hasta:'Y la no repetición',banda:true,top:820,alto:180},
+          {html:L2('No repetición','Revisa condiciones'),en:'Y la no repetición'},
+          {html:PL('¿Quién valida la información?'),en:'quién valida',top:120},{html:PL('¿Cómo se comunica una actualización?'),en:'cómo se comunica',top:210}]}),
+ S_tarjetas({id:'B7',fondo:'N5_duoY',en0:0,alto:420,txt:"La Oficina de las Naciones Unidas contra la Droga y el Delito reconoce aplicaciones restaurativas fuera del ámbito penal, y enfatiza participación voluntaria e informada, preparación, seguridad y atención a las desigualdades de poder.",
+  cab:{tit:'Aplicaciones fuera del ámbito penal',sub:'Oficina de las Naciones Unidas contra la Droga y el Delito (UNODC, 2020)'},
+  items:[{tit:'Participación voluntaria e informada',ico:'persona',en:'participación'},{tit:'Preparación',ico:'registro',en:'preparación'},{tit:'Seguridad',ico:'escudo',en:'seguridad'},{tit:'Atención a las desigualdades de poder',ico:'balanza',en:'atención a'}]}),
+ S_planos({id:'B8',entrada:'puertas',txt:"En el caso, una invitación al diálogo no resuelve la asimetría ni demuestra consentimiento libre. Antes de un encuentro conjunto, explore por separado qué necesita cada persona, qué entiende y qué riesgos identifica. Y no pida una aceptación delante de quien ejerce poder sobre ella.",
+  planos:[{clip:'N3',ventana:[30,120],s:[1.12,1.04]},{clip:'N5',en:'Antes de un encuentro',s:[1.02,1.1]},{clip:'N6',en:'qué entiende',s:[1.04,1.1]},{clip:'N1',en:'Y no pida',ventana:[0,50],s:[1.12,1.2]}],
+  textos:[{html:G('Una invitación al diálogo no resuelve la asimetría','#fff',50)+G('ni demuestra consentimiento libre','#FFC400',40),en:0,hasta:'Antes de un encuentro',top:800},
+          {html:L2('Antes de un encuentro conjunto','Explore por separado'),en:'Antes de un encuentro',hasta:'Y no pida'},
+          {html:PL('¿Qué necesita cada persona?'),en:'qué necesita',hasta:'Y no pida',top:120},{html:PL('¿Qué entiende?'),en:'qué entiende',hasta:'Y no pida',top:210},{html:PL('¿Qué riesgos identifica?'),en:'qué riesgos',hasta:'Y no pida',top:300},
+          {html:'<div style="font:800 44px/1.14 Montserrat;color:#212529;max-width:1500px">No pida una aceptación delante<br>de quien ejerce poder sobre ella</div>',en:'Y no pida',banda:true,top:820,alto:180}]}),
+ S_planos({id:'B9',entrada:'fundido',txt:"Unas sillas en círculo no garantizan que la conversación sea segura. La facilitación cuida los turnos, evita descalificaciones y precisa compromisos; no interroga para obtener una confesión ni obliga a repetir detalles dolorosos.",
+  planos:[{clip:'N7',s:[1.0,1.08]}],
+  textos:[{html:G('Unas sillas en círculo','#fff',56)+G('no garantizan que la conversación sea segura','#FFC400',40),en:0,hasta:'La facilitación',top:800},
+          {html:L2('La facilitación','cuida el proceso'),en:'La facilitación'},
+          {html:PL('Cuida los turnos'),en:'cuida',top:120},{html:PL('Evita descalificaciones'),en:'evita',top:210},{html:PL('Precisa compromisos'),en:'precisa',top:300},
+          {html:'<div style="font:800 40px/1.16 Montserrat;color:#212529;max-width:1560px">No interroga para obtener una confesión<br>ni obliga a repetir detalles dolorosos</div>',en:'no interroga',banda:true,top:820,alto:180}]}),
+ S_planos({id:'B10',entrada:'tren',txt:"Y se conservan las garantías: el artículo veintinueve de la Constitución establece el debido proceso, y el doscientos nueve orienta la función administrativa al interés general. No se acuerda omitir actuaciones exigibles ni cambiar silencio por una disculpa. No prometa confidencialidad absoluta si hay deberes de registro. Y si la persona decide no participar, la atención continúa.",
+  planos:[{clip:'N8',s:[1.04,1.14]},{clip:'N6',en:'No prometa',ventana:[40,120],s:[1.1,1.02]},{clip:'N5',en:'Y si la persona',ventana:[60,120],s:[1.08,1.14]}],
+  textos:[{html:L2('Se conservan las garantías','Constitución Política'),en:0,hasta:'No se acuerda'},
+          {html:PL('Art. 29 · Debido proceso'),en:'el artículo',hasta:'No se acuerda',top:120},{html:PL('Art. 209 · Función administrativa e interés general'),en:'y el doscientos',hasta:'No se acuerda',top:210},
+          {html:G('No se acuerda omitir actuaciones exigibles','#fff',48)+G('ni cambiar silencio por una disculpa','#FFC400',38),en:'No se acuerda',hasta:'No prometa',top:810},
+          {html:PL('Sin confidencialidad absoluta si hay deberes de registro'),en:'No prometa',hasta:'Y si la persona',top:120},
+          {html:'<div style="font:800 48px/1.1 Montserrat;color:#212529">Si la persona no participa, la atención continúa</div>',en:'Y si la persona',banda:true,top:830,alto:150}]}),
+ S_ruta({id:'RUTA2',ante:'Justicia restaurativa',titulo:'Lo que vimos',modo:'repaso',entrada:'fundido',paradas:PARADAS}),
+ S_actividad({titulo:'En la actividad',sub:'Analice el caso de la reunión.',txt:"En la actividad, identifique la asimetría, una condición que falta y una actuación inicial, y explique cuándo suspendería la conversación.",
+  lineas:[{t:'La asimetría',en:'la asimetría'},{t:'Una condición que falta',en:'una condición'},{t:'Una actuación inicial',en:'una actuación'},{t:'¿Cuándo suspendería la conversación?',en:'cuándo'}]})
+]);
+</script></body></html>
