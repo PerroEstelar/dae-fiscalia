@@ -21,8 +21,9 @@ serie). Bins iguales en el proyecto de Resolve `DAE MASTER - CURSOS`.
 ## Videos de profe a cámara
 
 En `profe/` (README propio), de Yefri Yoel Torrado Verjel, en «Videos» → «VIDEOS PROFE - Yefri
-Yoel Torrado Verjel»: la presentación del curso, el cierre de la U1 y el inicio y el cierre de la
-U2, de la U3 y de la U4 (16 nov 2026). El inicio de la U1 no está en el Drive (falta el mp4).
+Yoel Torrado Verjel»: la presentación del curso, el cierre de la U1, el inicio y el cierre de la
+U2, de la U3 y de la U4, y el cierre del curso (16 nov 2026). El inicio de la U1 no está en el
+Drive (falta el mp4); el inicio y el cierre de la U5 los subió JP el 16 nov y no se han pedido.
 
 ## Sin preguntas
 

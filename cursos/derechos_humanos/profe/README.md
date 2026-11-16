@@ -31,6 +31,9 @@ Drive del curso (de JP) → `VIDEOS` (`16xDO2LgXTBunKGEeu8BQzzMZ6pY-kX6w`):
 | `07. Video Cierre U3.mp4` | cierre U3, toma cruda 1620×1080, 2:37,7 | **entregado** (`plan_dh3c`) |
 | `08. Video Inicio U4.mp4` | inicio U4, toma cruda 1620×1080, 4:10,1 | **entregado** (`plan_dh4i`) |
 | `09. Video Cierre U4.mp4` | cierre U4, toma cruda 1620×1080, 2:58,2 | **entregado** (`plan_dh4c`) |
+| `10. Video Inicio U5.mp4` | inicio U5, subido por JP el 16 nov | sin procesar (no pedido aún) |
+| `11. Video Cierre U5.mp4` | cierre U5, subido por JP el 16 nov | sin procesar (no pedido aún) |
+| `12. Video Cierre del Curso.mp4` | cierre del curso, toma cruda 1620×1080, 1:16,6 | **entregado** (`plan_dhcc`) |
 
 Los cierres de la U1 y la U4 se transcribieron al principio y al final buscando el nombre del
 profe: no lo dice.
@@ -58,6 +61,7 @@ Torrado Verjel» (`1O1O4kbtNFGO4N7vtb-Ydph5K4PUZ3EQ1`).
 | Cierre de la unidad 3 | `plan_dh3c` | `DH - U3 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 3 CIERRE-v1.mp4` |
 | Inicio de la unidad 4 | `plan_dh4i` | `DH - U4 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 4 INICIO-v2.mp4` |
 | Cierre de la unidad 4 | `plan_dh4c` | `DH - U4 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 4 CIERRE-v1.mp4` |
+| Cierre del curso | `plan_dhcc` | `DH - CURSO - CIERRE` | `PRIO 2 - DERECHOS HUMANOS - CIERRE DEL CURSO-v1.mp4` |
 
 **Presentación del curso (16 nov 2026).** 6447 cuadros (4:28,9) = la línea; −16,1 LUFS, pico
 −2,0 dBTP; PSNR contra el máster 50,3 dB; 136 MB (`12hd2DkrGdZq__PXacd_fJYTTqe7yaJU7`). El
@@ -179,3 +183,18 @@ de 0,8 GB en `D:\DAE\_masters_archivo`).
 - 8 cartones y 2 listas de AE: por qué resistió la detención (fin, necesidad, proporcionalidad) y
   lo que el capturado debe poder hacer desde la aprehensión (cuatro filas sin título, después de
   la cita «La legitimidad también se juega antes de la audiencia»). Cobertura ≈ 75 %.
+
+**Cierre del curso (16 nov 2026).** 2652 cuadros (1:50,6) = la línea; −16,3 LUFS, pico
+−2,9 dBTP; PSNR contra el máster 50,5 dB; 59 MB (`1AtW7jGYfI6_sYPu4gJoBR2ad9X1IZe9p`). Disco:
+`…\CIERRE DEL CURSO\` (`.drt` en `10 TIMELINE SEBASTIAN`, fuente en `01 VIDEO`; el máster de
+407 MB en `D:\DAE\_masters_archivo`).
+- No estaba hecho: JP lo subió el mismo día y no había plan, carpeta ni entrega.
+- Sin arranques en falso, frases repetidas ni pausas largas: va entera. Subtítulo del cartón de
+  título «Cierre del curso», como en los otros cursos.
+- Retoma el caso del curso (el expediente de Carmen Elisa Rojas) y se despide. 4 cartones y 1
+  lista de AE (a qué invita la DAE: continuar profundizando, llevar los aprendizajes a la
+  práctica, conectarlos con sus desafíos; la última fila queda 5,5 s). Quedan sin gráfico
+  «Esperamos que este espacio haya contribuido…» y el agradecimiento de la DAE. El último cartón
+  se queda hasta «Gracias y hasta pronto». Cobertura ≈ 72 % (pieza de 76 s).
+- Después de mover el máster a D:, E: quedó con 2,9 GB: por debajo de los 3 GB que pide
+  `dh_cadena` para la pieza siguiente.
