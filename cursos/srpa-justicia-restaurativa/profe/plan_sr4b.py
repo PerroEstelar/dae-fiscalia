@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-r"""Bienvenida de la unidad 4 de SRPA (17 nov 2026).
+r"""Inicio (bienvenida) de la unidad 4 de SRPA (17 nov 2026).
 
 **Fuente.** `srpa_u4_inicio_v2_fuente.mp4` (Drive del curso → VIDEOS/UNIDADES,
 «SRPA_unidad_4_inicio_v2.mp4», `1lDPp4niSdZZ1th82hPZfZOmxcn6S3x02`, subida el 17 nov): grabación
@@ -44,8 +44,11 @@ MAXW = columna(560)
 LT = (44, 560)
 K_CORTE = 3522
 globals().update(armar(
-    'srpa_u4_inicio_v2_fuente.mp4', 'UNIDAD 4/BIENVENIDA', 4, 'SRPA - U4 - BIENVENIDA', 'srpa - U4 - BIENVENIDA',
+    'srpa_u4_inicio_v2_fuente.mp4', 'UNIDAD 4/BIENVENIDA', 4, 'SRPA - U4 - INICIO', 'srpa - U4 - INICIO',
     'SR4B', [(0.0, K_CORTE / 30.0, None)]))
+# Sebastián (17 nov, con la pieza ya subida como BIENVENIDA): «cambia el nombre a inicio, siempre
+# serán inicio y cierre». Se renombraron la entrega, el máster y la línea; la carpeta y el bin
+# siguen siendo `UNIDAD 4/BIENVENIDA`, para no mover los medios de una línea ya armada.
 
 ITEMS = [
     ('lt01', 'lt', 1.0, 9.0, CARLOS),

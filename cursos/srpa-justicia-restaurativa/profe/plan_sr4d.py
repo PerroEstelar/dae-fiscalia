@@ -28,9 +28,15 @@ contra el cuadro anterior y diferencia del panel DAE/Fiscalía contra su mediana
 Borde izquierdo de la cabeza: x 588 (p50), 521 (p5), 453 (p1) de la fuente → x≈968, 855 y 741 de
 salida. Con la caja en x 86–750 de salida, la persona pasa del 1,5 % de la caja 12,5 s en todo el
 archivo (manos, de a medio segundo; `caja_u4.log`). **Columna de 560.**
-**Plano cerrado 960×540 desde (20, 34), ×2,0**: el panel DAE/Fiscalía (x 35–497, y 42–142) entra
-entero. En los cuatro tramos el tope de la cabeza va de y 148 a 240 y el borde derecho no pasa de
-x 914 (`cerrado_u4.log`): el mentón queda dentro (la ventana termina en y=574).
+**Plano cerrado 960×540 desde (20, 34), ×2,0**, en los tres primeros: el panel DAE/Fiscalía
+(x 35–497, y 42–142) entra entero. El tope de la cabeza va de y 148 a 218 y el borde derecho no
+pasa de x 914 (`cerrado_u4.log`): el mentón queda dentro (la ventana termina en y=574). No hay
+ventana que deje el panel afuera sin cortar la cabeza.
+**El último plano cerrado es otro: 960×540 desde (140, 146)**, sin el panel. En esa toma el profe
+está más abajo (tope en y 238) y al final se inclina: con la ventana de los otros tres el mentón
+tocaba el borde y en el último medio segundo se cortaba la boca. Se vio en la tira de 4 cuadros
+por segundo de la simulación, con el compuesto v1 ya hecho. El **compuesto v2** cambia solo esos
+99 cuadros (ver `COMPUESTO` más abajo).
 
 **Textos.** Sus palabras, sin muletillas. Los nombres de las lecciones, los de la ficha. «Howard
 Zehr» y «Flórez y Peña (2025)», como los escribe la ficha (Scribe oyó «Johan Ser» y «Flores»).
@@ -49,6 +55,7 @@ XY, VENTANA = (12, 30), (1143, 643)
 MAXW = columna(560)
 LT = (44, 560)
 CERRADO = (20, 34, 960, 540)
+CERRADO_FINAL = (140, 146, 960, 540)
 K_INI, K_FIN = 3570, 60390
 K_CUBO, K_LIMPIO = 23181, 23212
 K_C1, K_R1 = 24199, 24366
@@ -60,8 +67,14 @@ globals().update(armar(
     'SR4D', [(K_INI / 30.0, K_C1 / 30.0, None), (K_C1 / 30.0, K_R1 / 30.0, CERRADO),
              (K_R1 / 30.0, K_C2 / 30.0, None), (K_C2 / 30.0, K_R2 / 30.0, CERRADO),
              (K_R2 / 30.0, K_C3 / 30.0, None), (K_C3 / 30.0, K_R3 / 30.0, CERRADO),
-             (K_R3 / 30.0, K_C4 / 30.0, None), (K_C4 / 30.0, K_FIN / 30.0, CERRADO)]))
+             (K_R3 / 30.0, K_C4 / 30.0, None), (K_C4 / 30.0, K_FIN / 30.0, CERRADO_FINAL)]))
 CONGELA = [(K_CUBO / 30.0, K_LIMPIO / 30.0)]
+# v2 del compuesto: el último plano cerrado con CERRADO_FINAL. Son los últimos 99 cuadros y la v1
+# tiene un cuadro clave justo en el corte (el 56721 del compuesto): se codificaron solo esos 99 con
+# la misma receta y se pegaron a los primeros 56.721 de la v1 sin recodificar; el audio es el de la
+# v1 (`D:\DAE\_tmp\sr_ta\cola_sr4d.py`, que compara cuadro a cuadro). La v1 está en
+# `01 VIDEO/_descartes`.
+COMPUESTO = R + '/01 VIDEO/SR4D_compuesto_v2.mp4'  # noqa: F821
 
 ITEMS = [
     ('lt01', 'lt', 120.0, 128.0, CARLOS),
