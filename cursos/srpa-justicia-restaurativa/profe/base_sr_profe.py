@@ -23,6 +23,11 @@ de E:. Los bins de Resolve son los del curso. El proyecto de AE es el de siempre
 (`E:\…\00 MOTION GRAPHICS\SRPA_mg.aep`). Los másters de 32 Mb/s van a
 `D:\DAE\_masters_archivo\PRIORIDAD 1\CURSO - SRPA Y JUSTICIA RESTAURATIVA\`.
 
+**Unidad 4 (17 nov 2026).** Ese mismo día llegó `SRPA_unidad_4_inicio_v2.mp4`: la bienvenida y
+la clase de la unidad 4 en un solo archivo, de Carlos Humberto Ramírez Romero. Son dos piezas,
+como en la unidad 3: `plan_sr4b` (bienvenida) y `plan_sr4d` (desarrollo). Él no está tan cerca de
+la cámara: la columna es de 560 (`columna(560)`).
+
 Los tiempos de cada plan están en segundos de la fuente.
 """
 import os
@@ -53,6 +58,16 @@ ANCHO = MAXW
 LT = (40, 440)
 AUDIO_META = 'I=-16:TP=-3:LRA=7'
 ESTANISLAO = S.ESTANISLAO
+CARLOS = S.CARLOS
+
+
+def columna(ancho):
+    """Ancho de la columna de cartones y listas de un plan que no usa el de la base (470). El plan
+    lo guarda en su `MAXW` (lo lee `ic_pieza.ajustes`) y acá queda para repartir los renglones:
+    `MAXW = columna(560)`. Un plan por proceso: el ancho queda puesto para lo que se importe después."""
+    global ANCHO
+    ANCHO = ancho
+    return ancho
 
 
 def cuadro_de(tramos):
