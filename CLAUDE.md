@@ -2616,3 +2616,19 @@ Qué se hizo y qué queda:
   `componer`, `titulo` o `cartones`. Antes solo cortaba si fallaba el gráfico, y una entrega
   podía armar la línea con el compuesto a medias.
 - Los logs de la corrida fallida quedan como `*_fallo_disco_E.log`.
+
+**Y la medida de 3 GB llega tarde** (cierre de la U5 de DH, 16 nov 2026). `dh_cadena` mide E:
+después de esperar la fuente, y la copia de la fuente ya está en E:. Con 3,27 GB libres y una
+fuente de 339 MB, cortó con «SIN ESPACIO EN E:». Lo que se mueve sin romper nada:
+
+- **Los másters** de 32 Mb/s (`05 EXPORTS\_master`): nadie los referencia.
+- **Las fuentes crudas** (`01 VIDEO\<NN>. Video ….mp4`) de las piezas ya entregadas: la línea de
+  Resolve usa el compuesto, y la fuente solo la leen `componer` y `reimagen`. Van a
+  `D:\DAE\_masters_archivo\…\<pieza>\fuente\` (`D:\DAE\_tmp\dh_profe\mover_fuentes.py`), con un
+  `LEER - la fuente esta en D.txt`. Para recomponer una pieza hay que devolverla a su `01 VIDEO`.
+- Los compuestos, cartones y listas **no**: están en las líneas, y moverlos obliga a `RelinkClips`.
+
+**Una tira de cuadros no puede caer dentro de un corte.** `cuadro_de` lanza
+`ValueError('… cae en un corte')` para un tiempo que el plan quitó, y la simulación (`dh_sim*.py`)
+murió sin escribir la tira del plano cerrado. Las tiras se parten a los dos lados del corte:
+`{'antes': (72.0, 73.95), 'cerrado': (74.7, 78.6)}`.

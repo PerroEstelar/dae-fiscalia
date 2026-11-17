@@ -32,7 +32,7 @@ Drive del curso (de JP) → `VIDEOS` (`16xDO2LgXTBunKGEeu8BQzzMZ6pY-kX6w`):
 | `08. Video Inicio U4.mp4` | inicio U4, toma cruda 1620×1080, 4:10,1 | **entregado** (`plan_dh4i`) |
 | `09. Video Cierre U4.mp4` | cierre U4, toma cruda 1620×1080, 2:58,2 | **entregado** (`plan_dh4c`) |
 | `10. Video Inicio U5.mp4` | inicio U5, toma cruda 1620×1080, 2:50,7 | **entregado** (`plan_dh5i`) |
-| `11. Video Cierre U5.mp4` | cierre U5, subido por JP el 16 nov | sin procesar (no pedido aún) |
+| `11. Video Cierre U5.mp4` | cierre U5, toma cruda 1620×1080, 2:46,9 | **entregado** (`plan_dh5c`) |
 | `12. Video Cierre del Curso.mp4` | cierre del curso, toma cruda 1620×1080, 1:16,6 | **entregado** (`plan_dhcc`) |
 
 Los cierres de la U1 y la U4 se transcribieron al principio y al final buscando el nombre del
@@ -62,6 +62,7 @@ Torrado Verjel» (`1O1O4kbtNFGO4N7vtb-Ydph5K4PUZ3EQ1`).
 | Inicio de la unidad 4 | `plan_dh4i` | `DH - U4 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 4 INICIO-v2.mp4` |
 | Cierre de la unidad 4 | `plan_dh4c` | `DH - U4 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 4 CIERRE-v1.mp4` |
 | Inicio de la unidad 5 | `plan_dh5i` | `DH - U5 - INICIO PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 5 INICIO-v1.mp4` |
+| Cierre de la unidad 5 | `plan_dh5c` | `DH - U5 - CIERRE PROFE` | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 5 CIERRE-v1.mp4` |
 | Cierre del curso | `plan_dhcc` | `DH - CURSO - CIERRE` | `PRIO 2 - DERECHOS HUMANOS - CIERRE DEL CURSO-v1.mp4` |
 
 **Presentación del curso (16 nov 2026).** 6447 cuadros (4:28,9) = la línea; −16,1 LUFS, pico
@@ -218,3 +219,28 @@ de 781 MB en `D:\DAE\_masters_archivo`).
 - Antes de empezar, E: tenía 2,9 GB (la cadena pide 3). Se movió a D: el máster de la
   introducción del curso de Bienes (1,4 GB, mismo procedimiento, con su `LEER`). Después de
   mover también este máster, E: quedó con 3,3 GB.
+
+**Cierre de la unidad 5 (16 nov 2026).** 4800 cuadros (3:20,2) = la línea; −16,2 LUFS, pico
+−2,9 dBTP; PSNR contra el máster 50,3 dB; 107 MB (`10FEwWnuO1cafOajaQMjKR5Mx1wOfq263`). Disco:
+`…\UNIDAD 5 - CIERRE PROFE\` (`.drt` en `10 TIMELINE SEBASTIAN`, fuente en `01 VIDEO`; el máster
+de 740 MB en `D:\DAE\_masters_archivo`).
+- Un corte: en «exige el principio de proporcionalidad, garan-- respeto de garantías» se quitó
+  «garan--» (74,00–74,70), con silencio a los dos lados. Scribe sobre el compuesto oye
+  «proporcionalidad, respeto de garantías y trato digno», con una pausa de 0,64 s. Después, el
+  plano cerrado hasta la pausa antes de «Y en esta» (78,00), sin gráficos; revisado a 4 cuadros
+  por segundo. El otro tropiezo, «conexidad con-- de los casos», queda: no hay silencio donde
+  cortar (−34 dB).
+- Sigue de cerca el guion de cierre de la ficha («Una decisión bien reponderada coincide…» donde la
+  ficha dice «Las decisiones modelo coinciden…»).
+- 8 cartones y 4 listas de AE: lo que se hizo ante la nueva amenaza, el repaso de las unidades 1 a
+  4 (la 5 va en su propio cartón, después del plano cerrado), cómo se previene en el despacho y el
+  plan de transferencia. Quedan sin gráfico «La amenaza mostró que la fuente de riesgo es la
+  estructura criminal», «Cinco unidades y un solo aprendizaje», la primera sentencia de la Corte
+  Interamericana y el agradecimiento. Cobertura ≈ 79 %.
+- La cadena cortó la primera vez con «SIN ESPACIO EN E:»: había 3,27 GB, pero la copia de la fuente
+  (339 MB) entra antes de medir. Se movieron a D: las fuentes crudas (`01 VIDEO`) de las diez
+  piezas ya entregadas (3,9 GB), a `D:\DAE\_masters_archivo\…\<pieza>\fuente\`, con un
+  `LEER - la fuente esta en D.txt` en cada `01 VIDEO`. La línea de Resolve usa el compuesto, no la
+  fuente: la fuente solo hace falta para recomponer. E: quedó con 6,1 GB.
+- Con esta pieza están los once videos de profe que hay en `VIDEOS`. Falta el inicio de la U1, que
+  no está en el Drive.
