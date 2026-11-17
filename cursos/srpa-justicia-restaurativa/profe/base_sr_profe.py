@@ -25,7 +25,7 @@ de E:. Los bins de Resolve son los del curso. El proyecto de AE es el de siempre
 
 **Unidad 4 (17 nov 2026).** Ese mismo día llegó `SRPA_unidad_4_inicio_v2.mp4`: la bienvenida y
 la clase de la unidad 4 en un solo archivo, de Carlos Humberto Ramírez Romero. Son dos piezas,
-como en la unidad 3: `plan_sr4b` (bienvenida) y `plan_sr4d` (desarrollo). Él no está tan cerca de
+como en la unidad 3: `plan_sr4b` (inicio) y `plan_sr4d` (desarrollo). Él no está tan cerca de
 la cámara: la columna es de 560 (`columna(560)`).
 
 Los tiempos de cada plan están en segundos de la fuente.

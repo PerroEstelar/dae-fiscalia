@@ -39,14 +39,23 @@ MAXW = getattr(P, 'MAXW', 615)
 
 
 def ct(t):
-    """Segundo de la fuente -> segundo del compuesto."""
-    return (P.cuadro(t) - P.CLIP0) / P.FPS
+    """Segundo de la fuente -> segundo del compuesto, exacto: se suman los tramos anteriores. Antes
+    pasaba por `P.cuadro` (la rejilla de 23,976 de la línea) y el cuadro podía ser el de al lado."""
+    acum = 0.0
+    for a, b, _w in getattr(P, 'TRAMOS', None) or [(P.T0, P.T1, None)]:
+        if a - 1e-6 <= t and (b is None or t <= b + 1e-6):
+            return acum + t - a
+        acum += b - a
+    raise ValueError('%.2f cae en un corte' % t)
 
 
 def cuadro_comp(t, out):
+    """El cuadro del compuesto que está en pantalla en el segundo t. Se busca 4 ms antes: con el
+    tiempo redondeado a milésimas, un cuadro en 687,66667 se pedía como 687,667 y salía el siguiente
+    (desarrollo de la U4 de SRPA: las tiras cuadro a cuadro de los cortes salían corridas un cuadro)."""
     if os.path.exists(out):
         os.remove(out)
-    subprocess.run([FB + '/ffmpeg.exe', '-y', '-v', 'error', '-ss', '%.3f' % max(0.0, t), '-i', P.COMPUESTO,
+    subprocess.run([FB + '/ffmpeg.exe', '-y', '-v', 'error', '-ss', '%.4f' % max(0.0, t - 0.004), '-i', P.COMPUESTO,
                     '-frames:v', '1', out])
     return Image.open(out).convert('RGBA')
 
@@ -100,8 +109,10 @@ for arg in sys.argv[2:]:
             t += 0.25
     else:
         nombre, t = arg.split('@')
-        c0 = ct(float(t))
-        ts = [(c0 + (k - 12) / 30.0, '%+d' % (k - 12)) for k in range(24)]
+        fc = str(getattr(P, 'FPS_COMPUESTO', 30)).split('/')
+        fc = float(fc[0]) / float(fc[1]) if len(fc) > 1 else float(fc[0])
+        k0 = int(round(ct(float(t)) * fc))        # el cuadro del compuesto que empieza en t
+        ts = [((k0 + k - 12) / fc, '%+d' % (k - 12)) for k in range(24)]
     tl = []
     for tc, rot in ts:
         im = cuadro_comp(tc, T + 'c.png').convert('RGB').resize((480, 270))
