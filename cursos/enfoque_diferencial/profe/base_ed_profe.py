@@ -62,6 +62,9 @@ ICONOS = AE_DIR + '/iconos'
 # EN LA PRÁCTICA DEL FISCAL»), que copia el de la carpeta vecina de Justicia restaurativa, y no se
 # cruzó contra el documento del curso. Sebastián: «deben decir únicamente Enfoque diferencial».
 CURSO_LINEAS = ['Enfoque diferencial']
+# La entrega vigente de los 12 es la v2 (el título se corrigió con `retitular.py` el 17 nov, sin
+# volver a codificar el cuerpo). Un cambio nuevo en un video va como v3, con `VERSION = 3` en su plan.
+VERSION = 2
 TITULO_BASE = None
 XY, VENTANA = (0, 40), (1440, 810)
 MATRIZ_FUENTE = 'bt709'

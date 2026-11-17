@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-r"""Rutas del curso «Enfoque diferencial en la práctica del fiscal»
-(PRIORIDAD 2).
+r"""Rutas del curso «Enfoque diferencial» (PRIORIDAD 2).
 
 EL ARBOL, IGUAL EN DISCO Y EN LOS BINS DE RESOLVE
     E:\DAE MASTER\PRIORIDAD 2\CURSO - ENFOQUE DIFERENCIAL\

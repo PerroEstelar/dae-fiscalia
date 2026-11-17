@@ -1,4 +1,8 @@
-# Enfoque diferencial en la práctica del fiscal · PRIORIDAD 2
+# Enfoque diferencial · PRIORIDAD 2
+
+**El curso se llama «Enfoque diferencial»** (formato de diseño FGN-AP01-F-204, «Nombre del
+curso: ENFOQUE DIFERENCIAL»). «…en la práctica del fiscal» es solo el nombre de la carpeta de
+Drive y no va en ningún video: ver «Título corregido» en `profe/README.md`.
 
 Carpeta del Drive: `1gp1dof3SncgICHNNiuEW3HHBYxdSCZDJ` («PRIORIDAD 2 -
 ENFOQUE DIFERENCIAL EN LA PRÁCTICA DEL FISCAL»). Los cinco casos no son de

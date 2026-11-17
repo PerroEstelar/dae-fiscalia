@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-r"""Cláusulas, lugares y reparto del curso «Enfoque diferencial en la
-práctica del fiscal» (PRIORIDAD 2).
+r"""Cláusulas, lugares y reparto del curso «Enfoque diferencial»
+(PRIORIDAD 2).
 
 EL SISTEMA ES EL DE LA SERIE
     Estilo de `base_df_v1` en su versión corta (la de Ley 1826, que salió

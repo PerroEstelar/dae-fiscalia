@@ -135,7 +135,57 @@ y `ajusta.py` recorta a tiempo de lectura (10 car/s) y quita solapes.
   `D:\DAE\_tmp\ed_profes\master`, se usa para la entrega, se verifica y va a la papelera de
   Windows. En `05 EXPORTS\_master` queda un `LEER` que lo dice.
 
-## Entregas (15 nov 2026)
+## Título corregido: entregas v2 (17 nov 2026)
+
+Sebastián: «todos los videos de Enfoque diferencial el título está mal, deben decir únicamente
+Enfoque diferencial; en este momento está apareciendo Enfoque diferencial en la práctica del
+fiscal».
+
+- **De dónde salió el título largo.** Del nombre de la carpeta del curso en Drive («PRIORIDAD 2 -
+  ENFOQUE DIFERENCIAL EN LA PRÁCTICA DEL FISCAL», creada el 26 oct copiando el patrón de la de
+  Justicia restaurativa). Pasó a `guion_ed.CURSO` el 3 nov y a `base_ed_profe.CURSO_LINEAS` el
+  15 nov sin cruzarlo con el formato de diseño del curso (FGN-AP01-F-204), que dice «Nombre del
+  curso: ENFOQUE DIFERENCIAL». Error mío.
+- **Dónde aparecía.** Solo en el cartón de título de estos 12 videos: al principio (cuadros
+  194–408) y antes del outro. Los 5 casos animados llevan «Enfoque diferencial · Caso N» y no se
+  tocaron.
+- **Cómo se corrigió.** `CURSO_LINEAS = ['Enfoque diferencial']`, cartones nuevos
+  (`02 CARTONES/carton titulo <clave> v2.mp4`) y `herramientas/montaje/retitular.py`: cambia el
+  cartón en la línea de Resolve, rinde y codifica solo la cabeza y la cola, y copia el cuerpo de
+  la v1 sin recodificar. En las 12: cuadros = línea, cuerpo idéntico paquete a paquete, audio
+  idéntico (md5), PSNR de las partes nuevas contra Resolve 53 dB de media (mín. 45) y
+  decodificación completa sin errores. Hojas: `D:\DAE\_tmp\ed_profes\<clave>\retitular_hoja.jpg`.
+- **Drive.** Las 12 v2 se copiaron con `subir_exclusivo` y se compararon byte a byte con
+  `verificar_drive.py` (12 «OK»). Las 12 v1 están en la papelera de Drive: **los enlaces viejos
+  ya no sirven**. En la carpeta quedan solo las 12 v2.
+- **Disco.** En `05 EXPORTS` queda solo la v2; la v1 y, en seis carpetas, una primera pasada de
+  la v2 (misma imagen, con los SPS/PPS repetidos en cada cuadro clave) están en
+  `05 EXPORTS\_descartes`, con un `LEER`. El cartón viejo, en `02 CARTONES\_descartes`.
+- **Resolve.** Las 12 líneas llevan el cartón nuevo; el `.drt` nuevo está en
+  `10 TIMELINE SEBASTIAN` y el anterior en su `_descartes` («… (titulo anterior).drt»).
+- **Planes.** `base_ed_profe.VERSION = 2`. Un cambio nuevo en un video va como v3.
+
+| entrega (Drive) | cuadros | empalmes (cabeza · cola) | bytes | Drive |
+|---|---|---|---|---|
+| `enfoquediferencial - CURSO - INICIO-v2.mp4` | 3.406 | 409 · 2997 | 78.334.541 | `1jNhmwG74BcacjDC5VvXj8wQ1DMIfmc5g` |
+| `… - U1 - INICIO-v2.mp4` | 1.857 | 409 · 1448 | 38.257.312 | `19Ki9wkvy-E1TDK_VPgfl0zyqfUdH7l6B` |
+| `… - U1 - CIERRE-v2.mp4` | 32.647 | 409 · 32233 (cierre en 32238) | 810.377.276 | `1yBMRi5eWe0gBzTKgm-BqyW5xw8OGfWLf` |
+| `… - U2 - INICIO-v2.mp4` | 1.815 | 409 · 1406 | 38.664.785 | `11D0z5p5oVOsfxPDM0F2BUAh8d0Kgjfyy` |
+| `… - U2 - CIERRE-v2.mp4` | 31.986 | 409 · 31561 (cierre en 31577) | 870.446.867 | `1dLOLoi3zNMntagxYzXyo9XAwsnRx-str` |
+| `… - U3 - INICIO-v2.mp4` | 1.983 | 409 · 1561 (cierre en 1574) | 42.504.718 | `1YpmTo4hpFjQx_8-u8rBcZRxIRzCeArG_` |
+| `… - U3 - CIERRE-v2.mp4` | 38.558 | 409 · 38137 (cierre en 38149) | 1.232.427.270 | `1vc5ifM_2LjfDtMb91lyaqjAR-DdZlG5-` |
+| `… - U4 - INICIO-v2.mp4` | 1.744 | 409 · 1321 (cierre en 1335) | 34.274.489 | `17lyuSJmr2w3XdUd-m6UyWctJRD11Zuok` |
+| `… - U4 - CIERRE-v2.mp4` | 37.952 | 409 · 37543 | 950.572.513 | `1Pv1lBHUpBRhlEQ2lxcZWaWiEYrzMP_6E` |
+| `… - U5 - INICIO-v2.mp4` | 1.723 | 409 · 1314 | 34.315.951 | `1TpMS5YdZWAn8-sdsASBpoZ2oQ4E8JGcR` |
+| `… - U5 - CIERRE-v2.mp4` | 40.892 | 409 · 40483 | 1.186.616.683 | `1NVWr-hsvnffKpdeZoZUMyGwW9X11D3LJ` |
+| `enfoquediferencial - CURSO - CONCLUSIONES-v2.mp4` | 3.708 | 409 · 3289 (cierre en 3299) | 91.544.516 | `1cQAXXzFYeWhax-04dmRcmh_csClmZI1M` |
+
+Largo, sonoridad y gráficos son los de la v1 (tabla de abajo): el audio y el cuerpo no cambiaron.
+Las copias locales siguen llamándose `PRESENTACION` / `CONTENIDO`; en Drive, `INICIO` / `CIERRE`.
+
+## Entregas v1 (15 nov 2026; reemplazadas por las v2 el 17 nov)
+
+Los ids de esta sección son de las v1, que están en la papelera de Drive.
 
 Drive: carpeta VIDEOS del curso →
 [VIDEOS PROFE - Camilo Borrero García](https://drive.google.com/drive/folders/1LNFO7X0A15EnIifpRpEycKcGW1LIqYLA)

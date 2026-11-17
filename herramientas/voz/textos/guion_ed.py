@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-r"""Curso «Enfoque diferencial en la práctica del fiscal» (PRIORIDAD 2) ·
-cinco videos.
+r"""Curso «Enfoque diferencial» (PRIORIDAD 2) · cinco videos.
 
 LA FUENTE (Drive de la agencia)
     Carpeta «PRIORIDAD 2 - ENFOQUE DIFERENCIAL EN LA PRÁCTICA DEL FISCAL»
