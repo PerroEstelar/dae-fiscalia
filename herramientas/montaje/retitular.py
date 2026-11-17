@@ -22,10 +22,10 @@ video a tiempo real; el cuerpo no cambia.
    (`mp4_entrega.VIDEO`).
 4. Copia el cuerpo de la entrega vieja sin recodificar, pega cabeza + cuerpo + cola con el
    demuxer `concat` y le pone el audio de la entrega vieja, tal cual.
-5. Verifica: cuadros = línea; SPS/PPS iguales en las tres partes; el cuerpo, cuadro a cuadro,
-   idéntico al de la entrega vieja (`framemd5`); pts seguidos de punta a punta; audio idéntico
-   (md5 de los paquetes); decodificación completa sin errores; PSNR de la cabeza y la cola
-   contra lo que rindió Resolve. Deja una hoja con cuadros del título, del cierre y de los
+5. Verifica: cuadros = línea; SPS/PPS iguales en las tres partes; el cuerpo idéntico al de la
+   entrega vieja, paquete a paquete (md5 de cada paquete de video); pts seguidos de punta a
+   punta y en la rejilla; audio idéntico (md5 de los paquetes); decodificación completa sin
+   errores; PSNR de la cabeza y la cola contra lo que rindió Resolve. Deja una hoja con cuadros del título, del cierre y de los
    empalmes.
 6. Vuelve a exportar el `.drt` (el anterior va a `_descartes`).
 
@@ -100,9 +100,20 @@ def paquetes(f):
     return out
 
 
-def md5_cuadros(f):
-    r = run([FF, '-v', 'error', '-i', f, '-an', '-f', 'framemd5', '-']).stdout
-    return [x.split(',')[-1].strip() for x in r.splitlines() if x and not x.startswith('#')]
+def md5_paquetes(f):
+    """md5 de cada paquete de video, sin decodificar: {cuadro: (bytes, md5)}. Con los mismos SPS/PPS,
+    paquetes iguales son cuadros iguales. (La primera versión comparaba los cuadros decodificados,
+    `framemd5` sin `-c copy`: en los videos cortos dio lo mismo, y en uno de 23 minutos tardaba
+    cuatro minutos por archivo.)"""
+    r = run([FF, '-v', 'error', '-i', f, '-map', '0:v:0', '-c', 'copy', '-f', 'framemd5', '-']).stdout
+    den, out = 24000, {}
+    for ln in r.splitlines():
+        if ln.startswith('#tb'):
+            den = int(ln.split('/')[-1])
+        elif ln and not ln.startswith('#'):
+            c = [x.strip() for x in ln.split(',')]
+            out[int(round(int(c[2]) * 24000 / (den * 1001.0)))] = (c[4], c[5])
+    return out
 
 
 def extradata(f):
@@ -259,11 +270,11 @@ k0 = min(a for a, _b in pk)
 ok_pts = bool(orden) and all(abs(a - (k0 + i)) < 1e-3 for i, a in enumerate(orden))
 p('cuadros', len(pn), '/ línea', largo, 'OK' if ok_n else 'FALLA', '| pts seguidos y en la rejilla', ok_pts, 'primero', orden[0] if orden else None,
   '| claves en los empalmes', [k for k in sorted(int(round(a)) for a, b in pn if b) if k in (0, k_cab, k_col)])
-a, b = md5_cuadros(vieja), md5_cuadros(tmp)
-ok_cuerpo = len(a) == len(b) == largo and a[k_cab:k_col] == b[k_cab:k_col]
-dif_cab = sum(1 for x, y in zip(a[:k_cab], b[:k_cab]) if x != y)
-dif_col = sum(1 for x, y in zip(a[k_col:], b[k_col:]) if x != y)
-p('cuerpo idéntico cuadro a cuadro (%d cuadros):' % n_cuerpo, ok_cuerpo, '| cuadros que cambian en la cabeza', dif_cab, 'y en la cola', dif_col)
+a, b = md5_paquetes(vieja), md5_paquetes(tmp)
+ok_cuerpo = len(a) == len(b) == largo and all(k in a and a.get(k) == b.get(k) for k in range(k_cab, k_col))
+dif_cab = sum(1 for k in range(0, k_cab) if a.get(k) != b.get(k))
+dif_col = sum(1 for k in range(k_col, largo) if a.get(k) != b.get(k))
+p('cuerpo idéntico paquete a paquete (%d cuadros):' % n_cuerpo, ok_cuerpo, '| paquetes que cambian en la cabeza', dif_cab, 'y en la cola', dif_col)
 ma, mb = md5_audio(vieja), md5_audio(tmp)
 p('audio idéntico:', ma == mb and bool(ma), ma)
 r = subprocess.run([FF, '-v', 'error', '-xerror', '-i', tmp, '-f', 'null', '-'], capture_output=True, text=True, errors='replace')
