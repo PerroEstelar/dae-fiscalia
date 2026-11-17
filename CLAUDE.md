@@ -2958,21 +2958,32 @@ El título va en dos sitios de la línea de un video de profe, con el mismo arch
    **cola** (desde el último cuadro clave hasta el arranque del cierre), con `MarkIn`/`MarkOut` y
    los ajustes del máster, y se codifican con la receta de entrega.
 4. El **cuerpo se copia** de la entrega vieja sin recodificar y las tres partes se pegan con el
-   demuxer `concat`; el audio es el de la entrega vieja, tal cual.
+   demuxer `concat` (`-auto_convert 0`); el audio es el de la entrega vieja, tal cual.
 5. Se verifica todo: cuadros = línea, SPS/PPS iguales en las tres partes, el cuerpo idéntico
-   cuadro a cuadro (`framemd5`), pts seguidos y en la rejilla, audio idéntico (md5 de los
-   paquetes), decodificación completa sin errores.
+   **paquete a paquete** (`framemd5` en modo copia: tamaño y md5 de cada paquete, sin
+   decodificar), pts seguidos y en la rejilla, audio idéntico (md5 de los paquetes),
+   decodificación completa sin errores.
 
 Lo que hubo que aprender:
 
 - **Dónde hay cuadro clave.** x264 pone un IDR en el 409 y en el arranque del cierre porque son
   cambios de plano… salvo que caigan a menos de 24 cuadros del IDR anterior (`min-keyint=24`):
-  ahí pone un cuadro I que no sirve para cortar. Pasó en 2 de 12. El empalme va entonces en el
-  IDR anterior, y la parte nueva se lleva unos cuadros del cuerpo, rendidos de la línea.
+  ahí pone un cuadro I que no sirve para cortar. Pasó en 6 de 12, siempre en el arranque del
+  cierre (el IDR quedó entre 5 y 16 cuadros antes). El empalme va entonces en el IDR anterior, y
+  la parte nueva se lleva esos cuadros del cuerpo, rendidos de la línea.
 - **El cuerpo copiado con `-ss` sale corrido un cuadro.** `-ss` tiene que ir un pelo después del
   IDR para que la búsqueda caiga en él, y esos 4 ms se redondean a un cuadro entero: el primer
   cuadro del cuerpo queda con pts negativo y choca con el último de la cabeza («non monotonically
   increasing dts» al decodificar). Se arregla con `-bsf:v setts=pts=PTS-STARTPTS:dts=DTS-STARTPTS`.
+- **`concat` mete los SPS/PPS dentro de cada cuadro clave si no se le dice que no.** Por defecto
+  (`auto_convert 1`) pasa el video por `h264_mp4toannexb` y cada cuadro clave del cuerpo crece 43
+  bytes: se ve igual, pero el archivo ya no tiene la estructura de la entrega original. Con
+  `-auto_convert 0` los paquetes salen idénticos. La primera pasada (6 entregas) se rehízo por
+  esto; las copias quedaron en `05 EXPORTS\_descartes`.
+- **Comparar el cuerpo decodificando es lento** (8 min para un video de 23): se comparan los
+  paquetes, que tarda segundos y además habría pillado lo anterior desde el principio.
+- **No lanzar un lote mientras se cambia la herramienta.** Un plan arrancó con la versión vieja
+  del script un momento antes del `git pull` y falló la verificación: hubo que repetirlo.
 - **Los ajustes de render parciales se devuelven en el acto** (`SelectAllFrames: True`), en un
   `finally`.
 - La cabeza recodificada no sale idéntica a la vieja ni siquiera en el intro: cambian unos 20
