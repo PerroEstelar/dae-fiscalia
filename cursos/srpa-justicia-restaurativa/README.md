@@ -206,3 +206,70 @@ la presentación del curso, que ya estaba hecha. Se había entregado como
   - el último cuadro del outro pasó a +180, porque con un `-ss` en los últimos
     cuadros ffmpeg no devuelve nada;
   - si falta un cuadro, la hoja lo salta.
+
+## Los que llegaron después: cierre de la U1 y unidad 2 (17 nov 2026)
+
+Del inventario de SRPA, Ley 1826 y Terminaciones anticipadas salieron tres piezas de profe con
+la grabación en Drive (VIDEOS/UNIDADES) y sin producir. Sebastián: «empieza con lo que falta
+del material que tenemos pero no se lo hemos producido, cada uno excelentemente hecho siguiendo
+todos los protocolos, de pe a pa, los dejas subidos y actualizas el inventario».
+
+Van por `ic_pieza` con planes en `profe/` (`base_sr_profe.py`), como los profes de Derechos
+humanos, y no por `sr_pieza`/`plan_srpa.py`. E: no tiene espacio: el árbol está en
+`D:\DAE MASTER\PRIORIDAD 1\CURSO - SRPA Y JUSTICIA RESTAURATIVA\`, con un `LEER` en las carpetas
+`UNIDAD 1` y `UNIDAD 2` de E:. El proyecto de AE es el de siempre (`SRPA_mg.aep`, en E:).
+
+### Cierre de la unidad 1 (`plan_sr1c`) — entregado
+
+- **Fuente:** `Unidad 1 - cierre.mp4` (`18Gdlyg_7e0q_6stYaBnG48pSAENnca9A`, subida el 12 nov),
+  16:55,7. Estanislao Escalante Barreto, con el fondo y el encuadre del cierre del curso. Copia
+  de trabajo: `UNIDAD 1\CIERRE\01 VIDEO\srpa_u1_cierre_fuente.mp4`.
+- **La lámina.** Del 5:45 al 13:49 comparte una diapositiva («La visión multidimensional del
+  SRPA. Una apuesta para su comprensión») y él queda en una miniatura. Ese tramo va a cuadro
+  completo y sin gráficos. Las dos transiciones de Teams se tapan con un cuadro quieto de la
+  lámina (`CONGELA`; a la salida, con 'antes'): se ve un corte seco del profe a la lámina y de
+  la lámina al profe, y nunca se congela su cara. Los cuadros están en el plan.
+- **Ventana:** 1088×612 desde (0, 44), ×1,765, columna de 470.
+- **Gráficos:** solo en los dos tramos del profe (0–5:45 y 13:49–16:55): 62 % de ese tiempo.
+- **Línea:** `SRPA - U1 - CIERRE`. **Entrega:** `srpa - U1 - CIERRE-v1.mp4`, en Drive →
+  `VIDEOS FINALIZADOS` › «unidad 1» (`1mKRysBB50QhE1xAb4cDjaIXQKxXV8Gy7`), id
+  `1x_xkiDoDt_XmWAPpUr9Zy1xhC-4fvmaB`. 25.169 cuadros = línea; −16,0 LUFS, −2,9 dBTP; PSNR 50,3 /
+  43,8 dB contra el máster; 592 MB. Subida con copia exclusiva y verificada byte a byte.
+- **Lower third:** el cargo de Estanislao es largo. Con la columna de 470 se había puesto a 440 de
+  ancho y daba cinco renglones: el último se salía del cuadro. Se vio en la simulación. A 560 son
+  tres, parejos (`LT = (40, 560)` en el plan), y queda sobre el saco, lejos de la cara.
+- **Compuesto v2:** la v1 llevaba la lámina a 1280×720 completo y arriba se veía la raya negra
+  de 1 px que Teams deja en y=0. La v2 usa la ventana 1276×718 desde (0, 2); solo se rehízo la
+  imagen (`ic_pieza reimagen`). La v1 está en `01 VIDEO\_descartes`.
+- Simulación y cortes: `D:\DAE\_tmp\sr_ta\sr1c\sim\` y `corte_entra.jpg`, `corte_sale.jpg`,
+  `e_cortes.jpg` (los dos cortes en la entrega).
+
+### Unidad 2: bienvenida y cierre — **en pausa**
+
+Sebastián (17 nov): «lo más probable es que alguien más me va a enviar los videos con el fondo
+adecuado, pausemos esos». No se produjo nada. Lo que quedó medido, por si llegan iguales:
+
+- **Fuentes** (subidas el 11 nov): `Unidad 2 - presentacion.mp4`
+  (`1qsD7ZqT7FroRDFYu9XUx1T1hZW_egdVv`, 5:00,8), `Unidad 2 - A.mp4`
+  (`1ScxZx8j2XjvxNlfPgPCh4JPQjC5PAbHR`, 12:47,1) y `Unidad 2 - B.mp4`
+  (`1JyVnQURMPVQLQzbe9mUKU5l18fjVFaFP`, 15:40,1). A y B son el cierre de la unidad, en dos
+  partes; se decidió entregarlas como un solo video.
+- **Profe sin identificar.** No dice su nombre en ninguna de las tres. Es otro profe (pelo cano,
+  bigote, camisa de cuadros), grabado con cámara contra una pared blanca, sin el fondo virtual.
+  Sebastián pidió armarlo sin lower third hasta confirmar el nombre.
+- **Las dos partes unidas sin recodificar el video:**
+  `UNIDAD 2\CIERRE\01 VIDEO\srpa_u2_cierre_A+B_fuente.mov` (D:). El video se copia con el
+  demuxer `concat` (`duration 767.133333` para la parte A, que son sus 23.014 cuadros) y el
+  audio va en PCM, con el de A recortado a esa misma duración. 51.217 cuadros a 30 fps exactos.
+  Verificado con `framemd5`: los cuadros de la costura, del medio y del final son idénticos a
+  los de las fuentes.
+- **Canto de un tablero** arriba a la izquierda (x 0–49, y 0–326 según la toma). Se borra con
+  `PREFILTRO = 'pad=iw+2:ih+2:2:2:color=0xF6F6F3,delogo=x=2:y=2:w=54:h=334,crop=iw-2:ih-2:2:2'`:
+  el borde de 2 px del color de la pared hace que `delogo` interpole desde pared y no desde el
+  tablero (con `delogo` solo quedaba una raya).
+- **Texto azul noche** (`TINTA = (7, 34, 75)`, sin sombra, íconos teñidos con otro prefijo en
+  AE): el blanco de la serie no se lee sobre una pared blanca. Está en `ic_pieza.ajustes` y
+  `mg_ma`; no se llegó a usar.
+- **Ventana pensada:** 1067×600 desde (0, 0), ×1,8, columna de 470.
+
+Transcripciones (Scribe) y medidas: `D:\DAE\_tmp\sr_ta\` (`u2p`, `u2a`, `u2b`).
