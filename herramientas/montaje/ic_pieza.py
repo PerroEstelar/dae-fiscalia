@@ -45,7 +45,10 @@ def escala(K, x, y, w, h):
     """El recorte y la subida a 1080 de `srpa_composicion`. Las grabaciones de Teams vienen
     en BT.601; una fuente que ya es un export en HD (U3 L5) viene en BT.709 (`MATRIZ_FUENTE`)."""
     m = getattr(P, 'MATRIZ_FUENTE', 'bt601')
-    return K.escala(x, y, w, h).replace('in_color_matrix=bt601', 'in_color_matrix=' + m)
+    # PREFILTRO: un filtro sobre la fuente entera, antes del recorte (el `delogo` que borra el canto
+    # de un tablero pegado al borde, SRPA U2)
+    pre = getattr(P, 'PREFILTRO', '')
+    return (pre + ',' if pre else '') + K.escala(x, y, w, h).replace('in_color_matrix=bt601', 'in_color_matrix=' + m)
 
 
 def fps_compuesto():
@@ -103,33 +106,42 @@ def tramos_vf(K, fin):
     cada tramo queda en sincronía al cuadro.
 
     CONGELA [(a, b)]: sobre [a, b) se ve quieto el cuadro de b (una transición horneada en la
-    fuente); el audio sigue corrido. a se lleva al cuadro de abajo y b al de arriba."""
+    fuente); el audio sigue corrido. a se lleva al cuadro de abajo y b al de arriba.
+    Con un tercer elemento 'antes', (a, b, 'antes'), el cuadro quieto es el último ANTES de a: sirve
+    cuando lo que hay antes de la transición es una lámina (quieta de por sí) y lo que viene
+    después es el profe, al que no conviene congelar mientras habla (cierre de la U1 de SRPA).
+    Un congelado 'antes' puede llegar hasta el final de su tramo."""
     w, h = P.VENTANA
     x, y = P.XY
     fq = getattr(P, 'FPS_FUENTE', 30)
     tr = getattr(P, 'TRAMOS', None) or [(0.0, None, None)]
-    cong = [(int(math.floor(c0 * fq + 1e-6)), int(math.ceil(c1 * fq - 1e-6))) for c0, c1 in getattr(P, 'CONGELA', [])]
+    cong = [(int(math.floor(c[0] * fq + 1e-6)), int(math.ceil(c[1] * fq - 1e-6)), len(c) > 2 and c[2] == 'antes')
+            for c in getattr(P, 'CONGELA', [])]
     cuadros = [(int(math.ceil(t0 * fq - 1e-6)), int(math.ceil(((fin if t1 is None else t1)) * fq - 1e-6)), win)
                for t0, t1, win in tr]
     v, a = [], []
     for i, (f0, f1, win) in enumerate(cuadros):
         esc = escala(K, *(win or (x, y, w, h)))
-        dentro = [(k0, k1) for k0, k1 in cong if f0 <= k0 < k1 < f1]
+        # el cuadro quieto es el de k1 (tiene que quedar dentro del tramo) o, con 'antes', el de k0 − 1
+        dentro = [(k0, k1, ant) for k0, k1, ant in cong
+                  if (f0 < k0 < k1 <= f1 if ant else f0 <= k0 < k1 < f1)]
         piezas, f = [], f0
-        for j, (k0, k1) in enumerate(dentro):
+        for j, (k0, k1, ant) in enumerate(dentro):
             if k0 > f:                  # un congelado al arranque del tramo no tiene «antes»
                 v.append('[0:v]%s,setpts=PTS-STARTPTS,%s[v%dn%d]' % (_trim(f, k0, fq), esc, i, j))
                 piezas.append('[v%dn%d]' % (i, j))
+            q = k0 - 1 if ant else k1
             v.append('[0:v]%s,setpts=PTS-STARTPTS,%s,'
                      'tpad=stop_mode=clone:stop=%d,trim=end_frame=%d,setpts=PTS-STARTPTS[v%dq%d]'
-                     % (_trim(k1, k1 + 1, fq), esc, k1 - k0, k1 - k0, i, j))
+                     % (_trim(q, q + 1, fq), esc, k1 - k0, k1 - k0, i, j))
             piezas.append('[v%dq%d]' % (i, j))
             f = k1
         if not dentro:
             v.append('[0:v]%s,setpts=PTS-STARTPTS,%s[v%d]' % (_trim(f0, f1, fq), esc, i))
         else:
-            v.append('[0:v]%s,setpts=PTS-STARTPTS,%s[v%dz]' % (_trim(f, f1, fq), esc, i))
-            piezas.append('[v%dz]' % i)
+            if f < f1:
+                v.append('[0:v]%s,setpts=PTS-STARTPTS,%s[v%dz]' % (_trim(f, f1, fq), esc, i))
+                piezas.append('[v%dz]' % i)
             v.append('%sconcat=n=%d:v=1:a=0[v%d]' % (''.join(piezas), len(piezas), i))
         ta, tb = f0 / fq, f1 / fq
         af = 'atrim=start=%.6f:end=%.6f,asetpts=PTS-STARTPTS' % (ta, tb)
@@ -285,9 +297,18 @@ def mg_armar():
         dst = '%s/%s.png' % (ICONOS, ico)
         if not os.path.exists(dst):
             src = '%s/%s.png' % (G.ICONOS, ico)                    # íconos de SRPA
-            shutil.copy2(src if os.path.exists(src) else '%s/%s.png' % (M.ICONOS, ico), dst)
-        if 'ico_' + ico not in existentes:
-            M.cmd('importFootage', {'path': dst, 'name': 'ico_' + ico})
+            src = src if os.path.exists(src) else '%s/%s.png' % (M.ICONOS, ico)
+            if getattr(P, 'TINTA', None):
+                # los íconos son blancos con alfa: con tinta propia se pinta el color y queda el alfa
+                from PIL import Image
+                im = Image.open(src).convert('RGBA')
+                te = Image.new('RGBA', im.size, tuple(P.TINTA) + (0,))
+                te.putalpha(im.split()[3])
+                te.save(dst)
+            else:
+                shutil.copy2(src, dst)
+        if M.ICO_PRE + ico not in existentes:
+            M.cmd('importFootage', {'path': dst, 'name': M.ICO_PRE + ico})
     for clave, tipo, t0, t1, d in P.ITEMS:
         if tipo not in ('mg_act', 'mg_lista'):
             continue
@@ -337,6 +358,18 @@ def ajustes():
     if getattr(P, 'LT', None):
         import cartones_srpa as CS
         CS.LT_NOMBRE, CS.LT_ANCHO = P.LT
+    if getattr(P, 'TINTA', None):
+        # Texto con tinta propia y sin sombra: un profe contra una pared blanca (SRPA U2, 17 nov
+        # 2026). El blanco con sombra de la serie no se lee ahí; va el azul noche de los cartones
+        # blancos. Los íconos teñidos llevan otro prefijo en AE (`ICO_PREFIJO`), para no pisar los
+        # blancos del mismo proyecto.
+        import cartones_ma as C0
+        import mg_ma as M0
+        C0.WHITE = tuple(P.TINTA) + (255,)
+        C0.CAPAS_SOMBRA = []
+        M0.TINTA = [round(c / 255.0, 4) for c in P.TINTA]
+        M0.CON_SOMBRA = False
+        M0.ICO_PRE = getattr(P, 'ICO_PREFIJO', 'icoz_')
 
 
 if __name__ == '__main__':

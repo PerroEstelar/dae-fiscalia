@@ -44,6 +44,12 @@ FPS = 24000 / 1001
 TEXT_X, BAR_X, BAR_W, BASE_Y, BAR_PAD, MAXW = 170, 86, 14, 690, 28, 615
 INTERLINEA = 1.30
 BAR_C = [254 / 255, 185 / 255, 0]
+# Texto e íconos: blancos con sombra sobre un fondo con imagen. Un profe contra una pared blanca
+# (SRPA U2, 17 nov 2026) lleva tinta azul noche, sin sombra, y sus íconos teñidos aparte
+# (`ic_pieza.ajustes` cambia estos tres).
+TINTA = [1, 1, 1]
+CON_SOMBRA = True
+ICO_PRE = 'ico_'
 ICON_ACT, GAP_ICON = 64, 16          # tarjeta de actividad: ícono a la izquierda de «Actividad n»
 ICON_FILA, GAP_FILA, SEP_FILA = 64, 20, 18   # lista
 TXT_IN, TXT_OUT, RET_IN, RET_OUT, SUBE_IN, SUBE_OUT = 14, 10, 3, 2, 14, 8
@@ -120,7 +126,7 @@ class Comp:
         nm = 'txt%02d' % self.k
         self.add('addTextLayer', text=ln['text'], name=nm)
         self.add('setTextDocument', layer=nm, font=PS[ln['peso']], fontSize=ln['px'],
-                 fillColor=[1, 1, 1], justification='left', tracking=0)
+                 fillColor=TINTA, justification='left', tracking=0)
         self.key(nm, 'position', [f_in, f_in + TXT_IN, f_out, f_out + TXT_OUT],
                  [[x, base + SUBE_IN], [x, base], [x, base], [x, base - SUBE_OUT]])
         self.key(nm, 'opacity', [f_in, f_in + TXT_IN, f_out, f_out + TXT_OUT], [0, 100, 100, 0])
@@ -128,7 +134,7 @@ class Comp:
     def icono(self, archivo, cx, cy, lado, f_in, f_out):
         self.k += 1
         nm = 'ico%02d' % self.k
-        self.add('addFootageLayer', itemName='ico_' + archivo, name=nm)
+        self.add('addFootageLayer', itemName=ICO_PRE + archivo, name=nm)
         s = 100.0 * lado / 512
         self.add('setLayerProperty', layer=nm, property='position', value=[cx, cy])
         self.key(nm, 'scale', [f_in, f_in + 8, f_in + 13],
@@ -145,6 +151,8 @@ class Comp:
         self.key('barra', 'scale', [0, 10, n - 10, n], [[100, 0], [100, 100], [100, 100], [100, 0]])
 
     def sombra(self):
+        if not CON_SOMBRA:
+            return
         self.add('addAdjustmentLayer', name='sombra')
         self.add('addEffect', layer='sombra', matchName='ADBE Drop Shadow', name='ambiental')
         self.add('addEffect', layer='sombra', matchName='ADBE Drop Shadow', name='contacto')
