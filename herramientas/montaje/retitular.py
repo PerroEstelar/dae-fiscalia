@@ -13,12 +13,13 @@ video a tiempo real; el cuerpo no cambia.
 
 1. En Resolve, `ReplaceClip` del medio del cartón viejo por el nuevo: los dos ítems de la línea
    quedan con el título nuevo y todo lo demás igual. Comprueba que la línea mide lo mismo.
-2. Mira en la entrega vieja que haya un cuadro clave (IDR) justo en el 409, donde empieza el
-   cuerpo, y justo donde termina (largo − 409). x264 los pone ahí porque son cambios de plano.
-   Si falta alguno, no sigue: ese video va por el camino largo (`profe_entrega`).
-3. Rinde en Resolve solo la cabeza (cuadros 0–408: intro y título) y la cola (cierre y outro),
-   con los ajustes del máster de `mp4_entrega` (H.264 NVIDIA, 80000), y las codifica con la
-   receta de entrega (`mp4_entrega.VIDEO`).
+2. Busca en la entrega vieja los cuadros clave (IDR) de los empalmes: el primero desde el 409,
+   donde empieza el cuerpo, y el último hasta donde termina (largo − 409). Casi siempre son esos
+   dos cuadros mismos, porque son cambios de plano; si x264 no puso uno ahí (`min-keyint=24`), la
+   parte nueva se lleva además unos cuadros del cuerpo.
+3. Rinde en Resolve solo la cabeza (intro y título) y la cola (cierre y outro), con los ajustes
+   del máster de `mp4_entrega` (H.264 NVIDIA, 80000), y las codifica con la receta de entrega
+   (`mp4_entrega.VIDEO`).
 4. Copia el cuerpo de la entrega vieja sin recodificar, pega cabeza + cuerpo + cola con el
    demuxer `concat` y le pone el audio de la entrega vieja, tal cual.
 5. Verifica: cuadros = línea; SPS/PPS iguales en las tres partes; el cuerpo, cuadro a cuadro,
@@ -172,10 +173,17 @@ pk = paquetes(vieja)
 if len(pk) != largo:
     falla('la entrega vieja mide %d y la línea %d' % (len(pk), largo))
 idr = sorted(int(round(a)) for a, b in pk if b)
-if CLIP0 not in idr or fin not in idr:
-    falla('la entrega vieja no tiene cuadro clave en %d y en %d (cerca: %s / %s)' % (
-        CLIP0, fin, [k for k in idr if abs(k - CLIP0) < 60], [k for k in idr if abs(k - fin) < 60]))
-p('entrega vieja', os.path.basename(vieja), 'cuadros', len(pk), 'cuadro clave en', CLIP0, 'y en', fin)
+# La cabeza nueva llega hasta el primer cuadro clave desde el 409 y la cola nueva arranca en el
+# último cuadro clave hasta `fin`. Casi siempre son el 409 y `fin` mismos (cambios de plano); si el
+# cambio de plano cayó a menos de 24 cuadros del cuadro clave anterior, x264 no puso uno ahí
+# (`min-keyint=24`) y la parte nueva se lleva además unos cuadros del cuerpo, rendidos de la línea.
+k_cab = min(k for k in idr if k >= CLIP0)
+k_col = max(k for k in idr if k <= fin)
+if k_cab - CLIP0 > 48 or fin - k_col > 48 or k_cab >= k_col:
+    falla('cuadros clave raros en la entrega vieja: %s / %s' % (
+        [k for k in idr if abs(k - CLIP0) < 60], [k for k in idr if abs(k - fin) < 60]))
+p('entrega vieja', os.path.basename(vieja), 'cuadros', len(pk), '| la cabeza nueva va de 0 a', k_cab, '(título hasta %d)' % CLIP0,
+  '| la cola nueva va desde', k_col, '(cierre desde %d)' % fin)
 
 # ---------- 3. cabeza y cola: Resolve y x264
 pr.SetCurrentTimeline(tl)
@@ -201,15 +209,15 @@ def rinde(nombre, a, b):
 
 
 try:
-    rinde('cabeza_master', 0, CLIP0)
-    rinde('cola_master', fin, largo)
+    rinde('cabeza_master', 0, k_cab)
+    rinde('cola_master', k_col, largo)
 finally:
     # los ajustes de render son del proyecto: se devuelven en el acto
     pr.DeleteAllRenderJobs()
     pr.SetRenderSettings({'SelectAllFrames': True, 'ExportVideo': True, 'ExportAudio': True})
     resolve.OpenPage('edit')
 time.sleep(12)                  # el mp4 recién terminado puede no tener todavía el moov
-for nombre, n in (('cabeza', CLIP0), ('cola', largo - fin)):
+for nombre, n in (('cabeza', k_cab), ('cola', largo - k_col)):
     m = T + nombre + '_master.mp4'
     if M.cuadros(m) != n:
         falla('%s_master mide %d y tenía que medir %d' % (nombre, M.cuadros(m), n))
@@ -220,13 +228,13 @@ for nombre, n in (('cabeza', CLIP0), ('cola', largo - fin)):
     p(nombre, 'cuadros', M.cuadros(T + nombre + '.mp4'), 'psnr contra Resolve', (re.findall(r'average:[\d.]+ min:[\d.]+', r) or ['?'])[-1])
 
 # ---------- 4. cuerpo copiado y pegado
-n_cuerpo = fin - CLIP0
+n_cuerpo = k_col - k_cab
 if os.path.exists(T + 'cuerpo.mp4'):
     os.remove(T + 'cuerpo.mp4')
 # `-ss` un pelo después del cuadro clave (la búsqueda cae en él) y `setts` para que el cuerpo
 # arranque en pts 0: sin eso los 4 ms se redondean a un cuadro entero, el cuerpo queda corrido un
 # cuadro y su primer cuadro choca con el último de la cabeza (se vio en la primera prueba).
-run([FF, '-y', '-v', 'error', '-ss', '%.6f' % (CLIP0 / FPS + 0.004), '-i', vieja, '-an', '-c:v', 'copy',
+run([FF, '-y', '-v', 'error', '-ss', '%.6f' % (k_cab / FPS + 0.004), '-i', vieja, '-an', '-c:v', 'copy',
      '-frames:v', str(n_cuerpo), '-bsf:v', 'setts=pts=PTS-STARTPTS:dts=DTS-STARTPTS', '-f', 'mp4', T + 'cuerpo.mp4'])
 if M.cuadros(T + 'cuerpo.mp4') != n_cuerpo:
     falla('el cuerpo copiado mide %d y tenía que medir %d' % (M.cuadros(T + 'cuerpo.mp4'), n_cuerpo))
@@ -237,7 +245,7 @@ if len({json.dumps(e, sort_keys=True) for e in ex}) != 1:
     falla('las tres partes no tienen los mismos parámetros: %s' % ex)
 open(T + 'lista.txt', 'w', encoding='utf-8').write(
     "file '%scabeza.mp4'\nduration %.6f\nfile '%scuerpo.mp4'\nduration %.6f\nfile '%scola.mp4'\n"
-    % (T, CLIP0 / FPS, T, n_cuerpo / FPS, T))
+    % (T, k_cab / FPS, T, n_cuerpo / FPS, T))
 run([FF, '-y', '-v', 'error', '-f', 'concat', '-safe', '0', '-i', T + 'lista.txt', '-c', 'copy', '-f', 'mp4', T + 'imagen.mp4'])
 run([FF, '-y', '-v', 'error', '-i', T + 'imagen.mp4', '-i', vieja, '-map', '0:v', '-map', '1:a', '-c', 'copy',
      '-movflags', '+faststart', '-f', 'mp4', nueva + '.parcial'])
@@ -250,11 +258,11 @@ orden = sorted(a for a, _b in pn)
 k0 = min(a for a, _b in pk)
 ok_pts = bool(orden) and all(abs(a - (k0 + i)) < 1e-3 for i, a in enumerate(orden))
 p('cuadros', len(pn), '/ línea', largo, 'OK' if ok_n else 'FALLA', '| pts seguidos y en la rejilla', ok_pts, 'primero', orden[0] if orden else None,
-  '| claves en los empalmes', [k for k in sorted(int(round(a)) for a, b in pn if b) if k in (0, CLIP0, fin)])
+  '| claves en los empalmes', [k for k in sorted(int(round(a)) for a, b in pn if b) if k in (0, k_cab, k_col)])
 a, b = md5_cuadros(vieja), md5_cuadros(tmp)
-ok_cuerpo = len(a) == len(b) == largo and a[CLIP0:fin] == b[CLIP0:fin]
-dif_cab = sum(1 for x, y in zip(a[:CLIP0], b[:CLIP0]) if x != y)
-dif_col = sum(1 for x, y in zip(a[fin:], b[fin:]) if x != y)
+ok_cuerpo = len(a) == len(b) == largo and a[k_cab:k_col] == b[k_cab:k_col]
+dif_cab = sum(1 for x, y in zip(a[:k_cab], b[:k_cab]) if x != y)
+dif_col = sum(1 for x, y in zip(a[k_col:], b[k_col:]) if x != y)
 p('cuerpo idéntico cuadro a cuadro (%d cuadros):' % n_cuerpo, ok_cuerpo, '| cuadros que cambian en la cabeza', dif_cab, 'y en la cola', dif_col)
 ma, mb = md5_audio(vieja), md5_audio(tmp)
 p('audio idéntico:', ma == mb and bool(ma), ma)
@@ -270,7 +278,7 @@ p('entrega', os.path.basename(nueva), v_['codec_name'], v_.get('profile'), 'L%s'
   v_.get('color_space'), v_.get('r_frame_rate'), '%d MB' % (os.path.getsize(nueva) >> 20), 'sonido', M.medir(nueva))
 
 # hoja: título, cierre y los cuatro empalmes
-pts = [('título', INTRO_DUR + 110), ('título fin', CLIP0 - 1), ('cuerpo', CLIP0), ('cuerpo fin', fin - 1), ('cierre', fin),
+pts = [('título', INTRO_DUR + 110), ('empalme -1', k_cab - 1), ('empalme', k_cab), ('empalme -1', k_col - 1), ('empalme', k_col),
        ('cierre', fin + 110), ('outro', fin + TIT_DUR), ('outro', largo - 60)]
 hoja = Image.new('RGB', (480 * 4, 290 * 2), (20, 20, 20))
 dr = ImageDraw.Draw(hoja)
