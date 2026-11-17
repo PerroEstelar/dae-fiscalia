@@ -2632,3 +2632,35 @@ fuente de 339 MB, cortó con «SIN ESPACIO EN E:». Lo que se mueve sin romper n
 `ValueError('… cae en un corte')` para un tiempo que el plan quitó, y la simulación (`dh_sim*.py`)
 murió sin escribir la tira del plano cerrado. Las tiras se parten a los dos lados del corte:
 `{'antes': (72.0, 73.95), 'cerrado': (74.7, 78.6)}`.
+
+## Una entrega en Drive con el tamaño justo y la cola en ceros (cierre de la U5 de ED, 17 nov 2026)
+
+«Se congela en el minuto 22:34.» El archivo local estaba sano: sin errores de decodificación y
+40.892 cuadros. El de Drive tenía **el mismo tamaño** (1.186.766.456 bytes) y, desde el byte
+930.086.912 (MiB 887, hacia el 22:16) hasta el final, solo ceros. El reproductor de Drive se
+quedaba en el último cuadro bueno. La comprobación «tamaño en Drive = tamaño local» no lo ve.
+
+La causa probable: la copia a `G:\My Drive\_MA subidas\` se hizo con `shutil.copy2`, que crea el
+archivo con su tamaño final y lo va llenando, y Drive para escritorio lo leyó y lo subió antes de
+que terminara. Es la pieza más grande de la tanda (1,13 GB).
+
+**Cómo se verifica una entrega en Drive** (`herramientas/entrega/verificar_drive.py`):
+
+1. Con el conector, `copy_file` del archivo entregado a una carpeta de «Mi unidad»
+   (`_MA subidas/_verif entregas`), con el nombre `<clave>.mp4`. Es una copia en el servidor:
+   son los bytes que guarda Drive, los que ve quien abre el enlace.
+2. Drive para escritorio la baja a G:, y el script la compara por bloques de 1 MiB con la local.
+   El md5 del conector no sirve: `get_file_metadata` no lo da.
+3. La carpeta de copias, a la papelera.
+
+Así se verificaron las 23 entregas de profe en Drive (11 de DH, 12 de ED): solo esa estaba mal.
+
+**Cómo se sube** (`herramientas/entrega/subir_exclusivo.py`): `CreateFileW` con
+`dwShareMode = 0` sobre un `<nombre>.parcial`, escritura en bloques de 8 MB, `FlushFileBuffers`,
+y recién al cerrar `os.replace` al nombre final. Mientras se escribe, nadie lo puede abrir. Eso
+evita el caso medido; lo que da la garantía es la verificación de arriba, que se hace en cada
+entrega grande antes de pasar el enlace.
+`exportar_y_subir.a_paso` ya copia así.
+
+El archivo dañado se reemplaza por uno nuevo: el id cambia y el enlace viejo deja de servir, así
+que hay que avisar a quien lo tenga. El dañado va a la papelera.
