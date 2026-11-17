@@ -223,8 +223,11 @@ for nombre, n in (('cabeza', CLIP0), ('cola', largo - fin)):
 n_cuerpo = fin - CLIP0
 if os.path.exists(T + 'cuerpo.mp4'):
     os.remove(T + 'cuerpo.mp4')
+# `-ss` un pelo después del cuadro clave (la búsqueda cae en él) y `setts` para que el cuerpo
+# arranque en pts 0: sin eso los 4 ms se redondean a un cuadro entero, el cuerpo queda corrido un
+# cuadro y su primer cuadro choca con el último de la cabeza (se vio en la primera prueba).
 run([FF, '-y', '-v', 'error', '-ss', '%.6f' % (CLIP0 / FPS + 0.004), '-i', vieja, '-an', '-c:v', 'copy',
-     '-frames:v', str(n_cuerpo), '-f', 'mp4', T + 'cuerpo.mp4'])
+     '-frames:v', str(n_cuerpo), '-bsf:v', 'setts=pts=PTS-STARTPTS:dts=DTS-STARTPTS', '-f', 'mp4', T + 'cuerpo.mp4'])
 if M.cuadros(T + 'cuerpo.mp4') != n_cuerpo:
     falla('el cuerpo copiado mide %d y tenía que medir %d' % (M.cuadros(T + 'cuerpo.mp4'), n_cuerpo))
 ex = [extradata(T + x) for x in ('cabeza.mp4', 'cuerpo.mp4', 'cola.mp4')]
