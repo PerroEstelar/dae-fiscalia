@@ -2991,4 +2991,45 @@ Lo que hubo que aprender:
   codificación de los mismos cuadros.
 
 Sirve para cualquier cambio que toque solo el principio o el final de una entrega (título,
-cierre, intro, outro). Si el cambio está en el cuerpo, no: va `profe_entrega`.
+cierre, intro, outro). Si el cambio está en el cuerpo, va `reparchar.py` (la sección que sigue).
+
+## El cartón lleva las palabras del profe, pero bien escritas; y cómo cambiar un cartón ya entregado: `reparchar.py` (17 nov 2026)
+
+Sebastián, con los 12 videos de Enfoque diferencial entregados: «en uno de sus gráficos de texto,
+en vez de "unas lentes" que diga "unos lentes", en masculino… revisa los guiones antes de entregar
+el paquete entero». El profe dice «unas lentes» y el cartón lo copió.
+
+**La regla de los textos.** «Verbatim» es no inventar ni resumir con otras palabras; no es copiar
+lo que al hablar sale torcido. Antes de rendir, cada cartón se lee como texto escrito:
+
+- concordancias y géneros («unos lentes», «dárseles… a los niños»), régimen («sin ningún tipo de»);
+- mayúsculas de nombres propios e instituciones («la Constitución») y tildes de voces adaptadas
+  («jóker»): la transcripción no las pone;
+- **al acortar una enumeración no se le quita el sustantivo a un elemento**: «niños de brazos y
+  usuarios con movilidad reducida» había quedado «niños de brazos y movilidad reducida»;
+- lo que es elección del profe y no error (un término, «retroprocesos», «capacidades diferentes»)
+  se deja y se le avisa a Sebastián en la entrega, en una lista corta.
+
+La revisión se hace sobre **todos** los textos del plan de una vez (se vuelcan con `ast` a un solo
+archivo: 410 gráficos de 12 planes se leen en diez minutos), no cartón por cartón cuando alguien
+encuentra uno.
+
+**Cómo se cambia un cartón del cuerpo sin rehacer el video** (`herramientas/montaje/reparchar.py`,
+el `retitular.py` de los tramos de adentro):
+
+1. En el plan: el texto corregido, `VERSIONES = {clave: 2}` y `VERSION` una más. `ic_pieza.py
+   cartones <clave>` rinde «<PREFIJO>_<clave> v2.mov»; el viejo queda en disco.
+2. `python reparchar.py <plan> <versión vieja> <versión nueva> <clave>…`: `ReplaceClip` en la
+   línea, render de Resolve solo entre los cuadros clave que encierran el cartón (con `keyint=48`
+   son 10 a 18 s), x264 con la receta de entrega, y el resto copiado de la entrega vieja.
+3. Además de lo que verifica `retitular.py`, compara el tramo nuevo con la entrega vieja cuadro a
+   cuadro: **fuera del cartón tiene que dar la misma imagen** (46 dB o más; el umbral es 38). Si
+   baja, en la línea cambió algo más que el cartón.
+
+Un video de 28 minutos tarda 2 a 3 minutos (casi todo, la verificación); los cinco, 15 minutos
+con la subida. Rendirlos enteros habría sido más de una hora.
+
+- El filtro `psnr` con `-frames:v N` escribe N+1 líneas en el archivo de estadísticas: se toman N.
+- El archivo de estadísticas va con nombre relativo y `cwd`, para no escapar «D:» en el filtro.
+- Solo cartones y lower thirds. Una lista de After Effects habría que rendirla con otro nombre y
+  agregarla al script; las tres dudas que quedaron en listas se dejaron para que Sebastián decida.
