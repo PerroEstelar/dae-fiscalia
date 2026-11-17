@@ -2859,3 +2859,125 @@ renombró a `srpa - U4 - INICIO-v1.mp4` (el archivo en Drive conserva su id y su
 el archivo local, el máster y la línea de Resolve, con `timeline.SetName`). De acá en adelante:
 `<curso> - U<n> - INICIO` y `<curso> - U<n> - CIERRE`, en el archivo y en la línea; la clase
 completa de una unidad, cuando viene, sigue siendo `DESARROLLO`.
+
+## Cortes de toma cuando el panel no los delata, y manos que no son cortes (U5 de SRPA, 17 nov 2026)
+
+En la fuente de la U5 el panel DAE/Fiscalía mide lo mismo en todas las tomas (0,3–0,4 contra su
+mediana): no hay escalones que confirmen un cambio de toma, como en la U4. Y el pico aislado de
+la diferencia entre cuadros da 41 candidatos en 34 minutos. La mayoría no son cortes:
+
+- **Gestos de manos.** El fondo virtual de Teams recorta mal las manos: aparecen y desaparecen
+  de un cuadro al otro, y eso es un pico aislado.
+- **Cuadros repetidos.** La grabación trae tramos con cuadros duplicados y después un salto: un
+  movimiento rápido de cabeza se ve como un pico con los vecinos en cero.
+
+Lo que los separó (`D:\DAE\_tmp\sr_ta\saltos2_u5.py`): la diferencia media de la **zona de la
+persona** (x 200–600, y 60–360 a 640×360) entre el cuadro anterior y el del pico. El movimiento
+natural da hasta 8; los cortes de toma claros, de 13 a 24. Entre 9 y 11 hay cortes chicos que
+casi no desplazan la imagen: se dejan. Y siempre se miran en una tira (16 cuadros, de 2,5 s
+antes a 1,5 s después): la búsqueda de bloque para medir el desplazamiento no sirvió, porque el
+fondo quieto domina y da (0, 0) en todos.
+
+Con muchos cortes en una clase:
+
+- Después de cada corte claro, plano cerrado hasta la **pausa siguiente** (3 a 8 s), no hasta el
+  final de la frase: hay frases de 40 s.
+- La vuelta al plano abierto va en el **cuadro más silencioso de la pausa** (media de 5 cuadros
+  del nivel de audio), o **en otro corte** si hay uno a pocos segundos: el cambio de ventana tapa
+  también ese.
+- La ventana del plano cerrado se elige con el tope de la cabeza de cada tramo
+  (`cerrado_u5.py`). Con la cabeza baja (tope en y > 240 de la fuente) no entra la que deja el
+  panel adentro: va la de (140, 146), sin el panel, y puede ir en todos.
+
+## Antes de decir que el sonido está corrido, mirar la boca en una pausa de la misma toma
+
+Antes de tres cortes de la U5 se ve al profe levantar el vaso de agua y taparse la boca un
+segundo mientras se siguen oyendo palabras. Parecía un desfase de un segundo entre imagen y
+sonido, o un corte con el audio y el video en sitios distintos.
+
+No era. Se armó una tira de la boca, todos los cuadros, con el nivel de audio de cada cuadro
+escrito encima (`boca2_u5.py`), en una pausa de la misma toma 15 s antes: la boca se cierra
+cuando el audio calla y se abre cuando vuelve, al cuadro. En los cuadros del vaso la voz está
+10 dB más baja: habla con el vaso delante de la boca.
+
+- La correlación entre el movimiento de la zona de la boca y el nivel de audio (`boca_senal_u5.py`)
+  sirve en tomas largas (pico cerca de 0) y **no** en tomas de menos de un minuto: ahí da
+  cualquier cosa. La tira en una pausa es lo que decide.
+- Scribe estira el final de la última palabra antes de un silencio: sus tiempos no prueban
+  dónde termina el habla. El nivel de audio por cuadro, sí.
+- Esos cuadros no se pueden quitar sin llevarse palabras. Se dejan, y se dice.
+
+## Entrega provisional de una clase: sin gráficos en el cuerpo (Sebastián, 17 nov 2026)
+
+«Por ahora solo hagamos intro y outro, placas de entrada y salida y títulos del profe,
+provisionalmente, porque se trata de entregar rápido». Para una clase larga que hay que entregar
+ya:
+
+- El plan lleva en `ITEMS` solo el lower third. Los cortes, los congelados y los planos
+  cerrados van igual: son del compuesto y no agregan tiempo.
+- La cadena va sin After Effects: `profe_cadena.py <plan> componer titulo cartones`.
+- Cuando se pidan los gráficos, se agregan a `ITEMS` y sale una v2 **sobre el mismo compuesto**:
+  cartones, listas, línea y entrega, sin volver a componer.
+- En el inventario la fila dice que es provisional.
+
+## El nombre de un curso sale de su documento de diseño, no del nombre de la carpeta (Enfoque diferencial, 17 nov 2026)
+
+Sebastián: «todos los videos de Enfoque diferencial el título está mal, deben decir únicamente
+Enfoque diferencial; en este momento está apareciendo Enfoque diferencial en la práctica del
+fiscal… quiero indagar por qué salió así».
+
+- **De dónde salió.** De la carpeta del curso en Drive, que JP creó el 26 oct como «PRIORIDAD 2 -
+  ENFOQUE DIFERENCIAL EN LA PRÁCTICA DEL FISCAL». Copia el nombre de la carpeta vecina,
+  «PRIORIDAD 1 - JUSTICIA RESTAURATIVA EN LA PRÁCTICA DEL FISCAL», donde sí es el nombre del
+  curso. El 3 nov ese nombre pasó a `guion_ed.CURSO` y a los README, y el 15 nov a
+  `base_ed_profe.CURSO_LINEAS`, que es lo que pinta el cartón de título de los 12 videos de profe.
+- **Lo que dice el documento.** El formato de diseño del curso (FGN-AP01-F-204,
+  `07_09_2026 DISEÑO CURSO_ENFOQUE DIFERENCIAL`, en Drive): «Nombre del curso: ENFOQUE
+  DIFERENCIAL».
+- **Dónde aparecía.** Solo en el cartón de título de los 12 videos de profe, al principio y en el
+  cierre. Los 5 casos animados llevan «Enfoque diferencial · Caso N» (`guion_ed.ANTE`): se miró
+  el cartón de entrada y el de cierre de cada entrega.
+
+**La regla.** El texto de un cartón de título se copia del campo «Nombre del curso» del formato
+de diseño o de la ficha («1.1 Nombre del curso»), y se anota de dónde salió. El nombre de una
+carpeta, de un archivo o de una hoja de seguimiento no es fuente: lo escribe quien organiza, no
+quien diseña el curso. Lo mismo vale para los nombres de las unidades y las lecciones.
+
+## Cambiar el cartón de título de entregas ya hechas: `retitular.py` (17 nov 2026)
+
+El título va en dos sitios de la línea de un video de profe, con el mismo archivo: cuadros
+194–408 (V2) y los 215 cuadros que siguen al cuerpo (V1). Para cambiarlo en 12 entregas (2 h
+12 min de video) no hizo falta volver a rendir ni a codificar el cuerpo
+(`herramientas/montaje/retitular.py`):
+
+1. El cartón nuevo se rinde con **otro nombre** (`carton titulo <clave> v2.mp4`; `ic_pieza.py
+   titulo`, seis a la vez: 2–4 min cada tanda).
+2. En Resolve, `MediaPoolItem.ReplaceClip(ruta nueva)` sobre el medio del cartón viejo: los dos
+   ítems de la línea cambian y todo lo demás queda igual (se comprueba el largo y las posiciones).
+3. Se rinden en Resolve solo la **cabeza** (del 0 al primer cuadro clave desde el 409) y la
+   **cola** (desde el último cuadro clave hasta el arranque del cierre), con `MarkIn`/`MarkOut` y
+   los ajustes del máster, y se codifican con la receta de entrega.
+4. El **cuerpo se copia** de la entrega vieja sin recodificar y las tres partes se pegan con el
+   demuxer `concat`; el audio es el de la entrega vieja, tal cual.
+5. Se verifica todo: cuadros = línea, SPS/PPS iguales en las tres partes, el cuerpo idéntico
+   cuadro a cuadro (`framemd5`), pts seguidos y en la rejilla, audio idéntico (md5 de los
+   paquetes), decodificación completa sin errores.
+
+Lo que hubo que aprender:
+
+- **Dónde hay cuadro clave.** x264 pone un IDR en el 409 y en el arranque del cierre porque son
+  cambios de plano… salvo que caigan a menos de 24 cuadros del IDR anterior (`min-keyint=24`):
+  ahí pone un cuadro I que no sirve para cortar. Pasó en 2 de 12. El empalme va entonces en el
+  IDR anterior, y la parte nueva se lleva unos cuadros del cuerpo, rendidos de la línea.
+- **El cuerpo copiado con `-ss` sale corrido un cuadro.** `-ss` tiene que ir un pelo después del
+  IDR para que la búsqueda caiga en él, y esos 4 ms se redondean a un cuadro entero: el primer
+  cuadro del cuerpo queda con pts negativo y choca con el último de la cabeza («non monotonically
+  increasing dts» al decodificar). Se arregla con `-bsf:v setts=pts=PTS-STARTPTS:dts=DTS-STARTPTS`.
+- **Los ajustes de render parciales se devuelven en el acto** (`SelectAllFrames: True`), en un
+  `finally`.
+- La cabeza recodificada no sale idéntica a la vieja ni siquiera en el intro: cambian unos 20
+  cuadros antes del título (el control de bitrate mira hacia adelante). No importa: es otra
+  codificación de los mismos cuadros.
+
+Sirve para cualquier cambio que toque solo el principio o el final de una entrega (título,
+cierre, intro, outro). Si el cambio está en el cuerpo, no: va `profe_entrega`.
