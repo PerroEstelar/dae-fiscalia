@@ -2664,3 +2664,105 @@ entrega grande antes de pasar el enlace.
 
 El archivo dañado se reemplaza por uno nuevo: el id cambia y el enlace viejo deja de servir, así
 que hay que avisar a quien lo tenga. El dañado va a la papelera.
+
+## Una lámina compartida dentro de un video de profe (cierre de la U1 de SRPA, 17 nov 2026)
+
+En el cierre de la U1 de SRPA el profe comparte una diapositiva durante ocho minutos (5:45–13:49)
+y él queda en una miniatura. La grabación de Teams trae un barrido a la entrada y un cubo 3D a
+la salida.
+
+- **El tramo de la lámina va a cuadro completo y sin gráficos.** La lámina ya es el gráfico, y es
+  blanca: un cartón blanco encima no se lee. Los gráficos van solo en los tramos del profe, y la
+  cobertura se cuenta sobre ese tiempo.
+- **Las dos transiciones se tapan con la lámina quieta, nunca con la cara.** `CONGELA` acepta un
+  tercer elemento: `(a, b, 'antes')` muestra sobre [a, b) el último cuadro ANTES de a (el modo de
+  siempre muestra el de b). A la entrada, el tramo de la lámina empieza donde arranca el barrido y
+  esos cuadros muestran la lámina ya limpia. A la salida, la lámina se queda quieta hasta que el
+  profe está asentado, y él entra en vivo. Una lámina congelada no se nota; una cara congelada
+  que habla, sí.
+- **Los bordes se miden cuadro a cuadro**, con dos números por cuadro: la diferencia media contra
+  el cuadro anterior y contra un cuadro limpio de cada lado (`D:\DAE\_tmp\sr_ta\prep1.py`). La
+  transición es donde la primera sube; el lado limpio empieza donde la segunda toca fondo. Después
+  del salto al profe la imagen tarda unos 10 cuadros en asentarse: el corte va después.
+- **Teams deja una raya negra de 1 px en y=0** cuando comparte pantalla. A cuadro completo queda
+  un filete oscuro arriba. La ventana de la lámina es 1276×718 desde (0, 2). Se vio en la tira
+  del corte, con el compuesto ya hecho; se rehízo solo la imagen (`ic_pieza reimagen`).
+- **Se comprueba en el compuesto**, no en el plan: una tira de 48 cuadros seguidos alrededor de
+  cada corte (`ffmpeg … -vf scale=320:180,tile=8x6`).
+
+## Cuánto de la caja ocupa la persona (`zona.py`, 17 nov 2026)
+
+El perfil de la cabeza dice dónde está el borde, pero no cuándo una mano entra en la caja.
+`D:\DAE\_tmp\sr_ta\zona.py` toma dos muestras por segundo, resta el fondo (la mediana) y cuenta
+los píxeles de persona dentro de la caja de cartones (x 86–660, y 250–690 de salida, llevada a
+la fuente con la ventana del plan). Devuelve los tramos en que pasa del 1,5 %. En el cierre de la
+U1 de SRPA: 1 s en 17 min (950–951 s, una mano), y ahí no va ningún gráfico.
+
+## Unir dos grabaciones sin recodificar el video (cierre de la U2 de SRPA, 17 nov 2026)
+
+`ic_pieza` trabaja con una sola fuente. Dos partes de la misma cámara se unen así:
+
+- **Video copiado** con el demuxer `concat`, con `duration <cuadros de A / fps>` después de la
+  primera entrada. Sin eso el demuxer usa la duración del archivo, que es la del audio (31 ms más
+  larga), y la parte B queda corrida respecto de la rejilla de cuadros.
+- **Audio en PCM**, con el de A recortado a esa misma duración (`atrim=end=`) y pegado al de B.
+- Contenedor `.mov`, que admite H.264 copiado con PCM y conserva la base de tiempo de la fuente.
+- **Se verifica con `framemd5`** sobre los cuadros de la costura, del medio y del final, contra las
+  fuentes. Tienen que ser idénticos.
+
+## Un canto pegado al borde no se borra con `delogo` solo
+
+`delogo` interpola desde los píxeles que rodean el rectángulo, y pide al menos 1 px de margen. Si
+el objeto llega al borde del cuadro (el canto de un tablero en x=0), ese margen ES el objeto y
+queda una raya. Con `pad=iw+2:ih+2:2:2:color=<color de la pared>` antes y `crop=iw-2:ih-2:2:2`
+después, el margen es pared. En el plan va en `PREFILTRO`, que `ic_pieza.escala` pone antes del
+recorte.
+
+## Cadena de profe para cualquier curso (17 nov 2026)
+
+`herramientas/montaje/profe_cadena.py`, `profe_sim.py`, `profe_entrega.py` y
+`herramientas/entrega/profe_subida.py` son las de Derechos humanos sin el curso fijo: el plan se
+busca en `cursos/` por su nombre y los logs van a `<P.TMP>`. `profe_subida` copia con
+`subir_exclusivo`.
+
+- **Los pasos pesados de la pieza siguiente van con prioridad baja**
+  (`creationflags=0x00000208 | 0x00004000`): `componer` y `cartones` de la pieza siguiente corren
+  mientras la anterior arma en After Effects o rinde en Resolve, y aftr no cortó ni una vez.
+  `mg_armar` va siempre con prioridad normal.
+- **Un `Z('frase')` del spec toma la primera aparición.** En un video largo la misma frase sale
+  varias veces («situación de vulnerabilidad», «el principio pedagógico»): `ajusta.py` avisa con
+  «CORTO» y una duración negativa. Se arregla con `'N@frase'`.
+- **`git stash -u` + `stash drop` en la nube se lleva lo que no se ha empujado**, carpetas nuevas
+  incluidas. Antes de sincronizar, lo nuevo se copia fuera del repo o se empuja.
+
+## El inventario de videos es el archivo de Sebastián
+
+Desde el 17 nov de 2026, cualquier alta o cambio del inventario de SRPA, Ley 1826 y
+Terminaciones anticipadas va en **su** hoja de cálculo, «Inventario_videos_17 NOV»
+(`178QTUCm6c_LKF7iTm55WfaQp52fyv3xrWtuZgBpvFK0`), con su estructura y su estilo: pestañas
+«Resumen» e «Inventario», las diez columnas de siempre y sus textos de estado. La que se generó
+con `inventario.py` (`1BR4Zufg0CQMi0ZEfBW4aGYCTfRU45dff6i79tA36YtA`) ya no se toca.
+
+Cómo se edita desde una sesión que no tiene el conector de Google Sheets (17 nov 2026):
+
+- El navegador integrado no tiene la sesión de Google: abre la hoja en «Solo ver». Se edita con
+  Claude in Chrome, que usa el Chrome de Sebastián.
+- **Ir a una celda:** clic en el cuadro de nombres, escribir `Inventario!G5` y Enter. Después se
+  escribe el valor y Enter.
+- **El color del estado es formato fijo de la celda**, no formato condicional. Para llevar valor y
+  color de la celda de arriba, `Ctrl+D`. Para traerlo de otra fila, `Ctrl+C` en el origen y
+  `Ctrl+V` en el destino, **una sola vez por copia**: el segundo `Ctrl+V` pega el portapapeles del
+  sistema (cayó en dos celdas un texto ajeno; se corrigió). Después de pegar, esperar un segundo
+  antes de escribir encima.
+- **Los enlaces** van como `=HYPERLINK("url";"nombre")`.
+- **La celda de notas del Resumen (A21) tiene formato por partes** (títulos en rojo). No se
+  reescribe: se cambia la frase con Buscar y reemplazar (`Ctrl+H`), que conserva el formato.
+- Al final se lee el archivo con Drive (`read_file_content`) para comprobar los valores.
+
+## El lower third se mide con el cargo de ESE profe
+
+`LT = (px del nombre, ancho del cargo)` se había fijado en (40, 440) junto con la columna de 470.
+Con un cargo de tres renglones (Terminaciones anticipadas) está bien; con el de Estanislao son
+cinco y el último queda fuera del cuadro, porque el lower third arranca en y=870 y cada renglón
+baja 37 px. Antes de rendir se cuentan los renglones del cargo con la fuente real: más de tres
+no entran. La simulación (`profe_sim.py`) lo muestra en cuatro momentos.
