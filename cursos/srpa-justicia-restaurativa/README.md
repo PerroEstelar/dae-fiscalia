@@ -273,3 +273,111 @@ adecuado, pausemos esos». No se produjo nada. Lo que quedó medido, por si lleg
 - **Ventana pensada:** 1067×600 desde (0, 0), ×1,8, columna de 470.
 
 Transcripciones (Scribe) y medidas: `D:\DAE\_tmp\sr_ta\` (`u2p`, `u2a`, `u2b`).
+
+## Unidad 4: inicio y desarrollo (17 nov 2026)
+
+Sebastián: «llegó U4 SRPA, por favor revísalo en la carpeta del Drive, ahí está el material en
+crudo; procésalo con todo nuestro protocolo, súbelo y actualiza el Excel».
+
+En VIDEOS/UNIDADES había dos archivos nuevos del 17 nov:
+
+| archivo en Drive | id | qué es |
+|---|---|---|
+| `SRPA_unidad_4_inicio_v2.mp4` | `1lDPp4niSdZZ1th82hPZfZOmxcn6S3x02` | 33:33,8 (60.414 cuadros). La bienvenida de la unidad y la clase, pegadas |
+| `SRPA_unidad4_inicio_.mp4` | `1wRxW_FCMNuuBMl--NuOG7KD8Ses0z8JB` | 1:57,4 (3.522 cuadros). Solo la bienvenida: son los primeros 3.522 cuadros del otro |
+
+Grabación de Teams, 1280×720, 30 fps parejos, BT.601, AAC estéreo a −13,0 LUFS con picos de
++1,5 dBTP (`componer` la deja en −16 LUFS y −3 dBTP). **Carlos Humberto Ramírez Romero**: el
+fondo aéreo, el saco y la corbata son los de la presentación y el desarrollo de la unidad 3 (se
+puso un cuadro de cada fuente al lado). No dice su nombre.
+
+**Son dos piezas, como en la unidad 3** (`presentacion - a` y `presentacion - b`). Sebastián lo
+confirmó a mitad del trabajo: «continúa con los dos».
+
+- **Inicio** (`plan_sr4b`), cuadros 0–3521: «Queridos discentes, sean ustedes bienvenidos a
+  la unidad número cuatro… Vamos adelante con esta unidad». Se subió como BIENVENIDA y Sebastián
+  pidió el cambio: «cambia el nombre a inicio, siempre serán inicio y cierre». La entrega, el
+  máster y la línea se llaman INICIO; la carpeta y el bin siguen siendo `UNIDAD 4\BIENVENIDA`.
+- **Desarrollo** (`plan_sr4d`), cuadros 3570–60389: la clase de las cuatro lecciones («Sean
+  ustedes bienvenidos, queridos discentes, a nuestra unidad número cuatro… Finalizamos unidad
+  número cuatro»). La ficha no lo pide (pide la presentación y el cierre de cada unidad); vino en
+  la misma grabación y se hizo igual, como el desarrollo de la unidad 3.
+
+Copia de trabajo de la fuente: `UNIDAD 4\BIENVENIDA\01 VIDEO\` y `UNIDAD 4\DESARROLLO\01 VIDEO\`
+(`srpa_u4_inicio_v2_fuente.mp4`), en D:. La transcripción (Scribe, 4.183 palabras) está en
+`03 VOCES\stt_u4_inicio_v2.json`.
+
+### La fuente ya venía montada con tomas
+
+Se midió cuadro a cuadro (`D:\DAE\_tmp\sr_ta\prep_u4.py`): diferencia media contra el cuadro
+anterior, diferencia del panel DAE/Fiscalía contra su mediana y fracción de píxeles oscuros.
+
+- **Corte seco en el cuadro 3522** (117,4 s), entre la bienvenida y la clase. El panel cambia de
+  nivel contra su mediana (2,5 → 0,8): son dos tomas con el fondo virtual un pelo corrido. Es
+  la frontera entre las dos piezas.
+- **Un cubo 3D**, cuadros 23181–23210 (772,7–773,7 s), en una pausa. `CONGELA` muestra quieto el
+  primer cuadro limpio de después (el 23212).
+- **Cuatro cortes secos a mitad de frase** (un pico aislado de la diferencia, con la cabeza en
+  otro sitio): cuadros 24199, 48933, 51964 y 60291. Después de cada uno va el **plano cerrado**
+  (960×540, ×2,0) hasta la pausa del final de la frase: 5,6 s, 10,2 s, 4,9 s y 3,3 s. Ahí no hay
+  gráficos. Los tres primeros van desde (20, 34), con el panel entero; el último, desde
+  (140, 146), sin el panel (ver «Compuesto v2»).
+- **Un quinto corte**, en el cuadro 29134 (971,13 s), casi no desplaza la imagen (diferencia 3,5
+  contra 5,5–8,9 de los otros): se deja.
+- El plano cerrado no puede dejar afuera el panel: en dos de los tramos la cabeza llega hasta
+  y=148 de la fuente y el panel termina en y=142. Se midió el tope y los bordes de la cabeza en
+  cada tramo (`cerrado_u4.py`) antes de elegir la ventana.
+
+Cómo se buscan: un cubo se ve en el panel (sube de 0,4 a 95); un corte seco no mueve el panel,
+y hay que buscar picos aislados de la diferencia entre cuadros (un cuadro alto con los diez de
+antes y los diez de después bajos). Los escalones chicos del panel (0,1) no son cortes.
+
+### Ventana y columna
+
+1143×643 desde (12, 30), ×1,68: la de la presentación y el desarrollo de la unidad 3. El borde
+izquierdo de la cabeza está en x 588 (p50), 521 (p5) y 453 (p1) de la fuente. Con la caja de
+cartones en x 86–750 de salida, la persona pasa del 1,5 % de la caja 12,5 s en los 33 minutos
+(manos, de a medio segundo): la columna es de **560** (`MAXW = columna(560)`). Lower third con el
+nombre a 44 px y el cargo en 2 renglones (`LT = (44, 560)`); el nombre termina en x≈918, sobre
+el saco.
+
+### Inicio (`plan_sr4b`) — entregado
+
+- Una sola toma, de corrido: va entera (0–117,4 s). 8 gráficos: lower third, una lista de AE y
+  seis cartones (las cuatro lecciones, el acompañamiento docente y la metodología).
+- **Línea:** `SRPA - U4 - INICIO`. **Entrega:** `srpa - U4 - INICIO-v1.mp4`, en Drive →
+  `VIDEOS FINALIZADOS` › «unidad 4» (`1f5FchtGdFOwvWtYT8xvILlyamEwloNQb`), id
+  `18BwbBy2u8kvD8jrlykTBA_ZjfWymFs8x`. 3.632 cuadros = línea; −16,3 LUFS, −3,0 dBTP; PSNR 51,1 /
+  45,0 dB contra el máster; 63,9 MB. Subida con copia exclusiva y verificada byte a byte.
+
+### Desarrollo (`plan_sr4d`) — entregado
+
+- 31:34 de clase. 109 gráficos: lower third, 87 cartones y 21 listas de AE; 68 % del tiempo.
+  Ningún gráfico cruza un borde de tramo ni cae en un plano cerrado. En 1.399 s el profe abre
+  las manos y una pasa 0,7 s por detrás del cartón «Prácticas formales»: se dejó, porque correr
+  el cartón lo sacaba de las palabras.
+- **Compuesto v2.** El último plano cerrado («Finalizamos unidad número cuatro») iba con la
+  ventana de los otros tres y cortaba el mentón: en esa toma el profe está más abajo y al final
+  se inclina. Se vio en la tira de 4 cuadros por segundo de la simulación, con el compuesto de
+  31 minutos ya hecho. La v2 usa 960×540 desde (140, 146) para ese plano. No se recompuso todo:
+  la v1 tiene un cuadro clave justo en el corte (el 56721 del compuesto), así que se
+  codificaron solo los 99 cuadros finales con la misma receta y se pegaron a los primeros 56.721
+  de la v1 sin recodificar; el audio es el de la v1 (`D:\DAE\_tmp\sr_ta\cola_sr4d.py`).
+  Verificado: SPS/PPS iguales, 56.820 cuadros y 1.894,000 s en video y audio, `framemd5` igual a
+  la v1 antes del empalme y a la cola suelta después, decodificación completa sin errores. La v1
+  está en `01 VIDEO\_descartes`.
+- **Compuesto:** −16,0 LUFS, −2,9 dBTP.
+- **Línea:** `SRPA - U4 - DESARROLLO`, 46.228 cuadros. **Entrega:** `srpa - U4 - DESARROLLO-v1.mp4`,
+  en Drive → `VIDEOS FINALIZADOS` › «unidad 4», id `1hTtylD5IrNH3FtrswmucVNWPTlniGIzW`. 46.228 cuadros = línea (32:08); −16,0 LUFS,
+  −2,6 dBTP; PSNR 50,3 / 45,0 dB contra el máster; 936 MB. Subida con copia exclusiva y
+  verificada byte a byte.
+- Simulación, tiras de los cortes y de los planos cerrados: `D:\DAE\_tmp\sr_ta\sr4d\sim\`,
+  `cortes_compuesto.jpg` (los cuatro cortes en el compuesto, cuadro a cuadro) y `cola_v2.jpg`.
+
+### Cómo se hizo más rápido
+
+`profe_cadena` hace los pasos en fila y componer 31 minutos tarda media hora. Se mató solo el
+proceso de la cadena cuando `componer` ya escribía el `.parcial` (el hijo sigue y termina solo)
+y, mientras tanto, corrieron `cartones_solo.py` (título y cartones) y `mg_solo.py` (After
+Effects), los dos en `D:\DAE\_tmp\sr_ta\`. Las 21 listas se armaron en 147 s, sin cortes de
+aftr, y se rindieron en 17 minutos.
