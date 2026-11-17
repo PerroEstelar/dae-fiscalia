@@ -57,7 +57,7 @@ CITA = 0.45
 DRIVE = 'https://drive.google.com/drive/folders/1gp1dof3SncgICHNNiuEW3HHBYxdSCZDJ'
 DRIVE_VIDEOS = '1qKmKVuwmNGKaTLbzgtm2pc5-uqf98k9u'
 
-CURSO = 'Enfoque diferencial en la práctica del fiscal'
+CURSO = 'Enfoque diferencial'   # el nombre del curso; «…en la práctica del fiscal» era solo el de la carpeta de Drive
 ANTE = 'Enfoque diferencial'
 
 # clave -> (tipo, unidad, carpeta de la pieza, voz, antetitulo, titulo)

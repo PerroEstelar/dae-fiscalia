@@ -56,7 +56,12 @@ FUENTES = 'G:/My Drive/_MA subidas/_ED profes/'
 AE_DIR = 'E:/DAE MASTER/PRIORIDAD 2/CURSO - ENFOQUE DIFERENCIAL/00 MOTION GRAPHICS'
 AEP = AE_DIR + '/ED_profe_mg.aep'
 ICONOS = AE_DIR + '/iconos'
-CURSO_LINEAS = ['Enfoque diferencial en', 'la práctica del fiscal']
+# El curso se llama «Enfoque diferencial» (formato de diseño del curso, FGN-AP01-F-204: «Nombre del
+# curso: ENFOQUE DIFERENCIAL»). Hasta el 17 nov el cartón de título decía «Enfoque diferencial en la
+# práctica del fiscal»: salió del nombre de la carpeta de Drive («PRIORIDAD 2 - ENFOQUE DIFERENCIAL
+# EN LA PRÁCTICA DEL FISCAL»), que copia el de la carpeta vecina de Justicia restaurativa, y no se
+# cruzó contra el documento del curso. Sebastián: «deben decir únicamente Enfoque diferencial».
+CURSO_LINEAS = ['Enfoque diferencial']
 TITULO_BASE = None
 XY, VENTANA = (0, 40), (1440, 810)
 MATRIZ_FUENTE = 'bt709'
@@ -84,7 +89,7 @@ def armar(clave, carpeta, sub, linea, export, prefijo, k0, k1):
     return dict(
         R=r, BIN=['PRIORIDAD 2', 'CURSO - ENFOQUE DIFERENCIAL', 'VIDEOS PROFE'] + carpeta.split('/'),
         ORIGINAL=FUENTES + clave + '.mov', COMPUESTO=r + '/01 VIDEO/%s_compuesto_v1.mp4' % prefijo,
-        TITULO=r + '/02 CARTONES/carton titulo %s.mp4' % clave, SUB=sub, NOMBRE_LINEA=linea,
+        TITULO=r + '/02 CARTONES/carton titulo %s v2.mp4' % clave, SUB=sub, NOMBRE_LINEA=linea,
         EXPORT=export + '-v%d', PREFIJO=prefijo, TMP='D:/DAE/_tmp/ed_profes/' + clave,
         TRAMOS=[(t0, t1, None)], T0=t0, T1=t1, cuadro=cuadro,
         MASTER_DIR='D:/DAE/_tmp/ed_profes/master')

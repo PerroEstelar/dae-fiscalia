@@ -381,3 +381,88 @@ proceso de la cadena cuando `componer` ya escribía el `.parcial` (el hijo sigue
 y, mientras tanto, corrieron `cartones_solo.py` (título y cartones) y `mg_solo.py` (After
 Effects), los dos en `D:\DAE\_tmp\sr_ta\`. Las 21 listas se armaron en 147 s, sin cortes de
 aftr, y se rindieron en 17 minutos.
+
+## Unidad 5: inicio y desarrollo (17 nov 2026)
+
+Sebastián: «continuemos con unidad 5 inicio (…) de pe a pa, subir, actualizar». Y con el trabajo
+en marcha: «el inicio de SRPA termínalo bien graficado y todo; el U5 desarrollo me confirman que
+por ahora solo hagamos intro y outro, placas de entrada y salida y títulos del profe,
+provisionalmente, porque se trata de entregar rápido».
+
+En VIDEOS/UNIDADES había un archivo nuevo del 17 nov: `SRPA_inicio_unidad5.mp4`
+(`1ccSM6ImbU5of5m-GQTbxPSLfleMmKWV8`), 34:19,5 (61.786 cuadros). Grabación de Teams, 1280×720,
+30 fps parejos, BT.601, AAC estéreo a −15,8 LUFS con picos de +0,8 dBTP. **Carlos Humberto
+Ramírez Romero** (mismo fondo, saco y corbata que en la unidad 4; se puso un cuadro de cada
+fuente al lado). No dice su nombre. Trae lo mismo que el de la unidad 4: la bienvenida y la clase
+completa, pegadas.
+
+- **Inicio** (`plan_sr5i`), cuadros 0–3423: «Queridos discentes, bienvenidos a la unidad número
+  cinco… Bienvenidos».
+- **Desarrollo** (`plan_sr5d`), cuadros 3437–61785: la clase de las tres lecciones.
+
+Copia de trabajo de la fuente: `UNIDAD 5\INICIO\01 VIDEO\` y `UNIDAD 5\DESARROLLO\01 VIDEO\`
+(`srpa_u5_inicio_fuente.mp4`), en D:. La transcripción (Scribe, 4.875 palabras) está en
+`03 VOCES\stt_u5_inicio.json`.
+
+### La fuente: cuatro cubos y muchos cortes de toma
+
+Scripts y hojas en `D:\DAE\_tmp\sr_ta\` (`prep_u5.py`, `saltos_u5.py`, `saltos2_u5.py`,
+`tiras_cortes_u5.py`, `cerrado_u5.py`, `tiras_cerrado_u5.py`, `boca_u5.py`, `boca2_u5.py`).
+
+- **En esta fuente el panel DAE/Fiscalía no cambia de nivel entre tomas** (0,3–0,4 en todo el
+  archivo). El panel solo delata los cubos. Los cortes secos se buscaron por el pico aislado de
+  la diferencia entre cuadros: salen 41 candidatos, y la mayoría no son cortes.
+- **Qué son los que no son cortes.** Gestos de manos: el fondo virtual de Teams hace aparecer y
+  desaparecer la mano de un cuadro al otro. Y movimientos rápidos de la cabeza, que la grabación
+  trae con cuadros repetidos y un salto.
+- **Cómo se separaron.** Para cada candidato, la diferencia media de la zona de la persona entre
+  el cuadro anterior y el del pico (`e`, a 640×360). El movimiento natural da hasta 8. Los diez
+  con `e` ≥ 13 son cortes de toma claros (cuadros 16545, 19736, 23086, 24123, 51013, 54828, 56485,
+  58059, 59264, 60494), más el 3424, que es la frontera entre la bienvenida y la clase. Se
+  miraron en tiras de 16 cuadros (`tiras_cortes_a_*.jpg`).
+- **Plano cerrado después de cada corte**, hasta la pausa siguiente (3 a 7,6 s), y en la
+  despedida (del corte del cuadro 61263 al final, 17,4 s): once en total. Cada uno vuelve al
+  plano abierto en el cuadro más silencioso de su pausa; dos vuelven justo en otro corte más
+  chico (55039 y 56670), que así queda tapado.
+- **Plano cerrado: 960×540 desde (140, 146), ×2,0, sin el panel**, en los once. El tope de la
+  cabeza va de y 176 a 268 según la toma: con la ventana que deja el panel adentro (desde y=34)
+  el mentón quedaba a 16 px del borde en las tomas bajas. Se miró cada tramo entero a 4 cuadros
+  por segundo y el último medio segundo cada 3 cuadros (`tiras_cerrado_B*.jpg`).
+- **Cuatro cubos 3D** (cuadros 11125–11152, 36405–36434, 42171–42200, 49991–50015): `CONGELA`
+  con el primer cuadro limpio de después.
+- Cortes chicos (`e` entre 9 y 11) quedan sin tratar, como el quinto de la unidad 4.
+- **El vaso de agua.** Antes de tres cortes (51013, 54828, 59264) se ve al profe levantar el
+  vaso y taparse la boca durante un segundo mientras se oyen las últimas palabras de la frase.
+  Parecía un desfase entre imagen y sonido y no lo es: en una pausa de la misma toma, 15 s antes,
+  la boca se cierra y se abre con el sonido (`boca2_a.jpg`), y en esos cuadros la voz baja 10 dB.
+  Él termina la frase con el vaso delante. Sacar esos cuadros se llevaría palabras: se dejan.
+
+### Inicio (`plan_sr5i`) — entregado
+
+- Una sola toma: va entera (0–114,1 s). Ventana 1143×643 desde (12, 30), columna de 560 y
+  `LT = (44, 560)`, como la unidad 4. 8 gráficos: lower third, 5 cartones (3 lecciones, cada
+  lección y el enfoque pedagógico) y 2 listas de AE (lo que suma la lección 2 y las horas); 77 %
+  del tiempo.
+- **Línea:** `SRPA - U5 - INICIO`. **Entrega:** `srpa - U5 - INICIO-v1.mp4`, en Drive →
+  `VIDEOS FINALIZADOS` › «unidad 5» (`1LEW9Fl6G9StX6Qe4utba1cervV-dIDq8`), id
+  `19Ya5P2ufUJTkTvCeGsWLRwAjC4FvPysH`. 3.554 cuadros = línea (2:28); −16,2 LUFS, −3,0 dBTP; PSNR
+  50,9 / 45,0 dB contra el máster; 64,8 MB. Subida con copia exclusiva y verificada byte a byte.
+
+### Desarrollo (`plan_sr5d`) — entregado, **provisional**
+
+- Por indicación de Sebastián va sin gráficos en el cuerpo: intro, cartón de título, lower
+  third (115,4–123,4 s), cartón de cierre y outro. Los cartones y las listas quedan pendientes;
+  cuando se pidan, se agregan a `ITEMS` y sale una v2 sobre el mismo compuesto.
+- 32:25 de clase, 22 tramos (11 en plano cerrado) y 4 congelados. **Compuesto:** 58.349 cuadros
+  (los esperados), −16,0 LUFS, −2,9 dBTP. Se miraron 8 cuadros seguidos del compuesto alrededor
+  de cada corte, cada vuelta y cada congelado (`D:\DAE\_tmp\sr_ta\sr5d\bordes_*.jpg`,
+  `compuesto_u5.py`): los cambios de ventana caen en el cuadro exacto y no se ve ningún cubo.
+- **Línea:** `SRPA - U5 - DESARROLLO`, 47.450 cuadros. **Entrega:** `srpa - U5 - DESARROLLO-v1.mp4`,
+  en Drive → `VIDEOS FINALIZADOS` › «unidad 5», id `1On_NssscFzCdOVXckspCucWmxE8cmdAH`. 47.450
+  cuadros = línea (32:59); −16,0 LUFS, −2,9 dBTP; PSNR 50,3 / 45,1 dB contra el máster; 968 MB.
+  Subida con copia exclusiva y verificada byte a byte.
+- Lo que se ve y viene de la fuente: en varias tomas el profe tiene el vaso de agua en la mano
+  o está tomando en los últimos cuadros antes del corte o del cubo.
+- Se hizo como la unidad 4: la cadena compone a prioridad baja, se mata el proceso padre cuando
+  `componer` ya escribe el `.parcial`, y el título y el lower third corren aparte
+  (`cartones_solo.py`). Componer tardó 25 minutos; el máster, 2:45; el MP4 de entrega, 30.
