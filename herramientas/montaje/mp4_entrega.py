@@ -36,7 +36,29 @@ import sys
 import time
 
 FB = glob.glob(os.path.expanduser('~') + '/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg*/*/bin')[0]
-VIDEO = ['-c:v', 'libx264', '-crf', '18', '-preset', 'slow', '-tune', 'animation',
+
+
+def _preset():
+    """El preset de x264 de la entrega: `slow`, el de la receta. Una entrega **provisional** puede pedir otro
+    con `PRESET_ENTREGA` en su plan (el plan llega por `DAE_PLAN`) o con `DAE_PRESET` en el entorno. Los ocho
+    videos de unidad de Terminaciones anticipadas (17 nov 2026, «para que salgan más rápido») van con `medium`:
+    mismo CRF 18 y mismo formato, archivo algo más grande y casi la mitad de tiempo en un i7 de cuatro núcleos."""
+    p = os.environ.get('DAE_PRESET')
+    plan = os.environ.get('DAE_PLAN')
+    if not p and plan:
+        for r, _d, fs in os.walk(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'cursos')):
+            if plan + '.py' in fs:
+                sys.path.insert(0, r)
+                try:
+                    p = getattr(__import__(plan), 'PRESET_ENTREGA', None)
+                except Exception:
+                    p = None
+                break
+    return p if p in ('medium', 'fast', 'slower', 'slow') else 'slow'
+
+
+PRESET = _preset()
+VIDEO = ['-c:v', 'libx264', '-crf', '18', '-preset', PRESET, '-tune', 'animation',
          '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-level', '4.0',
          '-x264-params', 'keyint=48:min-keyint=24:scenecut=40',
          '-movflags', '+faststart',
@@ -132,6 +154,7 @@ def entrega(linea, carpeta, nombre, mdir=None):
     v_ = [s for s in j['streams'] if s['codec_type'] == 'video'][0]
     a_ = [s for s in j['streams'] if s['codec_type'] == 'audio']
     n = cuadros(f)
+    w('preset x264', PRESET)
     w('entrega %s  %s %s L%s %dx%d %s  cuadros %d / línea %d %s  audio %s  %d MB (máster %d MB)' % (
         os.path.basename(f), v_['codec_name'], v_.get('profile'), v_.get('level'), v_['width'], v_['height'],
         v_.get('color_space'), n, largo, 'OK' if n == largo else 'FALLA',

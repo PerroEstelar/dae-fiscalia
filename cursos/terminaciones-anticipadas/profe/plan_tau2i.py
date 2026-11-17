@@ -22,6 +22,7 @@ from base_ta_profe import armar_unidad, PROFE, XY_UNIDADES, VENTANA_UNIDADES  # 
 
 XY, VENTANA = XY_UNIDADES, VENTANA_UNIDADES
 MATRIZ_FUENTE = 'bt709'
+PRESET_ENTREGA = 'medium'     # entrega provisional: x264 CRF 18 con preset medium (ver mp4_entrega); la v2 con gráficos vuelve a slow
 globals().update(armar_unidad(2, 'INICIO', 65, 13618))
 
 ITEMS = [
