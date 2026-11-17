@@ -2766,3 +2766,96 @@ Con un cargo de tres renglones (Terminaciones anticipadas) está bien; con el de
 cinco y el último queda fuera del cuadro, porque el lower third arranca en y=870 y cada renglón
 baja 37 px. Antes de rendir se cuentan los renglones del cargo con la fuente real: más de tres
 no entran. La simulación (`profe_sim.py`) lo muestra en cuatro momentos.
+
+## Un archivo puede traer dos piezas, y cortes secos que no se ven en el panel (U4 de SRPA, 17 nov 2026)
+
+`SRPA_unidad_4_inicio_v2.mp4` se llamaba «inicio» y duraba 33 minutos: eran la bienvenida de la
+unidad (1:57) y la clase entera, pegadas. Se supo al leer la transcripción completa, no por el
+nombre ni por la hoja de cuadros (el profe, el fondo y la ropa son los mismos de principio a
+fin). Quedó en dos piezas, como la unidad 3, que había llegado en dos archivos.
+
+- **Antes de planear, se lee la transcripción entera** buscando dónde el profe vuelve a saludar
+  o se despide: ahí cambia la pieza.
+- **La frontera entre dos tomas se confirma en el panel DAE/Fiscalía**: su diferencia contra la
+  mediana cambia de nivel de una toma a otra (2,5 → 0,8 → 0,4 en este archivo), aunque no haya
+  transición.
+- **Un corte seco de toma no mueve el panel.** El método del panel (U3 L4) encuentra cubos y
+  negros, pero no los cortes secos con que quien editó la grabación quitó pausas. Esos se buscan
+  como **picos aislados** de la diferencia entre cuadros: un cuadro por encima de 3,5 con la
+  mediana de los diez anteriores y los diez siguientes por debajo de 1,2. Salieron cinco; cuatro
+  se ven (diferencia 5,5–8,9) y uno no (3,5). Un gesto de manos da diferencias altas durante
+  muchos cuadros seguidos y no pasa el filtro; igual se mira la tira de cada candidato.
+- **Después de un corte seco que se ve, plano cerrado hasta el final de la frase**, también
+  cuando el corte lo trae la fuente. El salto se lee como cambio de plano.
+- **El plano cerrado se elige midiendo la cabeza en ese tramo**, no en el video entero: el tope
+  (148–240 de la fuente según la toma), los bordes y dónde queda el mentón. Si la cabeza llega a
+  la altura del panel, el plano cerrado tiene que traer el panel entero (acá, 960×540 desde
+  (20, 34)); no hay ventana que lo deje afuera sin cortar la cabeza.
+
+## Lo que no depende del compuesto corre mientras se compone (17 nov 2026)
+
+Componer media hora de profe a 1080 tarda unos 30 minutos, y `profe_cadena` hace los pasos en
+fila. Los cartones, el cartón de título y las listas de After Effects salen del plan, no del
+compuesto. En el desarrollo de la U4 de SRPA se hicieron mientras `componer` seguía:
+
+- `profe_cadena.py <plan> componer titulo cartones` con prioridad baja. Cuando ya está en el
+  segundo ffmpeg (el que escribe el `.parcial`), se mata **solo el proceso de la cadena** (los dos
+  PID: el lanzador del venv y el python real), no sus hijos: `ic_pieza componer` sigue solo,
+  renombra el `.parcial` y termina.
+- `D:\DAE\_tmp\sr_ta\cartones_solo.py <plan>` (título y cartones; log `<tmp>\cartones.log`, que
+  termina en «CARTONES LISTOS») y `D:\DAE\_tmp\sr_ta\mg_solo.py <plan>` (After Effects; log
+  `mg.log`, «MG LISTO»), los dos con prioridad normal. `mg_armar` armó las 21 listas en 147 s,
+  sin un solo corte de aftr.
+- Si se mata la cadena, el resumen de sonido de `componer` no queda en ningún log: se mide el
+  compuesto después (`ebur128=peak=true`) y se cuentan sus cuadros con ffprobe.
+
+## El inventario se edita con el conector de Sheets (17 nov 2026)
+
+Reemplaza la edición por Chrome de la sección anterior. Con el conector de Google Sheets:
+
+- **Una fila que cambia de estado:** `copyPaste` con `PASTE_FORMAT` desde las mismas columnas de
+  una fila que ya está en ese estado (trae el relleno verde de «Entregado» y el formato del
+  enlace) y después `update_formulas` con los valores. El enlace va como
+  `=HYPERLINK("url";"nombre")`, con punto y coma: la hoja está en español.
+- **Una fila nueva:** `insert_dimension` con `inheritFromBefore: true` debajo de la fila que se
+  le parece, y lo mismo.
+- **La nota del Resumen (A21) tiene tramos en rojo.** `update_values` los borra. Va con
+  `updateCells`, `fields: "userEnteredValue,textFormatRuns"`: el texto nuevo y los mismos tramos
+  con los índices corridos por lo que cambió de largo (se leen antes con `textFormatRuns`).
+- Se verifica leyendo de vuelta con `includeGridData` (`formattedValue`, `hyperlink`,
+  `backgroundColorStyle`, `textFormatRuns`), no por la respuesta de la escritura.
+
+## Cambiar la ventana de un solo tramo sin recomponer todo (U4 de SRPA, 17 nov 2026)
+
+El último plano cerrado del desarrollo de la U4 (99 cuadros) cortaba el mentón. Se vio en la tira
+de 4 cuadros por segundo de la simulación, con el compuesto de 31 minutos ya hecho. `reimagen`
+recodifica todo el video: unos 20 minutos. Se rehízo solo ese tramo, en 3:
+
+1. Se mira si el compuesto tiene un **cuadro clave justo en el borde del tramo**
+   (`ffprobe -show_entries packet=pts_time,flags`): x264 pone uno en cada cambio de plano, y un
+   corte de toma con cambio de ventana lo es. Si no lo hay, no se puede: va `reimagen`.
+2. Se codifican solo los cuadros del tramo desde la fuente, con la misma cadena de
+   `ic_pieza componer` (`trim=start_frame/end_frame`, recorte, escala a 1080 con la matriz de la
+   fuente, `-r 30 -c:v libx264 -crf 16 -preset fast`).
+3. Lo anterior al borde se copia de la v1 sin recodificar (`-c:v copy -frames:v N`) y se pega con
+   el demuxer `concat` (con `duration N/30` para la primera parte). El audio es el de la v1.
+4. **Se verifica todo** (`D:\DAE\_tmp\sr_ta\cola_sr4d.py`): el mismo `extradata_hash` en las dos
+   partes (SPS/PPS iguales; si difieren, no se pega), cuadros y duración iguales a la v1,
+   `framemd5` igual a la v1 antes del empalme y a la cola suelta después, pts seguidos en el
+   empalme, y una decodificación completa sin errores.
+
+Vale para el último tramo o para uno del medio (tres partes). Si cambia la duración de algún
+tramo no sirve: el audio de la v1 ya no calza.
+
+**Y la lección de fondo:** la ventana de un plano cerrado se prueba con cuadros de todo el tramo,
+incluido el último medio segundo, antes de componer. Acá se midió el tope de la cabeza y los
+bordes, pero no el mentón, y el profe se inclina justo al final.
+
+## Los videos de unidad se llaman INICIO y CIERRE (Sebastián, 17 nov 2026)
+
+«Cambia el nombre a inicio, siempre serán inicio y cierre». La bienvenida de la U4 de SRPA se
+había subido como `srpa - U4 - BIENVENIDA-v1.mp4`, siguiendo a las de la U1 y la U3, y se
+renombró a `srpa - U4 - INICIO-v1.mp4` (el archivo en Drive conserva su id y su enlace; también
+el archivo local, el máster y la línea de Resolve, con `timeline.SetName`). De acá en adelante:
+`<curso> - U<n> - INICIO` y `<curso> - U<n> - CIERRE`, en el archivo y en la línea; la clase
+completa de una unidad, cuando viene, sigue siendo `DESARROLLO`.
