@@ -135,6 +135,60 @@ y `ajusta.py` recorta a tiempo de lectura (10 car/s) y quita solapes.
   `D:\DAE\_tmp\ed_profes\master`, se usa para la entrega, se verifica y va a la papelera de
   Windows. En `05 EXPORTS\_master` queda un `LEER` que lo dice.
 
+## Revisión de textos: cinco entregas v3 (17 nov 2026)
+
+Sebastián, con las v2 entregadas: «en uno de los videos, en uno de sus gráficos de texto, en vez
+de la línea "unas lentes" que diga "unos lentes", en masculino… revisa los guiones antes de
+entregar el paquete entero».
+
+Se leyeron los 410 textos en pantalla de los 12 planes. Seis cartones cambiaron, en cinco videos:
+
+| video | cartón (en el video) | decía | dice |
+|---|---|---|---|
+| Inicio del curso | `c02_lentes` (0:41) | «usar unas lentes» | «usar unos lentes» |
+| U1 cierre | `c39_segregacion` (10:41) | «no violaba la constitución» | «la Constitución» |
+| U1 cierre | `c58_cartas` (19:38) | «el joker o el as» | «el jóker o el as» (DLE) |
+| U2 cierre | `c29_sillas` (12:17) | «niños de brazos y movilidad reducida» | «niños de brazos y usuarios con movilidad reducida» |
+| U3 cierre | `c48_frontera` (20:33) | «deba dársele… a los niños, niñas y adolescentes» | «dárseles» |
+| U5 cierre | `c05_contacto` (2:45) | «sin algún tipo de contacto físico» | «sin ningún tipo de contacto físico» |
+
+- Cuatro son palabras del profe copiadas tal cual («unas lentes», «dársele», «sin algún tipo» y la
+  minúscula, que es de la transcripción). En el de las sillas el error fue al acortar: el profe
+  dice «niños de brazos y usuarios con movilidad reducida» y el cartón se comió «usuarios con».
+- **La regla:** el cartón lleva las palabras del profe, pero escritas bien. Lo que al oído pasa
+  (una concordancia, un género, un régimen) en pantalla se lee como error. Y al acortar una
+  enumeración no se le quita el sustantivo a un elemento.
+- **Lo que se vio y se dejó**, por si lo piden:
+  - «Los test de igualdad», «Tres tipos de test» y «Test diferenciados» en el cierre de la U1, y
+    «Los tests de igualdad» en el inicio de la U1. La forma académica de hoy es «tests»; dos de
+    los tres son listas de After Effects.
+  - «Personas con capacidades diferentes» (inicio del curso, lista de AE): lo dice el profe; en
+    los cierres se usa «personas con discapacidad».
+  - «Cincuenta por ciento» junto a «30 %» en el cierre de la U2.
+  - «Retroprocesos» (cierre de la U4): lo dice el profe así.
+  - «En razón a» (dos cartones): admitido, aunque se prefiere «en razón de».
+- **Cómo se rehicieron.** `VERSIONES = {clave: 2}` y `VERSION = 3` en cada plan; el cartón nuevo
+  se rinde como «<PREFIJO>_<clave> v2.mov» y `herramientas/montaje/reparchar.py` cambia el cartón
+  en la línea, rinde y codifica solo el tramo entre los cuadros clave que lo encierran (10 a 18 s)
+  y copia el resto de la v2 sin recodificar. En las cinco: cuadros = línea, lo copiado idéntico
+  paquete a paquete, audio idéntico, cuadro clave en cada empalme, decodificación sin errores;
+  fuera del cartón el tramo nuevo da 46,6 dB o más contra la v2. Hojas con el antes y el después:
+  `D:\DAE\_tmp\ed_profes\<clave>\reparchar_hoja.jpg`.
+- **Drive.** Las cinco v3 se compararon byte a byte (`verificar_drive.py`); las cinco v2 que
+  reemplazan están en la papelera. En la carpeta hay 12 archivos: cinco v3 y siete v2.
+- **Disco.** La v2 de esos cinco está en `05 EXPORTS\_descartes`; el cartón anterior, en
+  `02 CARTONES\_descartes`; el `.drt` anterior, en `10 TIMELINE SEBASTIAN\_descartes`.
+
+| entrega (Drive) | cuadros | tramos nuevos | bytes | Drive |
+|---|---|---|---|---|
+| `enfoquediferencial - CURSO - INICIO-v3.mp4` | 3.406 | 985–1369 | 78.199.935 | `1aP2L0XyBwyNM3o_eQXjhbJleeYVN3ZK6` |
+| `… - U1 - CIERRE-v3.mp4` | 32.647 | 15337–15577 y 28201–28489 | 810.011.261 | `16utmP9Q2zSw__DGZ2L-tClqHiBSnUs3z` |
+| `… - U2 - CIERRE-v3.mp4` | 31.986 | 17641–18073 | 870.286.999 | `1qcuv_vpVOP546L0yql3TkH-3ORBR7PMt` |
+| `… - U3 - CIERRE-v3.mp4` | 38.558 | 29545–29881 | 1.232.320.773 | `1HseQRlJC8DhagwkpGHo-v0Dpm8fP_Nuo` |
+| `… - U5 - CIERRE-v3.mp4` | 40.892 | 3913–4249 | 1.186.348.222 | `1J1dSWpInEPLg7iFhP5c8Nl0U_sbDmnnZ` |
+
+Las otras siete entregas siguen en v2 (tabla de abajo).
+
 ## Título corregido: entregas v2 (17 nov 2026)
 
 Sebastián: «todos los videos de Enfoque diferencial el título está mal, deben decir únicamente
@@ -181,6 +235,8 @@ fiscal».
 | `enfoquediferencial - CURSO - CONCLUSIONES-v2.mp4` | 3.708 | 409 · 3289 (cierre en 3299) | 91.544.516 | `1cQAXXzFYeWhax-04dmRcmh_csClmZI1M` |
 
 Largo, sonoridad y gráficos son los de la v1 (tabla de abajo): el audio y el cuerpo no cambiaron.
+Cinco de estas v2 (el inicio del curso y los cierres de las unidades 1, 2, 3 y 5) se reemplazaron
+el mismo día por las v3 de la sección de arriba y están en la papelera de Drive.
 Las copias locales siguen llamándose `PRESENTACION` / `CONTENIDO`; en Drive, `INICIO` / `CIERRE`.
 
 ## Entregas v1 (15 nov 2026; reemplazadas por las v2 el 17 nov)
