@@ -267,6 +267,7 @@ for i, (a, b, cs) in enumerate(segs):
     run([FF, '-hide_banner', '-nostats', '-ss', '%.4f' % (a / FPS - 0.004), '-i', vieja, '-i', m, '-frames:v', str(b - a),
          '-lavfi', '[0:v][1:v]psnr=stats_file=tramo%d_psnr.txt' % i, '-f', 'null', '-'], cwd=T)
     ps = [float(x_) if x_ != 'inf' else 99.0 for x_ in re.findall(r'psnr_avg:(inf|[\d.]+)', open(st).read())] if os.path.exists(st) else []
+    ps = ps[:b - a]             # el filtro alcanza a medir un cuadro de más antes de que `-frames:v` corte
     dentro = set()
     for c, ta, tb in tramos:
         if c in cs:
@@ -277,7 +278,7 @@ for i, (a, b, cs) in enumerate(segs):
         i, len(ps), min(fuera) if fuera else 99, len(fuera), min(den) if den else 99, sum(den) / max(1, len(den)), len(den)))
     # dentro del cartón la imagen cambia lo que cambie el texto (si la caja gana un renglón, bastante):
     # se informa y no se juzga; fuera tiene que ser la entrega vieja vuelta a rendir (45 dB o más)
-    if len(ps) != b - a or (fuera and min(fuera) < 38):
+    if len(ps) < b - a or (fuera and min(fuera) < 38):
         ok_img = False
 if not ok_img:
     falla('un tramo no se parece a la entrega vieja: cambió algo más que el cartón')
