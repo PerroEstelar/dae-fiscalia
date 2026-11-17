@@ -10,11 +10,17 @@ from base_ed_profe import armar  # noqa: E402
 globals().update(armar('ed_00_presentacion_general', '00 PRESENTACION DEL CURSO', 'Presentación del curso',
                      'ED - CURSO - PRESENTACION', 'enfoquediferencial - CURSO - PRESENTACION', 'ED00', 28, 3266))
 
+# Revisión de textos del 17 nov 2026 (Sebastián: «en vez de "unas lentes" que diga "unos lentes"…
+# revisa los guiones antes de entregar el paquete entero»). El profe dice «unas lentes»; en pantalla va «unos lentes».
+# Los cartones corregidos se rinden como «… v2.mov» y la entrega es la v3 (`reparchar.py`).
+VERSION = 3
+VERSIONES = {'c02_lentes': 2}
+
 ITEMS = [
     ('c01_lentes', 'carton', 1.4, 8.3, c_ante('Enfoques diferenciales', 'El símil de los lentes')),
     ('c02_lentes', 'carton', 25.1, 39.2, c_tit(
         'Poblaciones diversas',
-        'Es necesario usar unas lentes que nos permitan ver más allá de los prejuicios y falsas '
+        'Es necesario usar unos lentes que nos permitan ver más allá de los prejuicios y falsas '
         'concepciones.')),
     ('m01_hablaremos', 'mg_lista', 48.0, 56.8, lista(
         'Hablaremos de',

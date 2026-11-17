@@ -17,6 +17,12 @@ globals().update(armar('ed_u3_contenido', 'UNIDAD 3/CONTENIDO',
                      'Unidad 3. Enfoques diferenciales y derechos especiales',
                      'ED - U3 - CONTENIDO', 'enfoquediferencial - U3 - CONTENIDO', 'ED3C', 18, 47240))
 
+# Revisión de textos del 17 nov 2026 (Sebastián: «en vez de "unas lentes" que diga "unos lentes"…
+# revisa los guiones antes de entregar el paquete entero»). El profe dice «dársele… a los niños, niñas y adolescentes»; en pantalla concuerda: «dárseles».
+# Los cartones corregidos se rinden como «… v2.mov» y la entrega es la v3 (`reparchar.py`).
+VERSION = 3
+VERSIONES = {'c48_frontera': 2}
+
 ITEMS = [
     ('lt01', 'lt', 1.0, 7.0, PROFE),
     ('c01_moneda', 'carton', 7.2, 20.8, c_tit(
@@ -200,7 +206,7 @@ ITEMS = [
         'Artículo 9',
         'En caso de conflicto de normas, se aplicará la más favorable a su interés superior.')),
     ('c48_frontera', 'carton', 1216.8, 1228.1, cita(
-        'No implica que deba dársele siempre un trato diferencial a los niños, niñas y adolescentes.')),
+        'No implica que deba dárseles siempre un trato diferencial a los niños, niñas y adolescentes.')),
     ('c48b_formativo', 'carton', 1239.8, 1250.7, cita(
         'En un contexto formativo, esta norma debe ponderarse incluso con otros de sus derechos.')),
     ('c49_personalidad', 'carton', 1251.3, 1265.0, cita(

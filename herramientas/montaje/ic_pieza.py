@@ -230,7 +230,10 @@ def titulo():
 
 
 def destino_carton(clave):
-    return '%s/02 CARTONES/%s_%s.mov' % (P.R, P.PREFIJO, clave)
+    # Un cartón corregido después de la entrega se rinde con otro nombre (`P.VERSIONES = {clave: 2}`
+    # → «… v2.mov»): el viejo queda en disco y Resolve no confunde los dos (`reparchar.py`).
+    v = getattr(P, 'VERSIONES', {}).get(clave)
+    return '%s/02 CARTONES/%s_%s%s.mov' % (P.R, P.PREFIJO, clave, ' v%d' % v if v else '')
 
 
 def medir():

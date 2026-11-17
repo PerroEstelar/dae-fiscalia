@@ -15,6 +15,12 @@ from base_ed_profe import armar  # noqa: E402
 globals().update(armar('ed_u5_contenido', 'UNIDAD 5/CONTENIDO', 'Unidad 5. El enfoque de género',
                      'ED - U5 - CONTENIDO', 'enfoquediferencial - U5 - CONTENIDO', 'ED5C', 17, 50160))
 
+# Revisión de textos del 17 nov 2026 (Sebastián: «en vez de "unas lentes" que diga "unos lentes"…
+# revisa los guiones antes de entregar el paquete entero»). El profe dice «sin algún tipo de contacto»; en pantalla va la forma general, «sin ningún tipo».
+# Los cartones corregidos se rinden como «… v2.mov» y la entrega es la v3 (`reparchar.py`).
+VERSION = 3
+VERSIONES = {'c05_contacto': 2}
+
 ITEMS = [
     ('lt01', 'lt', 1.0, 7.0, PROFE),
     ('c01_recurrencia', 'carton', 7.2, 18.7, c_tit(
@@ -41,7 +47,7 @@ ITEMS = [
         'Violencia sexual: todo acto que, mediante la violencia física, psíquica o moral, se ejerce sobre una '
         'persona para imponer una conducta sexual en contra de su voluntad.')),
     ('c05_contacto', 'carton', 148.6, 159.8, cita(
-        'No se limita al acceso carnal: puede darse sin algún tipo de contacto físico del perpetrador.')),
+        'No se limita al acceso carnal: puede darse sin ningún tipo de contacto físico del perpetrador.')),
     ('m03_casos', 'mg_lista', 160.0, 177.3, lista(
         'Por ejemplo',
         ('ojo', 'Acoso', 161.0),

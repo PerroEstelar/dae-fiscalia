@@ -16,6 +16,12 @@ globals().update(armar('ed_u2_contenido', 'UNIDAD 2/CONTENIDO',
                      'Unidad 2. Sujetos de especial protección constitucional',
                      'ED - U2 - CONTENIDO', 'enfoquediferencial - U2 - CONTENIDO', 'ED2C', 14, 39013))
 
+# Revisión de textos del 17 nov 2026 (Sebastián: «en vez de "unas lentes" que diga "unos lentes"…
+# revisa los guiones antes de entregar el paquete entero»). El cartón de las sillas se había comido «usuarios con»: decía «niños de brazos y movilidad reducida».
+# Los cartones corregidos se rinden como «… v2.mov» y la entrega es la v3 (`reparchar.py`).
+VERSION = 3
+VERSIONES = {'c29_sillas': 2}
+
 ITEMS = [
     ('lt01', 'lt', 0.8, 6.6, PROFE),
     ('c01_1991', 'carton', 6.8, 21.2, c_tit(
@@ -129,8 +135,8 @@ ITEMS = [
         ('dialogo', 'Funcionarios que hablan otro idioma', 700.6))),
     ('c29_sillas', 'carton', 721.1, 735.9, c_tit(
         'Las sillas preferenciales',
-        'Adultos mayores, mujeres embarazadas, personas con discapacidad, niños de brazos y movilidad '
-        'reducida.')),
+        'Adultos mayores, mujeres embarazadas, personas con discapacidad, niños de brazos y usuarios con '
+        'movilidad reducida.')),
     ('c30_adolescentes', 'carton', 738.5, 750.9, cita(
         'No figuran los niños, niñas y adolescentes, que en algunos escritos se consideran los más '
         'vulnerables.')),

@@ -16,6 +16,12 @@ from base_ed_profe import armar  # noqa: E402
 globals().update(armar('ed_u1_contenido', 'UNIDAD 1/CONTENIDO', 'Unidad 1. Igualdad y diferencia',
                      'ED - U1 - CONTENIDO', 'enfoquediferencial - U1 - CONTENIDO', 'ED1C', 50, 39876))
 
+# Revisión de textos del 17 nov 2026 (Sebastián: «en vez de "unas lentes" que diga "unos lentes"…
+# revisa los guiones antes de entregar el paquete entero»). «la Constitución» con mayúscula y «jóker» con tilde (DLE).
+# Los cartones corregidos se rinden como «… v2.mov» y la entrega es la v3 (`reparchar.py`).
+VERSION = 3
+VERSIONES = {'c39_segregacion': 2, 'c58_cartas': 2}
+
 ITEMS = [
     ('lt01', 'lt', 2.1, 7.1, PROFE),
     ('c01_unicos', 'carton', 7.3, 13.3, cita('Somos únicos e irrepetibles')),
@@ -135,7 +141,7 @@ ITEMS = [
     ('c38_separados', 'carton', 611.2, 617.7, c_ante(
         'La Corte Suprema', '«Separados, pero iguales»')),
     ('c39_segregacion', 'carton', 624.9, 633.7, cita(
-        'La segregación racial en sí no violaba la constitución si los espacios ofrecidos eran '
+        'La segregación racial en sí no violaba la Constitución si los espacios ofrecidos eran '
         'equivalentes.')),
     ('c40_filtro', 'carton', 646.1, 654.8, cita(
         'Vagones de tren, bibliotecas o restaurantes con un filtro de ingreso conforme al color de la '
@@ -234,7 +240,7 @@ ITEMS = [
         'de igualdad más riguroso.')),
     ('c58_cartas', 'carton', 1161.9, 1172.7, c_tit(
         'Cartas de triunfo',
-        'El papel que en determinado juego de naipes tienen el joker o el as.')),
+        'El papel que en determinado juego de naipes tienen el jóker o el as.')),
     ('c59_minorias', 'carton', 1186.4, 1200.9, cita(
         'Las democracias se caracterizan por la manera en que tratan a sus minorías, en especial a la más '
         'radical de ellas: el individuo.')),

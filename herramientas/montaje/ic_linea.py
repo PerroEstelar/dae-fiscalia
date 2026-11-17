@@ -57,7 +57,8 @@ def linea(n):
 def archivo(clave, tipo):
     if tipo in ('mg_act', 'mg_lista'):
         return '%s/09 MOTION GRAPHICS/%s_%s.mov' % (P.R, P.PREFIJO, clave)
-    return '%s/02 CARTONES/%s_%s.mov' % (P.R, P.PREFIJO, clave)
+    v = getattr(P, 'VERSIONES', {}).get(clave)      # cartón corregido: «… v2.mov» (ver ic_pieza)
+    return '%s/02 CARTONES/%s_%s%s.mov' % (P.R, P.PREFIJO, clave, ' v%d' % v if v else '')
 
 
 def importar():

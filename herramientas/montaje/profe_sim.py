@@ -89,7 +89,8 @@ for clave, tipo, t0, t1, d in P.ITEMS:
     for t in ts:
         im = cuadro_comp(ct(t), T + 'c.png')
         if tipo in ('carton', 'lt'):
-            f = '%s/02 CARTONES/%s_%s.mov' % (P.R, P.PREFIJO, clave)
+            _v = getattr(P, 'VERSIONES', {}).get(clave)
+            f = '%s/02 CARTONES/%s_%s%s.mov' % (P.R, P.PREFIJO, clave, ' v%d' % _v if _v else '')
             ov = cuadro_mov(f, int(round((t - t0) * P.FPS)), T + 'o.png')
             im = Image.alpha_composite(im, ov)
         else:
