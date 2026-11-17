@@ -137,10 +137,16 @@ def verificar(ruta, cuadros_esperados=None):
 
 
 def a_paso(ruta):
-    """Copia el render a la carpeta de paso de Drive para escritorio."""
+    """Copia el render a la carpeta de paso de Drive para escritorio.
+
+    Sin compartir el archivo mientras se escribe (`subir_exclusivo.py`): con `shutil.copy2`,
+    Drive para escritorio subió una entrega con la cola en ceros (17 nov 2026)."""
+    import sys
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from subir_exclusivo import copiar_exclusivo
     os.makedirs(PASO, exist_ok=True)
     dst = os.path.join(PASO, os.path.basename(ruta))
-    shutil.copy2(ruta, dst)
+    copiar_exclusivo(ruta, dst)
     return dst
 
 

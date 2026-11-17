@@ -164,11 +164,20 @@ son de él y no se tocan.
 | `… - U4 - INICIO-v1.mp4` | 1:13 | 1.744 | −16,6 · −3,0 | 50,7 | 32 | `1uk3vRgrQRy3QMVjFe6Hz6A2DoW1mBgNk` |
 | `… - U4 - CIERRE-v1.mp4` | 26:23 | 37.952 | −16,0 · −2,0 | 49,4 | 906 | `1ff2KuM-qABxpZuO9jinr16Pvtz6aCtIZ` |
 | `… - U5 - INICIO-v1.mp4` | 1:12 | 1.723 | −16,5 · −3,0 | 50,6 | 32 | `1ocq9p5tTdy98OdJlN6xClXh0RoNvCtgu` |
-| `… - U5 - CIERRE-v1.mp4` | 28:26 | 40.892 | −16,0 · −2,2 | 48,9 | 1.131 | `12nFMusviNbgCg_h_6R8v5QoRKfticxFB` |
+| `… - U5 - CIERRE-v1.mp4` | 28:26 | 40.892 | −16,0 · −2,2 | 48,9 | 1.131 | `1XfGRSlGip68DjIJ3v0jXQDX3cNAMQpza` (17 nov) |
 | `enfoquediferencial - CURSO - CONCLUSIONES-v1.mp4` | 2:35 | 3.708 | −16,2 · −3,0 | 49,7 | 87 | `1chY2F2Rl_E_WjQXb4tD7KHGPEdCAabZM` |
 
 Todas son H.264 High L4.0, 1920×1080, Rec.709 y 23,976, con audio AAC 48 kHz estéreo. El
 audio sale copiado del máster.
+
+**El cierre de la U5 se congelaba en Drive (17 nov 2026).** Avisaron que se quedaba en el 22:34.
+La copia de Drive tenía el mismo tamaño que la local y, desde el MiB 887 (hacia el 22:16) hasta
+el final, ceros; la local estaba sana (md5 `8250d34a6e8ccfa46a63208755e39fc9`). Se volvió a
+subir con `herramientas/entrega/subir_exclusivo.py` y se comprobó byte a byte con
+`verificar_drive.py`: el id nuevo es `1XfGRSlGip68DjIJ3v0jXQDX3cNAMQpza`, y el viejo
+(`12nFMusviNbgCg_h_6R8v5QoRKfticxFB`) está en la papelera, así que su enlace ya no sirve. Las
+otras 11 entregas de esta carpeta y las 11 de DH se verificaron igual y están bien. Ver la
+sección de `CLAUDE.md` sobre entregas con la cola en ceros.
 
 Las hojas de revisión (`D:\DAE\_tmp\ed_profes\<fuente>\hoja_rev_1.jpg`) tienen un cuadro por
 gráfico, más intro, título, cierre y outro.
