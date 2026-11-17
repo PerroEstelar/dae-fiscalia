@@ -40,6 +40,9 @@ from base_sr_profe import *  # noqa: E402,F401,F403
 from base_sr_profe import armar, ESTANISLAO, cita, c_tit, c_ante, lista  # noqa: E402
 
 XY, VENTANA = (0, 44), (1088, 612)
+# el cargo de Estanislao es largo: a 440 de ancho daba cinco renglones y el último se salía del cuadro.
+# A 560 son tres, parejos, y termina en x≈680, sobre el saco (el nombre, en x≈726).
+LT = (40, 560)
 LAMINA = (0, 2, 1276, 718)
 K_ENTRA, K_LAMINA, K_MUEVE, K_PROFE, K_FIN = 10343, 10372, 24840, 24872, 30470
 globals().update(armar(
