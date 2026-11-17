@@ -257,7 +257,12 @@ if len({json.dumps(e, sort_keys=True) for e in ex}) != 1:
 open(T + 'lista.txt', 'w', encoding='utf-8').write(
     "file '%scabeza.mp4'\nduration %.6f\nfile '%scuerpo.mp4'\nduration %.6f\nfile '%scola.mp4'\n"
     % (T, k_cab / FPS, T, n_cuerpo / FPS, T))
-run([FF, '-y', '-v', 'error', '-f', 'concat', '-safe', '0', '-i', T + 'lista.txt', '-c', 'copy', '-f', 'mp4', T + 'imagen.mp4'])
+# `-auto_convert 0`: sin eso el demuxer pasa el H.264 por `h264_mp4toannexb` y cada cuadro clave sale
+# con el SPS y el PPS repetidos adentro (43 bytes de más por cuadro clave). Se decodifica igual, pero
+# el archivo deja de tener la forma del original, que los lleva solo en la cabecera. Las tres partes
+# tienen los mismos SPS/PPS (se comprobó arriba), así que no hace falta convertir nada.
+run([FF, '-y', '-v', 'error', '-f', 'concat', '-safe', '0', '-auto_convert', '0', '-i', T + 'lista.txt', '-c', 'copy', '-f', 'mp4',
+     T + 'imagen.mp4'])
 run([FF, '-y', '-v', 'error', '-i', T + 'imagen.mp4', '-i', vieja, '-map', '0:v', '-map', '1:a', '-c', 'copy',
      '-movflags', '+faststart', '-f', 'mp4', nueva + '.parcial'])
 
