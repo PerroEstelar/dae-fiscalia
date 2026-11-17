@@ -10,8 +10,8 @@ No hay tomas repetidas ni frases cortadas: va entera.
 
 **La lámina.** Del minuto 5:45 al 13:49 el profe comparte una diapositiva («La visión
 multidimensional del SRPA. Una apuesta para su comprensión») y él queda en una miniatura a la
-izquierda. Ese tramo va a cuadro completo (1280×720, ×1,5) y sin gráficos: la lámina ya es el
-gráfico, y es blanca.
+izquierda. Ese tramo va a cuadro completo (1276×718 desde (0, 2), ×1,5) y sin gráficos: la lámina
+ya es el gráfico, y es blanca. La ventana deja fuera la raya negra de 1 px que Teams pone en y=0.
 - **Entrada.** Teams hace un barrido de los cuadros 10343 a 10371; la lámina queda limpia en el
   10372. El tramo de la lámina empieza en el 10343 y esos 29 cuadros muestran quieto el 10372
   (`CONGELA`): se ve un corte seco del profe a la lámina.
@@ -40,12 +40,15 @@ from base_sr_profe import *  # noqa: E402,F401,F403
 from base_sr_profe import armar, ESTANISLAO, cita, c_tit, c_ante, lista  # noqa: E402
 
 XY, VENTANA = (0, 44), (1088, 612)
-LAMINA = (0, 0, 1280, 720)
+LAMINA = (0, 2, 1276, 718)
 K_ENTRA, K_LAMINA, K_MUEVE, K_PROFE, K_FIN = 10343, 10372, 24840, 24872, 30470
 globals().update(armar(
     'srpa_u1_cierre_fuente.mp4', 'UNIDAD 1/CIERRE', 1, 'SRPA - U1 - CIERRE', 'srpa - U1 - CIERRE', 'SR1C',
     [(0.0, K_ENTRA / 30.0, None), (K_ENTRA / 30.0, K_PROFE / 30.0, LAMINA), (K_PROFE / 30.0, K_FIN / 30.0, None)]))
 CONGELA = [(K_ENTRA / 30.0, K_LAMINA / 30.0), (K_MUEVE / 30.0, K_PROFE / 30.0, 'antes')]
+# v2 del compuesto: la lámina sin la raya negra de y=0 (a 1080 era un filete oscuro arriba durante
+# ocho minutos). Solo cambió la imagen (`ic_pieza reimagen`); la v1 está en `01 VIDEO/_descartes`.
+COMPUESTO = R + '/01 VIDEO/SR1C_compuesto_v2.mp4'  # noqa: F821
 
 ITEMS = [
     ('lt01', 'lt', 1.0, 9.0, ESTANISLAO),
