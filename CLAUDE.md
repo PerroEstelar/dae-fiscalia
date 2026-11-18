@@ -3226,3 +3226,30 @@ caché de Drive (0,4 GB) ni temporales nuestros: `pagefile.sys` había crecido a
 porque subió la memoria comprometida. Se mueve solo: al terminar un recorte C: volvió a 4,6 GB y al empezar
 el siguiente bajó a 2,6. Lo otro grande de C: es de Sebastián: 13,8 GB de caché de disco de After Effects en
 `%TEMP%\Adobe` (se vacía desde AE). En una tanda larga se mira C:, no solo D: y E:.
+
+
+## Subtítulos de las entregas: se transcribe el video final, y leerlos encuentra defectos del video (18 nov 2026)
+
+Esteban pidió un `.srt` por video, con los tiempos del video final, para montarlos en el aula. El método y el
+criterio están en `herramientas/subtitulos/README.md` (`stt_final.py`, `srt_de_stt.py`, `stt_tramo.py`); cada curso
+lleva su `subtitulos/manifiesto.json` y `correcciones.json`.
+
+- **Se transcribe el archivo entregado, no la fuente.** La transcripción que se hizo al montar tiene los tiempos de
+  la fuente; mapearlos a la línea (intro, cortes, tramos) es justo donde se cuelan los errores. Scribe sobre el
+  video final cuesta unos 19 créditos por minuto y los tiempos salen bien por construcción. Sebastián: «con eso
+  mantienen la línea de tiempo tal cual la tenemos».
+- **Leer la transcripción entera es una revisión del video.** En tres videos de unidad de Terminaciones anticipadas
+  entregados el día anterior aparecieron tomas repetidas sin cortar («ah, voy a volver a empezar», «volver a hacer
+  ese párrafo»). Al montarlos se había anotado «una sola toma, leída de corrido; hay tropiezos sueltos que se
+  dejaron» sin haber leído la transcripción completa de cada uno. **Antes de componer un video de profe se lee su
+  transcripción buscando reinicios** («volver a empezar», «otra vez», «perdón», una frase que se repite a los pocos
+  segundos, palabras cortadas con `--`): Scribe los marca.
+- Un defecto así no se tapa en el subtítulo: el `.srt` sigue al video como está, se avisa, y la corrección es una
+  entrega `-v2` con su `.srt` hecho de nuevo.
+- **El nombre local de un export a mano puede no ser el de Drive** (`Terminaciones avanzadas - U1 - CASO 06 - V1.mov`
+  en disco es `TA - U1 - CASO 06 - V1.mov` en Drive). Se empareja por tamaño en bytes, y el `.srt` lleva el nombre de
+  Drive.
+- `create_file` del conector de Drive sube un archivo del contenedor por referencia
+  (`base64Content: sha256:<hash>:<ruta>`), sin pasar el contenido por la conversación, **solo si la ruta está bajo
+  el directorio de trabajo** (`/home/claude/…`); desde `/mnt/user-data/outputs/` dice que no puede. Con
+  `disableConversionToGoogleType: true` queda como `.srt` y no como documento.
