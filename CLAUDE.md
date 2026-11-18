@@ -3084,3 +3084,48 @@ gráficos vuelve a `slow`.
 corriendo. Un solo reintento, se sigue con lo que se pueda desde la nube (planes, documentos) y se
 vuelve a probar al terminar eso. No se relanza nada a ciegas.
 
+
+## Cuando hay una hora de entrega: la entrega sale de Resolve por la placa de video (unidades de Bienes, 17 nov 2026)
+
+Los ocho videos de unidad de Bienes (116 min de fuente, cuatro de 5 a 7 min y cuatro de 20 a 26) se
+lanzaron a las 19:53 con la cadena de siempre. A las 21:20 Sebastián escribió «please hurry, we need to
+have this by before 10 pm»; con x264 `medium` y el compuesto del último todavía al 25 %, el último cierre
+salía a las 23:15. Lo que sirvió, en orden:
+
+1. **Mirar dónde está el procesador.** Dos entregas x264 y un compuesto se repartían cuatro núcleos; el
+   compuesto del último video, que es el camino largo (compuesto → línea → entrega → subida), avanzaba a
+   un cuarto de su velocidad.
+2. **Sacar la entrega del procesador.** Resolve rinde H.264 por la placa NVIDIA a unas 8 veces el tiempo
+   real: un cierre de 24 min sale en 3 a 4 min. `cursos/bienes-proceso-penal/unidades/lote/urgente.py`
+   rinde la línea directo a MP4 con `SetRenderSettings({'VideoQuality': kbps, …})`, le pone `faststart`
+   con `-c copy`, cuenta los cuadros contra la línea y copia a Drive.
+   - **`VideoQuality` no es la tasa real.** Pedido 16000 dio 13.985 kb/s; pedido 5720 dio 6.058. El guion
+     calibra con dos pruebas de 20 s (`MarkIn`/`MarkOut`) y corrige. Los másters, pedidos a 80000, salen a
+     unos 20.000 con un profe quieto.
+   - **`h264_nvenc` de ffmpeg no abre en este equipo** (GTX 970, controlador 582.28: «Required: 13.1
+     Found: 13.0»). No perder tiempo ahí: la placa se usa desde Resolve. `mp4_entrega` acepta el preset
+     `nvenc`, pero hoy cae siempre a `veryfast`.
+   - Un solo proceso le habla a Resolve. Antes de lanzar el guion urgente se mató `lote_entrega.py` (y las
+     entregas x264 a medias, que dejan solo un `.parcial`) y se esperó a que terminara el máster en curso.
+3. **Darle el procesador al que falta.** Con las entregas fuera, el compuesto del último pasó de 10 a
+   55–85 MB/min y terminó en 18 min en lugar de 70.
+4. **Subir pesa:** a 5 Mb/s los cuatro cierres son 3,5 GB; Drive subió cada uno en menos de 2 min.
+
+Resultado: los cuatro cierres en Drive y verificados a las 21:47. Es una entrega **fuera de receta**
+(H.264 NVIDIA en vez de x264 CRF 18): se le dijo a Sebastián en el momento y quedó escrito en el README
+del curso. Los másters de 32 Mb/s se guardan igual, así que la entrega de receta se puede sacar después.
+
+**Antes de prometer una hora** con videos largos: la regla de 1,5×N minutos (tanda de Terminaciones
+anticipadas) vale para videos de 6 a 8 min; con cierres de 20 a 26 min en cola, el último tarda mucho más
+porque su compuesto compite con las entregas de los anteriores. Si hay hora de entrega, preguntarla al
+empezar y, si es justa, usar la vía de Resolve desde el principio.
+
+**Fuentes que ya traen intro y outro.** Las de unidad de Bienes venían con la intro de la FGN (cuadros
+0–277, sin sonido) y un outro pegados, a corte. Se ven en `panel fuera de sitio` del prep (al principio y
+al final) y en la hoja de contactos. El plan toma solo el tramo del profe (`armar_unidad(u, pieza, k0,
+k1)`), y `k1` no pasa del primer cuadro del outro aunque la última palabra quede a 0,07 s.
+
+**El lower third puede ir en columna angosta**: nombre con salto de renglón en `PROFE`
+(`'Sergio Andrés\nLópez Zamora'`), `LT = (px del nombre, ancho del cargo)` y `LT_TOP` (cima; el estándar
+es 870). Antes de lanzar una tanda, `sim_todos.py` pone el lower third sobre dos cuadros de cada fuente en
+una sola hoja: en Bienes mostró que con las medidas del curso el nombre cruzaba la cara en un video.
