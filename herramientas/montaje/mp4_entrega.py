@@ -54,15 +54,30 @@ def _preset():
                 except Exception:
                     p = None
                 break
-    return p if p in ('medium', 'fast', 'slower', 'slow') else 'slow'
+    return p if p in ('medium', 'fast', 'slower', 'slow', 'veryfast', 'nvenc') else 'slow'
 
 
 PRESET = _preset()
-VIDEO = ['-c:v', 'libx264', '-crf', '18', '-preset', PRESET, '-tune', 'animation',
-         '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-level', '4.0',
-         '-x264-params', 'keyint=48:min-keyint=24:scenecut=40',
-         '-movflags', '+faststart',
-         '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709']
+COLOR = ['-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709']
+
+
+def _video(preset):
+    if preset == 'nvenc':
+        # Entrega URGENTE (cierres de unidad de Bienes, 17 nov 2026: «please hurry, we need to have this before
+        # 10 pm», con cuatro videos de 20 a 26 min en cola): H.264 por la placa NVIDIA en calidad constante, que
+        # rinde un video de 25 min en pocos minutos y deja el procesador libre para los compuestos. Sigue siendo
+        # MP4 H.264 High L4.0 con GOP de 48; no es la receta (x264 CRF 18). Si la placa falla, cae a veryfast.
+        return ['-c:v', 'h264_nvenc', '-preset', 'p6', '-tune', 'hq', '-rc', 'vbr', '-cq', '19', '-b:v', '0',
+                '-maxrate', '20M', '-bufsize', '40M', '-g', '48', '-bf', '2',
+                '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-level', '4.0', '-movflags', '+faststart'] + COLOR
+    return ['-c:v', 'libx264', '-crf', '18', '-preset', preset, '-tune', 'animation',
+            '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-level', '4.0',
+            '-x264-params', 'keyint=48:min-keyint=24:scenecut=40',
+            '-movflags', '+faststart'] + COLOR
+
+
+VIDEO = _video(PRESET)
+URGENTE = PRESET in ('nvenc', 'veryfast')     # sin la pasada de PSNR, que vuelve a decodificar los dos archivos
 TECHO_COPIA = -1.0           # dBTP: por encima de esto el audio se limita
 LIMITE = 10 ** (-2.5 / 20)   # el limitador de te_limita
 
@@ -146,24 +161,34 @@ def entrega(linea, carpeta, nombre, mdir=None):
         audio = ['-af', 'aresample=192000,alimiter=limit=%.4f:attack=1:release=50:level=false,aresample=48000'
                  % LIMITE, '-c:a', 'aac', '-b:a', '320k']
         w('audio limitado: el máster llega a %s dBTP' % sm.get('Peak'))
-    subprocess.run([FB + '/ffmpeg.exe', '-y', '-v', 'error', '-i', m] + VIDEO + audio + ['-f', 'mp4', f + '.parcial'],
-                   check=True)
+    usado = PRESET
+    r = subprocess.run([FB + '/ffmpeg.exe', '-y', '-v', 'error', '-i', m] + VIDEO + audio + ['-f', 'mp4', f + '.parcial'])
+    if r.returncode and PRESET == 'nvenc':
+        usado = 'veryfast'
+        w('la placa NVIDIA no pudo (rc %d): va x264 veryfast' % r.returncode)
+        r = subprocess.run([FB + '/ffmpeg.exe', '-y', '-v', 'error', '-i', m] + _video('veryfast') + audio
+                           + ['-f', 'mp4', f + '.parcial'])
+    if r.returncode:
+        raise SystemExit('ffmpeg falló (rc %d)' % r.returncode)
     os.replace(f + '.parcial', f)
     j = json.loads(subprocess.run([FB + '/ffprobe.exe', '-v', 'error', '-show_streams', '-of', 'json', f],
                                   capture_output=True, text=True).stdout)
     v_ = [s for s in j['streams'] if s['codec_type'] == 'video'][0]
     a_ = [s for s in j['streams'] if s['codec_type'] == 'audio']
     n = cuadros(f)
-    w('preset x264', PRESET)
+    w('preset x264' if usado != 'nvenc' else 'codificador', usado)
     w('entrega %s  %s %s L%s %dx%d %s  cuadros %d / línea %d %s  audio %s  %d MB (máster %d MB)' % (
         os.path.basename(f), v_['codec_name'], v_.get('profile'), v_.get('level'), v_['width'], v_['height'],
         v_.get('color_space'), n, largo, 'OK' if n == largo else 'FALLA',
         ('%s %s Hz %s' % (a_[0]['codec_name'], a_[0]['sample_rate'], a_[0]['channels'])) if a_ else 'FALTA',
         os.path.getsize(f) >> 20, os.path.getsize(m) >> 20))
     w('sonido entrega', medir(f), ' máster', sm)
-    r = subprocess.run([FB + '/ffmpeg.exe', '-hide_banner', '-nostats', '-i', f, '-i', m, '-lavfi',
-                        '[0:v][1:v]psnr', '-f', 'null', '-'], capture_output=True, text=True, errors='replace').stderr
-    w('psnr', (re.findall(r'PSNR.*', r) or ['?'])[-1])
+    if URGENTE:
+        w('psnr omitido (entrega urgente)')
+    else:
+        r = subprocess.run([FB + '/ffmpeg.exe', '-hide_banner', '-nostats', '-i', f, '-i', m, '-lavfi',
+                            '[0:v][1:v]psnr', '-f', 'null', '-'], capture_output=True, text=True, errors='replace').stderr
+        w('psnr', (re.findall(r'PSNR.*', r) or ['?'])[-1])
     w('LISTO')
 
 

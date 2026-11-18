@@ -74,7 +74,10 @@ ANCHO = 615
 LT = (44, 345)             # px del nombre y ancho del cargo
 LT_TOP = 740               # cima del lower third (estándar 870): lleva siete renglones
 AUDIO_META = 'I=-16:TP=-3:LRA=7'
-PRESET_ENTREGA = 'medium'     # entrega provisional: x264 CRF 18 con preset medium (ver mp4_entrega); la v2 con gráficos vuelve a slow
+# Entrega provisional. Los cuatro inicios salieron con x264 CRF 18 preset medium. Los cuatro cierres (20 a 26
+# min cada uno) con 'nvenc': Sebastián los necesitaba antes de las 22:00 y con x264 no llegaban (ver
+# mp4_entrega). La v2 con gráficos vuelve a la receta (quitar esta línea: slow).
+PRESET_ENTREGA = 'nvenc'
 PROFE = ('Sergio Andrés\nLópez Zamora',
          'Abogado, doctor en Derecho Público, magíster en Derecho Penal y Procesal Penal y en '
          'Derechos Humanos')
