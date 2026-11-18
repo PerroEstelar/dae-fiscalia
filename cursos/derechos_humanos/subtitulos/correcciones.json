@@ -1,0 +1,34 @@
+{
+ "_todos": [
+  [
+   "\\b([Ll])a fiscalía\\b",
+   "\\1a Fiscalía"
+  ]
+ ],
+ "_despues": [
+  [
+   "\\bley (\\d{3,})",
+   "Ley \\1"
+  ],
+  [
+   "\\bdecreto (\\d{3,})",
+   "Decreto \\1"
+  ],
+  [
+   "\\bresolución (\\d{3,})",
+   "Resolución \\1"
+  ]
+ ],
+ "dhu5c": [
+  [
+   "bien preponderada",
+   "bien reponderada"
+  ]
+ ],
+ "dhu4i": [
+  [
+   "inferencia razonable de autoridad o participación",
+   "inferencia razonable de autoría o participación"
+  ]
+ ]
+}
