@@ -50,27 +50,36 @@ def destino(video, clave):
 
 
 def lower_third(out, n, datos):
-    nombre, cargo = datos
-    tx = LT_X + LT_BAR_W + LT_GAP
+    """`datos` = (nombre, cargo) o (nombre, cargo, opciones). Las opciones son de ese rótulo y no del plan:
+    `x` y `top` (dónde va), `ancho` (del cargo) y `tinta` (color del texto, sin sombra). Sirven cuando hay dos
+    personas en pantalla y cada una lleva su rótulo, o cuando el rótulo cae sobre blanco (cierre del curso de
+    Justicia restaurativa, 18 nov 2026: dos mosaicos de videollamada sobre un lienzo blanco)."""
+    nombre, cargo = datos[0], datos[1]
+    op = datos[2] if len(datos) > 2 else {}
+    lx, top, ancho, tinta = op.get('x', LT_X), op.get('top', LT_TOP), op.get('ancho', LT_ANCHO), op.get('tinta')
+    c_nom = tuple(tinta) + (255,) if tinta else (255, 255, 255, 255)
+    c_car = tuple(tinta) + (235,) if tinta else (255, 255, 255, 235)
+    tx = lx + LT_BAR_W + LT_GAP
     fn = ImageFont.truetype(C.BOLD, LT_NOMBRE)
     fc = ImageFont.truetype(C.MED, LT_CARGO)
     d0 = ImageDraw.Draw(Image.new('RGBA', (10, 10)))
-    lineas = C.wrap(d0, cargo, fc, LT_ANCHO)
+    lineas = C.wrap(d0, cargo, fc, ancho)
     plano = Image.new('RGBA', (C.W, C.H), (0, 0, 0, 0))
     d = ImageDraw.Draw(plano)
-    y = LT_TOP
+    y = top
     # el nombre puede venir en dos renglones ('Sergio Andrés\nLópez Zamora') cuando la columna es angosta
     for parte in nombre.split('\n'):
-        d.text((tx, y), parte, font=fn, fill=(255, 255, 255, 255))
+        d.text((tx, y), parte, font=fn, fill=c_nom)
         y += int(LT_NOMBRE * 1.22)
     y += 8
     for ln in lineas:
-        d.text((tx, y), ln, font=fc, fill=(255, 255, 255, 235))
+        d.text((tx, y), ln, font=fc, fill=c_car)
         y += int(LT_CARGO * 1.38)
     bb = plano.getbbox()
-    d.rectangle([LT_X, bb[1] - 10, LT_X + LT_BAR_W - 1, bb[3] + 10], fill=LT_BAR_C)
-    plano = C.sombra(plano)
-    x0, x1 = LT_X - 4, max(bb[2], tx) + 30
+    d.rectangle([lx, bb[1] - 10, lx + LT_BAR_W - 1, bb[3] + 10], fill=LT_BAR_C)
+    if not tinta:
+        plano = C.sombra(plano)
+    x0, x1 = lx - 4, max(bb[2], tx) + 30
     p = subprocess.Popen([C.FFMPEG, '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba',
                           '-s', '%dx%d' % (C.W, C.H), '-r', '24000/1001', '-i', '-',
                           '-c:v', 'qtrle', '-pix_fmt', 'argb', '-r', '24000/1001', out],
