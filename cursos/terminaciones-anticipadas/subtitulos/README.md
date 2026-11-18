@@ -19,15 +19,15 @@ en cada uno.
 | `terminacionesanticipadas - U4 - INICIO-v2` (la repetición, cortada) | 115 | 7:49 | `1Yp6hmNmwgfW7dGsCHrP-VLqLjrDafV7N` |
 | `terminacionesanticipadas - U4 - CIERRE-v1` | 112 | 7:37 | `1FBKz5u8-C8KtYn1BwlJq4PH9NLJ-YHK_` |
 | `terminacionesanticipadas - U4 - CIERRE-v2` (la repetición, cortada) | 109 | 7:27 | `1QGsNzNcKw22qaN0hXwRVtELX67f124Lf` |
-| `TA - U1 - CASO 06 - V1` | 34 | 2:17 | `11fI14on_jSt-qXLRRXav7pn53c_xqYrb` |
-| `TA - U1 - CASO 07 - V1` | 31 | 2:08 | `1ujXMx76meZoyau6_jTvH_oMQWLft7eo4` |
-| `TA - U1 - CASO 08 - V1` | 17 | 1:25 | `1rHR0TBMwl8k0oRcXVsBBlLSOLLeyhYzw` |
-| `TA - U1 - CASO 09 - V1` | 15 | 1:25 | `1PTnFOxgwpI33hJ0DXMuTDHWh5LyN3qKz` |
-| `TA - U4 - CASO 01 - V1` | 62 | 3:59 | `1g1LZuI88zpKwsz-cH-nj-9WE-OHon5tx` |
-| `TA - U4 - CASO 02 - V1` | 31 | 2:22 | `19PfdGLGir_V3VuA_nEH0fjx1eogK6JQD` |
-| `TA - U4 - CASO 03 - V1` | 71 | 4:40 | `1zlMjyblOYQ2CadF7EsNesmb7F_vAXYGJ` |
-| `TA - U4 - CASO 04 - V1` | 40 | 2:36 | `1ypUHw-z5Bxb_Yt_gxFLmglG-thht8wYd` |
-| `TA - U4 - CASO 05 - V1` | 76 | 4:59 | `1JByosta8Kdp7Qnkm-1PzzGJPEr0zvK6c` |
+| `Hurto de madrugada TA - U1 - CASO 06 - V1` | 34 | 2:17 | `11fI14on_jSt-qXLRRXav7pn53c_xqYrb` |
+| `TA - U1 - CASO INCUMPLIMIENTO O DELITO - V1` | 31 | 2:08 | `1ujXMx76meZoyau6_jTvH_oMQWLft7eo4` |
+| `TA - U1 - CASO EL VIDEO SEIS MESES DESPUÉS - V1` | 17 | 1:25 | `1rHR0TBMwl8k0oRcXVsBBlLSOLLeyhYzw` |
+| `TA - U1 - CASO EL CONDUCTOR Y LA MANIOBRA - V1` | 15 | 1:25 | `1PTnFOxgwpI33hJ0DXMuTDHWh5LyN3qKz` |
+| `TA - U4 - CASO TRES ESCENARIOS PROBATORIOS - V1` | 62 | 3:59 | `1g1LZuI88zpKwsz-cH-nj-9WE-OHon5tx` |
+| `TA - U4 - CASO EL DOBLE BENEFICIO Y EL REINTEGRO - V1` | 31 | 2:22 | `19PfdGLGir_V3VuA_nEH0fjx1eogK6JQD` |
+| `TA - U4 - CASO COAUTORÍA, COMPLICIDAD Y SUBROGADOS - V1` | 71 | 4:40 | `1zlMjyblOYQ2CadF7EsNesmb7F_vAXYGJ` |
+| `TA - U4 - CASO MARGINALIDAD SIN SUSTENTO - V1` | 40 | 2:36 | `1ypUHw-z5Bxb_Yt_gxFLmglG-thht8wYd` |
+| `TA - U4 - CASO LA NEGOCIACIÓN PASO A PASO - V1` | 76 | 4:59 | `1JByosta8Kdp7Qnkm-1PzzGJPEr0zvK6c` |
 
 Cada `.srt` está en la carpeta de Drive de su video y junto al video en disco (`05 EXPORTS`, con el nombre de Drive:
 los casos tienen otro nombre en disco). Se comprobó que el archivo local de cada video pesa lo mismo que el de Drive.
@@ -65,3 +65,12 @@ CIERRE (hacia 4:30, «mi recomendación es que no comiencen pensando… mi recom
 redactando»; el subtítulo lleva solo la segunda) y U2 – INICIO-v2 (0:34 a 0:46, «La decisión no depende únicamente
 de la convicción del fiscal sobre el caso. La decisión no depende únicamente de la convicción del fiscal de que el
 caso no debe continuar»; el subtítulo lleva las dos).
+
+## Los casos llevan nombre, no número (18 nov 2026, tarde)
+
+Pedido de Sebastián: los casos no se llaman «CASO 07» sino por su nombre, dentro de la misma nomenclatura. En Drive se
+renombraron el video y su `.srt` (el id no cambia, así que los enlaces siguen sirviendo): `TA - U4 - CASO 01 - V1` es
+ahora `TA - U4 - CASO TRES ESCENARIOS PROBATORIOS - V1`, y así los demás (tabla de arriba y `cursos/NOMBRES_DE_CASOS.md`).
+El caso 06 lo renombró Sebastián a mano («Hurto de madrugada TA - U1 - CASO 06 - V1.mov») y se dejó como él lo puso; su
+`.srt` lleva ese mismo nombre. En disco los videos conservan el nombre viejo (`manifiesto.json` empareja los dos); las
+copias de los `.srt` llevan el nombre nuevo.

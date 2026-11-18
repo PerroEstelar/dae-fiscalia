@@ -130,6 +130,25 @@ ENTREGA = {
  'U4C3': 'PRIO 1 - LEY 1826 - UNIDAD 4 CASO DE ANALISIS 3',
 }
 
+# Nombre del archivo en Drive desde el 18 nov 2026: los casos llevan nombre, no número (Sebastián).
+# ENTREGA no se toca: de ahí sale el nombre de la línea de Resolve y de los archivos en disco.
+# Los nombres de las láminas son los títulos de sus carpetas; los de la unidad 4, una referencia al caso
+# (el documento solo los llama «Caso de análisis 1, 2 y 3»). Ver cursos/NOMBRES_DE_CASOS.md
+NOMBRE_DRIVE = dict(ENTREGA)
+NOMBRE_DRIVE.update({
+ 'U1C1': 'PRIO 1 - LEY 1826 - UNIDAD 1 CASO DE ESTUDIO TRASLADO DEL ESCRITO Y CONGRUENCIA',
+ 'U1C2': 'PRIO 1 - LEY 1826 - UNIDAD 1 CASO DE ESTUDIO TECNICA DE REDACCION DE LOS HJR',
+ 'U1C3': 'PRIO 1 - LEY 1826 - UNIDAD 1 CASO DE ESTUDIO CONCURSOS SUBSIDIARIEDAD Y VIA PROCEDIMENTAL',
+ 'U1C4': 'PRIO 1 - LEY 1826 - UNIDAD 1 CASO DE ESTUDIO MALTRATO PSICOLOGICO Y LIBERTAD PROBATORIA',
+ 'U1C5': 'PRIO 1 - LEY 1826 - UNIDAD 1 CASO DE ESTUDIO NUCLEO FAMILIAR Y DURACION DE LA CONVIVENCIA',
+ 'U3C1': 'PRIO 1 - LEY 1826 - UNIDAD 3 CASO DE ESTUDIO VIABILIDAD EN DELITOS CONTRA EL PATRIMONIO ECONOMICO',
+ 'U3C2': 'PRIO 1 - LEY 1826 - UNIDAD 3 CASO DE ESTUDIO IMPROCEDENCIA POR CONCURSO O INIMPUTABILIDAD',
+ 'U3C3': 'PRIO 1 - LEY 1826 - UNIDAD 3 CASO DE ESTUDIO REVERSION POR DESVIACION DE PODER',
+ 'U4C1': 'PRIO 1 - LEY 1826 - UNIDAD 4 CASO DE ANALISIS CONCILIACION EN INASISTENCIA ALIMENTARIA',
+ 'U4C2': 'PRIO 1 - LEY 1826 - UNIDAD 4 CASO DE ANALISIS MEDIACION EN ACCIDENTE DE TRANSITO',
+ 'U4C3': 'PRIO 1 - LEY 1826 - UNIDAD 4 CASO DE ANALISIS DESISTIMIENTO EN VIOLENCIA INTRAFAMILIAR',
+})
+
 # --------------------------------------------------------------- láminas
 # El texto del panel: VERBATIM la «Síntesis fáctica del caso» (U1) o la
 # «Premisa fáctica» (U3). Nada más entra (Sebastián: «solo la parte que
