@@ -3,7 +3,9 @@
 (H.264, unos 5 Mb/s reales), sin master de 32 Mb/s (no hay disco). Un plan tras otro, segun cola.txt (se puede
 alargar; termina con FIN). Espera el compuesto de cada plan. Despues de cada entrega: cuenta de cuadros contra la
 linea, sonido, hoja de revision y copia a la carpeta de paso de Drive SI HAY CUPO (el Drive de Sebastian estaba
-casi lleno); lo que no entra queda en pendientes.txt y se reintenta en cada vuelta. Log: lote_entrega.log"""
+casi lleno); lo que no entra queda en pendientes.txt y se reintenta en cada vuelta. Un render con el sonido roto
+(pico sobre 0 dBFS: el AAC de Resolve) se rinde otra vez con audio PCM y el AAC lo hace ffmpeg. Log: lote_entrega.log
+Uso: entrega_gpu.py [kb/s ya calibrados]"""
 import importlib, os, shutil, subprocess, sys, time
 PY = sys.executable
 M = 'D:/DAE/_repo/herramientas/montaje/'
@@ -51,7 +53,7 @@ def moov_adelante(f):
         return b'moov' in fh.read(1 << 16)
 
 
-def rinde(P, nombre, kbps, tmp, tramo=None):
+def rinde(P, nombre, kbps, tmp, tramo=None, pcm=False):
     resolve, pr = proyecto()
     while pr.IsRenderingInProgress():
         time.sleep(2)
@@ -60,17 +62,20 @@ def rinde(P, nombre, kbps, tmp, tramo=None):
         return None, 0, None
     largo = tl.GetEndFrame() - tl.GetStartFrame()
     os.makedirs(tmp, exist_ok=True)
-    out = '%s/%s.mp4' % (tmp, nombre)
+    ext = 'mov' if pcm else 'mp4'       # con audio PCM el contenedor es QuickTime
+    out = '%s/%s.%s' % (tmp, nombre, ext)
     if os.path.exists(out):
         shutil.move(out, '%s.%d.viejo' % (out, int(time.time())))
     pr.SetCurrentTimeline(tl)
     resolve.OpenPage('deliver')
     pr.DeleteAllRenderJobs()
-    pr.SetCurrentRenderFormatAndCodec('mp4', 'H264_NVIDIA')
+    pr.SetCurrentRenderFormatAndCodec(ext, 'H264_NVIDIA')
     aj = {'SelectAllFrames': True, 'TargetDir': os.path.normpath(tmp), 'CustomName': nombre,
           'FormatWidth': 1920, 'FormatHeight': 1080, 'FrameRate': 23.976,
-          'VideoQuality': int(kbps), 'AudioCodec': 'aac', 'AudioSampleRate': 48000,
+          'VideoQuality': int(kbps), 'AudioCodec': 'lpcm' if pcm else 'aac', 'AudioSampleRate': 48000,
           'NetworkOptimization': True, 'ExportVideo': True, 'ExportAudio': True}
+    if pcm:
+        aj['AudioBitDepth'] = 24
     if tramo:
         aj.update({'SelectAllFrames': False, 'MarkIn': tl.GetStartFrame() + tramo[0],
                    'MarkOut': tl.GetStartFrame() + tramo[1] - 1})
@@ -83,6 +88,9 @@ def rinde(P, nombre, kbps, tmp, tramo=None):
     time.sleep(6 if tramo else 15)       # el archivo recien terminado puede no tener todavia el moov
     if tramo:                            # los ajustes son del proyecto: se devuelven
         pr.SetRenderSettings({'SelectAllFrames': True})
+    if pcm:
+        pr.SetCurrentRenderFormatAndCodec('mp4', 'H264_NVIDIA')
+        pr.SetRenderSettings({'AudioCodec': 'aac'})
     return (out if os.path.exists(out) else None), (largo if not tramo else tramo[1] - tramo[0]), st
 
 
@@ -107,11 +115,42 @@ def calibra(P):
     return k
 
 
+def sonido_bien(m):
+    """El AAC que codifica Resolve puede salir con cuadros rotos: en U1 CIERRE (17 nov) dos tramos de 20 ms a
+    +35 y +52 dBFS, con el compuesto limpio en -3,0 dBTP. Se oye como un chasquido. El compuesto llega con techo
+    en -3 y el AAC de Resolve sobrepasa hasta 2,5 dB: un pico verdadero sobre 0 dBFS es un render roto."""
+    try:
+        return float(m['Peak']) <= 0.0
+    except (KeyError, ValueError):
+        return False
+
+
+def rehace_sonido(P, nombre, kbps, largo):
+    """El fallo es del codificador AAC de Resolve y depende del contenido: tres renders seguidos de la misma linea
+    dieron los mismos dos tramos rotos, y el mismo render con audio PCM salio limpio (medido). Entonces: se rinde
+    a .mov con PCM de 24 bits, y ffmpeg copia el video y codifica el AAC (320 kb/s). Devuelve el mp4 o None."""
+    tmp = '%s/05 EXPORTS/_rindiendo' % P.R
+    mov, _largo, st = rinde(P, nombre + '_pcm', kbps, tmp, pcm=True)
+    if not mov:
+        w('PCM FALLO', st); return None
+    if E.cuadros(mov) != largo:
+        w('PCM CUADROS FALLA', E.cuadros(mov), largo); return None
+    mp4 = '%s/%s_aac_ffmpeg.mp4' % (tmp, nombre)
+    r = subprocess.run([E.FB + '/ffmpeg.exe', '-y', '-v', 'error', '-i', mov, '-map', '0:v:0', '-map', '0:a:0',
+                        '-c:v', 'copy', '-c:a', 'aac', '-b:a', '320k', '-movflags', '+faststart', '-f', 'mp4', mp4],
+                       capture_output=True, text=True, errors='replace')
+    if r.returncode or not os.path.exists(mp4):
+        w('REMUX FALLO', r.stderr[-300:]); return None
+    return mp4
+
+
 def subir(f):
     """Copia a la carpeta de paso si hay cupo. Devuelve True si quedo copiado."""
     libre = shutil.disk_usage('G:/').free
     n = os.path.getsize(f)
     if libre < n + MARGEN:
+        return False
+    if shutil.disk_usage('C:/').free < n + 0.4e9:      # la cache de Drive para escritorio vive en C:
         return False
     nb, md5 = copiar_exclusivo(f, PASO + os.path.basename(f))
     w('copiado|%s|%d|%s' % (os.path.basename(f), nb, md5))
@@ -151,6 +190,16 @@ def entrega(p, kbps):
     n = E.cuadros(out)
     if n != largo:
         w('CUADROS FALLA', p, n, largo); return False
+    son, nota = E.medir(out), ''
+    if not sonido_bien(son):
+        w('SONIDO ROTO', p, son, '-> se rinde con audio PCM y el AAC lo hace ffmpeg')
+        os.replace(out, '%s.sonido_roto_%d.viejo' % (out, int(time.time())))
+        rep = rehace_sonido(P, nombre, kbps, largo)
+        son = E.medir(rep) if rep else {}
+        if not rep or E.cuadros(rep) != largo or not sonido_bien(son):
+            w('SONIDO ROTO: no se entrega', p, son); return False
+        os.replace(rep, out)
+        nota = ' | AUDIO: PCM de Resolve + AAC 320 kb/s de ffmpeg, video copiado (el AAC de Resolve salia roto; los crudos quedan en _rindiendo)'
     if moov_adelante(out):
         os.replace(out, f)               # mismo disco: un cambio de nombre, sin copia
         fs = 'faststart de Resolve'
@@ -162,10 +211,10 @@ def entrega(p, kbps):
         os.replace(f + '.parcial', f)
         fs = 'faststart por remux (el crudo queda en _rindiendo)'
     w('entrega', p, 'rc 0 True', '%.0f s' % (time.time() - t), '| NVIDIA por Resolve, pedido %d kb/s, real %.0f kb/s, cuadros %d / linea %d OK, %d MB, %s, sonido %s'
-      % (kbps, kbps_real(f, largo), n, largo, os.path.getsize(f) >> 20, fs, E.medir(f)))
+      % (kbps, kbps_real(f, largo), n, largo, os.path.getsize(f) >> 20, fs, son) + nota)
     if not subir(f):
         pendientes(agrega=f)
-        w('SIN CUPO en Drive: queda pendiente', os.path.basename(f))
+        w('SIN CUPO en Drive (o sin lugar en C: para su cache): queda pendiente', os.path.basename(f))
     env = dict(os.environ, DAE_PLAN=p, PYTHONUTF8='1')
     r2 = subprocess.run([PY, M + 'ic_revision.py', str(v)], capture_output=True, text=True, env=env, errors='replace')
     w('revision', p, 'rc', r2.returncode, r2.stderr[-200:] if r2.returncode else '')
@@ -211,7 +260,7 @@ def uno(p, kbps):
     return kbps
 
 
-vistos, kbps = [], None
+vistos, kbps = [], (float(sys.argv[1]) if len(sys.argv) > 1 else None)   # kb/s ya calibrados, si se relanza
 w('entrega_gpu: arranca')
 while True:
     c = cola()
