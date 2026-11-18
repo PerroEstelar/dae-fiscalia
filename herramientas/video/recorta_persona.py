@@ -9,7 +9,9 @@ recortada sobre el fondo DAE/Fiscalía con los logos a la izquierda y sin «Apre
 De la fuente se toma un cuadrado (`--x --y --lado`), se lleva a 1080×1080 y se le pasa al modelo; la persona
 queda apoyada en el borde inferior del cuadro de 1920×1080, con el centro del cuadrado en `--cx`. Salen dos
 archivos:
-- `<salida>`: el compuesto de 1920×1080 (H.264 CRF 14, BT.709) con el audio de la fuente copiado;
+- `<salida>`: el compuesto de 1920×1080 (H.264 CRF 14, BT.709) con el audio de la fuente copiado. Sin
+  `-shortest`: en los avatares el audio termina 0,8 s antes que el video, y con `-shortest` el recortado
+  perdía esos 21 cuadros de cola (bienvenida del curso: 1.926 de 1.947);
 - `<salida sin .mp4>_mate.mp4`: el mate (alfa) de 1080×1080 en gris, para cambiar de fondo sin volver a recortar.
 
 El modelo y onnxruntime-directml se instalaron con permiso de Sebastián (18 nov) en `D:\DAE\_herramientas\
@@ -64,7 +66,7 @@ audio = ['-ss', '%.3f' % a.desde] if a.desde else []
 enc = subprocess.Popen([FF, '-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', '1920x1080', '-r', fps, '-i', '-'] + audio +
                        ['-i', a.fuente, '-map', '0:v', '-map', '1:a?', '-vf', 'scale=out_color_matrix=bt709:out_range=tv,format=yuv420p',
                         '-c:v', 'libx264', '-crf', '14', '-preset', 'veryfast', '-colorspace', 'bt709', '-color_primaries', 'bt709',
-                        '-color_trc', 'bt709', '-c:a', 'copy', '-shortest', '-movflags', '+faststart', tmp], stdin=subprocess.PIPE)
+                        '-color_trc', 'bt709', '-c:a', 'copy', '-movflags', '+faststart', tmp], stdin=subprocess.PIPE)
 encm = subprocess.Popen([FF, '-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'gray', '-s', '%dx%d' % (N, N), '-r', fps, '-i', '-',
                          '-c:v', 'libx264', '-crf', '14', '-preset', 'veryfast', '-pix_fmt', 'yuv420p', '-color_range', 'pc',
                          mate + '.parcial.mp4'], stdin=subprocess.PIPE)
