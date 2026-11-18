@@ -3345,3 +3345,21 @@ mosaico tapa a la persona.
   diferencial.
 - Sebastián, 18 nov: los «repito» de los cierres de Bienes «no importan». No se rehacen.
 
+
+## Los casos llevan nombre, no número (Sebastián, 18 nov 2026)
+
+«En vez de que se llamen caso con algún número, que tengan el nombre del caso o alguna referencia importante», dentro de
+la nomenclatura que ya tienen (curso o prioridad, unidad, versión): `TA - U4 - CASO TRES ESCENARIOS PROBATORIOS - V1`,
+no `TA - U4 - CASO 01 - V1`. Vale para toda entrega nueva de un caso.
+
+- El nombre es el del cartón de entrada. Si el documento no le pone nombre, una referencia corta a los hechos, y se le
+  dice a Sebastián que la puso Claude.
+- **Renombrar en Drive no cambia el id**: los enlaces pasados siguen sirviendo. Se renombra también el `.srt`, que tiene
+  que llamarse igual que el video.
+- **No se cambia el nombre del que sale la línea de Resolve o el archivo en disco** (`guion_lp.ENTREGA`): el nombre de
+  Drive va aparte (`NOMBRE_DRIVE`, o `nombre` en el manifiesto de subtítulos).
+- Lo que Sebastián ya renombró a mano se deja como lo puso.
+- Para encontrarlos: `title contains 'CASO'` con `owner = 'me'` **y** con `owner != 'me'`; hay entregas subidas con otras
+  cuentas suyas. Una búsqueda ancha de Drive devuelve casi mil caracteres por archivo: se acota por carpeta o por título.
+- La lista de lo renombrado y de lo que no se tocó: `cursos/NOMBRES_DE_CASOS.md`.
+
