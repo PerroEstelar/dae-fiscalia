@@ -47,7 +47,10 @@ placas de entrada y salida y títulos del profe por ahora, para que salgan más 
   fuente como 601 y como 709, contra el compuesto del inicio del curso: como 709 dan (214, 49, 64),
   (11, 88, 160) y (241, 200, 19), contra (216, 45, 62), (5, 82, 161) y (236, 200, 27); como 601 el
   rojo cae a (197, 28, 62). Van con `MATRIZ_FUENTE = 'bt709'`.
-- **Una sola toma, leída de corrido.** La imagen repite cuadros (la diferencia entre cuadros
+- **Leídas de corrido, pero no todas en una sola toma.** Al montarlas se anotó «una sola toma» sin leer la
+  transcripción entera, y tres llevaban una repetición (inicio de la U2, inicio y cierre de la U4): se
+  cortaron el 18 nov con `recortar_entrega.py` y salieron como `-v2` (ver «Versión 2» en cada plan).
+  La imagen repite cuadros (la diferencia entre cuadros
   alterna ceros y saltos de 5 a 9), así que el pico aislado no sirve para buscar cortes; no hay
   ninguno por encima de 9,3, ni pausas de más de 2,6 s. Entran de medio segundo antes de la
   primera palabra a 0,8 s después de la última. Hay tropiezos sueltos («funcio-, fu--»), que se

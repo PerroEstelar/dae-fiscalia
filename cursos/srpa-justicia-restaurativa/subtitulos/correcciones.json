@@ -1,0 +1,340 @@
+{
+ "_todos": [
+  [
+   "\\b([Ll])a fiscalía\\b",
+   "\\1a Fiscalía"
+  ],
+  [
+   "\\b([TC])(\\d{3})\\b",
+   "\\1-\\2"
+  ],
+  [
+   "\\bdicentes\\b",
+   "discentes"
+  ],
+  [
+   "Dirección de Altas Estudios",
+   "Dirección de Altos Estudios"
+  ],
+  [
+   "artículo dos cincuenta",
+   "artículo 250"
+  ]
+ ],
+ "srcc": [
+  [
+   "y rast-- restaurativos",
+   "y restaurativos"
+  ],
+  [
+   "que los lla-- va a llevar",
+   "que los va a llevar"
+  ],
+  [
+   "S-- eh, entretanto",
+   "Entretanto"
+  ],
+  [
+   "Luis Carlos Pérez Pol-Crimet de la",
+   "Luis Carlos Pérez, Polcrymed, de la"
+  ]
+ ],
+ "srci": [
+  [
+   "Penal Paul Krimmel,",
+   "Penal Polcrymed,"
+  ],
+  [
+   "como funcionario o funcionario de la",
+   "como funcionaria o funcionario de la"
+  ],
+  [
+   "de ser El servidor",
+   "de ser el servidor"
+  ],
+  [
+   "\\bmagister\\b",
+   "magíster"
+  ]
+ ],
+ "sru1c": [
+  [
+   "haber sido obje-- eh, sujeto",
+   "haber sido sujeto"
+  ],
+  [
+   "el proceso Bien, esta",
+   "el proceso. Bien, esta"
+  ]
+ ],
+ "sru1i": [
+  [
+   "iniciales dijo-- ay, que, eh, que se trabajaron",
+   "iniciales que se trabajaron"
+  ],
+  [
+   "también un cuart-- una cuarta",
+   "también una cuarta"
+  ]
+ ],
+ "sru3c": [
+  [
+   "presentaba un gra-- una grave",
+   "presentaba una grave"
+  ],
+  [
+   "un balanceo test de ponderación",
+   "un balanceo o test de ponderación"
+  ]
+ ],
+ "sru3d": [
+  [
+   "la observación nume-- General veinticuatro",
+   "la Observación General 24"
+  ],
+  [
+   "en el sist-- penal acusatorio",
+   "en el sistema penal acusatorio"
+  ],
+  [
+   "aplicar el caso concre-- en el caso concreto",
+   "aplicar en el caso concreto"
+  ],
+  [
+   "Uno de ellos, ya-- una de esas",
+   "Una de esas"
+  ],
+  [
+   "es un pro-- puede ser programas",
+   "puede ser programas"
+  ],
+  [
+   "por las partes, tres de ponderación",
+   "por las partes, test de ponderación"
+  ],
+  [
+   "artículo cien\\.\\.\\. cuarenta y dos",
+   "artículo 142"
+  ],
+  [
+   "sentencia penal treinta y cinco veinte de",
+   "sentencia penal 3520 de"
+  ],
+  [
+   "Ya no Hasta antes",
+   "Ya no hasta antes"
+  ],
+  [
+   "sean positivos Sean rehabilitadores",
+   "sean positivos, sean rehabilitadores"
+  ],
+  [
+   "principio de Oportunidad y la modalidad",
+   "principio de oportunidad y la modalidad"
+  ],
+  [
+   "En esos vendidas,",
+   "En ese entendido,"
+  ],
+  [
+   "tiene y tener unas características",
+   "tiene que tener unas características"
+  ],
+  [
+   "derecho blandoso, law,",
+   "derecho blando, soft law,"
+  ],
+  [
+   "artículo tres veintisiete",
+   "artículo 327"
+  ],
+  [
+   "regla once punto uno infra",
+   "regla 11.1 infra"
+  ],
+  [
+   "Once punto dos\\.",
+   "11.2."
+  ],
+  [
+   "Once punto tres\\.",
+   "11.3."
+  ],
+  [
+   "causales cuatro, cinco y diecisiete",
+   "causales 4, 5 y 17"
+  ]
+ ],
+ "sru3i": [
+  [
+   "pues en cada-- desarrollaremos",
+   "pues desarrollaremos"
+  ]
+ ],
+ "sru4d": [
+  [
+   "especializados bus-- que buscan",
+   "especializados que buscan"
+  ],
+  [
+   "solicitud intenci-- de intención",
+   "solicitud de intención"
+  ],
+  [
+   "Y vérase que allí",
+   "Y véase que allí"
+  ],
+  [
+   "a otra persona, a, a la o a la comunidad",
+   "a otra persona o a la comunidad"
+  ],
+  [
+   "literal B del tres veintiséis",
+   "literal B del 326"
+  ],
+  [
+   "auto AP 1827-2026",
+   "auto AP1827-2026"
+  ],
+  [
+   "trámite de el artículo",
+   "trámite del artículo"
+  ],
+  [
+   "el proceso penal ordinario compre, eh, el proceso de justicia restaurativa frente a lo ordinario complementa",
+   "el proceso de justicia restaurativa frente al ordinario complementa"
+  ],
+  [
+   "por enmender, enmendar el daño",
+   "por enmendar el daño"
+  ],
+  [
+   "artículo cinco cuarenta y siete",
+   "artículo 547"
+  ],
+  [
+   "decreto dieciocho ochenta y cinco de dos mil quince",
+   "Decreto 1885 de 2015"
+  ]
+ ],
+ "sru5c": [
+  [
+   "entre ese, una ne-- y que implique",
+   "entre ese… y que implique"
+  ],
+  [
+   "entre dieciséis y el deli-- hasta, hasta antes",
+   "entre 16 y hasta antes"
+  ],
+  [
+   "delito agravad-agravados",
+   "delitos agravados"
+  ],
+  [
+   "y vamos, que va a ser la cita exacta que tiene la jurisprudencia de la Corte de Radicación\\. Reitero, cincuenta mil trescientos trece,",
+   "y quiero hacer la cita exacta que tiene la jurisprudencia de la Corte: radicación, reitero, 50313,"
+  ],
+  [
+   "Sentencia penal veintiuno cincuenta y nueve, 2018",
+   "Sentencia penal 2159, 2018"
+  ]
+ ],
+ "sru5d": [
+  [
+   "y al re-- si al realizar",
+   "y si al realizar"
+  ],
+  [
+   "el deli-- los delitos, el delito de secuestro",
+   "el delito de secuestro"
+  ],
+  [
+   "y su presenci, su procedencia",
+   "y su procedencia"
+  ],
+  [
+   "tutelar antes de la-- que existía antes del-- la entrada",
+   "tutelar que existía antes de la entrada"
+  ],
+  [
+   "cuya pena mínima, ah, de-de-- a imponer, la pena mínima",
+   "cuya pena mínima a imponer"
+  ],
+  [
+   "años Y si se trata",
+   "años. Y si se trata"
+  ],
+  [
+   "ello es de va de la mano",
+   "ello va de la mano"
+  ],
+  [
+   "decreto veintisiete treinta y siete",
+   "Decreto 2737"
+  ],
+  [
+   "Por qué no es neces-- por qué efectivamente",
+   "Por qué efectivamente"
+  ],
+  [
+   "artículo tres siete\\.",
+   "artículo 37."
+  ],
+  [
+   "El puede ser-- el cual es entendido, puede ser entendido, es entendido o qué significa",
+   "El cual es entendido, puede ser entendido… o qué significa"
+  ],
+  [
+   "artículo cuatro cuarenta y siete",
+   "artículo 447"
+  ],
+  [
+   "artículo cincuenta del Có-- de la Constitución",
+   "artículo 250 de la Constitución"
+  ]
+ ],
+ "sripa": [
+  [
+   "la miraba Nadie le hablaba",
+   "la miraba. Nadie le hablaba"
+  ],
+  [
+   "ultrabajarla",
+   "ultrajarla"
+  ]
+ ],
+ "sru4c": [
+  [
+   "renuncia a la ejercición de la acción penal",
+   "renuncia al ejercicio de la acción penal"
+  ]
+ ],
+ "_despues": [
+  [
+   "\\bley (\\d{3,})",
+   "Ley \\1"
+  ],
+  [
+   "\\bdecreto (\\d{3,})",
+   "Decreto \\1"
+  ],
+  [
+   "\\bresolución (\\d{3,})",
+   "Resolución \\1"
+  ],
+  [
+   "\\bacuerdo (\\d{3,})",
+   "Acuerdo \\1"
+  ]
+ ],
+ "srnico": [
+  [
+   "a las nueve y quince de la mañana",
+   "a las 9:15 de la mañana"
+  ],
+  [
+   "dieciocho mil pesos",
+   "18.000 pesos"
+  ]
+ ]
+}

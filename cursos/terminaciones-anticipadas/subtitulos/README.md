@@ -11,11 +11,14 @@ en cada uno.
 | `terminacionesanticipadas - U1 - INICIO-v1` | 115 | 7:26 | `1Jm8TPYOihnYR6CNpAF6W1p9sasHdCvhh` |
 | `terminacionesanticipadas - U1 - CIERRE-v1` | 98 | 6:32 | `1X252Fq289bpuya5wBPlWQjmxI4TzwGsl` |
 | `terminacionesanticipadas - U2 - INICIO-v1` | 118 | 8:06 | `1P5NLtV5EGk2oi7MTz84GxZajGteFNJxI` |
+| `terminacionesanticipadas - U2 - INICIO-v2` (la repetición, cortada) | 111 | 7:36 | `1RpFTMut3hRHlQtGZW84VvKbVjLE3P1HG` |
 | `terminacionesanticipadas - U2 - CIERRE-v1` | 97 | 6:33 | `1hJO_TZ9P1ns1vnds3jttX6ongrgOSyZF` |
 | `terminacionesanticipadas - U3 - INICIO-v1` | 114 | 7:25 | `1VPvLHiRU6tmtmN-NI-WJDDhEdIzgBaZ0` |
 | `terminacionesanticipadas - U3 - CIERRE-v1` | 100 | 6:39 | `1iRFstqPQ-H3GJil_dU42-oocXEtPJjBr` |
 | `terminacionesanticipadas - U4 - INICIO-v1` | 125 | 8:22 | `1f_HKxkDBCFWZd8sWr7aPmjtxRgSKmcbi` |
+| `terminacionesanticipadas - U4 - INICIO-v2` (la repetición, cortada) | 115 | 7:49 | `1Yp6hmNmwgfW7dGsCHrP-VLqLjrDafV7N` |
 | `terminacionesanticipadas - U4 - CIERRE-v1` | 112 | 7:37 | `1FBKz5u8-C8KtYn1BwlJq4PH9NLJ-YHK_` |
+| `terminacionesanticipadas - U4 - CIERRE-v2` (la repetición, cortada) | 109 | 7:27 | `1QGsNzNcKw22qaN0hXwRVtELX67f124Lf` |
 | `TA - U1 - CASO 06 - V1` | 34 | 2:17 | `11fI14on_jSt-qXLRRXav7pn53c_xqYrb` |
 | `TA - U1 - CASO 07 - V1` | 31 | 2:08 | `1ujXMx76meZoyau6_jTvH_oMQWLft7eo4` |
 | `TA - U1 - CASO 08 - V1` | 17 | 1:25 | `1rHR0TBMwl8k0oRcXVsBBlLSOLLeyhYzw` |
@@ -41,9 +44,24 @@ estos tres no son tropiezos, y el compuesto debió cortarlos.
 | U4 – INICIO | 0:55,6 a 1:28,8 | «volver a hacer ese párrafo» y repite el párrafo |
 | U4 – CIERRE | 0:17,5 a 0:25,8 | repite las dos primeras frases |
 
-Los `.srt` de esos tres siguen al video tal como está. Si se cortan (entrega `-v2`), el `.srt` se hace de nuevo sobre
-el archivo nuevo. Avisado a Sebastián el 18 nov; él decide.
+**Cortadas el 18 nov** (Sebastián: «haz los cambios ya», «solo corta esas partes», «para evitar reprocesar todo»),
+sobre el MP4 entregado y sin reprocesarlo, con `herramientas/montaje/recortar_entrega.py`. Salieron como `-v2`; las
+`-v1` y sus `.srt` siguen en la carpeta.
 
-Otros dos tropiezos de frase entera, que se limpiaron en el subtítulo y siguen en el video: U1 – CIERRE (hacia 4:30,
-«mi recomendación es que no comiencen pensando… mi recomendación es que no comiencen redactando») y U2 – INICIO
-(1:03 a 1:15, repite «La decisión no depende únicamente de la convicción del fiscal…»; se dejó en el subtítulo).
+| entrega | corte (cuadros de la línea de la v1) | cuadros | copiados sin tocar | Drive |
+|---|---|---|---|---|
+| `terminacionesanticipadas - U2 - INICIO-v2.mp4` | 409–1129 (30,0 s) | 10.929 | 10.689 | `15hegG6gr3fJa_MYBfpyNpE1aGiiizCKo` |
+| `terminacionesanticipadas - U4 - INICIO-v2.mp4` | 1321–2115 (33,1 s) | 11.243 | 11.226 | `1XWPje2Ts283xiJ6Zplqa0hWrHnw7lzl0` |
+| `terminacionesanticipadas - U4 - CIERRE-v2.mp4` | 409–628 (9,1 s) | 10.726 | 10.465 | `18I-JJTa52X12iciAvrv-zVVR20evQgza` |
+
+Las tres: −16,0 LUFS y −3,0 dBTP, 0 muestras de desfase contra el compuesto, y comparadas byte a byte con una copia
+de servidor antes de moverlas a la carpeta de la unidad. En el inicio de la U4 el corte cae en medio del video
+(0:55) y es un corte directo. Los `.srt` de las `-v2` se hicieron transcribiendo el archivo nuevo (claves
+`tau2i_v2`, `tau4i_v2`, `tau4c_v2`): el texto es el de la `-v1` menos la repetición, palabra por palabra. Scribe no
+devuelve dos veces lo mismo en los tropiezos, así que las reglas de la `-v1` no alcanzan y cada `-v2` lleva las suyas.
+
+Quedan en el video dos frases que el profe rehace sobre la marcha, que no son tomas repetidas y no se cortaron: U1 –
+CIERRE (hacia 4:30, «mi recomendación es que no comiencen pensando… mi recomendación es que no comiencen
+redactando»; el subtítulo lleva solo la segunda) y U2 – INICIO-v2 (0:34 a 0:46, «La decisión no depende únicamente
+de la convicción del fiscal sobre el caso. La decisión no depende únicamente de la convicción del fiscal de que el
+caso no debe continuar»; el subtítulo lleva las dos).

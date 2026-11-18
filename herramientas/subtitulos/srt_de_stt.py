@@ -174,7 +174,75 @@ def corrige(ws, reglas):
     return ws
 
 
+_U = dict(un=1, uno=1, una=1, dos=2, tres=3, cuatro=4, cinco=5, seis=6, siete=7, ocho=8, nueve=9)
+_D = dict(diez=10, once=11, doce=12, trece=13, catorce=14, quince=15, dieciseis=16, diecisiete=17, dieciocho=18,
+          diecinueve=19, veinte=20, veintiun=21, veintiuno=21, veintiuna=21, veintidos=22, veintitres=23,
+          veinticuatro=24, veinticinco=25, veintiseis=26, veintisiete=27, veintiocho=28, veintinueve=29)
+_T = dict(treinta=30, cuarenta=40, cincuenta=50, sesenta=60, setenta=70, ochenta=80, noventa=90)
+_C = dict(cien=100, ciento=100, doscientos=200, trescientos=300, cuatrocientos=400, quinientos=500, seiscientos=600,
+          setecientos=700, ochocientos=800, novecientos=900)
+_C.update({k[:-2] + 'as': v for k, v in list(_C.items()) if k.endswith('os')})
+_SIN = str.maketrans('áéíóúü', 'aeiouu')
+
+
+def numeros(ws):
+    """Los números de 11 en adelante que Scribe dejó en letras pasan a cifras («artículo ciento ochenta y siete» ->
+    «artículo 187», «Ley mil noventa y ocho de dos mil seis» -> «Ley 1098 de 2006»), y «N por ciento» a «N %».
+    Un «cien», «ciento» o «mil» suelto se deja. La serie se corta en cualquier signo de puntuación."""
+    n = [norm(w['text']).translate(_SIN) for w in ws]
+
+    def abierto(j):                                 # la palabra j no termina en signo: puede seguir la cifra
+        return re.search(r'[\wáéíóúüñ]$', ws[j]['text']) is not None
+
+    def grupo(i):                                   # 1 a 999 -> (valor, siguiente) o None
+        v, j = 0, i
+        if j < len(n) and n[j] in _C:
+            v, j = _C[n[j]], j + 1
+            if n[j - 1] == 'cien' or not abierto(j - 1):
+                return v, j
+        if j < len(n) and n[j] in _T:
+            v, j = v + _T[n[j]], j + 1
+            if abierto(j - 1) and j + 1 < len(n) and n[j] == 'y' and n[j + 1] in _U and ws[j]['text'] == 'y':
+                v, j = v + _U[n[j + 1]], j + 2
+        elif j < len(n) and n[j] in _D:
+            v, j = v + _D[n[j]], j + 1
+        elif j < len(n) and n[j] in _U:
+            v, j = v + _U[n[j]], j + 1
+        return (v, j) if j > i else None
+
+    out, i = [], 0
+    while i < len(ws):
+        g, v, j = grupo(i), None, i
+        if n[i] == 'mil':
+            v, j = 1000, i + 1
+        elif g and g[1] < len(n) and n[g[1]] == 'mil' and abierto(g[1] - 1) and g[0] > 1:
+            v, j = g[0] * 1000, g[1] + 1
+        if v is not None:
+            r = grupo(j) if abierto(j - 1) else None
+            if r:
+                v, j = v + r[0], r[1]
+        elif g:
+            v, j = g
+        suelto = j == i + 1 and n[i] in ('cien', 'ciento', 'mil')
+        pct = v is not None and not suelto and j + 1 < len(n) and abierto(j - 1) and n[j] == 'por' and n[j + 1] == 'ciento'
+        if v is None or suelto or (v < 11 and not pct) or not ws[i]['text'][:1].isalpha() and not ws[i]['text'][:1] in '¿¡("«':
+            out.append(ws[i]); i += 1
+            continue
+        if pct:
+            j += 2
+        pre = re.match(r'[^\wáéíóúüñ]*', ws[i]['text']).group(0)
+        pos = re.search(r'[^\wáéíóúüñ]*$', ws[j - 1]['text']).group(0)
+        out.append(dict(ws[i], text=pre + str(v) + (' %' if pct else '') + pos, end=ws[j - 1]['end']))
+        i = j
+    return out
+
+
 MULETILLAS = set('eh ehm em mmm mm hmm'.split())
+_MARCADORES = set('así bueno entonces ahora además asimismo finalmente también luego pues bien igualmente adicionalmente '
+                  'efecto ejemplo embargo parte lado lugar caso decir sí no tanto contrario'.split())
+# palabras que no llevan coma detras: si la traen es porque seguia una muletilla
+_SIN_COMA = set('a al ante con de del desde en entre hacia hasta para por sin sobre el la los las un una unos unas su sus '
+                'mi mis que cualquier algún alguna ningún ninguna otro otra cada muy tan este esta estos estas ese esa'.split())
 
 
 def _mayus(w):
@@ -183,6 +251,27 @@ def _mayus(w):
         if c.isalpha():
             return dict(w, text=t[:i] + c.upper() + t[i + 1:])
     return w
+
+
+_PREF = set('ex pre pos co sub no pro bi tri'.split())
+_PREP = {'de': ('de', 'del'), 'a': ('a', 'al'), 'en': ('en',), 'por': ('por',), 'con': ('con',), 'para': ('para',)}
+
+
+def _tartamudeo(t):
+    """«compe-complejidad» -> «complejidad», «co-de» -> «de», «Ten-entendemos» -> «Entendemos». Los compuestos
+    («infancia-adolescencia», «jurídico-penales», «T-142») quedan."""
+    m = re.match(r'^([^\wáéíóúüñ]*)([^\W\d_]+)-([^\W\d_].*)$', t)
+    if not m or re.search(r'\d', t) or m.group(2).isupper():
+        return t
+    pre, x, y = m.groups()
+    nx, ny = norm(x).translate(_SIN), norm(re.split(r'[-\s]', y)[0]).translate(_SIN)
+    com = 0
+    while com < min(len(nx), len(ny)) and nx[com] == ny[com]:
+        com += 1
+    if ny.startswith(nx) or (com >= 2 and (len(nx) <= 4 or com >= max(3, len(nx) - 3))) \
+            or (len(nx) <= 3 and nx not in _PREF) or (nx in _PREF and ny in FUNC):
+        return _tartamudeo(pre + (y[0].upper() + y[1:] if x[0].isupper() else y))
+    return t
 
 
 def tropiezos(ws):
@@ -194,36 +283,68 @@ def tropiezos(ws):
     sube = False                                   # la palabra que sigue hereda la mayuscula de lo que se quito
     while i < len(ws):
         w = ws[i]
+        if '-' in w['text'].strip('-'):
+            w = dict(w, text=_tartamudeo(w['text']))
         t = w['text']
         n = norm(t)
         ini = bool(t) and t[0].isupper() and (not out or fin_oracion(out[-1]['text']))
         if n in MULETILLAS:
             sube = sube or ini
+            if out and out[-1]['text'].endswith(',') and (norm(out[-1]['text']) in _SIN_COMA or
+                                                          (t.endswith(',') and norm(out[-1]['text']) not in _MARCADORES
+                                                           and not (len(out) > 1 and out[-2]['text'].endswith(',')))):
+                # «cualquier, eh, necesidad» -> «cualquier necesidad»; «el impacto, eh, de ese proceso» -> «el impacto de ese
+                # proceso»: las dos comas encerraban la muletilla. Tras un marcador («Así, eh, por ejemplo») o en una lista la coma queda
+                out[-1] = dict(out[-1], text=out[-1]['text'][:-1])
             i += 1
             continue
         cortada = len(n) > 0 and (t.endswith('--') or (t.endswith('-') and not t.endswith('--') and len(n) > 1))
         if cortada:
             quitado = False
+            resto = [x for x in ws[i + 1:i + 10] if norm(x['text']) not in MULETILLAS]   # lo que sigue, sin muletillas
             for k in (4, 3, 2, 1):                 # se repite lo de antes: «de las af-- de las …»
-                if len(out) >= k and i + k < len(ws) and \
-                        [norm(x['text']) for x in out[-k:]] == [norm(x['text']) for x in ws[i + 1:i + 1 + k]]:
+                if len(out) >= k and len(resto) >= k and \
+                        [norm(x['text']) for x in out[-k:]] == [norm(x['text']) for x in resto[:k]]:
                     sube = sube or (out[-k]['text'][:1].isupper() and (len(out) == k or fin_oracion(out[-k - 1]['text'])))
                     del out[-k:]
                     quitado = True
                     break
-            if not quitado and i + 1 < len(ws):
-                sig = norm(ws[i + 1]['text'])
+            if not quitado and resto:
+                sig = norm(resto[0]['text'])
                 if sig[:2] == n[:2] or sig.startswith(n) or n.startswith(sig):
                     sube = sube or ini
                     quitado = True
+                elif (n in FUNC or len(n) == 1) and not resto[0]['text'][:1].isupper():
+                    # un articulo o un pedacito suelto y la oracion sigue: «También la-- el artículo» -> «También el artículo»
+                    sube = sube or ini
+                    quitado = True
+                    if n == 'del' and sig in ('la', 'las', 'los'):          # «antes del-- la entrada» -> «antes de la entrada»
+                        out.append(dict(w, text=t[:t.lower().find('del')] + ('De' if t.lstrip('¿¡("«')[:1].isupper() else 'de')))
+                        sube = False
+                    elif out and re.search(r'[\wáéíóúüñ]$', out[-1]['text']) and sig in _PREP.get(norm(out[-1]['text']), ()):
+                        sube = sube or (out[-1]['text'][:1].isupper() and (len(out) == 1 or fin_oracion(out[-2]['text'])))
+                        del out[-1]                # «se tomará de la-- del principio» -> «se tomará del principio»
             if quitado:
                 i += 1
                 continue
             w = dict(w, text=t.rstrip('-') + '…')
+        if out and n in FUNC and norm(out[-1]['text']) == n and re.search(r'[\wáéíóúüñ]$' if n == 'no' else r'[\wáéíóúüñ],?$', out[-1]['text']):
+            # «a, a la comunidad», «de de justicia»: se queda la segunda (y la mayuscula de la primera)
+            if out[-1]['text'][:1].isupper() and (len(out) == 1 or fin_oracion(out[-2]['text'])):
+                sube = True
+            del out[-1]
+        if out and t in ('el', 'el,', 'el.') and out[-1]['text'] in ('de', 'a'):       # «de el sistema» -> «del sistema»
+            out[-1] = dict(out[-1], text={'de': 'del', 'a': 'al'}[out[-1]['text']] + t[2:], end=w['end'])
+            i += 1
+            continue
         if sube:
             w = _mayus(w)
             sube = False
         out.append(w)
+        if len(out) >= 4 and all(norm(x['text']) in FUNC for x in out[-4:]) and \
+                [norm(x['text']) for x in out[-4:-2]] == [norm(x['text']) for x in out[-2:]] and \
+                re.search(r'[\wáéíóúüñ]$', out[-4]['text']) and re.search(r'[\wáéíóúüñ],?$', out[-3]['text']):
+            del out[-4:-2]                         # «de la, de la libertad» -> «de la libertad»
         i += 1
     return out
 
@@ -234,7 +355,9 @@ def limpia(ws):
     out = []
     for w in tropiezos(ws):
         if out and not re.search(r'[\wáéíóúüñ%]', w['text']):
-            out[-1] = dict(out[-1], text=out[-1]['text'] + w['text'], end=w['end'])
+            # Scribe a veces pone el punto varios segundos despues de la palabra: el subtitulo no se estira hasta ahi
+            out[-1] = dict(out[-1], text=out[-1]['text'] + w['text'],
+                           end=w['end'] if w['end'] - out[-1]['end'] <= 2.0 else out[-1]['end'])
             continue
         if out and out[-1]['text'].endswith(':') and w['text'].startswith('¿') and len(w['text']) > 1:
             w = dict(w, text='¿' + w['text'][1].upper() + w['text'][2:])
@@ -242,10 +365,10 @@ def limpia(ws):
     return out
 
 
-def cues(j, reglas=()):
+def cues(j, reglas=(), despues=()):
     ws = [dict(text=w['text'].strip(), start=float(w['start']), end=float(w['end']), speaker_id=w.get('speaker_id'))
           for w in j.get('words', []) if w.get('type') == 'word' and w.get('text', '').strip()]
-    ws = limpia(corrige(ws, reglas))
+    ws = limpia(corrige(numeros(corrige(ws, reglas)), despues))       # `despues`: reglas sobre el texto ya con cifras
     cs = []
     for o in oraciones(ws):
         cs += parte(o)
@@ -294,7 +417,7 @@ def main():
         if not os.path.exists(S + k + '.json'):
             print(k, 'SIN TRANSCRIPCION'); continue
         j = json.load(open(S + k + '.json', encoding='utf-8'))
-        cs = cues(j, list(corr.get('_todos', [])) + list(corr.get(k, [])))
+        cs = cues(j, list(corr.get('_todos', [])) + list(corr.get(k, [])), list(corr.get('_despues', [])))
         open(O + m['nombre'] + '.srt', 'w', encoding='utf-8', newline='').write(srt(cs))
         open(O + m['nombre'] + '.vtt', 'w', encoding='utf-8', newline='').write(vtt(cs))
         open(O + k + '.rev.txt', 'w', encoding='utf-8').write(

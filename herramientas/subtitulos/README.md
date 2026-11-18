@@ -30,10 +30,19 @@ Por eso no se reusa la transcripción de la fuente que se hizo al montar: se tra
   termina en artículo, preposición o conjunción si se puede evitar; un número no se separa de su sustantivo ni de «%».
 - **Transcripción limpia, no literal del tropiezo**: se quitan los arranques en falso cortos («deben repe--
   respetarse» → «deben respetarse») y los «eh». No se corrige la gramática ni lo que el profe dijo mal.
+  `srt_de_stt.tropiezos` lo hace solo en los casos seguros: la palabra cortada que se retoma, la que repite las
+  palabras de antes («de las af-- de las personas»), el artículo o la preposición sueltos cuando la oración sigue
+  («También la-- el artículo» → «También el artículo»; «de la-- del principio» → «del principio»), el tartamudeo
+  dentro de una palabra («compe-complejidad» → «complejidad»; los compuestos como «infancia-adolescencia» quedan) y la
+  palabra función repetida («a, a la comunidad»). Lo demás queda con puntos suspensivos («es un pro… puede ser») y
+  se resuelve a mano en `correcciones.json`, mirando el texto crudo (`.rev.txt` lista lo que queda con «…»).
 - **Una toma repetida entera no se esconde**: si el video trae «voy a volver a empezar» y repite, el subtítulo lo
   sigue tal como suena, y se le avisa a Sebastián, porque el defecto es del video.
 - Cifras en números cuando son de 11 para arriba, artículos de ley y porcentajes («artículo 348», «80 millones»,
-  «50 %»): así están en los cartones. Scribe las da en letras.
+  «50 %»): así están en los cartones. Scribe las da en letras, a veces. `srt_de_stt.numeros` las pasa solo
+  («artículo ciento ochenta y siete» → «artículo 187», «Ley mil noventa y ocho de dos mil seis» → «Ley 1098 de
+  2006», «ochenta por ciento» → «80 %»); un «cien» o un «mil» suelto se deja. Lo que el profe dice por partes
+  («decreto veintisiete treinta y siete», «el tres veintiséis») va en `correcciones.json`.
 - «la Fiscalía», con mayúscula. Una pregunta que sigue a dos puntos empieza con mayúscula.
 - Las comillas del texto del profesor se respetan (“X”, “se robó su dinero”).
 
@@ -47,3 +56,16 @@ Por eso no se reusa la transcripción de la fuente que se hizo al montar: se tra
 - `create_file` acepta una referencia `sha256:<hash>:<ruta>` en `base64Content` y sube el archivo sin pasar su
   contenido por la conversación, **pero solo desde el directorio de trabajo** (`/home/claude/...`); desde
   `/mnt/user-data/outputs/` responde que no puede. Y la ruta va sin espacios, por las dudas.
+
+## Lo que se agregó con SRPA (15 videos, 3 h 43 min, profes que hablan sin leer)
+
+- Con profes que improvisan hay cientos de tropiezos: las reglas de arriba salieron de ahí. Se probó que no cambian
+  ni una letra de los 19 `.srt` ya entregados de Terminaciones anticipadas.
+- **Dónde mirar cuando no se puede leer todo con el mismo cuidado:** las palabras con `logprob` bajo de Scribe (menos
+  de −0,42: 157 en 29.000), las mayúsculas en medio de oración y las cifras (nombres, leyes, radicados), lo que
+  queda con «…», y un corrector ortográfico (`pyspellchecker`) sobre el texto: así salieron «derecho blandoso, law»
+  (soft law), «ultrabajarla» (ultrajarla), «vérase», «Paul Krimmel» (Polcrymed) y «tres de ponderación» (test).
+- **Los nombres propios se cotejan contra lo que ya está escrito en pantalla** (los cartones del plan del video) y
+  contra los documentos del curso en Drive, no contra el oído.
+- Una segunda escucha (`stt_tramo.py`) no siempre resuelve: si tres pasadas dan tres cosas distintas, no se inventa.
+

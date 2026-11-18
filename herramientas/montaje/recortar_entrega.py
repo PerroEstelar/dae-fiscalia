@@ -59,6 +59,9 @@ FF, FP = FB + '/ffmpeg.exe', FB + '/ffprobe.exe'
 FPS = 24000 / 1001.0
 FR = '24000/1001'
 SIN_PERDIDA = ['-c:v', 'libx264', '-qp', '0', '-preset', 'ultrafast', '-pix_fmt', 'yuv420p'] + M.COLOR
+# Las marcas de color viajan con cada cuadro y le ganan a las opciones de salida: un compuesto que solo declara la
+# matriz deja el tramo sin primarios ni curva, y el SPS ya no es el de lo copiado. Se fijan en el filtro.
+MARCAS = 'setparams=range=tv:color_primaries=bt709:color_trc=bt709:colorspace=bt709'
 T = os.environ.get('DAE_TMP_RECORTE', P.TMP + '/recortar').rstrip('/') + '/'      # los tramos sin pérdida pesan: D: suele estar lleno
 os.makedirs(T, exist_ok=True)
 log = open(P.TMP + '/recortar.log', 'w', encoding='utf-8')
@@ -169,7 +172,7 @@ if A - k_a > 96 or k_b - B > 400:
 
 def extrae(nombre, f, sel, n):
     out = T + nombre
-    run([FF, '-y', '-v', 'error', '-i', f, '-an', '-vf', "select='%s',setpts=N/(%s)/TB" % (sel, FR), '-frames:v', str(n), '-r', FR]
+    run([FF, '-y', '-v', 'error', '-i', f, '-an', '-vf', "select='%s',setpts=N/(%s)/TB,%s" % (sel, FR, MARCAS), '-frames:v', str(n), '-r', FR]
         + SIN_PERDIDA + [out])
     if M.cuadros(out) != n:
         falla('%s mide %d y tenía que medir %d' % (nombre, M.cuadros(out), n))
@@ -184,22 +187,35 @@ if A > k_a:
 if k_b > B:
     entradas = []
     if LIMPIOS:
-        # la entrega vieja trae en esos cuadros la cola del rótulo viejo: salen del compuesto
-        vj = grises(vieja, r'between(n\,%d\,%d)' % (B, B + LIMPIOS + 5))
-        fc = float(P.FPS_COMPUESTO) if getattr(P, 'FPS_COMPUESTO', None) and '/' not in str(P.FPS_COMPUESTO) else 30.0
-        x0 = int((B - CLIP0) * fc / FPS) - 3
-        cp = grises(P.COMPUESTO, r'between(n\,%d\,%d)' % (x0, x0 + int((LIMPIOS + 6) * fc / FPS) + 7))
-        elegidos = []
-        for j in range(len(vj)):
+        # la entrega vieja trae en esos cuadros la cola del rótulo viejo: salen del compuesto. Con el profe quieto,
+        # cuadros vecinos del compuesto son casi iguales y elegirlos uno por uno da saltos: se ajusta el paso entero
+        # (cuadro de la línea -> cuadro del compuesto, con un desfase en cuartos de cuadro) sobre un tramo largo
+        VENT = min(max(LIMPIOS + 6, 96), CLIP0 + CLIPF - B)
+        vj = grises(vieja, r'between(n\,%d\,%d)' % (B, B + VENT - 1))
+        num, den = (float(x) for x in run([FP, '-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=r_frame_rate',
+                                           '-of', 'csv=p=0', P.COMPUESTO]).stdout.strip().split('/'))
+        fc = num / den
+        x0 = max(0, int((B - CLIP0) * fc / FPS) - 4)
+        cp = grises(P.COMPUESTO, r'between(n\,%d\,%d)' % (x0, x0 + int(VENT * fc / FPS) + 9))
+        pruebas = []
+        for q in range(-8, 9):
+            ix = [int(np.floor((B + n_ - CLIP0) * fc / FPS + q / 4.0)) for n_ in range(len(vj))]
+            if min(ix) < x0 or max(ix) >= x0 + len(cp):
+                continue
             # se compara la mitad de arriba del cuadro, donde no hay rótulo
-            d = [float(((vj[j][:150] - c[:150]) ** 2).mean()) for c in cp]
-            m = int(np.argmin(d))
-            elegidos.append((B + j, x0 + m, 10 * np.log10(255.0 ** 2 / max(d[m], 1e-6)),
-                             10 * np.log10(255.0 ** 2 / max(sorted(d)[1], 1e-6))))
-        p('cuadro de la línea -> cuadro del compuesto (PSNR del elegido y del segundo):',
-          ' '.join('%d->%d %.1f/%.1f' % e for e in elegidos))
-        idx = [e[1] for e in elegidos[:LIMPIOS]]
-        if any(b_ <= a_ for a_, b_ in zip(idx, idx[1:])) or min(e[2] for e in elegidos) < 30:
+            e = [float(((vj[n_][:150] - cp[c - x0][:150]) ** 2).mean()) for n_, c in enumerate(ix)]
+            pruebas.append((float(np.mean(e)), abs(q), q, ix, e))
+        if not pruebas:
+            falla('no hay compuesto para los cuadros limpios')
+        pruebas.sort()
+        err, _, q, ix, e = pruebas[0]
+        ps = lambda x: 10 * np.log10(255.0 ** 2 / max(x, 1e-6))  # noqa: E731
+        p('cuadros limpios: compuesto a %.3f c/s, desfase %+.2f cuadros, PSNR medio %.1f dB (peor cuadro %.1f) sobre %d cuadros |'
+          % (fc, q / 4.0, ps(err), ps(max(e)), len(vj)), 'otros desfases:',
+          ' '.join('%+.2f=%.1f' % (x[2] / 4.0, ps(x[0])) for x in sorted(pruebas[1:], key=lambda x: x[2])))
+        idx = ix[:LIMPIOS]
+        p('línea -> compuesto:', ' '.join('%d->%d' % (B + n_, c) for n_, c in enumerate(idx)))
+        if ps(err) < 38 or ps(max(e[:LIMPIOS + 6])) < 32:
             falla('los cuadros limpios no casan con el compuesto')
         entradas.append(extrae('limpios.mkv', P.COMPUESTO, '+'.join(r'eq(n\,%d)' % c for c in idx), LIMPIOS))
     entradas.append(extrae('der.mkv', vieja, r'between(n\,%d\,%d)' % (B + LIMPIOS, k_b - 1), k_b - B - LIMPIOS))
@@ -213,9 +229,9 @@ if k_b > B:
         cmd += ['-i', LT[0]]
         # el rótulo es RGB con alfa: se pasa a YUV con la matriz 709 (la del video) y entra en su cuadro
         fg += ';[%d:v]scale=out_color_matrix=bt709:out_range=tv,format=yuva420p,setpts=PTS+%d/(%s)/TB[lt]' % (n_in, LT[1], FR)
-        fg += ';[base][lt]overlay=0:0:eof_action=pass:format=yuv420[v]'
+        fg += ';[base][lt]overlay=0:0:eof_action=pass:format=yuv420,%s[v]' % MARCAS
     else:
-        fg += ';[base]null[v]'
+        fg += ';[base]%s[v]' % MARCAS
     run(cmd + ['-filter_complex', fg, '-map', '[v]', '-frames:v', str(k_b - B), '-r', FR] + M.VIDEO + ['-an', '-f', 'mp4', T + 'der.mp4'])
     segs.append((T + 'der.mp4', k_b - B, 'der'))
 for f, n, _e in segs:
