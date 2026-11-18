@@ -3305,3 +3305,12 @@ por palabra con el viejo (tiene que faltar solo lo cortado).
   `excludeContentSnippets: true`; si el archivo aparece, la palabra está escrita así.
 - Lo que el profe dice mal (un apellido cambiado) queda como lo dijo y se avisa. Una palabra que tres escuchas dan de
   tres maneras no se inventa; si el giro es evidente por el sonido y la frase, se pone y se dice cuál fue.
+- **Scribe a veces estira una palabra sobre el silencio de antes** (la primera de un video, 17 s; un «¿Qué» de 8 s en
+  medio de una clase): el subtítulo aparece antes de tiempo. `srt_de_stt.cues` no le cree al principio de una palabra
+  de más de 3 s. El de la U3 de SRPA se subió de nuevo por esto: **antes de subir, se mira el subtítulo más largo**.
+- **Un `diff` de dos `.srt` se pasa por `head`**: si cambia la cantidad de subtítulos, cambian todos los números.
+- Los profes que leen (Bienes) dicen «repito» y releen la frase: nueve veces en cuatro videos entregados. Es el mismo
+  defecto de Terminaciones anticipadas; la búsqueda de reinicios antes de componer incluye «repito».
+- `recortar_entrega.py` solo sirve para entregas x264 (cuadro clave cada 48, GOP cerrados). Las que salieron de Resolve
+  por la placa NVIDIA (perfil Main, clave cada 24) no se pueden cortar así: o el corte cae justo en dos cuadros clave, o
+  la `-v2` sale del máster con los cortes hechos al codificar.
