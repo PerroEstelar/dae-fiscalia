@@ -29,8 +29,12 @@ LUFS, picos hasta +0,3 dBTP), etiquetadas `smpte170m`.
 el panel DAE/Fiscalía arriba a la izquierda: no hay recorte que acerque al profe y deje el panel
 entero. Para la versión con gráficos hay que decidir antes dónde va la columna de cartones.
 
-**Lower third.** A la izquierda, con el nombre a 44 px y el cargo a 560 de ancho, como en el cierre
-del curso (`LT`).
+**Lower third: columna angosta a la izquierda.** El profe ocupa el centro de abajo (de x≈500 a
+x≈1400, con la cara hasta y≈1000 en el cierre de la unidad 1): con las medidas del cierre del curso
+(44 px y 560 de ancho) el nombre le cruzaba la cara en el cierre de la unidad 1 y el hombro o las
+manos en los demás. Se simuló sobre dos cuadros de cada una de las ocho fuentes
+(`D:\DAE\_tmp\bi_u\sim_todos_*.jpg`). Va con el nombre en dos renglones, el cargo a 345 de ancho y
+la cima en y=740 (`LT`, `LT_TOP`, y el salto de renglón en `PROFE`): termina en x≈480.
 
 **Dónde.** E: no tiene espacio: el árbol va en `D:\DAE MASTER\CURSO 5 - Bienes en el proceso penal\
 UNIDAD n\INICIO|CIERRE`, y los másters de 32 Mb/s en `D:\DAE\_masters_archivo\CURSO 5 - Bienes en el
@@ -67,10 +71,11 @@ NOMBRE_CURSO = 'Bienes en el proceso penal'
 TITULO_BASE = None
 XY, VENTANA = (0, 0), (1920, 1080)
 ANCHO = 615
-LT = (44, 560)
+LT = (44, 345)             # px del nombre y ancho del cargo
+LT_TOP = 740               # cima del lower third (estándar 870): lleva siete renglones
 AUDIO_META = 'I=-16:TP=-3:LRA=7'
 PRESET_ENTREGA = 'medium'     # entrega provisional: x264 CRF 18 con preset medium (ver mp4_entrega); la v2 con gráficos vuelve a slow
-PROFE = ('Sergio Andrés López Zamora',
+PROFE = ('Sergio Andrés\nLópez Zamora',
          'Abogado, doctor en Derecho Público, magíster en Derecho Penal y Procesal Penal y en '
          'Derechos Humanos')
 UNIDADES = {1: 'Función del bien', 2: 'Medidas cautelares con fines de reparación',

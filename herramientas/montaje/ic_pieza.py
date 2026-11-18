@@ -361,6 +361,11 @@ def ajustes():
     if getattr(P, 'LT', None):
         import cartones_srpa as CS
         CS.LT_NOMBRE, CS.LT_ANCHO = P.LT
+    if getattr(P, 'LT_TOP', None):
+        # el lower third más arriba, cuando lleva más renglones (unidades de Bienes: columna angosta
+        # a la izquierda, porque el profe ocupa el centro de abajo)
+        import cartones_srpa as CS
+        CS.LT_TOP = P.LT_TOP
     if getattr(P, 'TINTA', None):
         # Texto con tinta propia y sin sombra: un profe contra una pared blanca (SRPA U2, 17 nov
         # 2026). El blanco con sombra de la serie no se lee ahí; va el azul noche de los cartones

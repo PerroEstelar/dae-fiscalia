@@ -59,8 +59,11 @@ def lower_third(out, n, datos):
     plano = Image.new('RGBA', (C.W, C.H), (0, 0, 0, 0))
     d = ImageDraw.Draw(plano)
     y = LT_TOP
-    d.text((tx, y), nombre, font=fn, fill=(255, 255, 255, 255))
-    y += int(LT_NOMBRE * 1.22) + 8
+    # el nombre puede venir en dos renglones ('Sergio Andrés\nLópez Zamora') cuando la columna es angosta
+    for parte in nombre.split('\n'):
+        d.text((tx, y), parte, font=fn, fill=(255, 255, 255, 255))
+        y += int(LT_NOMBRE * 1.22)
+    y += 8
     for ln in lineas:
         d.text((tx, y), ln, font=fc, fill=(255, 255, 255, 235))
         y += int(LT_CARGO * 1.38)
