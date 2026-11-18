@@ -3363,3 +3363,22 @@ no `TA - U4 - CASO 01 - V1`. Vale para toda entrega nueva de un caso.
   cuentas suyas. Una búsqueda ancha de Drive devuelve casi mil caracteres por archivo: se acota por carpeta o por título.
 - La lista de lo renombrado y de lo que no se tocó: `cursos/NOMBRES_DE_CASOS.md`.
 
+
+## Dónde va cada caso: la hoja «Casos_ubicación en documentos» (18 nov 2026)
+
+Sebastián pidió un Excel con todos los casos hechos y su lugar en los documentos de los cursos. Es la hoja de Google
+`1_Xkp7w3beVXhViua8Ok0Vu3ID0qKU38BfKDzUUqufqM` (copia `.xlsx`: `1m9YER4yQbBRMmpmah-5t09x9Q_xfaQKA`): 94 piezas con
+prioridad, curso, unidad, lección o sección, cómo lo llama el documento, página, párrafo, primeras y últimas palabras, y
+enlace al documento, al documento de trabajo y a la entrega. **Un caso nuevo se entrega con su fila en esa hoja.** El
+método y los guiones están en `herramientas/casos_en_documentos/README.md`. Lo que hay que saber antes de repetirlo:
+
+- **«El documento del curso» es la ficha de la unidad** («Unidad n - Vaciado…», Word) o el PDF fechado del curso (JR,
+  SRPA, Bienes, Delitos ambientales). El documento con los casos sueltos que arma la agencia es «el documento de trabajo».
+- **`download_file_content` no trae el archivo a la conversación**: lo deja en `tool-results/` y contesta la ruta. Sirve
+  para bajar Word y PDF enteros (tope 10 MB) y para exportar un Google Doc a PDF. Lo que pasa de 10 MB:
+  `copy_file` a una carpeta propia → `G:\My Drive` → `D:\DAE\_tmp` → `device_stage_files`.
+- **La página de un Word es aproximada**: no guarda páginas y usa una fuente que nadie tiene (Ancizar Sans). Se dice así
+  en la hoja, y se dan siempre las primeras palabras del caso para buscarlas con Ctrl+F. La de un PDF es exacta.
+- **Una búsqueda de Drive con muchos resultados no cuesta contexto** si pasa de unos 75 KB: se guarda en archivo. Las
+  medianas (10 a 50 resultados) son las caras; un `or` con una palabra suelta («Ipanema») trae decenas de borradores.
+- Cada fila se comprueba releyendo la página anotada (`pdftotext -f P -l P`): título, comienzo y final tienen que estar.
