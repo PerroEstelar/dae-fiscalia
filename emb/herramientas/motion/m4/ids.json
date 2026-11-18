@@ -1,0 +1,92 @@
+{
+ "placas": {
+  "hp11_descalifica": "aFAtVVNfSh",
+  "S1": "s78rEHUl8e",
+  "Q1": "VXwW6GYMMU",
+  "R1": "mERocoRhJQ",
+  "R6": "aFAtoibfSh",
+  "R6_dos_cascos": "u5YadFjQLD",
+  "Q2": "dtPM06VXSL",
+  "Q3": "dtPM0cmXSL",
+  "Q4": "YMsARYnWeC",
+  "Q5": "1lebHUfr4r",
+  "Q6": "Lwo1KRvswO",
+  "Q7": "5jMFuZDKxe",
+  "R2": "s78rkeIl8e",
+  "R3": "Xm4DVWdBfo",
+  "R4": "fHGmIIMCDY",
+  "R5": "yiEwU9bPW9",
+  "R7": "IfiXdFgtvE",
+  "R8": "dtPMVqSXSL",
+  "S3": "aFAtIJvfSh",
+  "S4": "TdUYnlZVNR",
+  "S5": "Xm4DM42Bfo",
+  "S6": "kspqHHj16B",
+  "S7": "Bh9pptMoQR",
+  "S8": "3z599VwREY",
+  "S9": "4RQJJpJ9Aa",
+  "T1": "mERooOIhJQ",
+  "T2": "mERooRuhJQ",
+  "T3": "YMsAAOUWeC",
+  "T4": "huZ88XdvqL",
+  "T5": "TdUYWh1VNR",
+  "T6": "s78rxcKl8e",
+  "T7": "w4vlgdq7EI",
+  "T8": "8a6dX6tIrU"
+ },
+ "clips": {
+  "Q1": "YMszk2vWeC",
+  "Q2": "lJILdwAgv9",
+  "Q3": "1leKTg4r4r",
+  "Q4": "UPhgo2Wwny",
+  "Q5": "huZtNjYvqL",
+  "Q6": "SymlBYaUb8",
+  "Q7": "N2H4Cvk6D9",
+  "R1": "dtPpwwaXSL",
+  "R2": "1leKTMIr4r",
+  "R3": "ovNXORS829",
+  "R4": "bxVHYBL5Y2",
+  "R5": "dtPpwAxXSL",
+  "R6": "yiEJhl7PW9",
+  "R7": "aFAhiIIfSh",
+  "R8": "p8OMSMTehw",
+  "S1": "O6C7hiCynm",
+  "S3": "79aUtiwJAL",
+  "S4": "MB7TghnDCm",
+  "S5": "huZt6LYvqL",
+  "S6": "s78jdGHl8e",
+  "S7": "WDlnxQjcXe",
+  "S8": "N2H4EvK6D9",
+  "S9": "p8OMUUlehw",
+  "T1": "vQ2miYAa47",
+  "T2": "ksp5TCW16B",
+  "T3": "w4vSIjv7EI",
+  "T4": "yiEJvUOPW9",
+  "T5": "Cqza2FQEEy",
+  "T6": "tC38NEbmZJ",
+  "T7": "VXw0gIkMMU",
+  "T8": "5jMq0UtKxe"
+ },
+ "ventanas": {
+  "Q6": [
+   0,
+   60
+  ],
+  "S1": [
+   55,
+   120
+  ],
+  "S3": [
+   0,
+   40
+  ],
+  "T6": [
+   0,
+   45
+  ],
+  "T5": [
+   0,
+   60
+  ]
+ }
+}

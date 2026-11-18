@@ -1,0 +1,69 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- M4 · Video 4 — La ruta de intervención (4.3.2 + cierre del curso). Generado por m4/escenas_m4.py. -->
+<link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="../pieza.css">
+<script src="../core.js"></script><script src="../pieza.js"></script><script src="voz_m4v4.js" onerror="window.VOZ=null"></script>
+</head><body><div id="raiz"></div>
+<canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
+<script>
+const T={"B1": "La ruta responde al diagnóstico y conecta lo aprendido en el curso: la cultura de paz, la transformación de los patrones, la comunicación asertiva, el enfoque restaurativo y la participación.", "B2": "Primero, verificar y proteger. El equipo competente revisa el recorrido y decide medidas ante la barrera reportada. En paralelo, confirma la fecha correcta y corrige los mensajes. La solicitud de la veeduría sigue su trámite: participar en el diálogo no puede ser requisito para recibir respuesta.", "B3": "Segundo, preparar y escuchar. Se convoca a actores diversos, con información comprensible y condiciones de accesibilidad. Una apertura asertiva puede decir: «Identificamos fechas diferentes y recibimos un reporte de dificultad de acceso. Necesitamos verificar condiciones y escuchar afectaciones. Proponemos revisar alternativas con los responsables competentes».", "B4": "Tercero, reconocer y evaluar. El comentario descalificador merece reconocimiento y corrección. Se examina quién resultó afectado, qué necesita y qué responsabilidades permiten atender el daño. Una disculpa no obliga a perdonar ni sustituye la corrección de fallas.", "B5": "Cuarto, decidir y documentar. Las alternativas se contrastan por seguridad, accesibilidad, competencia, viabilidad y afectaciones diferenciadas. La deliberación produce insumos; cada decisión corresponde al responsable competente, que explica razones, propuestas incorporadas y el desacuerdo que permanezca.", "B6": "Quinto, comprobar y aprender. ¿El recorrido funciona para quienes lo necesitan? ¿Los mensajes coinciden? ¿Los compromisos tienen evidencia? Reunirse es una actividad; mejorar condiciones es un resultado. Si la barrera persiste, se vuelve al diagnóstico.", "B7": "Para revisar una ruta sirven cuatro criterios: correspondencia entre diagnóstico y acciones, inclusión de perspectivas, precisión de responsabilidades y posibilidad de comprobar resultados.", "ACT": "En la actividad, presente cinco acciones ordenadas, con responsables por validar, evidencias y una medida para evitar la recurrencia. Incluya un mecanismo de participación y explique cómo respondería a una alternativa inviable.", "MAPA": "En resumen. La participación pide incidencia real y devolución. La confianza se construye con transparencia, coherencia, trato digno y compromisos verificables. Y el caso se resuelve con un diagnóstico honesto y una ruta que se puede comprobar.", "FIN": "La cultura de paz se concreta en actuaciones públicas respetuosas, participativas y comprobables, en el servicio de cada día."};
+const L2=(a,b)=>`<div style="font:600 30px 'Work Sans';color:#FFC400">${a}</div><div style="font:800 58px/1.08 Montserrat;color:#fff;margin-top:6px">${b}</div>`;
+const G=(t,c='#fff',fs=60)=>`<div style="font:800 ${fs}px/1.08 Montserrat;color:${c}">${t}</div>`;
+const PL=t=>`<div style="font:600 32px 'Work Sans';color:#212529;background:#fff;padding:14px 28px;border-radius:40px;box-shadow:0 14px 34px rgba(0,0,0,.25)">${t}</div>`;
+const Q=t=>`<div style="font:italic 600 46px/1.18 'Work Sans';color:#fff;max-width:1500px">${t}</div>`;
+const BN=(t,fs=44)=>`<div style="font:800 ${fs}px/1.14 Montserrat;color:#212529;max-width:1560px">${t}</div>`;
+const PARADAS=['Los cinco pasos de la ruta','Una apertura asertiva','Criterios para revisar la ruta','El mapa del módulo'];
+montar([
+ S_titulo({ante:'Módulo 4 · Lección 4.3.2',lineas:['La ruta de','intervención'],clip:'T7'}),
+ S_ruta({id:'RUTA1',ante:'La ruta de intervención',titulo:'En este video',modo:'agenda',entrada:'tren',paradas:PARADAS}),
+ S_planos({id:'B1',entrada:'iris',entradaOpt:{x:960,y:500},txt:T.B1,
+  planos:[{clip:'T5',ventana:[0, 60],s:[1.1,1.02]}],
+  textos:[{html:L2('La ruta responde al diagnóstico','y conecta lo aprendido en el curso'),en:0},
+          {html:PL('La cultura de paz'),en:'la cultura',top:120},{html:PL('La transformación de los patrones'),en:'la transformación',top:210},
+          {html:PL('La comunicación asertiva'),en:'la comunicación',top:300},{html:PL('El enfoque restaurativo'),en:'el enfoque',top:390},{html:PL('La participación'),en:'y la participación',top:480}]}),
+ S_planos({id:'B2',entrada:'tren',txt:T.B2,
+  planos:[{clip:'T1',s:[1.02,1.1]},{clip:'T2',en:'En paralelo',s:[1.08,1.02]},{clip:'S8',en:'La solicitud',s:[1.04,1.12]}],
+  textos:[{html:L2('Primero','verificar y proteger'),en:0,hasta:'En paralelo'},
+          {html:L2('En paralelo','confirmar la fecha correcta y corregir los mensajes'),en:'En paralelo',hasta:'La solicitud'},
+          {html:PL('La solicitud de la veeduría sigue su trámite'),en:'La solicitud',top:120},
+          {html:BN('Participar en el diálogo no puede ser<br>requisito para recibir respuesta'),en:'participar en',banda:true,top:820,alto:180}]}),
+ S_mensaje({id:'B3',entrada:'amarillo',plano:{clip:'T3'},intro:{hasta:'Una apertura'},cab:{ante:'Segundo · preparar y escuchar',tit:'Una apertura asertiva'},txt:T.B3,
+  frases:[{t:'Identificamos fechas diferentes y recibimos un reporte de dificultad de acceso.',en:'«Identificamos',tag:'Hechos reconocidos'},
+          {t:'Necesitamos verificar condiciones y escuchar afectaciones.',en:'Necesitamos',tag:'Lo que falta verificar'},
+          {t:'Proponemos revisar alternativas con los responsables competentes.',en:'Proponemos',tag:'Siguiente paso'}]}),
+ S_planos({id:'B4',entrada:'puertas',txt:T.B4,
+  planos:[{clip:'T4',s:[1.02,1.1]},{clip:'R4',en:'Una disculpa',s:[1.1,1.04]}],
+  textos:[{html:L2('Tercero','reconocer y evaluar'),en:0,hasta:'Se examina'},
+          {html:G('El comentario descalificador','#fff',50)+G('merece reconocimiento y corrección','#FFC400',38),en:'El comentario',hasta:'Se examina',top:800},
+          {html:PL('¿Quién resultó afectado?'),en:'quién resultó',hasta:'Una disculpa',top:120},{html:PL('¿Qué necesita?'),en:'qué necesita',hasta:'Una disculpa',top:210},
+          {html:PL('¿Qué responsabilidades permiten atender el daño?'),en:'qué responsabilidades',hasta:'Una disculpa',top:300},
+          {html:BN('Una disculpa no obliga a perdonar<br>ni sustituye la corrección de fallas'),en:'Una disculpa',banda:true,top:820,alto:180}]}),
+ S_planos({id:'B5',entrada:'tren',txt:T.B5,
+  planos:[{clip:'T5',ventana:[0, 60],s:[1.04,1.12]},{clip:'R6',en:'La deliberación',s:[1.1,1.02]}],
+  textos:[{html:L2('Cuarto','decidir y documentar'),en:0,hasta:'La deliberación'},
+          {html:PL('Seguridad'),en:'seguridad',hasta:'La deliberación',top:120},{html:PL('Accesibilidad'),en:'accesibilidad',hasta:'La deliberación',top:210},
+          {html:PL('Competencia'),en:'competencia',hasta:'La deliberación',top:300},{html:PL('Viabilidad'),en:'viabilidad',hasta:'La deliberación',top:390},
+          {html:PL('Afectaciones diferenciadas'),en:'afectaciones',hasta:'La deliberación',top:480},
+          {html:G('La deliberación produce insumos','#fff',50)+G('cada decisión corresponde al responsable competente','#FFC400',38),en:'La deliberación',top:800}]}),
+ S_planos({id:'B6',entrada:'amarillo',txt:T.B6,
+  planos:[{clip:'T6',ventana:[0, 45],s:[1.02,1.1]},{clip:'T7',en:'Reunirse',s:[1.08,1.02]}],
+  textos:[{html:L2('Quinto','comprobar y aprender'),en:0,hasta:'Reunirse'},
+          {html:PL('¿El recorrido funciona para quienes lo necesitan?'),en:'recorrido funciona',hasta:'Reunirse',top:120},
+          {html:PL('¿Los mensajes coinciden?'),en:'mensajes coinciden',hasta:'Reunirse',top:210},{html:PL('¿Los compromisos tienen evidencia?'),en:'compromisos tienen',hasta:'Reunirse',top:300},
+          {html:G('Reunirse es una actividad','#fff',52)+G('mejorar condiciones es un resultado','#FFC400',40),en:'Reunirse',hasta:'Si la barrera',top:800},
+          {html:BN('Si la barrera persiste, se vuelve al diagnóstico',46),en:'Si la barrera',banda:true,top:830,alto:150}]}),
+ S_tarjetas({id:'B7',fondo:'T5_duoY',en0:0,alto:420,txt:T.B7,
+  cab:{tit:'Cuatro criterios para revisar una ruta'},
+  items:[{tit:'Correspon&shy;dencia',def:'Entre diagnóstico y acciones.',ico:'eslabon',en:'correspondencia',rojo:false},{tit:'Inclusión',def:'De perspectivas.',ico:'manos',en:'inclusión',rojo:false},
+         {tit:'Precisión',def:'De responsabilidades.',ico:'persona',en:'precisión',rojo:false},{tit:'Comprobación',def:'Posibilidad de comprobar resultados.',ico:'check',en:'posibilidad',rojo:false}]}),
+ S_ruta({id:'RUTA2',ante:'La ruta de intervención',titulo:'Lo que vimos',modo:'repaso',entrada:'fundido',paradas:PARADAS}),
+ S_actividad({titulo:'En la actividad',sub:'Una ruta para el caso del acceso provisional.',txt:T.ACT,
+  lineas:[{t:'Cinco acciones ordenadas',en:'cinco acciones'},{t:'Responsables por validar y evidencias',en:'responsables'},{t:'Una medida para evitar la recurrencia',en:'una medida'},
+          {t:'Un mecanismo de participación',en:'un mecanismo'},{t:'¿Cómo respondería a una alternativa inviable?',en:'cómo respondería'}]}),
+ S_mapaMod({titulo:'Mapa del Módulo 4',centro:'Participación, confianza<br>y ruta de intervención',txt:T.MAPA,
+  arriba:[['Incidencia real<br>y devolución','incidencia'],['Transparencia, coherencia,<br>trato digno y compromisos','transparencia'],['Diagnóstico honesto y<br>ruta comprobable','diagnóstico']],
+  abajo:[['Participación','con incidencia','La participación'],['Confianza','y compromisos','La confianza'],['El caso','y la ruta','Y el caso']]}),
+ S_planos({id:'FIN',entrada:'fundido',etiqueta:false,txt:T.FIN,cola:60,cierre:'puertas',extra:90,
+  planos:[{clip:'T8',s:[1.1,1.0]}],
+  textos:[{html:G('La cultura de paz se concreta en actuaciones públicas','#fff',50)+G('respetuosas, participativas y comprobables','#FFC400',40),en:0,top:790}]})
+]);
+</script></body></html>

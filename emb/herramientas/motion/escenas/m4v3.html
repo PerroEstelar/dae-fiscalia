@@ -1,0 +1,66 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- M4 · Video 3 — El caso del acceso provisional (4.3.1). Generado por m4/escenas_m4.py. -->
+<link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="../pieza.css">
+<script src="../core.js"></script><script src="../pieza.js"></script><script src="voz_m4v3.js" onerror="window.VOZ=null"></script>
+</head><body><div id="raiz"></div>
+<canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
+<script>
+const T={"B1": "Un caso hipotético. En un sector intervenido por una obra asociada al proyecto Metro se anuncia un recorrido peatonal provisional, cerca de comercios y de un equipamiento comunitario. La publicación digital señala una fecha de inicio, y el aviso físico, otra.", "B2": "Una persona usuaria de silla de ruedas informa que no puede completar el recorrido. Esa afirmación requiere verificación inmediata en terreno.", "B3": "Una comerciante pide mantener el acceso habitual. Una persona cuidadora pide un trayecto que le permita acompañar a un adulto mayor. Otros residentes apoyan la intervención, pero solicitan información clara.", "B4": "En una reunión anterior se anunció revisar la señalización, y no hay constancia accesible del resultado. En una nueva conversación, un interlocutor institucional dice que «la comunidad nunca entiende», y varias personas lo consideran descalificador. Una veeduría solicita documentos sobre la decisión.", "B5": "El equipo técnico advierte que mantener abierto el acceso habitual podría comprometer la seguridad durante determinada actividad. Todavía falta confirmar alternativas, condiciones y responsables.", "B6": "El diagnóstico distingue lo establecido de lo pendiente. Hay dos mensajes incompatibles y un compromiso sin resultado accesible. La magnitud de la barrera y la viabilidad del acceso habitual requieren revisión. Afirmar corrupción, negligencia deliberada o inviabilidad absoluta excedería la evidencia.", "B7": "Una posición expresa lo que se pide; un interés explica para qué se pide; una necesidad identifica las condiciones relevantes para la vida o el ejercicio de derechos. No basta dividir a los actores entre favorables y contrarios.", "B8": "La comerciante busca continuidad de su actividad. La persona cuidadora, acompañamiento cotidiano. La usuaria de silla de ruedas, autonomía de desplazamiento. El equipo técnico, ejecutar con seguridad. Y la veeduría, examinar la gestión pública.", "B9": "Cuatro factores pueden escalar el conflicto: la barrera de acceso, que se verifica y protege primero; la información incompatible, que se confirma y corrige; la descalificación, que se reconoce; y el compromiso sin trazabilidad, que se reconstruye y se comunica.", "ACT": "En la actividad, registre tres hechos, dos asuntos pendientes, los actores ausentes y una pregunta para confirmar cada interés. Explique qué verificaría primero y por qué."};
+const L2=(a,b)=>`<div style="font:600 30px 'Work Sans';color:#FFC400">${a}</div><div style="font:800 58px/1.08 Montserrat;color:#fff;margin-top:6px">${b}</div>`;
+const G=(t,c='#fff',fs=60)=>`<div style="font:800 ${fs}px/1.08 Montserrat;color:${c}">${t}</div>`;
+const PL=t=>`<div style="font:600 32px 'Work Sans';color:#212529;background:#fff;padding:14px 28px;border-radius:40px;box-shadow:0 14px 34px rgba(0,0,0,.25)">${t}</div>`;
+const Q=t=>`<div style="font:italic 600 46px/1.18 'Work Sans';color:#fff;max-width:1500px">${t}</div>`;
+const BN=(t,fs=44)=>`<div style="font:800 ${fs}px/1.14 Montserrat;color:#212529;max-width:1560px">${t}</div>`;
+const PARADAS=['Los hechos del caso','El diagnóstico','Posiciones, intereses y necesidades','Factores de escalada'];
+montar([
+ S_titulo({ante:'Módulo 4 · Lección 4.3.1',lineas:['El caso del','acceso provisional'],clip:'S4'}),
+ S_ruta({id:'RUTA1',ante:'El caso del acceso provisional',titulo:'En este video',modo:'agenda',entrada:'tren',paradas:PARADAS}),
+ S_planos({id:'B1',entrada:'iris',entradaOpt:{x:1300,y:300},txt:T.B1,
+  planos:[{clip:'S1',ventana:[55, 120],s:[1.0,1.08]},{clip:'R2',en:'La publicación',s:[1.08,1.02]}],
+  textos:[{html:L2('Un caso hipotético','Un recorrido peatonal provisional'),en:0,hasta:'La publicación'},
+          {html:PL('Publicación digital · una fecha de inicio'),en:'La publicación',top:120},{html:PL('Aviso físico · otra fecha'),en:'y el aviso',top:210}]}),
+ S_planos({id:'B2',entrada:'tren',txt:T.B2,
+  planos:[{clip:'S3',ventana:[0, 40],s:[1.04,1.12]}],
+  textos:[{html:L2('Una persona usuaria de silla de ruedas','informa que no puede completar el recorrido'),en:0,hasta:'Esa afirmación'},
+          {html:BN('Esa afirmación requiere verificación<br>inmediata en terreno'),en:'Esa afirmación',banda:true,top:820,alto:180}]}),
+ S_planos({id:'B3',entrada:'amarillo',txt:T.B3,
+  planos:[{clip:'S4',s:[1.02,1.1]},{clip:'S5',en:'Una persona cuidadora',s:[1.04,1.12]},{clip:'S6',en:'Otros residentes',s:[1.1,1.02]}],
+  textos:[{html:L2('Una comerciante','pide mantener el acceso habitual'),en:0,hasta:'Una persona cuidadora'},
+          {html:L2('Una persona cuidadora','pide un trayecto para acompañar a un adulto mayor'),en:'Una persona cuidadora',hasta:'Otros residentes'},
+          {html:L2('Otros residentes','apoyan la intervención y solicitan información clara'),en:'Otros residentes'}]}),
+ S_planos({id:'B4',entrada:'puertas',txt:T.B4,
+  planos:[{clip:'S6',s:[1.08,1.02]},{clip:'S7',en:'En una nueva',s:[1.02,1.1]},{clip:'S8',en:'Una veeduría',s:[1.04,1.12]}],
+  textos:[{html:PL('Revisión de la señalización anunciada · sin constancia accesible del resultado'),en:0,hasta:'En una nueva',top:120},
+          {html:Q('«La comunidad nunca entiende»'),en:'«la comunidad',hasta:'Una veeduría',top:820},
+          {html:L2('Una veeduría','solicita documentos sobre la decisión'),en:'Una veeduría'}]}),
+ S_planos({id:'B5',entrada:'tren',txt:T.B5,
+  planos:[{clip:'S9',s:[1.02,1.1]}],
+  textos:[{html:L2('El equipo técnico advierte','el acceso habitual podría comprometer la seguridad'),en:0,hasta:'Todavía'},
+          {html:BN('Todavía falta confirmar alternativas,<br>condiciones y responsables'),en:'Todavía',banda:true,top:820,alto:180}]}),
+ S_tarjetas({id:'B6',fondo:'S6_duoG',en0:0,alto:440,txt:T.B6,
+  cab:{tit:'El diagnóstico',sub:'Distingue lo establecido de lo pendiente'},
+  items:[{tit:'Establecido',def:'Dos mensajes incompatibles y un compromiso sin resultado accesible.',ico:'check',en:'Hay dos',rojo:false},
+         {tit:'Pendiente de revisión',def:'La magnitud de la barrera y la viabilidad del acceso habitual.',ico:'registro',en:'La magnitud',rojo:false},
+         {tit:'Excede la evidencia',def:'Afirmar corrupción, negligencia deliberada o inviabilidad absoluta.',ico:'cruz',en:'Afirmar'}]}),
+ S_tarjetas({id:'B7',fondo:'S4_duoY',en0:0,alto:420,txt:T.B7,
+  cab:{tit:'Posición, interés y necesidad'},
+  items:[{tit:'Posición',def:'Lo que se pide.',ico:'megafono',en:'Una posición',rojo:false},
+         {tit:'Interés',def:'Para qué se pide.',ico:'pregunta',en:'un interés',rojo:false},
+         {tit:'Necesidad',def:'Condiciones relevantes para la vida o el ejercicio de derechos.',ico:'manos',en:'una necesidad',rojo:false}],
+  banda:{html:'No basta dividir a los actores entre favorables y contrarios.',en:'No basta'}}),
+ S_matriz({id:'B8',entrada:'tren',fondo:'blanco',cab:{tit:'Lo que busca cada actor',sub:'Intereses del caso hipotético'},cols:['Actor','Busca'],anchos:[1,1.3],fs0:36,fs:32,txt:T.B8,
+  filas:[{c:['La comerciante','Continuidad de su actividad'],ico:'tienda',en:'La comerciante'},
+         {c:['La persona cuidadora','Acompañamiento cotidiano'],ico:'manos',en:'La persona cuidadora'},
+         {c:['La usuaria de silla de ruedas','Autonomía de desplazamiento'],ico:'persona',en:'La usuaria'},
+         {c:['El equipo técnico','Ejecutar con seguridad'],ico:'casco',en:'El equipo'},
+         {c:['La veeduría','Examinar la gestión pública'],ico:'ojo',en:'Y la veeduría'}]}),
+ S_matriz({id:'B9',entrada:'amarillo',fondo:'blanco',cab:{tit:'Cuatro factores que pueden escalar el conflicto'},cols:['Factor','Respuesta'],anchos:[1,1.2],fs0:36,fs:32,txt:T.B9,
+  filas:[{c:['La barrera de acceso','Se verifica y protege primero'],ico:'rayo',en:'la barrera'},
+         {c:['La información incompatible','Se confirma y corrige'],ico:'doc',en:'la información'},
+         {c:['La descalificación','Se reconoce'],ico:'persona',en:'la descalificación'},
+         {c:['El compromiso sin trazabilidad','Se reconstruye y se comunica'],ico:'eslabon',en:'y el compromiso'}]}),
+ S_ruta({id:'RUTA2',ante:'El caso del acceso provisional',titulo:'Lo que vimos',modo:'repaso',entrada:'fundido',paradas:PARADAS}),
+ S_actividad({titulo:'En la actividad',sub:'Del caso a un diagnóstico.',txt:T.ACT,
+  lineas:[{t:'Tres hechos',en:'tres hechos'},{t:'Dos asuntos pendientes',en:'dos asuntos'},{t:'Los actores ausentes',en:'los actores'},{t:'Una pregunta para confirmar cada interés',en:'una pregunta'},{t:'¿Qué verificaría primero y por qué?',en:'Explique'}]})
+]);
+</script></body></html>

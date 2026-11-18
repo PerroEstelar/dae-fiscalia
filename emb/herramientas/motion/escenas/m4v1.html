@@ -1,0 +1,72 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- M4 · Video 1 — Participar con incidencia (4.1.1 + 4.1.2). Generado por m4/escenas_m4.py. -->
+<link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="../pieza.css">
+<script src="../core.js"></script><script src="../pieza.js"></script><script src="voz_m4v1.js" onerror="window.VOZ=null"></script>
+</head><body><div id="raiz"></div>
+<canvas id="grano" width="960" height="540" style="width:1920px;height:1080px"></canvas>
+<script>
+const T={"B1": "Construir cultura de paz desde el servicio público exige convertir los principios en decisiones verificables. Una reunión respetuosa pierde eficacia si sus compromisos desaparecen.", "B2": "La Constitución establece el carácter participativo y pluralista del Estado, y la finalidad de facilitar la participación en las decisiones que afectan a las personas. Para quien sirve en lo público, esto exige escuchar antes de reducir una inquietud a desconocimiento técnico.", "B3": "El pluralismo reconoce diferencias legítimas. Una comunidad incluye comerciantes, estudiantes, personas cuidadoras, residentes y personas con discapacidad, y sus prioridades pueden divergir. Escuchar solo al interlocutor más visible produce una representación incompleta.", "B4": "La corresponsabilidad supone colaborar dentro de responsabilidades diferenciadas. La ciudadanía aporta conocimiento territorial y revisa compromisos; la entidad responde por sus decisiones, su información y sus actuaciones. Pedir cooperación no permite trasladar obligaciones institucionales.", "B5": "El control ciudadano aporta vigilancia y evaluación de la gestión pública. La Ley mil setecientos cincuenta y siete de dos mil quince lo reconoce como derecho y deber, e incluye las veedurías ciudadanas. Las preguntas críticas se tramitan con criterios públicos, sin atribuir intenciones obstructivas a quien las formula.", "B6": "Informar, consultar y deliberar cumplen funciones distintas. Informar permite comprender una medida; consultar recoge opiniones; deliberar contrasta alternativas y razones. Cada proceso debe declarar qué aspectos admiten incidencia y quién decide.", "B7": "Un encuentro con la comunidad se prepara: quiénes faltan y qué necesitan para participar, qué está confirmado y qué sigue pendiente, qué alternativas atienden necesidades diversas, y cómo incidieron los aportes recibidos.", "B8": "La accesibilidad incluye lugar, horario, lenguaje, formatos y canales. Una convocatoria solo digital puede excluir a quien no tiene conectividad, y una reunión en plena jornada laboral puede impedir que asistan los comerciantes.", "B9": "Durante la conversación conviene separar testimonios, propuestas y decisiones. Un testimonio describe una experiencia; una propuesta plantea una alternativa; una decisión exige competencia y sustento.", "B10": "La devolución cierra el ciclo: qué se recibió, qué se incorporó, qué necesita estudio y qué no es viable, con razones comprensibles. Contar reuniones informa una actividad; verificar los cambios que produjeron los aportes muestra un resultado.", "ACT": "En la actividad: la entidad convoca una reunión virtual a las diez de la mañana para explicar un cierre. Identifique dos barreras, proponga dos ajustes y redacte una devolución que diferencie la decisión confirmada de la alternativa pendiente."};
+const L2=(a,b)=>`<div style="font:600 30px 'Work Sans';color:#FFC400">${a}</div><div style="font:800 58px/1.08 Montserrat;color:#fff;margin-top:6px">${b}</div>`;
+const G=(t,c='#fff',fs=60)=>`<div style="font:800 ${fs}px/1.08 Montserrat;color:${c}">${t}</div>`;
+const PL=t=>`<div style="font:600 32px 'Work Sans';color:#212529;background:#fff;padding:14px 28px;border-radius:40px;box-shadow:0 14px 34px rgba(0,0,0,.25)">${t}</div>`;
+const Q=t=>`<div style="font:italic 600 46px/1.18 'Work Sans';color:#fff;max-width:1500px">${t}</div>`;
+const BN=(t,fs=44)=>`<div style="font:800 ${fs}px/1.14 Montserrat;color:#212529;max-width:1560px">${t}</div>`;
+const PARADAS=['Principios de la participación','Informar, consultar y deliberar','Preparar el encuentro','La devolución'];
+montar([
+ S_titulo({ante:'Módulo 4 · Lecciones 4.1.1 y 4.1.2',lineas:['Participar','con incidencia'],clip:'Q1'}),
+ S_ruta({id:'RUTA1',ante:'Participar con incidencia',titulo:'En este video',modo:'agenda',entrada:'tren',paradas:PARADAS}),
+ S_planos({id:'B1',entrada:'iris',entradaOpt:{x:900,y:300},txt:T.B1,
+  planos:[{clip:'Q1',s:[1.1,1.02]}],
+  textos:[{html:L2('Cultura de paz desde el servicio público','Convertir los principios en decisiones verificables'),en:0,hasta:'Una reunión'},
+          {html:BN('Una reunión respetuosa pierde eficacia<br>si sus compromisos desaparecen'),en:'Una reunión',banda:true,top:820,alto:180}]}),
+ S_cita({id:'B2',fondo:'Q2',fuente:'Constitución Política',tit:'Un Estado participativo y pluralista',txt:T.B2,
+  chips:[{t:'Carácter participativo',en:'participativo'},{t:'Pluralista',en:'pluralista'},{t:'Facilitar la participación en las decisiones que afectan a las personas',en:'la finalidad'},{t:'Escuchar antes de reducir una inquietud a desconocimiento técnico',en:'escuchar'}]}),
+ S_planos({id:'B3',entrada:'tren',txt:T.B3,
+  planos:[{clip:'Q3',s:[1.02,1.1]},{clip:'Q4',en:'Escuchar solo',s:[1.08,1.02]}],
+  textos:[{html:L2('El pluralismo','reconoce diferencias legítimas'),en:0,hasta:'Escuchar solo'},
+          {html:PL('Comerciantes'),en:'comerciantes',hasta:'Escuchar solo',top:120},{html:PL('Estudiantes'),en:'estudiantes',hasta:'Escuchar solo',top:210},
+          {html:PL('Personas cuidadoras'),en:'personas cuidadoras',hasta:'Escuchar solo',top:300},{html:PL('Residentes'),en:'residentes',hasta:'Escuchar solo',top:390},
+          {html:PL('Personas con discapacidad'),en:'personas con discapacidad',hasta:'Escuchar solo',top:480},
+          {html:BN('Escuchar solo al interlocutor más visible<br>produce una representación incompleta'),en:'Escuchar solo',banda:true,top:820,alto:180}]}),
+ S_tarjetas({id:'B4',fondo:'Q4_duoG',en0:0,alto:420,txt:T.B4,
+  cab:{tit:'Corresponsabilidad',sub:'Colaborar dentro de responsabilidades diferenciadas'},
+  items:[{tit:'La ciudadanía',def:'Aporta conocimiento territorial y revisa compromisos.',ico:'persona',en:'La ciudadanía',rojo:false},
+         {tit:'La entidad',def:'Responde por sus decisiones, su información y sus actuaciones.',ico:'escudo',en:'la entidad',rojo:false}],
+  banda:{html:'Pedir cooperación no permite trasladar obligaciones institucionales.',en:'Pedir cooperación'}}),
+ S_planos({id:'B5',entrada:'amarillo',txt:T.B5,
+  planos:[{clip:'S8',s:[1.04,1.12]},{clip:'Q2',en:'Las preguntas',s:[1.1,1.02]}],
+  textos:[{html:L2('El control ciudadano','vigilancia y evaluación de la gestión pública'),en:0,hasta:'Las preguntas'},
+          {html:PL('Ley 1757 de 2015 · derecho y deber'),en:'La Ley',hasta:'Las preguntas',top:120},{html:PL('Incluye las veedurías ciudadanas'),en:'e incluye',hasta:'Las preguntas',top:210},
+          {html:G('Las preguntas críticas se tramitan con criterios públicos','#fff',46)+G('sin atribuir intenciones obstructivas','#FFC400',38),en:'Las preguntas',top:800}]}),
+ S_tarjetas({id:'B6',fondo:'Q6_duoY',en0:0,alto:420,txt:T.B6,
+  cab:{tit:'Informar, consultar y deliberar',sub:'Cumplen funciones distintas'},
+  items:[{tit:'Informar',def:'Permite comprender una medida.',ico:'megafono',en:'Informar permite',rojo:false},
+         {tit:'Consultar',def:'Recoge opiniones.',ico:'globo',en:'consultar recoge',rojo:false},
+         {tit:'Deliberar',def:'Contrasta alternativas y razones.',ico:'balanza',en:'deliberar contrasta',rojo:false}],
+  banda:{html:'Cada proceso debe declarar qué aspectos admiten incidencia y quién decide.',en:'Cada proceso'}}),
+ S_planos({id:'B7',entrada:'puertas',txt:T.B7,
+  planos:[{clip:'Q4',s:[1.02,1.1]},{clip:'Q1',en:'qué alternativas',s:[1.1,1.04]}],
+  textos:[{html:L2('Un encuentro con la comunidad','se prepara'),en:0},
+          {html:PL('¿Quiénes faltan y qué necesitan para participar?'),en:'quiénes faltan',top:120},{html:PL('¿Qué está confirmado y qué sigue pendiente?'),en:'qué está confirmado',top:210},
+          {html:PL('¿Qué alternativas atienden necesidades diversas?'),en:'qué alternativas',top:300},{html:PL('¿Cómo incidieron los aportes recibidos?'),en:'cómo incidieron',top:390}]}),
+ S_planos({id:'B8',entrada:'tren',txt:T.B8,
+  planos:[{clip:'Q5',s:[1.04,1.12]},{clip:'S1',ventana:[55, 120],en:'y una reunión',s:[1.1,1.02]}],
+  textos:[{html:L2('La accesibilidad','lugar, horario, lenguaje, formatos y canales'),en:0,hasta:'Una convocatoria'},
+          {html:G('Una convocatoria solo digital','#fff',52)+G('puede excluir a quien no tiene conectividad','#FFC400',38),en:'Una convocatoria',hasta:'y una reunión',top:800},
+          {html:BN('Una reunión en plena jornada laboral puede<br>impedir que asistan los comerciantes'),en:'y una reunión',banda:true,top:820,alto:180}]}),
+ S_planos({id:'B9',entrada:'amarillo',txt:T.B9,
+  planos:[{clip:'Q6',ventana:[0, 60],s:[1.02,1.1]}],
+  textos:[{html:L2('Durante la conversación','separar testimonios, propuestas y decisiones'),en:0,hasta:'Un testimonio'},
+          {html:PL('Testimonio · describe una experiencia'),en:'Un testimonio',top:120},{html:PL('Propuesta · plantea una alternativa'),en:'una propuesta plantea',top:210},
+          {html:PL('Decisión · exige competencia y sustento'),en:'una decisión exige',top:300}]}),
+ S_planos({id:'B10',entrada:'fundido',txt:T.B10,
+  planos:[{clip:'Q7',s:[1.02,1.1]},{clip:'Q6',ventana:[0, 60],en:'Contar reuniones',s:[1.1,1.04]}],
+  textos:[{html:L2('La devolución','cierra el ciclo'),en:0,hasta:'Contar reuniones'},
+          {html:PL('Qué se recibió'),en:'qué se recibió',hasta:'Contar reuniones',top:120},{html:PL('Qué se incorporó'),en:'qué se incorporó',hasta:'Contar reuniones',top:210},
+          {html:PL('Qué necesita estudio'),en:'qué necesita estudio',hasta:'Contar reuniones',top:300},{html:PL('Qué no es viable, y por qué'),en:'qué no es viable',hasta:'Contar reuniones',top:390},
+          {html:G('Contar reuniones informa una actividad','#fff',48)+G('verificar los cambios que produjeron los aportes muestra un resultado','#FFC400',34),en:'Contar reuniones',top:800}]}),
+ S_ruta({id:'RUTA2',ante:'Participar con incidencia',titulo:'Lo que vimos',modo:'repaso',entrada:'fundido',paradas:PARADAS}),
+ S_actividad({titulo:'En la actividad',sub:'Una reunión virtual a las diez de la mañana para explicar un cierre.',txt:T.ACT,
+  lineas:[{t:'Identifique dos barreras',en:'Identifique'},{t:'Proponga dos ajustes',en:'proponga'},{t:'Redacte una devolución: decisión confirmada y alternativa pendiente',en:'redacte'}]})
+]);
+</script></body></html>
