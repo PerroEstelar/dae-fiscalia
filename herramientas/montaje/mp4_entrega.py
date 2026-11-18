@@ -67,6 +67,9 @@ def _video(preset):
         # 10 pm», con cuatro videos de 20 a 26 min en cola): H.264 por la placa NVIDIA en calidad constante, que
         # rinde un video de 25 min en pocos minutos y deja el procesador libre para los compuestos. Sigue siendo
         # MP4 H.264 High L4.0 con GOP de 48; no es la receta (x264 CRF 18). Si la placa falla, cae a veryfast.
+        # OJO: en el equipo de Sebastián (GTX 970, controlador 582.28) `h264_nvenc` de ffmpeg NO abre («Required:
+        # 13.1 Found: 13.0»), así que hoy esta opción siempre cae a veryfast. Los cierres de Bienes salieron al
+        # final por Resolve, que sí usa la placa: `cursos/bienes-proceso-penal/unidades/lote/urgente.py`.
         return ['-c:v', 'h264_nvenc', '-preset', 'p6', '-tune', 'hq', '-rc', 'vbr', '-cq', '19', '-b:v', '0',
                 '-maxrate', '20M', '-bufsize', '40M', '-g', '48', '-bf', '2',
                 '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-level', '4.0', '-movflags', '+faststart'] + COLOR

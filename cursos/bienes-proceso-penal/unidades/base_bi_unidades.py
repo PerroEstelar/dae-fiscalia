@@ -36,6 +36,16 @@ manos en los demás. Se simuló sobre dos cuadros de cada una de las ocho fuente
 (`D:\DAE\_tmp\bi_u\sim_todos_*.jpg`). Va con el nombre en dos renglones, el cargo a 345 de ancho y
 la cima en y=740 (`LT`, `LT_TOP`, y el salto de renglón en `PROFE`): termina en x≈480.
 
+**Entregas.** Los cuatro inicios, por la receta con preset `medium`. Los cuatro cierres, por la vía urgente
+(`lote/urgente.py`): a las 21:20 Sebastián pidió tenerlos antes de las 22:00 y con x264 el último salía a las
+23:15. Se cortaron las dos entregas x264 que iban por la mitad y los cuatro se rindieron en Resolve con
+H.264 NVIDIA a ~5 Mb/s reales (pedido 4721: el codificador de la placa da ~1,06 veces lo pedido a esa tasa; se
+calibra con dos pruebas de 20 s), 3 a 4 min cada uno, más un `-c copy -movflags +faststart`. Mismo control de
+cuadros contra la línea y misma verificación byte a byte en Drive. El último quedó subido a las 21:45. Los
+másters de 32 Mb/s están igual en `_masters_archivo`: si se pide, la entrega de receta sale de ahí sin tocar
+Resolve. `h264_nvenc` de ffmpeg no sirve en este equipo (GTX 970, controlador 582.28: API 13.0, ffmpeg pide
+13.1); por eso la vía rápida es Resolve.
+
 **Dónde.** E: no tiene espacio: el árbol va en `D:\DAE MASTER\CURSO 5 - Bienes en el proceso penal\
 UNIDAD n\INICIO|CIERRE`, y los másters de 32 Mb/s en `D:\DAE\_masters_archivo\CURSO 5 - Bienes en el
 proceso penal\UNIDAD n\…`. El proyecto de AE del curso sigue en E:.
@@ -74,10 +84,11 @@ ANCHO = 615
 LT = (44, 345)             # px del nombre y ancho del cargo
 LT_TOP = 740               # cima del lower third (estándar 870): lleva siete renglones
 AUDIO_META = 'I=-16:TP=-3:LRA=7'
-# Entrega provisional. Los cuatro inicios salieron con x264 CRF 18 preset medium. Los cuatro cierres (20 a 26
-# min cada uno) con 'nvenc': Sebastián los necesitaba antes de las 22:00 y con x264 no llegaban (ver
-# mp4_entrega). La v2 con gráficos vuelve a la receta (quitar esta línea: slow).
-PRESET_ENTREGA = 'nvenc'
+# Entrega provisional: x264 CRF 18 con preset medium (ver mp4_entrega). Así salieron los cuatro inicios. Los
+# cuatro cierres (20 a 26 min cada uno) NO salieron por mp4_entrega: Sebastián los necesitaba antes de las
+# 22:00 y se rindieron directo de Resolve por la placa NVIDIA, a unos 5 Mb/s (`lote/urgente.py`). La v2 con
+# gráficos vuelve a la receta (quitar esta línea: slow).
+PRESET_ENTREGA = 'medium'
 PROFE = ('Sergio Andrés\nLópez Zamora',
          'Abogado, doctor en Derecho Público, magíster en Derecho Penal y Procesal Penal y en '
          'Derechos Humanos')

@@ -149,3 +149,48 @@ estéreo con el audio copiado del máster.
 - **Línea para Sebastián:** `10 TIMELINE SEBASTIAN\BIENES - CURSO - INTRODUCCION.drt`
   y `… - CIERRE.drt`, con V1 video, V2 cartones, V3 motion graphics (alfa
   premultiplicado) y V4 lower third.
+
+## Unidades 1 a 4: inicio y cierre (17 nov 2026, entrega provisional)
+
+Pedido de Sebastián del 17 nov: los ocho videos de unidad de la carpeta `VIDEOS UNIDADES` de Drive
+(`1s9P1jkAOz0CBJs_gfUdVWGdplWxfc2H_`), «con el estilo provisional de gráfica»: intro, cartón de
+título, lower third, cartón de cierre y outro; el cuerpo, sin gráficos. Todo está en
+`unidades/` (`base_bi_unidades.py`, que explica las decisiones, y `plan_biu1i.py` … `plan_biu4c.py`).
+
+- **Las fuentes traen una intro y un outro pegados** (cuadros 0–277 y los últimos 278; el cierre de
+  la U4 no trae outro). Se sacan: cada plan toma solo el tramo del profe.
+- 1920×1080, 30 fps, **BT.601**. Ventana: el cuadro entero.
+- **Lower third en columna angosta** (nombre en dos renglones, `LT = (44, 345)`, `LT_TOP = 740`): el
+  profe ocupa el centro de abajo y con las medidas del curso el nombre le cruzaba la cara.
+- Unidad 4: el cartón dice «…extinción del derecho **de** dominio» (el documento de diseño dice
+  «del dominio»; avisado a Sebastián).
+- Árbol en `D:\DAE MASTER\CURSO 5 - Bienes en el proceso penal\UNIDAD n\INICIO|CIERRE` (E: no tiene
+  espacio); bins `C5 BIENES EN EL PROCESO PENAL / UNIDAD n - INICIO|CIERRE - PROFE`; líneas
+  `BIENES - Un - INICIO|CIERRE`.
+
+| entrega | dura | cuadros | codificación | Drive (VIDEOS › «Unidad n») |
+|---|---|---|---|---|
+| `bienes - U1 - INICIO-v1.mp4` | 7:18 | 10.500 | x264 CRF 18 `medium` | `1Bty6BeHEuvTknRSG0ONuvIR5D1ff8w8v` |
+| `bienes - U1 - CIERRE-v1.mp4` | 26:44 | 38.452 | NVIDIA por Resolve, 5 Mb/s | `19g0PdRImQYkmIoUWE_mNLghFLJkeefSD` |
+| `bienes - U2 - INICIO-v1.mp4` | 7:48 | 11.227 | x264 CRF 18 `medium` | `11HNJc7D_Z4yV3K1Br_rZM9VE992Ft74s` |
+| `bienes - U2 - CIERRE-v1.mp4` | 23:11 | 33.344 | NVIDIA por Resolve, 5 Mb/s | `1Y8ddCUJ0baMJouuNAWi-9nExoaukMdhC` |
+| `bienes - U3 - INICIO-v1.mp4` | 6:00 | 8.630 | x264 CRF 18 `medium` | `1k_F5fUCLQ1BG0KmceRm8gP_gxL28NjmS` |
+| `bienes - U3 - CIERRE-v1.mp4` | 20:14 | 29.112 | NVIDIA por Resolve, 5 Mb/s | `1IcoyHxfDiODsPRk3gpfR1df3crSboUhS` |
+| `bienes - U4 - INICIO-v1.mp4` | 5:39 | 8.133 | x264 CRF 18 `medium` | `1iJCb829twfhq3gcayJ0dktnn2VJ_9_-1` |
+| `bienes - U4 - CIERRE-v1.mp4` | 23:50 | 34.294 | NVIDIA por Resolve, 5 Mb/s | `1QkTDnBeKrzIc2TODrkvfnRuxn03gJj_O` |
+
+Las ocho se compararon byte a byte con la copia de servidor de Drive. Sonido: −16,0 a −16,1 LUFS,
+picos de −2,0 a −3,0 dBTP.
+
+**Los cierres salieron por la vía urgente** (`unidades/lote/urgente.py`): a las 21:20 Sebastián pidió
+tener todo antes de las 22:00 y con x264 el último cierre salía a las 23:15. Se rindieron directo de
+Resolve con H.264 NVIDIA; el último quedó en Drive a las 21:45. Si se piden con la receta, salen de
+los másters de 32 Mb/s (`D:\DAE\_masters_archivo\CURSO 5 - Bienes en el proceso penal\UNIDAD n\CIERRE`)
+como `-v2`.
+
+`unidades/lote/` guarda los guiones del lote tal como corrieron en `D:\DAE\_tmp\bi_u\`: `lote_cadena.py`
+(compuestos, tres a la vez, con cola), `lote_entrega.py` (línea, máster y entrega), `prioridad.py`,
+`verif_biu.py`, `sim_todos.py` (el lower third sobre dos cuadros de cada fuente) y `urgente.py`.
+
+**Para la versión con gráficos** hay que decidir antes dónde va la columna de cartones: el profe está
+chico, abajo al centro, y no hay recorte que lo acerque dejando entero el panel DAE/Fiscalía.
