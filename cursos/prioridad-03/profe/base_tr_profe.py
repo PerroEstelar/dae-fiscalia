@@ -20,14 +20,24 @@ gráficos (`ITEMS` lleva solo el lower third).
   H.264 en WebM con **cadencia variable** (pasos de 2 a 147 ms) y Opus mono (−20,8 LUFS, picos de +0,2
   dBTP). Los presenta una mujer que no dice su nombre.
 
-**De vertical a 16:9 sin agrandar (`vertical`).** Un recorte 16:9 del cuadro vertical deja la cabeza en
-el 79 % del alto. Va un recorte **cuadrado** de 1080×1080 (cabeza y torso) a tamaño real, con su centro
-en x=1140, sobre ese mismo recorte desenfocado y un poco oscurecido que llena el cuadro. A la izquierda
-queda el lugar del lower third y, cuando se pidan, de los cartones. `y0` se elige por video (la cima del
-pelo menos unos 90 px): cada avatar tiene su encuadre. Se probó sobre dos cuadros de cada fuente
-(`D:\DAE\_tmp\tr_p\pv_*.jpg`). Va como `PREFILTRO`, con la ventana del plan en el cuadro entero.
-- Color: BT.709 de punta a punta (`MATRIZ_FUENTE`). Cadencia: el compuesto va a 25 (`FPS_COMPUESTO`), sin
-  duplicar cuadros; Resolve lo conforma a 23,976.
+**El avatar se recorta y va sobre el fondo de la DAE.** Sebastián (17 nov, 22:35): «el fondo debería
+ser alguno de los fondos que hemos usado para los otros videos, con el logo de la DAE y Fiscalía… recortar
+el personaje y usar el fondo… específicamente las que están los logos hacia la izquierda y que no tenga el
+logo Aprende con la DAE… la idea es que sean iguales al resto de videos de profe hablando a cámara».
+- **Fondo:** `00 FONDOS/FONDO 4 V2.png` (2048×1152), de su carpeta de Drive «FONDOS SIN APRENDE CON LA DAE»
+  (`1VFuiOQiV12FpQ1oRKp90oz0Boef8QtwJ`). De los cuatro de esa carpeta es el único con los logos arriba a
+  la izquierda (vista aérea del edificio); FONDO 1 y 2 son la fachada con los logos abajo a la derecha, y
+  las dos fachadas con logos a la izquierda que hay en Drive traen «Aprende con la DAE».
+- **Recorte:** `herramientas/video/recorta_persona.py` (Robust Video Matting, resnet50, por la placa con
+  DirectML). De la fuente se toma un cuadrado (`RECORTE`: y, x, lado) que llega del pelo al pecho, a
+  tamaño real, y la persona queda apoyada en el borde inferior, con el centro en x=1250: a la derecha del
+  panel de logos, como los profes de las grabaciones de Teams. Sale `…_recortado.mp4` (1920×1080, 25 fps,
+  BT.709), que es la `ORIGINAL` del plan, y `…_recortado_mate.mp4` (el alfa), para cambiar de fondo sin
+  volver a recortar. La fuente cruda queda al lado (`FUENTE_CRUDA`).
+- `y` se elige por video (la cima del pelo menos unos 90 px): cada avatar tiene su encuadre.
+- Lo primero que se probó, y se descartó sin entregar nada, fue el recorte cuadrado sobre el mismo cuadro
+  desenfocado.
+- Cadencia: el compuesto va a 25 (`FPS_COMPUESTO`), sin duplicar cuadros; Resolve lo conforma a 23,976.
 
 **Los cierres** van con la ventana estándar (1143×643 desde (0, 40)), cortados por tiempo (`POR_TIEMPO`)
 porque la cadencia es variable, y el mono se arma en dual-mono (lo hace `ic_pieza.base_audio`).
@@ -45,7 +55,7 @@ espera la confirmación de Sebastián (`PROFE_CIERRES`): un nombre de lower thir
 
 **Dónde.** `D:\DAE MASTER\PRIORIDAD 03\VIDEOS PROFE\<CURSO|UNIDAD n>\<pieza>` (E: no tiene espacio).
 **Sin máster de 32 Mb/s**: en D: quedaban 22 GB. La entrega sale directo de Resolve por la placa NVIDIA
-(`lote/entrega_gpu.py`), como los cierres de Bienes.
+(`lote/entrega_gpu.py`), como los cierres de Bienes. El recorte de los avatares lo corre `lote/recorta_lote.py`.
 
 Los tiempos de cada plan están en segundos de la fuente.
 """
@@ -87,22 +97,18 @@ UNIDADES = {
        'de trata de personas y tráfico de migrantes',
     3: 'Investigación y programa metodológico en la trata de personas y el tráfico de migrantes'}
 PIEZAS = {'INICIO': 'Introducción', 'RETROALIMENTACION': 'Retroalimentación de la evaluación', 'CIERRE': 'Cierre'}
-CENTRO_X = 1140
+FONDO = RAIZ + '/00 FONDOS/FONDO 4 V2.png'
+CENTRO_X = 1250          # centro de la persona recortada en el cuadro de 1920
 
 
-def vertical(y0, x=0, lado=1080, cx=CENTRO_X):
-    """El `PREFILTRO` de una fuente vertical: recorte cuadrado de `lado` desde (x, y0), llevado a 1080×1080,
-    sobre ese mismo recorte desenfocado (se achica a 480, se desenfoca y se agranda) y un poco oscurecido.
-    Deja un cuadro de 1920×1080 con el recorte centrado en `cx`."""
-    return ('crop=%d:%d:%d:%d,scale=1080:1080:flags=lanczos,split[fgp][bgp];'
-            '[bgp]scale=480:480:flags=bilinear,crop=480:270,boxblur=9:2,eq=brightness=-0.07:saturation=0.8,'
-            'scale=1920:1080:flags=bicubic[bg];[bg][fgp]overlay=%d:0' % (lado, lado, x, y0, cx - 540))
-
-
-def armar(fuente, carpeta, sub, linea, export, prefijo, t0, t1):
-    """Constantes de un plan: `fuente` es el archivo de `01 VIDEO`, `carpeta` la de la pieza bajo RAIZ y
-    t0–t1 los segundos de la fuente que entran."""
+def armar(fuente, carpeta, sub, linea, export, prefijo, t0, t1, recortado=False):
+    """Constantes de un plan: `fuente` es el archivo de `01 VIDEO` (sin `_fuente` ni extensión), `carpeta`
+    la de la pieza bajo RAIZ y t0–t1 los segundos de la fuente que entran. Con `recortado`, la `ORIGINAL`
+    es el avatar ya recortado sobre el fondo (`…_recortado.mp4`) y la cruda queda en `FUENTE_CRUDA`."""
     r = RAIZ + '/' + carpeta
+    nom, ext = os.path.splitext(fuente)
+    cruda = r + '/01 VIDEO/' + nom + '_fuente' + ext
+    original = r + '/01 VIDEO/' + nom + '_recortado.mp4' if recortado else cruda
 
     def cuadro(t):
         if not t0 - 1e-6 <= t <= t1 + 1e-6:
@@ -111,26 +117,26 @@ def armar(fuente, carpeta, sub, linea, export, prefijo, t0, t1):
 
     return dict(
         R=r, BIN=BIN_CURSO + [carpeta.replace('/', ' - ')],
-        ORIGINAL=r + '/01 VIDEO/' + fuente, COMPUESTO=r + '/01 VIDEO/%s_compuesto_v1.mp4' % prefijo,
+        ORIGINAL=original, FUENTE_CRUDA=cruda, COMPUESTO=r + '/01 VIDEO/%s_compuesto_v1.mp4' % prefijo,
         TITULO=r + '/02 CARTONES/carton titulo %s.mp4' % prefijo.lower(), SUB=sub, NOMBRE_LINEA=linea,
         EXPORT=export + '-v%d', PREFIJO=prefijo, TMP='D:/DAE/_tmp/tr_p/' + prefijo.lower(),
         TRAMOS=[(t0, t1, None)], T0=t0, T1=t1, cuadro=cuadro, MASTER_DIR=MASTERS + '/' + carpeta)
 
 
-def armar_curso(pieza, ext, t0, t1):
+def armar_curso(pieza, ext, t0, t1, recortado=False):
     """Bienvenida ('INICIO') o cierre general ('CIERRE') del curso."""
     sub = 'Introducción al curso' if pieza == 'INICIO' else 'Cierre del curso'
-    return armar('tr_curso_%s_fuente%s' % (pieza.lower(), ext), 'CURSO/' + pieza, sub, 'TRATA - CURSO - ' + pieza,
-                 'traficoytrata - CURSO - ' + pieza, 'TRC' + pieza[0], t0, t1)
+    return armar('tr_curso_%s%s' % (pieza.lower(), ext), 'CURSO/' + pieza, sub, 'TRATA - CURSO - ' + pieza,
+                 'traficoytrata - CURSO - ' + pieza, 'TRC' + pieza[0], t0, t1, recortado)
 
 
-def armar_unidad(u, pieza, ext, t0, t1):
+def armar_unidad(u, pieza, ext, t0, t1, recortado=False):
     """Introducción ('INICIO'), retroalimentación de la evaluación ('RETROALIMENTACION') o cierre ('CIERRE')
     de una unidad."""
     corto = {'INICIO': 'inicio', 'RETROALIMENTACION': 'retro', 'CIERRE': 'cierre'}[pieza]
-    return armar('tr_u%d_%s_fuente%s' % (u, corto, ext), 'UNIDAD %d/%s' % (u, pieza),
+    return armar('tr_u%d_%s%s' % (u, corto, ext), 'UNIDAD %d/%s' % (u, pieza),
                  'Unidad %d. %s' % (u, PIEZAS[pieza]), 'TRATA - U%d - %s' % (u, pieza),
-                 'traficoytrata - U%d - %s' % (u, pieza), 'TRU%d%s' % (u, pieza[0]), t0, t1)
+                 'traficoytrata - U%d - %s' % (u, pieza), 'TRU%d%s' % (u, pieza[0]), t0, t1, recortado)
 
 
 def _p(texto, peso, px, gap):
