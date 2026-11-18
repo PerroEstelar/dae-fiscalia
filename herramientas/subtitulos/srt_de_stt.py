@@ -174,11 +174,65 @@ def corrige(ws, reglas):
     return ws
 
 
+MULETILLAS = set('eh ehm em mmm mm hmm'.split())
+
+
+def _mayus(w):
+    t = w['text']
+    for i, c in enumerate(t):
+        if c.isalpha():
+            return dict(w, text=t[:i] + c.upper() + t[i + 1:])
+    return w
+
+
+def tropiezos(ws):
+    """Transcripcion limpia: fuera las muletillas sueltas y los arranques en falso que Scribe marca con «--».
+    «de las af-- de las personas» -> «de las personas»;  «deben repe-- respetarse» -> «deben respetarse».
+    Un corte que no se retoma («la convicci-- ah, voy a volver a empezar») se deja, con puntos suspensivos."""
+    out = []
+    i = 0
+    sube = False                                   # la palabra que sigue hereda la mayuscula de lo que se quito
+    while i < len(ws):
+        w = ws[i]
+        t = w['text']
+        n = norm(t)
+        ini = bool(t) and t[0].isupper() and (not out or fin_oracion(out[-1]['text']))
+        if n in MULETILLAS:
+            sube = sube or ini
+            i += 1
+            continue
+        cortada = len(n) > 0 and (t.endswith('--') or (t.endswith('-') and not t.endswith('--') and len(n) > 1))
+        if cortada:
+            quitado = False
+            for k in (4, 3, 2, 1):                 # se repite lo de antes: «de las af-- de las …»
+                if len(out) >= k and i + k < len(ws) and \
+                        [norm(x['text']) for x in out[-k:]] == [norm(x['text']) for x in ws[i + 1:i + 1 + k]]:
+                    sube = sube or (out[-k]['text'][:1].isupper() and (len(out) == k or fin_oracion(out[-k - 1]['text'])))
+                    del out[-k:]
+                    quitado = True
+                    break
+            if not quitado and i + 1 < len(ws):
+                sig = norm(ws[i + 1]['text'])
+                if sig[:2] == n[:2] or sig.startswith(n) or n.startswith(sig):
+                    sube = sube or ini
+                    quitado = True
+            if quitado:
+                i += 1
+                continue
+            w = dict(w, text=t.rstrip('-') + '…')
+        if sube:
+            w = _mayus(w)
+            sube = False
+        out.append(w)
+        i += 1
+    return out
+
+
 def limpia(ws):
     """Arreglos de tipografia que valen siempre: un signo suelto se pega a la palabra anterior, y una pregunta que
     sigue a dos puntos empieza con mayuscula (las preguntas de los casos son una lista)."""
     out = []
-    for w in ws:
+    for w in tropiezos(ws):
         if out and not re.search(r'[\wáéíóúüñ%]', w['text']):
             out[-1] = dict(out[-1], text=out[-1]['text'] + w['text'], end=w['end'])
             continue
