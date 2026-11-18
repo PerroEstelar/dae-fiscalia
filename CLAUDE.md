@@ -3253,3 +3253,55 @@ lleva su `subtitulos/manifiesto.json` y `correcciones.json`.
   (`base64Content: sha256:<hash>:<ruta>`), sin pasar el contenido por la conversación, **solo si la ruta está bajo
   el directorio de trabajo** (`/home/claude/…`); desde `/mnt/user-data/outputs/` dice que no puede. Con
   `disableConversionToGoogleType: true` queda como `.srt` y no como documento.
+
+
+## Cortar una repetición de una entrega sin reprocesarla: `recortar_entrega.py` (18 nov 2026)
+
+Tres videos de unidad de Terminaciones anticipadas se entregaron con una toma repetida adentro. Sebastián: «haz los
+cambios ya», «solo corta esas partes», «para evitar reprocesar todo». `reparchar.py` cambia cartones pero no acorta;
+`herramientas/montaje/recortar_entrega.py` usa su mismo método para quitar un tramo:
+
+    python recortar_entrega.py <plan> <versión vieja> <versión nueva> <a> <b> [lt=<clave>] [limpios=<n>]
+
+- Quita los cuadros [a, b) de la línea de la entrega vieja. Copia sin tocar todo lo que queda fuera de los cuadros
+  clave que rodean el corte (x264 con `keyint=48` y GOP cerrados) y **codifica solo esos segundos** con la receta de la
+  entrega (mismo preset, mismo SPS/PPS: lo verifica). El sonido se rearma entero desde el compuesto (12 ms de fundido
+  en el empalme). Medido: 1 min por video; de 10.929 cuadros se codificaron 240, 17 y 261.
+- **`lt=<clave>`** para un corte que empieza donde empieza el clip: el lower third de la entrega vieja se va con lo
+  cortado, y se vuelve a poner desde su `.mov` a la misma distancia del nuevo arranque.
+- **`limpios=<n>`** cuando los primeros cuadros después del corte traen la cola del rótulo viejo: salen del compuesto.
+- No toca Resolve: la línea y el compuesto siguen con la toma completa. El plan lo dice en «Versión 2» y lleva
+  `CORTE_V2`; sus constantes siguen siendo las de la v1.
+- `DAE_TMP_RECORTE=<carpeta>` manda los temporales a otro disco (D: tenía 2,4 GB; cada corte deja unos 400 MB, que
+  quedan ahí: nada se borra).
+
+Lo que falló en el camino, y por qué:
+
+- **Con el profe quieto, cuadros vecinos del compuesto dan el mismo PSNR** (51,5 contra 51,4 dB): elegir «el más
+  parecido» cuadro por cuadro saltaba hacia atrás. Lo que se ajusta es el paso entero. Medido: **el cuadro k de la
+  línea (23,976) muestra el cuadro `piso((k − CLIP0) × 30 / 23,976)` del compuesto (30 c/s)**; con ese paso da 51,9 dB
+  sobre 96 cuadros y con un cuarto de cuadro de desfase, 42.
+- **Las marcas de color viajan con cada cuadro y le ganan a `-color_primaries`/`-color_trc`.** El compuesto solo
+  declara la matriz; al entrar primero en un `concat`, el tramo salió sin primarios ni curva y su SPS ya no era el de
+  lo copiado (la herramienta se detuvo ahí). Se fijan con `setparams` en el filtro.
+- La prueba con una entrega sintética en el contenedor no vio ninguna de las dos: el profe sintético se movía y su
+  compuesto traía todas las marcas. La prueba que vale es la del material real, y la herramienta falla sin escribir la
+  entrega nueva.
+
+El `.srt` de una `-v2` se hace transcribiendo el archivo nuevo, no editando el de la `-v1`; después se compara palabra
+por palabra con el viejo (tiene que faltar solo lo cortado).
+
+
+## Subtítulos de profes que hablan sin leer (SRPA, 18 nov 2026)
+
+- Las reglas generales de limpieza están en `srt_de_stt.py` (`numeros`, `tropiezos`, `_tartamudeo`) y se describen en
+  `herramientas/subtitulos/README.md`. **Cada regla nueva se prueba contra los `.srt` ya entregados**: tienen que salir
+  idénticos, byte a byte (los 22 de Terminaciones anticipadas salen iguales).
+- Quitar un «eh» deja una coma colgando («la justicia, restaurativa»): si la muletilla venía entre dos comas, se va
+  la de antes, salvo tras un marcador («Así,») o en una lista.
+- Scribe a veces pone el punto final varios segundos después de la palabra: el subtítulo no se estira hasta ahí.
+- **Una búsqueda en Drive con `fullText` y sin `excludeContentSnippets` devuelve miles de caracteres por archivo.**
+  Para comprobar una grafía: `title contains '<archivo>' and fullText contains '<palabra>'` con
+  `excludeContentSnippets: true`; si el archivo aparece, la palabra está escrita así.
+- Lo que el profe dice mal (un apellido cambiado) queda como lo dijo y se avisa. Una palabra que tres escuchas dan de
+  tres maneras no se inventa; si el giro es evidente por el sonido y la frase, se pone y se dice cuál fue.
