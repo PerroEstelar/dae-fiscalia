@@ -58,6 +58,10 @@ disco = os.path.splitdrive(P.R)[0] + '/'
 libre = shutil.disk_usage(disco).free / 1e9
 minutos = (P.T1 - P.T0) / 60.0
 hace_falta = max(3.0, 0.35 * minutos)     # compuesto, cartones y listas en ProRes 4444
+if all(i[1] == 'lt' for i in P.ITEMS):
+    # entrega provisional: solo el compuesto (medido en los ocho de Bienes: 0,028 a 0,037 GB por minuto) y los
+    # lower thirds. Con la cuenta de arriba un cierre de 44 min pedía 15,5 GB y no arrancaba.
+    hace_falta = max(1.0, 0.06 * minutos)
 w('%s libre %.1f GB (hacen falta %.1f para %.1f min)' % (disco, libre, hace_falta, minutos))
 if libre < hace_falta:
     w('SIN ESPACIO EN ' + disco)

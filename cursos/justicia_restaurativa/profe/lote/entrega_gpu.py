@@ -18,6 +18,9 @@ import mp4_entrega as E
 import DaVinciResolveScript as dvr
 T = 'D:/DAE/_tmp/jr_p/'
 PASO = 'G:/My Drive/_MA subidas/'
+# El render sale primero a C: (E: tiene 5 GB y D: 1,6): ahí caben el MP4 y, si el AAC de Resolve sale roto, el
+# .mov con PCM. A la carpeta de la pieza llega solo la entrega buena.
+RIND = os.path.expanduser('~').replace('\\', '/') + '/AppData/Local/Temp/dae_rindiendo'
 log = open(T + 'lote_entrega.log', 'a', encoding='utf-8')
 META = 5000.0      # kb/s reales que se buscan
 MARGEN = 0.35e9    # cupo de Drive que se deja libre
@@ -102,7 +105,7 @@ def calibra(P):
     k = 5000.0
     for paso in (1, 2):
         try:
-            r = rinde(P, 'calibra%d' % paso, k, P.TMP + '/gpu', tramo=(1000, 1480))
+            r = rinde(P, 'calibra%d' % paso, k, RIND, tramo=(1000, 1480))
             if not r[0]:
                 break
             real = kbps_real(r[0], 480)
@@ -129,7 +132,7 @@ def rehace_sonido(P, nombre, kbps, largo):
     """El fallo es del codificador AAC de Resolve y depende del contenido: tres renders seguidos de la misma linea
     dieron los mismos dos tramos rotos, y el mismo render con audio PCM salio limpio (medido). Entonces: se rinde
     a .mov con PCM de 24 bits, y ffmpeg copia el video y codifica el AAC (320 kb/s). Devuelve el mp4 o None."""
-    tmp = '%s/05 EXPORTS/_rindiendo' % P.R
+    tmp = RIND
     mov, _largo, st = rinde(P, nombre + '_pcm', kbps, tmp, pcm=True)
     if not mov:
         w('PCM FALLO', st); return None
@@ -184,7 +187,7 @@ def entrega(p, kbps):
     if os.path.exists(f):
         w('ya existe', os.path.basename(f)); return True
     t = time.time()
-    out, largo, st = rinde(P, nombre, kbps, '%s/05 EXPORTS/_rindiendo' % P.R)
+    out, largo, st = rinde(P, nombre, kbps, RIND)
     if not out:
         w('GPU FALLO', p, st); return False
     n = E.cuadros(out)
@@ -201,15 +204,18 @@ def entrega(p, kbps):
         os.replace(rep, out)
         nota = ' | AUDIO: PCM de Resolve + AAC 320 kb/s de ffmpeg, video copiado (el AAC de Resolve salia roto; los crudos quedan en _rindiendo)'
     if moov_adelante(out):
-        os.replace(out, f)               # mismo disco: un cambio de nombre, sin copia
+        os.makedirs(os.path.dirname(f), exist_ok=True)
+        shutil.move(out, f + '.parcial')  # de C: al disco de la pieza
+        os.replace(f + '.parcial', f)
         fs = 'faststart de Resolve'
     else:
+        os.makedirs(os.path.dirname(f), exist_ok=True)
         r = subprocess.run([E.FB + '/ffmpeg.exe', '-y', '-v', 'error', '-i', out, '-c', 'copy', '-movflags', '+faststart', '-f', 'mp4', f + '.parcial'],
                            capture_output=True, text=True, errors='replace')
         if r.returncode or E.cuadros(f + '.parcial') != largo:
             w('FASTSTART FALLO', p, r.stderr[-300:]); return False
         os.replace(f + '.parcial', f)
-        fs = 'faststart por remux (el crudo queda en _rindiendo)'
+        fs = 'faststart por remux (el crudo queda en %s)' % RIND
     w('entrega', p, 'rc 0 True', '%.0f s' % (time.time() - t), '| NVIDIA por Resolve, pedido %d kb/s, real %.0f kb/s, cuadros %d / linea %d OK, %d MB, %s, sonido %s'
       % (kbps, kbps_real(f, largo), n, largo, os.path.getsize(f) >> 20, fs, son) + nota)
     if not subir(f):
