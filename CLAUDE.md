@@ -3314,3 +3314,34 @@ por palabra con el viejo (tiene que faltar solo lo cortado).
 - `recortar_entrega.py` solo sirve para entregas x264 (cuadro clave cada 48, GOP cerrados). Las que salieron de Resolve
   por la placa NVIDIA (perfil Main, clave cada 24) no se pueden cortar así: o el corte cae justo en dos cuadros clave, o
   la `-v2` sale del máster con los cortes hechos al codificar.
+
+
+## Dos personas en videollamada: el rótulo va debajo de cada mosaico, en tinta (JR, cierre del curso, 18 nov 2026)
+
+La fuente del cierre de Justicia restaurativa son dos coautores en mosaicos de 936×528 sobre un lienzo blanco. El
+rótulo de la serie (texto blanco con sombra, abajo a la izquierda) no sirve: sobre el blanco no se lee y dentro del
+mosaico tapa a la persona.
+
+- `cartones_srpa.lower_third` acepta `(nombre, cargo, opciones)` con `x`, `top`, `ancho` y `tinta`. Con `tinta` el texto
+  va en ese color y sin sombra. Cada rótulo va debajo de su mosaico (`x=40` y `x=1015`, `top=852`), en azul (22, 58, 79).
+- **Se compone el rótulo sobre un cuadro de la fuente y se mira antes de armar la línea.** Con `ffmpeg overlay` y dos
+  `-ss` el rótulo no apareció en la prueba (el archivo estaba bien); con PIL (`alpha_composite` del cuadro del `.mov`
+  sobre el cuadro del compuesto) sí. Si la prueba sale vacía, primero se mide la caja del alfa del `.mov`.
+- Los nombres salieron de la ficha del curso, y los dos se presentan en el video. Scribe oye «Espina» por «Ospina».
+- Una pieza provisional no deja en E: lo que calcula `profe_cadena` para una con gráficos y máster (0,35 GB por minuto):
+  con solo rótulos son 0,06. Y el render de Resolve va a `%TEMP%\dae_rindiendo` (C:) y la entrega se mueve a
+  `05 EXPORTS` al final, cuando E: no tiene sitio para las dos cosas.
+
+## Subtítulos: «no.» no es «número», y una regla no debe cruzar dos voces (18 nov 2026)
+
+- `srt_de_stt.fin_oracion` tomaba «no.» por abreviatura y pegaba «La respuesta es no.» a la oración siguiente. Estaba
+  en seis `.srt` ya entregados, que se subieron de nuevo. **Una lista de abreviaturas se prueba con las palabras
+  comunes que se escriben igual.**
+- Una regla de `correcciones.json` reparte el tiempo del tramo por letras y le da el hablante de su primera palabra:
+  las reglas tocan lo mínimo, y las comillas de una cita dicha por otra voz se ponen palabra por palabra.
+- Los casos se cotejan con el documento del profesor con un script que alinea palabras; a ojo se escapan las comillas.
+- **Antes de responder «¿hay un caso que se llame X?» se busca el nombre en las transcripciones de las entregas**, no en
+  la memoria: «Valentina» no está en ninguno de los 22 videos de Terminaciones anticipadas; es el caso 5 de Enfoque
+  diferencial.
+- Sebastián, 18 nov: los «repito» de los cierres de Bienes «no importan». No se rehacen.
+
