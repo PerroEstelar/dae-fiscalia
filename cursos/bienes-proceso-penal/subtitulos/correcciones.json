@@ -1,0 +1,126 @@
+{
+ "_todos": [
+  [
+   "\\b([Ll])a fiscalía\\b",
+   "\\1a Fiscalía"
+  ],
+  [
+   "\\bscientific(ar|ados|adas|ado|ada)\\b",
+   "identific\\1"
+  ],
+  [
+   "noventa y dos a cien",
+   "92 a 100"
+  ],
+  [
+   "[Ll]ey diecisiete cero ocho",
+   "Ley 1708"
+  ]
+ ],
+ "_despues": [
+  [
+   "\\bley (\\d{3,})",
+   "Ley \\1"
+  ],
+  [
+   "\\bdecreto (\\d{3,})",
+   "Decreto \\1"
+  ],
+  [
+   "\\bresolución (\\d{3,})",
+   "Resolución \\1"
+  ]
+ ],
+ "biu1c": [
+  [
+   "antecedentes comen-- co-- repito\\.",
+   "antecedentes comen… Repito."
+  ],
+  [
+   "indispensable dife-- repito\\.",
+   "indispensable dife… Repito."
+  ],
+  [
+   "investigativas, scientifican tres activos",
+   "investigativas, se identifican tres activos"
+  ]
+ ],
+ "biu2c": [
+  [
+   "relacionadas con des-- perdón, repito\\.",
+   "relacionadas con des… Perdón, repito."
+  ],
+  [
+   "llegado a la-- repito\\.",
+   "llegado a la… Repito."
+  ],
+  [
+   "una metodología-- repito\\.",
+   "una metodología… Repito."
+  ],
+  [
+   "la eficacia y la investigación penal también depende",
+   "la eficacia de la investigación penal también depende"
+  ],
+  [
+   "la importancia los elementos materiales",
+   "la importancia de los elementos materiales"
+  ]
+ ],
+ "biu2i": [
+  [
+   "relacionando-- re-repito\\.",
+   "relacionando… Repito."
+  ],
+  [
+   "restricción patrimonial sin instrumentos sometidos",
+   "restricción patrimonial, sino instrumentos sometidos"
+  ]
+ ],
+ "biu3c": [
+  [
+   "diligencia de policial judicial",
+   "diligencia de policía judicial"
+  ],
+  [
+   "y el FEAP,",
+   "y el FEAB,"
+  ],
+  [
+   "Debe observar que este fiscal el procedimiento",
+   "Debe observar este fiscal el procedimiento"
+  ]
+ ],
+ "biu4c": [
+  [
+   "corresponde a la Repito\\.",
+   "corresponde a la… Repito."
+  ],
+  [
+   "con fines de comienzo y administración",
+   "con fines de comiso y administración"
+  ]
+ ],
+ "biu2i_v2": [
+  [
+   "relacionando-- re-repito\\.",
+   "relacionando… Repito."
+  ],
+  [
+   "restricción patrimonial sin instrumentos sometidos",
+   "restricción patrimonial, sino instrumentos sometidos"
+  ],
+  [
+   "cuestión fundamental: cómo garantizar",
+   "cuestión fundamental: ¿Cómo garantizar"
+  ],
+  [
+   "efectiva la reparación de las víctimas\\. P",
+   "efectiva la reparación de las víctimas? P"
+  ],
+  [
+   "nuestra segunda unidad: Medidas",
+   "nuestra segunda unidad, Medidas"
+  ]
+ ]
+}

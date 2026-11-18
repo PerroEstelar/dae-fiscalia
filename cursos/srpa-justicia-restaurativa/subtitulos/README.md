@@ -12,7 +12,7 @@ incluida), con el mismo nombre del video y en su misma carpeta de Drive. Método
 | `srpa - U1 - BIENVENIDA-v2` | 136 | 8:52 | `1LeKLpnc_yJPOoBZ74avTBCqGP6kq7T9o` |
 | `srpa - U1 - CIERRE-v1` | 280 | 17:29 | `19gS5OT-ABOBnlkfGNveShe1A1-7NzfCv` |
 | `srpa - U3 - BIENVENIDA-v2` | 55 | 4:17 | `1neRy2E9KwE49GirWpcuaLe-ib_HGST0u` |
-| `srpa - U3 - DESARROLLO-v2` | 629 | 39:57 | `1MUOWjn2EYNaoF6j0Wy1OeMNMAtShNdHU` |
+| `srpa - U3 - DESARROLLO-v2` | 627 | 39:57 | `1P7TPX6SgTXSvUHQqWUoS--OGvdFHRFy_` |
 | `srpa - U3 - CIERRE-v2` | 177 | 11:55 | `1ICK73A-7M5k4zKihihpV3EZD2ecnxDYG` |
 | `srpa - U4 - INICIO-v1` | 28 | 2:31 | `1xFUQgwvlSiaiW7blhWFpJeDgxgMZNLAo` |
 | `srpa - U4 - DESARROLLO-v1` | 475 | 32:08 | `1_Ej8OfrF1WFXO2W_CuzD3iTN5r9Asxqk` |
@@ -48,3 +48,10 @@ en `srt_de_stt.py` y 77 reglas a mano. No se leyó cada palabra de las tres clas
   cincuenta» en una; en el resto de la clase cita tres veces el 250, que es el que corresponde. Quedó «artículo 250».
 - Desarrollo de la U3, 23:17: Scribe dio cinco cosas distintas («En esos vendidas», «denegadas»…). Quedó «En ese
   entendido», que es el giro que encaja con el sonido y con la frase; es lo único que no sale de una escucha limpia.
+
+## Un `.srt` reemplazado
+
+El de `srpa - U3 - DESARROLLO-v2` se subió dos veces. En la primera, Scribe había estirado la palabra «¿Qué» de 12:17,7
+a 12:25,9 (ocho segundos sobre un silencio) y el subtítulo aparecía siete segundos antes de la pregunta. `srt_de_stt.py`
+ahora no le cree al principio de una palabra que dura más de 3 s. El archivo viejo (`1MUOWjn2EYNaoF6j0Wy1OeMNMAtShNdHU`)
+está en la papelera de Drive.

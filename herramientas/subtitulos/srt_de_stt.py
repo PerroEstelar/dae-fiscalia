@@ -368,6 +368,9 @@ def limpia(ws):
 def cues(j, reglas=(), despues=()):
     ws = [dict(text=w['text'].strip(), start=float(w['start']), end=float(w['end']), speaker_id=w.get('speaker_id'))
           for w in j.get('words', []) if w.get('type') == 'word' and w.get('text', '').strip()]
+    for w in ws:
+        if w['end'] - w['start'] > 3.0:            # Scribe a veces estira una palabra sobre el silencio de antes (medido: la
+            w['start'] = w['end'] - 1.0            # primera palabra de un video, 17 s): vale su final
     ws = limpia(corrige(numeros(corrige(ws, reglas)), despues))       # `despues`: reglas sobre el texto ya con cifras
     cs = []
     for o in oraciones(ws):
