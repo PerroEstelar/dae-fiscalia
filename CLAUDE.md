@@ -3129,3 +3129,100 @@ k1)`), y `k1` no pasa del primer cuadro del outro aunque la última palabra qued
 (`'Sergio Andrés\nLópez Zamora'`), `LT = (px del nombre, ancho del cargo)` y `LT_TOP` (cima; el estándar
 es 870). Antes de lanzar una tanda, `sim_todos.py` pone el lower third sobre dos cuadros de cada fuente en
 una sola hoja: en Bienes mostró que con las medidas del curso el nombre cruzaba la cara en un video.
+
+
+## Un avatar se recorta y va sobre el fondo de la DAE (Trata, videos de profe, 17–18 nov 2026)
+
+Ocho de los once videos de profe de Trata son un avatar vertical (1080×1920, 25 fps) sobre una biblioteca
+generada. Lo primero que se armó (recorte cuadrado sobre el mismo cuadro desenfocado) no era lo pedido.
+Sebastián: «recortar el personaje y usar el fondo de las imágenes que ya hemos usado, específicamente las
+que están los logos hacia la izquierda y que no tenga el logo Aprende con la DAE… iguales al resto de
+videos de profe hablando a cámara». Sin marca de agua dentro del contenido.
+
+- **Antes de componer una fuente que no es un profe en su fondo de siempre, se pregunta o se muestra un
+  cuadro.** Los primeros compuestos se descartaron sin entregar nada.
+- **`herramientas/video/recorta_persona.py`**: Robust Video Matting (resnet50, ONNX) por la placa de video
+  con `onnxruntime-directml`, que corre en la GTX 970 sin CUDA. Compone la persona sobre el fondo y guarda
+  también el mate (`…_mate.mp4`): cambiar de fondo después no obliga a recortar de nuevo. Los modelos están
+  en `D:\DAE\_herramientas\matting` (instalación autorizada por Sebastián el 17 nov; no hay ningún otro
+  modelo de recorte en el equipo).
+- **Medido** (1080×1080, `--ratio 0.4`): 100–120 ms por cuadro; 5,2 cuadros/s uno solo y 4,3–5,0 cada uno
+  con dos a la vez (placa al 50–65 %, 3,0–3,6 GB de los 4 GB de memoria con Resolve abierto; un tercero no
+  se probó). Por procesador: 545 ms (resnet50) y 252 ms (mobilenetv3). Un video de 6:40 son 31 a 37 min;
+  los ocho (71.545 cuadros, 47 min de fuente), de a dos, tardaron 2 h 16. Los bordes del pelo y las manos
+  salen limpios; no hizo falta retocar ninguno.
+- **Lo que el recorte no arregla:** cuando el avatar abre las manos, el borde de la fuente vertical se las
+  corta, y sobre un fondo más ancho ese corte recto se ve. Es de la fuente; se le avisó a Sebastián.
+- **Fondo:** `FONDO 4 V2.png` de su carpeta «FONDOS SIN APRENDE CON LA DAE» (el único con los logos a la
+  izquierda). La persona va centrada en x=1250 y el lower third de columna angosta (`LT = (44, 560)`) entra
+  a la izquierda sin tocarla.
+- **`-shortest` corta el video:** el audio del avatar termina 0,8 s antes que la imagen, y con `-shortest`
+  el recortado salía con 21 cuadros menos. Sin `-shortest`, y `recorta_lote.py` cuenta los cuadros contra
+  la fuente.
+- **Un vertical puede venir dentro de un cuadro horizontal** (la introducción de la U1: 1920×1080 con la
+  imagen en las columnas 656–1263). Se mira un cuadro de cada fuente antes de fijar `RECORTE`.
+- **El lote va por colas** (`cursos/prioridad-03/profe/lote/`): `recortes.txt` → `recorta_lote.py` (dos a
+  la vez) → `cola.txt` → `lote_cadena.py` (compuestos) y `entrega_gpu.py` (línea, entrega por la placa y
+  copia a Drive). Las colas se pueden alargar con el lote andando, y `estado.py` resume todo en una
+  pantalla.
+
+## El AAC de Resolve puede salir con cuadros rotos: un pico sobre 0 dBFS no es «audio fuerte»
+
+El cierre de la U1 de Trata salió de Resolve con `Peak: 51.7` en la línea de sonido del log, y −13,8 LUFS
+en vez de −16. Eran dos tramos de 20 ms a +35 y +52 dBFS (280,77 s y 313,77 s): al reproducir, dos
+chasquidos a fondo de escala. Lo medido:
+
+- El compuesto estaba limpio (−16,0 LUFS, −3,0 dBTP).
+- **Es determinista:** tres renders de la misma línea dieron los mismos dos tramos, con los mismos valores.
+  Rendir de nuevo no arregla nada.
+- **Es el codificador AAC de Resolve:** el mismo render con audio PCM (`.mov`, `AudioCodec: 'lpcm'`,
+  `AudioBitDepth: 24`) salió limpio en esos dos sitios.
+- De las diecinueve entregas con AAC de Resolve de esa noche (ocho de Bienes, once de Trata) fue la única
+  (`lote/pico_scan.py` busca muestras con |x| > 1 y dice dónde).
+
+Qué hace ahora `entrega_gpu.py`: si el pico medido pasa de 0 dBFS, rinde otra vez a `.mov` con PCM y ffmpeg
+copia el video y codifica el AAC (`-map 0:v:0 -map 0:a:0 -c:v copy -c:a aac -b:a 320k -movflags
++faststart`). Quedó en −16,0 LUFS y −3,0 dBTP, con el audio a 0,3 ms del compuesto (correlación cruzada).
+Los renders rotos quedan en `05 EXPORTS\_rindiendo` como `.viejo`.
+
+**La línea de sonido del log se lee en cada entrega.** El archivo roto llegó a copiarse a la carpeta de paso
+de Drive porque el guion medía el sonido y no lo comparaba con nada. Un pico verdadero por encima de 0 dBFS
+es un render roto: el compuesto llega con techo en −3 y el AAC de Resolve sobrepasa a lo sumo 2,5 dB.
+
+## El «libre» de G: no es el cupo de Drive: es el disco C:
+
+Dos veces en la noche se le dijo a Sebastián que su Drive estaba casi lleno (3,6 GB y después 1,4 GB libres
+«de 215») y se le pidió vaciar la papelera. La primera vez la vació (más de 41 GB). **Estaba mal leído**: la
+segunda vez se comprobó, y la primera casi seguro era lo mismo. Se le corrigió en cuanto se vio.
+`shutil.disk_usage('G:/')` da como total el cupo de la cuenta (214,7 GB), pero el libre sigue al disco donde
+Drive para escritorio guarda su caché. Pares medidos de C: libre / G: libre, con la papelera sin tocar:
+1,45 / 1,38 · 4,6 / 4,40 · 2,63 / 2,50. Es C: menos unos 0,13 GB.
+
+- **El cupo de Drive no se puede leer ni desde G: ni con el conector.** Se ve en drive.google.com (hay que
+  tener sesión). Antes de decirle a Sebastián que el Drive está lleno, se comparan G: y C:.
+- `entrega_gpu.subir` espera a que haya lugar según G: (o sea, según C:): eso sigue bien, porque la copia a
+  la carpeta de paso pasa por la caché de C:. Lo que no entra queda en `pendientes.txt` y se reintenta.
+- Lo que sí es cierto de la papelera de Drive: lo que está ahí sigue contando en el cupo y solo él la vacía.
+  Las copias de paso van a la papelera al terminar y se le avisa cuánto es.
+
+## Verificar una entrega en Drive: la caché decide el método
+
+La verificación byte a byte vale si lo que se lee de G: viene del servidor y no de la caché local
+(`AppData\Local\Google\DriveFS\<cuenta>\content_cache`, un archivo por ítem, con su tamaño exacto).
+
+- La caché guarda los últimos archivos subidos o leídos, según el lugar que haya en C:. Mover un archivo
+  fuera de «Mi unidad» no lo saca de la caché enseguida (uno seguía ahí 18 min después).
+- **Si el archivo no está en la caché**, se compara directo desde `G:\My Drive\_MA subidas\`: la lectura lo
+  baja del servidor (medido: 39–47 MB/s). `lote/verif_tr.py` mira antes que no haya en la caché un archivo
+  de ese tamaño; si lo hay, dice «EN CACHE» y no verifica.
+- **Si está en la caché**, copia de servidor (`copy_file` a una carpeta de «Mi unidad», mismo nombre) y
+  `verif_tr.py copia=<carpeta>`: la copia tiene otro id y nunca estuvo en la caché.
+- Siempre **antes** de mover la entrega a la carpeta compartida, que G: no ve.
+
+## C: se llena por el archivo de paginación
+
+Con dos recortes por la placa, Resolve y los ffmpeg a la vez, C: bajó de 6,5 a 1,4 GB libres. No era la
+caché de Drive (0,4 GB) ni temporales nuestros: `pagefile.sys` había crecido a 25 GB (`wmic pagefile list`)
+porque subió la memoria comprometida. Se mueve solo: al terminar un recorte C: volvió a 4,6 GB y al empezar
+el siguiente bajó a 2,6. Lo otro grande de C: es de Sebastián: 13,8 GB de caché de disco de After Effects en
+`%TEMP%\Adobe` (se vacía desde AE). En una tanda larga se mira C:, no solo D: y E:.
