@@ -38,12 +38,16 @@ def norm(t):
     return re.sub(r'[^\wáéíóúüñ]', '', t.lower())
 
 
-def fin_oracion(t):
+def fin_oracion(t, sig=None):
+    """`sig` es la palabra que sigue, si se conoce: «no.» es abreviatura de número solo cuando sigue una cifra
+    («y cuándo no. Se trata de…» termina la oración; «el oficio No. 12» no)."""
     s = t.rstrip('"»”’)]')
     if not s or s[-1] not in '.?!…':
         return False
     if s[-1] == '.':
         base = norm(s)
+        if base == 'no' and sig is not None and not sig[:1].isdigit():
+            return True
         if base in ABREV or (len(base) == 1 and base.isalpha()):
             return False
     return True
@@ -67,7 +71,7 @@ def renglones(t):
         ult = ps[k - 1]
         if ult[-1] in ',;:':
             s -= 9
-        elif fin_oracion(ult):
+        elif fin_oracion(ult, ps[k]):
             s -= 12
         if norm(ult) in FUNC:
             s += 14
@@ -130,7 +134,7 @@ def oraciones(ws):
     for i, w in enumerate(ws):
         act.append(w)
         sig = ws[i + 1] if i + 1 < len(ws) else None
-        if sig is None or fin_oracion(w['text']) or sig['start'] - w['end'] >= PAUSA \
+        if sig is None or fin_oracion(w['text'], sig['text']) or sig['start'] - w['end'] >= PAUSA \
                 or sig.get('speaker_id') != w.get('speaker_id'):
             out.append(act); act = []
     return out

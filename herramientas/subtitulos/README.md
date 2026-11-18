@@ -69,3 +69,31 @@ Por eso no se reusa la transcripción de la fuente que se hizo al montar: se tra
   contra los documentos del curso en Drive, no contra el oído.
 - Una segunda escucha (`stt_tramo.py`) no siempre resuelve: si tres pasadas dan tres cosas distintas, no se inventa.
 
+
+## Lo que se agregó con Enfoque diferencial y Justicia restaurativa (18 videos, 3 h 20 min)
+
+- **«no.» ya no es siempre una abreviatura.** `fin_oracion` la tomaba por «número» y no cortaba la oración: «La
+  respuesta es no. En / este sistema procesal,» o un subtítulo que empezaba con «no.» de la oración anterior. Ahora
+  `fin_oracion(t, sig)` recibe la palabra que sigue: «no.» es abreviatura solo si sigue una cifra. Probado contra todo
+  lo entregado: cambian seis `.srt` (uno de Terminaciones anticipadas, cuatro de Bienes y uno de Derechos humanos), que
+  se subieron de nuevo, y los otros 56 salen idénticos byte a byte.
+- **Una regla de `correcciones.json` reparte el tiempo de todo el tramo que toca por cantidad de letras**, y le da a
+  todo el tramo el hablante de la primera palabra. Por eso:
+  - una regla que quita un tropiezo toca solo el tropiezo, no la oración («ley cinco ochenta y uno» → «Ley 581», no
+    desde «la» hasta «de 2000»);
+  - las comillas se ponen con reglas de una sola palabra, con miradas hacia atrás y adelante:
+    `(?<=preguntó: )¿Pero` → `«¿Pero`, `amante\?(?= Dando)` → `amante?»,`. Una regla que cruzaba del narrador al
+    personaje dejaba ««¿Pero» en el subtítulo del narrador;
+  - las comillas rectas de Scribe pasan a «» con dos reglas generales de un solo carácter, no con `"([^"]+)"`.
+- **Los casos animados se cotejan con el documento con un script**, no a ojo: se alinean las palabras del `.srt` y las
+  del texto verbatim (`difflib` sobre las palabras sin tildes ni signos) y se listan las que difieren en la escritura.
+  Así salieron los nombres mal oídos, las mayúsculas y todas las comillas del profesor.
+- **Después de escribir las reglas se comprueba que cada una encontró su texto** (una regla que no coincide no avisa).
+- **Un «perdón» o «discúlpenme» en medio de una palabra retomada se va con el tropiezo**; un «Perdón.» suelto, dicho
+  entre dos oraciones, queda.
+- **La segunda escucha vale más con el recorte corto** (5 a 10 s) y sirve para tres cosas distintas: confirmar lo que
+  parece un error de Scribe y no lo es («menor e indígena», «en cuestión cuestiones»), recuperar una palabra que la
+  primera pasada se comió («a la *aplicación* de la justicia restaurativa») y decidir entre dos lecturas. Cuando dos
+  palabras suenan igual («la tensión» / «la atención») decide el sentido, y se anota.
+- La hoja de revisión (`.rev.txt`) puede mostrar «0:60.0» por redondeo; el `.srt` y el `.vtt` no (se validan: segundos
+  y minutos menores que 60, tiempos crecientes, de uno a dos renglones, 42 caracteres, CRLF, sin BOM).

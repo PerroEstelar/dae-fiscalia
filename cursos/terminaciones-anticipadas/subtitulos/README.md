@@ -13,7 +13,7 @@ en cada uno.
 | `terminacionesanticipadas - U2 - INICIO-v1` | 118 | 8:06 | `1P5NLtV5EGk2oi7MTz84GxZajGteFNJxI` |
 | `terminacionesanticipadas - U2 - INICIO-v2` (la repetición, cortada) | 111 | 7:36 | `1RpFTMut3hRHlQtGZW84VvKbVjLE3P1HG` |
 | `terminacionesanticipadas - U2 - CIERRE-v1` | 97 | 6:33 | `1hJO_TZ9P1ns1vnds3jttX6ongrgOSyZF` |
-| `terminacionesanticipadas - U3 - INICIO-v1` | 114 | 7:25 | `1VPvLHiRU6tmtmN-NI-WJDDhEdIzgBaZ0` |
+| `terminacionesanticipadas - U3 - INICIO-v1` | 114 | 7:25 | `14nXKehFydoupMKa7FUSfDfsrLw-_bgPL` (resubido el 18 nov por la tarde: «…y qué casos no.» ya cierra su subtítulo; el anterior, `1VPvLHiRU6tmtmN-NI-WJDDhEdIzgBaZ0`, está en la papelera) |
 | `terminacionesanticipadas - U3 - CIERRE-v1` | 100 | 6:39 | `1iRFstqPQ-H3GJil_dU42-oocXEtPJjBr` |
 | `terminacionesanticipadas - U4 - INICIO-v1` | 125 | 8:22 | `1f_HKxkDBCFWZd8sWr7aPmjtxRgSKmcbi` |
 | `terminacionesanticipadas - U4 - INICIO-v2` (la repetición, cortada) | 115 | 7:49 | `1Yp6hmNmwgfW7dGsCHrP-VLqLjrDafV7N` |

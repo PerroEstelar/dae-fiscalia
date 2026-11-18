@@ -1,0 +1,596 @@
+{
+ "_todos": [
+  [
+   "\\b([Ll])a fiscalía\\b",
+   "\\1a Fiscalía"
+  ],
+  [
+   "\\bmisma fiscalía\\b",
+   "misma Fiscalía"
+  ],
+  [
+   "\\bcorte\\b",
+   "Corte"
+  ],
+  [
+   "\\b([Ll])a constitución\\b",
+   "\\1a Constitución"
+  ],
+  [
+   "(?<!\\S)\"(?=\\S)",
+   "«"
+  ],
+  [
+   "(?<=\\S)\"(?=[\\s.,;:?!]|$)",
+   "»"
+  ],
+  [
+   "\\b([Ee])l estado liberal\\b",
+   "\\1l Estado liberal"
+  ],
+  [
+   "\\blos estados siempre\\b",
+   "los Estados siempre"
+  ],
+  [
+   "\\bun estado democrático\\b",
+   "un Estado democrático"
+  ],
+  [
+   "\\bestado social de derecho\\b",
+   "Estado social de derecho"
+  ],
+  [
+   "\\bcódigo penal\\b",
+   "Código Penal"
+  ]
+ ],
+ "_despues": [
+  [
+   "\\bley (\\d{2,})",
+   "Ley \\1"
+  ],
+  [
+   "\\bdecreto (\\d{3,})",
+   "Decreto \\1"
+  ],
+  [
+   "\\bresolución (\\d{3,})",
+   "Resolución \\1"
+  ],
+  [
+   "\\b(T|C)-?(\\d{3})\\b",
+   "\\1-\\2"
+  ]
+ ],
+ "edci": [
+  [
+   "Brian Vargas",
+   "Bryan Vargas"
+  ]
+ ],
+ "edc1": [
+  [
+   "^Edgar Molano",
+   "Édgar Molano"
+  ],
+  [
+   "una unidad de atención a víctimas de violencia sexual",
+   "una Unidad de Atención a Víctimas de Violencia Sexual"
+  ],
+  [
+   "sentencia C ciento sesenta y tres",
+   "Sentencia C-163"
+  ]
+ ],
+ "edc2": [
+  [
+   "un caso de maricones",
+   "un «caso de maricones»"
+  ],
+  [
+   "un crimen absolutamente pasional,",
+   "un «crimen absolutamente pasional»,"
+  ],
+  [
+   "víctima llevaba una vida desordenada y era promiscua\\.",
+   "víctima «llevaba una vida desordenada» y era «promiscua»."
+  ],
+  [
+   "Miembros de la policía",
+   "Miembros de la Policía"
+  ],
+  [
+   "hipótesis de crimen pasional,",
+   "hipótesis de «crimen pasional»,"
+  ],
+  [
+   "recibía muchos sujetos en",
+   "recibía «muchos sujetos» en"
+  ],
+  [
+   "tenía pareja estable,",
+   "tenía «pareja estable»,"
+  ],
+  [
+   "fundación, todas las actuaciones",
+   "fundación, «todas las actuaciones"
+  ],
+  [
+   "práctica de interrogatorios y gran",
+   "práctica de interrogatorios» y gran"
+  ],
+  [
+   "La Fundación documentó",
+   "La fundación documentó"
+  ]
+ ],
+ "edc3": [
+  [
+   "estación de policía",
+   "estación de Policía"
+  ],
+  [
+   "llamaron negro hijueputa y negro malparido\\.",
+   "llamaron «negro hijueputa» y «negro malparido»."
+  ],
+  [
+   "como negro malparido y negro hijueputa\\.",
+   "como «negro malparido» y «negro hijueputa»."
+  ],
+  [
+   "numeral tres",
+   "numeral 3"
+  ],
+  [
+   "artículo ciento treinta y cuatro B",
+   "artículo 134B"
+  ],
+  [
+   "local\\.(?= «Lo que más)",
+   "local:"
+  ]
+ ],
+ "edc4": [
+  [
+   "Janet Payaguaje",
+   "Yaneth Payaguaje"
+  ],
+  [
+   "Jakanamijoy",
+   "Jacanamijoy"
+  ],
+  [
+   "autoridad indígena, taita, de un cabildo",
+   "autoridad indígena (Taita) de un cabildo"
+  ],
+  [
+   "\\btaita\\b",
+   "Taita"
+  ],
+  [
+   "abocar conocimiento",
+   "avocar conocimiento"
+  ]
+ ],
+ "edc5": [
+  [
+   "turno\\.(?= ¿Ese)",
+   "turno:"
+  ],
+  [
+   "(?<=turno: )¿Ese",
+   "«¿Ese"
+  ],
+  [
+   "apodo\\?(?= Valentina explicó)",
+   "apodo?»"
+  ],
+  [
+   "veces como él, pese",
+   "veces como «él», pese"
+  ],
+  [
+   "escribió, alias Valentina, en",
+   "escribió «alias Valentina» en"
+  ],
+  [
+   "preguntó\\.\\.\\.",
+   "preguntó:"
+  ],
+  [
+   "(?<=preguntó: )¿Pero",
+   "«¿Pero"
+  ],
+  [
+   "amante\\?(?= Dando)",
+   "amante?»,"
+  ],
+  [
+   "(?<=amante\\?», )Dando",
+   "dando"
+  ],
+  [
+   "lo que debía ser",
+   "lo que «debía» ser"
+  ],
+  [
+   "casilla hombre gay,",
+   "casilla «hombre gay»,"
+  ]
+ ],
+ "edu1d": [
+  [
+   "un reguerlo, un regalo",
+   "un regalo"
+  ],
+  [
+   "que debemos, que debemos perseguir",
+   "que debemos perseguir"
+  ],
+  [
+   "un individuo privilegio",
+   "un indebido privilegio"
+  ],
+  [
+   "los evento más diversos",
+   "los eventos más diversos"
+  ],
+  [
+   "No, no requerían",
+   "No requerían"
+  ],
+  [
+   "le pertenecían, era al dueño",
+   "le pertenecían era al dueño"
+  ],
+  [
+   "que campó en",
+   "que campeó en"
+  ],
+  [
+   "acorde con el nor-- ordenamiento",
+   "acorde con el ordenamiento"
+  ],
+  [
+   "una insti-instancia, perdón, gubernamental",
+   "una instancia gubernamental"
+  ],
+  [
+   "o si afecte a personas, si afecte a personas pertenecientes",
+   "o si afecte a personas pertenecientes"
+  ],
+  [
+   "en cara alusión, en clara alusión",
+   "en clara alusión"
+  ],
+  [
+   "el Joker o el As\\.",
+   "el joker o el as."
+  ],
+  [
+   "que los bancos la utilicen",
+   "que los mancos la utilicen"
+  ]
+ ],
+ "edu2d": [
+  [
+   "más mul-- vulnerables",
+   "más vulnerables"
+  ],
+  [
+   "diez u once generaciones",
+   "10 u 11 generaciones"
+  ],
+  [
+   "Cuatro, se implementan",
+   "Cuatro: se implementan"
+  ],
+  [
+   "Y cinco, son diseñadas",
+   "Y cinco: son diseñadas"
+  ],
+  [
+   "ley cinco ochenta y uno",
+   "Ley 581"
+  ],
+  [
+   "llamada ley de cuotas",
+   "llamada Ley de Cuotas"
+  ],
+  [
+   "Pero aún en esas",
+   "Pero aun en esas"
+  ],
+  [
+   "el artículo tres de la ley",
+   "el artículo 3 de la ley"
+  ],
+  [
+   "ley diecisiet-- catorce setenta y cinco",
+   "Ley 1475"
+  ],
+  [
+   "puede perva-- pertenecer, perdón, a varias",
+   "puede pertenecer a varias"
+  ],
+  [
+   "es mejor e indígena",
+   "es menor e indígena"
+  ],
+  [
+   "en materia disc-- de discapacidad",
+   "en materia de discapacidad"
+  ],
+  [
+   "Por e-- probablemente, en este caso",
+   "Probablemente, en este caso"
+  ],
+  [
+   "el acto legislativo uno de 2023",
+   "el Acto Legislativo 1 de 2023"
+  ],
+  [
+   "comillas, el campesinado es sujeto",
+   "comillas, «el campesinado es sujeto"
+  ],
+  [
+   "de otros grupos sociales Este reconocimiento",
+   "de otros grupos sociales». Este reconocimiento"
+  ],
+  [
+   "acuerdo final de paz",
+   "Acuerdo Final de Paz"
+  ],
+  [
+   "sentencia de SU-20 de 2022",
+   "sentencia SU-020 de 2022"
+  ]
+ ],
+ "edu3d": [
+  [
+   "Otros están proce-- en proceso",
+   "Otros están en proceso"
+  ],
+  [
+   "de los que, de los que estos pueblos",
+   "de los que estos pueblos"
+  ],
+  [
+   "el Estado no le corre-- al Estado no le correspondería",
+   "al Estado no le correspondería"
+  ],
+  [
+   "adoptar las opciones, opciones básicas",
+   "adoptar las opciones básicas"
+  ],
+  [
+   "esa es-- ese es, a su vez",
+   "ese es, a su vez"
+  ],
+  [
+   "el artículo siete de la carta",
+   "el artículo 7 de la Carta"
+  ],
+  [
+   "a-afrodescendientes",
+   "afrodescendientes"
+  ],
+  [
+   "¿Es la misma situación\\? ¿Es, es similar",
+   "¿Es la misma situación? ¿Es similar"
+  ],
+  [
+   "titulación colectiva asentados de los pueblos-- asentados en",
+   "titulación colectiva de los pueblos asentados en"
+  ],
+  [
+   "el de, comillas, los pueblos tribales",
+   "el de, comillas, «los pueblos tribales"
+  ],
+  [
+   "por una legislación especial\\. Por esta",
+   "por una legislación especial». Por esta"
+  ],
+  [
+   "aplicación del convenio hacia",
+   "aplicación del Convenio hacia"
+  ],
+  [
+   "los de ven-- los venezolanos",
+   "los venezolanos"
+  ],
+  [
+   "les reconocía, les reconocía derechos",
+   "les reconocía derechos"
+  ],
+  [
+   "no único exclusi-- o exclusivo",
+   "no único o exclusivo"
+  ],
+  [
+   "la afirmación, la afirmación que",
+   "la afirmación que"
+  ],
+  [
+   "invol-involucrado",
+   "involucrado"
+  ],
+  [
+   "cuando esté en cuestión-- cuestiones como",
+   "cuando esté en cuestión cuestiones como"
+  ],
+  [
+   "que se hace, que se hace a pesar",
+   "que se hace a pesar"
+  ],
+  [
+   "ratificados por Colombia». La familia",
+   "ratificados por Colombia. La familia"
+  ],
+  [
+   "sobre los derechos de los demás\\. Muy rápidamente",
+   "sobre los derechos de los demás». Muy rápidamente"
+  ],
+  [
+   "define el interior superior, el interés superior",
+   "define el interés superior"
+  ],
+  [
+   "de la reserva de sillas sobre las, de reserva sobre sillas azules",
+   "de reserva sobre sillas azules"
+  ],
+  [
+   "una se-sentencia reciente, la Corte Constitucional, la, en la T302",
+   "una sentencia reciente, en la T-302"
+  ],
+  [
+   "de 2025, el, la Corte",
+   "de 2025, la Corte"
+  ],
+  [
+   "(?<=Interamericana para )prevenir",
+   "Prevenir"
+  ],
+  [
+   "(?<=Prevenir, )sancionar",
+   "Sancionar"
+  ],
+  [
+   "(?<=Sancionar y )erradicar",
+   "Erradicar"
+  ],
+  [
+   "(?<=Erradicar la )violencia",
+   "Violencia"
+  ],
+  [
+   "(?<=Violencia contra la )mujer",
+   "Mujer"
+  ],
+  [
+   "Belem do Pará",
+   "Belém do Pará"
+  ]
+ ],
+ "edu4d": [
+  [
+   "el artículo dos cuarenta y seis",
+   "el artículo 246"
+  ],
+  [
+   "artículo ocho punto dos",
+   "artículo 8.2"
+  ],
+  [
+   "que puedan surgir entre la aplicación de este princip-- que puedan surgir en la aplicación",
+   "que puedan surgir en la aplicación"
+  ],
+  [
+   "la Constitución, Constitución fue",
+   "la Constitución fue"
+  ],
+  [
+   "la maximización, maximización de",
+   "la maximización de"
+  ],
+  [
+   "de corolario, corolario de",
+   "de corolario de"
+  ],
+  [
+   "a la integración, integridad, perdón, personal",
+   "a la integridad personal"
+  ],
+  [
+   "de diferen-diversos y diferentes",
+   "de diversos y diferentes"
+  ],
+  [
+   "de esta secuen-se, de esta secuencia",
+   "de esta secuencia"
+  ],
+  [
+   "condicionada por, por a, por parámetros",
+   "condicionada por parámetros"
+  ],
+  [
+   "por cuando, por cuanto",
+   "por cuanto"
+  ],
+  [
+   "el ete-- el ter-- el elemento territorial, discúlpenme, puede",
+   "el elemento territorial puede"
+  ],
+  [
+   "efecto expansivo Lo que",
+   "efecto expansivo, lo que"
+  ],
+  [
+   "tramitar esos casos, otros casos similares,",
+   "tramitar otros casos similares,"
+  ],
+  [
+   "La sala allí evalúa",
+   "La Sala allí evalúa"
+  ],
+  [
+   "la directiva cero doce",
+   "la Directiva 012"
+  ],
+  [
+   "La atención de estos derechos a otros",
+   "La tensión de estos derechos a otros"
+  ]
+ ],
+ "edu5d": [
+  [
+   "Cisma Mujer",
+   "Sisma Mujer"
+  ],
+  [
+   "matrimonio forzados",
+   "matrimonios forzados"
+  ],
+  [
+   "precisa de los contextos La constante",
+   "precisa de los contextos. La constante"
+  ],
+  [
+   "tipo de: las damas",
+   "tipo de: «las damas"
+  ],
+  [
+   "como ese o esos no",
+   "como ese» o «esos no"
+  ],
+  [
+   "decentes para visitar\\.",
+   "decentes para visitar»."
+  ],
+  [
+   "Máximo cuando en su contexto",
+   "Máxime cuando en su contexto"
+  ],
+  [
+   "ni de denus-ni de denunciar",
+   "ni de denunciar"
+  ],
+  [
+   "además extremamente traumática",
+   "además extremadamente traumática"
+  ],
+  [
+   "de abordar, de abordar toda",
+   "de abordar toda"
+  ],
+  [
+   "ley diecisiete sesenta y uno",
+   "Ley 1761"
+  ],
+  [
+   "se trate de la mujer, de la muerte, perdón, de una mujer trans",
+   "se trate de la muerte de una mujer trans"
+  ]
+ ]
+}

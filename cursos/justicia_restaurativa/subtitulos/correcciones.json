@@ -1,0 +1,224 @@
+{
+ "_todos": [
+  [
+   "\\b([Ll])a fiscalía\\b",
+   "\\1a Fiscalía"
+  ],
+  [
+   "\\bEspina\\b",
+   "Ospina"
+  ],
+  [
+   "(?<!\\S)\"(?=\\S)",
+   "«"
+  ],
+  [
+   "(?<=\\S)\"(?=[\\s.,;:?!]|$)",
+   "»"
+  ]
+ ],
+ "_despues": [
+  [
+   "\\bley (\\d{3,})",
+   "Ley \\1"
+  ],
+  [
+   "\\bdecreto (\\d{3,})",
+   "Decreto \\1"
+  ],
+  [
+   "\\bresolución (\\d{3,})",
+   "Resolución \\1"
+  ]
+ ],
+ "jrcc": [
+  [
+   "con el bagaje que, con el que ustedes",
+   "con el bagaje con el que ustedes"
+  ],
+  [
+   "haya, eh, creatividad en torno a considero-- consideramos",
+   "haya creatividad en torno a: consideramos"
+  ],
+  [
+   "integral, integral el curso",
+   "integral el curso"
+  ],
+  [
+   "es la verdad natural",
+   "es, la verdad, natural"
+  ],
+  [
+   "llegamos al-- llegaron",
+   "llegaron"
+  ],
+  [
+   "Entonces, eh Este es",
+   "Entonces, este es"
+  ],
+  [
+   "que, que haces Víctor para, para cerrar",
+   "que haces, Víctor, para cerrar"
+  ],
+  [
+   "también lo que-- la, la posibilidad",
+   "también la posibilidad"
+  ],
+  [
+   "otorga o rami-- herramientas",
+   "otorga herramientas"
+  ],
+  [
+   "sugerirlo, ehm, esa conversación",
+   "sugerirlo, esa conversación"
+  ],
+  [
+   "ya de cierre es-- ya vimos",
+   "ya de cierre: ya vimos"
+  ],
+  [
+   "cuidado especial Y todo eso lleva a, a, pues a plantear",
+   "cuidado especial. Y todo eso lleva, pues, a plantear"
+  ],
+  [
+   "presentaría-- o, mmm, presento, em, otros",
+   "presentaría o presento otros"
+  ],
+  [
+   "pues es posible-- en ese paso",
+   "pues en ese paso"
+  ],
+  [
+   "ofensoras res-- eh, por otra",
+   "ofensoras por otra"
+  ],
+  [
+   "la idea de la pers-- la-- mmm, que tiene",
+   "la idea que tiene"
+  ],
+  [
+   "rompe con esa, con esa-- e-ese muro",
+   "rompe con ese muro"
+  ],
+  [
+   "encontrar esa, esa-- ese quiebre, e-epistémico, sobre todo. Algo, algo así",
+   "encontrar ese quiebre epistémico, sobre todo. Algo así"
+  ],
+  [
+   "de ponerlo en, en-- a quién-- en cómo explicarlo",
+   "de ponerlo en… en cómo explicarlo"
+  ],
+  [
+   "en, en Crimen y castigo, de",
+   "en «Crimen y castigo», de"
+  ],
+  [
+   "una le-lectura recomendada Raskolnikov",
+   "una lectura recomendada. Raskolnikov"
+  ],
+  [
+   "leerlo, eh, pero",
+   "leerlo, pero"
+  ],
+  [
+   "esta gradualidad, gradualidad de",
+   "esta gradualidad de"
+  ],
+  [
+   "en que cometieron, cometieron los hechos",
+   "en que cometieron los hechos"
+  ],
+  [
+   "cierro, em, hay un",
+   "cierro, hay un"
+  ],
+  [
+   "libro, si-- Víctor, si te",
+   "libro, Víctor, si te"
+  ],
+  [
+   "se llama La gra-- bueno, ahí no, ahí no se ve ,",
+   "se llama… bueno, ahí no se ve,"
+  ],
+  [
+   "se llama La gravedad y otras sustancias, de Daniel",
+   "se llama «La gravedad y otras sustancias», de Daniel"
+  ],
+  [
+   "dice así: También se debe",
+   "dice así: «También se debe"
+  ],
+  [
+   "que ya le sucedieron\\.",
+   "que ya le sucedieron»."
+  ],
+  [
+   "la obligación De tener",
+   "la obligación de tener"
+  ],
+  [
+   "No, no se puede decir, y así",
+   "No se puede decir, y así"
+  ],
+  [
+   "con unas, eh, con unos conceptos",
+   "con unos conceptos"
+  ],
+  [
+   "ustedes, ah, pueden apropiar. Claro, ya, eh, algunas-- algunos de ustedes",
+   "ustedes pueden apropiar. Claro, algunos de ustedes"
+  ],
+  [
+   "de algunos, de algunas peque-- de algunas reflexiones. I-iba a decir",
+   "de algunas reflexiones. Iba a decir"
+  ],
+  [
+   "Este módulo que la ASI los invita a la de la justicia",
+   "Este módulo, que así los invita a la aplicación de la justicia"
+  ],
+  [
+   "alternativa o una-- y/o una importante",
+   "alternativa y/o una importante"
+  ],
+  [
+   "únicamente la justicia restaurativa No,",
+   "únicamente la justicia restaurativa. No,"
+  ],
+  [
+   "algunos ejemplos y algunas, algunos componentes",
+   "algunos ejemplos y algunos componentes"
+  ],
+  [
+   "con un concepto Con, con un apellido",
+   "con un concepto, con un apellido"
+  ],
+  [
+   "artículo tres cuarenta y ocho",
+   "artículo 348"
+  ],
+  [
+   "pues van-- se va a indicar",
+   "pues se va a indicar"
+  ],
+  [
+   "actos procesales, actos procesales, actuaciones",
+   "actos procesales, actuaciones"
+  ],
+  [
+   "por medio de ellas, eh, de la mano",
+   "por medio de ellas, de la mano"
+  ],
+  [
+   "no, no exclusivamente esquemático",
+   "no exclusivamente esquemático"
+  ],
+  [
+   "ojalá de manera-- en un porcentaje",
+   "ojalá en un porcentaje"
+  ],
+  [
+   "Cuenten, cue-- que cuenten con",
+   "Que cuenten con"
+  ]
+ ]
+}

@@ -16,13 +16,15 @@ Método y criterio: `herramientas/subtitulos/README.md`.
 | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 4 CIERRE-v1` | 41 | 3:32 | `1ypllmBg2QhE8oZD8s-nLVihVPGgPSYWS` |
 | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 5 INICIO-v1` | 44 | 3:24 | `1KuHC3whDnwboJGohRLEdC8HRMQRaC_pb` |
 | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 5 CIERRE-v1` | 44 | 3:20 | `1gkBlfa3PI1yBxSZSseWj9Mm80WUHFHnx` |
-| `PRIO 2 - DERECHOS HUMANOS - CIERRE DEL CURSO-v1` | 20 | 1:50 | `1RSVz9bt42PNIR_KAQh-3elaNU68kn3jB` |
+| `PRIO 2 - DERECHOS HUMANOS - CIERRE DEL CURSO-v1` | 20 | 1:50 | `1ZwZmAti9K366RS1mAg3jIB48uNzAbjux` |
 | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 1 LLEGA LA NOTICIA` | 36 | 2:18 | `15s2dFQ90UzPJia0vfT7FiaEyraot4b2h` |
 | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 2 LA DEFENSA INVOCA UN TRATADO` | 46 | 3:21 | `1YylEiF-OX0cJkRtyJ9NVMOVsSRg4cU9C` |
 | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 3 DOS VERSIONES DE LA MISMA ENTREVISTA` | 52 | 3:01 | `1W_HKEA2juBMXM6yk-CcN8lfp5TaUGXgI` |
 | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 4 LA MEDIDA DE ASEGURAMIENTO` | 85 | 5:18 | `19Rmjps0EFzkUo4jFQRTVDrY4M8Dz9GbJ` |
 | `PRIO 2 - DERECHOS HUMANOS - UNIDAD 5 LA DECISIÓN INTEGRAL Y EL GIRO` | 33 | 2:09 | `1DWj9h7URojE59XArtxeQnYLH-zQ3eYlP` |
 
+- El `.srt` del cierre del curso se subió de nuevo el 18 nov por la tarde (id nuevo en la tabla; el anterior está en la
+  papelera): «…que usted tomó en el camino, no.» quedaba partido, con el «no.» al principio del subtítulo siguiente.
 - Drive: «Videos» del curso (`1Oa_NdV5Uwl6IgMccYY-BO38RofKr7iAk`) para los casos; dentro, «VIDEOS PROFE - Yefri Yoel
   Torrado Verjel» (`1O1O4kbtNFGO4N7vtb-Ydph5K4PUZ3EQ1`) para los de profe.
 - Los casos se llaman `DH_U<n>_v1.mp4` en disco y `PRIO 2 - DERECHOS HUMANOS - UNIDAD <n> <TÍTULO>.mp4` en Drive (mismo
