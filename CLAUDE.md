@@ -3033,3 +3033,54 @@ con la subida. Rendirlos enteros habría sido más de una hora.
 - El archivo de estadísticas va con nombre relativo y `cwd`, para no escapar «D:» en el filtro.
 - Solo cartones y lower thirds. Una lista de After Effects habría que rendirla con otro nombre y
   agregarla al script; las tres dudas que quedaron en listas se dejaron para que Sebastián decida.
+
+## Una tanda de ocho videos de profe: medir primero, ordenar la cola y decir la hora de verdad (Terminaciones anticipadas, 17 nov 2026)
+
+Inicio y cierre de las unidades 1 a 4 (55 minutos de video), en versión provisional. Salieron en
+1 h 40 min desde que llegó el pedido; yo había dicho 70 a 80 minutos y hubo que corregir la hora
+dos veces.
+
+**Medir antes de copiar el plan de al lado.** Eran del mismo profe y del mismo curso que el inicio
+y el cierre del curso, y aun así eran otra grabación: 1920×1080 en vez de 1280×720, BT.709 en vez
+de BT.601, el profe mucho más cerca de la cámara.
+- **La matriz de color se mide, no se supone.** Con un elemento de color conocido que esté en las
+  dos fuentes (el rojo, el azul y el amarillo del panel DAE/Fiscalía): se lee la fuente nueva como
+  601 y como 709 y se compara con un compuesto ya entregado. Aquí 709 daba el rojo a 2 niveles del
+  de referencia y 601 a 19.
+- **Una fuente que repite cuadros no sirve para buscar cortes por el pico aislado**: la
+  diferencia entre cuadros alterna ceros y saltos de 5 a 9 todo el tiempo. Se mira el máximo (9,3,
+  sin ningún 13) y las pausas de la transcripción.
+- **Si el profe ocupa la columna de cartones, se dice en la entrega provisional**, no cuando pidan
+  los gráficos.
+
+**La máquina es un i7-4790S de cuatro núcleos.** Tiempos medidos con 1080p:
+- compuesto (`ic_pieza componer`, x264 `fast` CRF 16): 13 a 18 min por video de 6 a 8 min, con
+  tres a la vez; el cartón de título, 2 min;
+- máster de Resolve: 1 a 2 min **si nada le quita el procesador**, 7 min compitiendo con tres ffmpeg;
+- entrega x264 `slow`: 26 a 30 min por video, con dos a la vez y los compuestos corriendo;
+  `medium`: 9 a 12,5 min, con el mismo PSNR (51,3–51,5 dB) y tamaños parecidos.
+
+**La regla para dar la hora:** con esta máquina, una tanda de N minutos de video 1080p tarda de
+reloj unas **1,5 × N** con `medium` y algo más de **2 × N** con `slow`, más 15 minutos de traer,
+medir y planear (aquí: 55 min de video, 83 min de cadena con seis en `medium` y dos en `slow`). Se
+dice eso al empezar, no «70 minutos» a ojo.
+
+**Cómo se ordena la cola** (`D:\DAE\_tmp\ta_u\`, ver el README de `terminaciones-anticipadas/profe`):
+- Resolve rinde de a uno y es el cuello de botella cuando compite: los ffmpeg van **por debajo de
+  la prioridad normal** (`prioridad.py`, `SetPriorityClass` 0x4000 cada 15 s a los que aparezcan).
+- Los compuestos, tres a la vez; la línea y el máster, en serie apenas está cada compuesto; la
+  entrega x264, la hoja y la copia a Drive, dos a la vez apenas está cada máster. Se entrega y se
+  manda el enlace **por unidad**, sin esperar a las ocho.
+- **Antes de lanzar las ocho líneas se mira un cuadro con el lower third encima** (el cartón se
+  rinde aparte en segundos y se compone sobre un cuadro de la fuente): un error ahí se repite ocho
+  veces.
+
+**Entrega provisional: `PRESET_ENTREGA = 'medium'` en el plan.** `mp4_entrega` lo lee (el plan
+le llega por `DAE_PLAN`); sin esa línea usa `slow`, el de la receta. Solo cambia el preset: CRF 18,
+High L4.0, keyint 48, Rec.709 y faststart quedan igual. Se le dice a Sebastián, y la v2 con
+gráficos vuelve a `slow`.
+
+**Si el puente con la máquina se cae a mitad de una tanda:** lo que se lanzó con `Popen` sigue
+corriendo. Un solo reintento, se sigue con lo que se pueda desde la nube (planes, documentos) y se
+vuelve a probar al terminar eso. No se relanza nada a ciegas.
+
