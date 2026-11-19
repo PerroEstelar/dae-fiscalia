@@ -3576,3 +3576,35 @@ Con D: liberado, lo que no usa el pool y estorba en E: se mueve entero con
 deja un `LEER` donde estaba. `E:\DAE MASTER\_archivo_tmp` está ahora en `D:\DAE\_movido_de_E\_archivo_tmp`.
 `profe_cadena` pide 1 GB libre en E: para 11 minutos de video; una pieza deja en E: unos 0,9 GB (fuente,
 compuesto, cartones y entrega).
+
+## Cambiar el fondo virtual de un profe por el de la Fiscalía (Ley 1826, 19 nov 2026)
+
+Sebastián pidió los diez videos de profe de la Ley 1826 (inicio y cierre del curso y de las cuatro unidades) con el
+fondo virtual de biblioteca cambiado por el de la Fiscalía, y eligió el encuadre **«B: 10 % más chico»**. Todo está
+en `cursos/ley_1826/profe/` (base, diez planes, `lote/` y su README).
+
+- **`herramientas/video/recorta_cuadro.py`**: Robust Video Matting sobre el cuadro entero de la fuente (no un
+  cuadrado), escalado 0,9 y apoyado abajo sobre `FONDO 4 V2.png`. Con escala 0,9 el borde izquierdo de la fuente
+  queda en x=386 y el de arriba en y=108, **dentro** del cuadro.
+- **Lo que se vio tarde: el borde recto.** Una mano que entra por la izquierda o la cabeza que se sale por arriba
+  quedaban cortadas por una línea recta en medio del fondo (116 cuadros en nueve gestos en el inicio del curso, 48
+  en el inicio de la U1). Se notó **después** de entregar la U1 INICIO: la revisión miraba el mate por saltos, no
+  sus bordes. Arreglo: `--pluma-x 96 --pluma-y 48` (rampa smoothstep del alfa en los bordes del rectángulo que caen
+  dentro del cuadro) y `lote/emplumar.py <clave>…` para los recortes ya hechos sin volver a correr el modelo. La U1
+  INICIO salió de nuevo como -v2; la v1 quedó en la carpeta. **Antes de entregar un recorte, mirar cuántos cuadros
+  tocan los bordes del rectángulo que quedan dentro del cuadro** (`D:\DAE\_tmp\lp_p\rev_borde.py` y
+  `rev_borde_arriba.py`).
+- **`SUAVE = n` en un plan** (`ic_pieza.tramos_vf`): en un corte entre dos tramos con la misma ventana, el último
+  cuadro del tramo anterior se funde en n cuadros sobre el siguiente; no cambia la cantidad de cuadros ni el audio.
+  Lo llevan `plan_lpu2i` y `plan_lpu3c` (cortes de arranques en falso con el profe quieto).
+- **El lote de recortes y la cadena no se conocen.** `lote_cadena.py` no espera a que exista el `_recortado.mp4`:
+  un plan que entra en `cola.txt` antes de que termine su recorte falla. El que pone en la cola
+  (`D:\DAE\_tmp\lp_p\orquesta_c.py`) espera la línea `RECORTE <clave> OK` de `recorta_lote.log`.
+- **Ritmo con todo a la vez:** dos recortes (≈3 cuadros/s cada uno, 2,7–3,4), un compuesto y un emplumado se
+  pelean la CPU; el compuesto del inicio del curso (6,9 min) tardó 30 min en vez de 9. La placa no pasa del 40 %.
+  Para decir la hora de entrega, contar los cuadros que faltan recortar a 6 cuadros/s entre los dos.
+- **C: y el archivo de paginación**, otra vez (ver «C: se llena por el archivo de paginación»): con dos recortes,
+  Resolve y Chrome abierto C: llegó a 0,27 GB libres. Se movió a `D:\DAE\_movido_de_C\` (robocopy /MOVE, sin
+  borrar nada) `C:\DAE_masters_archivo` (11 grabaciones originales, 3,7 GB; deja `LEER.txt`) y los temporales
+  `%TEMP%\dae_recorte` y `dae_rindiendo`; los 11 `LEER - la fuente esta en C.txt` de E: dicen la ruta nueva
+  (`D:\DAE\_movido_de_C\leer_actualizados.log`). La cadena va de a una (`lote_cadena.py 1`).
