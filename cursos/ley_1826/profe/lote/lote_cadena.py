@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 """Ley 1826, videos de profe (19 nov 2026; es el guion de Trata con las rutas de este curso): cadena sin After
 Effects (componer, titulo, cartones) de los planes de cola.txt,
-tres a la vez. La cola se puede alargar mientras corre; termina cuando encuentra la linea FIN. Log: lote_cadena.log"""
+tres a la vez (o las que diga el primer argumento: con los dos recortes corriendo va de a una, porque la memoria
+comprometida hace crecer el archivo de paginacion y C: se queda sin lugar). La cola se puede alargar mientras
+corre; termina cuando encuentra la linea FIN. Log: lote_cadena.log"""
 import importlib, os, subprocess, sys, threading, time
 from concurrent.futures import ThreadPoolExecutor
 PY = sys.executable
@@ -39,7 +41,7 @@ def cadena(p):
         w('CADENA EXCEPCION', p, repr(e)[:400])
 
 
-ex = ThreadPoolExecutor(max_workers=3)
+ex = ThreadPoolExecutor(max_workers=int(sys.argv[1]) if len(sys.argv) > 1 else 3)
 vistos = []
 while True:
     c = cola()
