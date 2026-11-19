@@ -4,6 +4,7 @@
 |---|---|---|---|
 | `justiciarestaurativa - CURSO - CIERRE-v1` | 598 | 44:49 | `1xuKv_o5UkvBMXuwx_PspTtD8NtTSbvi2` |
 | `justiciarestaurativa - CURSO - INICIO-v1` | 254 | 20:02 | `1Nqgjpci4dQcnyEYvNhej21bFk0poNlRU` |
+| `justiciarestaurativa - U1 - INICIO-v1` | 112 | 8:25 | `1fizXTPPfcUv5NdtZ5dGWexytohLJHZcQ` |
 
 Carpeta de Drive: VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`), al lado del video. Copia junto al
 video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
@@ -31,3 +32,17 @@ video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
   caracteres, CRLF, sin BOM), se buscaron tropiezos por patrón y se leyó una muestra de 12 subtítulos; no hubo segunda
   escucha de tramos dudosos.
 
+## Inicio de la unidad 1 (18 nov 2026, noche)
+
+- Se transcribió la entrega (1.023 palabras, tres hablantes). **Diez reglas a mano** en `correcciones.json` (`jru1i`).
+- **Tres salieron de comparar con la transcripción de la fuente**, que Scribe oyó distinto: «Mi edad empieza con—
+  mostrando» es «La unidad empieza mostrando»; «de cuáles, eh La sustancia» es «de cuál es la sustancia»; y «bien
+  jurídico tutelada» es «tutelado». En las tres la otra pasada es la que tiene sentido.
+- **«Jhonatan»**, no «Jonathan»: es la grafía que eligió Sebastián para el rótulo (tres veces).
+- Arranques en falso: «¿cómo— qué, qué consideran», «principios del si— de, del modelo», «Para empezar, eh, no se
+  centran, estos principios no nacen», «ampliar y, e incluso complejizar el modelo, eh, el modelo penal» y «se hace
+  necesario, eh, se aborde, se aborde… procure» (la fuente dice «que se aborde… se procure»).
+- **Una concordancia:** Martín dice «distintos, eh, definiciones»; el subtítulo lleva «distintas definiciones». Es la
+  única regla que no es un tropiezo ni una palabra mal oída.
+- Revisión: formato validado (numeración, tiempos, 1–2 renglones de hasta 42 caracteres, CRLF, sin BOM) y **lectura
+  completa** de los 112 subtítulos. Queda un subtítulo de dos palabras («Y es que», 2:19), que es una pausa suya.

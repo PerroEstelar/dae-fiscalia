@@ -98,3 +98,39 @@ Verificada en Drive byte a byte (copia de servidor a `_MA subidas/_verif jr inic
   `DAE MASTER - CURSOS` con `LoadProject` (tarda más de un minuto: el puente corta, pero el proyecto queda abierto) y se
   relanzó la entrega.
 
+## Inicio de la unidad 1 (18 nov 2026, noche) — entrega provisional
+
+Sebastián: «ok ahora prosigue con unidad 1 inicio justicia restaurativa». Fuente: «…Unidad 1 inicio»
+(`1dqkWwz5aokHQV2ECPAvmvXv8aYCI9FFI`, 151 MB).
+
+| | |
+|---|---|
+| entrega | `justiciarestaurativa - U1 - INICIO-v1.mp4` · `1JlmaJV6PewDbHkVAFL4f6hb0_RS5ZCBx` |
+| carpeta de Drive | VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`) |
+| subtítulos | `justiciarestaurativa - U1 - INICIO-v1.srt` · `1fizXTPPfcUv5NdtZ5dGWexytohLJHZcQ` (112; ver `../subtitulos/`) |
+| medidas | 8:25,4 · 12.117 cuadros = línea · 338.918.974 bytes · H.264 a 5,37 Mb/s · −16,1 LUFS, −2,6 dBTP |
+| línea | `JR - U1 - INICIO` (proyecto `DAE MASTER - CURSOS`) |
+| disco | `E:\DAE MASTER\PRIORIDAD 1\CURSO - JUSTICIA RESTAURATIVA\UNIDAD 1\INICIO\` |
+
+Verificada en Drive byte a byte (copia de servidor a `_MA subidas/_verif jr u1 inicio 18nov` y `verificar_drive.py`: «OK»).
+
+- **La fuente** dura 20:03,9 (36.117 cuadros, 30 fps, BT.601) pero **solo los primeros 8 minutos tienen contenido**:
+  intro pegada (0–277), la conversación (278–14418), dos cuadros blancos, el outro y después negro hasta el final.
+  Entra del 280 al 14419. Sin reinicios ni pausas largas: no se corta nada.
+- **Tres mosaicos sobre blanco**, no dos: Martín arriba a la izquierda, un tercer profesor arriba a la derecha y Víctor
+  abajo al centro. Habla Víctor (0:09,5–1:02), el tercer profesor (1:02,5–4:32,6), Martín (4:34,9–6:03,4) y cierra
+  Víctor (6:05,9–8:00).
+- **El tercer profesor no está en la ficha del curso.** Víctor lo presenta de palabra; se le preguntó a Sebastián y
+  dijo «Jhonatan Sandoval, sin cargo»: el rótulo lleva solo el nombre, con esa grafía.
+- **Nombre de la unidad** (cartón de título), del PDF del curso (`1WjbL40IW0mgYWmEGia8TMAwaj2082s56`, 3.1): «Unidad 1.
+  Bases conceptuales y marco jurídico de la justicia restaurativa».
+- **Rótulos:** con tres mosaicos el blanco libre queda abajo a los lados, y un nombre en un renglón se metía en el
+  mosaico de abajo (empieza en x 509) o se salía por la derecha. Van en dos renglones y con `ancho=430`: Víctor en
+  (24, 770), Martín en (24, 575), Jhonatan en (1440, 575); cada uno sale cuando esa persona empieza a hablar (11,0,
+  63,3 y 275,9 s de la fuente). Se midieron las cajas en el alfa del `.mov` y se miraron sobre el compuesto antes de
+  rendir: ninguna toca un mosaico ni el borde.
+- **Cómo se hizo:** `prep_fuente.py` (copia, sonda y STT de la fuente), `profe_cadena.py plan_jru1i componer titulo
+  cartones` (compuesto en 4,5 min) y `lote/entrega_gpu.py` (línea, calibración y render en 1,5 min; pidió 5000 kb/s y
+  salió a 5365).
+- Para ver un `.mov` qtrle con alfa sobre el compuesto en ffmpeg: `[1:v]select=eq(n\,90),format=rgba` y
+  `overlay=format=rgb`. Con `-ss` en la entrada del `.mov` el cuadro salía vacío y la hoja no mostraba el rótulo.
