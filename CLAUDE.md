@@ -3454,3 +3454,51 @@ para empezar). En E: hay 5,4 GB de grabaciones originales de piezas ya entregada
   Lo que hace falta es que Sebastián libere E: o D:.
 - **`profe_cadena componer` pasa los primeros minutos sin escribir nada**: es la medida de sonoridad (2,5 min para 20
   min de video). El `.parcial` aparece después; no es un cuelgue.
+
+## Revisar a fondo un video de profe: lo que la revisión corta no veía (JR, inicio de la U3, 18 nov 2026)
+
+Sebastián pidió el inicio de la U3 «revisado muy bien». La revisión larga encontró tres cosas, dos de ellas en videos
+ya entregados. Desde ahora van en toda pieza de profe:
+
+- **Las filas del borde.** Las grabaciones de videollamada de Justicia restaurativa traen una raya negra arriba, de
+  lado a lado: fila 0 en Y 16 y fila 1 en Y 125 sobre un lienzo en Y 234. Pasó a cuatro entregas (inicio del curso,
+  inicio y cierre de la U1, inicio de la U2) sin que la hoja de revisión la mostrara: a 333 px de ancho una fila no
+  existe. **Se miden las cuatro orillas de la fuente** (mínimo y máximo de las filas 0–3 y 1076–1079 y de las columnas
+  0–3 y 1916–1919) **y las filas de arriba de la entrega** en el título, el cuerpo y el cierre. Se arregla en el plan:
+  `PREFILTRO = 'drawbox=x=0:y=0:w=iw:h=2:color=0xFEFEFE:t=fill'` (0xFEFEFE da Y 234; `white` da 235).
+- **La matriz de color de una fuente sin etiqueta se mide, no se supone.** La grabación sin pasar por el editor viene
+  sin `color_space` y en BT.709; las que pasan por el editor llegan etiquetadas `smpte170m`. Se compara un color
+  saturado que esté en las dos (el rojo, el azul y el amarillo del logo de la Fiscalía del fondo virtual) leyendo la
+  nueva como 601 y como 709 contra una ya conocida. Con la matriz equivocada el rojo pasa de 234 a 217.
+- **El nombre de la unidad se busca en todo el documento.** El PDF de Justicia restaurativa llama a la unidad 1
+  «Fundamentos, principios y ejes…» en la estructura del curso y «Bases conceptuales y marco jurídico…» en «3.1 Nombre
+  de la unidad». Si hay dos, se le dice a Sebastián cuál se puso y cuál es la otra.
+
+Y cómo se comprueba que imagen y sonido siguen juntos después de un corte:
+
+- **Sonido:** la transcripción de la entrega; cada palabra tiene que caer a ±0,1 s de `tiempo de la fuente − lo
+  cortado + 409/23,976 − T0`.
+- **Imagen:** se compara un cuadro de la entrega con los 13 cuadros de la fuente alrededor del esperado, por
+  diferencia media en la **zona de la cara a resolución completa** (300×300). El mínimo es nítido (2,5 contra 8–16).
+  Con el mosaico entero reducido a 226 px la curva sale plana y el mínimo no dice nada. Para sacar el cuadro `n`:
+  `-ss n/fps − 0,01 -frames:v 1` (un `select=between(t,…)` después de `-ss` no casa nunca: `-ss` pone el tiempo en
+  cero, y ffmpeg decodifica el resto del archivo).
+- **Una tira de miniaturas no sirve para juzgar un gesto**: a 480 px creí ver unas manos levantadas que no estaban.
+  Ante la duda, la zona a resolución completa o el número.
+
+Otras dos cosas de esta pieza:
+
+- **Antes de mover un archivo de `E:\DAE MASTER`, se mira si el media pool lo usa.** Recorrer el pool entero (5.880
+  clips, `GetClipProperty('File Path')`) tarda 2,7 s desde `run_inline`; el resultado queda en
+  `D:\DAE\_tmp\jr_p\pool_paths.json`.
+- **Una cifra que no se oye se pasa varias veces por Scribe** (la frase aislada a 1,0×, 0,9×, 0,8×, 0,7× y 0,6×, más
+  las dos pasadas enteras): «treinta y cinco por ciento» salió en cuatro de siete. Se escribe la lectura más repetida y
+  **se le dice a Sebastián que es eso y no una certeza**.
+
+## Inventario de videos de profe (18 nov 2026)
+
+Hoja «Videos de profe_inventario y enlaces_18 NOV» (`13wsiWOYCbAxg4IPKHJq4r63uCkDWWaub1YKMP4h_xxM`), en la raíz del
+Drive de Sebastián, junto a la de casos: una fila por video de profe con prioridad, curso, unidad, pieza, profesor,
+estado, duración y enlaces al video, al `.srt` y a la carpeta. 85 entregados, 935 minutos. Se arma con
+`herramientas/inventario_profe/` (ver su README). **Un video de profe nuevo se entrega con su fila en esa hoja**, igual
+que un caso nuevo con la suya en la de casos.
