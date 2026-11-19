@@ -108,6 +108,7 @@ JR = [
     ('justiciarestaurativa - U1 - CIERRE-v1', 'Unidad 1', 'Cierre de la unidad', VJM, 'Lleva un corte de 46 s donde un profesor se traba y vuelve a empezar.'),
     ('justiciarestaurativa - U2 - INICIO-v1', 'Unidad 2', 'Inicio de la unidad', VJ, 'Sin cortes.'),
     ('justiciarestaurativa - U3 - INICIO-v1', 'Unidad 3', 'Inicio de la unidad', VJM, 'Lleva un corte de 14,5 s que pide el profesor («un corte, por favor»).'),
+    ('justiciarestaurativa - U4 - CIERRE-v1', 'Unidad 4', 'Cierre de la unidad', VJM, 'Sin cortes. La grabación termina sin despedida.'),
     ('justiciarestaurativa - CURSO - CIERRE-v1', 'Curso', 'Cierre del curso', VM, ''),
 ]
 RAYA = ' Tiene una raya negra de 1 px en el borde de arriba durante el cuerpo (viene en la grabación); pendiente decidir si sale una v2.'
@@ -117,7 +118,7 @@ for nombre, uni, pieza, profe, nota in JR:
     m, t = M[nombre], T[nombre]
     if nombre in ('justiciarestaurativa - CURSO - INICIO-v1', 'justiciarestaurativa - U1 - INICIO-v1', 'justiciarestaurativa - U1 - CIERRE-v1', 'justiciarestaurativa - U2 - INICIO-v1'):
         nota = (nota + RAYA).strip()
-    fila(1, CUR, uni, pieza, profe, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '18 nov', nota, n_srt=t[0])
+    fila(1, CUR, uni, pieza, profe, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '19 nov' if 'U4' in nombre else '18 nov', nota, n_srt=t[0])
 
 # ---------- Prioridad 1 · Ley 1826: sin videos de profe
 # ---------- Prioridad 2 · Derechos humanos

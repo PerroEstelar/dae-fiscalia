@@ -280,3 +280,41 @@ probó el filtro en un cuadro por el mismo camino (`ic_pieza.escala`): filas de 
 U3 L5 y U4 L1; SRPA presentación y cierre del curso, U3 desarrollo y cierre, U5 cierre; Derechos humanos cierre de la
 U5). Antes se comprobó, recorriendo los 5.880 clips del media pool, que ninguno apunta a esos archivos, y que cada
 uno tiene su compuesto al lado. Después de esta entrega: E: 2,2 GB, D: 0,8 GB, C: 8,7 GB.
+
+## Cierre de la unidad 4 (19 nov 2026) — entrega provisional
+
+Sebastián: «sigamos con el cierre de u4 justicia restaurativa mientras tanto». Fuente: «Justica restuaraativa-
+Unidad 4 cierre.mp4» (`1G4PPvI-l50lDGY0ffUOr0Rushskq8MSt`, 191 MB, del 19 nov). El inicio de la U4 había llegado solo
+en audio (`.m4a`) y quedó esperando el `.mp4`.
+
+| | |
+|---|---|
+| entrega | `justiciarestaurativa - U4 - CIERRE-v1.mp4` · `1LT26NnbHAPWaZ5YtB1YJx0ZLn4P2vjf5` |
+| carpeta de Drive | VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`) |
+| subtítulos | `justiciarestaurativa - U4 - CIERRE-v1.srt` · `1Biajmt8kUdwHFIUg5ZcxrfNdfkG4qXwV` (159; ver `../subtitulos/`) |
+| medidas | 11:36,3 · 16.693 cuadros = línea · 467.267.915 bytes · H.264 Main a 5,37 Mb/s, BT.709 · −16,1 LUFS, pico −2,4 dBFS |
+| línea | `JR - U4 - CIERRE` (proyecto `DAE MASTER - CURSOS`) |
+| disco | `E:\DAE MASTER\PRIORIDAD 1\CURSO - JUSTICIA RESTAURATIVA\UNIDAD 4\CIERRE\` |
+
+Verificada en Drive byte a byte (copia de servidor a `_MA subidas/_verif jr u4 cierre` y `verificar_drive.py`: «OK jru4c
+467267915»).
+
+- **Fuente** (`plan_jru4c.py`): 1920×1080, 30 fps, 20.144 cuadros (11:11,5), BT.601 etiquetada. Trae la intro pegada
+  (0–277) y no trae outro. Tres mosaicos con los bordes de la unidad 1. Entra del cuadro 280 al 20144, **sin cortes**:
+  no hay reinicios ni pedidos de corte.
+- **La raya negra de arriba** (fila 0 en negro, fila 1 en gris) también viene en esta fuente. Sale con `PREFILTRO`,
+  como en el inicio de la U3. En la entrega las filas 0–3 miden 249–250 contra 251 del lienzo (tres cuadros).
+- **Nombre de la unidad:** «Plan de justicia restaurativa» (PDF del curso, 2.4).
+- **Lower thirds:** Víctor (0:11,5 de la fuente), Jhonatan (2:02,6) y Martín (5:40,9), los de tres mosaicos.
+- **Termina sin despedida:** la última frase de Víctor acaba en «…culminar este curso» y hay 0,4 s de silencio hasta
+  el final del archivo. Así llegó.
+- **Revisión de la entrega:** ocho cuadros (intro, título, los tres rótulos, cuerpo, cierre y outro); sin cuadros
+  negros (`blackdetect`); los silencios de más de 2 s son la intro, dos cambios de quien habla, una pausa de Martín y
+  el cierre; primera palabra a 17,86 s contra 10,12 s en la fuente (desfase esperado 7,725 s).
+- **Cadena:** `prep_fuente.py`, `prep2_jru4c.py` (brillo de todos los cuadros, bordes y mosaicos medidos con PIL,
+  turnos de la transcripción), `profe_cadena.py plan_jru4c componer titulo cartones` (componer 454 s) y
+  `lote/entrega_gpu.py` (render en 83 s; pidió 5000 kb/s y salió a 5369).
+- **Sitio en E:.** Quedaban 2,2 GB. `E:\DAE MASTER\_archivo_tmp` (20,4 GB, 46 archivos, ningún clip del pool) pasó con
+  `robocopy /MOVE` a `D:\DAE\_movido_de_E\_archivo_tmp` (0 fallos; nota `LEER` en `E:\DAE MASTER`). Después de esta
+  entrega: E: 23 GB, D: 111 GB, C: 6,9 GB.
+

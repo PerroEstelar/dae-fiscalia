@@ -8,6 +8,7 @@
 | `justiciarestaurativa - U1 - CIERRE-v1` | 138 | 10:06 | `1uz2jOdRPKn5Ebi7ubVVFZ_JzLH9SgYiM` |
 | `justiciarestaurativa - U2 - INICIO-v1` | 279 | 20:29 | `1RposWITC6uS9HXLojBBGYQnqCROA22Fo` |
 | `justiciarestaurativa - U3 - INICIO-v1` | 163 | 11:48 | `1Hm3rmSlqAMgw0wQ8FsDPCHngOL9cKnTc` |
+| `justiciarestaurativa - U4 - CIERRE-v1` | 159 | 11:36 | `1Biajmt8kUdwHFIUg5ZcxrfNdfkG4qXwV` |
 
 Carpeta de Drive: VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`), al lado del video. Copia junto al
 video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
@@ -98,3 +99,24 @@ video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
   (las dos pasadas oyen «autores», no «actores»).
 - Revisión: formato validado, **lectura completa** del borrador (165) y de cada renglón corregido en el final (163);
   el empalme del corte se lee de corrido («…a la justicia restaurativa hemos visto en esto una gran motivación»).
+
+## Cierre de la unidad 4 (19 nov 2026)
+
+- Se transcribió la entrega (1.349 palabras, tres hablantes; la fuente había dado 1.355). **Dieciocho reglas a mano**
+  en `correcciones.json` (`jru4c`): «Jhonatan» (cuatro veces), quince arranques en falso o muletillas («¿qué debie—
+  qué deben conocer», «del siglo antepa— de finales del siglo antepasado», «culminar con, eh, el, lo, el— la
+  evaluación», «que es este el árbol de decisiones que, que ayuda a, a, a, a más o menos…»), la mayúscula de
+  «precisamente Hay algo» y el punto final que faltaba.
+- **«Excelente disertación» (10:14) es una decisión, no lo que oyó Scribe.** Siete pasadas sobre esa frase: seis oyen
+  «insertación» (o «insertaciones», «investigaciones»), que no es una palabra; la única que tuvo diez segundos de
+  contexto (602,4–612,0 s de la fuente, a velocidad normal) oye «Excelente disertación, es un análisis muy
+  interesante». Va «disertación». Si alguien oye otra cosa, se cambia el `.srt` y nada más.
+- Queda como lo dicen: «Por otra vez, estimadas y estimados estudiantes» (tres pasadas), «de manera transversa» (tres
+  pasadas), «difíciles, difíciles entre las partes».
+- «…también estarían… Esto sí, yo creo que es muy pretencioso de mi parte»: Jhonatan deja la frase sin terminar; va
+  con puntos suspensivos.
+- La grabación termina sin despedida («…que se encuentren a punto de efectivamente culminar este curso.»); el último
+  subtítulo cierra ahí.
+- Revisión: formato validado (159 subtítulos, 1–2 renglones de hasta 42 caracteres, CRLF, sin BOM), **lectura completa**
+  del borrador y de cada renglón corregido. Quedan tres subtítulos de una sola palabra («Colegas,», «que», «Y…») donde
+  quien habla hace una pausa de más de dos segundos.
