@@ -6,6 +6,7 @@
 | `justiciarestaurativa - CURSO - INICIO-v1` | 254 | 20:02 | `1Nqgjpci4dQcnyEYvNhej21bFk0poNlRU` |
 | `justiciarestaurativa - U1 - INICIO-v1` | 112 | 8:25 | `1fizXTPPfcUv5NdtZ5dGWexytohLJHZcQ` |
 | `justiciarestaurativa - U1 - CIERRE-v1` | 138 | 10:06 | `1uz2jOdRPKn5Ebi7ubVVFZ_JzLH9SgYiM` |
+| `justiciarestaurativa - U2 - INICIO-v1` | 279 | 20:29 | `1RposWITC6uS9HXLojBBGYQnqCROA22Fo` |
 
 Carpeta de Drive: VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`), al lado del video. Copia junto al
 video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
@@ -65,3 +66,18 @@ video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
 - «sobre todos esos conceptos Son, son importantes» es «sobre todo esos conceptos son importantes» (así lo oyó la
   transcripción de la fuente).
 - Revisión: formato validado y **lectura completa** de los 138 subtítulos.
+
+## Inicio de la unidad 2 (18 nov 2026, noche)
+
+- Se transcribió la entrega (2.282 palabras, dos hablantes). **Veinte reglas a mano** en `correcciones.json` (`jru2i`):
+  «Jhonatan» (cuatro veces), «sentencia C-979 de 2005» (Scribe escribe «C979»), «lección 2.2» («dos punto dos») y
+  diecisiete arranques en falso o autocorrecciones («a partir, eh, o han partido, perdón», «en otros, en otras
+  unidades», «Luego, las garantías…, en las garantías…»). Ninguna cambia lo que dicen.
+- **La sigla:** Jhonatan no recuerda el nombre de la oficina de Naciones Unidas contra la droga y el delito y prueba
+  varias («es la UNDOC o UNOD, UNOD, UNDOC»; la transcripción de la fuente oyó además «UNODC»). El subtítulo lleva una
+  sola vez la sigla correcta: «es la UNODC».
+- «Este daño genera obligaciones»: la transcripción de la fuente dejó la palabra en blanco; la de la entrega la oyó.
+- Queda como lo dice: «La justicia restaurativa preguntarse por la norma que se violó y el bien jurídico, se está
+  preguntando por los resultados» (10:06; le falta un «más que» o «en vez de» que no pronuncia).
+- Revisión: formato validado, **lectura completa** del borrador (282) y de cada renglón corregido en el final (279).
+  18 subtítulos pasan de 20 caracteres por segundo: Jhonatan habla rápido.

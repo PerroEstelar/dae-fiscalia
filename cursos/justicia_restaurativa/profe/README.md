@@ -167,3 +167,35 @@ Verificada en Drive byte a byte (copia de servidor a `_MA subidas/_verif jr u1 c
   movieron a `D:\DAE\_masters_archivo\PRIORIDAD 1\CURSO - JUSTICIA RESTAURATIVA\<pieza>\fuente\` (copia, md5 igual
   y recién entonces fuera de E:), con un `LEER - la fuente esta en D.txt` en cada `01 VIDEO`. Las líneas usan el
   compuesto, no la fuente. Después de esta entrega: E: 0,76 GB, D: 0,81 GB.
+
+## Inicio de la unidad 2 (18 nov 2026, noche) — entrega provisional
+
+Sebastián: «ok continúa con justicia restaurativa u2 inicio». Fuente: «Justica restaurativa-  Unidad 2 inicio.mp4»
+(`15uZ6c_QyxX5PCDsW2ekmAdh75fs9z-Rz`, 228 MB), en la carpeta VIDEOS del curso.
+
+| | |
+|---|---|
+| entrega | `justiciarestaurativa - U2 - INICIO-v1.mp4` · `1oF-F75AhpIso3nc81vQByMsdiXUn9m-1` |
+| carpeta de Drive | VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`) |
+| subtítulos | `justiciarestaurativa - U2 - INICIO-v1.srt` · `1RposWITC6uS9HXLojBBGYQnqCROA22Fo` (279; ver `../subtitulos/`) |
+| medidas | 20:29,1 · 29.469 cuadros = línea · 819.179.661 bytes · H.264 a 5,33 Mb/s · −16,0 LUFS, −2,5 dBTP |
+| línea | `JR - U2 - INICIO` (proyecto `DAE MASTER - CURSOS`) |
+| disco | `E:\DAE MASTER\PRIORIDAD 1\CURSO - JUSTICIA RESTAURATIVA\UNIDAD 2\INICIO\` |
+
+Verificada en Drive byte a byte (copia de servidor a `_MA subidas/_verif jr u2 inicio 18nov` y `verificar_drive.py`: «OK»).
+
+- **La fuente:** 1920×1080, 30 fps, 36.408 cuadros (20:13,6), BT.601, con intro (0–277) y outro (desde el 36132; 36130 y
+  36131 blancos) pegados. Entra del 280 al 36130. Brillo medido en todos los cuadros: parejo en 188.
+- **Dos mosaicos**, como el inicio y el cierre del curso: Víctor a la izquierda (x 38–940) y Jhonatan Sandoval, el
+  profesor invitado, a la derecha (x 980–1880), en y 286–794. Víctor presenta (0:14,5–3:27,9), Jhonatan explica el
+  enfoque restaurativo (3:29,0–11:21,9) y Víctor recorre las lecciones y cierra (11:24,0–20:02,1). **Sin cortes.**
+- **Nombre de la unidad** (PDF del curso): «Unidad 2. Aplicación jurídica de la justicia restaurativa en el proceso penal».
+- **Rótulos:** los de dos mosaicos de la base. Víctor en 15,5 s; Jhonatan (nombre solo, `x=1015`) en 31,5 s, cuando
+  Víctor lo nombra, y otra vez en 210,0 s, cuando toma la palabra.
+- **Cómo se hizo:** `prep_fuente.py`, `profe_cadena.py plan_jru2i componer titulo cartones` (compuesto en 9,5 min; los
+  primeros 2,5 son la medida de sonoridad, sin archivo a la vista) y `lote/entrega_gpu.py` (render en 2,2 min; pidió
+  5000 kb/s y salió a 5332).
+- **Sitio en E:.** D: también estaba lleno (0,8 GB), así que tres grabaciones originales de piezas ya entregadas pasaron
+  a **C:** (`C:\DAE_masters_archivo\<misma ruta>\fuente\`, md5 verificado, `LEER - la fuente esta en C.txt` en su
+  `01 VIDEO`): las del inicio y el cierre de la U1 de este curso y la del cierre del curso de Bienes (961 MB en total).
+  Después de esta entrega: E: 0,37 GB, D: 0,80 GB, C: 12,4 GB.
