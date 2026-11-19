@@ -1,0 +1,50 @@
+{
+ "_todos": [
+  ["\\b([Ll])a fiscalía\\b", "\\1a Fiscalía"],
+  ["(?<!\\S)\"(?=\\S)", "«"],
+  ["(?<=\\S)\"(?=[\\s.,;:?!]|$)", "»"],
+  ["\\bcien por ciento\\b", "100 %"]
+ ],
+ "_despues": [
+  ["\\bley (\\d{3,})", "Ley \\1"],
+  ["\\bdecreto (\\d{3,})", "Decreto \\1"],
+  ["\\bresolución (\\d{3,})", "Resolución \\1"],
+  ["\\b(SU|T|C)-?(\\d{3})\\b", "\\1-\\2"],
+  ["\\bdirectiva (\\d{3})", "Directiva \\1"]
+ ],
+ "lpu1i": [
+  ["los fallos y todo de la Corte", "los fallos hito de la Corte"]
+ ],
+ "lpci": [
+  ["al Curso Virtual Especializado: Ley 1826 de 2017, Procedimiento Penal Especial Abreviado y Acusador Privado\\.", "al curso virtual especializado «Ley 1826 de 2017: procedimiento penal especial abreviado y acusador privado»."],
+  ["Además de conformidad con el artículo 564\\.", "Además, de conformidad con el artículo 564."],
+  ["Penal como la Corte Constitucional\\. Resolver los talleres", "Penal como la Corte Constitucional, resolver los talleres"]
+ ],
+ "lpu1c": [
+  ["los párrafos del artículo 536", "los parágrafos del artículo 536"],
+  ["a la capite de los medios de prueba", "al acápite de los medios de prueba"],
+  ["que de conciliación previa, asimismo, es irrenunciable", "que la conciliación previa, asimismo, es irrenunciable"],
+  ["la unidad dos: procedimiento, investigación, traslado, audiencia concentrada y juicio\\.", "la unidad dos: «Procedimiento: investigación, traslado, audiencia concentrada y juicio»."]
+ ],
+ "lpu2i": [
+  ["procedimiento abreviado\\. De acuerdo con la directiva cero cero cero uno de 2021", "procedimiento abreviado, de acuerdo con la Directiva 0001 de 2021"]
+ ],
+ "lpu3i": [
+  ["criminales como los GDO o los GDOC, imputabilidad, fuero", "criminales como los GDO o los GDOC, inimputabilidad, fuero"]
+ ],
+ "lpu3c": [
+  ["Exploramos unas de las transformaciones", "Exploramos una de las transformaciones"],
+  ["la unidad cuatro: terminación anticipada y mecanismos restaurativos\\.", "la unidad cuatro: «Terminación anticipada y mecanismos restaurativos»."]
+ ],
+ "lpu4i": [
+  ["inasiste el indicial\\.", "inasiste el indiciado."],
+  ["por la directiva cero, cero, cero, uno de 2021", "por la Directiva 0001 de 2021"]
+ ],
+ "lpu4c": [
+  ["la justicia premial, regido por", "la justicia premial, regida por"],
+  ["herramientas jurídico procesales", "herramientas jurídico-procesales"]
+ ],
+ "lpcc": [
+  ["General de la Nación Cerramos el ciclo", "General de la Nación. Cerramos el ciclo"]
+ ]
+}

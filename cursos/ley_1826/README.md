@@ -281,3 +281,9 @@ y el `.drt` en la misma carpeta del disco:
   apendizado por API entra de 24 cuadros). La lámina, la ilustración y los
   exports también quedaron importados en sus bins (01 PLANOS, 02 LAMINA,
   05 EXPORTS).
+
+## Videos de profe (19 nov 2026)
+
+Los diez videos de profe (inicio y cierre del curso y de las unidades 1 a 4, Jorge Eduardo Castillo Pantoja), con el
+fondo virtual cambiado por el de la Fiscalía: `profe/` (base, planes, lote y README) y sus subtítulos en
+`subtitulos/`. Entregados en VIDEOS › VIDEOS FINALIZADOS (`1mIFyAi87UosQ8Rue7j9g6aL4db9bRG2d`).

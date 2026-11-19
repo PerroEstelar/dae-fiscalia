@@ -121,7 +121,27 @@ for nombre, uni, pieza, profe, nota in JR:
         nota = (nota + RAYA).strip()
     fila(1, CUR, uni, pieza, profe, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '19 nov' if 'U4' in nombre else '18 nov', nota, n_srt=t[0])
 
-# ---------- Prioridad 1 · Ley 1826: sin videos de profe
+# ---------- Prioridad 1 · Ley 1826 (19 nov 2026: los diez de profe, recortados sobre el fondo de la Fiscalía)
+CUR = 'Ley 1826 de 2017: procedimiento penal especial abreviado y acusador privado'
+M, T = man('ley_1826'), tabla('ley_1826')
+JC = 'Jorge Eduardo Castillo Pantoja'
+FONDO = ' El profe va recortado sobre el fondo de la Fiscalía.'
+for nombre, uni, pieza, nota in [
+    ('ley1826 - CURSO - INICIO-v1', 'Curso', 'Inicio del curso', 'Sin cortes.'),
+    ('ley1826 - U1 - INICIO-v2', 'Unidad 1', 'Inicio de la unidad', 'v2: borde del recorte difuminado (la v1 sigue en la carpeta).'),
+    ('ley1826 - U1 - CIERRE-v1', 'Unidad 1', 'Cierre de la unidad', 'Sin cortes.'),
+    ('ley1826 - U2 - INICIO-v1', 'Unidad 2', 'Inicio de la unidad', 'Dos cortes de palabras en falso, con tres cuadros de mezcla.'),
+    ('ley1826 - U2 - CIERRE-v1', 'Unidad 2', 'Cierre de la unidad', 'Sin cortes.'),
+    ('ley1826 - U3 - INICIO-v1', 'Unidad 3', 'Inicio de la unidad',
+     'Sin cortes. Dice «imputabilidad» donde va «inimputabilidad» (2:30); el .srt lleva «inimputabilidad».'),
+    ('ley1826 - U3 - CIERRE-v1', 'Unidad 3', 'Cierre de la unidad', 'Un corte de una palabra en falso, con tres cuadros de mezcla.'),
+    ('ley1826 - U4 - INICIO-v1', 'Unidad 4', 'Inicio de la unidad', 'Un corte de una palabra en falso, tapado con 4 s de plano cerrado.'),
+    ('ley1826 - U4 - CIERRE-v1', 'Unidad 4', 'Cierre de la unidad', 'Sin cortes.'),
+    ('ley1826 - CURSO - CIERRE-v1', 'Curso', 'Cierre del curso', 'Sin cortes.'),
+]:
+    m, t = M[nombre], T[nombre]
+    fila(1, CUR, uni, pieza, JC, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '19 nov', nota + FONDO, n_srt=t[0])
+
 # ---------- Prioridad 2 · Derechos humanos
 CUR = 'Derechos humanos aplicados a la función judicial'
 M, T = man('derechos_humanos'), tabla('derechos_humanos')
