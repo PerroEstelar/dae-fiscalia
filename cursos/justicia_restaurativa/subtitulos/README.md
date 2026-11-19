@@ -7,6 +7,7 @@
 | `justiciarestaurativa - U1 - INICIO-v1` | 112 | 8:25 | `1fizXTPPfcUv5NdtZ5dGWexytohLJHZcQ` |
 | `justiciarestaurativa - U1 - CIERRE-v1` | 138 | 10:06 | `1uz2jOdRPKn5Ebi7ubVVFZ_JzLH9SgYiM` |
 | `justiciarestaurativa - U2 - INICIO-v1` | 279 | 20:29 | `1RposWITC6uS9HXLojBBGYQnqCROA22Fo` |
+| `justiciarestaurativa - U3 - INICIO-v1` | 163 | 11:48 | `1Hm3rmSlqAMgw0wQ8FsDPCHngOL9cKnTc` |
 
 Carpeta de Drive: VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`), al lado del video. Copia junto al
 video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
@@ -81,3 +82,19 @@ video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
   preguntando por los resultados» (10:06; le falta un «más que» o «en vez de» que no pronuncia).
 - Revisión: formato validado, **lectura completa** del borrador (282) y de cada renglón corregido en el final (279).
   18 subtítulos pasan de 20 caracteres por segundo: Jhonatan habla rápido.
+
+## Inicio de la unidad 3 (18 nov 2026, noche)
+
+- Se transcribió la entrega (1.421 palabras, tres hablantes). **Trece reglas a mano** en `correcciones.json`
+  (`jru3i`): «Jhonatan» (tres veces), diez arranques en falso («pues tiene un— como todas las unidades», «hay una
+  cosa, hay, hay dos puntos», «cómo ya en concre— se aplican en concreto», «nos referimos a esto, nos referimos a
+  si…»), «lo que has ahora» por «lo que hasta ahora» y dos plurales que se pierden al hablar («prácticas
+  restaurativas», «encuentros restaurativos»).
+- **«hasta el 35 % del curso» (11:22) es la lectura más repetida, no una certeza.** Siete pasadas de Scribe sobre esa
+  frase (la fuente entera, la entrega, y el tramo aislado a 1,0×, 0,9×, 0,8×, 0,7× y 0,6×): cuatro oyen «treinta y
+  cinco por ciento», una «cincuenta y cinco» y dos «cinco». Entre «el» y «cinco» hay 0,76 s con muy poca energía.
+  **Pendiente de que alguien lo oiga**; si es otra cifra, se cambia el `.srt` y nada más.
+- Queda como lo dicen: «Nos encontramos la unidad tres» (sin «en»), «que debe continuar», «de cada uno de los autores»
+  (las dos pasadas oyen «autores», no «actores»).
+- Revisión: formato validado, **lectura completa** del borrador (165) y de cada renglón corregido en el final (163);
+  el empalme del corte se lee de corrido («…a la justicia restaurativa hemos visto en esto una gran motivación»).

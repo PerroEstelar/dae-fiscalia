@@ -199,3 +199,84 @@ Verificada en Drive byte a byte (copia de servidor a `_MA subidas/_verif jr u2 i
   a **C:** (`C:\DAE_masters_archivo\<misma ruta>\fuente\`, md5 verificado, `LEER - la fuente esta en C.txt` en su
   `01 VIDEO`): las del inicio y el cierre de la U1 de este curso y la del cierre del curso de Bienes (961 MB en total).
   Después de esta entrega: E: 0,37 GB, D: 0,80 GB, C: 12,4 GB.
+
+## Inicio de la unidad 3 (18 nov 2026, noche) — entrega provisional
+
+Sebastián: «continuemos con el inicio de u3, con gráfica provisional, pero revísalo muy bien todo y actualiza todo lo
+que haya que actualizar». Fuente: «Justicia restaurativa -  Unidad 3 Inicio.mp4» (`15z_Xy-8qQWaRgp0vTAQnjsMYyNX-vROT`,
+403 MB, del 17 nov).
+
+| | |
+|---|---|
+| entrega | `justiciarestaurativa - U3 - INICIO-v1.mp4` · `1-dyCgrfpuy71YMJUDFdtCCHK_a-Dj72j` |
+| carpeta de Drive | VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`) |
+| subtítulos | `justiciarestaurativa - U3 - INICIO-v1.srt` · `1Hm3rmSlqAMgw0wQ8FsDPCHngOL9cKnTc` (163; ver `../subtitulos/`) |
+| medidas | 11:48,1 · 16.977 cuadros = línea · 474.728.502 bytes · H.264 Main a 5,36 Mb/s, BT.709 · −16,1 LUFS, −3,0 dBTP |
+| línea | `JR - U3 - INICIO` (proyecto `DAE MASTER - CURSOS`) |
+| disco | `E:\DAE MASTER\PRIORIDAD 1\CURSO - JUSTICIA RESTAURATIVA\UNIDAD 3\INICIO\` |
+
+Verificada en Drive byte a byte (copia de servidor a `_MA subidas/_verif jr u3 inicio 18nov` y `verificar_drive.py`: «OK»).
+
+### La fuente no es como las otras
+
+Es la grabación **sin pasar por el editor** (las otras cuatro traían intro y outro pegados y venían etiquetadas BT.601):
+
+- **Sin intro ni outro.** La conversación va del primer cuadro al último (20.842 cuadros, 11:34,8; brillo medido en
+  todos; hoja de un cuadro cada 20 s). Entra del cuadro 45 al 20700. Al final quedan fuera 3,5 s de silencio y un
+  «Listo, profe» de alguien, ya fuera de la toma.
+- **Sin etiqueta de color, y en BT.709.** Se midieron el rojo, el azul y el amarillo del logo de la Fiscalía del
+  mosaico de Víctor contra la fuente del cierre de la U1: leída como 709 coincide (rojo 233/66/62 contra 234/65/65);
+  leída como 601 el rojo cae a 217/57/71. El plan lleva `MATRIZ_FUENTE = 'bt709'`. Sin eso el video habría salido con
+  los rojos apagados.
+- **Una raya negra en el borde de arriba** (fila 0 en negro, fila 1 en gris, de lado a lado). `PREFILTRO` pinta esas
+  dos filas del blanco del lienzo (`drawbox … color=0xFEFEFE`, que da Y 234, el del lienzo). Ver abajo: **la traen
+  también cuatro entregas anteriores**.
+
+### Qué se hizo
+
+- Tres mosaicos, con los mismos bordes que la U1 (medidos). Víctor presenta (0:02,6–1:23,1), habla Jhonatan
+  (1:23,9–5:23,3), después Martín (5:26,5–7:44,0) y cierra Víctor (7:46,5–11:29,3). Scribe confunde los hablantes (le
+  da a Martín la etiqueta de Víctor): quién habla sale de lo que dicen y de la imagen.
+- **Un corte de 14,5 s** (cuadros 18762 a 19197): Víctor se enreda y lo pide («…hemos visto en esto, eh, un, una,
+  una, eh… un corte, por favor. Eh, hemos visto en esto, hemos visto en esto una gran motivación»). Queda «…a la
+  justicia restaurativa | hemos visto en esto una gran motivación…». Los dos bordes caen en silencio medido (RMS de
+  20 ms); la pausa que queda es de 0,36 s (la original, 0,34).
+- Se deja «Si me permites, Martín, ¿comienzo yo?» (Jhonatan, al tomar la palabra): es parte de la conversación.
+- Título: «Unidad 3. Implementación de la justicia restaurativa» (igual en las dos partes del PDF donde aparece).
+- Rótulos: los de tres mosaicos, en 4,0, 84,8 y 327,5 s de la fuente.
+
+### Revisión de la entrega (más larga que las anteriores)
+
+- Contenedor: H.264 Main L4.0, 1920×1080, 23,976, BT.709 etiquetado, AAC 48 kHz estéreo; 16.977 cuadros = línea.
+- **Imagen y sonido en su sitio, antes y después del corte.** Sonido: la transcripción de la entrega da cada palabra a
+  ±0,1 s de donde debe caer. Imagen: cinco cuadros de la entrega (y cuatro del compuesto) comparados con la fuente por
+  diferencia media en la zona de la cara; el mínimo cae en el cuadro esperado o en el de al lado (la cámara repite
+  cuadros de a pares).
+- Sin cuadros negros (`blackdetect`); filas de arriba en blanco en el título, el cuerpo (antes y después del corte) y
+  el cierre; hoja de un cuadro cada 20 s de toda la entrega; tiras de cuadros seguidos en la entrada del cuerpo, el
+  corte y la salida; cartón de título y los tres rótulos mirados sobre el compuesto.
+- −16,1 LUFS, −3,0 dBTP. Los silencios son los de la serie (cartón de título y cartón de cierre) y dos cambios de
+  hablante.
+
+### Lo que la revisión encontró en las entregas anteriores
+
+1. **Raya negra arriba en cuatro videos ya entregados.** La traen las grabaciones del inicio del curso, del inicio y
+   el cierre de la U1 y del inicio de la U2 (no la del cierre del curso), y pasó a las entregas: fila 0 en negro y
+   fila 1 en gris durante el cuerpo, de lado a lado; en el título y en el cierre no está, así que aparece y desaparece
+   en los cortes. Arreglo: `PREFILTRO` en el plan, `ic_pieza reimagen` (rehace la imagen y conserva el audio) y una
+   `-v2`. **Pendiente de que Sebastián decida** si salen las cuatro `-v2`.
+2. **El nombre de la unidad 1 aparece de dos formas en el PDF del curso.** En la estructura (2.1 y 2.4):
+   «Fundamentos, principios y ejes de la justicia restaurativa». En «3.1 Nombre de la unidad No. 1»: «Bases
+   conceptuales y marco jurídico de la justicia restaurativa», que es el que llevan los dos cartones de título de la
+   U1. Las unidades 2, 3 y 4 se llaman igual en los dos sitios. **Pendiente de confirmar** cuál quiere la DAE.
+
+### Cómo se hizo
+
+`prep_fuente.py`, brillo de todos los cuadros y hoja de la fuente; `profe_cadena.py plan_jru3i componer titulo
+cartones` (7 min); `lote/entrega_gpu.py` (render en 1,5 min; pidió 5000 kb/s y salió a 5364). Antes de componer se
+probó el filtro en un cuadro por el mismo camino (`ic_pieza.escala`): filas de arriba en 234 y el rojo sin moverse.
+
+**Sitio en E:.** Ocho grabaciones originales más pasaron a `C:\DAE_masters_archivo\` (3,04 GB: Delitos ambientales
+U3 L5 y U4 L1; SRPA presentación y cierre del curso, U3 desarrollo y cierre, U5 cierre; Derechos humanos cierre de la
+U5). Antes se comprobó, recorriendo los 5.880 clips del media pool, que ninguno apunta a esos archivos, y que cada
+uno tiene su compuesto al lado. Después de esta entrega: E: 2,2 GB, D: 0,8 GB, C: 8,7 GB.
