@@ -28,8 +28,10 @@ su video (ver `../subtitulos/`). Todas verificadas en Drive byte a byte (`verifi
   pico −2,6 a −3,0 dBTP. Líneas de Resolve `LEY1826 - CURSO|Un - INICIO|CIERRE`.
 - **Provisional:** intro, cartón de título, lower third, cartón de cierre y outro; el cuerpo va sin gráficos.
 - **El inicio de la U1 está en v2.** La v1 (`1lkHo9dOmF-ojNGAXyBEZE2o7BUsd6GFm`) salió antes de la pluma de los
-  bordes: una mano y la cabeza quedaban cortadas en línea recta en el borde del recorte. Sigue en la carpeta;
-  Sebastián decide si se borra.
+  bordes: una mano y la cabeza quedaban cortadas en línea recta en el borde del recorte. Sebastián la mandó a la
+  papelera de Drive (19 nov); en disco está en `UNIDAD 1\INICIO\05 EXPORTS\_descartes`.
+- **Decisiones de Sebastián (19 nov):** el lower third queda confirmado «por ahora»; en el inicio de la U3 el audio
+  se deja con «imputabilidad» (el `.srt` lleva «inimputabilidad»).
 - Base, criterios de edición, recorte y lower third: `base_lp_profe.py`. Cada plan cuenta sus cortes con tiempos.
 
 ## Cómo se hizo (el lote)

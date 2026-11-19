@@ -128,7 +128,7 @@ JC = 'Jorge Eduardo Castillo Pantoja'
 FONDO = ' El profe va recortado sobre el fondo de la Fiscalía.'
 for nombre, uni, pieza, nota in [
     ('ley1826 - CURSO - INICIO-v1', 'Curso', 'Inicio del curso', 'Sin cortes.'),
-    ('ley1826 - U1 - INICIO-v2', 'Unidad 1', 'Inicio de la unidad', 'v2: borde del recorte difuminado (la v1 sigue en la carpeta).'),
+    ('ley1826 - U1 - INICIO-v2', 'Unidad 1', 'Inicio de la unidad', 'v2: borde del recorte difuminado (la v1 se mandó a la papelera).'),
     ('ley1826 - U1 - CIERRE-v1', 'Unidad 1', 'Cierre de la unidad', 'Sin cortes.'),
     ('ley1826 - U2 - INICIO-v1', 'Unidad 2', 'Inicio de la unidad', 'Dos cortes de palabras en falso, con tres cuadros de mezcla.'),
     ('ley1826 - U2 - CIERRE-v1', 'Unidad 2', 'Cierre de la unidad', 'Sin cortes.'),
