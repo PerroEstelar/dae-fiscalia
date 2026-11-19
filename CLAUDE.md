@@ -3591,7 +3591,7 @@ en `cursos/ley_1826/profe/` (base, diez planes, `lote/` y su README).
   en el inicio de la U1). Se notó **después** de entregar la U1 INICIO: la revisión miraba el mate por saltos, no
   sus bordes. Arreglo: `--pluma-x 96 --pluma-y 48` (rampa smoothstep del alfa en los bordes del rectángulo que caen
   dentro del cuadro) y `lote/emplumar.py <clave>…` para los recortes ya hechos sin volver a correr el modelo. La U1
-  INICIO salió de nuevo como -v2; la v1 quedó en la carpeta. **Antes de entregar un recorte, mirar cuántos cuadros
+  INICIO salió de nuevo como -v2 (la v1, a la papelera). **Antes de entregar un recorte, mirar cuántos cuadros
   tocan los bordes del rectángulo que quedan dentro del cuadro** (`D:\DAE\_tmp\lp_p\rev_borde.py` y
   `rev_borde_arriba.py`).
 - **`SUAVE = n` en un plan** (`ic_pieza.tramos_vf`): en un corte entre dos tramos con la misma ventana, el último
