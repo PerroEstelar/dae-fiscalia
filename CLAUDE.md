@@ -3417,3 +3417,24 @@ centro), y el blanco libre queda solo abajo a los lados, a 500 px de ancho.
 - **Dos transcripciones del mismo audio se corrigen entre sí.** La de la fuente y la de la entrega oyeron distinto en
   tres sitios («Mi edad empieza» / «La unidad empieza»); comparar las dos sale gratis, porque la de la fuente ya se
   hizo para planear.
+
+## Un profe que se traba y pregunta algo fuera de la grabación: se corta el tramo entero (JR, cierre de la U1, 18 nov 2026)
+
+En el cierre de la unidad 1, Martín arranca, dice «ahí me tosté, espérense», pregunta cómo llamar a quienes cursan,
+Víctor le contesta y Martín vuelve a empezar. Son 46 s que no son del video.
+
+- **Se encuentra leyendo la transcripción por hablante**, no buscando «repito»: es un cambio de hablante corto, fuera
+  de tema, entre dos arranques de la misma persona.
+- **El corte va de la pausa después de la última palabra buena a la pausa antes del arranque bueno** (aquí, 0,5 s
+  después de «penal.» y 0,34 s antes de «Pues»), en cuadros de la fuente, con `TRAMOS` y un `cuadro()` propio en el
+  plan. La transcripción de la entrega tiene que leer de corrido en la costura.
+- **Una palabra que tres pasadas oyen distinto no se escribe.** Para una tercera escucha, los tramos dudosos van
+  juntos en un WAV a 0,85× (`atempo`) y Scribe otra vez; si las tres difieren, el subtítulo deja fuera esa palabra y
+  se anota en el README. A velocidad lenta Scribe también puede rellenar («su atención»): sirve para desempatar, no
+  para decidir sola.
+- **Una fuente del mismo editor puede no traer outro.** La del cierre de la U1 termina en la conversación; la del
+  inicio traía outro y 12 min de negro. Se mide el brillo de todos los cuadros (`signalstats` a 160×90 con
+  `metadata=print:file=yavg.txt`, corriendo con `cwd` en la carpeta: una ruta con `D:` rompe el filtro).
+- **E: sin sitio:** las grabaciones originales de piezas ya entregadas pasan a `D:\DAE\_masters_archivo\…\fuente\`
+  con md5 verificado y un `LEER` en su `01 VIDEO` (`D:\DAE\_tmp\jr_p\mover_fuentes_jr.py`). D: quedó en 0,8 GB: el
+  próximo alivio tiene que salir de otro lado.
