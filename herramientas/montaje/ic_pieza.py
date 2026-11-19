@@ -110,7 +110,13 @@ def tramos_vf(K, fin):
     Con un tercer elemento 'antes', (a, b, 'antes'), el cuadro quieto es el último ANTES de a: sirve
     cuando lo que hay antes de la transición es una lámina (quieta de por sí) y lo que viene
     después es el profe, al que no conviene congelar mientras habla (cierre de la U1 de SRPA).
-    Un congelado 'antes' puede llegar hasta el final de su tramo."""
+    Un congelado 'antes' puede llegar hasta el final de su tramo.
+
+    SUAVE = n: un corte entre dos tramos con la MISMA ventana no entra seco; los primeros n cuadros del
+    tramo que sigue llevan encima el último cuadro del anterior, quieto, con peso n/(n+1) … 1/(n+1). No
+    cambia la cuenta de cuadros ni el audio. Sirve para sacar una palabra en falso de un profe quieto
+    sobre un fondo fijo (Ley 1826, 19 nov 2026), cuando el salto es chico; con ventana distinta (plano
+    cerrado) el corte queda seco, que es lo que se busca ahí."""
     w, h = P.VENTANA
     x, y = P.XY
     fq = getattr(P, 'FPS_FUENTE', 30)
@@ -119,7 +125,8 @@ def tramos_vf(K, fin):
             for c in getattr(P, 'CONGELA', [])]
     cuadros = [(int(math.ceil(t0 * fq - 1e-6)), int(math.ceil(((fin if t1 is None else t1)) * fq - 1e-6)), win)
                for t0, t1, win in tr]
-    v, a = [], []
+    suave = int(getattr(P, 'SUAVE', 0))
+    v, a, etq = [], [], []
     for i, (f0, f1, win) in enumerate(cuadros):
         esc = escala(K, *(win or (x, y, w, h)))
         # el cuadro quieto es el de k1 (tiene que quedar dentro del tramo) o, con 'antes', el de k0 − 1
@@ -143,6 +150,14 @@ def tramos_vf(K, fin):
                 v.append('[0:v]%s,setpts=PTS-STARTPTS,%s[v%dz]' % (_trim(f, f1, fq), esc, i))
                 piezas.append('[v%dz]' % i)
             v.append('%sconcat=n=%d:v=1:a=0[v%d]' % (''.join(piezas), len(piezas), i))
+        etq.append('[v%d]' % i)
+        if suave and i > 0 and cuadros[i - 1][1] != f0 and (cuadros[i - 1][2] or None) == (win or None):
+            q = cuadros[i - 1][1] - 1          # el último cuadro del tramo anterior
+            v.append('[0:v]%s,setpts=PTS-STARTPTS,%s,tpad=stop_mode=clone:stop=%d,format=yuva420p,'
+                     'fade=t=out:s=0:n=%d:alpha=1,trim=start_frame=1,setpts=PTS-STARTPTS[s%d]'
+                     % (_trim(q, q + 1, fq), esc, suave, suave + 1, i))
+            v.append('[v%d][s%d]overlay=eof_action=pass:format=yuv420[v%ds]' % (i, i, i))
+            etq[-1] = '[v%ds]' % i
         ta, tb = f0 / fq, f1 / fq
         af = 'atrim=start=%.6f:end=%.6f,asetpts=PTS-STARTPTS' % (ta, tb)
         if (i > 0 and cuadros[i - 1][1] != f0) or (i == 0 and f0 > 0):
@@ -151,7 +166,7 @@ def tramos_vf(K, fin):
             af += ',afade=t=out:st=%.6f:d=0.015' % (tb - ta - 0.015)
         a.append('[0:a]%s[a%d]' % (af, i))
     n = len(cuadros)
-    return ';'.join(v + a) + ';%sconcat=n=%d:v=1:a=1[vc][ac]' % (''.join('[v%d][a%d]' % (i, i) for i in range(n)), n)
+    return ';'.join(v + a) + ';%sconcat=n=%d:v=1:a=1[vc][ac]' % (''.join('%s[a%d]' % (etq[i], i) for i in range(n)), n)
 
 
 def componer():
