@@ -3608,3 +3608,14 @@ en `cursos/ley_1826/profe/` (base, diez planes, `lote/` y su README).
   borrar nada) `C:\DAE_masters_archivo` (11 grabaciones originales, 3,7 GB; deja `LEER.txt`) y los temporales
   `%TEMP%\dae_recorte` y `dae_rindiendo`; los 11 `LEER - la fuente esta en C.txt` de E: dicen la ruta nueva
   (`D:\DAE\_movido_de_C\leer_actualizados.log`). La cadena va de a una (`lote_cadena.py 1`).
+
+## Una regla de subtítulos con comillas va con « » (JR, cierre de la U3, 19 nov 2026)
+
+`srt_de_stt` aplica primero las reglas de `_todos`, y en los cursos que las tienen una de ellas ya cambió las comillas
+rectas de Scribe por « ». Una regla del video escrita sobre el texto crudo («decía: "Si tenemos…»)
+no encuentra nada y no avisa. Se escribe con « », y después de regenerar se busca en el `.rev.txt` que cada regla
+haya entrado. Otra cosa del mismo día: el arranque fallido que un profe pide cortar a mitad de una videollamada
+(«voy a repetir ahí porque de pronto no queda bien el corte») se corta de silencio a silencio, eligiendo el par de
+cuadros con menos diferencia de imagen, y con `SUAVE = 3` el salto de dos personas que se acomodan en la silla
+se ve como una disolvencia corta. La medida de la fuente de un cierre de JR quedó en un solo guion:
+`D:\DAE\_tmp\jr_p\prep2_cierre.py <clave> <carpeta> <archivo>` (brillo, bordes, mosaicos, turnos, pausas y empalmes).
