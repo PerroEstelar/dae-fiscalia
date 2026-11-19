@@ -3438,3 +3438,19 @@ Víctor le contesta y Martín vuelve a empezar. Son 46 s que no son del video.
 - **E: sin sitio:** las grabaciones originales de piezas ya entregadas pasan a `D:\DAE\_masters_archivo\…\fuente\`
   con md5 verificado y un `LEER` en su `01 VIDEO` (`D:\DAE\_tmp\jr_p\mover_fuentes_jr.py`). D: quedó en 0,8 GB: el
   próximo alivio tiene que salir de otro lado.
+
+## Con E: y D: llenos, las grabaciones originales van a C: (18 nov 2026)
+
+E: tenía 0,76 GB y D: 0,81 cuando llegó el inicio de la unidad 2 de Justicia restaurativa (20 min: pide 1,2 GB solo
+para empezar). En E: hay 5,4 GB de grabaciones originales de piezas ya entregadas (`01 VIDEO`, lo que no es
+`_compuesto`); la línea de Resolve no las usa.
+
+- **Destino nuevo: `C:\DAE_masters_archivo\<misma ruta que en E:\DAE MASTER>\fuente\`**, con copia, md5 igual y recién
+  entonces fuera de E:, y un `LEER - la fuente esta en C.txt` en el `01 VIDEO` de la pieza
+  (`D:\DAE\_tmp\jr_p\prep2_jru2i.py` trae el movimiento). Hoy están ahí las del inicio y el cierre de la U1 de JR y
+  la del cierre del curso de Bienes. Las del cierre y el inicio del curso de JR están en `D:\DAE\_masters_archivo`.
+- **Para recomponer una pieza** (`componer`, `reimagen`) la grabación vuelve antes a su `01 VIDEO`.
+- C: es el disco del sistema (12,4 GB libres de 255) y ahí rinde `entrega_gpu` (`%TEMP%\dae_rindiendo`): no se llena.
+  Lo que hace falta es que Sebastián libere E: o D:.
+- **`profe_cadena componer` pasa los primeros minutos sin escribir nada**: es la medida de sonoridad (2,5 min para 20
+  min de video). El `.parcial` aparece después; no es un cuelgue.
