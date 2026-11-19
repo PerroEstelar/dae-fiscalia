@@ -3559,3 +3559,20 @@ pista de video. Es el audio suelto que Zoom deja junto al .mp4. **Antes de prepa
 Martín de 5:11 a 7:15 y cierra Víctor de 7:19 a 8:54) y el audio quedó en `UNIDAD 4\INICIO\01 VIDEO`.
 En la carpeta VIDEOS del curso hay además dos grabaciones sin producir, que él todavía no pidió: el cierre
 de la U2 (`1xFAc3bR31B6qONEN_aRL_TCvkAA7MpFX`) y el cierre de la U3 (`1gC1QllKcxwjnSVrsBI0sjmFu0HhTA4X0`).
+
+## Una palabra que Scribe no resuelve: primero más contexto, después más lento (JR, cierre de la U4, 19 nov 2026)
+
+Scribe oyó «Excelente insertación», que no es una palabra. Seis pasadas sobre recortes de 4 a 8 s (normal y al
+75 %) repitieron «insertación», «insertaciones» o «investigaciones». La que acertó fue **el recorte largo, de diez
+segundos, con la frase anterior y la siguiente**, a velocidad normal: «Gracias profesores… Excelente disertación, es
+un análisis muy interesante». Un recorte corto le quita al modelo el contexto que necesita; frenarlo no se lo
+devuelve. `stt_tramo.py <video> <desde> <hasta>` con al menos una frase entera a cada lado, y recién después las
+velocidades. Lo que se decide así se anota en el README de subtítulos como decisión, no como certeza.
+
+## Hacer sitio en E: moviendo a D: (19 nov 2026)
+
+Con D: liberado, lo que no usa el pool y estorba en E: se mueve entero con
+`robocopy <origen> <destino> /E /MOVE /R:1 /W:1 /NFL /NDL /NP /LOG:<log>` en segundo plano (20 GB en 9 min) y se
+deja un `LEER` donde estaba. `E:\DAE MASTER\_archivo_tmp` está ahora en `D:\DAE\_movido_de_E\_archivo_tmp`.
+`profe_cadena` pide 1 GB libre en E: para 11 minutos de video; una pieza deja en E: unos 0,9 GB (fuente,
+compuesto, cartones y entrega).
