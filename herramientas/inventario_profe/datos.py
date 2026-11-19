@@ -37,17 +37,17 @@ M, T = man('srpa-justicia-restaurativa'), tabla('srpa-justicia-restaurativa')
 EST, CH = 'Estanislao Escalante Barreto', 'Carlos Humberto Ramírez Romero'
 for nombre, uni, pieza, profe, graf, fecha, nota in [
     ('srpa - CURSO - PRESENTACION-v2', 'Curso', 'Presentación del curso', EST, 'Completa', '13 nov', ''),
-    ('srpa - U1 - BIENVENIDA-v2', 'Unidad 1', 'Presentación de la unidad', EST, 'Completa', '11 nov', 'El video está en .mov (anterior a la regla de entregar en MP4).'),
+    ('srpa - U1 - BIENVENIDA-v2', 'Unidad 1', 'Presentación de la unidad', EST, 'Completa', '11 nov (aprox.)', 'El video está en .mov (anterior a la regla de entregar en MP4).'),
     ('srpa - U1 - CIERRE-v1', 'Unidad 1', 'Cierre de la unidad', EST, 'Completa', '17 nov', 'Del 5:45 al 13:49 el profe comparte una lámina; va a cuadro completo.'),
-    ('srpa - U3 - BIENVENIDA-v2', 'Unidad 3', 'Presentación de la unidad', CH, 'Completa', '11 nov', 'El video está en .mov.'),
-    ('srpa - U3 - DESARROLLO-v2', 'Unidad 3', 'Desarrollo (clase completa)', CH, 'Completa', '11 nov', 'El video está en .mov. La ficha no lo pide; vino en la carpeta y se hizo igual.'),
-    ('srpa - U3 - CIERRE-v2', 'Unidad 3', 'Cierre de la unidad', CH, 'Completa', '11 nov', 'El video está en .mov.'),
+    ('srpa - U3 - BIENVENIDA-v2', 'Unidad 3', 'Presentación de la unidad', CH, 'Completa', '11 nov (aprox.)', 'El video está en .mov.'),
+    ('srpa - U3 - DESARROLLO-v2', 'Unidad 3', 'Desarrollo (clase completa)', CH, 'Completa', '11 nov (aprox.)', 'El video está en .mov. La ficha no lo pide; vino en la carpeta y se hizo igual.'),
+    ('srpa - U3 - CIERRE-v2', 'Unidad 3', 'Cierre de la unidad', CH, 'Completa', '11 nov (aprox.)', 'El video está en .mov.'),
     ('srpa - U4 - INICIO-v1', 'Unidad 4', 'Presentación de la unidad', CH, 'Completa', '17 nov', 'Son los primeros 1:57 de la grabación; el resto es la clase.'),
     ('srpa - U4 - DESARROLLO-v1', 'Unidad 4', 'Desarrollo (clase completa)', CH, 'Completa', '17 nov', 'La ficha no lo pide; vino en la misma grabación que la presentación.'),
-    ('srpa - U4 - CIERRE-v2', 'Unidad 4', 'Cierre de la unidad', CH, 'Completa', '11 nov', 'El video está en .mov.'),
+    ('srpa - U4 - CIERRE-v2', 'Unidad 4', 'Cierre de la unidad', CH, 'Completa', '11 nov (aprox.)', 'El video está en .mov.'),
     ('srpa - U5 - INICIO-v1', 'Unidad 5', 'Presentación de la unidad', CH, 'Completa', '17 nov', 'Son los primeros 1:54 de la grabación; el resto es la clase.'),
     ('srpa - U5 - DESARROLLO-v1', 'Unidad 5', 'Desarrollo (clase completa)', CH, PROV, '17 nov', 'La ficha no lo pide; vino en la misma grabación que la presentación.'),
-    ('srpa - U5 - CIERRE-v2', 'Unidad 5', 'Cierre de la unidad', CH, 'Completa', '11 nov', 'El video está en .mov.'),
+    ('srpa - U5 - CIERRE-v2', 'Unidad 5', 'Cierre de la unidad', CH, 'Completa', '11 nov (aprox.)', 'El video está en .mov.'),
     ('srpa - CURSO - CIERRE-v1', 'Curso', 'Cierre del curso', EST, 'Completa', '13 nov', ''),
 ]:
     m, t = M[nombre], T[nombre]

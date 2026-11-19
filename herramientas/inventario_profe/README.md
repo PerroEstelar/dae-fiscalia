@@ -28,3 +28,4 @@ de Delitos ambientales, que son diapositivas con voz.
 Cómo se comprobó: las fórmulas del resumen se recalcularon con LibreOffice antes de subir y se leyeron de vuelta desde
 la hoja de Google (85 / 935 / 60 / 34 / 5); 86 enlaces de video, sin ids repetidos. **No se abrió cada enlace**: los ids
 son los que devolvió Drive al entregar cada archivo.
+La fecha de los seis `.mov` de SRPA del 11 de noviembre es aproximada (sale del documento de esa tanda, no de Drive).
