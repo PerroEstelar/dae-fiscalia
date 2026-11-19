@@ -318,3 +318,45 @@ Verificada en Drive byte a byte (copia de servidor a `_MA subidas/_verif jr u4 c
   `robocopy /MOVE` a `D:\DAE\_movido_de_E\_archivo_tmp` (0 fallos; nota `LEER` en `E:\DAE MASTER`). Después de esta
   entrega: E: 23 GB, D: 111 GB, C: 6,9 GB.
 
+## Inicio de la unidad 4 (19 nov 2026) — entrega provisional
+
+Sebastián: «ahora volvamos a intentar con justicia restaurativa u4 inicio, ya está con video». Fuente: «Justica
+restuaraativa-  Unidad 4 inicio.mp4» (`1q_czi8j8AMRGgv9CZThThXnz67JBiBiE`, 163 MB). El primer enlace había sido el
+audio suelto de la misma grabación (`.m4a`); lo que se preparó con él quedó apartado en `D:\DAE\_tmp\jr_p\jru4i_audio`.
+
+| | |
+|---|---|
+| entrega | `justiciarestaurativa - U4 - INICIO-v1.mp4` · `1eWsux3bkLCb8VP0heqWEI_gHjasLME6r` |
+| carpeta de Drive | VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`) |
+| subtítulos | `justiciarestaurativa - U4 - INICIO-v1.srt` · `1pZkIdR6X3ANEJA8iz45E7mrnYfD3OVse` (124; ver `../subtitulos/`) |
+| medidas | 9:16,2 · 13.336 cuadros = línea · 372.504.470 bytes · H.264 Main a 5,36 Mb/s, BT.709 · −16,1 LUFS, pico −2,3 dBFS |
+| línea | `JR - U4 - INICIO` (proyecto `DAE MASTER - CURSOS`) |
+| disco | `E:\DAE MASTER\PRIORIDAD 1\CURSO - JUSTICIA RESTAURATIVA\UNIDAD 4\INICIO\` |
+
+Verificada en Drive byte a byte (copia de servidor a `_MA subidas/_verif jr u4 inicio` y `verificar_drive.py`: «OK jru4i
+372504470»).
+
+- **Fuente** (`plan_jru4i.py`): 1920×1080, 30 fps, 16.330 cuadros (9:04,4), BT.601 etiquetada. Trae pegados la intro
+  (0–277) y el outro (desde el 16054). Tres mosaicos con los bordes de la unidad 1. Entra del cuadro 300 al 15964.
+- **La raya negra de arriba** viene también; sale con `PREFILTRO`.
+- **El final:** Víctor termina «…afronten de la mejor manera esta última unidad.» y arranca una frase que la
+  grabación deja cortada («Es un—»). Ese arranque no entra: el tramo termina 0,25 s después de «unidad.», en silencio
+  medido. En la entrega la última palabra es «unidad.» (539,14 s) y sigue el cartón de cierre.
+- **Dos empalmes del editor de la grabación**, los dos en el silencio entre la pregunta de Víctor y la respuesta de
+  Jhonatan: una disolvencia de cinco cuadros en 111,97 s y un corte seco en 112,87 s (los tres mosaicos saltan a la
+  vez). En la entrega caen hacia 1:59. Se dejan.
+- **Lower thirds:** Víctor (0:12,9 de la fuente), Jhonatan (1:54,1) y Martín (5:11,6).
+- **Revisión de la entrega:** ocho cuadros (intro, título, los tres rótulos, después del empalme, final del cuerpo y
+  cierre); sin cuadros negros; los silencios de más de 2 s son la intro, un cambio de quien habla y el cierre; primera
+  palabra a 18,50 s contra 11,44 s en la fuente (desfase esperado 7,059 s).
+- **Cadena:** `prep_fuente.py`, `prep2_jru4i.py`, `dif_u4.py` (diferencia entre cuadros de toda la fuente: así salieron
+  los empalmes), `profe_cadena.py plan_jru4i componer titulo cartones` (componer 321 s) y `lote/entrega_gpu.py` (render
+  en 71 s).
+
+### Lo que la misma medida encontró en el cierre de la U4, ya entregado
+
+`dif_u4.py` se corrió también sobre la fuente del cierre: trae **dos cortes secos del editor de la grabación**, en
+48,6 s y en 120,8 s (los tres mosaicos saltan a la vez; diferencia de 7 a 12 a tamaño completo), los dos en pausas. En
+378,3 s y 386,4 s salta solo el mosaico de Martín (su cámara). Nada de eso se puede disimular con tres mosaicos; queda
+como llegó.
+

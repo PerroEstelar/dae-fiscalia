@@ -8,6 +8,7 @@
 | `justiciarestaurativa - U1 - CIERRE-v1` | 138 | 10:06 | `1uz2jOdRPKn5Ebi7ubVVFZ_JzLH9SgYiM` |
 | `justiciarestaurativa - U2 - INICIO-v1` | 279 | 20:29 | `1RposWITC6uS9HXLojBBGYQnqCROA22Fo` |
 | `justiciarestaurativa - U3 - INICIO-v1` | 163 | 11:48 | `1Hm3rmSlqAMgw0wQ8FsDPCHngOL9cKnTc` |
+| `justiciarestaurativa - U4 - INICIO-v1` | 124 | 9:16 | `1pZkIdR6X3ANEJA8iz45E7mrnYfD3OVse` |
 | `justiciarestaurativa - U4 - CIERRE-v1` | 159 | 11:36 | `1Biajmt8kUdwHFIUg5ZcxrfNdfkG4qXwV` |
 
 Carpeta de Drive: VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`), al lado del video. Copia junto al
@@ -120,3 +121,24 @@ video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
 - Revisión: formato validado (159 subtítulos, 1–2 renglones de hasta 42 caracteres, CRLF, sin BOM), **lectura completa**
   del borrador y de cada renglón corregido. Quedan tres subtítulos de una sola palabra («Colegas,», «que», «Y…») donde
   quien habla hace una pausa de más de dos segundos.
+
+## Inicio de la unidad 4 (19 nov 2026)
+
+- Se transcribió la entrega (1.127 palabras, tres hablantes). **Diecinueve reglas a mano** en `correcciones.json`
+  (`jru4i`): «Jhonatan» (tres veces), «ad portas» (la pasada de la entrega dio «a portas»; la de la fuente, «ad
+  portas»), «esta parte» por «este parte» y dieciséis arranques en falso o muletillas («vamos a— ustedes se van a dar
+  cuenta», «los daños de la— que sufrieron las víctimas», «Todos nos, nos— ya nos reunimos», «no es por, porque el
+  curso, eh, no, no tenga»…).
+- **Segunda escucha con contexto** (recortes de 10 a 17 s de la fuente, normal y al 75 %):
+  - «para que aquí tenga un se— se transforme en un cuerpo sustantivo»: cinco pasadas oyen el tropiezo y una (el audio
+    suelto) «tenga un sentido que se transforme». Va «para que aquí se transforme en un cuerpo sustantivo».
+  - «pues es, es mantener, es ya esta última etapa»: las cuatro pasadas oyen «mantener», que Martín deja a medias. Va
+    «pues, es ya esta última etapa».
+  - «Yo sí, de acuerdo.» (5:18): así lo oyen las dos pasadas con contexto; la de la entrega daba «Sí, de acuerdo» y
+    la del audio suelto «Yo estoy de acuerdo».
+- Queda como lo dicen: «quienes en parte o van a participar del módulo», «cuando se acerquen a realizar estas o se
+  acerquen a comprender el plan», «Y es el ejercicio humano de escuchar que permite preparar la fase de preparación».
+- El arranque que Víctor deja cortado al final («Es un—») no está en el video; el último subtítulo es «afronten de
+  la mejor manera esta última unidad.».
+- Revisión: formato validado (124 subtítulos, 1–2 renglones de hasta 42 caracteres, CRLF, sin BOM), **lectura
+  completa** del borrador y de cada renglón corregido.

@@ -108,6 +108,7 @@ JR = [
     ('justiciarestaurativa - U1 - CIERRE-v1', 'Unidad 1', 'Cierre de la unidad', VJM, 'Lleva un corte de 46 s donde un profesor se traba y vuelve a empezar.'),
     ('justiciarestaurativa - U2 - INICIO-v1', 'Unidad 2', 'Inicio de la unidad', VJ, 'Sin cortes.'),
     ('justiciarestaurativa - U3 - INICIO-v1', 'Unidad 3', 'Inicio de la unidad', VJM, 'Lleva un corte de 14,5 s que pide el profesor («un corte, por favor»).'),
+    ('justiciarestaurativa - U4 - INICIO-v1', 'Unidad 4', 'Inicio de la unidad', VJM, 'Sin cortes; no entra el arranque de frase que la grabación deja cortado al final («Es un—»).'),
     ('justiciarestaurativa - U4 - CIERRE-v1', 'Unidad 4', 'Cierre de la unidad', VJM, 'Sin cortes. La grabación termina sin despedida.'),
     ('justiciarestaurativa - CURSO - CIERRE-v1', 'Curso', 'Cierre del curso', VM, ''),
 ]
