@@ -24,6 +24,12 @@ muestra (tamaño original y 10 % más chico) y eligió «B: 10 % más chico». S
 del plan) y `…_recortado_mate.mp4` (el alfa, para cambiar de fondo sin volver a recortar); la cruda queda al
 lado (`FUENTE_CRUDA`). Lo corre `lote/recorta_lote.py`, dos a la vez (4,4 c/s cada uno en la GTX 970).
 
+**La pluma de los bordes.** Con el cuadro al 90 %, el borde izquierdo de la fuente cae en x=386 y el de arriba en
+y=108, dentro del cuadro: una mano que entra por la izquierda o la cabeza cuando el profe se acerca quedaban
+cortadas por una línea recta. `recorta_cuadro.py` multiplica el alfa por una rampa de 96 px a la izquierda y 48
+arriba (`--pluma-x`, `--pluma-y`). Los cuatro primeros recortes salieron antes de que existiera y se emplumaron
+después con `lote/emplumar.py`, sin volver a pasar el modelo; el inicio de la U1 ya estaba entregado y salió en v2.
+
 **Qué se editó.** Se leyeron las diez transcripciones enteras (Scribe, 7.559 palabras): no hay tomas repetidas
 ni pedidos de corte. Lo que hay son cuatro palabras en falso, que se cortan, y titubeos chicos que se dejan:
 - se cortan «las vara— las variaciones» y «y ava— avanzar» (inicio de la U2), «imp— inimputabilidad» (cierre de

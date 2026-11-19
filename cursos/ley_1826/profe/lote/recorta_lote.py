@@ -3,6 +3,8 @@
 la Fiscalia (`herramientas/video/recorta_cuadro.py`: el cuadro entero al 90 %, centro en x=1250, apoyado abajo).
 Dos a la vez por la placa (4,4 c/s cada uno en la GTX 970: 104.600 cuadros en unas 3,3 h), los cortos primero.
 Despues de cada uno cuenta los cuadros del recortado contra los de la fuente. Lo que ya existe no se rehace.
+La pluma de los bordes (96 px a la izquierda, 48 arriba) es la que trae recorta_cuadro.py por omision; los cuatro
+primeros recortes se hicieron antes de que existiera y se emplumaron con emplumar.py.
 Log: recorta_lote.log; la salida de cada recorte, en <clave>/recorta.out"""
 import os
 import subprocess

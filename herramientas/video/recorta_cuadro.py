@@ -9,13 +9,21 @@ borde recto que puede verse es el del propio cuadro de la fuente.
 
     python recorta_cuadro.py <fuente> <fondo> <salida.mp4> [--x 0 --y 0 --ancho 1920 --alto 1080]
                              [--escala 1.0] [--cx 1250] [--base 1080] [--modelo resnet50|mobilenetv3]
-                             [--ratio 0.25] [--cpu] [--desde s] [--cuadros N] [--muestra t.jpg]
+                             [--ratio 0.25] [--pluma-x 96] [--pluma-y 48] [--cpu] [--desde s] [--cuadros N]
+                             [--muestra t.jpg]
 
 - El rectángulo (`--x --y --ancho --alto`) se escala por `--escala` y se le pasa al modelo a ese tamaño.
 - Queda con su centro horizontal en `--cx` y su borde de abajo en `--base` (1080: apoyado en el piso del
   cuadro). Lo que cae fuera de 1920×1080 se pierde.
+- **Pluma en los bordes del rectángulo que quedan dentro del cuadro** (`--pluma-x`, `--pluma-y`, en px del
+  rectángulo ya escalado; 0 la saca). Lo que toca el borde de la fuente quedaba cortado por una línea recta en
+  medio del fondo: una mano que entra por la izquierda (en el inicio del curso de la Ley 1826, 116 cuadros en nueve
+  gestos) o la cabeza cuando el profe se acerca y se sale por arriba (48 cuadros en el inicio de la U1). El alfa
+  se multiplica por una rampa suave (smoothstep) de 0 a 1 en esos px: la mano y el pelo se funden con el fondo en
+  vez de cortarse. Un borde que cae fuera del cuadro, o justo en su orilla, no lleva pluma.
 - Salen dos archivos, como en `recorta_persona.py`: `<salida>` (1920×1080, H.264 CRF 14, BT.709, con el audio
-  de la fuente copiado y sin `-shortest`) y `<salida sin .mp4>_mate.mp4` (el alfa del rectángulo escalado).
+  de la fuente copiado y sin `-shortest`) y `<salida sin .mp4>_mate.mp4` (el alfa del rectángulo escalado, tal
+  como lo da el modelo: sin la pluma).
 - La fuente se lee como BT.709 de rango limitado (un 1080p sin etiqueta).
 - `--ratio`: 0,25 para 1080p (lo que recomienda el modelo para HD); 0,4 para recortes de menos de 1080 de alto.
 
@@ -38,6 +46,7 @@ ap.add_argument('--base', type=int, default=1080)
 ap.add_argument('--modelo', default='resnet50'); ap.add_argument('--ratio', type=float, default=0.25)
 ap.add_argument('--cpu', action='store_true'); ap.add_argument('--cuadros', type=int, default=0)
 ap.add_argument('--desde', type=float, default=0.0); ap.add_argument('--muestra', default='')
+ap.add_argument('--pluma-x', type=int, default=96); ap.add_argument('--pluma-y', type=int, default=48)
 a = ap.parse_args()
 
 import onnxruntime as ort
@@ -52,6 +61,27 @@ ay, by = max(y0, 0), min(y0 + Hh, CH)
 if ax >= bx or ay >= by:
     raise SystemExit('el rectangulo cae fuera del cuadro')
 print('modelo a %dx%d; en el cuadro: x %d-%d, y %d-%d' % (W, Hh, ax, bx, ay, by), flush=True)
+
+
+def rampa(n, p, ini, fin):
+    """Peso por px a lo largo de un lado de n px: sube de 0 a 1 (smoothstep) en los primeros p si `ini`, y baja en
+    los últimos p si `fin`."""
+    w = np.ones(n, np.float32)
+    p = min(p, n // 2)
+    if p > 0:
+        t = (np.arange(p, dtype=np.float32) + 0.5) / p
+        s = t * t * (3.0 - 2.0 * t)
+        if ini:
+            w[:p] = s
+        if fin:
+            w[n - p:] = s[::-1]
+    return w
+
+
+# la pluma va solo en los bordes del rectángulo que quedan dentro del cuadro de salida
+pluma = rampa(Hh, a.pluma_y, y0 > 0, y0 + Hh < CH)[:, None] * rampa(W, a.pluma_x, x0 > 0, x0 + W < CW)[None, :]
+print('pluma: izquierda %s, derecha %s (%d px); arriba %s, abajo %s (%d px)'
+      % (x0 > 0, x0 + W < CW, a.pluma_x, y0 > 0, y0 + Hh < CH, a.pluma_y), flush=True)
 
 so = ort.SessionOptions()
 prov = ['CPUExecutionProvider'] if a.cpu else ['DmlExecutionProvider', 'CPUExecutionProvider']
@@ -95,7 +125,7 @@ while True:
     fgr, pha, *rec = ses.run(None, {'src': np.ascontiguousarray(src.transpose(2, 0, 1)[None].astype(np.float32) / 255.0),
                                     'r1i': rec[0], 'r2i': rec[1], 'r3i': rec[2], 'r4i': rec[3], 'downsample_ratio': ratio})
     t_inf += time.time() - t
-    al = pha[0, 0][sy, sx][..., None]
+    al = (pha[0, 0] * pluma)[sy, sx][..., None]
     com = fgr[0].transpose(1, 2, 0)[sy, sx] * al + bg * (1.0 - al)
     cuadro[ay:by, ax:bx] = np.clip(com * 255.0 + 0.5, 0, 255).astype(np.uint8)
     enc.stdin.write(cuadro.tobytes())
