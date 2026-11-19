@@ -23,7 +23,8 @@ conceptuales y marco jurídico de la justicia restaurativa».
 el de Martín va bajo su mosaico (abajo a la izquierda, arriba), el del tercer profesor bajo el suyo (abajo a la
 derecha) y el de Víctor a la izquierda de su mosaico (abajo a la izquierda, más abajo). Cada uno sale cuando esa
 persona empieza a hablar. **El tercer profesor:** Víctor lo presenta como «el profesor Jhonatan Sandoval» (así lo
-oye Scribe); no está en la ficha del curso, así que la grafía y el cargo se le preguntaron a Sebastián (`TERCERO`).
+oye Scribe); no está en la ficha del curso. Se le preguntó a Sebastián y eligió «Jhonatan Sandoval, sin cargo»
+(18 nov): va el nombre solo, con esa grafía.
 """
 import os
 import sys
@@ -37,9 +38,10 @@ globals().update(armar('jr_u1_inicio_fuente.mp4', 'UNIDAD 1/INICIO',
                        'JR - U1 - INICIO', 'justiciarestaurativa - U1 - INICIO', 'JRU1I', 280, 14419))
 
 _LTU = dict(ancho=430, tinta=TINTA_LT)
-VICTOR_U = (VICTOR[0], VICTOR[1], dict(_LTU, x=40, top=820))
-MARTIN_U = (MARTIN[0], MARTIN[1], dict(_LTU, x=40, top=575))
-TERCERO = None      # (nombre, cargo): pendiente de Sebastián
+# el nombre va en dos renglones: en uno solo se mete en el mosaico de abajo (empieza en x 509)
+VICTOR_U = ('Víctor Hugo\nOspina Vargas', VICTOR[1], dict(_LTU, x=40, top=800))
+MARTIN_U = ('Martín Posada\nMartínez', MARTIN[1], dict(_LTU, x=40, top=575))
+TERCERO = ('Jhonatan Sandoval', '')     # Sebastián, 18 nov: «Jhonatan Sandoval, sin cargo»
 
 ITEMS = [
     ('lt01', 'lt', 11.0, 18.5, VICTOR_U),
