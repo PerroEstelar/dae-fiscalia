@@ -5,6 +5,7 @@
 | `justiciarestaurativa - CURSO - CIERRE-v1` | 598 | 44:49 | `1xuKv_o5UkvBMXuwx_PspTtD8NtTSbvi2` |
 | `justiciarestaurativa - CURSO - INICIO-v1` | 254 | 20:02 | `1Nqgjpci4dQcnyEYvNhej21bFk0poNlRU` |
 | `justiciarestaurativa - U1 - INICIO-v1` | 112 | 8:25 | `1fizXTPPfcUv5NdtZ5dGWexytohLJHZcQ` |
+| `justiciarestaurativa - U1 - CIERRE-v1` | 138 | 10:06 | `1uz2jOdRPKn5Ebi7ubVVFZ_JzLH9SgYiM` |
 
 Carpeta de Drive: VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`), al lado del video. Copia junto al
 video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
@@ -46,3 +47,21 @@ video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
   única regla que no es un tropiezo ni una palabra mal oída.
 - Revisión: formato validado (numeración, tiempos, 1–2 renglones de hasta 42 caracteres, CRLF, sin BOM) y **lectura
   completa** de los 112 subtítulos. Queda un subtítulo de dos palabras («Y es que», 2:19), que es una pausa suya.
+
+## Cierre de la unidad 1 (18 nov 2026, noche)
+
+- Se transcribió la entrega (1.185 palabras, tres hablantes). **Quince reglas a mano** en `correcciones.json`
+  (`jru1c`): «Jhonatan» y catorce arranques en falso o autocorrecciones («este curso— esta unidad haya— eh, domine»,
+  «del sistema de responsabilidad, eh, perdón, del sistema acusatorio», «cuando se hablamos…, cuando se habla…»,
+  «Van a— eh, conocieron»…). Ninguna cambia lo que dicen.
+- **Tres dudas con tercera escucha** (los tres tramos juntos en un WAV a 0,85× y Scribe otra vez):
+  - **«profesor Vito»** (1:41): las tres pasadas oyen «Vito». Queda así.
+  - **2:40, «hay un elemento … que se convierte la base del sistema»**: las tres pasadas oyen distinto la palabra
+    del medio («importificador», «elem- -ficador», «importante»). El subtítulo **no lleva esa palabra**: «hay un
+    elemento que se convierte la base del sistema». Es el único sitio donde falta algo que se dice; si alguien lo
+    oye claro, se agrega.
+  - **El final** (9:43): dos pasadas oyen «Gracias por [pausa] y les esperamos en la segunda unidad»; la lenta,
+    «Gracias por su atención y nos veamos…». Queda «Gracias, y les esperamos en la segunda unidad.»
+- «sobre todos esos conceptos Son, son importantes» es «sobre todo esos conceptos son importantes» (así lo oyó la
+  transcripción de la fuente).
+- Revisión: formato validado y **lectura completa** de los 138 subtítulos.

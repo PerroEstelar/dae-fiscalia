@@ -134,3 +134,36 @@ Verificada en Drive byte a byte (copia de servidor a `_MA subidas/_verif jr u1 i
   salió a 5365).
 - Para ver un `.mov` qtrle con alfa sobre el compuesto en ffmpeg: `[1:v]select=eq(n\,90),format=rgba` y
   `overlay=format=rgb`. Con `-ss` en la entrada del `.mov` el cuadro salía vacío y la hoja no mostraba el rótulo.
+
+## Cierre de la unidad 1 (18 nov 2026, noche) — entrega provisional
+
+Sebastián: «ahora continúa con u1 justicia restaurativa cierre». Fuente: «Justica restuaraativa-  Unidad 1 cierre.mp4»
+(`1n-OFMmvE1RjNZL4HWB1yWu41y6wLcjc0`, 179 MB), en la carpeta VIDEOS del curso.
+
+| | |
+|---|---|
+| entrega | `justiciarestaurativa - U1 - CIERRE-v1.mp4` · `1_6-hPWglkRAzrpuxvrRTC_epsNMx_buu` |
+| carpeta de Drive | VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`) |
+| subtítulos | `justiciarestaurativa - U1 - CIERRE-v1.srt` · `1uz2jOdRPKn5Ebi7ubVVFZ_JzLH9SgYiM` (138; ver `../subtitulos/`) |
+| medidas | 10:06,5 · 14.541 cuadros = línea · 406.021.636 bytes · H.264 a 5,36 Mb/s · −16,1 LUFS, −2,9 dBTP |
+| línea | `JR - U1 - CIERRE` (proyecto `DAE MASTER - CURSOS`) |
+| disco | `E:\DAE MASTER\PRIORIDAD 1\CURSO - JUSTICIA RESTAURATIVA\UNIDAD 1\CIERRE\` |
+
+Verificada en Drive byte a byte (copia de servidor a `_MA subidas/_verif jr u1 cierre 18nov` y `verificar_drive.py`: «OK»).
+
+- **La fuente:** 1920×1080, 30 fps, 18.835 cuadros (10:27,9), BT.601. Trae la intro pegada (0–277) y **no trae outro**:
+  la conversación llega al último cuadro (brillo medido en todos los cuadros). Entra del 280 al 18835.
+- Los mismos tres mosaicos y los mismos rótulos del inicio de la unidad (`plan_jru1c` los importa de `plan_jru1i`).
+  Víctor abre (0:11,5–1:33,7), responde Jhonatan (1:33,8–4:17,5), después Martín (5:04,5–8:18,5) y cierra Víctor
+  (8:21,2–10:27,3). Rótulos en 13,0, 94,6 y 305,5 s de la fuente.
+- **Un corte de 46,1 s** (cuadros 7742 a 9126 de la fuente): Martín arranca, se traba («ahí me tosté, espérense»),
+  pregunta fuera de la grabación cómo referirse a quienes cursan, Víctor le contesta y Martín vuelve a empezar («Vale.
+  Pues al final, al finalizar esta unidad…»). Sale todo, «Vale.» incluido. Es un corte directo. La transcripción de
+  la entrega lo confirma: «…por medio del modelo penal. Pues al final, al finalizar esta unidad…».
+- **Cómo se hizo:** `prep_fuente.py` (ahora recibe la carpeta de paso de Drive como quinto argumento), brillo de todos
+  los cuadros (`signalstats` a 160×90, 28 s), `profe_cadena.py plan_jru1c componer titulo cartones` (compuesto en 6
+  min) y `lote/entrega_gpu.py` (línea, calibración y render en 1,5 min; pidió 5000 kb/s y salió a 5356).
+- **Sitio en E:.** Quedaban 0,73 GB. Las grabaciones originales del cierre y del inicio del curso (567 y 275 MB) se
+  movieron a `D:\DAE\_masters_archivo\PRIORIDAD 1\CURSO - JUSTICIA RESTAURATIVA\<pieza>\fuente\` (copia, md5 igual
+  y recién entonces fuera de E:), con un `LEER - la fuente esta en D.txt` en cada `01 VIDEO`. Las líneas usan el
+  compuesto, no la fuente. Después de esta entrega: E: 0,76 GB, D: 0,81 GB.
