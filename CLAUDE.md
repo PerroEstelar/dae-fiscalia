@@ -3502,3 +3502,60 @@ Drive de Sebastián, junto a la de casos: una fila por video de profe con priori
 estado, duración y enlaces al video, al `.srt` y a la carpeta. 85 entregados, 935 minutos. Se arma con
 `herramientas/inventario_profe/` (ver su README). **Un video de profe nuevo se entrega con su fila en esa hoja**, igual
 que un caso nuevo con la suya en la de casos.
+
+## El informe lleva enlaces a las carpetas de Drive (19 nov 2026)
+
+«El informe» es la pestaña Resumen de «Inventario_videos_17 NOV». Sebastián: «no agregaste los enlaces a
+carpetas de Drive para ser encontrado fácilmente… en el informe».
+
+- **Cada fila de producción lleva en la columna E una celda «Carpetas en Drive: curso · curso · …»**, con
+  un enlace por curso a la carpeta donde quedaron los videos de esa fila. Va en la misma escritura que
+  la fila: una producción sin enlaces a carpetas no está informada.
+- **La lista «Carpetas en Drive»** (debajo de las filas de producción) lleva una fila por carpeta: curso
+  en A y la carpeta enlazada en B. Un curso que entra al informe entra también ahí.
+- **Varios enlaces en una celda:** `updateCells` con `userEnteredValue` y `textFormatRuns`; cada enlace
+  es un tramo con `format.link.uri`, el azul (0,0667, 0,3333, 0,8) y `underline`, y después un tramo
+  con `format: {}` para volver al texto normal. Los índices cuentan unidades UTF-16. Un tramo no puede
+  empezar en el final del texto.
+- **Un enlace en toda la celda, sin tocar el texto:** `repeatCell` con
+  `userEnteredFormat.textFormat.link` y `fields` solo de ese formato.
+- **`get_values` no muestra los enlaces.** Devuelve el texto. Para saber si una celda tiene enlace se
+  lee con `includeGridData` y el campo `hyperlink` (o `textFormatRuns`). Di por hecho que la columna
+  «Archivo en Drive» no tenía enlaces porque solo vi los nombres, y los tenía todos.
+- Guion de referencia: `herramientas/inventario_profe/enlaces_informe.py` (arma las peticiones; se
+  mandan con el conector de Sheets).
+
+## Espacio en disco: qué se midió y qué se borró (19 nov 2026)
+
+Sebastián pidió qué podía borrar, con D: en 0,8 GB libres. Se midieron C:, D: y E:
+(`D:\DAE\_tmp\espacio\escanea.py` y `grupos.py`) y se cruzó con el pool de Resolve (5.886 clips).
+
+- **Ningún clip del proyecto apunta a** `_masters_archivo`, `_tmp`, `_descartes` ni `_archivo_tmp`. Los
+  compuestos de `01 VIDEO` sí están en el pool (D: 18,8 GB, E: 14 GB): no se tocan.
+- **`D:\DAE\_masters_archivo` se vació el 19 nov, por decisión de Sebastián:** 105 .mp4, 132,2 GB
+  (masters de 32 Mb/s, temporales archivados, descartes de Bienes y fuentes crudas). La lista está en
+  `D:\DAE\_tmp\espacio\borrado_masters_archivo_19nov.txt`. Los `LEER` que mandaban a esa carpeta
+  llevan una línea que lo dice. Un máster se vuelve a rendir desde la línea; una fuente se baja de Drive.
+  `C:\DAE_masters_archivo` (fuentes, 4 GB) sigue.
+- **Un borrado definitivo se confirma con él antes de hacerlo:** qué se borra, cuántos archivos, cuánto
+  pesa y que no se puede deshacer, aunque lo haya pedido con la ruta exacta. La papelera no libera
+  espacio (ver «Máster de paso»).
+- **`D:\DAE\_tmp` (89 GB, casi todo .mp4) no se borra entera:** adentro están `sr\aplicar.py`,
+  `sr\repo_in`, `subs\stt_final.py`, `jr_p\prep_fuente.py`, `jr_p\cola.txt` y `espacio\`. Los
+  guiones, json y logs pesan 0,1 GB.
+- Lo demás que quedó señalado como borrable, sin tocar: `_descartes` (E: 34,7 GB, D: 13,3 GB), la caché
+  de render de Resolve en `D:\doc\project files\CacheClip` (14,3 GB, desactivada), los temporales de
+  After Effects en `%LOCALAPPDATA%\Temp\Adobe` (13,7 GB), `E:\DAE MASTER\_archivo_tmp` (10 GB), 80
+  versiones superadas en `05 EXPORTS` (9,1 GB) y `05 EXPORTS\_master` (4,2 GB). Con costo:
+  `E:\DAE MASTER\respaldo de d` (27,9 GB; sus 1.326 archivos están en D: con el mismo tamaño) y las
+  entregas vigentes de `05 EXPORTS` (42 GB; están en Drive).
+
+## Una fuente puede llegar solo en audio (JR, inicio de la U4, 19 nov 2026)
+
+El enlace que pasó Sebastián era «Justica restuaraativa-  Unidad 4 inicio.m4a»: AAC estéreo, 9:04, sin
+pista de video. Es el audio suelto que Zoom deja junto al .mp4. **Antes de preparar una fuente se mira el
+`mimeType` en Drive.** Sebastián decidió esperar el .mp4. La transcripción ya está
+(`D:\DAE\_tmp\jr_p\jru4i\prep\turnos.txt`: Víctor presenta de 0:11 a 1:52, Jhonatan de 1:53 a 5:07,
+Martín de 5:11 a 7:15 y cierra Víctor de 7:19 a 8:54) y el audio quedó en `UNIDAD 4\INICIO\01 VIDEO`.
+En la carpeta VIDEOS del curso hay además dos grabaciones sin producir, que él todavía no pidió: el cierre
+de la U2 (`1xFAc3bR31B6qONEN_aRL_TCvkAA7MpFX`) y el cierre de la U3 (`1gC1QllKcxwjnSVrsBI0sjmFu0HhTA4X0`).
