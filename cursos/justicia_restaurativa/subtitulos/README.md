@@ -10,6 +10,8 @@
 | `justiciarestaurativa - U3 - INICIO-v1` | 163 | 11:48 | `1Hm3rmSlqAMgw0wQ8FsDPCHngOL9cKnTc` |
 | `justiciarestaurativa - U4 - INICIO-v1` | 124 | 9:16 | `1pZkIdR6X3ANEJA8iz45E7mrnYfD3OVse` |
 | `justiciarestaurativa - U4 - CIERRE-v1` | 159 | 11:36 | `1Biajmt8kUdwHFIUg5ZcxrfNdfkG4qXwV` |
+| `justiciarestaurativa - U2 - CIERRE-v1` | 281 | 20:43 | `1RHKfB6vdei1fdvJBbpeLJNODpXwY52_8` |
+| `justiciarestaurativa - U3 - CIERRE-v1` | 217 | 16:38 | `1CHiIwsw0fnyy1XRHJ667xZ8ibnM2mSgC` |
 
 Carpeta de Drive: VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`), al lado del video. Copia junto al
 video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
@@ -142,3 +144,31 @@ video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
   la mejor manera esta última unidad.».
 - Revisión: formato validado (124 subtítulos, 1–2 renglones de hasta 42 caracteres, CRLF, sin BOM), **lectura
   completa** del borrador y de cada renglón corregido.
+
+## Cierre de la unidad 2 (19 nov 2026, tarde)
+
+- Se transcribió la entrega (dos hablantes). **25 reglas a mano** en `correcciones.json` (`jru2c`): «Jhonatan» y los
+  arranques en falso de Víctor y de Jhonatan («Amo— mes— nos estamos refiriendo, claro está, a esos, eh, a— dentro
+  del curso», «continúen haciendo un análisis muy, muy, mmm, eh, continúen haciendo allí», «la Unidad de Justi— la
+  Unidad Nacional», «como lo hemos sostenido a lo largo— como se ha sostenido»…), puntuación («Pues este es el plus
+  de esta unidad que acaban de cursar: entregarles herramientas…»), «artículo tres veinticuatro/veinticinco» →
+  «324/325» y dos palabras: «en **la** labor» y «**acerca** de la posibilidad».
+- El arranque fallido que el profesor pide cortar («…esta unidad tres— esta unidad dos. Voy a repetir ahí porque de
+  pronto no queda bien el corte») no está en el video, así que tampoco en el `.srt`.
+- **Segunda escucha de tres tramos** (normal y al 75 %): «para poder **avivar** a la renuncia» y «nuestro colega aquí
+  de **CEP**» se oyen igual las tres veces y quedan como los dice. En 2:04 las tres pasadas oyen cosas distintas
+  («Tiene», «Quiero», «Y era en cuenta»): el subtítulo lleva **«Tengan en cuenta»**. Decisión, no certeza.
+
+## Cierre de la unidad 3 (19 nov 2026, tarde)
+
+- Se transcribió la entrega (tres hablantes). **27 reglas a mano** (`jru3c`): «Jhonatan» y arranques en falso de los
+  tres («se pueda ver implement— desarrollada», «Voluntariedad que es— pos, es— pos, que se mantiene», «si no tengan
+  cla— no, no se tenga un documento, una— un texto»…), puntuación y dos palabras: «las distintas **prácticas**
+  restaurativas» (Scribe: «prácticamente») y «**Eso** haría que el curso haya valido la pena» (Scribe: «A eso»).
+- **El autor que cita Jhonatan** (2:55): Scribe oyó «Anthony Doof» en la fuente y «Anthony Doerr» en la entrega. El
+  subtítulo lleva **«Antony Duff»** (R. A. Duff, filósofo del castigo penal, muy citado en la literatura de justicia
+  restaurativa en castellano). Decisión, no certeza. «El modelo de Shapiro» (el de las dos partes y el tercero
+  independiente) es Martin Shapiro y queda.
+- **Una regla con comillas se escribe con « »**: las reglas de `_todos` corren antes que las del video y ya cambiaron
+  las comillas rectas de Scribe. Las dos reglas de este video que las llevaban no se aplicaban hasta corregirlas.
+

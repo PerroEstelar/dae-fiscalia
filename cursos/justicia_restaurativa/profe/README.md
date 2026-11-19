@@ -360,3 +360,56 @@ Verificada en Drive byte a byte (copia de servidor a `_MA subidas/_verif jr u4 i
 378,3 s y 386,4 s salta solo el mosaico de Martín (su cámara). Nada de eso se puede disimular con tres mosaicos; queda
 como llegó.
 
+## Cierre de la unidad 2 (19 nov 2026, tarde) — entrega provisional
+
+Sebastián: «continúa con Justicia restaurativa, siguen faltando el cierre de la U2 y el cierre de la U3, déjalos subidos
+y actualiza». Fuente: «Justica restuaraativa-  Unidad 2 cierre.mp4» (`1xFAc3bR31B6qONEN_aRL_TCvkAA7MpFX`, 259 MB, del
+18 nov), en la carpeta VIDEOS del curso desde el 18 nov.
+
+| | |
+|---|---|
+| entrega | `justiciarestaurativa - U2 - CIERRE-v1.mp4` · `1d5WfdKW3l1_TZ__Zd8GVCJHjq721Cr_G` |
+| carpeta de Drive | VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`) |
+| subtítulos | `justiciarestaurativa - U2 - CIERRE-v1.srt` · `1RHKfB6vdei1fdvJBbpeLJNODpXwY52_8` (281; ver `../subtitulos/`) |
+| medidas | 20:43,1 · 29.804 cuadros = línea · 832.239.313 bytes · H.264 a 5,36 Mb/s, BT.709 · −16,0 LUFS, pico −2,5 dBFS |
+| línea | `JR - U2 - CIERRE` (proyecto `DAE MASTER - CURSOS`) |
+| disco | `E:\DAE MASTER\PRIORIDAD 1\CURSO - JUSTICIA RESTAURATIVA\UNIDAD 2\CIERRE\` |
+
+Verificada en Drive byte a byte («OK jru2c 832239313»).
+
+- **Fuente** (`plan_jru2c.py`): 37.393 cuadros (20:46,5), intro pegada (0–277) y outro desde el 37114. Dos mosaicos,
+  Víctor a la izquierda y Jhonatan a la derecha, como el inicio de la unidad. La raya negra de arriba sale con
+  `PREFILTRO` (aquí ocupa tres filas: 0, 125 y 251 sobre un lienzo de 254–255).
+- **Un corte que pide el profesor**: «…esta unidad tres— esta unidad dos. Voy a repetir ahí porque de pronto no queda
+  bien el corte». Salen 18,8 s, del silencio después de «…de este curso.» al silencio antes del segundo «Entonces,
+  colegas». Los dos se acomodaron en la silla: diferencia de imagen 3,3 en el mejor par de cuadros, contra 0,1 entre
+  cuadros seguidos. Va con `SUAVE = 3`: en la entrega (cuadros 18307–18310) se ve como una disolvencia de un octavo de
+  segundo, no como un salto. La transcripción de la entrega confirma que la frase sale una vez.
+- **Lower thirds:** Víctor (0:11,5 de la fuente), Jhonatan cuando Víctor lo presenta (0:31,5) y cuando toma la palabra
+  (6:45,2).
+- **Cadena:** `prep_fuente.py` + `prep2_cierre.py` (brillo de todos los cuadros, bordes y mosaicos, turnos, pausas y
+  diferencia entre cuadros: es `prep2_jru4c.py` con la clave por argumento y `dif_u4.py` adentro), `profe_cadena.py
+  plan_jru2c componer titulo cartones` (994 s) y `lote/entrega_gpu.py 5000` (render 177 s).
+
+## Cierre de la unidad 3 (19 nov 2026, tarde) — entrega provisional
+
+Fuente: «Justica restuaraativa-  Unidad 3 cierre.mp4» (`1gC1QllKcxwjnSVrsBI0sjmFu0HhTA4X0`, 304 MB, del 18 nov).
+
+| | |
+|---|---|
+| entrega | `justiciarestaurativa - U3 - CIERRE-v1.mp4` · `19WxnOdWt519cdt1nu4e7DvdHqAwwloIS` |
+| carpeta de Drive | VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`) |
+| subtítulos | `justiciarestaurativa - U3 - CIERRE-v1.srt` · `1CHiIwsw0fnyy1XRHJ667xZ8ibnM2mSgC` (217; ver `../subtitulos/`) |
+| medidas | 16:38,6 · 23.942 cuadros = línea · 669.509.786 bytes · H.264 a 5,36 Mb/s, BT.709 · −16,0 LUFS, pico −3,0 dBFS |
+| línea | `JR - U3 - CIERRE` (proyecto `DAE MASTER - CURSOS`) |
+| disco | `E:\DAE MASTER\PRIORIDAD 1\CURSO - JUSTICIA RESTAURATIVA\UNIDAD 3\CIERRE\` |
+
+Verificada en Drive byte a byte («OK jru3c 669509786»).
+
+- **Fuente** (`plan_jru3c.py`): 29.494 cuadros (16:23,2), intro pegada (0–277) y outro desde el 29215. Los tres
+  mosaicos de la unidad 1 (Martín arriba a la izquierda, Jhonatan arriba a la derecha, Víctor abajo). Raya negra de
+  arriba con `PREFILTRO`. **Sin cortes**: no hay reinicios ni pedidos de corte.
+- **Lower thirds:** Víctor (0:12,9 de la fuente), Jhonatan (1:58,0) y Martín (5:04,7), cada uno cuando empieza a hablar.
+- **Cadena:** la misma; componer 817 s, render 111 s. Con estos dos quedan entregados los diez videos de profe del
+  curso.
+

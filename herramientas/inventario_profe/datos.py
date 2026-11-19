@@ -107,7 +107,9 @@ JR = [
     ('justiciarestaurativa - U1 - INICIO-v1', 'Unidad 1', 'Inicio de la unidad', VJM, 'Sin cortes.'),
     ('justiciarestaurativa - U1 - CIERRE-v1', 'Unidad 1', 'Cierre de la unidad', VJM, 'Lleva un corte de 46 s donde un profesor se traba y vuelve a empezar.'),
     ('justiciarestaurativa - U2 - INICIO-v1', 'Unidad 2', 'Inicio de la unidad', VJ, 'Sin cortes.'),
+    ('justiciarestaurativa - U2 - CIERRE-v1', 'Unidad 2', 'Cierre de la unidad', VJ, 'Lleva un corte de 19 s donde el profesor pide repetir («voy a repetir ahí porque de pronto no queda bien el corte»).'),
     ('justiciarestaurativa - U3 - INICIO-v1', 'Unidad 3', 'Inicio de la unidad', VJM, 'Lleva un corte de 14,5 s que pide el profesor («un corte, por favor»).'),
+    ('justiciarestaurativa - U3 - CIERRE-v1', 'Unidad 3', 'Cierre de la unidad', VJM, 'Sin cortes.'),
     ('justiciarestaurativa - U4 - INICIO-v1', 'Unidad 4', 'Inicio de la unidad', VJM, 'Sin cortes; no entra el arranque de frase que la grabación deja cortado al final («Es un—»).'),
     ('justiciarestaurativa - U4 - CIERRE-v1', 'Unidad 4', 'Cierre de la unidad', VJM, 'Sin cortes. La grabación termina sin despedida.'),
     ('justiciarestaurativa - CURSO - CIERRE-v1', 'Curso', 'Cierre del curso', VM, ''),
@@ -119,7 +121,7 @@ for nombre, uni, pieza, profe, nota in JR:
     m, t = M[nombre], T[nombre]
     if nombre in ('justiciarestaurativa - CURSO - INICIO-v1', 'justiciarestaurativa - U1 - INICIO-v1', 'justiciarestaurativa - U1 - CIERRE-v1', 'justiciarestaurativa - U2 - INICIO-v1'):
         nota = (nota + RAYA).strip()
-    fila(1, CUR, uni, pieza, profe, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '19 nov' if 'U4' in nombre else '18 nov', nota, n_srt=t[0])
+    fila(1, CUR, uni, pieza, profe, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '19 nov' if ('U4' in nombre or 'U2 - CIERRE' in nombre or 'U3 - CIERRE' in nombre) else '18 nov', nota, n_srt=t[0])
 
 # ---------- Prioridad 1 · Ley 1826 (19 nov 2026: los diez de profe, recortados sobre el fondo de la Fiscalía)
 CUR = 'Ley 1826 de 2017: procedimiento penal especial abreviado y acusador privado'
