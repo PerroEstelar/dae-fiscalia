@@ -3,6 +3,7 @@
 | video (nombre en Drive) | subtítulos | dura | id del `.srt` en Drive |
 |---|---|---|---|
 | `justiciarestaurativa - CURSO - CIERRE-v1` | 598 | 44:49 | `1xuKv_o5UkvBMXuwx_PspTtD8NtTSbvi2` |
+| `justiciarestaurativa - CURSO - INICIO-v1` | 254 | 20:02 | `1Nqgjpci4dQcnyEYvNhej21bFk0poNlRU` |
 
 Carpeta de Drive: VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`), al lado del video. Copia junto al
 video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
@@ -18,3 +19,15 @@ video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
   («Este módulo que la ASI los invita a la de la justicia restaurativa»); las dos siguientes oyen «…los invita a la
   aplicación de la justicia restaurativa», y «ASI» es «así». «Como un almuerzo» (6:04) y «Eso logramos sin ninguna duda
   que hemos cumplido nuestro propósito» (43:36) se oyen igual las tres veces y quedan como las dicen.
+
+## Inicio del curso (18 nov 2026, noche)
+
+- Se transcribió la entrega (2.100 palabras en la fuente, dos hablantes). `srt_de_stt` limpió solo casi todos los
+  tropiezos; quedaron **cuatro reglas a mano** en `correcciones.json` (`jrci`), todas sobre arranques en falso: «con la
+  pregunta muy—, eh, la, la pregunta ahí es», «quizás ya, ya empiecen», «cómo, cómo lo voy— cómo, cómo hacer uso» y
+  «cómo, cómo poder, eh, implementarlo». Ninguna cambia lo que dicen.
+- El tramo que Víctor pide cortar («pequeño corte… perdón») no está en el video, así que tampoco en el `.srt`.
+- **Revisión más corta que la del cierre:** se validó el formato (numeración, tiempos, 1–2 renglones de hasta 42
+  caracteres, CRLF, sin BOM), se buscaron tropiezos por patrón y se leyó una muestra de 12 subtítulos; no hubo segunda
+  escucha de tramos dudosos.
+

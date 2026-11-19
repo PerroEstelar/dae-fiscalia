@@ -65,3 +65,36 @@ lote/entrega_gpu.py                                     # 12:14 a 12:20: línea,
 - `profe_cadena.py` se negaba a empezar («SIN ESPACIO EN E:»): calculaba 0,35 GB por minuto, pensando en una pieza con
   gráficos y máster. Si todos los ítems del plan son rótulos, calcula 0,06 GB por minuto (mínimo 1 GB).
 - Entre las 09:35 y las 12:13 no pasó nada: la sesión se cortó con el compuesto ya hecho. No se perdió trabajo.
+
+## Inicio del curso (18 nov 2026, noche) — entrega provisional
+
+Sebastián: «haz el video de inicio de justicia restaurativa de pe a pa, gráfica provisional, subido, verificado,
+actualizados documentos, carpetas, etc.». Fuente: «Justica restuaraativa-  inicio curso.mp4»
+(`1GOxoYu5V3zS3XvNvsLddTvv8AElk73B4`, 275 MB), en la misma carpeta que el cierre.
+
+| | |
+|---|---|
+| entrega | `justiciarestaurativa - CURSO - INICIO-v1.mp4` · `19Pk8Lty8weGy3My29opsjl8xSCVCXsjI` |
+| carpeta de Drive | VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`) |
+| subtítulos | `justiciarestaurativa - CURSO - INICIO-v1.srt` · `1Nqgjpci4dQcnyEYvNhej21bFk0poNlRU` (254; ver `../subtitulos/`) |
+| medidas | 20:01,9 · 28.816 cuadros = línea · 803.106.062 bytes · H.264 a 5,35 Mb/s · −16,0 LUFS, −2,8 dBTP |
+| línea | `JR - CURSO - INICIO` (proyecto `DAE MASTER - CURSOS`) |
+| disco | `E:\DAE MASTER\PRIORIDAD 1\CURSO - JUSTICIA RESTAURATIVA\INICIO DEL CURSO\` |
+
+Verificada en Drive byte a byte (copia de servidor a `_MA subidas/_verif jr inicio 18nov` y `verificar_drive.py`: «OK»).
+
+- **La fuente** es como la del cierre: 1920×1080, 30 fps, 36.485 cuadros (20:16), BT.601, los dos coautores en dos
+  mosaicos sobre blanco, con intro (0–277) y outro (desde el 36208; 36206 y 36207 blancos) pegados. Entra del 280 al 36206.
+- Habla Víctor de 0:10 a 7:47, Martín de 7:49 a 12:49 y cierra Víctor de 12:52 a 20:06.
+- **Un corte de 29,8 s** (cuadros 4392 a 5285 de la fuente): Víctor se enreda y lo pide él («ahí, ahí, pequeño corte…
+  perdón») y retoma la frase. Queda «…al caso penal, al caso concreto. | Se encuentran en su despacho de fiscales…». Es
+  un corte directo: con dos mosaicos no hay plano cerrado que lo disimule. `plan_jrci.py` lleva `TRAMOS` con los dos
+  tramos y su propio `cuadro()` que descuenta el corte.
+- Rótulos: los mismos del cierre (Víctor 11,0–18,5 s, Martín 19,2–26,7 y Martín otra vez en 469,6–477,6, cuando toma
+  la palabra). Cartón de título: «Inicio del curso».
+- **Cómo se hizo:** `profe_cadena.py plan_jrci componer titulo cartones` (compuesto en 11,5 min) y `lote/entrega_gpu.py`
+  (línea, calibración y render en 3 min; pidió 5000 kb/s y salió a 5346).
+- **Resolve estaba en «Untitled Project»** y la línea falló (`carpeta_pool`: `NoneType`). Se abrió
+  `DAE MASTER - CURSOS` con `LoadProject` (tarda más de un minuto: el puente corta, pero el proyecto queda abierto) y se
+  relanzó la entrega.
+
