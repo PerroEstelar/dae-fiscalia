@@ -3399,3 +3399,21 @@ En corto: el equipo (GTX 970 de 4 GB, discos llenos) no corre nada de esto; conv
 más el audio original antes que restaurar; lo más barato verificado es HeyGen Avatar IV desde foto (~0,80 USD/min) y,
 abierto, InfiniteTalk en WaveSpeed (1,80–3,60 USD/min); Magnific sirve para la prueba (VEED Fabric, tope de 300 s,
 260 créditos/s a 720p), no para el curso entero. Falta el prototipo de 30 s y la autorización escrita del profesor.
+
+## Tres personas en videollamada: rótulos en dos renglones, y una fuente con 12 minutos de negro (JR, inicio de la U1, 18 nov 2026)
+
+El inicio de la unidad 1 de Justicia restaurativa trae **tres** mosaicos sobre blanco (dos arriba, uno abajo al
+centro), y el blanco libre queda solo abajo a los lados, a 500 px de ancho.
+
+- **El rótulo de la serie no entra en un renglón**: el nombre se metía en el mosaico de abajo o se salía del cuadro
+  por la derecha. Va con `ancho=430` y el nombre partido con `\n` en el plan (`plan_jru1i.py`). Se mide la caja en el
+  alfa del `.mov` y se mira sobre el compuesto antes de rendir.
+- **Para mirar un `.mov` qtrle con alfa sobre el compuesto:** `[1:v]select=eq(n\,90),format=rgba[o]` y
+  `overlay=format=rgb`. Con `-ss` en la entrada del `.mov`, la hoja salió sin rótulo y parecía que no estaba.
+- **La fuente dura 20 min y el contenido 8**: después del outro pegado sigue negro hasta el final. Se mide dónde
+  termina el contenido (brillo por cuadro) antes de escribir `k1`; la duración del archivo no dice nada.
+- **Un profesor que no está en la ficha:** el rótulo se le preguntó a Sebastián («Jhonatan Sandoval, sin cargo»). Esa
+  grafía manda también en los subtítulos, donde Scribe escribe «Jonathan».
+- **Dos transcripciones del mismo audio se corrigen entre sí.** La de la fuente y la de la entrega oyeron distinto en
+  tres sitios («Mi edad empieza» / «La unidad empieza»); comparar las dos sale gratis, porque la de la fuente ya se
+  hizo para planear.
