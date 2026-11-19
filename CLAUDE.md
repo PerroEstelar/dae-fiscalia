@@ -3382,3 +3382,20 @@ método y los guiones están en `herramientas/casos_en_documentos/README.md`. Lo
 - **Una búsqueda de Drive con muchos resultados no cuesta contexto** si pasa de unos 75 KB: se guarda en archivo. Las
   medianas (10 a 50 resultados) son las caras; un `or` con una palabra suelta («Ipanema») trae decenas de borradores.
 - Cada fila se comprueba releyendo la página anotada (`pdftotext -f P -l P`): título, comienzo y final tienen que estar.
+
+## Antes de armar una línea: que Resolve tenga abierto `DAE MASTER - CURSOS` (18 nov 2026)
+
+La entrega del inicio de Justicia restaurativa falló en `ic_linea_externa` con `carpeta_pool`: `'NoneType' object has
+no attribute 'GetSubFolderList'`. Resolve estaba en «Untitled Project» (se había cerrado y el puente lo volvió a
+abrir vacío). Antes de lanzar `entrega_gpu.py` se mira `GetCurrentProject().GetName()`; si no es el proyecto, se abre
+con `GetProjectManager().LoadProject('DAE MASTER - CURSOS')`. La llamada tarda más de un minuto y el puente corta a los
+58 s, pero el proyecto queda abierto: se comprueba con otra llamada (267 líneas, página `edit`) y se relanza.
+
+## Videos de profe que no dan la calidad: avatar o restauración (informe del 19 nov 2026)
+
+Sebastián preguntó cómo rehacer con IA los videos de un profe grabados en videollamada (Estándares interamericanos:
+cara blanda, halo del fondo virtual). El informe está en el proyecto (`claude/Avatar_parlante_o_restauracion_19_noviembre.md`).
+En corto: el equipo (GTX 970 de 4 GB, discos llenos) no corre nada de esto; conviene un avatar desde una imagen nítida
+más el audio original antes que restaurar; lo más barato verificado es HeyGen Avatar IV desde foto (~0,80 USD/min) y,
+abierto, InfiniteTalk en WaveSpeed (1,80–3,60 USD/min); Magnific sirve para la prueba (VEED Fabric, tope de 300 s,
+260 créditos/s a 720p), no para el curso entero. Falta el prototipo de 30 s y la autorización escrita del profesor.
