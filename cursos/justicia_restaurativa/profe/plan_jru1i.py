@@ -38,10 +38,11 @@ globals().update(armar('jr_u1_inicio_fuente.mp4', 'UNIDAD 1/INICIO',
                        'JR - U1 - INICIO', 'justiciarestaurativa - U1 - INICIO', 'JRU1I', 280, 14419))
 
 _LTU = dict(ancho=430, tinta=TINTA_LT)
-# el nombre va en dos renglones: en uno solo se mete en el mosaico de abajo (empieza en x 509)
-VICTOR_U = ('Víctor Hugo\nOspina Vargas', VICTOR[1], dict(_LTU, x=40, top=800))
-MARTIN_U = ('Martín Posada\nMartínez', MARTIN[1], dict(_LTU, x=40, top=575))
-TERCERO = ('Jhonatan Sandoval', '')     # Sebastián, 18 nov: «Jhonatan Sandoval, sin cargo»
+# el nombre va en dos renglones: en uno solo se mete en el mosaico de abajo (empieza en x 509) o se sale del
+# cuadro por la derecha. Cajas medidas (alfa): Víctor y Martín terminan antes de x 495; nada toca un mosaico.
+VICTOR_U = ('Víctor Hugo\nOspina Vargas', VICTOR[1], dict(_LTU, x=24, top=770))
+MARTIN_U = ('Martín Posada\nMartínez', MARTIN[1], dict(_LTU, x=24, top=575))
+TERCERO = ('Jhonatan\nSandoval', '')     # Sebastián, 18 nov: «Jhonatan Sandoval, sin cargo»
 
 ITEMS = [
     ('lt01', 'lt', 11.0, 18.5, VICTOR_U),
