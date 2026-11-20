@@ -35,3 +35,8 @@ lugar, sin rehacerla: 17 filas nuevas en `Videos de profe` (105–121, entre Tra
 de arriba y los enlaces como formato de celda), una fila en `Resumen` con las mismas fórmulas que las demás (rangos
 hasta la 122), el total con `SUM` en lugar de números escritos, y el curso sale de «Cursos sin videos de profe».
 Leído de vuelta: 116 entregados, 1171 minutos, 91 con subtítulos, 65 con gráfica provisional, 5 pendientes.
+
+**20 nov 2026: Audiencias preliminares.** Nueve filas (`datos.py`, bloque de Prioridad 1, después de Ley 1826) en
+`Videos de profe` (57–65, entre Ley 1826 y Derechos humanos): la presentación del curso como «Sin grabación» (la pide la
+ficha y no está) y las ocho entregas. Una fila en `Resumen` (la 7) con las mismas fórmulas, rangos hasta la 131. Leído
+de vuelta: 124 entregados, 1225 minutos, 99 con subtítulos, 73 con gráfica provisional, 6 pendientes.

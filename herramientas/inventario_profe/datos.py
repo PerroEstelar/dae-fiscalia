@@ -144,6 +144,24 @@ for nombre, uni, pieza, nota in [
     m, t = M[nombre], T[nombre]
     fila(1, CUR, uni, pieza, JC, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '19 nov', nota + FONDO, n_srt=t[0])
 
+# ---------- Prioridad 1 · Audiencias preliminares (20 nov 2026: ocho grabaciones de Teams, introducción y recapitulación)
+CUR = 'Audiencias preliminares y medidas de aseguramiento'
+M, T = man('audiencias_preliminares'), tabla('audiencias_preliminares')
+JZ = 'John Zuluaga Taborda'
+fila(1, CUR, 'Curso', 'Presentación del curso', '', '(sin grabación en Drive)', None, '', None, None, '', '',
+     'La ficha pide un video de presentación del curso (2.1); no está en la carpeta de videos del curso.',
+     estado='Sin grabación')
+for u in range(1, 5):
+    for suf, pieza in (('INICIO', 'Inicio de la unidad'), ('CIERRE', 'Cierre de la unidad (recapitulación)')):
+        nombre = 'audienciaspreliminares - U%d - %s-v1' % (u, suf)
+        if nombre not in M or nombre not in T:
+            continue
+        m, t = M[nombre], T[nombre]
+        extra = {3: ' El subtítulo dice «artículo 250 constitucional» donde él dice «ciento cincuenta».',
+                 4: ' El cartón lleva el nombre de la unidad de la lista de contenidos (la ficha repite el de la U3).'}.get(u, '')
+        fila(1, CUR, 'Unidad %d' % u, pieza, JZ, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '20 nov',
+             'Sin cortes. Grabación de Teams: el rótulo de Teams con el nombre queda fuera del cuadro.' + extra, n_srt=t[0])
+
 # ---------- Prioridad 2 · Derechos humanos
 CUR = 'Derechos humanos aplicados a la función judicial'
 M, T = man('derechos_humanos'), tabla('derechos_humanos')

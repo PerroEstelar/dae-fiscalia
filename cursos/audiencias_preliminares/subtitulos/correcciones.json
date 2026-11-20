@@ -1,0 +1,278 @@
+{
+ "_todos": [
+  [
+   "\\b([Ll])a fiscalía\\b",
+   "\\1a Fiscalía"
+  ],
+  [
+   "(?<!\\S)\"(?=\\S)",
+   "«"
+  ],
+  [
+   "(?<=\\S)\"(?=[\\s.,;:?!]|$)",
+   "»"
+  ],
+  [
+   "\\b([Aa]rtículos?) ciento cincuenta constitucional\\b",
+   "\\1 250 constitucional"
+  ],
+  [
+   "\\b([Aa]rtículos?) ciento cincuenta y tres\\b",
+   "\\1 153"
+  ],
+  [
+   "\\b([Aa]rtículos?) ciento cincuenta y cuatro\\b",
+   "\\1 154"
+  ],
+  [
+   "\\b([Aa]rtículos?) doscientos cincuenta\\b",
+   "\\1 250"
+  ],
+  [
+   "\\b([Aa]rtículos?) (?:doscientos|dos) cuarenta y dos B\\b",
+   "\\1 242B"
+  ],
+  [
+   "\\b([Aa]rtículos?) (?:doscientos|dos) veintiuno\\b",
+   "\\1 221"
+  ],
+  [
+   "\\b([Aa]rtículos?) dos noventa y siete a trescientos tres\\b",
+   "\\1 297 a 303"
+  ],
+  [
+   "\\b([Aa]rtículos?) dos noventa y siete\\b",
+   "\\1 297"
+  ],
+  [
+   "\\b([Aa]rtículos?) dos noventa y ocho\\b",
+   "\\1 298"
+  ],
+  [
+   "\\b([Aa]rtículos?) trescientos ocho\\b",
+   "\\1 308"
+  ],
+  [
+   "\\b([Aa]rtículos?) trescientos tres\\b",
+   "\\1 303"
+  ],
+  [
+   "\\b([Aa]rtículos?) veintiocho y veintinueve\\b",
+   "\\1 28 y 29"
+  ],
+  [
+   "\\b([Aa]rtículos?) veintinueve\\b",
+   "\\1 29"
+  ],
+  [
+   "\\b([Aa]rtículos?) diecisiete\\b",
+   "\\1 17"
+  ],
+  [
+   "\\b([Aa]rtículos?) veinte\\b",
+   "\\1 20"
+  ],
+  [
+   "\\b(\\d{3}) B\\b",
+   "\\1B"
+  ],
+  [
+   "\\b[Ll]ey dieciocho veintiséis(?: del| de)? (?:2017|dos mil diecisiete)\\b",
+   "Ley 1826 de 2017"
+  ],
+  [
+   "\\b[Ll]ey 294 del 96\\b",
+   "Ley 294 de 1996"
+  ],
+  [
+   "\\b(?i:c)uatrocientos\\b",
+   "400"
+  ],
+  [
+   "\\b(?i:q)uinientos días\\b",
+   "500 días"
+  ],
+  [
+   "\\b(?i:c)iento veinte días\\b",
+   "120 días"
+  ],
+  [
+   "\\b(?i:c)iento cincuenta días\\b",
+   "150 días"
+  ],
+  [
+   "\\b(?i:c)iento ochenta días\\b",
+   "180 días"
+  ],
+  [
+   "\\b(?i:s)esenta días\\b",
+   "60 días"
+  ],
+  [
+   "\\b(?i:t)reinta y seis horas\\b",
+   "36 horas"
+  ],
+  [
+   "\\b(?i:v)einticinco por ciento\\b",
+   "25 %"
+  ],
+  [
+   "\\b(?i:c)ien por ciento\\b",
+   "100 %"
+  ]
+ ],
+ "_despues": [
+  [
+   "\\b[Ll]ey (\\d{2}) (\\d{2}) del? (\\d{4})\\b",
+   "Ley \\1\\2 de \\3"
+  ],
+  [
+   "\\b[Ll]ey dos (\\d{2}) del? 96\\b",
+   "Ley 2\\1 de 1996"
+  ],
+  [
+   "\\b[Rr]esolución cero cero (\\d{2}) del? (\\d{4})\\b",
+   "Resolución 00\\1 de \\2"
+  ],
+  [
+   "\\b[Ll]ey (\\d{3,}) del (\\d{4})\\b",
+   "Ley \\1 de \\2"
+  ],
+  [
+   "\\bley (\\d{3,})",
+   "Ley \\1"
+  ],
+  [
+   "\\b(SU|T|C)-?(\\d{3})\\b",
+   "\\1-\\2"
+  ]
+ ],
+ "apu3c": [
+  [
+   "\\ben donde se incluyen las, sus reglas\\b",
+   "en donde se incluyen sus reglas"
+  ],
+  [
+   "\\bpor ejemplo, las, la recepción\\b",
+   "por ejemplo, la recepción"
+  ],
+  [
+   "\\ben la reforma del dos cincuenta enlistó\\b",
+   "en la reforma del 250 enlistó"
+  ],
+  [
+   "\\bla ley nuevec-- 1908\\b",
+   "la ley 1908"
+  ]
+ ],
+ "apu4c": [
+  [
+   "\\bdel dos (?:veintiuno|21)\\b",
+   "del 221"
+  ],
+  [
+   "\\bEs decir\\.? No solo bastará\\b",
+   "Es decir, no solo bastará"
+  ],
+  [
+   "\\bla autoría participable\\b",
+   "la autoría o participación"
+  ],
+  [
+   "\\basociados a la, al control\\b",
+   "asociados al control"
+  ],
+  [
+   "\\bconstrucción del, de la teoría\\b",
+   "construcción de la teoría"
+  ],
+  [
+   "\\bpuede llevar a, al rechazo\\b",
+   "puede llevar al rechazo"
+  ],
+  [
+   "\\bpresupuesto de inferencia de derechos fundamentales\\b",
+   "presupuesto de injerencia en derechos fundamentales"
+  ]
+ ],
+ "apu2c": [
+  [
+   "\\bEn la lección, lección uno\\b",
+   "En la lección uno"
+  ],
+  [
+   "\\bdebe, debe hacerse\\b",
+   "debe hacerse"
+  ],
+  [
+   "\\bregistro de, ah, de grabación\\b",
+   "registro de grabación"
+  ],
+  [
+   "\\bde la personal en (?:vei-- )?en el vehículo\\b",
+   "de la persona en el vehículo"
+  ],
+  [
+   "\\bla subsucción de la justicia\\b",
+   "la sustracción de la justicia"
+  ],
+  [
+   "\\bconfianza O un defensor\\b",
+   "confianza o un defensor"
+  ]
+ ],
+ "apu1c": [
+  [
+   "\\bevitar perjuicios y estereotipos\\b",
+   "evitar prejuicios y estereotipos"
+  ]
+ ],
+ "apu3i": [
+  [
+   "(?i)\\bcurso audiencias preliminares, medidas de aseguramiento de la Dirección",
+   "curso «Audiencias preliminares, medidas de aseguramiento» de la Dirección"
+  ]
+ ],
+ "apu1i": [
+  [
+   "(?i)\\bcurso audiencias preliminares y medidas de aseguramiento\\.",
+   "curso «Audiencias preliminares y medidas de aseguramiento»."
+  ]
+ ],
+ "apu4i": [
+  [
+   "\\belementos de,? (?:eh,? )?fundamentales",
+   "elementos fundamentales"
+  ],
+  [
+   "\\ba esta figura los motivos",
+   "a esta figura, los motivos"
+  ],
+  [
+   "\\bque son desde ya valga decirlo diferenciadas",
+   "que son, desde ya, valga decirlo, diferenciadas"
+  ]
+ ],
+ "apu2i": [
+  [
+   "\\bestá en la artículo 29",
+   "está en el artículo 29"
+  ],
+  [
+   "\\bregla, la re-+,? ?su restricción",
+   "regla, su restricción"
+  ],
+  [
+   "\\bcapturada, prior a la libertad",
+   "capturada o privada de la libertad"
+  ],
+  [
+   "\\bque se ofrece (?:en-+ )?a (?:la-+ )?por la Dirección",
+   "que se ofrece por la Dirección"
+  ],
+  [
+   "\\bYa saben, pues que",
+   "Ya saben, pues, que"
+  ]
+ ]
+}
