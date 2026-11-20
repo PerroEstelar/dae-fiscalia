@@ -88,6 +88,11 @@ vez); primera entrega buena 23:23 y última 01:34.
 escala (dos chasquidos); se rindió de nuevo con audio PCM y el AAC lo hizo ffmpeg. `entrega_gpu.py` lo detecta
 y lo hace solo. Los renders rotos quedaron en `UNIDAD 1\CIERRE\05 EXPORTS\_rindiendo` y `_descartes`.
 
+**Subtítulos (20 nov 2026):** los once `.srt` están al lado de cada video en VIDEOS FINALIZADOS y en `05 EXPORTS`;
+ver `../subtitulos/README.md`. Al transcribir las entregas apareció que **los cierres de las unidades 2 y 3 terminan a
+mitad de frase** («…descartar la hipó…» y «…la comunicación clara de…»): así terminan las grabaciones de la presentadora
+(la fuente sigue un par de segundos sin voz), no es un corte de la edición.
+
 ## Pendiente
 
 - **Rótulo de nombre en los tres cierres** (ver arriba): falta que Sebastián confirme el nombre y el cargo.

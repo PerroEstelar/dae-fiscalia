@@ -1,0 +1,127 @@
+{
+ "_todos": [
+  [
+   "\\b([Ll])a fiscalía\\b",
+   "\\1a Fiscalía"
+  ],
+  [
+   "(?<!\\S)\"(?=\\S)",
+   "«"
+  ],
+  [
+   "(?<=\\S)\"(?=[\\s.,;:?!]|$)",
+   "»"
+  ],
+  [
+   "\\b([Aa]rtículos?) ciento ochenta y ocho ([A-D])\\b",
+   "\\1 188\\2"
+  ],
+  [
+   "\\by ciento ochenta y ocho ([A-D])\\b",
+   "y 188\\1"
+  ],
+  [
+   "\\b([Aa]rtículos?) ciento ochenta y ocho\\b",
+   "\\1 188"
+  ],
+  [
+   "\\b([Aa]rtículos?) doscientos catorce\\b",
+   "\\1 214"
+  ],
+  [
+   "\\b([Aa]rtículos?) doscientos siete\\b",
+   "\\1 207"
+  ],
+  [
+   "\\b([Aa]rtículos?) trescientos ochenta y uno\\b",
+   "\\1 381"
+  ],
+  [
+   "\\b([Aa]rtículos?) trescientos treinta y seis\\b",
+   "\\1 336"
+  ],
+  [
+   "\\b([Ss])entencia C[- ]?(?:cuatrocientos setenta|470)\\b",
+   "\\1entencia C-470"
+  ],
+  [
+   "\\bley (\\d{3,})",
+   "Ley \\1"
+  ],
+  [
+   "\\b[Pp]rotocolo de Palermo\\b",
+   "Protocolo de Palermo"
+  ],
+  [
+   "\\b[Rr]uta del [Gg]olfo\\b",
+   "Ruta del Golfo"
+  ],
+  [
+   "\\bMartha\\b",
+   "Marta"
+  ],
+  [
+   "\\bJeimy\\b",
+   "Yeimi"
+  ]
+ ],
+ "_despues": [],
+ "tru1i": [
+  [
+   "^Hola a todo\\.",
+   "Hola a todos."
+  ]
+ ],
+ "tru1r": [
+  [
+   "\\bentre podía salir a la tienda y podía abandonar la relación\\.",
+   "entre «podía salir a la tienda» y «podía abandonar la relación»."
+  ]
+ ],
+ "tru1c": [
+  [
+   "\\bLa expresión explotación sexual usada",
+   "La expresión «explotación sexual» usada"
+  ],
+  [
+   "\\bde cualquier agravante concurso\\.",
+   "de cualquier agravante o concurso."
+  ]
+ ],
+ "tru2i": [
+  [
+   "\\bUna pregunta como: ¿([Qq])ué pensaba que sucedería si se iba\\? Permite",
+   "Una pregunta como «¿Qué pensaba que sucedería si se iba?» permite"
+  ]
+ ],
+ "tru2r": [
+  [
+   "\\bretiró ese requisito para la asistencia inmediata\\.",
+   "retiró ese requisito para la asistencia mediata."
+  ]
+ ],
+ "tru2c": [
+  [
+   "\\bSe explica que volvió por temor",
+   "Si explica que volvió por temor"
+  ],
+  [
+   "\\bse extiende a quienes investigaban\\.",
+   "se extiende a quien es investigado."
+  ],
+  [
+   "\\bEscuchen esta diferencia: [Ee]l apoyo dijo que Samuel entendió\\.",
+   "Escuchen esta diferencia: «El apoyo dijo que Samuel entendió»."
+  ],
+  [
+   "\\bAhora, Samuel pudo reformular la pregunta y responder usando su propio sistema\\.",
+   "Ahora: «Samuel pudo reformular la pregunta y responder usando su propio sistema»."
+  ]
+ ],
+ "tru3c": [
+  [
+   "\\bla comunicación clara de\\.\\.\\.$",
+   "la comunicación clara de…"
+  ]
+ ]
+}

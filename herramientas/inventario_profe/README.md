@@ -40,3 +40,8 @@ Leído de vuelta: 116 entregados, 1171 minutos, 91 con subtítulos, 65 con gráf
 `Videos de profe` (57–65, entre Ley 1826 y Derechos humanos): la presentación del curso como «Sin grabación» (la pide la
 ficha y no está) y las ocho entregas. Una fila en `Resumen` (la 7) con las mismas fórmulas, rangos hasta la 131. Leído
 de vuelta: 124 entregados, 1225 minutos, 99 con subtítulos, 73 con gráfica provisional, 6 pendientes.
+
+**20 nov 2026: subtítulos de Trata.** En `Videos de profe` (filas 101–111) la columna de subtítulos pasó de «Sin
+subtítulos» al enlace de cada `.srt`, y la observación perdió «Sin subtítulos todavía» (y ganó lo de la U2: «mediata»
+en el subtítulo, y que los cierres de la U2 y la U3 terminan a mitad de frase). El `Resumen` se actualiza solo: 110 con
+subtítulos.
