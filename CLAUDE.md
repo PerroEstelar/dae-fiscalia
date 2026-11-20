@@ -3663,3 +3663,27 @@ Salieron 17 piezas (`cursos/desaparicion_forzada/profe/`). Lo que sirvió:
   caso vulnerable» (1,1 s) es «invulnerable», como el profe dice en la retroalimentación de la misma unidad.
 - El AAC de Resolve volvió a salir roto en una pieza larga (cierre del curso, 15 min: pico +28,8 dB); `entrega_gpu.py` lo
   detectó y la volvió a rendir con PCM + AAC de ffmpeg sin intervención.
+
+## Grabaciones de Teams a 25 cuadros (Audiencias preliminares, 20 nov 2026)
+
+Ocho grabaciones de Teams (introducción y recapitulación de cada unidad), 1280×720 a 25 fps, un solo profe que lee
+rápido. Salieron en una noche (`cursos/audiencias_preliminares/profe/`). Lo que sirvió:
+
+- **El rótulo de Teams con el nombre se deja fuera de la ventana**, no se tapa: está abajo a la izquierda (x 0–180,
+  y 684–717); la ventana de 1200×675 desde (40, 0) es 16:9, se escala ×1,6 y lo deja afuera. Pero se lee: de ahí sale el
+  nombre del rótulo (con la ficha), y se dice de dónde salió.
+- **25 fps → la línea va a 23,976**: `FPS_FUENTE = 25` (los tramos se cuentan a 25) y `FPS_COMPUESTO = '24000/1001'`
+  (el compuesto ya sale al ritmo de la línea; si no, Resolve lo estira o lo recorta).
+- **Las grabaciones empiezan con silencio digital** y algunas terminan justo en la última palabra: el tramo final es la
+  duración exacta del archivo, nunca `None` (`profe_cadena` usa `T1 - T0`).
+- **La ficha puede estar copiada de otro curso.** Aquí repetía el nombre de la unidad 3 en la 4, decía «cinco unidades»
+  (son cuatro) y hablaba de trata en la certificación. El cartón toma el nombre de la lista de contenidos del curso, y
+  se avisa.
+- **Un número que el profe dice mal** («artículo ciento cincuenta constitucional», tres veces, por el 250 que él mismo
+  nombra en otras unidades) se confirma por lo que dura la palabra, el video queda como está y el subtítulo lleva el
+  número correcto. Se dice en el informe.
+- **Un profe que lee rápido** deja muchos subtítulos sobre 20 caracteres por segundo (hasta ~27): se acepta; partirlos
+  más los deja de menos de un segundo.
+- **El STT del final no es el de la fuente**: el mismo número sale distinto («dos cuarenta y dos B», «21 26», «dos 94»).
+  Las reglas de números van genéricas en `_todos`/`_despues`, y al cambiarlas se regeneran los `.srt` ya subidos para
+  confirmar que no cambiaron (mismo hash).
