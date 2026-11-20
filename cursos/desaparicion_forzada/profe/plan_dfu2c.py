@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 r"""Cierre de la unidad 2 de «Investigación judicial y forense de desaparición forzada» (19 nov 2026). **Entrega provisional.**
 
-Lleva intro, cartón de título, lower third (cuando esté confirmado el nombre), cartón de cierre y outro; el cuerpo
-va sin gráficos (ver `base_df_profe`).
+Lleva intro, cartón de título, lower third, cartón de cierre y outro; el cuerpo va sin gráficos (ver `base_df_profe`).
 
 **Qué es.** El «Video de cierre de la unidad 2» (lo que el profe llama «finalización y síntesis»). Va antes que las
 retroalimentaciones en la grabación; en el aula va al final de la unidad.

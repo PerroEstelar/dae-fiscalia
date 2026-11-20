@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 r"""Retroalimentación de evaluaciones de la unidad 3 de «Investigación judicial y forense de desaparición forzada» (19 nov 2026). **Entrega provisional.**
 
-Lleva intro, cartón de título, lower third (cuando esté confirmado el nombre), cartón de cierre y outro; el cuerpo
-va sin gráficos (ver `base_df_profe`).
+Lleva intro, cartón de título, lower third, cartón de cierre y outro; el cuerpo va sin gráficos (ver `base_df_profe`).
 
 **Qué es.** El «Video de retroalimentación de evaluaciones» de la unidad 3: las tres retroalimentaciones que grabó
 el profe, una tras otra (actividad 1, actividad 2 y cuestionario sumativo). Entre una y otra se saca lo que dice

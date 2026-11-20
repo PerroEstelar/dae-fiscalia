@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 r"""Inicio del curso de «Investigación judicial y forense de desaparición forzada» (19 nov 2026). **Entrega provisional.**
 
-Lleva intro, cartón de título, lower third (cuando esté confirmado el nombre), cartón de cierre y outro; el cuerpo
-va sin gráficos (ver `base_df_profe`).
+Lleva intro, cartón de título, lower third, cartón de cierre y outro; el cuerpo va sin gráficos (ver `base_df_profe`).
 
 **Qué es.** El «Video de inicio del curso». No lee palabra por palabra el texto de la ficha (2.1): es su
 bienvenida. Termina en

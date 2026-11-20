@@ -75,9 +75,14 @@ UNIDADES = {
     4: 'Atención a víctimas y familiares',
     5: 'Investigación de la desaparición forzada',
 }
-# El profe no dice su nombre en la grabación. La ficha nombra a tres autores; un rótulo no se infiere: lo confirma
-# Sebastián. Mientras tanto PROFE es None y los planes no llevan lower third.
-PROFE = None
+# El profe no dice su nombre en la grabación y la ficha nombra a tres autores (Estanislao Escalante Barreto, autor
+# experto; Carlos Eduardo Valdés Moreno, coautor; Cristian Camilo Martínez Álvarez, auxiliar investigativo). Por la
+# imagen no es Estanislao (comparado con su cierre del curso de SRPA). Sebastián lo confirmó (19 nov): Carlos Eduardo
+# Valdés Moreno. El cargo es el de la ficha (1.5, «Coautor»).
+# El rótulo va a la izquierda, sobre la plaza: el hombro del profe empieza hacia x≈540 de salida y el rótulo
+# termina en x≈491 con el nombre en dos renglones (simulado sobre 20 cuadros de toda la grabación, uno por pieza).
+LT = (40, 440)
+PROFE = ('Carlos Eduardo\nValdés Moreno', 'Coautor del curso')
 
 
 def cuadro_de(tramos):

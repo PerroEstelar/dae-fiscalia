@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 r"""Inicio de la unidad 4 de «Investigación judicial y forense de desaparición forzada» (19 nov 2026). **Entrega provisional.**
 
-Lleva intro, cartón de título, lower third (cuando esté confirmado el nombre), cartón de cierre y outro; el cuerpo
-va sin gráficos (ver `base_df_profe`).
+Lleva intro, cartón de título, lower third, cartón de cierre y outro; el cuerpo va sin gráficos (ver `base_df_profe`).
 
 **Qué es.** El «Video de presentación de la unidad 4». Empieza en la bienvenida a la unidad y termina en la
 despedida; lo que dice antes y después para marcar los videos («Finaliza ese video y comienza…») no entra.

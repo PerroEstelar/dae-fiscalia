@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 r"""Cierre del curso de «Investigación judicial y forense de desaparición forzada» (19 nov 2026). **Entrega provisional.**
 
-Lleva intro, cartón de título, lower third (cuando esté confirmado el nombre), cartón de cierre y outro; el cuerpo
-va sin gráficos (ver `base_df_profe`).
+Lleva intro, cartón de título, lower third, cartón de cierre y outro; el cuerpo va sin gráficos (ver `base_df_profe`).
 
 **Qué es.** El «Video de cierre del curso» (la «finalización y síntesis general del curso»). Dura más que los 5 a 8
 minutos que da la ficha: es lo que el profe grabó y no se recorta contenido. **Un corte de 6,1 s:** «Toda noticia de
