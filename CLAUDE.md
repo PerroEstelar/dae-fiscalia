@@ -3687,3 +3687,15 @@ rápido. Salieron en una noche (`cursos/audiencias_preliminares/profe/`). Lo que
 - **El STT del final no es el de la fuente**: el mismo número sale distinto («dos cuarenta y dos B», «21 26», «dos 94»).
   Las reglas de números van genéricas en `_todos`/`_despues`, y al cambiarlas se regeneran los `.srt` ya subidos para
   confirmar que no cambiaron (mismo hash).
+
+## Subtítulos de un avatar: los guiones no están en el documento (Trata, 20 nov 2026)
+
+- Los once videos de profe de Trata (ocho del avatar, tres de una presentadora) se subtitularon en una tanda: Scribe
+  sobre las once entregas tardó dos minutos. El cotejo palabra a palabra contra los documentos del curso coincidió en
+  menos del 30 %: **los guiones del avatar se escribieron aparte**. El documento sirve para los nombres (personas,
+  casos) y la forma de las normas, no para corregir frases.
+- **Un pasaje dudoso se vuelve a transcribir suelto**, normal y al 75 % (`D:\DAE\_tmp\tr_s\clips.json`): donde la
+  transcripción entera oyó «a quienes investigaban», el tramo corto dio «a quien es investigado». Si las tres versiones
+  coinciden, va como se dice.
+- **La transcripción de la entrega encuentra defectos de la fuente**: dos grabaciones de la presentadora terminan a
+  mitad de frase. Se avisa a Sebastián y se anota en el inventario; el subtítulo termina en «…».
