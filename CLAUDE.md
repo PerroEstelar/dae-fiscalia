@@ -3619,3 +3619,47 @@ haya entrado. Otra cosa del mismo día: el arranque fallido que un profe pide co
 cuadros con menos diferencia de imagen, y con `SUAVE = 3` el salto de dos personas que se acomodan en la silla
 se ve como una disolvencia corta. La medida de la fuente de un cierre de JR quedó en un solo guion:
 `D:\DAE\_tmp\jr_p\prep2_cierre.py <clave> <carpeta> <archivo>` (brillo, bordes, mosaicos, turnos, pausas y empalmes).
+
+## Una grabación de la que salen todas las piezas de un curso (Desaparición forzada, 19 nov 2026)
+
+Llegó una sola grabación de 1 h 58 min en la que el profe lee, uno tras otro, los guiones de todos los videos del
+curso y dice en voz alta dónde termina cada uno («Finaliza ese video y comienza el video de retroalimentación…»).
+Salieron 17 piezas (`cursos/desaparicion_forzada/profe/`). Lo que sirvió:
+
+- **El reparto sale del documento del curso, no de la grabación.** Se listan los videos que pide la ficha («Video de
+  presentación», «de retroalimentación de evaluaciones», «de cierre» por unidad, más inicio y cierre del curso) y se
+  busca cada uno en la transcripción entera. Si el profe grabó más guiones que casillas (tres retroalimentaciones por
+  unidad contra un video), van juntos en la casilla que les corresponde, y se dice.
+- **Las frases para marcar los videos se cortan en la palabra**, no en el párrafo: Scribe las pega a la última frase
+  del guion («…Muchos éxitos y adelante. Finaliza ese video y comienza…») sin pausa larga entre medio. Cada pieza se
+  define por su primera y su última palabra, buscadas en la lista de palabras, y los bordes van a la mitad del silencio
+  (hasta 0,45 s antes y 0,7 s después).
+- **Una toma repetida se elige leyendo las dos**: la primera del cierre de la U1 decía «artículo 166» (es el 165) y él
+  mismo pidió repetir.
+- **Los tiempos de Scribe pueden venir corridos 0,1–0,2 s.** En un corte sin silencio largo (una palabra en falso) el
+  borde se busca en el RMS de 10 ms alrededor del tiempo de Scribe, y se elige el cuadro que cae adentro del silencio
+  (los cortes se redondean al cuadro de 30).
+- **`CUADRO_0`**: `ic_pieza` abría la fuente desde el principio en cada pieza y la decodificaba dos veces (medida de
+  loudnorm y compuesto); la pieza del final tardaba 15 minutos solo en llegar a su tramo. Con `CUADRO_0` en el plan la
+  fuente se abre con `-ss` en la mitad del cuadro anterior: el primer cuadro que sale es exactamente ese, y el audio se
+  corta medio cuadro corrido. Verificado al cuadro (PSNR máximo en el cuadro esperado) y al milisegundo (correlación
+  del audio: 0,00 ms).
+- **`ic_pieza` no crea las carpetas de la pieza.** Sin `01 VIDEO`, ffmpeg falla al escribir el compuesto con el código
+  4294967294 (−2, ENOENT), y falla *después* de la medida de loudnorm: diecisiete fallos en 15 minutos antes de verlo.
+  El lote de un curso nuevo crea el árbol antes de lanzar nada.
+- **Una fuente dentro de un lienzo blanco** (mismo editor que Justicia restaurativa): la imagen iba de x 16 a 1903 y de
+  y 9 a 1070. La ventana toma solo la imagen (1888×1062 desde (16, 9)), que es 16:9, y se lleva el marco y la raya.
+- **El nombre del profe se pregunta en cuanto se ve que no lo dice**, con los compuestos ya corriendo: el rótulo se
+  rinde justo antes de armar la línea, así que la respuesta no demora nada.
+- **Entregar y verificar de a una, mientras el lote sigue.** Cada entrega que aparece en `_MA subidas` se copia en una
+  carpeta de verificación de Drive (`copy_file`, con la clave como nombre); un bucle en la máquina
+  (`D:\DAE\_tmp\df_p\verif_loop.py`) espera a que Drive para escritorio la baje y la compara con la de `05 EXPORTS`; con
+  el «OK» el video pasa a su carpeta (`update_file` con `parentId`) y la copia va a la papelera. Otro bucle
+  (`stt_loop.py`) transcribe cada final apenas sale, así los subtítulos van detrás de cada video y no al final.
+- **Las reglas de subtítulos de cada video se escriben contra el texto ya pasado por `_todos`**: después de la regla del
+  curso, «mecanismo de búsqueda urgente» ya es «Mecanismo de Búsqueda Urgente», y una regla con «urgente valola--» no
+  agarra nada sin avisar. Después de correr, buscar en el `.rev.txt` que cada arreglo esté (y que no quede «…»).
+- **Una palabra que Scribe oye al revés se lee por el sentido y por lo que dura**, y se dice que es una lectura: «teoría del
+  caso vulnerable» (1,1 s) es «invulnerable», como el profe dice en la retroalimentación de la misma unidad.
+- El AAC de Resolve volvió a salir roto en una pieza larga (cierre del curso, 15 min: pico +28,8 dB); `entrega_gpu.py` lo
+  detectó y la volvió a rendir con PCM + AAC de ffmpeg sin intervención.
