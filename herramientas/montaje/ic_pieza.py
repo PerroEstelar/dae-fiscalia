@@ -66,6 +66,24 @@ def prueba(t):
     print(out, flush=True)
 
 
+def cuadro_0():
+    """`CUADRO_0` en el plan: la fuente se abre con `-ss` en la mitad del cuadro anterior a ese, así el primer cuadro
+    que entrega el decodificador es exactamente el `CUADRO_0` y los tramos se cuentan desde ahí. Sirve para una
+    grabación larga de la que salen muchas piezas (Desaparición forzada, 19 nov 2026: 17 piezas de 1 h 58 min): sin
+    esto cada pieza decodifica la fuente desde el principio dos veces (medida de loudnorm y compuesto), y la última
+    tardaba 15 minutos solo en llegar a su tramo. El audio se corta en los mismos tiempos, medio cuadro corrido
+    porque arranca en la mitad del cuadro anterior."""
+    return int(getattr(P, 'CUADRO_0', 0))
+
+
+def entrada():
+    """Los argumentos de entrada de la fuente: `-ss` antes de `-i` si el plan trae `CUADRO_0`."""
+    k0 = cuadro_0()
+    if not k0:
+        return ['-i', P.ORIGINAL]
+    return ['-ss', '%.6f' % ((k0 - 0.5) / getattr(P, 'FPS_FUENTE', 30)), '-i', P.ORIGINAL]
+
+
 def _trim(f0, f1, fq):
     """El corte de video de un tramo. Por defecto por número de cuadro; con `POR_TIEMPO` en el
     plan, por tiempo en la rejilla de `fq`. Una grabación de teléfono (Enfoque diferencial, 15
@@ -121,10 +139,12 @@ def tramos_vf(K, fin):
     x, y = P.XY
     fq = getattr(P, 'FPS_FUENTE', 30)
     tr = getattr(P, 'TRAMOS', None) or [(0.0, None, None)]
-    cong = [(int(math.floor(c[0] * fq + 1e-6)), int(math.ceil(c[1] * fq - 1e-6)), len(c) > 2 and c[2] == 'antes')
+    k0 = cuadro_0()                    # con CUADRO_0 la fuente se abre desde ese cuadro (ver `entrada`)
+    cong = [(int(math.floor(c[0] * fq + 1e-6)) - k0, int(math.ceil(c[1] * fq - 1e-6)) - k0, len(c) > 2 and c[2] == 'antes')
             for c in getattr(P, 'CONGELA', [])]
-    cuadros = [(int(math.ceil(t0 * fq - 1e-6)), int(math.ceil(((fin if t1 is None else t1)) * fq - 1e-6)), win)
+    cuadros = [(int(math.ceil(t0 * fq - 1e-6)) - k0, int(math.ceil(((fin if t1 is None else t1)) * fq - 1e-6)) - k0, win)
                for t0, t1, win in tr]
+    fin = fin - (k0 - 0.5) / fq if k0 else fin       # lo que queda de fuente después del -ss
     suave = int(getattr(P, 'SUAVE', 0))
     v, a, etq = [], [], []
     for i, (f0, f1, win) in enumerate(cuadros):
@@ -158,7 +178,7 @@ def tramos_vf(K, fin):
                      % (_trim(q, q + 1, fq), esc, suave, suave + 1, i))
             v.append('[v%d][s%d]overlay=eof_action=pass:format=yuv420[v%ds]' % (i, i, i))
             etq[-1] = '[v%ds]' % i
-        ta, tb = f0 / fq, f1 / fq
+        ta, tb = (f0 + 0.5) / fq if k0 else f0 / fq, (f1 + 0.5) / fq if k0 else f1 / fq
         af = 'atrim=start=%.6f:end=%.6f,asetpts=PTS-STARTPTS' % (ta, tb)
         if (i > 0 and cuadros[i - 1][1] != f0) or (i == 0 and f0 > 0):
             af += ',afade=t=in:d=0.015'
@@ -176,14 +196,14 @@ def componer():
     fin = K.duracion(P.ORIGINAL)
     g = tramos_vf(K, fin)
     base = base_audio()
-    r = subprocess.run([K.FB + '/ffmpeg.exe', '-hide_banner', '-nostats', '-i', P.ORIGINAL, '-filter_complex',
+    r = subprocess.run([K.FB + '/ffmpeg.exe', '-hide_banner', '-nostats'] + entrada() + ['-filter_complex',
                         g + ';' + base + ',loudnorm=%s:print_format=json[a];[vc]nullsink' % P.AUDIO_META,
                         '-map', '[a]', '-f', 'null', '-'],
                        capture_output=True, text=True, errors='replace').stderr
     m = json.loads(r[r.rfind('{'):r.rfind('}') + 1])
     ln = ('loudnorm=%s:measured_I=%s:measured_TP=%s:measured_LRA=%s:measured_thresh=%s:offset=%s:linear=true'
           % (P.AUDIO_META, m['input_i'], m['input_tp'], m['input_lra'], m['input_thresh'], m['target_offset']))
-    subprocess.run([K.FB + '/ffmpeg.exe', '-y', '-v', 'error', '-i', P.ORIGINAL, '-filter_complex',
+    subprocess.run([K.FB + '/ffmpeg.exe', '-y', '-v', 'error'] + entrada() + ['-filter_complex',
                     g + ';[vc]format=yuv420p[v];%s,%s,aresample=48000[a]' % (base, ln),
                     '-map', '[v]', '-map', '[a]', '-r', fps_compuesto(),
                     '-c:v', 'libx264', '-crf', '16', '-preset', 'fast', '-pix_fmt', 'yuv420p',
@@ -212,7 +232,7 @@ def reimagen(previo):
     g = tramos_vf(K, fin)
     os.makedirs(P.TMP, exist_ok=True)
     tmp = '%s/%s_imagen.mp4' % (P.TMP, os.path.splitext(os.path.basename(P.COMPUESTO))[0])
-    subprocess.run([K.FB + '/ffmpeg.exe', '-y', '-v', 'error', '-i', P.ORIGINAL, '-filter_complex',
+    subprocess.run([K.FB + '/ffmpeg.exe', '-y', '-v', 'error'] + entrada() + ['-filter_complex',
                     g + ';[vc]format=yuv420p[v];[ac]anullsink', '-map', '[v]', '-r', fps_compuesto(),
                     '-c:v', 'libx264', '-crf', '16', '-preset', 'fast', '-pix_fmt', 'yuv420p',
                     '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709',

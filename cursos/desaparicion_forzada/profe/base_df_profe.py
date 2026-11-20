@@ -102,7 +102,10 @@ def armar(carpeta, sub, linea, export, prefijo, tramos):
     segundos: [(desde, hasta), …]."""
     r = RAIZ + '/' + carpeta
     tr = [(a, b, None) for a, b in tramos]
-    return dict(
+    # la fuente se abre un segundo antes del primer tramo (`ic_pieza.cuadro_0`): sin esto cada pieza la decodifica
+    # desde el principio, dos veces
+    k0 = max(0, int(tr[0][0] * FQ) - 30)
+    return dict(CUADRO_0=k0,
         R=r, BIN=BIN_CURSO + [carpeta.replace('/', ' - ')],
         ORIGINAL=FUENTE, COMPUESTO=r + '/01 VIDEO/%s_compuesto_v1.mp4' % prefijo,
         TITULO=r + '/02 CARTONES/carton titulo %s.mp4' % prefijo.lower(), SUB=sub, NOMBRE_LINEA=linea,
