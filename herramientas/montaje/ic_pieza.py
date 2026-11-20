@@ -206,7 +206,7 @@ def componer():
     subprocess.run([K.FB + '/ffmpeg.exe', '-y', '-v', 'error'] + entrada() + ['-filter_complex',
                     g + ';[vc]format=yuv420p[v];%s,%s,aresample=48000[a]' % (base, ln),
                     '-map', '[v]', '-map', '[a]', '-r', fps_compuesto(),
-                    '-c:v', 'libx264', '-crf', '16', '-preset', 'fast', '-pix_fmt', 'yuv420p',
+                    '-c:v', 'libx264', '-crf', '16', '-preset', getattr(P, 'PRESET_COMPUESTO', 'fast'), '-pix_fmt', 'yuv420p',
                     '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709',
                     '-c:a', 'aac', '-b:a', '256k', '-movflags', '+faststart', '-f', 'mp4',
                     P.COMPUESTO + '.parcial'], check=True)
@@ -234,7 +234,7 @@ def reimagen(previo):
     tmp = '%s/%s_imagen.mp4' % (P.TMP, os.path.splitext(os.path.basename(P.COMPUESTO))[0])
     subprocess.run([K.FB + '/ffmpeg.exe', '-y', '-v', 'error'] + entrada() + ['-filter_complex',
                     g + ';[vc]format=yuv420p[v];[ac]anullsink', '-map', '[v]', '-r', fps_compuesto(),
-                    '-c:v', 'libx264', '-crf', '16', '-preset', 'fast', '-pix_fmt', 'yuv420p',
+                    '-c:v', 'libx264', '-crf', '16', '-preset', getattr(P, 'PRESET_COMPUESTO', 'fast'), '-pix_fmt', 'yuv420p',
                     '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709',
                     '-f', 'mp4', tmp], check=True)
     subprocess.run([K.FB + '/ffmpeg.exe', '-y', '-v', 'error', '-i', tmp, '-i', previo,

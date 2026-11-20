@@ -67,6 +67,9 @@ XY, VENTANA = (16, 9), (1888, 1062)
 ANCHO = 615
 AUDIO_META = 'I=-16:TP=-3:LRA=7'
 PRESET_ENTREGA = 'medium'
+# el compuesto es un intermedio: con 1 h 48 min de video y cuatro núcleos, `veryfast` (CRF 16 igual) lo hace en la mitad
+# de tiempo que `fast` (ver `ic_pieza.componer`)
+PRESET_COMPUESTO = 'veryfast'
 UNIDADES = {
     1: 'Comprensión y marco jurídico del delito de desaparición forzada',
     2: 'Mecanismos de búsqueda de personas desaparecidas',
