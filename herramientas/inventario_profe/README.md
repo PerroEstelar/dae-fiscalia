@@ -29,3 +29,9 @@ Cómo se comprobó: las fórmulas del resumen se recalcularon con LibreOffice an
 la hoja de Google (85 / 935 / 60 / 34 / 5); 86 enlaces de video, sin ids repetidos. **No se abrió cada enlace**: los ids
 son los que devolvió Drive al entregar cada archivo.
 La fecha de los seis `.mov` de SRPA del 11 de noviembre es aproximada (sale del documento de esa tanda, no de Drive).
+
+**20 nov 2026: Desaparición forzada.** Las 17 piezas (`datos.py`, bloque de Prioridad 3) se agregaron a la hoja en su
+lugar, sin rehacerla: 17 filas nuevas en `Videos de profe` (105–121, entre Trata y Estándares, con el formato de la fila
+de arriba y los enlaces como formato de celda), una fila en `Resumen` con las mismas fórmulas que las demás (rangos
+hasta la 122), el total con `SUM` en lugar de números escritos, y el curso sale de «Cursos sin videos de profe».
+Leído de vuelta: 116 entregados, 1171 minutos, 91 con subtítulos, 65 con gráfica provisional, 5 pendientes.

@@ -232,6 +232,32 @@ for u in (4, 5):
     fila(3, CUR, 'Unidad %d' % u, 'Introducción, retroalimentación y cierre', '', '(sin grabación en Drive)', None, '', None, None, '', '',
          'No hay grabaciones de la unidad en la carpeta VIDEOS del curso.', estado='Sin grabación')
 
+# ---------- Prioridad 3 · Desaparición forzada (19–20 nov 2026: las 17 piezas salen de una sola grabación)
+CUR = 'Investigación judicial y forense de desaparición forzada'
+M, T = man('desaparicion_forzada'), tabla('desaparicion_forzada')
+CV = 'Carlos Eduardo Valdés Moreno'
+RETRO = 'Junta las tres retroalimentaciones que grabó el profe (actividad 1, actividad 2 y cuestionario), con seis cuadros de mezcla entre una y otra.'
+DF = [('CURSO - INICIO', 'Curso', 'Inicio del curso')]
+for u in range(1, 6):
+    DF += [('U%d - INICIO' % u, 'Unidad %d' % u, 'Presentación de la unidad'),
+           ('U%d - RETROALIMENTACION' % u, 'Unidad %d' % u, 'Retroalimentación de evaluaciones'),
+           ('U%d - CIERRE' % u, 'Unidad %d' % u, 'Cierre de la unidad')]
+DF += [('CURSO - CIERRE', 'Curso', 'Cierre del curso')]
+NOTA_DF = {
+    'U1 - CIERRE': 'Es la segunda toma: en la primera el profe dice «artículo 166» y pide repetir.',
+    'U2 - INICIO': 'Un corte de 13 s donde el profe dice «Hasta ahí ese video… perdón, continúa».',
+    'U5 - INICIO': 'Un corte de 3,6 s de una palabra en falso («excúsenme»).',
+    'CURSO - CIERRE': 'Dura 15 min (la ficha da de 5 a 8). Un corte de 6 s de una palabra en falso («perdónenme, eh, eh»).',
+}
+for suf, uni, pieza in DF:
+    nombre = 'desaparicionforzada - %s-v1' % suf
+    if nombre not in M or nombre not in T:
+        continue
+    m, t = M[nombre], T[nombre]
+    nota = NOTA_DF.get(suf) or (RETRO if suf.endswith('RETROALIMENTACION') else 'Sin cortes.')
+    fila(3, CUR, uni, pieza, CV, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '19–20 nov',
+         nota + ' Sale de la misma grabación que las otras 16 piezas del curso.', n_srt=t[0])
+
 # ---------- Prioridad 3 · Estándares interamericanos
 fila(3, 'Estándares interamericanos de investigación de graves violaciones a los derechos humanos', 'Unidad 1', 'Inicio de la unidad', 'Sin identificar',
      'Estándares Interamericanos Unidad 1 - Inicio.mp4 (grabación sin producir)', '1Ex6HRmTnUOlVrKkXzO-TZCl-5n-ZzEgC', '5:26', None, None, '', '',

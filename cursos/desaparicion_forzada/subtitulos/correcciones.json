@@ -1,0 +1,454 @@
+{
+ "_todos": [
+  [
+   "\\b([Ll])a fiscalía\\b",
+   "\\1a Fiscalía"
+  ],
+  [
+   "(?<!\\S)\"(?=\\S)",
+   "«"
+  ],
+  [
+   "(?<=\\S)\"(?=[\\s.,;:?!]|$)",
+   "»"
+  ],
+  [
+   "\\b(SIRDEX|SIRD|SERDEP|SERDEC|SIDEC|SEDEC|SIDD|SIRDE|CIRDEC|SIRDEP)\\b",
+   "SIRDEC"
+  ],
+  [
+   "\\bSDF\\b",
+   "SDR"
+  ],
+  [
+   "\\bEspoa\\b",
+   "SPOA"
+  ],
+  [
+   "\\bMirian\\b",
+   "Miriam"
+  ],
+  [
+   "\\b[Aa]lerta ro(sa|ja)\\b",
+   "Alerta Rosa"
+  ],
+  [
+   "\\b[Mm]ecanismo de [Bb]úsqueda [Uu]rgente\\b",
+   "Mecanismo de Búsqueda Urgente"
+  ],
+  [
+   "\\b[Rr]egistro [Nn]acional de [Dd]esaparecid(os|as)\\b",
+   "Registro Nacional de Desaparecidos"
+  ],
+  [
+   "\\bartículo ciento sesenta y cinco\\b",
+   "artículo 165"
+  ],
+  [
+   "\\bartículo ciento sesenta y seis\\b",
+   "artículo 166"
+  ],
+  [
+   "\\bartículo ciento treinta y dos\\b",
+   "artículo 132"
+  ],
+  [
+   "\\bSU[- ]?ciento sesenta y ocho\\b",
+   "SU-168"
+  ],
+  [
+   "\\bSU[- ]?dos noventa y siete\\b",
+   "SU-297"
+  ],
+  [
+   "\\b[Ll]ey nueve setenta y uno(?: de| del)? (?:dos mil cinco|2005)\\b",
+   "Ley 971 de 2005"
+  ],
+  [
+   "\\b[Ll]ey veintitrés veintiséis(?: del año| de| del)? (?:dos mil veintitrés|2023)\\b",
+   "Ley 2326 de 2023"
+  ],
+  [
+   "\\b[Dd]ecreto catorce veintiocho(?: del año| de| del)? (?:dos mil veinticuatro|2024)\\b",
+   "Decreto 1428 de 2024"
+  ],
+  [
+   "\\b[Ll]ey catorce cero ocho(?:,| de| del)? (?:dos mil diez|2010)\\b",
+   "Ley 1408 de 2010"
+  ],
+  [
+   "\\b[Ll]ey catorce cuarenta y ocho(?: de| del)? (?:dos mil once|2011)\\b",
+   "Ley 1448 de 2011"
+  ],
+  [
+   "\\bveinte por ciento\\b",
+   "20 %"
+  ],
+  [
+   "\\bcien por ciento\\b",
+   "100 %"
+  ],
+  [
+   "\\bante morte\\b",
+   "ante mortem"
+  ],
+  [
+   "\\bcédulas celulares\\b",
+   "celdas celulares"
+  ],
+  [
+   "\\bveinticuatro\\b",
+   "24"
+  ],
+  [
+   "\\bcuarenta y ocho\\b",
+   "48"
+  ],
+  [
+   "\\bsetenta y dos\\b",
+   "72"
+  ]
+ ],
+ "_despues": [
+  [
+   "\\bley (\\d{3,})",
+   "Ley \\1"
+  ],
+  [
+   "\\bdecreto (\\d{3,})",
+   "Decreto \\1"
+  ],
+  [
+   "\\b(SU|T|C)-?(\\d{3})\\b",
+   "\\1-\\2"
+  ]
+ ],
+ "dfci": [
+  [
+   "\\blos perjuicios\\b",
+   "los prejuicios"
+  ],
+  [
+   "\\bir-irrenunciable\\b",
+   "irrenunciable"
+  ],
+  [
+   "\\bBuscar, judicializar-- buscar y judicializar\\b",
+   "Buscar y judicializar"
+  ],
+  [
+   "\\bcuarenta, cincuenta horas\\b",
+   "40 a 50 horas"
+  ],
+  [
+   "\\blos registros nacional de desaparecidos del sistema SIRDEC\\b",
+   "el Registro Nacional de Desaparecidos del sistema SIRDEC"
+  ]
+ ],
+ "dfu1i": [
+  [
+   "\\btitulada: comprensión y marco jurídico del delito de desaparición forzada\\.",
+   "titulada «Comprensión y marco jurídico del delito de desaparición forzada»."
+  ],
+  [
+   "\\babord-va-- abordando\\b",
+   "abordando"
+  ],
+  [
+   "\\banalidaré-- analizaremos\\b",
+   "analizaremos"
+  ],
+  [
+   "\\bla sapa-- desaparición\\b",
+   "la desaparición"
+  ],
+  [
+   "\\bComo recom-recomendación\\b",
+   "Como recomendación"
+  ]
+ ],
+ "dfu1c": [
+  [
+   "\\bla desa-- de la tipificación\\b",
+   "la tipificación"
+  ],
+  [
+   "\\bdescartándola de apresuradamente de hipótesis como retiro voluntario\\b",
+   "descartándola apresuradamente por hipótesis como el retiro voluntario"
+  ],
+  [
+   "\\bal capítul-- del capítulo uno\\b",
+   "al capítulo uno"
+  ],
+  [
+   "\\b72 re-- horas\\b",
+   "72 horas"
+  ]
+ ],
+ "dfu1r": [
+  [
+   "\\bdebieron, debieron guiarnos\\b",
+   "debieron guiarnos"
+  ],
+  [
+   "\\bsobreprescriban\\b",
+   "sobrescriban"
+  ],
+  [
+   "\\bprosponer, posponer\\b",
+   "posponer"
+  ],
+  [
+   "\\bEn el primer gro-- bloque\\b",
+   "En el primer bloque"
+  ]
+ ],
+ "dfu2i": [
+  [
+   "\\bfiltra-- filatorios\\b",
+   "filiatorios"
+  ],
+  [
+   "\\bfilatorios\\b",
+   "filiatorios"
+  ],
+  [
+   "\\bde ocho a diez horas\\b",
+   "de 8 a 10 horas"
+  ]
+ ],
+ "dfu2c": [
+  [
+   "\\bplazo de esperar\\b",
+   "plazo de espera de"
+  ],
+  [
+   "\\bde niñas, niñas, niños\\b",
+   "de niñas, niños"
+  ],
+  [
+   "\\bRegistro Nacional de Desapariciones vinculado a CERDED\\b",
+   "Registro Nacional de Desaparecidos vinculado a SIRDEC"
+  ],
+  [
+   "\\bla asignación de errores misiona-- de roles misionales\\b",
+   "la asignación de roles misionales"
+  ]
+ ],
+ "dfu2r": [
+  [
+   "\\bEl segundo cla-- punto clave\\b",
+   "El segundo punto clave"
+  ],
+  [
+   "\\bLey ven-- es (veintiséis|26) de (dos mil veintitrés|2023)\\b",
+   "Ley 2326 de 2023"
+  ],
+  [
+   "\\btras el reporte, sin condiciones, sin condicionarse esto a la apertura\\b",
+   "tras el reporte, sin condicionarse a la apertura"
+  ]
+ ],
+ "dfu3i": [
+  [
+   "\\bdel trasvase, desarticulado\\b",
+   "del trasvase desarticulado"
+  ],
+  [
+   "\\bcasuístico, la fiscal especializada, la Fiscalía Especializada\\b",
+   "casuístico, la Fiscalía Especializada"
+  ],
+  [
+   "\\bde ocho a diez horas\\b",
+   "de 8 a 10 horas"
+  ],
+  [
+   "\\bla diligencia digital\\b",
+   "la evidencia digital"
+  ],
+  [
+   "\\bpalari-paraliza\\b",
+   "paraliza"
+  ]
+ ],
+ "dfu3c": [
+  [
+   "\\bde este li-- delito de complejo y pluriofensivo\\b",
+   "de este delito complejo y pluriofensivo"
+  ],
+  [
+   "\\bun eslabión, un eslabón\\b",
+   "un eslabón"
+  ],
+  [
+   "\\bvinculado a SETEC\\b",
+   "vinculado a SIRDEC"
+  ],
+  [
+   "\\by el resto por las medidas cautelares de la JEP, el respeto por esas medidas cautelares\\b",
+   "y el respeto por las medidas cautelares de la JEP"
+  ],
+  [
+   "\\bEntendimos que a la luz de la sentencia (SU-297 de 2023|SU-?\\S+ de \\S+) de la Corte Constitucional, que remitir\\b",
+   "Entendimos que, a la luz de la sentencia \\1 de la Corte Constitucional, remitir"
+  ],
+  [
+   "\\bestas directrices del capi-- al capítulo\\b",
+   "estas directrices al capítulo"
+  ]
+ ],
+ "dfu3r": [
+  [
+   "\\bprobatoria entre los derechos de las víctimas, sobre los derechos de las víctimas\\b",
+   "probatoria sobre los derechos de las víctimas"
+  ],
+  [
+   "\\by el acercamiento a las medidas cau-- con las medidas au-- cautelares\\b",
+   "y el acercamiento con las medidas cautelares"
+  ]
+ ],
+ "dfu4i": [
+  [
+   "\\bdesnu-naturalizar\\b",
+   "desnaturalizar"
+  ],
+  [
+   "\\bpreaparción\\b",
+   "preparación"
+  ],
+  [
+   "\\bceldas SBR\\b",
+   "celdas SDR"
+  ],
+  [
+   "\\bentre ocho a diez horas\\b",
+   "entre 8 y 10 horas"
+  ]
+ ],
+ "dfu4r": [
+  [
+   "\\bEn este ejercicio de Encontra abordamos\\b",
+   "En este ejercicio abordamos"
+  ],
+  [
+   "\\bel derecho al inalienable\\b",
+   "el derecho inalienable"
+  ],
+  [
+   "\\bla reunión prevista del equipo interdis-- previa, perdón, la reunión previa\\b",
+   "la reunión previa"
+  ]
+ ],
+ "dfu5i": [
+  [
+   "\\by llevarle a los jueces, a los jueces elementos\\b",
+   "y llevarles a los jueces elementos"
+  ],
+  [
+   "\\bLa tringul-triangulación\\b",
+   "La triangulación"
+  ],
+  [
+   "\\bcomplementan-completando así\\b",
+   "completando así"
+  ],
+  [
+   "\\bla acusación entre los jueces\\b",
+   "la acusación ante los jueces"
+  ],
+  [
+   "\\bde ocho a diez horas\\b",
+   "de 8 a 10 horas"
+  ],
+  [
+   "\\bQueremos facilitarle, por su compromiso\\b",
+   "Queremos felicitarle por su compromiso"
+  ],
+  [
+   "\\biniciar así las cosas, las lecciones\\b",
+   "iniciar así las lecciones"
+  ]
+ ],
+ "dfu5c": [
+  [
+   "\\buna teoría del caso vulnerable\\b",
+   "una teoría del caso invulnerable"
+  ]
+ ],
+ "dfu5r": [
+  [
+   "\\bla adopción correcta definió\\b",
+   "la opción correcta definió"
+  ],
+  [
+   "\\bindicios especulatorios\\b",
+   "indicios exculpatorios"
+  ],
+  [
+   "\\bla respuesta cor-- acertada\\b",
+   "la respuesta acertada"
+  ]
+ ],
+ "dfcc": [
+  [
+   "\\bgeneró fricciones tras papeleo\\b",
+   "generó fricciones, traspapeleo"
+  ],
+  [
+   "\\bla actividad una uno, casuística\\b",
+   "la actividad uno, casuística"
+  ],
+  [
+   "\\bversus alertar a Alerta Rosa\\b",
+   "versus Alerta Rosa"
+  ],
+  [
+   "\\bal ciudadano re-- que revictimiza\\b",
+   "al ciudadano que revictimiza"
+  ],
+  [
+   "\\bSU dos setenta y nueve (?:de|del) (2023|dos mil veintitrés)\\b",
+   "SU-297 de 2023"
+  ],
+  [
+   "\\bSU dos 79 de 2023\\b",
+   "SU-297 de 2023"
+  ],
+  [
+   "\\bde la Corte Constitucional Con ella\\b",
+   "de la Corte Constitucional. Con ella"
+  ],
+  [
+   "\\bel hecho de que evitar un expediente sin junta, que este mínimo técnico\\b",
+   "el hecho de que remitir un expediente sin adjuntar este mínimo técnico"
+  ],
+  [
+   "\\bparal-paraliza\\b",
+   "paraliza"
+  ],
+  [
+   "\\b([Uu]rgente) valola-- bajo\\b",
+   "\\1 bajo"
+  ],
+  [
+   "\\bla obligación de actividad la-- de activar\\b",
+   "la obligación de activar"
+  ],
+  [
+   "\\bAprendimos a neutralizón, neutralizar\\b",
+   "Aprendimos a neutralizar"
+  ],
+  [
+   "\\bel Registro Nacional de Desaparición, vinculado a SIRDEC\\b",
+   "el Registro Nacional de Desaparecidos vinculado a SIRDEC"
+  ],
+  [
+   "\\bde personas ausente y\\b",
+   "de personas ausentes y"
+  ],
+  [
+   "\\bLos felicito profundamente, corazón,",
+   "Los felicito profundamente, de corazón,"
+  ]
+ ]
+}
