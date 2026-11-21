@@ -13,7 +13,9 @@ Fuente: `VIDEO 1 PRESENTACION GENERAL DEL CURSO - TOMA1.mp4`.
   Suspendamos ahí, por favor, Camilo»).
 - Termina en «…la Escuela de Altos Estudios de la Fiscalía».
 
-El rótulo entra cuando dice su nombre («Mi nombre es Óscar Jairo Fonseca Fonseca», 97,9 s).
+**v2 (20 nov 2026):** el rótulo entra al empezar, a 1,5 s del primer tramo, como en los demás videos. En la v1
+entraba cuando dice su nombre («Mi nombre es Óscar Jairo Fonseca Fonseca», 97,9 s de la fuente, 1:31 del video) y
+Sebastián no lo vio: «por lo menos en uno de los videos no veo el rótulo del profesor».
 """
 import os
 import sys
@@ -25,4 +27,5 @@ from base_dp_profe import armar, armar_unidad, rotulo  # noqa: E402,F401
 globals().update(armar('CURSO/INICIO', 'Inicio del curso', 'DP - CURSO - INICIO', 'derechodepeticion - CURSO - INICIO', 'DPCI',
                        'VIDEO 1 PRESENTACION GENERAL DEL CURSO - TOMA1.mp4', [(23.85, 191.42), (213.91, 412.89), (428.95, 539.64)]))
 
-ITEMS = rotulo(98.2)  # noqa: F821
+VERSION = 2
+ITEMS = rotulo(T0 + 1.5)  # noqa: F821
