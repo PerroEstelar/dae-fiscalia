@@ -46,6 +46,28 @@ El mismo arbol existe como bins dentro del proyecto `DAE MASTER - CURSOS`.
 Las palabras que el modelo lee mal van en ortografia fonetica SOLO en el
 guion de TTS -sicosocial, sicologica- y en el carton van con su ortografia.
 
+## Entregas del caso integrador (Drive: CASO INTEGRADOR > CAPITULO n)
+
+| cap | archivo en Drive | id |
+|---|---|---|
+| 1 | PRIO 3 - CASO INTEGRADOR - C1 EL ECO EN LA PLAZA.mp4 | 1vqoOQYc-XWMCC5TXbCBoy3-xpBBF90Tv |
+| 2 | PRIO 3 - CASO INTEGRADOR - C2 RELOJES EN PAUSA.mp4 | 1-FxKqndSOW8R4uVvVa2Lgs5w5Jl-HtZm |
+| 3 | PRIO 3 - CASO INTEGRADOR - C3 EL ENGRANAJE ROTO.mp4 | 1KroP4wBWgKOxh9XElvUWW8iRwYsxdl_v |
+| 4 | PRIO 3 - CASO INTEGRADOR - C4 LAS VOCES QUE NO SE APAGAN.mp4 | 1V_8O-F6i1XQq-HO3MQPgeUvR42i31XQ2 |
+| 5 | PRIO 3 - CASO INTEGRADOR - C5 LA TIERRA HABLA.mp4 | 1EjKILyuHiynlGtG23d62kWm8nQmYIlbJ |
+
+Carpeta CASO INTEGRADOR: 1fPFqVTw7gqE6uK6LfCkXuSDeox_lMFAU. Sin .srt (ninguno de los cinco).
+
+El C5 se subio el 20 de noviembre de 2026 (2:03, 2965 cuadros, -19,9 LUFS, pico -4,0 dBFS;
+36.937.754 bytes, md5 c28a8119679370a94cfb57cd11718bc7). El MP4 que habia en `05 EXPORTS`
+con ese nombre era el de la manana, sin dos de los tres planos de detalle (la brocha en la
+excavacion y los ojos del analista): esta en `05 EXPORTS/_descartes`. Lo que se subio sale de
+rendir otra vez la linea viva `DF C5 LA TIERRA HABLA Y LA MATRIZ DEL SILENCIO`
+(`DF_C5_v2.mp4`, receta de `herramientas/montaje/exportar_df.py`); la hoja de comparacion
+v1/v2 es `D:/DAE/_tmp/df/render/hoja_c5.jpg`. Antes de subir un capitulo, mirar que el MP4
+de disco sea posterior al ultimo cambio de la linea. Verificado byte a byte con
+`verificar_drive.py` sobre una copia de servidor.
+
 ## Pendiente
 
 - `16 situaciones`: en produccion desde el 27 de octubre de 2026, por
