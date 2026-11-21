@@ -1,4 +1,4 @@
-# Tráfico de migrantes y trata de personas — subtítulos (20 nov 2026)
+# Tráfico de migrantes y trata de personas — subtítulos (20 nov 2026; unidades 4 y 5, 21 nov)
 
 | video (nombre en Drive) | subtítulos | dura | id del `.srt` en Drive |
 |---|---|---|---|
@@ -13,6 +13,12 @@
 | `traficoytrata - U3 - RETROALIMENTACION-v1` | 115 | 7:09 | `1EHj-aS1MfJ32zahbCsMyJcz1BwH3eSTw` |
 | `traficoytrata - U3 - CIERRE-v1` | 112 | 7:59 | `1deRYTDWc1ntEaxdgUCY2ICmny-7xo_Ej` |
 | `traficoytrata - CURSO - CIERRE-v1` | 113 | 6:56 | `1b5mSWxaLqjoLNxOR6zdO_C-XbYnOvaSY` |
+| `traficoytrata - U4 - INICIO-v1` | 111 | 7:09 | `1KgxdV0vMApNblTy9aSPvtEjmAL4r4k7K` |
+| `traficoytrata - U4 - RETROALIMENTACION-v1` | 116 | 7:06 | `1Gn7pJcpgrHSepwlXu4PXkErhhALJwHna` |
+| `traficoytrata - U4 - CIERRE-v1` | 115 | 8:14 | `1papd9yakBuFMNStKW8WbISL4_Z6-ieLx` |
+| `traficoytrata - U5 - INICIO-v1` | 118 | 7:03 | `1SvFIQYwdKExMQsAuci0DFoNFjMR-3Fy2` |
+| `traficoytrata - U5 - RETROALIMENTACION-v1` | 117 | 7:04 | `1_L51twmYeDDcIQYPSy-8gookq5oAQ6me` |
+| `traficoytrata - U5 - CIERRE-v1` | 112 | 8:14 | `1G7aHv_o4aiiI4VxhRYzbam_J-ebhJxQp` |
 
 Carpeta de Drive: VIDEOS del curso › VIDEOS FINALIZADOS (`1A3rlk8CCzw0cRq2sFEAZ_H6plaFMkq_l`), al lado del video. Copia
 junto al video en disco (`05 EXPORTS`). Método y criterio: `herramientas/subtitulos/README.md`.
@@ -45,3 +51,22 @@ junto al video en disco (`05 EXPORTS`). Método y criterio: `herramientas/subtit
 - **U3 retroalimentación** (`tru3r`): «Ruta del Golfo» con mayúsculas.
 - **U3 cierre** (`tru3c`): «Martha» → «Marta» (el documento); «Ruta del Golfo». «Volvamos a la inferencia entre pista y prueba» va como lo dice (tres transcripciones iguales). **La grabación termina en «la comunicación clara de…»**: la fuente se corta ahí.
 - **Cierre del curso** (`trcc`): Sin cambios.
+
+## Unidades 4 y 5 (21 nov 2026)
+
+Lo mismo, con las entregas de la U4 y la U5 (`D:\DAE\_tmp\tr_s45\stt_loop.py`: transcribe cada final apenas sale).
+Nombres de los casos como en sus documentos: «Puerto de salida» (U4) y «Voces, registros y cuentas» (U5, entre comillas
+porque lleva comas). Reglas nuevas del curso (`_todos`): artículos 220 y 221, 301, 307, 314, 403 y 404, 437 y 438 en
+cifras; «sentencia C-336 de 2007», «C-278 de 2025», «SP3168 de 2017»; «la Sala Penal».
+
+- **U4 introducción** (`tru4i`): sin cambios (la regla «aprendido» → «aprehendido» es por la transcripción de la grabación,
+  que lo oyó mal; la de la entrega lo oye bien).
+- **U4 cierre** (`tru4c`): «aprenderse» → «aprehenderse»; «cualquier integral del equipo» → «integrante» (así lo oyó la
+  transcripción de la grabación); «Hagan una comprobación…»: la transcripción de la entrega se comió el «Hagan», que está
+  en la de la grabación; «con tiempo dónde una inferencia» con tilde. **Quedan como se oyen** (tres pasadas iguales sobre la
+  grabación, normal y al 75 %): «La disfunción cautelar sobre Nora» (¿«discusión»?), «No lean por separado el índice de
+  descubrimiento» y «la intervención de ella»; y «compare lo comunicado» (singular).
+- **U5 introducción** (`tru5i`): «para demostrar que…» con puntos suspensivos de un carácter.
+- **U5 retroalimentación** (`tru5r`): «de al unidad cinco» → «de la unidad cinco» (el avatar).
+- **U5 cierre** (`tru5c`): «Los datos sobre el control de los pagos»: la transcripción de la entrega se comió el «el», que está
+  en la de la grabación. «Los pagos de distinto conceptos» va como se dice.

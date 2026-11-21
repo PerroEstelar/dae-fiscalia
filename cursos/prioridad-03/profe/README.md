@@ -67,6 +67,12 @@ Drive: VIDEOS › **VIDEOS FINALIZADOS** (`1A3rlk8CCzw0cRq2sFEAZ_H6plaFMkq_l`).
 |---|---|---|---|---|
 | `traficoytrata - CURSO - INICIO-v1.mp4` | 1:51 | 2.668 | −16,3 / −1,9 | `1ufvfsj_qZnj96u6F6HxNjGwD2vsijCMh` |
 | `traficoytrata - CURSO - CIERRE-v1.mp4` | 6:56 | 9.973 | −16,1 / −2,4 | `1zF18nhsYvVZSUnNtG0AaT0dqYbyZuk0P` |
+| `traficoytrata - U4 - INICIO-v1.mp4` | 7:09 | 10.293 | −16,1 / −2,2 | `1E2tHeTl9LwuLEj4oAG8oiZfj7T1ynjiH` |
+| `traficoytrata - U4 - RETROALIMENTACION-v1.mp4` | 7:06 | 10.223 | −16,1 / −3,0 | `1kOWsiScXS6AdhpLaGrK-jIZL08PRuTpF` |
+| `traficoytrata - U4 - CIERRE-v1.mp4` | 8:14 | 11.838 | −16,0 / −3,0 | `10m4z4jj5lk_HZxyARvKyfH9JbdwSdYcV` |
+| `traficoytrata - U5 - INICIO-v1.mp4` | 7:03 | 10.136 | −16,1 / −2,8 | `1WFdglgcsK6Nw0wGbSqngWqSd6hmLs5jq` |
+| `traficoytrata - U5 - RETROALIMENTACION-v1.mp4` | 7:04 | 10.168 | −16,1 / −2,5 | `1Sd7Xrzh5RSEujHSXp3p07hgqlnyvQlr_` |
+| `traficoytrata - U5 - CIERRE-v1.mp4` | 8:14 | 11.834 | −16,1 / −2,5 | `1OejCIBOfI3nYujLpB5u_08ffzQMxiRrS` |
 | `traficoytrata - U1 - INICIO-v1.mp4` | 7:11 | 10.341 | −16,1 / −2,7 | `1yF-RWTVTa0egLD7qSXdYij14EjARpR9i` |
 | `traficoytrata - U1 - RETROALIMENTACION-v1.mp4` | 7:34 | 10.887 | −16,1 / −3,0 | `1GAY9p7Oo1zFLBR8iYzxnUYb4Kp9lbnjP` |
 | `traficoytrata - U1 - CIERRE-v1.mp4` | 8:03 | 11.576 | −16,0 / −3,0 | `1hzwVeVFfooew1iCfVD5ZfwWi7MjrC29G` |
@@ -77,7 +83,7 @@ Drive: VIDEOS › **VIDEOS FINALIZADOS** (`1A3rlk8CCzw0cRq2sFEAZ_H6plaFMkq_l`).
 | `traficoytrata - U3 - RETROALIMENTACION-v1.mp4` | 7:09 | 10.286 | −16,1 / −2,9 | `104Y49E1KDRrj11rPA1Byg8of-NhZTYvr` |
 | `traficoytrata - U3 - CIERRE-v1.mp4` | 7:59 | 11.482 | −16,1 / −3,0 | `1_c70j9pMBeBIGqyws85AJrvmCOKyqZp-` |
 
-Son 76 min de video. Las once se compararon byte a byte con lo que guarda Drive antes de moverlas a la
+Las once de las unidades 1 a 3 y el curso son 76 min de video. Las once se compararon byte a byte con lo que guarda Drive antes de moverlas a la
 carpeta final (cuatro leídas del servidor sin copia y siete con copia de servidor; ver «Verificar una entrega
 en Drive» en CLAUDE.md), y en ninguna hay muestras de audio fuera de escala (`pico_scan.py`).
 
@@ -93,9 +99,30 @@ ver `../subtitulos/README.md`. Al transcribir las entregas apareció que **los c
 mitad de frase** («…descartar la hipó…» y «…la comunicación clara de…»): así terminan las grabaciones de la presentadora
 (la fuente sigue un par de segundos sin voz), no es un corte de la edición.
 
+## Unidades 4 y 5 (21 nov 2026)
+
+Sebastián: «tenemos estos videos de más para procesar, en gráfica provisional y de manera completamente veloz… inicio,
+retroalimentación y cierre de las unidades 4 y 5 de investigación y judicialización… en los casos de video que haya que
+reemplazar el fondo, hazlo como lo hemos hecho antes». Fuentes en `E:\DAE MASTER\CURSO INVESTIGACION Y JUDCIALIZACION\
+UNIDAD 4|5\` (los dos zip que están en la carpeta VIDEOS del curso en Drive, descomprimidos): las mismas tres clases que
+en las unidades 1 a 3, y el mismo tratamiento.
+
+- **Introducción y retroalimentación:** el avatar de José María Peláez (1080×1920, 25 fps, de 389 a 396 s), recortado
+  sobre `FONDO 4 V2.png` con `RECORTE` de y=215 a 230 (hoja de cuadros contra el de la U3: mismo encuadre,
+  `D:\DAE\_tmp\tr_p\u45\hoja_recortes.jpg`). Sin cortes: de medio segundo antes de la primera palabra al final.
+- **Cierres:** la presentadora de los cierres de las unidades 1 a 3, sin tomas repetidas ni tropiezos, y esta vez **las
+  dos grabaciones terminan la frase**. Sin rótulo de nombre (sigue pendiente confirmarlo), como los otros tres.
+- El AAC de Resolve volvió a salir roto en el cierre de la U4 (pico +63 dB); `entrega_gpu.py` lo rindió de nuevo con PCM
+  y el AAC de ffmpeg, sin intervención.
+- **Ritmo:** el recorte va a 4,9 cuadros/s cada uno con dos a la vez y la máquina libre, pero baja a 1,7–3,0 mientras
+  corren dos compuestos (y bajó a 2,9 con `prep_tr2.py` midiendo cuadro a cuadro, que se paró: para estas fuentes basta
+  la transcripción, `D:\DAE\_tmp\tr_p\stt_rapido.py`). Los cierres, que no se recortan, salieron primero.
+- Lotes en `D:\DAE\_tmp\tr_p\` (los de la tanda anterior quedaron como `*_u123`); verificación y subtítulos en
+  `D:\DAE\_tmp\tr_s45\` (`verif_loop.py`, `stt_loop.py`).
+
 ## Pendiente
 
-- **Rótulo de nombre en los tres cierres** (ver arriba): falta que Sebastián confirme el nombre y el cargo.
+- **Rótulo de nombre en los cinco cierres** (ver arriba): falta que Sebastián confirme el nombre y el cargo.
 - **Manos cortadas:** cuando el avatar abre las manos, el borde de la fuente vertical las corta, y sobre el
   fondo ancho se ve el corte recto por un instante. Es de la fuente.
 - **Disco:** D: quedó con 2,6 GB libres. Del árbol de este curso (19 GB) sobran, cuando Sebastián lo decida:

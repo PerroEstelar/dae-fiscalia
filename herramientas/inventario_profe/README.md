@@ -51,3 +51,8 @@ subtítulos.
 de U2 a U4, retroalimentaciones y cierre del curso). Una fila en `Resumen` (la 13) con las mismas fórmulas, rangos
 hasta la 142. Leído de vuelta: 130 entregados, 1293 minutos, 116 con subtítulos, 79 con gráfica provisional, 11
 pendientes.
+
+**21 nov 2026: Trata, unidades 4 y 5.** Las dos filas «Sin grabación» de la U4 y la U5 pasaron a ser seis filas entregadas
+(112–117 de `Videos de profe`: introducción, retroalimentación y cierre de cada unidad), con el formato de la fila de la U3 y
+los enlaces como formato de celda; las fórmulas del resumen se estiraron solas al insertar. Leído de vuelta: Trata 17 videos,
+121 min, 17 con subtítulos, 0 pendientes; total 136 entregados, 1338 min.

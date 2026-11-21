@@ -63,6 +63,54 @@
   [
    "\\bJeimy\\b",
    "Yeimi"
+  ],
+  [
+   "\\b([Aa]rtículos?) doscientos veinte y doscientos veintiuno\\b",
+   "\\1 220 y 221"
+  ],
+  [
+   "\\b([Aa]rtículos?) trescientos uno\\b",
+   "\\1 301"
+  ],
+  [
+   "\\b([Aa]rtículos?) trescientos siete\\b",
+   "\\1 307"
+  ],
+  [
+   "\\b([Aa]rtículos?) trescientos catorce\\b",
+   "\\1 314"
+  ],
+  [
+   "\\b([Aa]rtículos?) cuatrocientos tres y cuatrocientos cuatro\\b",
+   "\\1 403 y 404"
+  ],
+  [
+   "\\b([Aa]rtículos?) cuatrocientos treinta y siete y cuatrocientos treinta y ocho\\b",
+   "\\1 437 y 438"
+  ],
+  [
+   "\\b([Ss])entencia C[- ]?(?:trescientos treinta y seis|336) de (\\d{4})\\b",
+   "\\1entencia C-336 de \\2"
+  ],
+  [
+   "\\b([Ss])entencia C[- ]?(?:doscientos setenta y ocho|278) de (\\d{4})\\b",
+   "\\1entencia C-278 de \\2"
+  ],
+  [
+   "\\b([Ss])entencia SP[- ]?(?:tres uno seis ocho|3168) de (\\d{4})\\b",
+   "\\1entencia SP3168 de \\2"
+  ],
+  [
+   "\\bla sala penal\\b",
+   "la Sala Penal"
+  ],
+  [
+   "\\b[Pp]uerto de [Ss]alida\\b",
+   "Puerto de salida"
+  ],
+  [
+   "\\b[Vv]oces, registros y cuentas\\b",
+   "«Voces, registros y cuentas»"
   ]
  ],
  "_despues": [],
@@ -122,6 +170,48 @@
   [
    "\\bla comunicación clara de\\.\\.\\.$",
    "la comunicación clara de…"
+  ]
+ ],
+ "tru4i": [
+  [
+   "\\bes aprendido sin orden\\b",
+   "es aprehendido sin orden"
+  ]
+ ],
+ "tru5r": [
+  [
+   "\\bde al unidad cinco\\b",
+   "de la unidad cinco"
+  ]
+ ],
+ "tru4c": [
+  [
+   "\\bsu objetivo,? [Uu]na comprobación antes",
+   "su objetivo. Hagan una comprobación antes"
+  ],
+  [
+   "\\bpodía aprenderse a esta persona",
+   "podía aprehenderse a esta persona"
+  ],
+  [
+   "\\bcualquier integral del equipo",
+   "cualquier integrante del equipo"
+  ],
+  [
+   "\\bcon tiempo donde una inferencia",
+   "con tiempo dónde una inferencia"
+  ]
+ ],
+ "tru5i": [
+  [
+   "\\bpara demostrar que\\.\\.\\.",
+   "para demostrar que…"
+  ]
+ ],
+ "tru5c": [
+  [
+   "\\bLos datos sobre control de los pagos",
+   "Los datos sobre el control de los pagos"
   ]
  ]
 }

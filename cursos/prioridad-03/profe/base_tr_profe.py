@@ -57,6 +57,13 @@ espera la confirmación de Sebastián (`PROFE_CIERRES`): un nombre de lower thir
 **Sin máster de 32 Mb/s**: en D: quedaban 22 GB. La entrega sale directo de Resolve por la placa NVIDIA
 (`lote/entrega_gpu.py`), como los cierres de Bienes. El recorte de los avatares lo corre `lote/recorta_lote.py`.
 
+**Unidades 4 y 5 (21 nov 2026).** Sebastián: «tenemos estos videos de más para procesar, en gráfica provisional y de
+manera completamente veloz… inicio, retroalimentación y cierre de las unidades 4 y 5… en los casos de video que haya que
+reemplazar el fondo, hazlo como lo hemos hecho antes». Fuentes en `E:\DAE MASTER\CURSO INVESTIGACION Y JUDCIALIZACION\
+UNIDAD 4|5\` (los zip de la carpeta VIDEOS de Drive, ya descomprimidos): las mismas tres clases que las unidades 1 a 3
+(avatar vertical en introducción y retroalimentación, la presentadora en el cierre, `.webm`). Mismo tratamiento.
+Los nombres de las unidades 4 y 5 salen de la ruta de aprendizaje del formato de diseño.
+
 Los tiempos de cada plan están en segundos de la fuente.
 """
 import os
@@ -95,7 +102,9 @@ UNIDADES = {
        'explotación sexual',
     2: 'Enfoque diferencial, interseccional y de derechos en la investigación y judicialización de los delitos '
        'de trata de personas y tráfico de migrantes',
-    3: 'Investigación y programa metodológico en la trata de personas y el tráfico de migrantes'}
+    3: 'Investigación y programa metodológico en la trata de personas y el tráfico de migrantes',
+    4: 'Judicialización de la trata de personas y el tráfico de migrantes',
+    5: 'Actividad probatoria y juicio oral en los delitos de trata de personas y tráfico de migrantes'}
 PIEZAS = {'INICIO': 'Introducción', 'RETROALIMENTACION': 'Retroalimentación de la evaluación', 'CIERRE': 'Cierre'}
 FONDO = RAIZ + '/00 FONDOS/FONDO 4 V2.png'
 CENTRO_X = 1250          # centro de la persona recortada en el cuadro de 1920

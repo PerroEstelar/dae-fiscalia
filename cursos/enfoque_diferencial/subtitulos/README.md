@@ -9,11 +9,11 @@ Prioridad 4 de la lista de Esteban. Los 17 videos entregados: 12 de profe (Camil
 | `enfoquediferencial - U1 - INICIO-v2` | 13 | 1:17 | `1f893wwUxU-JSDCZBJhMRZ1jea604fJir` |
 | `enfoquediferencial - U1 - CIERRE-v3` | 346 | 22:41 | `1D5ek8SN55MSqQD2oLUWIbTMkCrRNVAoU` |
 | `enfoquediferencial - U2 - INICIO-v2` | 12 | 1:15 | `1Ph_y0-einkLMaR2ox6QJFDDE6w1E3ifo` |
-| `enfoquediferencial - U2 - CIERRE-v3` | 334 | 22:14 | `1BERNlh4ItS3lgt40Ia8qyevsloJl9mnQ` |
+| `enfoquediferencial - U2 - CIERRE-v3` | 334 | 22:14 | `1TT4HK0G2_HJjYTPP_9hwvpge5vJhrnXZ` |
 | `enfoquediferencial - U3 - INICIO-v2` | 13 | 1:22 | `1-Iz9hjXpFoJp9SU5swe598I7ndHVz6bU` |
-| `enfoquediferencial - U3 - CIERRE-v3` | 415 | 26:48 | `1EWrpdGzndqPb5QziCwlv3C2YxTfpL4cf` |
+| `enfoquediferencial - U3 - CIERRE-v3` | 415 | 26:48 | `1L37J1-zzLJpBlxaQIIIKN7KEq9elQtrq` |
 | `enfoquediferencial - U4 - INICIO-v2` | 11 | 1:12 | `1Z3Z8el_OPM0uux7aclKXrD5dQ-smf_kM` |
-| `enfoquediferencial - U4 - CIERRE-v2` | 395 | 26:22 | `1BbWDV_jMeZgFCoSXYCBTx1J-m2AOjhOD` |
+| `enfoquediferencial - U4 - CIERRE-v2` | 395 | 26:22 | `1UekO9kKq-oZTRLf7Z6VVHCXQhOe5yZLn` |
 | `enfoquediferencial - U5 - INICIO-v2` | 11 | 1:11 | `165dEUaX4VHKIWVmb5hpp8FHzZbo30syq` |
 | `enfoquediferencial - U5 - CIERRE-v3` | 428 | 28:25 | `1FQHQ92nDNKrcWczbpHgqyA5qlanKa33R` |
 | `enfoquediferencial - CURSO - CONCLUSIONES-v2` | 31 | 2:34 | `1EfR3iFq9NJcJm0U6_5oPH9s_uJdTobHK` |
@@ -69,3 +69,21 @@ dando»). Ver `herramientas/subtitulos/README.md`.
   Penal» para el feminicidio (104A). También «contravierten», «admitibles», «cuya nominación no es exhaustivo» e
   «investigar sobre otros derechos».
 - «comillas… cierro comillas», cuando lo dice, queda, con las comillas puestas.
+
+## «Rrom» (21 nov 2026)
+
+Revisión de la Fiscalía (Tatiana López): «la forma correcta de escribir es Rrom» (cierres de la U3 y la U4). Es la
+grafía oficial en Colombia (Decreto 2957 de 2010). Cambia solo la escritura; los tiempos y el número de subtítulos
+son los mismos.
+
+| `.srt` | decía | dice |
+|---|---|---|
+| `enfoquediferencial - U2 - CIERRE-v3` (18:30) | «gitanas o rom» | «gitanas o Rrom» |
+| `enfoquediferencial - U3 - CIERRE-v3` (15:57) | «gitanas o rom» | «gitanas o Rrom» |
+| `enfoquediferencial - U3 - CIERRE-v3` (16:27) | «pueblo étnico rom» | «pueblo étnico Rrom» |
+| `enfoquediferencial - U4 - CIERRE-v2` (5:59) | «comunidad rom o gitana» | «comunidad Rrom o gitana» |
+
+- Disco: el `.srt` anterior quedó en `05 EXPORTS/_descartes/… (antes de Rrom).srt`.
+- Drive: los tres se subieron con el mismo nombre (ids nuevos en la tabla de arriba y en `manifiesto.json`),
+  se compararon byte a byte con el disco y los anteriores están en la papelera.
+- Pendiente: tres cartones dicen «rom» (`ED3C_c35_rom`, `ED3C_c36_decreto`, `ED4C_c16_afro_rom`).

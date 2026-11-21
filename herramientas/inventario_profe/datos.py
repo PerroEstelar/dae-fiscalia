@@ -248,9 +248,19 @@ for nombre, uni, pieza, profe, nota in [
     extra = 'Es un avatar generado; va recortado sobre el fondo de la DAE. ' if 'avatar' in profe else ''
     n_srt, _, srt = T[nombre]
     fila(3, CUR, uni, pieza, profe, nombre, vid, d, srt, '1A3rlk8CCzw0cRq2sFEAZ_H6plaFMkq_l', PROV, '18 nov', (extra + nota).strip(), n_srt=n_srt)
-for u in (4, 5):
-    fila(3, CUR, 'Unidad %d' % u, 'Introducción, retroalimentación y cierre', '', '(sin grabación en Drive)', None, '', None, None, '', '',
-         'No hay grabaciones de la unidad en la carpeta VIDEOS del curso.', estado='Sin grabación')
+# Unidades 4 y 5 (21 nov 2026): llegaron después, como zip en la carpeta VIDEOS del curso
+for nombre, uni, pieza, profe, nota in [
+    ('traficoytrata - U4 - INICIO-v1', 'Unidad 4', 'Introducción a la unidad', JM, ''),
+    ('traficoytrata - U4 - RETROALIMENTACION-v1', 'Unidad 4', 'Retroalimentación de la evaluación', JM, ''),
+    ('traficoytrata - U4 - CIERRE-v1', 'Unidad 4', 'Cierre de la unidad', 'Presentadora: nombre por confirmar', 'Va sin rótulo de nombre hasta confirmarlo.'),
+    ('traficoytrata - U5 - INICIO-v1', 'Unidad 5', 'Introducción a la unidad', JM, ''),
+    ('traficoytrata - U5 - RETROALIMENTACION-v1', 'Unidad 5', 'Retroalimentación de la evaluación', JM, ''),
+    ('traficoytrata - U5 - CIERRE-v1', 'Unidad 5', 'Cierre de la unidad', 'Presentadora: nombre por confirmar', 'Va sin rótulo de nombre hasta confirmarlo.'),
+]:
+    d, vid = TR[nombre]
+    extra = 'Es un avatar generado; va recortado sobre el fondo de la DAE. ' if 'avatar' in profe else ''
+    n_srt, _, srt = T[nombre]
+    fila(3, CUR, uni, pieza, profe, nombre, vid, d, srt, '1A3rlk8CCzw0cRq2sFEAZ_H6plaFMkq_l', PROV, '21 nov', (extra + nota).strip(), n_srt=n_srt)
 
 # ---------- Prioridad 3 · Desaparición forzada (19–20 nov 2026: las 17 piezas salen de una sola grabación)
 CUR = 'Investigación judicial y forense de desaparición forzada'

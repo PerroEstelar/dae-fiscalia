@@ -3733,3 +3733,18 @@ técnico («Suspendamos ahí, por favor, Camilo»), vuelve a empezar la frase y 
   dice su nombre (1:31) y Sebastián no lo vio; salió una v2. Y `timeline.SetName` devuelve False (y no renombra) si el
   nombre lleva «:» o «,»: antes de lanzar `entrega_gpu` para una v2, leer de vuelta que la línea vieja cambió de
   nombre, porque si no la cadena encuentra la línea vieja y la rinde como v2 (pasó; se paró a tiempo).
+
+## Una tanda de avatares que tiene que salir rápido (Trata, unidades 4 y 5, 21 nov 2026)
+
+Seis videos (cuatro del avatar, que se recortan; dos de la presentadora, que no) con el lote de `cursos/prioridad-03/profe/lote/`.
+Lo que decidió el tiempo:
+
+- **El recorte es el cuello de botella y comparte procesador.** Dos a la vez van a 4,9 cuadros/s cada uno con la máquina libre;
+  con `prep_tr2.py` midiendo cuadro a cuadro y dos compuestos andando bajaron a 1,7–2,9. Para un avatar o una fuente ya
+  conocida no hace falta la medida cuadro a cuadro: basta la transcripción (`D:\DAE\_tmp\tr_p\stt_rapido.py`, solo Scribe),
+  y el `prep` se para.
+- **Lo que no se recorta va primero a la cola** (`cola.txt` a mano): los dos cierres estuvieron entregados y verificados
+  mientras el primer par de avatares todavía se recortaba. Los planes de los avatares se pueden escribir con los tiempos
+  provisionales y corregir antes de que termine su recorte (la cadena importa el plan cuando arranca).
+- **La transcripción del video final puede perder una palabra** que la de la grabación sí tiene («Hagan una comprobación»):
+  conviene cotejar los dos textos antes de dar el `.srt` por leído.
