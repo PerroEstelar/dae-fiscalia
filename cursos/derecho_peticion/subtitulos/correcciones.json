@@ -1,0 +1,221 @@
+{
+ "_todos": [
+  [
+   "\\bfiscalía\\b",
+   "Fiscalía"
+  ],
+  [
+   "(?<!\\S)\"(?=\\S)",
+   "«"
+  ],
+  [
+   "(?<=\\S)\"(?=[\\s.,;:?!]|$)",
+   "»"
+  ],
+  [
+   "\\b([Aa]rtículos?) veintitrés\\b",
+   "\\1 23"
+  ],
+  [
+   "\\b([Aa]rtículos?) veintidós\\b",
+   "\\1 22"
+  ],
+  [
+   "\\b([Aa]rtículos?) catorce\\b",
+   "\\1 14"
+  ],
+  [
+   "\\b([Aa]rtículos?) ochenta y seis\\b",
+   "\\1 86"
+  ],
+  [
+   "\\b([Aa]rtículos?) doscientos cincuenta y ocho\\b",
+   "\\1 258"
+  ],
+  [
+   "\\b([Aa]rtículos?) trece a treinta y tres\\b",
+   "\\1 13 a 33"
+  ],
+  [
+   "\\b[Ll]ey catorce treinta y siete\\b",
+   "Ley 1437"
+  ],
+  [
+   "\\b[Ll]ey diecisiete cincuenta y cinco\\b",
+   "Ley 1755"
+  ],
+  [
+   "\\b[Ll]ey estatutaria (\\d{3,})",
+   "Ley Estatutaria \\1"
+  ],
+  [
+   "\\b[Ll]ey quinta de 1992\\b",
+   "Ley 5.ª de 1992"
+  ],
+  [
+   "\\bley (\\d{3,})",
+   "Ley \\1"
+  ],
+  [
+   "\\b[Dd]irectiva número cero cero uno de 2022\\b",
+   "Directiva 0001 de 2022"
+  ],
+  [
+   "\\b[Dd]ecreto veinticinco noventa y uno\\b",
+   "Decreto 2591"
+  ],
+  [
+   "\\bOscar Jairo\\b",
+   "Óscar Jairo"
+  ],
+  [
+   "\\b[Dd]erecho de petición, fundamentos, modalidades y términos",
+   "Derecho de petición: fundamentos, modalidades y términos"
+  ],
+  [
+   "\\b[Aa]cción de tutela, fundamentos y procedencia",
+   "Acción de tutela: fundamentos y procedencia"
+  ],
+  [
+   "\\bencausarla\\b",
+   "encauzarla"
+  ],
+  [
+   "\\bunidad: gestión y respuesta del derecho de petición",
+   "unidad: Gestión y respuesta del derecho de petición"
+  ],
+  [
+   "\\bcon quiénes deben\\b",
+   "con quienes deben"
+  ],
+  [
+   "\\bencausamiento\\b",
+   "encauzamiento"
+  ],
+  [
+   "\\bcuarta unidad: gestión, cumplimiento",
+   "cuarta unidad: Gestión, cumplimiento"
+  ]
+ ],
+ "_despues": [],
+ "dpci": [
+  [
+   "\\bcurso de derecho de petición y acción de tutela, régimen constitucional",
+   "curso Derecho de petición y acción de tutela: régimen constitucional"
+  ],
+  [
+   "\\bse denomina gestión y respuesta al derecho de petición,",
+   "se denomina Gestión y respuesta al derecho de petición,"
+  ],
+  [
+   "\\bEn la cuarta unidad, gestión, cumplimiento",
+   "En la cuarta unidad, Gestión, cumplimiento"
+  ],
+  [
+   "\\bjudicial, por ejemplo\\. ¿Cómo suponer",
+   "judicial. Por ejemplo, ¿cómo suponer"
+  ],
+  [
+   "\\bpor alto\\. Distingue",
+   "por alto, distingue"
+  ]
+ ],
+ "dpu1i": [
+  [
+   "\\bme explique, que me expliquen\\b",
+   "me expliquen"
+  ],
+  [
+   "\\bLa falla del voca\\S*\\s+la falta",
+   "La falta"
+  ],
+  [
+   "\\bdar termi\\S*\\s+por terminado",
+   "dar por terminado"
+  ]
+ ],
+ "dpu2i": [
+  [
+   "\\bY un ter\\S*\\s+en un tercero",
+   "Y en un tercero"
+  ],
+  [
+   "\\bTampoco corresponde com\\S*\\s+(?:eh,\\s+)?prometer",
+   "Tampoco corresponde prometer"
+  ],
+  [
+   "\\bqué puede divulgar, qué puede divulgarse",
+   "qué puede divulgarse"
+  ],
+  [
+   "\\bverificar qué demuestra realmente",
+   "verificar qué demuestran realmente"
+  ]
+ ],
+ "dpu3i": [
+  [
+   "\\banálisis del juez En la cuarta",
+   "análisis del juez. En la cuarta"
+  ],
+  [
+   "\\blo que está acreditando\\b",
+   "lo que está acreditado"
+  ]
+ ],
+ "dpu1c": [
+  [
+   "\\bTampoco el título, derecho de petición, transforma",
+   "Tampoco el título «derecho de petición» transforma"
+  ],
+  [
+   "\\bdebe causarse al despacho",
+   "debe cursarse al despacho"
+  ],
+  [
+   "\\bidentificar a autoridad destinataria",
+   "identificar a la autoridad destinataria"
+  ],
+  [
+   "\\bLa falta de atención y el cumplimiento injustificado",
+   "La falta de atención y el incumplimiento injustificado"
+  ],
+  [
+   "\\bDecidir su petición está su gestión\\. No resuelv[eo] esos puntos\\.",
+   "Decir «su petición está en gestión» no resuelve esos puntos."
+  ],
+  [
+   "\\bno equivale a decir so\\S*\\s+a decidir",
+   "no equivale a decidir"
+  ],
+  [
+   "\\bDeben, deben ade\\S*\\s+documentarse",
+   "Deben documentarse"
+  ],
+  [
+   "\\bpor la or\\S*\\s+por un orden de llegada",
+   "por un orden de llegada"
+  ],
+  [
+   "\\bpor la orden, por un orden de llegada",
+   "por un orden de llegada"
+  ],
+  [
+   "\\bAntes de vencer el\\S*\\s+ser\\S*\\s+antes de vencerse",
+   "Antes de vencerse"
+  ],
+  [
+   "\\bpara vi\\S*\\s+la vida o la integridad, eh, la salud",
+   "para la vida o la integridad, la salud"
+  ],
+  [
+   "\\brespuesta, eh, consolidada",
+   "respuesta consolidada"
+  ]
+ ],
+ "dpu4i": [
+  [
+   "(?<![Ll]a )\\bAbordaremos a través de cuatro lecciones",
+   "La abordaremos a través de cuatro lecciones"
+  ]
+ ]
+}

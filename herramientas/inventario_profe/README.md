@@ -45,3 +45,9 @@ de vuelta: 124 entregados, 1225 minutos, 99 con subtítulos, 73 con gráfica pro
 subtítulos» al enlace de cada `.srt`, y la observación perdió «Sin subtítulos todavía» (y ganó lo de la U2: «mediata»
 en el subtítulo, y que los cierres de la U2 y la U3 terminan a mitad de frase). El `Resumen` se actualiza solo: 110 con
 subtítulos.
+
+**20 nov 2026: Derecho de petición.** Once filas (`datos.py`, bloque de Prioridad 3, después de Desaparición forzada) en
+`Videos de profe` (131–141, entre Desaparición forzada y Estándares): las seis entregas y cinco «Sin grabación» (cierres
+de U2 a U4, retroalimentaciones y cierre del curso). Una fila en `Resumen` (la 13) con las mismas fórmulas, rangos
+hasta la 142. Leído de vuelta: 130 entregados, 1293 minutos, 116 con subtítulos, 79 con gráfica provisional, 11
+pendientes.

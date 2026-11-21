@@ -278,6 +278,30 @@ for suf, uni, pieza in DF:
     fila(3, CUR, uni, pieza, CV, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '19–20 nov',
          nota + ' Sale de la misma grabación que las otras 16 piezas del curso.', n_srt=t[0])
 
+# ---------- Prioridad 3 · Derecho de petición (20 nov 2026: siete grabaciones, seis piezas; ver cursos/derecho_peticion/profe)
+CUR = 'Derecho de petición y acción de tutela: régimen constitucional, legal y jurisprudencial para servidores públicos'
+M, T = man('derecho_peticion'), tabla('derecho_peticion')
+OF = 'Óscar Jairo Fonseca Fonseca'
+TOMAS = ' Se sacan las tomas fallidas y lo que el profe le dice al técnico entre tomas («Suspendamos ahí, por favor»).'
+for nombre, uni, pieza, nota in [
+    ('derechodepeticion - CURSO - INICIO-v1', 'Curso', 'Inicio del curso', 'Dos cortes de toma y la charla del principio.'),
+    ('derechodepeticion - U1 - INICIO-v1', 'Unidad 1', 'Inicio de la unidad', 'Se compone de la toma 2, en tres tramos; la toma 1 (un primer intento) no entra.'),
+    ('derechodepeticion - U1 - CIERRE-v1', 'Unidad 1', 'Cierre de la unidad', 'Dos cortes de toma.'),
+    ('derechodepeticion - U2 - INICIO-v1', 'Unidad 2', 'Inicio de la unidad', 'Un corte de toma.'),
+    ('derechodepeticion - U3 - INICIO-v1', 'Unidad 3', 'Inicio de la unidad', 'Sin cortes adentro.'),
+    ('derechodepeticion - U4 - INICIO-v1', 'Unidad 4', 'Inicio de la unidad', 'Tres cortes de toma, uno de ellos una frase que el profe pidió repetir.'),
+]:
+    if nombre not in M or nombre not in T:
+        continue
+    m, t = M[nombre], T[nombre]
+    fila(3, CUR, uni, pieza, OF, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '20 nov',
+         nota + ('' if 'Sin cortes' in nota else TOMAS), n_srt=t[0])
+for uni, pieza in [('Unidad 2', 'Cierre de la unidad'), ('Unidad 3', 'Cierre de la unidad'), ('Unidad 4', 'Cierre de la unidad'),
+                   ('Unidades 1 a 4', 'Retroalimentación de la evaluación'), ('Curso', 'Cierre del curso')]:
+    fila(3, CUR, uni, pieza, '', '(sin grabación)', None, '', None, None, '', '',
+         'No llegó grabación (en E:\\DAE MASTER\\CURSO DERECHOS DE PETICION hay inicio del curso, inicios de U1 a U4 y cierre de U1).',
+         estado='Sin grabación')
+
 # ---------- Prioridad 3 · Estándares interamericanos
 fila(3, 'Estándares interamericanos de investigación de graves violaciones a los derechos humanos', 'Unidad 1', 'Inicio de la unidad', 'Sin identificar',
      'Estándares Interamericanos Unidad 1 - Inicio.mp4 (grabación sin producir)', '1Ex6HRmTnUOlVrKkXzO-TZCl-5n-ZzEgC', '5:26', None, None, '', '',

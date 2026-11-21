@@ -36,3 +36,29 @@ Faltan: los cierres de U2 a U4, las retroalimentaciones y el cierre del curso (n
   Desaparición forzada), los dos en `D:\DAE\_tmp\dp_p\`.
 - Árbol: `D:\DAE MASTER\PRIORIDAD 03\CURSO DERECHO DE PETICION - VIDEOS PROFE\<CURSO|UNIDAD n>\<INICIO|CIERRE>`.
 - Rótulo abajo a la **derecha** (x=1330): las manos del profe entran a menudo en la esquina de la izquierda.
+
+## Entregas (20 nov 2026)
+
+Las seis, entre las 20:02 y las 20:25 (hora de Colombia), en Drive: carpeta del curso «Derecho de petición, acción de
+tutela y daño antijurídico…» (`1cFcqb0KRRcI-z2YqvpjHMzroUGq2LaUw`) › **VIDEOS PROFE** (`1KXrk6azeO_3KQhsvM2p8z8AVrTaaXmBX`,
+creada para esto), cada una con su `.srt` al lado (y en `05 EXPORTS` junto al video). Render por la placa NVIDIA desde
+Resolve, ~5,4 Mb/s (fuera de receta, como en Desaparición forzada). Sonido: −16,0 a −16,1 LUFS, pico −2,8 a −3,0.
+
+| video | dura | MB | id en Drive | `.srt` |
+|---|---|---|---|---|
+| `derechodepeticion - CURSO - INICIO-v1.mp4` | 8:31 | 325 | `1vhLau17kUf4TrX6qquKDq9V00FCzu50N` | `1_ExHSmXgIUQPbZYL9iRwoJ7G9594EO3l` |
+| `derechodepeticion - U1 - INICIO-v1.mp4` | 7:06 | 272 | `1QW5rmivoBDnp9C5dNuSm6I6qsafsgF04` | `1o9iL2poXvcXcEishauYAN_5mcN4_Mb4P` |
+| `derechodepeticion - U2 - INICIO-v1.mp4` | 8:04 | 309 | `1wdhgCIlmMwl3QmudzAiWs6xxjqRGhbIG` | `11VjFDvrPQYR26n4ZI06S-zc45mwaJILS` |
+| `derechodepeticion - U3 - INICIO-v1.mp4` | 8:08 | 312 | `13Y6c7j1fkd7qwLoSrG9eqMnIiqZojJB_` | `1YMZmfAryjFLWFffvxHR91FUKTScifTs0` |
+| `derechodepeticion - U4 - INICIO-v1.mp4` | 8:06 | 311 | `1AWt9am_EMSO5pz1JWNo1VaZgzG7MiDAv` | `10GY_MZXMmcU0Z1FMaQwL4uwH35QlbOpL` |
+| `derechodepeticion - U1 - CIERRE-v1.mp4` | 27:38 | 1062 | `1BcTOOisIWxosEkWsf4TSVqEijVOby9zh` | `1-Ykv_ckWIoQ0SZEFZXPWG3eIpXw4mK9y` |
+
+- **Verificadas contra el disco**: copia de servidor en `_MA subidas` (`verif_<clave>.mp4`), comparada por bloques con la
+  de `05 EXPORTS` (`D:\DAE\_tmp\dp_p\verif_loop.py`, `verif.log`: seis «OK»); después el video pasó a VIDEOS PROFE y
+  la copia, a la papelera. (`verificar_drive.py` con un mapa de piezas que todavía no existen en disco se cae al primer
+  `getsize`: para una tanda que va saliendo, el bucle.)
+- Hojas de revisión (`<TMP>/hoja_rev_1.jpg`) miradas en las seis: intro, cartón de título (tres renglones de curso y el
+  subtítulo de la unidad), rótulo, cartón de cierre y outro. Tiras de los cortes (`profe_sim.py … c1@t`): la mezcla de
+  seis cuadros entre tomas se ve como una disolvencia corta.
+- **Rótulo de la U4**: el profe abre las manos mientras está el rótulo y una mano pasa por detrás del nombre cerca de un
+  segundo (cuadros 540–600 de la entrega). El texto se lee; si molesta, se mueve el rótulo a otro momento y sale una v2.

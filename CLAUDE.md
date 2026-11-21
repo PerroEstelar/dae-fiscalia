@@ -3699,3 +3699,33 @@ rápido. Salieron en una noche (`cursos/audiencias_preliminares/profe/`). Lo que
   coinciden, va como se dice.
 - **La transcripción de la entrega encuentra defectos de la fuente**: dos grabaciones de la presentadora terminan a
   mitad de frase. Se avisa a Sebastián y se anota en el inventario; el subtítulo termina en «…».
+
+## Grabaciones con varias tomas: se compone con la toma buena y se cortan las charlas con el técnico (Derecho de petición, 20 nov 2026)
+
+Siete grabaciones de videollamada de un solo profe (`cursos/derecho_peticion/profe/`): entre toma y toma le habla al
+técnico («Suspendamos ahí, por favor, Camilo»), vuelve a empezar la frase y sigue. Salieron seis piezas.
+
+- **La transcripción entera, en párrafos con la pausa al final de cada uno** (`leer.py`: corta en pausas de más de
+  0,8 s y en cambio de hablante). Las tomas fallidas se ven solas: una frase que se traba, la orden al técnico y la
+  misma frase otra vez. Se completa con una búsqueda de 5-gramas repetidos a menos de 90 s y de las palabras
+  «perdón», «paremos», «suspendamos», «listo», el nombre del técnico y los cortes con «--».
+- **Cuando hay dos archivos de la misma pieza** («TOMA 1» y «TOMA 2»), se leen los dos antes de mezclar: acá la toma 2
+  traía el guion entero en tres tramos y la toma 1 era un primer intento; la pieza sale solo de la 2. Mezclar tomas
+  de dos archivos cambia el encuadre (la cámara se había desconectado entre una y otra).
+- **Bordes con RMS de 10 ms** (`D:\DAE\_tmp\dp_p\rms_bordes.py`, un JSON con borde y ventana entre palabras): Scribe
+  mete a veces una «palabra» «.» suelta con tiempo propio que corre el borde calculado; y dos grabaciones traían ruido
+  o una respiración antes de la primera palabra (hasta −21 dB): el borde se lleva a donde baja de −45 dB.
+- **Seis cuadros de mezcla** (`SUAVE = 6`) entre tomas: con el profe en otra postura se lee como una disolvencia corta
+  (tira de 24 cuadros con `profe_sim.py plan c1@t`).
+- **Los tropiezos sueltos de una palabra sin disculpa quedan en el video** y salen del subtítulo.
+- **El rótulo va abajo a la derecha** cuando las manos del profe entran en la esquina izquierda (hoja de 48 cuadros de
+  todas las fuentes con las dos cajas dibujadas antes de elegir); `PROFE = (nombre, cargo, {'x': 1330})`.
+- **Una carpeta de entrega que no existe se crea** con `create_file` y `application/vnd.google-apps.folder` dentro de la
+  carpeta del curso (VIDEOS PROFE), y se dice.
+- **Los `.srt` se suben por referencia desde el directorio de trabajo** (`/home/claude/...`): con una ruta en
+  `/mnt/user-data/outputs/` (con o sin espacios) `create_file` responde «Nothing was uploaded».
+- **`verificar_drive.py` con un mapa de piezas que todavía no están en disco se cae** en el primer `getsize`: para
+  una tanda que va saliendo, el bucle `verif_loop.py` (espera la entrega local y la copia de Drive de cada una).
+- **Un subtítulo que contradice al documento**: «el cumplimiento injustificado» (cuatro pasadas iguales) va como
+  «incumplimiento», que es lo que dice el documento de la unidad; lo que no se puede confirmar se deja como se oye y se
+  avisa (README de subtítulos del curso).
