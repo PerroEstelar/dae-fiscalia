@@ -2,7 +2,7 @@
 
 | video (nombre en Drive) | subtítulos | dura | id del `.srt` en Drive |
 |---|---|---|---|
-| `derechodepeticion - CURSO - INICIO-v1` | 126 | 8:31 | `1_ExHSmXgIUQPbZYL9iRwoJ7G9594EO3l` |
+| `derechodepeticion - CURSO - INICIO-v2` | 126 | 8:31 | `1eH4awdo2WmU0e65_L_lhEzYHktijS-xD` |
 | `derechodepeticion - U1 - INICIO-v1` | 114 | 7:06 | `1o9iL2poXvcXcEishauYAN_5mcN4_Mb4P` |
 | `derechodepeticion - U2 - INICIO-v1` | 129 | 8:04 | `11VjFDvrPQYR26n4ZI06S-zc45mwaJILS` |
 | `derechodepeticion - U3 - INICIO-v1` | 120 | 8:08 | `1YMZmfAryjFLWFffvxHR91FUKTScifTs0` |
@@ -25,6 +25,9 @@ criterio: `herramientas/subtitulos/README.md`.
   uno»; el documento del curso, «Directiva No. 0001 de 2022»), «encauzarla», «encauzamiento», «con quienes deben».
 
 ## Decisiones, por video
+
+- **Inicio del curso, v2**: el mismo `.srt` de la v1 con el nombre de la v2 (el audio y los tiempos no cambian: solo se
+  movió el rótulo). El `.srt` de la v1 está en la papelera de Drive.
 
 - **Inicio del curso** (`dpci`): el nombre del curso como en el documento («curso Derecho de petición y acción de
   tutela: régimen constitucional, legal y jurisprudencial para servidores públicos»); «Gestión y respuesta al derecho de

@@ -46,7 +46,7 @@ Resolve, ~5,4 Mb/s (fuera de receta, como en Desaparición forzada). Sonido: −
 
 | video | dura | MB | id en Drive | `.srt` |
 |---|---|---|---|---|
-| `derechodepeticion - CURSO - INICIO-v1.mp4` | 8:31 | 325 | `1vhLau17kUf4TrX6qquKDq9V00FCzu50N` | `1_ExHSmXgIUQPbZYL9iRwoJ7G9594EO3l` |
+| `derechodepeticion - CURSO - INICIO-v2.mp4` | 8:31 | 325 | `1XFDMwmEK0RoTBVsLnSgzmp-RAXXKdmet` | `1eH4awdo2WmU0e65_L_lhEzYHktijS-xD` |
 | `derechodepeticion - U1 - INICIO-v1.mp4` | 7:06 | 272 | `1QW5rmivoBDnp9C5dNuSm6I6qsafsgF04` | `1o9iL2poXvcXcEishauYAN_5mcN4_Mb4P` |
 | `derechodepeticion - U2 - INICIO-v1.mp4` | 8:04 | 309 | `1wdhgCIlmMwl3QmudzAiWs6xxjqRGhbIG` | `11VjFDvrPQYR26n4ZI06S-zc45mwaJILS` |
 | `derechodepeticion - U3 - INICIO-v1.mp4` | 8:08 | 312 | `13Y6c7j1fkd7qwLoSrG9eqMnIiqZojJB_` | `1YMZmfAryjFLWFffvxHR91FUKTScifTs0` |
@@ -62,3 +62,10 @@ Resolve, ~5,4 Mb/s (fuera de receta, como en Desaparición forzada). Sonido: −
   seis cuadros entre tomas se ve como una disolvencia corta.
 - **Rótulo de la U4**: el profe abre las manos mientras está el rótulo y una mano pasa por detrás del nombre cerca de un
   segundo (cuadros 540–600 de la entrega). El texto se lee; si molesta, se mueve el rótulo a otro momento y sale una v2.
+- **Inicio del curso v2 (20 nov, 21:00).** Sebastián: «por lo menos en uno de los videos no veo el rótulo del
+  profesor». Medido en las seis entregas (píxeles de la barra amarilla en la esquina del rótulo): estaba en todas, pero en
+  el inicio del curso entraba en el 1:31, cuando dice su nombre, y en las demás al empezar (0:18). La v2 lo lleva al
+  empezar, como las demás; misma línea con otro nombre de rótulo, mismo compuesto. La línea de la v1 quedó como «DP -
+  CURSO - INICIO v1 rotulo tarde» (`SetName` con «:» o «,» en el nombre devuelve False y no renombra). Verificada byte a
+  byte. El `.srt` de la v1 está en la papelera; **el video v1 sigue en VIDEOS PROFE** (la papelera no se aplicó a ese
+  archivo): queda para que Sebastián lo quite.

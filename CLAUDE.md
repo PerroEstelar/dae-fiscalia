@@ -3729,3 +3729,7 @@ técnico («Suspendamos ahí, por favor, Camilo»), vuelve a empezar la frase y 
 - **Un subtítulo que contradice al documento**: «el cumplimiento injustificado» (cuatro pasadas iguales) va como
   «incumplimiento», que es lo que dice el documento de la unidad; lo que no se puede confirmar se deja como se oye y se
   avisa (README de subtítulos del curso).
+- **El rótulo va al empezar en todos los videos de un curso.** En el inicio del curso lo había puesto cuando el profe
+  dice su nombre (1:31) y Sebastián no lo vio; salió una v2. Y `timeline.SetName` devuelve False (y no renombra) si el
+  nombre lleva «:» o «,»: antes de lanzar `entrega_gpu` para una v2, leer de vuelta que la línea vieja cambió de
+  nombre, porque si no la cadena encuentra la línea vieja y la rinde como v2 (pasó; se paró a tiempo).

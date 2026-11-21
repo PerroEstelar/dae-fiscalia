@@ -284,7 +284,7 @@ M, T = man('derecho_peticion'), tabla('derecho_peticion')
 OF = 'Óscar Jairo Fonseca Fonseca'
 TOMAS = ' Se sacan las tomas fallidas y lo que el profe le dice al técnico entre tomas («Suspendamos ahí, por favor»).'
 for nombre, uni, pieza, nota in [
-    ('derechodepeticion - CURSO - INICIO-v1', 'Curso', 'Inicio del curso', 'Dos cortes de toma y la charla del principio.'),
+    ('derechodepeticion - CURSO - INICIO-v2', 'Curso', 'Inicio del curso', 'Dos cortes de toma y la charla del principio. La v2 lleva el rótulo al empezar (en la v1 entraba en el 1:31).'),
     ('derechodepeticion - U1 - INICIO-v1', 'Unidad 1', 'Inicio de la unidad', 'Se compone de la toma 2, en tres tramos; la toma 1 (un primer intento) no entra.'),
     ('derechodepeticion - U1 - CIERRE-v1', 'Unidad 1', 'Cierre de la unidad', 'Dos cortes de toma.'),
     ('derechodepeticion - U2 - INICIO-v1', 'Unidad 2', 'Inicio de la unidad', 'Un corte de toma.'),
