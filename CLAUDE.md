@@ -3748,3 +3748,7 @@ Lo que decidió el tiempo:
   provisionales y corregir antes de que termine su recorte (la cadena importa el plan cuando arranca).
 - **La transcripción del video final puede perder una palabra** que la de la grabación sí tiene («Hagan una comprobación»):
   conviene cotejar los dos textos antes de dar el `.srt` por leído.
+- **Un nombre largo en el rótulo va en dos renglones, y el rótulo sube** (cierres de Trata en v2, 21 nov 2026): con la
+  presentadora centrada, «Mariana Lisbeth Rodríguez Muñoz» en un renglón le tocaba el pelo; en dos renglones el bloque bajaba
+  hasta y=1090 (`ic_pieza … cartones` imprime «fondo»: tiene que quedar bajo 1080). `{'top': 820}` en el tercer elemento del
+  rótulo lo deja en 1051. Se mira con `profe_sim.py` (necesita el `_lt01.mov` ya rendido).

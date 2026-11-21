@@ -25,5 +25,7 @@ XY, VENTANA = (0, 40), (1143, 643)
 POR_TIEMPO = True       # cadencia variable: el video se corta por tiempo
 FPS_FUENTE = 30
 
-# El lower third espera el nombre de la presentadora (PROFE_CIERRES en la base).
+# v2 (21 nov 2026): con el rótulo de la presentadora, que Sebastián confirmó (PROFE_CIERRES en la base). La v1 iba
+# sin rótulo; mismo compuesto.
+VERSION = 2
 ITEMS = [('lt01', 'lt', 3.5, 11.5, PROFE_CIERRES)] if PROFE_CIERRES else []

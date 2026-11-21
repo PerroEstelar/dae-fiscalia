@@ -5,20 +5,20 @@
 | `traficoytrata - CURSO - INICIO-v1` | 23 | 1:51 | `1pX6E7hdPgLS_xArJ-olPYAPZeqs_aO_T` |
 | `traficoytrata - U1 - INICIO-v1` | 121 | 7:11 | `1fxZK_-4yj9LuFClFIQue3ts0T5wzomBc` |
 | `traficoytrata - U1 - RETROALIMENTACION-v1` | 122 | 7:34 | `1FzFi8kD90_-hMtvg8H5tX1sKiCBR2qKS` |
-| `traficoytrata - U1 - CIERRE-v1` | 110 | 8:03 | `1fUFZ4V2UzjoSbK2uc13I8fdZlR0IMX0f` |
+| `traficoytrata - U1 - CIERRE-v2` | 110 | 8:03 | `1kjvjYy-0EazZ5FfdiQZLLd_TRXCTft1v` |
 | `traficoytrata - U2 - INICIO-v1` | 117 | 7:13 | `1ppf9M7fizdy_KCqiEFab62WMTgWQ7sdI` |
 | `traficoytrata - U2 - RETROALIMENTACION-v1` | 113 | 7:03 | `18sLUXBWTR7u73yqCL3p_T92srxNgJDXy` |
-| `traficoytrata - U2 - CIERRE-v1` | 110 | 7:56 | `1q7rRsA_bgb4dzlYCCNxr75jzKfN2Sctk` |
+| `traficoytrata - U2 - CIERRE-v2` | 110 | 7:56 | `1azKpowNEfbjAQ60wN4Qsd8oXa6gyl-cz` |
 | `traficoytrata - U3 - INICIO-v1` | 120 | 7:14 | `1aKk6qWir5L8nyjB7GHiyvnHXIoFtw5GV` |
 | `traficoytrata - U3 - RETROALIMENTACION-v1` | 115 | 7:09 | `1EHj-aS1MfJ32zahbCsMyJcz1BwH3eSTw` |
-| `traficoytrata - U3 - CIERRE-v1` | 112 | 7:59 | `1deRYTDWc1ntEaxdgUCY2ICmny-7xo_Ej` |
+| `traficoytrata - U3 - CIERRE-v2` | 112 | 7:59 | `17tMxzJhfM7DlKT13Bw-0rX9hxV8Iq8BJ` |
 | `traficoytrata - CURSO - CIERRE-v1` | 113 | 6:56 | `1b5mSWxaLqjoLNxOR6zdO_C-XbYnOvaSY` |
 | `traficoytrata - U4 - INICIO-v1` | 111 | 7:09 | `1KgxdV0vMApNblTy9aSPvtEjmAL4r4k7K` |
 | `traficoytrata - U4 - RETROALIMENTACION-v1` | 116 | 7:06 | `1Gn7pJcpgrHSepwlXu4PXkErhhALJwHna` |
-| `traficoytrata - U4 - CIERRE-v1` | 115 | 8:14 | `1papd9yakBuFMNStKW8WbISL4_Z6-ieLx` |
+| `traficoytrata - U4 - CIERRE-v2` | 115 | 8:14 | `1wQqdv8XMA5KbO7e-RXOwCEMidmW_CttF` |
 | `traficoytrata - U5 - INICIO-v1` | 118 | 7:03 | `1SvFIQYwdKExMQsAuci0DFoNFjMR-3Fy2` |
 | `traficoytrata - U5 - RETROALIMENTACION-v1` | 117 | 7:04 | `1_L51twmYeDDcIQYPSy-8gookq5oAQ6me` |
-| `traficoytrata - U5 - CIERRE-v1` | 112 | 8:14 | `1G7aHv_o4aiiI4VxhRYzbam_J-ebhJxQp` |
+| `traficoytrata - U5 - CIERRE-v2` | 112 | 8:14 | `1p436j6PL6SjLV31kEj7mJV5AqTgHxIct` |
 
 Carpeta de Drive: VIDEOS del curso › VIDEOS FINALIZADOS (`1A3rlk8CCzw0cRq2sFEAZ_H6plaFMkq_l`), al lado del video. Copia
 junto al video en disco (`05 EXPORTS`). Método y criterio: `herramientas/subtitulos/README.md`.
@@ -70,3 +70,7 @@ cifras; «sentencia C-336 de 2007», «C-278 de 2025», «SP3168 de 2017»; «la
 - **U5 retroalimentación** (`tru5r`): «de al unidad cinco» → «de la unidad cinco» (el avatar).
 - **U5 cierre** (`tru5c`): «Los datos sobre el control de los pagos»: la transcripción de la entrega se comió el «el», que está
   en la de la grabación. «Los pagos de distinto conceptos» va como se dice.
+
+**Cierres v2 (21 nov 2026):** los cinco cierres salieron como `-v2` con el rótulo de la presentadora; el `.srt` es el mismo de la v1
+con el nombre nuevo (copia de servidor en Drive y copia en `05 EXPORTS`). Los de la v1 están en VIDEOS FINALIZADOS ›
+_anteriores (cierres v1 sin rótulo).

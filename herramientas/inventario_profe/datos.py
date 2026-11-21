@@ -226,6 +226,8 @@ for uni, pieza, profe, arch, vid, carp, fecha, nota in DA:
 # ---------- Prioridad 3 · Trata
 CUR = 'Investigación y judicialización de los delitos de tráfico de migrantes y trata de personas'
 JM = 'José María Peláez Mejía (avatar)'
+MR = 'Mariana Lisbeth Rodríguez Muñoz'
+V2 = 'v2 con su rótulo de nombre (21 nov); la v1, sin rótulo, está en _anteriores.'
 T = tabla('prioridad-03')     # subtítulos del 20 nov 2026
 TR = {}
 for l in open(R + 'prioridad-03/profe/README.md', encoding='utf-8'):
@@ -235,13 +237,13 @@ for nombre, uni, pieza, profe, nota in [
     ('traficoytrata - CURSO - INICIO-v1', 'Curso', 'Bienvenida al curso', JM, ''),
     ('traficoytrata - U1 - INICIO-v1', 'Unidad 1', 'Introducción a la unidad', JM, ''),
     ('traficoytrata - U1 - RETROALIMENTACION-v1', 'Unidad 1', 'Retroalimentación de la evaluación', JM, ''),
-    ('traficoytrata - U1 - CIERRE-v1', 'Unidad 1', 'Cierre de la unidad', 'Presentadora: nombre por confirmar', 'Va sin rótulo de nombre hasta confirmarlo.'),
+    ('traficoytrata - U1 - CIERRE-v2', 'Unidad 1', 'Cierre de la unidad', MR, V2),
     ('traficoytrata - U2 - INICIO-v1', 'Unidad 2', 'Introducción a la unidad', JM, ''),
     ('traficoytrata - U2 - RETROALIMENTACION-v1', 'Unidad 2', 'Retroalimentación de la evaluación', JM, 'El subtítulo dice «asistencia mediata» donde el avatar dice «inmediata».'),
-    ('traficoytrata - U2 - CIERRE-v1', 'Unidad 2', 'Cierre de la unidad', 'Presentadora: nombre por confirmar', 'Va sin rótulo de nombre hasta confirmarlo. La grabación termina a mitad de palabra («descartar la hipó…»).'),
+    ('traficoytrata - U2 - CIERRE-v2', 'Unidad 2', 'Cierre de la unidad', MR, V2 + ' La grabación termina a mitad de palabra («descartar la hipó…»).'),
     ('traficoytrata - U3 - INICIO-v1', 'Unidad 3', 'Introducción a la unidad', JM, ''),
     ('traficoytrata - U3 - RETROALIMENTACION-v1', 'Unidad 3', 'Retroalimentación de la evaluación', JM, ''),
-    ('traficoytrata - U3 - CIERRE-v1', 'Unidad 3', 'Cierre de la unidad', 'Presentadora: nombre por confirmar', 'Va sin rótulo de nombre hasta confirmarlo. La grabación termina a mitad de frase («la comunicación clara de…»).'),
+    ('traficoytrata - U3 - CIERRE-v2', 'Unidad 3', 'Cierre de la unidad', MR, V2 + ' La grabación termina a mitad de frase («la comunicación clara de…»).'),
     ('traficoytrata - CURSO - CIERRE-v1', 'Curso', 'Cierre del curso', JM, ''),
 ]:
     d, vid = TR[nombre]
@@ -252,10 +254,10 @@ for nombre, uni, pieza, profe, nota in [
 for nombre, uni, pieza, profe, nota in [
     ('traficoytrata - U4 - INICIO-v1', 'Unidad 4', 'Introducción a la unidad', JM, ''),
     ('traficoytrata - U4 - RETROALIMENTACION-v1', 'Unidad 4', 'Retroalimentación de la evaluación', JM, ''),
-    ('traficoytrata - U4 - CIERRE-v1', 'Unidad 4', 'Cierre de la unidad', 'Presentadora: nombre por confirmar', 'Va sin rótulo de nombre hasta confirmarlo.'),
+    ('traficoytrata - U4 - CIERRE-v2', 'Unidad 4', 'Cierre de la unidad', MR, V2),
     ('traficoytrata - U5 - INICIO-v1', 'Unidad 5', 'Introducción a la unidad', JM, ''),
     ('traficoytrata - U5 - RETROALIMENTACION-v1', 'Unidad 5', 'Retroalimentación de la evaluación', JM, ''),
-    ('traficoytrata - U5 - CIERRE-v1', 'Unidad 5', 'Cierre de la unidad', 'Presentadora: nombre por confirmar', 'Va sin rótulo de nombre hasta confirmarlo.'),
+    ('traficoytrata - U5 - CIERRE-v2', 'Unidad 5', 'Cierre de la unidad', MR, V2),
 ]:
     d, vid = TR[nombre]
     extra = 'Es un avatar generado; va recortado sobre el fondo de la DAE. ' if 'avatar' in profe else ''

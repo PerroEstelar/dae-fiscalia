@@ -51,7 +51,8 @@ con el nombre del curso en el mismo cartón; quedan en `UNIDADES`.
 **Lower third.** «José María Peláez Mejía · Autor experto del curso. Magistrado de la Sala Penal del
 Tribunal Superior del Distrito Judicial de Cúcuta» (el documento de diseño dice «Magistrado Titular del
 Despacho 03 de la Sala Penal del Tribunal Superior del Distrito Judicial de Cúcuta»). El de los cierres
-espera la confirmación de Sebastián (`PROFE_CIERRES`): un nombre de lower third no se infiere.
+(`PROFE_CIERRES`) esperó la confirmación de Sebastián, porque un nombre de lower third no se infiere: el 21 nov confirmó a
+Mariana Lisbeth Rodríguez Muñoz, y los cinco cierres salieron de nuevo como -v2 con su rótulo.
 
 **Dónde.** `D:\DAE MASTER\PRIORIDAD 03\VIDEOS PROFE\<CURSO|UNIDAD n>\<pieza>` (E: no tiene espacio).
 **Sin máster de 32 Mb/s**: en D: quedaban 22 GB. La entrega sale directo de Resolve por la placa NVIDIA
@@ -96,7 +97,13 @@ PRESET_ENTREGA = 'medium'
 PROFE = ('José María Peláez Mejía',
          'Autor experto del curso. Magistrado de la Sala Penal del Tribunal Superior del Distrito Judicial '
          'de Cúcuta')
-PROFE_CIERRES = None       # la presentadora de los cierres de unidad: pendiente de que Sebastián la confirme
+# La presentadora de los cierres de unidad (Sebastián, 21 nov 2026: «la chica sí se llama así»). El cargo sale del
+# formato de diseño (Recursos › Formadores: «INVESTIGADOR AUXILIAR … Oficial Mayor del Despacho 03 de la Sala Penal del
+# Tribunal Superior del Distrito Judicial de Cúcuta»), recortado como el del avatar.
+PROFE_CIERRES = ('Mariana Lisbeth\nRodríguez Muñoz',      # en dos renglones: en uno, «Muñoz» le tocaba el pelo
+                 'Investigadora auxiliar del curso. Oficial Mayor de la Sala Penal del Tribunal Superior del Distrito '
+                 'Judicial de Cúcuta', {'top': 820})     # 50 px más arriba: con el nombre en dos renglones el
+                                                           # bloque bajaba hasta y=1090, fuera del cuadro
 UNIDADES = {
     1: 'Delimitación dogmática y jurisprudencial de los delitos de trata de personas, tráfico de migrantes y '
        'explotación sexual',

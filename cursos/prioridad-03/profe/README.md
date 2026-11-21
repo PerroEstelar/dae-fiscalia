@@ -69,19 +69,19 @@ Drive: VIDEOS › **VIDEOS FINALIZADOS** (`1A3rlk8CCzw0cRq2sFEAZ_H6plaFMkq_l`).
 | `traficoytrata - CURSO - CIERRE-v1.mp4` | 6:56 | 9.973 | −16,1 / −2,4 | `1zF18nhsYvVZSUnNtG0AaT0dqYbyZuk0P` |
 | `traficoytrata - U4 - INICIO-v1.mp4` | 7:09 | 10.293 | −16,1 / −2,2 | `1E2tHeTl9LwuLEj4oAG8oiZfj7T1ynjiH` |
 | `traficoytrata - U4 - RETROALIMENTACION-v1.mp4` | 7:06 | 10.223 | −16,1 / −3,0 | `1kOWsiScXS6AdhpLaGrK-jIZL08PRuTpF` |
-| `traficoytrata - U4 - CIERRE-v1.mp4` | 8:14 | 11.838 | −16,0 / −3,0 | `10m4z4jj5lk_HZxyARvKyfH9JbdwSdYcV` |
+| `traficoytrata - U4 - CIERRE-v2.mp4` | 8:14 | 11.838 | −16,0 / −3,0 | `1K9L-l4EaQNtd8krWmq3SoEnRDJntjZvo` |
 | `traficoytrata - U5 - INICIO-v1.mp4` | 7:03 | 10.136 | −16,1 / −2,8 | `1WFdglgcsK6Nw0wGbSqngWqSd6hmLs5jq` |
 | `traficoytrata - U5 - RETROALIMENTACION-v1.mp4` | 7:04 | 10.168 | −16,1 / −2,5 | `1Sd7Xrzh5RSEujHSXp3p07hgqlnyvQlr_` |
-| `traficoytrata - U5 - CIERRE-v1.mp4` | 8:14 | 11.834 | −16,1 / −2,5 | `1OejCIBOfI3nYujLpB5u_08ffzQMxiRrS` |
+| `traficoytrata - U5 - CIERRE-v2.mp4` | 8:14 | 11.834 | −16,1 / −2,5 | `1XffyB1hteGkGquuerU548yYTyWGMd4Zt` |
 | `traficoytrata - U1 - INICIO-v1.mp4` | 7:11 | 10.341 | −16,1 / −2,7 | `1yF-RWTVTa0egLD7qSXdYij14EjARpR9i` |
 | `traficoytrata - U1 - RETROALIMENTACION-v1.mp4` | 7:34 | 10.887 | −16,1 / −3,0 | `1GAY9p7Oo1zFLBR8iYzxnUYb4Kp9lbnjP` |
-| `traficoytrata - U1 - CIERRE-v1.mp4` | 8:03 | 11.576 | −16,0 / −3,0 | `1hzwVeVFfooew1iCfVD5ZfwWi7MjrC29G` |
+| `traficoytrata - U1 - CIERRE-v2.mp4` | 8:03 | 11.576 | −16,0 / −3,0 | `17cBUhC_LMc93LHKAJUHrs6w31dbXYXnc` |
 | `traficoytrata - U2 - INICIO-v1.mp4` | 7:13 | 10.375 | −16,1 / −2,9 | `1PJu_LRq825XwcR9nhC-WFWnD4jNQUFl-` |
 | `traficoytrata - U2 - RETROALIMENTACION-v1.mp4` | 7:03 | 10.135 | −16,1 / −2,8 | `1wz2dE0wGsGELHnJe9wzY6S6z02MHBAuO` |
-| `traficoytrata - U2 - CIERRE-v1.mp4` | 7:56 | 11.424 | −16,1 / −2,4 | `1xgWmQ0ISBBmVaQOvoc6FOhhCQ8ZC_4j9` |
+| `traficoytrata - U2 - CIERRE-v2.mp4` | 7:56 | 11.424 | −16,1 / −2,4 | `1xsUqS0IPiDIu9qcaBtRnYFh9qz9MjJeS` |
 | `traficoytrata - U3 - INICIO-v1.mp4` | 7:14 | 10.398 | −16,1 / −3,0 | `1CEYfmwMg6H9W24Y26_4fTZvP_htCs9WD` |
 | `traficoytrata - U3 - RETROALIMENTACION-v1.mp4` | 7:09 | 10.286 | −16,1 / −2,9 | `104Y49E1KDRrj11rPA1Byg8of-NhZTYvr` |
-| `traficoytrata - U3 - CIERRE-v1.mp4` | 7:59 | 11.482 | −16,1 / −3,0 | `1_c70j9pMBeBIGqyws85AJrvmCOKyqZp-` |
+| `traficoytrata - U3 - CIERRE-v2.mp4` | 7:59 | 11.482 | −16,1 / −3,0 | `1loZ2D5CFVeP-JophpqtYb45-tqQikHDi` |
 
 Las once de las unidades 1 a 3 y el curso son 76 min de video. Las once se compararon byte a byte con lo que guarda Drive antes de moverlas a la
 carpeta final (cuatro leídas del servidor sin copia y siete con copia de servidor; ver «Verificar una entrega
@@ -120,9 +120,24 @@ en las unidades 1 a 3, y el mismo tratamiento.
 - Lotes en `D:\DAE\_tmp\tr_p\` (los de la tanda anterior quedaron como `*_u123`); verificación y subtítulos en
   `D:\DAE\_tmp\tr_s45\` (`verif_loop.py`, `stt_loop.py`).
 
+## Rótulo de la presentadora: los cinco cierres en v2 (21 nov 2026)
+
+Sebastián confirmó el nombre: «la chica sí se llama así… actualiza con los rótulos, exporta, sube y actualiza». Los cinco cierres
+salieron de nuevo como `-v2`, sobre el mismo compuesto, con el rótulo «Mariana Lisbeth Rodríguez Muñoz · Investigadora auxiliar del
+curso. Oficial Mayor de la Sala Penal del Tribunal Superior del Distrito Judicial de Cúcuta». El cargo es el del formato de diseño
+(Recursos › Formadores), recortado como el del avatar.
+
+- **El nombre va en dos renglones y el rótulo 50 px más arriba** (`{'top': 820}`): en un renglón «Muñoz» le tocaba el pelo, y con
+  dos renglones el bloque bajaba hasta y=1090, fuera del cuadro. Simulado sobre cuatro cuadros del compuesto (`profe_sim.py`).
+- Las líneas de Resolve de la v1 se renombraron «TRATA - Un - CIERRE v1 sin rotulo» (leído de vuelta) antes de lanzar
+  `entrega_gpu.py`; los rótulos de prueba quedaron en `02 CARTONES/_descartes`.
+- El AAC de Resolve salió roto otra vez en los cierres de la U1 y la U4 (los mismos tramos que en la v1); `entrega_gpu.py` los rindió
+  con PCM y el AAC de ffmpeg.
+- Mismo `.srt` que la v1 con el nombre de la v2 (el audio y los tiempos no cambian). En Drive, las v1 (video y `.srt`) se movieron
+  a VIDEOS FINALIZADOS › **_anteriores (cierres v1 sin rótulo)** (`1QvQemM8dovpiA-ytBbRZux2XEZSi70PY`): no se borró nada.
+
 ## Pendiente
 
-- **Rótulo de nombre en los cinco cierres** (ver arriba): falta que Sebastián confirme el nombre y el cargo.
 - **Manos cortadas:** cuando el avatar abre las manos, el borde de la fuente vertical las corta, y sobre el
   fondo ancho se ve el corte recto por un instante. Es de la fuente.
 - **Disco:** D: quedó con 2,6 GB libres. Del árbol de este curso (19 GB) sobran, cuando Sebastián lo decida:
