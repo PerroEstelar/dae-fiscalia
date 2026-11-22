@@ -287,3 +287,61 @@ y el `.drt` en la misma carpeta del disco:
 Los diez videos de profe (inicio y cierre del curso y de las unidades 1 a 4, Jorge Eduardo Castillo Pantoja), con el
 fondo virtual cambiado por el de la Fiscalía: `profe/` (base, planes, lote y README) y sus subtítulos en
 `subtitulos/`. Entregados en VIDEOS › VIDEOS FINALIZADOS (`1mIFyAi87UosQ8Rue7j9g6aL4db9bRG2d`).
+
+## Audios de los casos para el aula (21 nov 2026)
+
+Un paréntesis en el trabajo de video. Pedido «Audios de los casos: textos para grabar» (Samir Andrés Ardila para
+Sebastián, 21/11/2026): en la reunión de ese día Juan pidió audio con ElevenLabs para la parte de los casos del aula.
+13 casos, **19 tramos**: «A», el planteamiento (suena al abrir la diapositiva del caso), y «B», la resolución (suena al
+abrir la solución), un archivo por tramo con su código como nombre. El texto es el del documento aprobado del curso
+(17/11/2026), tal cual; los 19 textos del pedido se compararon palabra por palabra con los del script (2.769 palabras,
+iguales).
+
+- **Voces**: las del curso y de toda la serie, colombianas, en la biblioteca de Sebastián: **Pilar Durán** en los
+  planteamientos y **Carlos - Colombian Spanish** en las resoluciones (Sebastián: «deben ser las voces que ya hemos
+  usado y que tengo guardadas en mis favoritos, son voces colombianas»). A su ritmo natural: 137 a 150 palabras dichas
+  por minuto, contando las siglas y los códigos ya desplegados (el pedido pide unas 140).
+- **Texto para ElevenLabs** (`herramientas/voz/textos/casos_audio_lp.py`): abreviaturas completas, radicados y
+  referencias de sentencia letra por letra y número por número, como pide el pedido; números en letras, paréntesis a
+  comas, placas y formatos deletreados como en los videos del curso. Erratas corregidas, las mismas de `guion_lp.py`:
+  «la armonía familia» → «familiar» (U1-C5-B), «que etiquetas y las tapas» → «que las etiquetas» (U2-C1-A), «de que
+  que» → «de que» (U4-C1-A).
+- **Se lee tal cual y se avisa**: en U1-C2-B, el primero de los dos párrafos entre comillas que siguen a «la redacción
+  correcta de los HJR… debe estructurarse así:» no es una redacción de HJR: repite a medias la síntesis del caso 1.
+  Parece un pegado de más del documento.
+- **Comprobado**: Scribe sobre cada audio contra su texto: todo dicho, en orden; las únicas diferencias son los
+  códigos, que Scribe escribe juntos («FGNS1202469806A», «SP0142026»). Ninguna pausa de más de 1,5 s.
+- **Entrega**: MP3 a 192 kb/s, 48 kHz, estéreo dual-mono, −16 LUFS y techo −1,5 dBTP (el nivel de los videos de profe
+  del aula). En disco, `E:\DAE MASTER\PRIORIDAD 1\CURSO - LEY 1826 PROCEDIMIENTO PENAL ABREVIADO\AUDIOS CASOS\`
+  (con `crudo\`, `textos_tts\` y `_descartes\`); en Drive, carpeta nueva **AUDIOS CASOS**
+  (`13_D1LTvOTHBgPjgquTlj303N2Z0P1jAu`) junto a `VIDEOS` e `IMAGENES`, los 19 con el mismo tamaño que en disco.
+  Herramienta: `herramientas/voz/lanzar_casos_audio_lp.py`.
+
+| archivo | voz | dura | id en Drive |
+|---|---|---|---|
+| `U1-C1-A.mp3` | Pilar | 1:34 | `1R2JV-Ng2ICKZCGt0dsiSb-_otvAdap96` |
+| `U1-C1-B.mp3` | Carlos | 1:01 | `1mVFVVPuwrDjOI-8b8ib91F7uQADYRMJR` |
+| `U1-C2-A.mp3` | Pilar | 1:12 | `1fhVCsejC197uBx_Z4aZkrEmZNtuceZ5Q` |
+| `U1-C2-B.mp3` | Carlos | 2:10 | `1i1A4Vh8LmIyKmG-8YxcWfyG2OrGGYxtW` |
+| `U1-C3-A.mp3` | Pilar | 1:24 | `1N80te7wLgQeQYv65xnjvE_EyYNgGQBT_` |
+| `U1-C3-B.mp3` | Carlos | 1:18 | `1Vjn93ve7sTtGgKQvHbNGf5D8Cnh0FpYV` |
+| `U1-C4-A.mp3` | Pilar | 1:24 | `15JUqsECVEcQuas_Hr6iqXCmq9XTRJEKs` |
+| `U1-C4-B.mp3` | Carlos | 1:12 | `1itJdO9F03gSo0lcPOvEp2cDBupux7Eoa` |
+| `U1-C5-A.mp3` | Pilar | 1:12 | `113eriAnasRRzVPO_F3BVoByyrM_16TVt` |
+| `U1-C5-B.mp3` | Carlos | 1:17 | `1uIo_qtGWj_6SFJtfrIlKaTknu6llfx-6` |
+| `U2-C1-A.mp3` | Pilar | 1:30 | `1wChlt27zk5waiQgky2l-Im85bkgMGpfX` |
+| `U2-C2-A.mp3` | Pilar | 1:27 | `1OG7zyD_Lz9PW-ArISN93kA8yG5P8iFSt` |
+| `U3-C1-A.mp3` | Pilar | 0:30 | `1JoiwseqSr-QdwadMawLlqg3g1A_O-vjy` |
+| `U3-C2-A.mp3` | Pilar | 0:30 | `1O6Zb5GdJneIFQjRPq2rNhOQEEiKTlWaC` |
+| `U3-C3-A.mp3` | Pilar | 0:55 | `1n1aFHpFNpmc6d-NvttHLY-C38lm2ntRF` |
+| `U3-C3-B.mp3` | Carlos | 0:54 | `1huBovfPEvSPP3pi0HkTU-kQaxyZX06TB` |
+| `U4-C1-A.mp3` | Pilar | 0:52 | `1UD7HGakzMmKxNOp992jzqOiTA_a5Dbr8` |
+| `U4-C2-A.mp3` | Pilar | 1:09 | `15fHOjSuBe54-y3dkzLudU1qH93TuyqMQ` |
+| `U4-C3-A.mp3` | Pilar | 0:38 | `1etlJ0ECCPECBM6SHNz06_Jnr5P1esOvr` |
+
+Total 22:10: 14:18 de Pilar (13 planteamientos) y 7:51 de Carlos (6 resoluciones).
+
+Lo que el pedido deja abierto y no se tocó: si los tramos B se usan (están hechos; si no van, se dejan de lado), la
+referencia SP014-2026 (si Juan la corrige, se regeneran los cuatro tramos que la citan: U1-C2-B a U1-C5-B) y dónde va el
+audio de la U4 (diapositiva o documento anexo).
+
