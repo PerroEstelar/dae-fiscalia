@@ -1,0 +1,168 @@
+{
+ "_todos": [
+  [
+   "\\b([Ll])a fiscalía\\b",
+   "\\1a Fiscalía"
+  ],
+  [
+   "\\bDiana Carolina Fl[óo]rez Bayona\\b",
+   "Diana Carolina Florez Vallona"
+  ],
+  [
+   "\\bE?DEM+A\\b",
+   "DEMA"
+  ],
+  [
+   "(?<!\\S)\"(?=\\S)",
+   "«"
+  ],
+  [
+   "(?<=\\S)\"(?=[\\s.,;:?!]|$)",
+   "»"
+  ]
+ ],
+ "_despues": [
+  [
+   "\\bley (\\d{3,})",
+   "Ley \\1"
+  ],
+  [
+   "\\bdecreto (\\d{3,})",
+   "Decreto \\1"
+  ]
+ ],
+ "dau4i": [
+  [
+   "\\bInvestigación y Judicialización en Delitos contra el Medio Ambiente y los Recursos Naturales",
+   "Investigación y judicialización en delitos contra el medio ambiente y los recursos naturales"
+  ]
+ ],
+ "dau3l4": [
+  [
+   "\\bResolución cero cuarenta y dos\\b",
+   "Resolución 0042"
+  ]
+ ],
+ "dau3l5": [
+  [
+   "\\binicia desde la, desde el año",
+   "inicia desde el año"
+  ],
+  [
+   "\\babordar ese, esa escena",
+   "abordar esa escena"
+  ],
+  [
+   "\\bY entre los-- y el trabajo interdisciplinario en equi-- del equipo pericial",
+   "Y el trabajo interdisciplinario del equipo pericial"
+  ],
+  [
+   "\\ben el aspecto agua el, la matriz",
+   "en el aspecto agua, la matriz"
+  ],
+  [
+   "\\bque de que el, el alcance, el alcance del concepto",
+   "que el alcance del concepto"
+  ],
+  [
+   "\\bnuevos hallazgos e investigativos",
+   "nuevos hallazgos investigativos"
+  ]
+ ],
+ "dau3te": [
+  [
+   "\\bA esta, eh, esta forma de investigar",
+   "Esta forma de investigar"
+  ],
+  [
+   "\\bsien-esté siendo",
+   "esté siendo"
+  ],
+  [
+   "\\bseñalar Que además",
+   "señalar que además"
+  ],
+  [
+   "\\bnombe iuris",
+   "nomen iuris"
+  ],
+  [
+   "\\bcardex\\b",
+   "kárdex"
+  ],
+  [
+   "\\btambién se pueden, eh, se pueden, mmm, eh, comprometer",
+   "también se pueden comprometer"
+  ],
+  [
+   "\\bTambién, eh, podemos estar, eh, eh, estar bajo el delito de, eh, daño",
+   "También podemos estar bajo el delito de daño"
+  ],
+  [
+   "\\bpara conte-- hacer",
+   "para hacer"
+  ],
+  [
+   "\\ben unos situaciones",
+   "en unas situaciones"
+  ]
+ ],
+ "dau1dema": [
+  [
+   "\\bmacrocriminalidad ter-- eh, ambiental",
+   "macrocriminalidad ambiental"
+  ],
+  [
+   "\\bpregúntense, haga-- es, es importante",
+   "pregúntense, es importante"
+  ],
+  [
+   "\\buna célula teoría del caso",
+   "una teoría del caso"
+  ]
+ ],
+ "dau4l1": [
+  [
+   "\\bcoberturas vej-- pues vegetales",
+   "coberturas vegetales"
+  ],
+  [
+   "\\bcolectivo es, eh In-- representado",
+   "colectivo es representado"
+  ],
+  [
+   "\\bprincipio co-- de discrecionalidad",
+   "principio de discrecionalidad"
+  ],
+  [
+   "\\blo que yo les estoy-- a lo que yo les estoy invitando",
+   "a lo que yo les estoy invitando"
+  ],
+  [
+   "\\bHacaría Espadas del Río",
+   "Acerías Paz del Río"
+  ],
+  [
+   "\\bresolución dos once de 2025",
+   "Resolución 0211 de 2025"
+  ],
+  [
+   "\\bartículo cinco veintiuno",
+   "artículo 521"
+  ],
+  [
+   "\\bha-ha-ha ahí ha venido",
+   "ahí ha venido"
+  ],
+  [
+   "\\buna atención de derechos",
+   "una tensión de derechos"
+  ]
+ ],
+ "daci": [
+  [
+   "\\bdelitos con el medio ambiente",
+   "delitos contra el medio ambiente"
+  ]
+ ]
+}

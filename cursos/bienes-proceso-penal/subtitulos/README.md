@@ -14,10 +14,17 @@ provisionales del 17 nov. Método y criterio: `herramientas/subtitulos/README.md
 | `bienes - U4 - INICIO-v1` | 90 | 5:39 | `1YBvkMzyKsrP8IB1i6WMdjthgNccNh_uE` |
 | `bienes - U4 - CIERRE-v1` | 338 | 23:50 | `16a9GnLqoIJ-KC-QFWjre-uz2iUbfhQm7` |
 | `bienes - U2 - INICIO-v2` | 119 | 7:40 | `19ixdbSZKRGJUiON34WMbouKiIUISA6x9` |
+| `bienes - CURSO - INTRODUCCION-v1` | 106 | 6:55 | `1zuS_xXCbb471PitR3TIByCNT43XHB2Rq` |
+| `bienes - CURSO - CIERRE-v1` | 658 | 43:46 | `1EbsXoft6OcJF-pHUNlpvn1j1G59vUQ7T` |
 
 **Cuatro `.srt` se subieron de nuevo el 18 nov por la tarde** (U1 INICIO, U1 CIERRE, U2 CIERRE y U4 CIERRE; los ids de la tabla son
 los nuevos y los anteriores están en la papelera): «La respuesta es no.» quedaba pegado a la oración siguiente porque
 `srt_de_stt.py` tomaba «no.» por abreviatura de «número». El texto no cambió, solo dónde corta el subtítulo.
+
+**Introducción y cierre del curso, 22 nov 2026.** Mismo método, sobre las entregas del 14 nov. Van en sus carpetas
+(INTRODUCCION AL CURSO y CIERRE DEL CURSO) y junto al video en `05 EXPORTS`. En el cierre el profe dice dos veces
+«inmueble adquirido ilícitamente» (23:19 y 28:54) donde por el contexto iría «lícitamente»: la segunda escucha lo
+confirma y el `.srt` deja lo que dice. «Ley 1708 2014» (6:56) va como «Ley 1708 de 2014» (regla `bicc`).
 
 Carpetas de Drive: VIDEOS de Bienes (`12Wwl_Vq9CCJVTPN7Y7g7JH0j3b9cDiAT`) › Unidad 1 a 4. Cada `.srt` está también junto a
 su video en disco. El profe (Sergio Andrés López Zamora) lee: casi no hay tropiezos y Scribe falló poco («scientifican»

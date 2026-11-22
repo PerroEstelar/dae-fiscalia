@@ -3777,3 +3777,16 @@ junto con sus rótulos de sección. Sebastián: el logo no va; sus rótulos y l�
 - **El cartón propio del profe** (fondo azul noche, silencio digital) se quita con el borde del tramo: entra en el corte
   de escena o medio segundo antes de la primera palabra, lo que venga después.
 - **La franja de Teams con el nombre del participante** (abajo a la izquierda, y 704–720) queda fuera de la ventana.
+
+## Scribe puede estirar la última palabra sobre el outro (subtítulos de Medio ambiente, 22 nov 2026)
+
+En la U3 L5 de Medio ambiente, Scribe le dio a «gracias.» un final 16 s más tarde (416,1 → 432,1 s), por encima del
+outro, y `srt_de_stt.py` (que a una palabra de más de 3 s le pone el arranque en fin − 1) sacó el último subtítulo en
+7:11, sobre la música. Se corrige el fin de esa palabra en el JSON antes de generar. Revisar siempre el tiempo del
+último subtítulo contra donde empieza el outro.
+
+- **La segunda escucha confirma lo que se dice, no lo que debería decirse.** En el cierre del curso de Bienes, las dos
+  escuchas (normal y al 75 %) oyen «inmueble adquirido ilícitamente» donde el contexto pide «lícitamente»: el `.srt`
+  deja lo que dice y queda anotado en el inventario para que lo decida Sebastián.
+- **Un nombre de curso dicho a medias se corrige al nombre del curso** («delitos con el medio ambiente» → «contra»),
+  como los títulos de unidad: es un nombre propio, no una cita.

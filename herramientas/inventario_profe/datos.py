@@ -81,7 +81,8 @@ CUR = 'Bienes en el proceso penal'
 M, T = man('bienes-proceso-penal'), tabla('bienes-proceso-penal')
 SL = 'Sergio Andrés López Zamora'
 fila(1, CUR, 'Curso', 'Introducción al curso', SL, 'bienes - CURSO - INTRODUCCION-v1', '1Lw6GFHitCzgpz92BNr5xUpgIN7c56o6Y',
-     mmss(DUR['bienes - CURSO - INTRODUCCION-v1.mp4']), None, '1dyVsM9n4SkDRWIwzj4YGvsjNly4OW2qw', 'Completa', '14 nov', 'Sin subtítulos todavía.')
+     mmss(DUR['bienes - CURSO - INTRODUCCION-v1.mp4']), T['bienes - CURSO - INTRODUCCION-v1'][2], '1dyVsM9n4SkDRWIwzj4YGvsjNly4OW2qw', 'Completa', '14 nov', '',
+     n_srt=T['bienes - CURSO - INTRODUCCION-v1'][0])
 for nombre, uni, pieza, nota, fecha in [
     ('bienes - U1 - INICIO-v1', 'Unidad 1', 'Inicio de la unidad', '', '17 nov'),
     ('bienes - U1 - CIERRE-v1', 'Unidad 1', 'Cierre de la unidad', 'Tiene «repito» del profe que se dejaron (decisión del 18 nov).', '17 nov'),
@@ -95,8 +96,9 @@ for nombre, uni, pieza, nota, fecha in [
     m, t = M[nombre], T[nombre]
     fila(1, CUR, uni, pieza, SL, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, fecha, nota, n_srt=t[0])
 fila(1, CUR, 'Curso', 'Cierre del curso', SL, 'bienes - CURSO - CIERRE-v1', '1q0bBsu_6uuhyh1K0faHRpUoIrtt02ORm',
-     mmss(DUR['bienes - CURSO - CIERRE-v1.mp4']), None, '13q_woiBdN6fQlOvThAGXzUtvGJ8YxTey', 'Completa', '14 nov',
-     'Sin subtítulos todavía. Lleva un corte donde el profe vuelve a empezar una frase.')
+     mmss(DUR['bienes - CURSO - CIERRE-v1.mp4']), T['bienes - CURSO - CIERRE-v1'][2], '13q_woiBdN6fQlOvThAGXzUtvGJ8YxTey', 'Completa', '14 nov',
+     'Lleva un corte donde el profe vuelve a empezar una frase. Dice «inmueble adquirido ilícitamente» (23:19 y 28:54) '
+     'donde por el contexto iría «lícitamente»; el .srt deja lo que dice.', n_srt=T['bienes - CURSO - CIERRE-v1'][0])
 
 # ---------- Prioridad 1 · Justicia restaurativa
 CUR = 'Justicia restaurativa en la práctica del fiscal'
@@ -205,23 +207,25 @@ for nombre, uni, pieza in [
 # ---------- Prioridad 3 · Delitos ambientales
 CUR = 'Investigación y judicialización de delitos contra el medio ambiente y los recursos naturales'
 DC = 'Diana Carolina Florez Vallona'
-MOV = 'El video está en .mov (anterior a la regla de entregar en MP4). Sin subtítulos todavía.'
+MOV = 'El video está en .mov (anterior a la regla de entregar en MP4).'
 DA = [
-    ('Curso', 'Introducción al curso', DC, 'delitosambientales - CURSO - INTRODUCCION-v1.mp4', '1_RvHWIfTUKEzUF9QeXOhy2lGtQl3sz9c', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '12 nov', 'Sin subtítulos todavía.'),
+    ('Curso', 'Introducción al curso', DC, 'delitosambientales - CURSO - INTRODUCCION-v1.mp4', '1_RvHWIfTUKEzUF9QeXOhy2lGtQl3sz9c', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '12 nov', ''),
     ('Unidad 1', 'Introducción a la unidad', DC, 'delitosambientales - U1 - INTRODUCCION-v3.mov', '1OLesJI_2zjhFLBm-fZDaNC7v47DMrI-g', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '10 nov', MOV),
     ('Unidad 1', 'Conversatorio: articulación DEMA y DECOC', 'Ana María Díaz González y Camilo Andrés González López', 'delitosambientales - U1 - CONVERSATORIO DEMA y DECOC-v1.mov', '1Ioh_PHsJgbXdnOidNAXdROmNNr20QWMu', '13B1FO9EgVKEwq63GuNDO8-yYnm-gXITO', '11 nov', MOV),
     ('Unidad 2', 'Introducción a la unidad', DC, 'delitosambientales - U2 - INTRODUCCION-v2.mov', '1waRtvmYYWNhS9pWw3XGTNEmqas7zOcPE', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '10 nov', MOV),
     ('Unidad 3', 'Introducción a la unidad', DC, 'delitosambientales - U3 - INTRODUCCION-v2.mov', '1ncTfFZ_ydvs5ZHoe1BhvcJ_F4mupQMAm', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '10 nov', MOV),
     ('Unidad 3', 'Entrevista: técnicas especiales de investigación', 'Jairo Porras', 'delitosambientales - U3 - ENTREVISTA TECNICAS ESPECIALES-v1.mov', '1WO2LxXUeUoGVVCK9odeqOfMr1_aJ-jl4', '1Z_7O-mlITWgInSRArm1_qqug0vqfYeGm', '11 nov', MOV),
-    ('Unidad 3', 'Lección 4: investigación financiera', 'Alba Lucía Solís Ramírez', 'delitosambientales - U3 - LECCION 4-v1.mp4', '1l8o9AdVubTc3mBvKtYPuuP8b1jBOpDea', '138IERkCos3CdTH3SEjUCul6pLJ_sy5pv', '15 nov', 'Sin subtítulos todavía. La grabación venía armada con varias tomas; se quitaron dos frases repetidas.'),
-    ('Unidad 3', 'Lección 5: la prueba pericial', 'Hugo Ascencio Salazar', 'delitosambientales - U3 - LECCION 5-v1.mp4', '1Hkg0kpqF8xIgFMDW2LWjeiz6bweDdMv3', '1owzhcZV_mOam7wdU9TRYJzqL45cfFb5s', '15 nov', 'Sin subtítulos todavía.'),
+    ('Unidad 3', 'Lección 4: investigación financiera', 'Alba Lucía Solís Ramírez', 'delitosambientales - U3 - LECCION 4-v1.mp4', '1l8o9AdVubTc3mBvKtYPuuP8b1jBOpDea', '138IERkCos3CdTH3SEjUCul6pLJ_sy5pv', '15 nov', 'La grabación venía armada con varias tomas; se quitaron dos frases repetidas.'),
+    ('Unidad 3', 'Lección 5: la prueba pericial', 'Hugo Ascencio Salazar', 'delitosambientales - U3 - LECCION 5-v1.mp4', '1Hkg0kpqF8xIgFMDW2LWjeiz6bweDdMv3', '1owzhcZV_mOam7wdU9TRYJzqL45cfFb5s', '15 nov', ''),
     ('Unidad 4', 'Introducción a la unidad', DC, 'delitosambientales - U4 - INTRODUCCION-v2.mov', '1sV0VrujZq4uILiteLHokQYYUQZyrfyPB', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '10 nov', MOV),
-    ('Unidad 4', 'Lección 1: justicia restaurativa', 'Daniela Escallón', 'delitosambientales - U4 - LECCION 1-v1.mp4', '1hELVGGJV83mUYZyVRpcW6cukOqWAVHYU', '1973M2cTX9faj2KPkfbUx0Yh9tlAerfGj', '15 nov', 'Sin subtítulos todavía. Desde 15:38 la imagen va un cuadro (33 ms) detrás del sonido.'),
+    ('Unidad 4', 'Lección 1: justicia restaurativa', 'Daniela Escallón', 'delitosambientales - U4 - LECCION 1-v1.mp4', '1hELVGGJV83mUYZyVRpcW6cukOqWAVHYU', '1973M2cTX9faj2KPkfbUx0Yh9tlAerfGj', '15 nov', 'Desde 15:38 la imagen va un cuadro (33 ms) detrás del sonido.'),
     ('Unidad 5', 'Introducción a la unidad', DC, 'delitosambientales - U5 - INTRODUCCION-v2.mov', '1M4qHpgUWMqpUInliXNEjodEwq39RDlDx', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '10 nov', MOV),
-    ('Curso', 'Cierre del curso', DC, 'delitosambientales - CURSO - CIERRE-v1.mp4', '1SRP0IkJElVEefHIjC69-EfBCzkGik0V0', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '12 nov', 'Sin subtítulos todavía.'),
+    ('Curso', 'Cierre del curso', DC, 'delitosambientales - CURSO - CIERRE-v1.mp4', '1SRP0IkJElVEefHIjC69-EfBCzkGik0V0', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '12 nov', ''),
 ]
+T = tabla('medio-ambiente')     # subtítulos del 22 nov 2026
 for uni, pieza, profe, arch, vid, carp, fecha, nota in DA:
-    fila(3, CUR, uni, pieza, profe, os.path.splitext(arch)[0], vid, mmss(DUR[arch]), None, carp, 'Completa', fecha, nota)
+    n = os.path.splitext(arch)[0]
+    fila(3, CUR, uni, pieza, profe, n, vid, mmss(DUR[arch]), T[n][2], carp, 'Completa', fecha, nota, n_srt=T[n][0])
 
 # ---------- Prioridad 3 · Trata
 CUR = 'Investigación y judicialización de los delitos de tráfico de migrantes y trata de personas'
