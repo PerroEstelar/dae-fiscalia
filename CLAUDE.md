@@ -3759,3 +3759,21 @@ Lo que decidió el tiempo:
   presentadora centrada, «Mariana Lisbeth Rodríguez Muñoz» en un renglón le tocaba el pelo; en dos renglones el bloque bajaba
   hasta y=1090 (`ic_pieza … cartones` imprime «fondo»: tiene que quedar bajo 1080). `{'top': 820}` en el tercer elemento del
   rótulo lo deja en 1051. Se mira con `profe_sim.py` (necesita el `_lt01.mov` ya rendido).
+
+## Un logo que el profe le puso a su video se tapa con su propio fondo (Delitos informáticos, 22 nov 2026)
+
+El profe de Delitos informáticos entregó sus videos ya editados, con una placa «DAE | FISCALÍA» arriba a la derecha
+junto con sus rótulos de sección. Sebastián: el logo no va; sus rótulos y láminas sí. `cursos/delitos_informaticos/profe/limpia_logo_di.py`:
+
+- **Detrás de la placa está el fondo virtual de la videollamada, que es una foto quieta**: no se difumina; se pone
+  encima el mismo fondo, sacado de la grabación (mediana de los cuadros del profe), con 8 px de borde suave, solo en los cuadros con la placa (más 4 a cada lado, que entra y
+  sale con fundido) y solo sobre el profe (las láminas no se tocan). En YUV 4:2:0 por tubos, sin pasar por RGB; x264
+  CRF 14, audio copiado.
+- **La placa no está siempre en el mismo sitio** (x 998–1226 en unos rótulos, x 1016–1270 en otros, y de 17 a 88). La
+  primera pasada usaba el rectángulo medido en un solo rótulo y dejaba el borde de la placa en los otros. Se vio en la
+  tira de comprobación —un recorte de 640×200 de la esquina, **original arriba y limpio abajo**, en cada tramo con
+  placa, al entrar, a la mitad y al salir— antes de rendir nada. Medir la placa en TODOS sus tramos antes de fijar el
+  rectángulo.
+- **El cartón propio del profe** (fondo azul noche, silencio digital) se quita con el borde del tramo: entra en el corte
+  de escena o medio segundo antes de la primera palabra, lo que venga después.
+- **La franja de Teams con el nombre del participante** (abajo a la izquierda, y 704–720) queda fuera de la ventana.

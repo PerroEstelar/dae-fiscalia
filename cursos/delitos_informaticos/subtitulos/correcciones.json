@@ -1,0 +1,208 @@
+{
+ "_todos": [
+  [
+   "\\bfiscalía\\b",
+   "Fiscalía"
+  ],
+  [
+   "\\bFiscalía General de la Nación\\b",
+   "Fiscalía General de la Nación"
+  ],
+  [
+   "\\b[Ll]ey novecientos seis de dos mil cuatro\\b",
+   "Ley 906 de 2004"
+  ],
+  [
+   "\\b[Ll]ey mil doscientos setenta y tres de dos mil nueve\\b",
+   "Ley 1273 de 2009"
+  ],
+  [
+   "\\bvídeo\\b",
+   "video"
+  ],
+  [
+   "\\bhabeas data\\b",
+   "hábeas data"
+  ],
+  [
+   "\\bSHA uno\\b",
+   "SHA-1"
+  ],
+  [
+   "\\bSHA 256\\b",
+   "SHA-256"
+  ],
+  [
+   "\\bGoku Imager\\b",
+   "Guymager"
+  ],
+  [
+   "\\bCain\\b",
+   "CAINE"
+  ],
+  [
+   "\\blas cinco y 40\\b",
+   "las 5:40"
+  ],
+  [
+   "\\blas cinco y cuarenta\\b",
+   "las 5:40"
+  ],
+  [
+   "\\bsentencia C336\\b",
+   "sentencia C-336"
+  ],
+  [
+   "\\bartículo dos 44\\b",
+   "artículo 244"
+  ],
+  [
+   "\\bRFC treinta y dos veintisiete\\b",
+   "RFC 3227"
+  ],
+  [
+   "\\bISO 27000[- ]?0?37\\b",
+   "ISO/IEC 27037"
+  ],
+  [
+   "\\bISO 27037\\b",
+   "ISO/IEC 27037"
+  ],
+  [
+   "\\bCane\\b",
+   "CAINE"
+  ],
+  [
+   "\\bSHA-uno\\b",
+   "SHA-1"
+  ],
+  [
+   "\\bRFZ (\\d)",
+   "RFC \\1"
+  ]
+ ],
+ "_despues": [
+  [
+   "\\b([Ll])a ley,? (?:eh,? )?(\\d{3,})\\b",
+   "\\1a Ley \\2"
+  ],
+  [
+   "\\blas 5 y 40\\b",
+   "las 5:40"
+  ],
+  [
+   "\\bRFC 32 27\\b",
+   "RFC 3227"
+  ],
+  [
+   "\\bartículo dos 44\\b",
+   "artículo 244"
+  ]
+ ],
+ "diu3i": [
+  [
+   "\\blos actos de urgentes\\b",
+   "los actos urgentes"
+  ],
+  [
+   "\\bque se requieren para cuáles son para esas actuaciones",
+   "que se requieren para esas actuaciones"
+  ],
+  [
+   "\\bredes sociales,? WhatsApp",
+   "redes sociales: WhatsApp"
+  ],
+  [
+   "\\bhipótesis delictivas, matriz",
+   "hipótesis delictiva, matriz"
+  ],
+  [
+   "\\bsin registrar antes su decisión",
+   "sin registrar ante su decisión"
+  ]
+ ],
+ "diu3m": [
+  [
+   "\\bmuchas personas co(?:…|--?)?\\s*,?\\s*pueden",
+   "muchas personas pueden"
+  ],
+  [
+   "\\bdefinitivamente no\\.(?: [Ee]h,)? recordemos",
+   "definitivamente no. Recordemos"
+  ],
+  [
+   "\\bBueno, de nuevo, este es un video",
+   "Buenas de nuevo. Este es un video"
+  ],
+  [
+   "\\bcuánto tiempo lo guarda\\b",
+   "cuánto tiempo los guarda"
+  ],
+  [
+   "\\bgerente de investigación\\b",
+   "gerente de la investigación"
+  ]
+ ],
+ "diu4m": [
+  [
+   "\\bhablamos de,(?: de,)? del hash",
+   "hablamos del hash"
+  ],
+  [
+   "\\butilizar el hash dos cincuenta y seis, SHA",
+   "utilizar el SHA"
+  ],
+  [
+   "\\b([Ee])ncenderlo describe en el disco, altera las máscaras de tiempo",
+   "\\1ncenderlo escribe en el disco, altera las marcas de tiempo"
+  ],
+  [
+   "\\bDebe (?:constancia|contarse) de lo descartado",
+   "Deje constancia de lo descartado"
+  ],
+  [
+   "\\bcódigo fo(?:…|--?)\\s*fuente",
+   "código fuente"
+  ],
+  [
+   "\\bal final de requerimiento\\b",
+   "al final del requerimiento"
+  ],
+  [
+   "\\bel MD5 SHA-1 por defecto",
+   "el MD5 y SHA-1 por defecto"
+  ]
+ ],
+ "diu4c": [
+  [
+   "\\buna recolección de física correcta",
+   "una recolección física correcta"
+  ],
+  [
+   "\\b([Ee])mbalar y roturar\\b",
+   "\\1mbalar y rotular"
+  ],
+  [
+   "\\bni registró de la hora\\b",
+   "ni registró la hora"
+  ],
+  [
+   "\\bni registró el ahora\\b",
+   "ni registró la hora"
+  ],
+  [
+   "¿Puso la memoria primero\\?",
+   "¿Puso la memoria de primero?"
+  ],
+  [
+   "\\bespacio agregado (?:de|o un) archivo",
+   "espacio agregado a un archivo"
+  ]
+ ],
+ "diu4i": [
+  [
+   "\\b([Ll])ey 527 del? 99\\b",
+   "\\1ey 527 de 1999"
+  ]
+ ]
+}

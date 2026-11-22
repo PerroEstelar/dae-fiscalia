@@ -318,6 +318,35 @@ for uni, pieza in [('Unidad 4', 'Cierre de la unidad'),
          'No llegó grabación (en E:\\DAE MASTER\\CURSO DERECHOS DE PETICION hay inicio y cierre del curso, inicios de U1 a U4 y cierres de U1 a U3).',
          estado='Sin grabación')
 
+# ---------- Prioridad 3 · Delitos informáticos (22 nov 2026: cinco videos que el profe ya editó; ver cursos/delitos_informaticos/profe)
+CUR = 'Delitos informáticos'
+M, T = man('delitos_informaticos'), tabla('delitos_informaticos')
+YG = 'Yefrin Garavito Navarro'
+SUYO = (' Va su edición: se quitan su cartón de entrada (y el de salida, si lo trae) y la placa «DAE | FISCALÍA» que puso '
+        'arriba a la derecha; quedan sus rótulos y sus láminas.')
+for nombre, uni, pieza, nota in [
+    ('delitosinformaticos - U3 - INICIO-v1', 'Unidad 3', 'Inicio de la unidad',
+     'Sin cortes adentro. A las 5:39 dice «avance en el caso sin registrar ante su decisión»; su lámina dice «Registre su '
+     'decisión antes de avanzar». Queda como se oye.'),
+    ('delitosinformaticos - U3 - INTERMEDIO-v1', 'Unidad 3', 'Video intermedio (síntesis de la unidad)', 'Sin cortes adentro.'),
+    ('delitosinformaticos - U4 - INICIO-v1', 'Unidad 4', 'Inicio de la unidad', 'Sin cortes adentro; sale también su cartón final.'),
+    ('delitosinformaticos - U4 - INTERMEDIO-v1', 'Unidad 4', 'Video intermedio (síntesis de la unidad)',
+     'Sin cortes adentro. A las 4:54 dice «describe… las máscaras de tiempo» (el subtítulo: «escribe… las marcas»); a las '
+     '5:41, «condición necesaria y suficiente» (sería «necesaria pero no suficiente»): quedan como se oyen.'),
+    ('delitosinformaticos - U4 - CIERRE-v1', 'Unidad 4', 'Cierre de la unidad', 'Sin cortes adentro; sale también su cartón final.'),
+]:
+    if nombre not in M or nombre not in T:
+        continue
+    m, t = M[nombre], T[nombre]
+    fila(3, CUR, uni, pieza, YG, nombre, m['video_id'], t[1], t[2], m['carpeta'], 'Del profe: sus rótulos y láminas', '22 nov',
+         nota + SUYO, n_srt=t[0])
+for uni, pieza in [('Unidad 3', 'Cierre de la unidad'), ('Unidades 1 y 2', 'Inicio, intermedio y cierre'),
+                   ('Curso', 'Presentación del curso')]:
+    fila(3, CUR, uni, pieza, '', '(sin grabación)', None, '', None, None, '', '',
+         'No llegó grabación (en E:\\DAE MASTER\\CURSO DELITOS INFORMATICOS están inicio e intermedio de la U3 e inicio, '
+         'intermedio y cierre de la U4; los archivos van numerados 1, 2, 4, 5 y 6: falta el 3).',
+         estado='Sin grabación')
+
 # ---------- Prioridad 3 · Estándares interamericanos
 fila(3, 'Estándares interamericanos de investigación de graves violaciones a los derechos humanos', 'Unidad 1', 'Inicio de la unidad', 'Sin identificar',
      'Estándares Interamericanos Unidad 1 - Inicio.mp4 (grabación sin producir)', '1Ex6HRmTnUOlVrKkXzO-TZCl-5n-ZzEgC', '5:26', None, None, '', '',
