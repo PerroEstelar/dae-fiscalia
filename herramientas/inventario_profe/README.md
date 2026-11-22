@@ -63,3 +63,8 @@ formato de celda; la observación de las tres que siguen sin grabación dice aho
 Derecho de petición 8 videos, 126 min, 8 con subtítulos, 3 pendientes; total 138 entregados, 1396 min, 124 con
 subtítulos. En el `Resumen`, la fila de Trata decía «Presentadora: nombre por confirmar» (texto fijo, no fórmula): ahora
 lleva el nombre, como lo arma `hoja.py` desde `datos.py`.
+
+**21 nov 2026 (noche): Derecho de petición, cierre del curso.** La fila «Sin grabación» del cierre del curso pasó a
+entregada y se subió junto a los otros cierres (143, con `moveDimension`), como queda en `datos.py`. Leído de vuelta:
+Derecho de petición 9 videos, 140 min, 2 pendientes (cierre de la U4 y retroalimentaciones); total 139 entregados,
+1410 min, 125 con subtítulos.

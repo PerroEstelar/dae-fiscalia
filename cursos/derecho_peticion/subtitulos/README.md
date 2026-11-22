@@ -10,6 +10,7 @@
 | `derechodepeticion - U1 - CIERRE-v1` | 404 | 27:38 | `1-Ykv_ckWIoQ0SZEFZXPWG3eIpXw4mK9y` |
 | `derechodepeticion - U2 - CIERRE-v1` | 410 | 28:38 | `1jnD281rx1AHRjNbPkkP5igRFg-UuTeEX` |
 | `derechodepeticion - U3 - CIERRE-v1` | 421 | 29:36 | `1b27yvO4fLn1WSaKBv9sFK5mWjUTru9xW` |
+| `derechodepeticion - CURSO - CIERRE-v1` | 205 | 14:23 | `1b6IVHVNjz7htI-d_0SqN_mid58K93-Sy` |
 
 Carpeta de Drive: Derecho de petición, acción de tutela y daño antijurídico… › **VIDEOS PROFE**
 (`1KXrk6azeO_3KQhsvM2p8z8AVrTaaXmBX`), al lado del video. Copia junto al video en disco (`05 EXPORTS`). Método y
@@ -93,4 +94,19 @@ el «la» de «presentar antes la acción de tutela» (U3; la grabación y la es
     de evitar todo sin ordenar» (quizá «enviar») y «Tampoco corresponde descartarle».
 - Formato validado en los dos (numeración, tiempos crecientes, 1–2 renglones de hasta 42 caracteres) y **lectura
   completa** de cada uno. Copia de cada `.srt` en `05 EXPORTS` junto al video.
+
+## Cierre del curso (21 nov 2026)
+
+`dpcc`, mismo método (`D:\DAE\_tmp\dp_p\cc\man_finales.json`). La transcripción de la entrega y la de la grabación
+coinciden palabra por palabra en los tramos que entran. Segunda escucha de cuatro tramos sobre la grabación.
+
+- Fuera los tropiezos y el «eh» («Esta per— perspectiva», «no son un, un obstáculo», «simplificando, eh,
+  arbitrariamente»); «que solo entiende quien la escribió» (sin tilde: es relativo); «un hilo en la actuación: qué
+  falta…».
+- **«Soy Óscar Jairo Fonseca, en compañía de mi estudiante auxiliar Miguel Ángel Torres»**: el «en» lo oye la escucha
+  normal y no la del 75 %; el nombre, las tres igual.
+- **Quedan como se oyen (todas las escuchas iguales), y se avisan:** «El tercer compromiso es una continuidad a la
+  protección de los derechos» (al enumerarlos dice «dar continuidad») y «una explicación que no importa» (quizá «que no
+  aporta»).
+- Formato validado y **lectura completa**. Copia en `05 EXPORTS` junto al video.
 

@@ -382,5 +382,31 @@
    "\\ba su competencia,? para aparecer,? o por aparecer vinculado",
    "a su competencia por aparecer vinculado"
   ]
+ ],
+ "dpcc": [
+  [
+   "\\bsimplificando,? eh,? arbitrariamente",
+   "simplificando arbitrariamente"
+  ],
+  [
+   "\\bque solo entiende quién la escribió",
+   "que solo entiende quien la escribió"
+  ],
+  [
+   "\\b(Esta|esta) per\\S*\\s*perspectiva",
+   "\\1 perspectiva"
+  ],
+  [
+   "\\bson un, un obstáculo",
+   "son un obstáculo"
+  ],
+  [
+   "\\b[OÓ]scar Jairo Fonseca,? (?:en )?compañía de mi estudiante auxiliar,? Miguel Ángel Torres,?",
+   "Óscar Jairo Fonseca, en compañía de mi estudiante auxiliar Miguel Ángel Torres,"
+  ],
+  [
+   "\\bun hilo en la actuación[,:] qué falta",
+   "un hilo en la actuación: qué falta"
+  ]
  ]
 }

@@ -290,7 +290,7 @@ for suf, uni, pieza in DF:
     fila(3, CUR, uni, pieza, CV, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '19–20 nov',
          nota + ' Sale de la misma grabación que las otras 16 piezas del curso.', n_srt=t[0])
 
-# ---------- Prioridad 3 · Derecho de petición (20 nov 2026: siete grabaciones, seis piezas; 21 nov: tres más, los cierres de U2 y U3; ver cursos/derecho_peticion/profe)
+# ---------- Prioridad 3 · Derecho de petición (20 nov 2026: siete grabaciones, seis piezas; 21 nov: cuatro más, los cierres de U2 y U3 y el del curso; ver cursos/derecho_peticion/profe)
 CUR = 'Derecho de petición y acción de tutela: régimen constitucional, legal y jurisprudencial para servidores públicos'
 M, T = man('derecho_peticion'), tabla('derecho_peticion')
 OF = 'Óscar Jairo Fonseca Fonseca'
@@ -304,17 +304,18 @@ for nombre, uni, pieza, nota in [
     ('derechodepeticion - U4 - INICIO-v1', 'Unidad 4', 'Inicio de la unidad', 'Tres cortes de toma, uno de ellos una frase que el profe pidió repetir.'),
     ('derechodepeticion - U2 - CIERRE-v1', 'Unidad 2', 'Cierre de la unidad', 'Se compone con las dos tomas (la 1 se pausa por un ruido; la 2 retoma en «Quien recibe…»). Se sacan cuatro frases que el profe repite y la charla con el técnico. El profe dice «orientar y emitir»; el subtítulo dice «remitir», como sigue el texto.'),
     ('derechodepeticion - U3 - CIERRE-v1', 'Unidad 3', 'Cierre de la unidad', 'Se sacan cinco arranques en falso que el profe anuncia y se acorta una pausa de 7,9 s.'),
+    ('derechodepeticion - CURSO - CIERRE-v1', 'Curso', 'Cierre del curso', 'Se sacan dos arranques en falso que el profe anuncia («Voy a retomar desde la precisión», «retomo en esa frase»).'),
 ]:
     if nombre not in M or nombre not in T:
         continue
     m, t = M[nombre], T[nombre]
-    nuevo = nombre.endswith(('U2 - CIERRE-v1', 'U3 - CIERRE-v1'))      # llegaron el 21 nov, con otro técnico
+    nuevo = nombre.endswith(('U2 - CIERRE-v1', 'U3 - CIERRE-v1', 'CURSO - CIERRE-v1'))      # llegaron el 21 nov, con otro técnico
     fila(3, CUR, uni, pieza, OF, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '21 nov' if nuevo else '20 nov',
          nota + ('' if 'Sin cortes' in nota or nuevo else TOMAS), n_srt=t[0])
 for uni, pieza in [('Unidad 4', 'Cierre de la unidad'),
-                   ('Unidades 1 a 4', 'Retroalimentación de la evaluación'), ('Curso', 'Cierre del curso')]:
+                   ('Unidades 1 a 4', 'Retroalimentación de la evaluación')]:
     fila(3, CUR, uni, pieza, '', '(sin grabación)', None, '', None, None, '', '',
-         'No llegó grabación (en E:\\DAE MASTER\\CURSO DERECHOS DE PETICION hay inicio del curso, inicios de U1 a U4 y cierres de U1 a U3).',
+         'No llegó grabación (en E:\\DAE MASTER\\CURSO DERECHOS DE PETICION hay inicio y cierre del curso, inicios de U1 a U4 y cierres de U1 a U3).',
          estado='Sin grabación')
 
 # ---------- Prioridad 3 · Estándares interamericanos

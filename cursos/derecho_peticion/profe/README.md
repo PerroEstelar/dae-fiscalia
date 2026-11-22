@@ -20,7 +20,7 @@ grabaciones (`E:\DAE MASTER\CURSO DERECHOS DE PETICION\`), que dan **seis piezas
 | `plan_dpu4i` | U4 inicio | `VIDEO5 - PRESENTACION UNIDAD 4- TOMA 1` | 7:32 | tres tomas fallidas |
 | `plan_dpu1c` | U1 cierre | `VIDEO6 - CIERRE UNIDAD 1- TOMA 1` | 27:04 | dos tomas fallidas |
 
-Faltan: el cierre de la U4, las retroalimentaciones y el cierre del curso (no hay grabación). Los cierres de U2 y U3
+Faltan: el cierre de la U4 y las retroalimentaciones (no hay grabación). Los cierres de U2 y U3 y el cierre del curso
 llegaron el 21 nov (ver abajo).
 
 - **Qué se corta**: lo que el profe le dice al técnico entre tomas («Suspendamos ahí, por favor, Camilo»), la toma
@@ -32,7 +32,7 @@ llegaron el 21 nov (ver abajo).
 
 ## Cómo se arma
 
-- `base_dp_profe.py` y los ocho planes; `lote/cadena_dp.py` (compuesto, cartón de título y rótulo, tres a la vez) y
+- `base_dp_profe.py` y los nueve planes; `lote/cadena_dp.py` (compuesto, cartón de título y rótulo, tres a la vez) y
   `lote/entrega_gpu.py` (línea de Resolve y entrega por la placa NVIDIA, ~5 Mb/s, fuera de receta, como en
   Desaparición forzada). Se lanzan desde el repo (`D:\DAE\_repo\cursos\derecho_peticion\profe\lote\`) con
   `D:\DAE\_tmp\dp_p\` como carpeta de trabajo (`cola.txt` y los logs).
@@ -118,4 +118,34 @@ pico −2,9.
   `entrega_gpu` no pudo armar las líneas (`'NoneType' object has no attribute 'GetSubFolderList'`). Se cargó «DAE MASTER -
   CURSOS» (`LoadProject` pasa de los 58 s del `run_inline`: se sigue cargando; se espera mirando
   `GetCurrentProject().GetName()`) y se relanzó; con `cola.txt` como estaba, rehízo solo lo que faltaba.
+
+## Cierre del curso (21 nov 2026)
+
+Sebastián: «acabo de incluir el cierre de todo ese curso, por favor procésalo». Llegó `Derecho de petición - Cierre.mp4`
+(14:23,4) a la misma carpeta, a las 21:21: una sola toma, mismo profe, cámara y fondo.
+
+| plan | pieza | fuente | dura | cortes |
+|---|---|---|---|---|
+| `plan_dpcc` | cierre del curso | `Derecho de petición - Cierre.mp4` (14:23) | 14:23 | dos arranques en falso |
+
+- Salen «La precisión protege a quien solicita la atención y la propia entidad. Voy a retomar desde la precisión» (la
+  frase se vuelve a leer entera) y «El paso a siguientes— retomo en esa frase el paso siguiente». Los bordes, en RMS de
+  10 ms (`D:\DAE\_tmp\dp_p\cc\bordes.json`); el de entrada va a 0,84 s de la primera palabra porque de 6,32 a 7,0 hay
+  respiración.
+- El profe nombra al final a su estudiante auxiliar («en compañía de mi estudiante auxiliar Miguel Ángel Torres»): va
+  en el subtítulo; el rótulo sigue siendo solo el del profe.
+- Cartón de título «Cierre del curso», rótulo a 1,5 s del arranque, como el inicio del curso.
+
+**Entrega** (21:34, hora de Colombia), en VIDEOS PROFE con su `.srt` al lado (y en `05 EXPORTS`): render por la placa
+NVIDIA desde Resolve, ~5,4 Mb/s, −16,0 LUFS, pico −2,9.
+
+| video | dura | MB | id en Drive | `.srt` |
+|---|---|---|---|---|
+| `derechodepeticion - CURSO - CIERRE-v1.mp4` | 14:23 | 553 | `1ryxSVw1DRsPGEm5QLtN-8wK9st40rXhP` | `1b6IVHVNjz7htI-d_0SqN_mid58K93-Sy` |
+
+- Hoja de revisión mirada (cartón de título con «Cierre del curso», rótulo, cartón de cierre y outro). Los cortes,
+  comprobados en la transcripción de la entrega contra la de la grabación en los mismos tramos: 1.713 palabras de cada
+  lado, 0,999 (la única diferencia es una tilde).
+- **Verificada byte a byte** contra `05 EXPORTS` (`verif_dpcc.mp4` en `_MA subidas`, `D:\DAE\_tmp\dp_p\cc\verif.log`);
+  después pasó a VIDEOS PROFE y la copia, a la papelera.
 
