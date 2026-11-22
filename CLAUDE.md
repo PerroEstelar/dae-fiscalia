@@ -2709,6 +2709,10 @@ U1 de SRPA: 1 s en 17 min (950–951 s, una mano), y ahí no va ningún gráfico
 - Contenedor `.mov`, que admite H.264 copiado con PCM y conserva la base de tiempo de la fuente.
 - **Se verifica con `framemd5`** sobre los cuadros de la costura, del medio y del final, contra las
   fuentes. Tienen que ser idénticos.
+- Segundo uso: cierre de la U2 de Derecho de petición (21 nov 2026), dos tomas H.264 Constrained Baseline a 30 cuadros
+  (`duration 1782.166667` = 53.465 cuadros / 30). La unida es la `ORIGINAL` del plan y los tiempos de la toma 2 se
+  suman a esa duración (`T2` en `plan_dpu2c.py`). Recodificar con NVENC desde ffmpeg no sirve en esta máquina (el
+  controlador es más viejo que el que pide ffmpeg); la copia no lo necesita.
 
 ## Un canto pegado al borde no se borra con `delogo` solo
 
@@ -3390,6 +3394,9 @@ no attribute 'GetSubFolderList'`. Resolve estaba en «Untitled Project» (se hab
 abrir vacío). Antes de lanzar `entrega_gpu.py` se mira `GetCurrentProject().GetName()`; si no es el proyecto, se abre
 con `GetProjectManager().LoadProject('DAE MASTER - CURSOS')`. La llamada tarda más de un minuto y el puente corta a los
 58 s, pero el proyecto queda abierto: se comprueba con otra llamada (267 líneas, página `edit`) y se relanza.
+Volvió a pasar el 21 nov (cierres de la U2 y la U3 de Derecho de petición): la cadena compuso bien y la entrega se cayó
+en las dos líneas. Con el proyecto cargado, `entrega_gpu.py` relanzado con la misma `cola.txt` rehízo solo rótulo, línea
+y render.
 
 ## Videos de profe que no dan la calidad: avatar o restauración (informe del 19 nov 2026)
 

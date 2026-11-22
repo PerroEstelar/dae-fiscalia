@@ -56,3 +56,10 @@ pendientes.
 (112–117 de `Videos de profe`: introducción, retroalimentación y cierre de cada unidad), con el formato de la fila de la U3 y
 los enlaces como formato de celda; las fórmulas del resumen se estiraron solas al insertar. Leído de vuelta: Trata 17 videos,
 121 min, 17 con subtítulos, 0 pendientes; total 136 entregados, 1338 min.
+
+**21 nov 2026: Derecho de petición, cierres de la U2 y la U3.** Las dos filas «Sin grabación» de esos cierres (141 y 142
+de `Videos de profe`) pasaron a ser filas entregadas, con el formato de la fila del inicio de la U4 y los enlaces como
+formato de celda; la observación de las tres que siguen sin grabación dice ahora «cierres de U1 a U3». Leído de vuelta:
+Derecho de petición 8 videos, 126 min, 8 con subtítulos, 3 pendientes; total 138 entregados, 1396 min, 124 con
+subtítulos. En el `Resumen`, la fila de Trata decía «Presentadora: nombre por confirmar» (texto fijo, no fórmula): ahora
+lleva el nombre, como lo arma `hoja.py` desde `datos.py`.

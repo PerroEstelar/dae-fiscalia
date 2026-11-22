@@ -1,4 +1,4 @@
-# Derecho de petición y acción de tutela — subtítulos (20 nov 2026)
+# Derecho de petición y acción de tutela — subtítulos (20 y 21 nov 2026)
 
 | video (nombre en Drive) | subtítulos | dura | id del `.srt` en Drive |
 |---|---|---|---|
@@ -8,6 +8,8 @@
 | `derechodepeticion - U3 - INICIO-v1` | 120 | 8:08 | `1YMZmfAryjFLWFffvxHR91FUKTScifTs0` |
 | `derechodepeticion - U4 - INICIO-v1` | 117 | 8:06 | `10GY_MZXMmcU0Z1FMaQwL4uwH35QlbOpL` |
 | `derechodepeticion - U1 - CIERRE-v1` | 404 | 27:38 | `1-Ykv_ckWIoQ0SZEFZXPWG3eIpXw4mK9y` |
+| `derechodepeticion - U2 - CIERRE-v1` | 410 | 28:38 | `1jnD281rx1AHRjNbPkkP5igRFg-UuTeEX` |
+| `derechodepeticion - U3 - CIERRE-v1` | 421 | 29:36 | `1b27yvO4fLn1WSaKBv9sFK5mWjUTru9xW` |
 
 Carpeta de Drive: Derecho de petición, acción de tutela y daño antijurídico… › **VIDEOS PROFE**
 (`1KXrk6azeO_3KQhsvM2p8z8AVrTaaXmBX`), al lado del video. Copia junto al video en disco (`05 EXPORTS`). Método y
@@ -59,3 +61,36 @@ criterio: `herramientas/subtitulos/README.md`.
   - **Quedan como se oyen (cuatro pasadas iguales), y se avisan:** «Esto lo convierte al receptor en evaluador
     especializado de ese riesgo» (por el contexto podría ser «no lo convierte»), «La veracidad correcta de estas
     respuestas» y «conservar los aportes» (quizá «los soportes»).
+
+## Cierres de las unidades 2 y 3 (21 nov 2026)
+
+Mismo método (`D:\DAE\_tmp\dp_p\c23\man_finales.json`, `stt_finales\`). La transcripción de cada entrega se cotejó
+palabra por palabra con la de las grabaciones en los mismos tramos (U2 0,996, U3 0,981): Scribe sobre la entrega perdió
+el «la» de «presentar antes la acción de tutela» (U3; la grabación y la escucha normal lo tienen, la del 75 % no) y oyó
+«pocomponentes»; lo demás coincide. Segunda escucha (`stt_tramo.py`, normal y al 75 %) de 11 tramos.
+
+- **Reglas nuevas para todo el curso** (`_todos`): artículos 31, 38 y 10; «sentencia T-NNN de AAAA»; «hábeas data»; «el
+  Decreto 2591» y «del Decreto 2591» (también cuando Scribe lo da en palabras). En `_despues` (sobre el texto ya con
+  cifras): «la Ley NNNN» (también con «eh» en medio) y «sentencia T-125 de 2025» cuando Scribe da el número en palabras.
+- **Cierre de la U2** (`dpu2c`): «segunda unidad: Gestión y respuestas…» (así lo dice él); fuera los «eh» y los tropiezos
+  («de un dis— de un discurso», «que re— que revela», «indiscra— indiscriminadamente», «que otra persona preparó, que otro
+  servidor preparó» → «que otro servidor preparó», «tipo de, de alcance» → «tipo de alcance»); puntos que Scribe no puso
+  («…circulación restringida. La información…», «…con el documento. Si encuentra…»); «todo ese recorrido: quince días…»
+  (la oración no empieza con cifra); «sus anexos, todo con esta comunicación».
+  - **Él dice «orientar y emitir»; el subtítulo dice «orientar y remitir»**: la frase siguiente es «Remitir implica…» (y
+    la «y» se come la «r»). El video queda como está.
+  - **Quedan como se oyen (tres escuchas iguales), y se avisan:** «La interseccionalidad permite reconocer que varias
+    dependencias pueden concurrir» (por el contexto, quizá «condiciones») y «¿La verificación que se enviará coincide
+    con la decisión de entrega total o parcial?» (quizá «la versión»).
+- **Cierre de la U3** (`dpu3c`): «Comprender los requisitos» (tropiezo «requisit— los requisitos»), «el derecho cuya»
+  (tropiezo «cuta— cuya»), «Comprender esa estructura evita dos extremos», «o en condición», «obstáculos injustificados»,
+  «para no detener la respuesta» (él dice «para no tener la respuesta, no detener la respuesta, mejor»), «a su competencia
+  por aparecer vinculado» (él dice «para aparecer o por aparecer»), «presentar antes la acción de tutela», «información
+  nueva y vulnerabilidad» (Scribe en la entrega oyó «eh»; las dos escuchas, «y»).
+  - **Quedan como se oyen (todas las escuchas iguales), y se avisan:** «el derecho cuya proyección se solicita» (quizá
+    «protección»), «También pueden ser relevantes su vulneración» (quizá «vulnerabilidad»), «del nivel constitucional»,
+    «ni controvertir cualquier consecuencia en demostración automática de continuidad» (quizá «convertir»), «No se trata
+    de evitar todo sin ordenar» (quizá «enviar») y «Tampoco corresponde descartarle».
+- Formato validado en los dos (numeración, tiempos crecientes, 1–2 renglones de hasta 42 caracteres) y **lectura
+  completa** de cada uno. Copia de cada `.srt` en `05 EXPORTS` junto al video.
+

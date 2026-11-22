@@ -95,9 +95,50 @@
   [
    "\\bcuarta unidad: gestión, cumplimiento",
    "cuarta unidad: Gestión, cumplimiento"
+  ],
+  [
+   "\\b([Aa]rtículos?) treinta y uno\\b",
+   "\\1 31"
+  ],
+  [
+   "\\b([Aa]rtículos?) treinta y ocho\\b",
+   "\\1 38"
+  ],
+  [
+   "\\b([Aa]rtículos?) diez\\b",
+   "\\1 10"
+  ],
+  [
+   "\\b([Ss])entencia T-?(\\d{3}) de (\\d{4})",
+   "\\1entencia T-\\2 de \\3"
+  ],
+  [
+   "\\bhabeas data\\b",
+   "hábeas data"
+  ],
+  [
+   "\\b([Ee]l|[Dd]el) decreto (2591)\\b",
+   "\\1 Decreto \\2"
+  ],
+  [
+   "\\bdel decreto dos mil quinientos noventa y uno\\b",
+   "del Decreto 2591"
+  ],
+  [
+   "\\b([Ll])a ley, eh, (\\d{3,})",
+   "\\1a Ley \\2"
   ]
  ],
- "_despues": [],
+ "_despues": [
+  [
+   "\\b([Ll])a ley,? (?:eh,? )?(\\d{3,})\\b",
+   "\\1a Ley \\2"
+  ],
+  [
+   "\\b([Ss])entencia T[- ](\\d{3}) de (\\d{4})",
+   "\\1entencia T-\\2 de \\3"
+  ]
+ ],
  "dpci": [
   [
    "\\bcurso de derecho de petición y acción de tutela, régimen constitucional",
@@ -216,6 +257,130 @@
   [
    "(?<![Ll]a )\\bAbordaremos a través de cuatro lecciones",
    "La abordaremos a través de cuatro lecciones"
+  ]
+ ],
+ "dpu2c": [
+  [
+   "\\bsegunda unidad: gestión y respuestas del derecho de petición",
+   "segunda unidad: Gestión y respuestas del derecho de petición"
+  ],
+  [
+   "\\bcontacto directo, eh, con el peticionario",
+   "contacto directo con el peticionario"
+  ],
+  [
+   "\\bde un dis\\S*\\s+de un discurso",
+   "de un discurso"
+  ],
+  [
+   "\\ben esta unidad, eh, obliga",
+   "en esta unidad, obliga"
+  ],
+  [
+   "\\bque re-que revela",
+   "que revela"
+  ],
+  [
+   "\\buna petición de copia,? [Oo]rientación para presentar",
+   "una petición de copia, orientación para presentar"
+  ],
+  [
+   "\\bprobable y específico sin\\S*\\s+en caso de que",
+   "probable y específico en caso de que"
+  ],
+  [
+   "\\bborrar indiscra\\S*\\s+indiscriminadamente",
+   "borrar indiscriminadamente"
+  ],
+  [
+   "\\bNo era una regla, eh, directa",
+   "No era una regla directa"
+  ],
+  [
+   "\\bni confunden, eh, los administrados",
+   "ni confunden los administrados"
+  ],
+  [
+   "\\buna respuesta que otra persona preparó, que otro servidor preparó",
+   "una respuesta que otro servidor preparó"
+  ],
+  [
+   "\\bpeticiones de este tipo de, de alcance",
+   "peticiones de este tipo de alcance"
+  ],
+  [
+   "\\bdiferenciamos orientar y emitir\\.",
+   "diferenciamos orientar y remitir."
+  ],
+  [
+   "\\bcirculación restringida,? La información puede",
+   "circulación restringida. La información puede"
+  ],
+  [
+   "\\bsus anexos\\. Todo con esta comunicación",
+   "sus anexos, todo con esta comunicación"
+  ],
+  [
+   "\\bcon el documento,? Si encuentra tres solicitudes",
+   "con el documento. Si encuentra tres solicitudes"
+  ],
+  [
+   "\\btodo ese recorrido\\. Quince días como regla general",
+   "todo ese recorrido: quince días como regla general"
+  ]
+ ],
+ "dpu3c": [
+  [
+   "\\blos requisit\\S*\\s+(?:los\\s+)?requisitos",
+   "los requisitos"
+  ],
+  [
+   "\\bel derecho cuta\\S*\\s+cuya",
+   "el derecho cuya"
+  ],
+  [
+   "\\bno exige regla, eh, general de contratar",
+   "no exige regla general de contratar"
+  ],
+  [
+   "\\bde ejercer, eh, la acción de tutela",
+   "de ejercer la acción de tutela"
+  ],
+  [
+   "\\blos antecedentes, eh, propios",
+   "los antecedentes propios"
+  ],
+  [
+   "\\bconcretas de las, eh, del trámite",
+   "concretas del trámite"
+  ],
+  [
+   "\\bComprende esa estructura, evita dos extremos",
+   "Comprender esa estructura evita dos extremos"
+  ],
+  [
+   "\\bo en, o en condición",
+   "o en condición"
+  ],
+  [
+   "\\bobstáculos injusta-injustificados",
+   "obstáculos injustificados"
+  ],
+  [
+   "\\bpara no tener la respuesta, no detener la respuesta, mejor,",
+   "para no detener la respuesta"
+  ],
+  [
+   "\\bpara poder presentar antes acción de tutela",
+   "para poder presentar antes la acción de tutela"
+  ],
+  [
+   "\\binformación nueva,? (?:eh,? )?vulnerabilidad",
+   "información nueva y vulnerabilidad"
+  ],
+  [
+   "\\ba su competencia,? para aparecer,? o por aparecer vinculado",
+   "a su competencia por aparecer vinculado"
   ]
  ]
 }
