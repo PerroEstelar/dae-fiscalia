@@ -38,7 +38,7 @@ CURSO = 'E:/DAE MASTER/CURSO 2 - DELITOS CONTRA EL MEDIO AMBIENTE'
 R = CURSO + '/CIERRE DEL CURSO'
 BIN = ['CURSO 2 - DELITOS CONTRA EL MEDIO AMBIENTE', 'CIERRE DEL CURSO']
 ORIGINAL = R + '/01 VIDEO/ambiental_cierre_curso.mp4'
-COMPUESTO = R + '/01 VIDEO/CC_compuesto_v1.mp4'
+COMPUESTO = R + '/01 VIDEO/CC_compuesto_v2.mp4'      # v1: con la presentación de la docente (12 nov)
 TITULO = R + '/02 CARTONES/carton titulo ambientales cierre del curso.mp4'
 TITULO_BASE = CURSO + '/UNIDAD 1/02 CARTONES/carton titulo ambientales u1v2.mp4'
 SUB = 'Cierre del curso'
@@ -49,6 +49,17 @@ TMP = 'D:/DAE/_tmp/ma/cc'
 XY, VENTANA = (0, 30), (1143, 643)
 AUDIO_META = 'I=-16:TP=-3:LRA=7'
 
+# 23 nov 2026: «la profe Diana debe presentarse una única vez, en el video de inicio». Se saca «Soy Diana Carolina
+# Flórez Bayona» (3,62–5,44 s de la fuente): de la pausa después de «…todos ustedes.» al silencio antes de «y quiero
+# felicitarlos», que queda «Y quiero felicitarlos…». Bordes en cuadros de la fuente (30 fps), en silencio (RMS de
+# 10 ms: −72 a −78 dB). Después del corte, plano cerrado hasta el cuadro en que entra el cartón «Quiero felicitarlos…»
+# (8,8 s); el panel DAE/Fiscalía entra entero (empieza en x≈36 de la fuente).
+FPS_FUENTE = 30
+CORTE = (104 / 30.0, 173 / 30.0)
+PLANO_CERRADO = (30, 30, 1024, 576)
+FIN_CERRADO = 8.8
+TRAMOS = [(0.0, CORTE[0], None), (CORTE[1], FIN_CERRADO, PLANO_CERRADO), (FIN_CERRADO, None, None)]
+
 NOMBRE_CURSO = ('Investigación y judicialización de delitos contra el medio ambiente y los '
                 'recursos naturales')
 PROFE = ('Diana Carolina Florez Vallona',
@@ -56,8 +67,15 @@ PROFE = ('Diana Carolina Florez Vallona',
          'Constitucional')
 
 
+def a_salida(t):
+    """Segundo de la fuente → segundo del clip compuesto (sin la presentación)."""
+    if CORTE[0] < t < CORTE[1]:
+        raise ValueError('%.2f cae dentro del corte' % t)
+    return t - (CORTE[1] - CORTE[0]) if t >= CORTE[1] else t
+
+
 def cuadro(t):
-    return CLIP0 + int(round(t * FPS))
+    return CLIP0 + int(round(a_salida(t) * FPS))
 
 
 def c_tit(titulo, cuerpo):
@@ -89,7 +107,7 @@ def lista(titulo, *filas):
 
 
 ITEMS = [
-    ('lt01', 'lt', 0.8, 8.8, PROFE),
+    ('lt01_v2', 'lt', 0.8, 8.8, PROFE),     # v2 (23 nov): más corto, cruza el corte; el lt01 de la v1 sigue en disco
     # con el nombre del curso debajo quedaba a 20 car/s; el nombre ya está en los cartones de título
     ('c01_final', 'carton', 8.8, 16.6, [(
         'Quiero felicitarlos por haber llegado al final de este curso', 'bold', TIT, 0)]),
