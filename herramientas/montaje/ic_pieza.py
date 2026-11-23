@@ -294,7 +294,10 @@ def cartones(solo=None):
     for clave, tipo, t0, t1, cont in P.ITEMS:
         if solo and not any(clave.startswith(x) for x in solo):
             continue
-        n = int(round((t1 - t0) * P.FPS))
+        # con un corte en el plan (`a_salida`), un ítem que lo cruza dura lo que queda en la salida: el lower
+        # third del cierre del curso DA v2 va de 0,8 a 8,8 s de la fuente y pierde los 2,3 s de la
+        # presentación (23 nov 2026). Un ítem que no cruza el corte da el mismo n que antes.
+        n = int(round(((P.a_salida(t1) - P.a_salida(t0)) if hasattr(P, 'a_salida') else (t1 - t0)) * P.FPS))
         if tipo == 'carton':
             total, off = C.render(cont, n, destino_carton(clave))
             aviso = '  <-- SE SUBE DE LA ZONA' if off - C.BAR_PAD < C.ZONA[1] else ''
