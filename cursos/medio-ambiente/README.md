@@ -4,7 +4,10 @@
 > 12 nov 2026) está en `introduccion_curso/`: línea `MA - CURSO - INTRODUCCION`,
 > export `delitosambientales - CURSO - INTRODUCCION-v1.mp4`. El **cierre del curso**
 > está en `cierre_curso/`: línea `MA - CURSO - CIERRE`, export
-> `delitosambientales - CURSO - CIERRE-v1.mp4`.
+> `delitosambientales - CURSO - CIERRE-v2.mp4`.
+> **23 nov 2026: la docente se presenta solo en la introducción al curso.** Las
+> introducciones de unidad (U1 v4, U2–U5 v3) y el cierre del curso (v2) van sin el
+> tramo en que dice su nombre y sus credenciales: `sin_presentacion/`.
 > Los **cierres de unidad** (los videos de diapositivas de cada unidad con nuestra
 > intro y outro, 13 nov 2026) están en `cierres_unidad/`. La **Unidad 4, lección 1**
 > (justicia restaurativa, con Daniela Escallón, 15 nov 2026) está en

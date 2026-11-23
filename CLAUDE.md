@@ -3790,3 +3790,20 @@ outro, y `srt_de_stt.py` (que a una palabra de más de 3 s le pone el arranque e
   deja lo que dice y queda anotado en el inventario para que lo decida Sebastián.
 - **Un nombre de curso dicho a medias se corrige al nombre del curso** («delitos con el medio ambiente» → «contra»),
   como los títulos de unidad: es un nombre propio, no una cita.
+
+## Sacar una frase de un video ya entregado sin rearmar la línea (Medio ambiente, 23 nov 2026)
+
+«La profe debe presentarse una única vez»: se quitó su presentación de cinco introducciones de unidad ya entregadas.
+No hizo falta tocar las líneas: se rinde cada línea tal cual a un máster de paso (H.264 NVIDIA 80000, PCM) y el corte
+se hace sobre el máster con ffmpeg (`cursos/medio-ambiente/sin_presentacion/ma_corta.py`):
+
+- se quitan cuadros enteros de la línea y el audio en las mismas muestras (1 cuadro = 2002 a 48 kHz), con bordes en
+  silencio o en el valle antes de la palabra (RMS de 10 ms) y fundidos de 12 ms;
+- después del corte, un plano cerrado (recorte de la salida, ×1,15, con el panel DAE/Fiscalía entero) hasta el
+  primer cartón: ahí no hay gráficos y el salto no se ve;
+- el `.srt` sale del ya revisado (`srt_sin_pres.py`): se quitan los subtítulos del corte, se corren los de después y
+  se reescribe el que cruza. No hace falta otra transcripción.
+
+Si un gráfico cruza el corte (el lower third del cierre del curso), eso no sirve: se rehace por la cadena del plan
+(`CORTE` + `TRAMOS` + `a_salida`), y `ic_pieza.cartones` le da al ítem la duración que le queda en la salida.
+

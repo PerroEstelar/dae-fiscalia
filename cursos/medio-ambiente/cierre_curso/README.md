@@ -86,6 +86,14 @@ marca APRENDE CON LA DAE entra entera.
 - Cada ítem está en el cuadro y con la duración del plan.
 - El último cartón termina en el 4542, y el clip en el 4546.
 
+## v2 sin la presentación (23 nov 2026)
+
+Se sacó «Soy Diana Carolina Flórez Bayona» (`CORTE` en `plan_cc.py`) con plano cerrado hasta el primer cartón, y el
+lower third pasó a `lt01_v2` (137 cuadros). Línea nueva `MA - CURSO - CIERRE` de 4.900 cuadros; la v1 quedó como
+`MA - CURSO - CIERRE (v1, con presentacion)` y su `.drt` en `10 TIMELINE SEBASTIAN/_descartes`. Entrega
+`delitosambientales - CURSO - CIERRE-v2.mp4`: 4.900 cuadros, 148 MB, −16,2 LUFS, pico −3,0 dBTP, PSNR contra el
+máster 48,8 dB (mín. 44,2). Detalle en `../sin_presentacion/README.md`.
+
 ## Entrega (MP4, receta del 23 oct, `ic_mp4`)
 
 - **Archivo:** `05 EXPORTS/delitosambientales - CURSO - CIERRE-v1.mp4`.

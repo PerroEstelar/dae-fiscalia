@@ -218,19 +218,21 @@ for nombre, uni, pieza in [
 CUR = 'Investigación y judicialización de delitos contra el medio ambiente y los recursos naturales'
 DC = 'Diana Carolina Florez Vallona'
 MOV = 'El video está en .mov (anterior a la regla de entregar en MP4).'
+SINPRES = ('Sin la presentación de la docente (nombre y credenciales), que queda solo en la introducción al curso '
+           '(23 nov). La %s y su .srt están en VIDEOS › _anteriores.')
 DA = [
     ('Curso', 'Introducción al curso', DC, 'delitosambientales - CURSO - INTRODUCCION-v1.mp4', '1_RvHWIfTUKEzUF9QeXOhy2lGtQl3sz9c', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '12 nov', ''),
-    ('Unidad 1', 'Introducción a la unidad', DC, 'delitosambientales - U1 - INTRODUCCION-v3.mov', '1OLesJI_2zjhFLBm-fZDaNC7v47DMrI-g', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '10 nov', MOV),
+    ('Unidad 1', 'Introducción a la unidad', DC, 'delitosambientales - U1 - INTRODUCCION-v4.mp4', '19z2MzFAjA5zhSzAQk980CrQ-xies1myW', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '23 nov', SINPRES % 'v3 (.mov)'),
     ('Unidad 1', 'Conversatorio: articulación DEMA y DECOC', 'Ana María Díaz González y Camilo Andrés González López', 'delitosambientales - U1 - CONVERSATORIO DEMA y DECOC-v1.mov', '1Ioh_PHsJgbXdnOidNAXdROmNNr20QWMu', '13B1FO9EgVKEwq63GuNDO8-yYnm-gXITO', '11 nov', MOV),
-    ('Unidad 2', 'Introducción a la unidad', DC, 'delitosambientales - U2 - INTRODUCCION-v2.mov', '1waRtvmYYWNhS9pWw3XGTNEmqas7zOcPE', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '10 nov', MOV),
-    ('Unidad 3', 'Introducción a la unidad', DC, 'delitosambientales - U3 - INTRODUCCION-v2.mov', '1ncTfFZ_ydvs5ZHoe1BhvcJ_F4mupQMAm', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '10 nov', MOV),
+    ('Unidad 2', 'Introducción a la unidad', DC, 'delitosambientales - U2 - INTRODUCCION-v3.mp4', '19OwA__9qpNllhKcsShugpXe7yz8FohIL', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '23 nov', SINPRES % 'v2 (.mov)'),
+    ('Unidad 3', 'Introducción a la unidad', DC, 'delitosambientales - U3 - INTRODUCCION-v3.mp4', '1AskjduHzz72ekAw1DvhwGFGTSED9Gnri', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '23 nov', SINPRES % 'v2 (.mov)'),
     ('Unidad 3', 'Entrevista: técnicas especiales de investigación', 'Jairo Porras', 'delitosambientales - U3 - ENTREVISTA TECNICAS ESPECIALES-v1.mov', '1WO2LxXUeUoGVVCK9odeqOfMr1_aJ-jl4', '1Z_7O-mlITWgInSRArm1_qqug0vqfYeGm', '11 nov', MOV),
     ('Unidad 3', 'Lección 4: investigación financiera', 'Alba Lucía Solís Ramírez', 'delitosambientales - U3 - LECCION 4-v1.mp4', '1l8o9AdVubTc3mBvKtYPuuP8b1jBOpDea', '138IERkCos3CdTH3SEjUCul6pLJ_sy5pv', '15 nov', 'La grabación venía armada con varias tomas; se quitaron dos frases repetidas.'),
     ('Unidad 3', 'Lección 5: la prueba pericial', 'Hugo Ascencio Salazar', 'delitosambientales - U3 - LECCION 5-v1.mp4', '1Hkg0kpqF8xIgFMDW2LWjeiz6bweDdMv3', '1owzhcZV_mOam7wdU9TRYJzqL45cfFb5s', '15 nov', ''),
-    ('Unidad 4', 'Introducción a la unidad', DC, 'delitosambientales - U4 - INTRODUCCION-v2.mov', '1sV0VrujZq4uILiteLHokQYYUQZyrfyPB', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '10 nov', MOV),
+    ('Unidad 4', 'Introducción a la unidad', DC, 'delitosambientales - U4 - INTRODUCCION-v3.mp4', '1mWGUrj4uGMRipr2LTUov9CPpBf6LO4VS', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '23 nov', SINPRES % 'v2 (.mov)'),
     ('Unidad 4', 'Lección 1: justicia restaurativa', 'Daniela Escallón', 'delitosambientales - U4 - LECCION 1-v1.mp4', '1hELVGGJV83mUYZyVRpcW6cukOqWAVHYU', '1973M2cTX9faj2KPkfbUx0Yh9tlAerfGj', '15 nov', 'Desde 15:38 la imagen va un cuadro (33 ms) detrás del sonido.'),
-    ('Unidad 5', 'Introducción a la unidad', DC, 'delitosambientales - U5 - INTRODUCCION-v2.mov', '1M4qHpgUWMqpUInliXNEjodEwq39RDlDx', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '10 nov', MOV),
-    ('Curso', 'Cierre del curso', DC, 'delitosambientales - CURSO - CIERRE-v1.mp4', '1SRP0IkJElVEefHIjC69-EfBCzkGik0V0', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '12 nov', ''),
+    ('Unidad 5', 'Introducción a la unidad', DC, 'delitosambientales - U5 - INTRODUCCION-v3.mp4', '15ZC3brxNbXay23vZupaDUxUHg0tNbUAd', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '23 nov', SINPRES % 'v2 (.mov)'),
+    ('Curso', 'Cierre del curso', DC, 'delitosambientales - CURSO - CIERRE-v2.mp4', '1gSVHiOkeV9quWKgzMzQyXxv03JN_BIbs', '1h3IF2Dd7gMXpHCyyUiK0wVZyi6juUYQ_', '23 nov', SINPRES % 'v1'),
 ]
 T = tabla('medio-ambiente')     # subtítulos del 22 nov 2026
 for uni, pieza, profe, arch, vid, carp, fecha, nota in DA:
