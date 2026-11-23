@@ -35,7 +35,7 @@ def w(*a):
 def cuadros(f):
     r = subprocess.run([FB + '/ffprobe.exe', '-v', 'error', '-count_packets', '-select_streams', 'v:0', '-show_entries',
                         'stream=nb_read_packets', '-of', 'csv=p=0', f], capture_output=True, text=True)
-    return int(r.stdout.strip() or 0)
+    return int((r.stdout.split() or ['0'])[0])     # ffprobe repite el valor en otra línea (con .mov)
 
 
 def medir(f):
