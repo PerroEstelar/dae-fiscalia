@@ -13,6 +13,15 @@ tope de ~55 s. Cada paso es idempotente: vuelve a correr sin duplicar nada.
     python montar_c5u3.py chequeo    el chequeo de cinco puntos
     python montar_c5u3.py marcas     los dos marcadores H5P y el .drt
 
+LA v3 (23 nov 2026)
+    `C5U3 ESLABON FINANCIERO - a la voz v3` es un duplicado de la v2 con un solo cambio: en V3, el cartón
+    `C5U3_p2_foro.mov` (4963-5308) cambia por `C5U3_p2_foro v2.mov`, sin el antetítulo «Tarea del foro».
+    Comparadas las dos líneas ítem por ítem (49 y 49), es la única diferencia. Este script sigue armando la v2.
+    El intro y el outro de las dos líneas habían quedado sin medio en el pool (Resolve los rendía «Media Offline»):
+    en la v3 se volvieron a poner desde ` 00 COMUNES/INTRO` (0-222 y 5427-5649, video y audio). La v2 quedó como
+    estaba. Entrega: `05 EXPORTS/C5U3 - revision v3.mp4` (5.649 cuadros, −16,5 LUFS, −1,1 dBTP); fuera del cartón
+    nuevo, 47 dB o más contra `C5U3 - revision v2.mov` en todos los cuadros.
+
 POR QUE EL CHEQUEO NO VUELVE A LLAMAR A ffprobe
     `ffprobe -count_frames` sobre los 26 clips de V1 se pasa del tope del
     puente: el lecho solo pesa 181 MB. Los conteos se miden UNA vez al

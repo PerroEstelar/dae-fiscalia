@@ -38,8 +38,10 @@ PAUSA = [
                   "prueba o bien sujeto a registro— define la medida.\n"
                   "c)  Depende de si el bien se aprehende materialmente o basta "
                   "afectarlo jurídicamente."}),
+    # 23 nov 2026: sin el antetítulo «Tarea del foro» (Sebastián: «esto no es un foro»). El archivo nuevo es
+    # «C5U3_p2_foro v2.mov», del mismo largo (345 cuadros), y va en la línea «… a la voz v3»; lo rindió
+    # `c5u3_foro_v2.py`, que antes comprobó que el código de hoy saca el de octubre idéntico cuadro a cuadro.
     ("p2_foro", {
-        "ante": "Tarea del foro",
         "titulo": "Escoja dos de los cinco bienes y diga qué medida procede sobre "
                   "cada uno",
         "cuerpo": "y qué hace con el tercero arrendatario y con los equipos que "

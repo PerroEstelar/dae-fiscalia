@@ -115,6 +115,22 @@ def master(linea, carpeta, nombre, mdir=None):
     if tl is None:
         raise SystemExit('no está la línea ' + linea)
     largo = tl.GetEndFrame() - tl.GetStartFrame()
+    # NADA OFFLINE (23 nov 2026). La línea del caso 3 de Bienes tenía el intro y el outro sin medio en el pool
+    # (`GetMediaPoolItem()` da None): Resolve los rinde como «Media Offline», rojo y en silencio, y el resto del
+    # chequeo (cuadros, audio presente) pasa igual. Se vio comparando contra la entrega anterior, ya subida.
+    t0l, sin = tl.GetStartFrame(), []
+    for k in ('video', 'audio'):
+        for n in range(1, tl.GetTrackCount(k) + 1):
+            for it in tl.GetItemListInTrack(k, n) or []:
+                m = it.GetMediaPoolItem()
+                ruta = m.GetClipProperty('File Path') if m else ''
+                # un título, un generador o un compuesto no tienen medio: solo cuenta lo que se llama como un archivo
+                archivo = os.path.splitext(it.GetName() or '')[1].lower() in (
+                    '.mp4', '.mov', '.mxf', '.wav', '.mp3', '.aif', '.aiff', '.m4a', '.png', '.jpg', '.tif', '.tiff')
+                if (m is None and archivo) or (ruta and not os.path.exists(ruta)):
+                    sin.append('%s%d %s en %d' % (k[0].upper(), n, it.GetName(), it.GetStart() - t0l))
+    if sin:
+        raise SystemExit('MEDIOS OFFLINE en la línea: ' + '; '.join(sin))
     dst = '%s/05 EXPORTS/_master' % carpeta
     os.makedirs(dst, exist_ok=True)
     nm = nombre + '_master_32mbps'

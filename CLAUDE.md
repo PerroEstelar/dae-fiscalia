@@ -3807,3 +3807,19 @@ se hace sobre el máster con ffmpeg (`cursos/medio-ambiente/sin_presentacion/ma_
 Si un gráfico cruza el corte (el lower third del cierre del curso), eso no sirve: se rehace por la cadena del plan
 (`CORTE` + `TRAMOS` + `a_salida`), y `ic_pieza.cartones` le da al ítem la duración que le queda en la salida.
 
+## Antes de subir una versión corregida, compararla con la anterior cuadro a cuadro (caso 3 de Bienes, 23 nov 2026)
+
+Para quitar «Tarea del foro» de un cartón del caso 3 de Bienes se duplicó la línea de octubre, se cambió ese cartón y
+se rindió. La entrega pasó todo el chequeo (cuadros = línea, audio, sonoridad) y se subió. Después, la PSNR por cuadro
+contra la entrega anterior mostró tres tramos distintos: el cartón (esperado) y el intro y el outro (3,7 dB). El clip
+del intro había perdido su medio en el pool del caso y Resolve lo rendía como «Media Offline», en rojo y mudo. La
+entrega mala se mandó a la papelera antes de pasar el enlace; se volvieron a poner el intro y el outro desde
+` 00 COMUNES/INTRO` y se rindió otra vez.
+
+- Una corrección sobre una línea vieja se compara con la entrega anterior **antes de subirla**: PSNR por cuadro a
+  480×270 (`psnr=stats_file=`), y los tramos bajo 35 dB tienen que ser solo los que se cambiaron.
+- `mp4_entrega.master` ahora se niega a rendir si un ítem con nombre de archivo no tiene medio en el pool o su ruta no
+  existe («MEDIOS OFFLINE en la línea»).
+- Un cartón rehecho se rinde primero con el texto viejo y se compara con el archivo viejo (`framemd5`): si sale
+  idéntico, el código no cambió y el nuevo se verá igual que sus vecinos (`c5u3_foro_v2.py`).
+
