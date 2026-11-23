@@ -10,6 +10,8 @@
 | `audienciaspreliminares - U3 - CIERRE-v1` | 188 | 11:31 | `1XOPFVyACbNFSc2rJ8o8ZvvnA9GzlUdCU` |
 | `audienciaspreliminares - U4 - INICIO-v1` | 41 | 3:06 | `1YOeJ8MF-p5UX5lsxkVP4chCcMz-e62Cj` |
 | `audienciaspreliminares - U4 - CIERRE-v1` | 154 | 10:47 | `1p0tKIGygVi0_NP3_rYHYyCfbKOwMeBPU` |
+| `audienciaspreliminares - CURSO - INICIO-v1` | 90 | 6:00 | `1QU07kSUNuVWexEJY5ekUiFgH6SyFwArs` |
+| `audienciaspreliminares - CURSO - CIERRE-v1` | 101 | 6:27 | `1S7jfP61A9cnjDtbtVfbUgj2lWnaXbWyz` |
 
 Carpeta de Drive: VIDEOS del curso › VIDEOS FINALIZADOS (`1r2AepvLVei0eHFf47Kh-YePDPowoTuvF`), al lado del video. Copia
 junto al video en disco (`05 EXPORTS`). Método y criterio: `herramientas/subtitulos/README.md`.
@@ -38,3 +40,5 @@ junto al video en disco (`05 EXPORTS`). Método y criterio: `herramientas/subtit
 - **U3 cierre (recapitulación)** (`apu3c`): Fuera los tropiezos «las, sus reglas», «las, la recepción» y «la ley nuevec—»; «la reforma del dos cincuenta» → «la reforma del 250»; «artículo dos cuarenta y dos B» → «artículo 242B»; dos veces «artículo ciento cincuenta constitucional» → «250» (ver arriba).
 - **U4 inicio** (`apu4i`): Fuera el tropiezo «los elementos de, eh, fundamentales»; comas en «a esta figura, los motivos…» y «que son, desde ya, valga decirlo, diferenciadas». «Por otra manera» va como lo dice.
 - **U4 cierre (recapitulación)** (`apu4c`): Fuera los tropiezos «a la, al», «del, de la» y «llevar a, al»; «del dos veintiuno» → «del 221»; «la autoría participable» → «la autoría o participación» y «presupuesto de inferencia de derechos fundamentales» → «de injerencia en derechos fundamentales» (lecturas: Scribe oyó mal; él usa esas dos expresiones en otros videos). La «sentencia 024 de 1994» va como la dice (es la C-024).
+- **Inicio del curso** (`apci`, 23 nov): los nombres como en la ficha: el coautor, «Jean Manuel González» (Scribe: «Jan»), y el caso, «Beatriz Elena Morales»; «Bloque de Los Patios»; «servidores misionales» (la transcripción de la fuente oía «funcionales»; la del video final, «misionales», que es lo que tiene sentido); el nombre del curso entre comillas; «artículos 153 y 154», «artículo 307», «artículo 317», «Directiva 01 de 2020», «Ley 1908 de 2018» (él dice «del 18»), «32.792 personas», «48 horas». Fuera los «eh» de «elaborado, eh, por mi persona… González, eh,».
+- **Cierre del curso** (`apcc`, 23 nov): fuera el tropiezo en el nombre del curso («Audiencias preliminares d— y medidas»), que queda en el video; «A repasar» → «Al repasar»; «sentencia C-336 de 2007», «radicado 1157 de 2020», «Sala de Casación Penal», «C-185 de 2008», «Directiva 01 de 2020», «24 horas»; «del Bloque de Los Patios». Segunda escucha: «fin legítimo, idoneidad, necesidad y proporcionalidad» (Scribe sobre el video final oyó «fin legítimo y donde hay necesidad de»); quedan como se oyen «la estructura de los bloques de Los Patios», «como código hash» y «en precedentes».

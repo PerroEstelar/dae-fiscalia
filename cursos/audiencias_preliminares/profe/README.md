@@ -88,3 +88,25 @@ Sonido medido en cada entrega: −16,1 a −16,2 LUFS, pico −2,9 a −3,0.
 - Las copias de trabajo de las fuentes quedaron en `_MA subidas › _bajadas AP 20nov` (`166c5pWMWWins5VFEFJcB-3vuCuwIz9pb`);
   las originales siguen en «Videos Curso Virtual FGN-UNAL».
 - Subtítulos: `../subtitulos/README.md`.
+
+## Inicio y cierre del curso (23 nov 2026)
+
+Sebastián: «llegaron el inicio y cierre que nos faltaban de ese curso». Están en la carpeta del profe «Videos Curso
+Virtual FGN-UNAL» (`1EwIMnNW2Ales4pjaBhsvh3uq6G2Efb-f`, la misma que tiene las ocho de las unidades): `Apertura de
+curso.mp4` (5:34,8) y `Cierre de curso.mp4` (5:59,8), el mismo formato de Teams (1280×720, 25 fps, BT.601). Copias de
+trabajo en `_bajadas AP 20nov`; en disco, en `00 FUENTES`.
+
+| plan | pieza | tramo (s) | entrega | dura | id en Drive | `.srt` |
+|---|---|---|---|---|---|---|
+| `plan_apci` | inicio del curso | 5,55–331,74 | `audienciaspreliminares - CURSO - INICIO-v1.mp4` (230 MB) | 6:00 | `18ggELQo92OD3CvJr93PaasxfUEYn0Fi5` | `1QU07kSUNuVWexEJY5ekUiFgH6SyFwArs` |
+| `plan_apcc` | cierre del curso | 3,13–356,28 | `audienciaspreliminares - CURSO - CIERRE-v1.mp4` (248 MB) | 6:27 | `15uJ6HGC98vYvJxwv_o5uXd6xEqkso94B` | `1S7jfP61A9cnjDtbtVfbUgj2lWnaXbWyz` |
+
+- `armar_curso` en `base_ap_profe.py`; carpetas `VIDEOS PROFE/CURSO/INICIO|CIERRE`, bin `… / VIDEOS PROFE / CURSO - INICIO|CIERRE`.
+  Cartón de título: el nombre del curso y «Inicio del curso» o «Cierre del curso».
+- Sin cortes. El inicio es el «Video de presentación» (2.1) que faltaba; el cierre la ficha lo da como mensaje escrito
+  (4.1) y el profe lo grabó. En el cierre el tropiezo «Audiencias preliminares… d— y medidas» (0:27–0:35 del video,
+  con 1,6 s de pausa) se queda.
+- Entregas por la placa NVIDIA (pedido 5000 kb/s, real ~5,36 Mb/s), −16,1 LUFS, pico −3,0. Hojas de revisión miradas.
+  Verificadas byte a byte con una copia de servidor en `_verif ap 23nov` (`D:\DAE\_tmp\ap_p\verif_curso.log`: 2 «OK»;
+  la carpeta, a la papelera). En VIDEOS FINALIZADOS con su `.srt` al lado, y el `.srt` también en `05 EXPORTS`.
+- `lote/cadena_ap.py` acepta ahora los planes por argumento (antes creaba las carpetas solo de los ocho de `PLANES`).

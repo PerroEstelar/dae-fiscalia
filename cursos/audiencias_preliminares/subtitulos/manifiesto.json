@@ -62,5 +62,23 @@
   "carpeta": "1r2AepvLVei0eHFf47Kh-YePDPowoTuvF",
   "video_id": "1NILsuLPmiTuughnPHyaH_DpVfkKediOu",
   "bytes": 118039295
+ },
+ {
+  "clave": "apci",
+  "video": "D:/DAE MASTER/PRIORIDAD 1/CURSO - AUDIENCIAS PRELIMINARES Y MEDIDAS DE ASEGURAMIENTO/VIDEOS PROFE/CURSO/INICIO/05 EXPORTS/audienciaspreliminares - CURSO - INICIO-v1.mp4",
+  "nombre": "audienciaspreliminares - CURSO - INICIO-v1",
+  "carpeta": "1r2AepvLVei0eHFf47Kh-YePDPowoTuvF",
+  "video_id": "18ggELQo92OD3CvJr93PaasxfUEYn0Fi5",
+  "bytes": 241121152,
+  "srt_id": "1QU07kSUNuVWexEJY5ekUiFgH6SyFwArs"
+ },
+ {
+  "clave": "apcc",
+  "video": "D:/DAE MASTER/PRIORIDAD 1/CURSO - AUDIENCIAS PRELIMINARES Y MEDIDAS DE ASEGURAMIENTO/VIDEOS PROFE/CURSO/CIERRE/05 EXPORTS/audienciaspreliminares - CURSO - CIERRE-v1.mp4",
+  "nombre": "audienciaspreliminares - CURSO - CIERRE-v1",
+  "carpeta": "1r2AepvLVei0eHFf47Kh-YePDPowoTuvF",
+  "video_id": "15uJ6HGC98vYvJxwv_o5uXd6xEqkso94B",
+  "bytes": 259630489,
+  "srt_id": "1S7jfP61A9cnjDtbtVfbUgj2lWnaXbWyz"
  }
 ]

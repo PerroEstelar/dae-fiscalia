@@ -274,5 +274,101 @@
    "\\bYa saben, pues que",
    "Ya saben, pues, que"
   ]
+ ],
+ "apci": [
+  [
+   "\\bcurso virtual Audiencias Preliminares y Medidas de Aseguramiento",
+   "curso virtual «Audiencias preliminares y medidas de aseguramiento»"
+  ],
+  [
+   "\\bcuarenta y ocho horas",
+   "48 horas"
+  ],
+  [
+   "\\b(artículos )(?:153|ciento cincuenta y tres), ciento cincuenta y cuatro",
+   "\\g<1>153 y 154"
+  ],
+  [
+   "\\btreinta y dos mil setecientas noventa y dos\\b",
+   "32.792"
+  ],
+  [
+   "\\bBloque de los Patios",
+   "Bloque de Los Patios"
+  ],
+  [
+   "\\bartículo trescientos siete\\b",
+   "artículo 307"
+  ],
+  [
+   "\\bartículo trescientos diecisiete\\b",
+   "artículo 317"
+  ],
+  [
+   "\\bLey 1908 del 18\\b",
+   "Ley 1908 de 2018"
+  ],
+  [
+   "\\b[Dd]irectiva cero uno del 2020",
+   "Directiva 01 de 2020"
+  ],
+  [
+   "\\belaborado, eh, por mi persona junto al doctor Jan Manuel González, eh,",
+   "elaborado por mi persona junto al doctor Jean Manuel González,"
+  ]
+ ],
+ "apcc": [
+  [
+   "\\bcurso virtual Audiencias Preliminares d-- y Medidas de Aseguramiento",
+   "curso virtual «Audiencias preliminares y medidas de aseguramiento»"
+  ],
+  [
+   "\\bA repasar el camino",
+   "Al repasar el camino"
+  ],
+  [
+   "\\bartículo trescientos siete\\b",
+   "artículo 307"
+  ],
+  [
+   "\\b[Dd]irectiva cero uno del 2020",
+   "Directiva 01 de 2020"
+  ],
+  [
+   "\\bveinticuatro horas",
+   "24 horas"
+  ],
+  [
+   "\\bsentencia tres treinta y seis del 2007",
+   "sentencia C-336 de 2007"
+  ],
+  [
+   "\\bradicado once cincuenta y siete del 2020",
+   "radicado 1157 de 2020"
+  ],
+  [
+   "\\bdel bloque de Los Patios",
+   "del Bloque de Los Patios"
+  ],
+  [
+   "\\bsentencia C ciento ochenta y cinco del 2008",
+   "sentencia C-185 de 2008"
+  ],
+  [
+   "\\bestimados, eh, y estimadas, eh, miembros",
+   "estimados y estimadas miembros"
+  ],
+  [
+   "\\bfin legítimo y donde hay necesidad de proporcionalidad",
+   "fin legítimo, idoneidad, necesidad y proporcionalidad"
+  ],
+  [
+   "\\bCorte Suprema, eh, con radicado",
+   "Corte Suprema, con radicado"
+  ],
+  [
+   "\\bsala de casación penal",
+   "Sala de Casación Penal"
+  ]
  ]
 }

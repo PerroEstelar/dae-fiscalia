@@ -23,12 +23,13 @@ def w(*a):
 # ic_pieza no crea las carpetas de la pieza: ffmpeg falla al escribir el compuesto (código 4294967294, ENOENT) después
 # de la medida de loudnorm. Se crean acá.
 sys.path.insert(0, 'D:/DAE/_repo/cursos/audiencias_preliminares/profe')
-for _p in PLANES:
+ELEGIDOS = sys.argv[1:] or PLANES   # 23 nov: se pasan los planes nuevos (inicio y cierre del curso)
+for _p in ELEGIDOS:
     _P = importlib.import_module(_p)
     for _s in ('01 VIDEO', '02 CARTONES', '05 EXPORTS', '10 TIMELINE SEBASTIAN'):
         os.makedirs(_P.R + '/' + _s, exist_ok=True)
     os.makedirs(_P.TMP, exist_ok=True)
-pend, vivos = list(sys.argv[1:] or PLANES), {}
+pend, vivos = list(ELEGIDOS), {}
 w('arranca', len(pend))
 while pend or vivos:
     for p, (pr, t) in list(vivos.items()):

@@ -68,6 +68,8 @@ UNIDADES = {
 }
 FUENTE = {('INICIO', u): FUENTES + 'Unidad %d - Introducción.mp4' % u for u in range(1, 5)}
 FUENTE.update({('CIERRE', u): FUENTES + 'Unidad %d - Recapitulación.mp4' % u for u in range(1, 5)})
+# 23 nov 2026: llegaron a la carpeta del profe el inicio y el cierre del curso, que faltaban.
+FUENTE.update({('INICIO', 'CURSO'): FUENTES + 'Apertura de curso.mp4', ('CIERRE', 'CURSO'): FUENTES + 'Cierre de curso.mp4'})
 # El rótulo va a la izquierda, sobre la plaza del fondo: el profe ocupa el centro y la derecha.
 LT = (40, 440)
 PROFE = ('John Zuluaga\nTaborda', 'Autor del curso')
@@ -97,6 +99,22 @@ def armar_unidad(u, pieza, tramos):
         ORIGINAL=FUENTE[(pieza, u)], COMPUESTO=r + '/01 VIDEO/%s_compuesto_v1.mp4' % prefijo,
         TITULO=r + '/02 CARTONES/carton titulo %s.mp4' % prefijo.lower(), SUB='Unidad %d. %s' % (u, UNIDADES[u]),
         NOMBRE_LINEA='AP - U%d - %s' % (u, pieza), EXPORT='audienciaspreliminares - U%d - %s' % (u, pieza) + '-v%d',
+        PREFIJO=prefijo, TMP='D:/DAE/_tmp/ap_p/' + prefijo.lower(), TRAMOS=tr, T0=tr[0][0], T1=tr[-1][1],
+        cuadro=cuadro_de(tr), MASTER_DIR=MASTERS + '/' + carpeta)
+
+
+def armar_curso(pieza, sub, tramos):
+    """Inicio o cierre del curso (23 nov 2026). Mismas reglas que las unidades; el cartón de título lleva
+    «Inicio del curso» o «Cierre del curso», como en los demás cursos."""
+    carpeta = 'CURSO/%s' % pieza
+    prefijo = 'APC%s' % pieza[0]
+    r = RAIZ + '/' + carpeta
+    tr = [(a, b, None) for a, b in tramos]
+    return dict(
+        R=r, BIN=BIN_CURSO + [carpeta.replace('/', ' - ')],
+        ORIGINAL=FUENTE[(pieza, 'CURSO')], COMPUESTO=r + '/01 VIDEO/%s_compuesto_v1.mp4' % prefijo,
+        TITULO=r + '/02 CARTONES/carton titulo %s.mp4' % prefijo.lower(), SUB=sub,
+        NOMBRE_LINEA='AP - CURSO - %s' % pieza, EXPORT='audienciaspreliminares - CURSO - %s' % pieza + '-v%d',
         PREFIJO=prefijo, TMP='D:/DAE/_tmp/ap_p/' + prefijo.lower(), TRAMOS=tr, T0=tr[0][0], T1=tr[-1][1],
         cuadro=cuadro_de(tr), MASTER_DIR=MASTERS + '/' + carpeta)
 
