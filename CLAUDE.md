@@ -3823,3 +3823,16 @@ entrega mala se mandó a la papelera antes de pasar el enlace; se volvieron a po
 - Un cartón rehecho se rinde primero con el texto viejo y se compara con el archivo viejo (`framemd5`): si sale
   idéntico, el código no cambió y el nuevo se verá igual que sus vecinos (`c5u3_foro_v2.py`).
 
+El mismo día se hizo igual con los casos 1 y 2 de Bienes y con Los Chapulines (SRPA U5C1): `cartones/foros_v2.py`,
+`montaje/foros_v2_lineas.py` y `montaje/foros_v2_cadena.py`. Las tres líneas también tenían el intro y el outro sin
+medio. La comparación con la entrega anterior se hace también con el **audio** (nueva menos vieja, por segundo):
+
+- Una diferencia no siempre es un error nuestro. La entrega vieja del C5U2 tenía dos microcortes de audio que la
+  línea no tiene; la nueva sale bien.
+- **La línea puede tener cambios que nunca se entregaron.** En U5C1 la entrega de revisión (13 oct, 19:54) es
+  anterior a dos ajustes de la línea (planos de la avenida retocados en V4 y el cartón «Yos» más tarde) y al `.drt`
+  de `10 TIMELINE SEBASTIAN` (20:22). Antes de rendir una corrección, se mira la fecha de la entrega contra la de
+  los medios y del `.drt`, y si la línea cambió, se dice en la entrega.
+- El limitador de `mp4_entrega` (pico del máster sobre −1 dBTP) deja el audio 48 muestras (1 ms) corrido respecto
+  del máster: inaudible, pero la diferencia contra la entrega vieja ya no da cero.
+

@@ -45,8 +45,10 @@ PAUSA = [
                   "y los hechos son los mismos.\n"
                   "b)  No: la edad al momento de los hechos modifica la respuesta aplicable.\n"
                   "c)  Depende de la conducta concreta que se le atribuya a cada uno."}),
+    # 23 nov 2026: sin el antetítulo «Tarea del foro» (Sebastián: «esto no es un foro»). El archivo nuevo es
+    # «U5C1_p2_foro v2.mov», del mismo largo, y va en la línea «… a la voz v2»; lo rindió `foros_v2.py`, que
+    # antes comprobó que el código de hoy saca el entregado idéntico cuadro a cuadro.
     ("p2_foro", 192, {
-        "ante": "Tarea del foro",
         "titulo": "Redacte, para uno de los tres adolescentes, el fundamento "
                   "de la respuesta que considere aplicable",
         "cuerpo": "indicando qué hechos del expediente la sostienen y qué papel "

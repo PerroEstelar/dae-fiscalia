@@ -34,8 +34,10 @@ PAUSA = [
                   "imputado tienen régimen propio.\n"
                   "c)  Depende de si el bien está sujeto a registro y de quién "
                   "es su titular."}),
+    # 23 nov 2026: sin el antetítulo «Tarea del foro» (Sebastián: «esto no es un foro»). El archivo nuevo es
+    # «C5U2_p2_foro v2.mov», del mismo largo (296 cuadros), y va en la línea «… a la voz v3»; lo rindió
+    # `foros_v2.py`, que antes comprobó que el código de hoy saca el entregado idéntico cuadro a cuadro.
     ("p2_foro", {
-        "ante": "Tarea del foro",
         "titulo": "Escoja dos bienes del inventario y diga qué medida procede "
                   "sobre cada uno",
         "cuerpo": "y en qué momento procesal, contando el término de seis meses "

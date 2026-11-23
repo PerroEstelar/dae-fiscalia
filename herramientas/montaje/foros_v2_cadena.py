@@ -10,6 +10,17 @@ Para cada caso, en orden (Resolve rinde de a uno):
     python foros_v2_cadena.py [log]          (log por defecto: D:/DAE/_tmp/c5u3/cadena_foros.log)
 
 Termina con «CADENA LISTA».
+
+LO QUE DIO (23 nov 2026)
+    c5u1: 5.215 cuadros; fuera del cartón, 49,9 dB o más; audio idéntico al de la entrega anterior.
+    c5u2: 5.759 cuadros; fuera del cartón, 40,5 dB o más. El audio difiere en dos tramos: la entrega anterior
+          tenía dos microcortes (2:53,1–2:53,3 baja 14 dB; 3:42,8–3:43,0 en silencio). La nueva los tiene bien.
+    u5c1: 4.575 cuadros; además del cartón difieren cinco tramos (313-488, 640-699, 1358-1452, 2058-2104,
+          2147-2193). La línea tiene cambios posteriores a la entrega de revisión del 13 oct (19:54): en V4, los
+          tres planos de la avenida retocados (`U5C1_s01/s03/s10_kf01tono`, 20:20) y el cartón «Yos» 89 cuadros
+          más tarde. El .drt de `10 TIMELINE SEBASTIAN` es de las 20:22, con esos cambios: se entregó la línea
+          vigente y se avisó. El audio pasó por el limitador (pico del máster −0,5 dBTP) y quedó 48 muestras
+          (1 ms) corrido respecto del máster.
 """
 import glob
 import os
@@ -76,7 +87,8 @@ def main():
     for clave, linea, carpeta, nombre, vieja, rango in CASOS:
         w(clave, 'rindiendo', linea, '->', nombre)
         r = subprocess.run([sys.executable, os.path.join(AQUI, 'mp4_entrega.py'), linea, carpeta, nombre],
-                           capture_output=True, text=True, encoding='utf-8', errors='replace', cwd=AQUI)
+                           capture_output=True, text=True, encoding='utf-8', errors='replace', cwd=AQUI,
+                           env=dict(os.environ, PYTHONIOENCODING='utf-8'))
         for ln in (r.stdout + r.stderr).strip().splitlines()[-12:]:
             w(clave, '|', ln)
         nueva = '%s/05 EXPORTS/%s.mp4' % (carpeta, nombre)
