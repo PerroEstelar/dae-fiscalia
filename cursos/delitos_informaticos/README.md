@@ -10,5 +10,9 @@ CONTENIDOS e IMÁGENES) › **VIDEOS PROFE** (`1LHDRmw_ud3RZmGwXIyiX8P6VWTqNp6Fw
 profe). Hay otra carpeta «PRIORIDAD 3 - DELITOS INFORMÁTICOS» (`1Li_ZzHIUEt04xzCz97pK6WNYPWUZzV5i`) con un solo
 documento de la U4.
 
-- `profe/`: los videos de profe (22 nov 2026).
-- `subtitulos/`: sus `.srt`.
+- `profe/`: los videos de profe de **Yefrin Garavito** (22 nov 2026): cinco piezas de la U3 y la U4 que él editó por
+  su cuenta (bienvenida, intermedio y cierre).
+- `profe_hs/`: los diez videos del guion de la ficha, leídos por **Humberto Suárez Gómez** (24 nov 2026):
+  presentación y cierre del curso, e introducción y cierre de las cuatro unidades. Por eso la U3 y la U4 tienen dos
+  juegos, uno de cada coautor (ver `profe_hs/README.md`). Sebastián: «dejar ambos».
+- `subtitulos/`: los `.srt`.

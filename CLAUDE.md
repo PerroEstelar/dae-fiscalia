@@ -3844,3 +3844,25 @@ devolver al virtualizador comentarios cortos (tono colombiano, informal, sin pin
 celda, en una **copia** del mapa con la hoja de la unidad duplicada. El diseño visual de los Genially está aprobado:
 se propone distribución y recurso, nunca estilo. Para bloques de texto pesado vale proponer un botón a PDF
 descargable. Todo el método, los recursos de Genially y las trampas del Excel están en `herramientas/revision/README.md`.
+Dos reglas que pidió él: **una frase por celda**, en letra grande (16), y **solo cambios en el Genially**: nunca «en
+el mapa corregir…»; el mapa se nombra solo para decir qué recurso pide.
+
+## La voz de un profe se mide y se ecualiza a su medida (Delitos informáticos, 24 nov 2026)
+
+Sebastián: «me recomendaron que mejorara los niveles y ecualización de estos videos». Las diez grabaciones de Humberto
+Suárez llegaron a −38/−42 LUFS, con el ruido a 20 dB de la voz y el espectro cargado entre 125 y 630 Hz (+5 a +9 dB) y
+apagado arriba de 2,5 kHz (−5 a −16), medido contra la voz media de referencia (LTASS de Byrne, 1994). La cadena fija
+de los profes (`srpa_audio.CADENA`: +3 dB en 3 kHz, −2 en 250 Hz) dejaba el desvío en ~7 dB.
+
+`herramientas/audio/voz_analisis.py` mide cada grabación (piso, voz, LTAS por tercios de octava solo en ventanas con
+voz) y arma su cadena: paso alto 90 Hz, ganancia previa a −20 LUFS, `firequalizer` con el 70 % de la diferencia
+(suavizada, topes −8/+7 dB), `afftdn` nr 6, expansor, compresor de picos, de-esser y limitador. El plan la lleva en
+`AUDIO_CADENA` e `ic_pieza.base_audio` la pone **antes del dual-mono** (se midió en mono: la ganancia previa y los
+umbrales cuentan con eso) y antes del loudnorm de siempre. Desvío: de 8–9 dB a 3–3,6; piso en las pausas, 2 a 9 dB
+más abajo.
+
+- **La reducción de ruido va después de la curva y suave.** `afftdn` nr 12 antes del ecualizador se comía los
+  agudos, que en estas grabaciones están a solo 8–10 dB del ruido, y el desvío quedaba igual que sin ecualizar.
+  `anlmdn` hizo lo mismo.
+- **Se escucha antes de aplicar.** Va un A/B de 20 s (original nivelado / cadena) en mp3 y el espectro en png.
+
