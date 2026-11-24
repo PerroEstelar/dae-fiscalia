@@ -11,9 +11,9 @@ Prioridad 4 de la lista de Esteban. Los 17 videos entregados: 12 de profe (Camil
 | `enfoquediferencial - U2 - INICIO-v2` | 12 | 1:15 | `1Ph_y0-einkLMaR2ox6QJFDDE6w1E3ifo` |
 | `enfoquediferencial - U2 - CIERRE-v3` | 334 | 22:14 | `1TT4HK0G2_HJjYTPP_9hwvpge5vJhrnXZ` |
 | `enfoquediferencial - U3 - INICIO-v2` | 13 | 1:22 | `1-Iz9hjXpFoJp9SU5swe598I7ndHVz6bU` |
-| `enfoquediferencial - U3 - CIERRE-v3` | 415 | 26:48 | `1L37J1-zzLJpBlxaQIIIKN7KEq9elQtrq` |
+| `enfoquediferencial - U3 - CIERRE-v4` | 415 | 26:48 | `1Ha8aR-nBFpyUdbvUnw0Nju33q5ijYQ33` |
 | `enfoquediferencial - U4 - INICIO-v2` | 11 | 1:12 | `1Z3Z8el_OPM0uux7aclKXrD5dQ-smf_kM` |
-| `enfoquediferencial - U4 - CIERRE-v2` | 395 | 26:22 | `1UekO9kKq-oZTRLf7Z6VVHCXQhOe5yZLn` |
+| `enfoquediferencial - U4 - CIERRE-v3` | 395 | 26:22 | `1b_fd_E-rZnlPIbKcxKKlip8KSv7P_bDA` |
 | `enfoquediferencial - U5 - INICIO-v2` | 11 | 1:11 | `165dEUaX4VHKIWVmb5hpp8FHzZbo30syq` |
 | `enfoquediferencial - U5 - CIERRE-v3` | 428 | 28:25 | `1FQHQ92nDNKrcWczbpHgqyA5qlanKa33R` |
 | `enfoquediferencial - CURSO - CONCLUSIONES-v2` | 31 | 2:34 | `1EfR3iFq9NJcJm0U6_5oPH9s_uJdTobHK` |
@@ -86,4 +86,10 @@ son los mismos.
 - Disco: el `.srt` anterior quedó en `05 EXPORTS/_descartes/… (antes de Rrom).srt`.
 - Drive: los tres se subieron con el mismo nombre (ids nuevos en la tabla de arriba y en `manifiesto.json`),
   se compararon byte a byte con el disco y los anteriores están en la papelera.
-- Pendiente: tres cartones dicen «rom» (`ED3C_c35_rom`, `ED3C_c36_decreto`, `ED4C_c16_afro_rom`).
+- Los tres cartones que decían «rom» (`ED3C_c35_rom`, `ED3C_c36_decreto`, `ED4C_c16_afro_rom`) se rehicieron el
+  24 nov: U3 cierre v4 y U4 cierre v3 (ver `../profe/README.md`). Su `.srt` es el mismo (los tiempos no cambian): en
+  Drive va como copia de servidor del anterior con el nombre nuevo, y los `.srt` v3 y v2 pasaron a `_anteriores`
+  (`1V1yIxkiYvM7BH656mmdmaq2LOl-Ps3IX`) dentro de la carpeta de profe.
+- Revisión del 24 nov, pedida por Sebastián: en los 12 `.srt` de profe y en los cinco de los casos no queda ningún
+  «rom» suelto (en los de profe, cuatro «Rrom», en los cierres de U2, U3 y U4); en los planes y los textos de los casos
+  tampoco.

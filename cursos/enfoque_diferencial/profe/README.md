@@ -135,6 +135,34 @@ y `ajusta.py` recorta a tiempo de lectura (10 car/s) y quita solapes.
   `D:\DAE\_tmp\ed_profes\master`, se usa para la entrega, se verifica y va a la papelera de
   Windows. En `05 EXPORTS\_master` queda un `LEER` que lo dice.
 
+## «Rrom» en los cartones: U3 cierre v4 y U4 cierre v3 (24 nov 2026)
+
+Revisión de la Fiscalía (Tatiana López): «la forma correcta de escribir es Rrom». Los `.srt` ya se habían corregido
+el 21 nov (`../subtitulos/README.md`); el 24 nov Sebastián pidió revisar que en todos los videos del curso saliera
+«Rrom» en pantalla y en los `.srt`. Quedaban tres cartones:
+
+| video | cartón | decía | dice |
+|---|---|---|---|
+| U3 cierre | `c35_rom` | «El pueblo gitano o rom» | «El pueblo gitano o Rrom» |
+| U3 cierre | `c36_decreto` | «Protección integral del pueblo rom» | «Protección integral del pueblo Rrom» |
+| U4 cierre | `c16_afro_rom` | «…el pueblo rom esperan…» | «…el pueblo Rrom esperan…» |
+
+- Se rehicieron como en las v3 del 17 nov (`VERSIONES` + `reparchar.py`): solo el tramo entre los cuadros clave que
+  encierran cada cartón se vuelve a codificar; el resto, el audio y la duración son los de la entrega anterior.
+- En los otros diez videos, en los planes y en los textos de los casos no hay más «rom».
+
+| entrega (Drive) | bytes | Drive | `.srt` |
+|---|---|---|---|
+| `enfoquediferencial - U3 - CIERRE-v4.mp4` | 1.232.042.172 | `1yQqEmtMY9KuQcLRp6sHSv5ojSuuK7zZA` | `1Ha8aR-nBFpyUdbvUnw0Nju33q5ijYQ33` |
+| `enfoquediferencial - U4 - CIERRE-v3.mp4` | 950.411.643 | `1RpdgAMDjrGEuiMKXxPMNZPo0yT8-FFLd` | `1b_fd_E-rZnlPIbKcxKKlip8KSv7P_bDA` |
+
+- **Drive.** Subidas con `subir_exclusivo` a `_MA subidas` y copiadas por servidor a la carpeta de profe (el conector
+  ya no mueve lo que sube Drive para escritorio). Los `.srt` son copias de servidor de los anteriores con el nombre
+  nuevo (mismos tiempos). Los `.srt` anteriores están en `_anteriores` (`1V1yIxkiYvM7BH656mmdmaq2LOl-Ps3IX`); los
+  dos videos anteriores (U3 v3 y U4 v2) el conector no los deja mover y siguen en la carpeta hasta pasarlos a mano.
+- **Verificación byte a byte**: copias en `_MA subidas/_verif entregas ed rrom` (`1BV5pytM6jWY70qO2XEXWii9kNaepuzzS`),
+  a comparar con `verificar_drive.py` contra `…CONTENIDO-v4.mp4` y `…CONTENIDO-v3.mp4` de `05 EXPORTS`.
+
 ## Revisión de textos: cinco entregas v3 (17 nov 2026)
 
 Sebastián, con las v2 entregadas: «en uno de los videos, en uno de sus gráficos de texto, en vez
