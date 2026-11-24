@@ -26,6 +26,12 @@ mano o círculos de qué debería cambiar y hacia dónde». Comentarios: una fra
    (fila 1 = lecciones con su título, columna A = número de diapositiva del pantallazo) y
    «Generales - revisión» (`generales_<curso>.json`). Arial 20, «Bien así.» en gris, texto en sharedStrings.
 
+6. `excel_img.py DP <mapa.xlsx> <salida>` (o `DA - <salida>`): la versión que se entrega. Sebastián (24 nov):
+   «en cada celda iban los screenshots intervenidos tipo paint». Misma grilla, y en cada celda: en gris lo que
+   pide el mapa para esa diapositiva (la fila del mapa se busca por el título; `OVR` fija a mano las que no
+   calzan, como los casos de la 4.4) o «no está en el mapa»; la frase; y el pantallazo marcado a 600 × 338 en
+   PNG de paleta. DP pesa 22 MB y DA 30 MB (este cruza el puente en dos partes).
+
 DP: los comentarios salen de la revisión del 23 nov (`dp_viejos.py` los lleva de la fila del mapa a la
 escena E##) acortados a una frase.
 
