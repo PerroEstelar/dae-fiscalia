@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """Delitos ambientales · Unidad 1. Por lección y número de diapositiva (como en los pantallazos):
 (comentario breve para el Excel, [marcas sobre el pantallazo]). Ver marcas.py para las marcas."""
-PORTADA = ('Portada del curso: sacarla; el inicio del curso es un recurso aparte.',
-           [('x', 'zona:todo', 'Portada del curso: va aparte, en el inicio del curso')])
-UNIDAD_REP = ('Portada de unidad repetida: va solo en la lección 1 de la unidad.',
-              [('x', 'zona:todo', 'Sacar: la portada de unidad va solo en la lección 1')])
+# Sebastián (24 nov): «en estos casos la primer diapositiva sí puede ser el título de esa unidad o lección».
+PORTADA = ('Puede abrir la lección, pero con el título de la unidad o de la lección, no el del curso.',
+           [('c', ['Curso', 'Investigación y judicialización', 'medio ambiente y los recursos'],
+             'Aquí el título de la unidad o de la lección, no el del curso')])
+UNIDAD_REP = ('Bien así.', [])
 BIEN = ('Bien así.', [])
 
 S = {}

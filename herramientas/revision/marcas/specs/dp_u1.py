@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 """Derecho de petición · Unidad 1. Por lección y número de diapositiva (como en los pantallazos):
 (comentario breve para el Excel, [marcas sobre el pantallazo])."""
-PORTADA = ('Portada del curso: sacarla de la lección; el inicio del curso es un recurso aparte.',
-           [('x', (40, 100, 1200, 580), 'Portada del curso: va aparte, en el inicio del curso')])
+# Sebastián (24 nov): «en estos casos la primer diapositiva sí puede ser el título de esa unidad o lección».
+PORTADA = ('Puede abrir la lección, pero con el título de la unidad o de la lección, no el del curso.',
+           [('c', ['Curso', 'Derecho de petición y acción', 'Régimen constitucional'],
+             'Aquí el título de la unidad o de la lección, no el del curso')])
 PIES = ('Los pies de la ilustración se asoman debajo del pie de página.',
         [('c', (600, 668, 560, 46), 'Se asoman los pies: subir o recortar la ilustración')])
 BIEN = ('Bien así.', [])
