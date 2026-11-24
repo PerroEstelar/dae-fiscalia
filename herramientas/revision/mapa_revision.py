@@ -1,70 +1,48 @@
 # -*- coding: utf-8 -*-
-"""Arma la copia del mapa de virtualización con la hoja de revisión (flujo «revisión»).
+"""Arma la copia del mapa de virtualización con las hojas de revisión (flujo «revisión»).
 
-    python3 mapa_revision.py <mapa.xlsx> <comentarios.json> <carpeta_png> <salida.xlsx>
+    python3 mapa_revision.py <mapa.xlsx> <revision.json> <carpeta_png> <salida.xlsx>
 
-- Copia la hoja indicada en el json («Unidad 1») como «<hoja> - revisión», justo al lado y con pestaña coral.
-  La original no se toca. La copia conserva encabezados (fila 1) y la columna A (# diapositiva); se vacían
-  las celdas de contenido B2:E<última> y en su lugar va el comentario (texto enriquecido) con la miniatura
-  anclada dentro de la misma celda, debajo del texto.
-- Las filas extra (Generales, Convenciones) van debajo de la grilla, sin mover filas ni columnas existentes.
-- Se ensancha la columna revisada y se agrandan las filas para que quepan texto y miniatura.
+revision.json:
+  {"hojas": [{"hoja": "Unidad 1", "celdas": {"B2": {"t": "una frase", "mini": "clave_png"?}, ...}}, ...],
+   "generales": [{"t": "una frase", "mini": "clave_png"?}, ...]}
+
+- Por cada hoja del json se duplica la original como «<hoja> - revisión» (pestaña coral, al lado de la
+  original, que no se toca). Quedan la fila 1 (títulos de lección) y la columna A (# diapositiva); se vacían las
+  celdas de contenido y en su lugar va **una sola frase** (propuesta y errores) con la miniatura debajo, pegada
+  al fondo de la celda (si sobra alto, sobra aire; nunca tapa el texto).
+- «Generales - revisión»: una fila por asunto que se repite en todo el curso.
+- Las columnas de lección se ensanchan y las filas crecen para que quepan frase y miniatura.
+
+Pedido de Sebastián (24 nov 2026): poco texto, una frase por celda; las miniaturas se quedan.
 """
 import json
 import math
 import os
+import re
+import shutil
 import sys
+import zipfile
 from copy import copy
 
 import openpyxl
-from openpyxl.cell.rich_text import CellRichText, TextBlock
-from openpyxl.cell.text import InlineFont
 from openpyxl.drawing.image import Image as XLImage
 from openpyxl.drawing.spreadsheet_drawing import AnchorMarker, OneCellAnchor
 from openpyxl.drawing.xdr import XDRPositiveSize2D
 from openpyxl.styles import Alignment, Font
-from openpyxl.utils import column_index_from_string, get_column_letter
+from openpyxl.utils import get_column_letter
 from openpyxl.utils.units import pixels_to_EMU
 
-MARINO, TEAL, OXIDO = 'FF002F46', 'FF396B83', 'FFA75260'
-ANCHO_COL = 54            # caracteres
+ANCHO_COL = 54             # caracteres
 MINI_W, MINI_H = 360, 153  # px (proporción 400×170)
-CHARS_LINEA = 56          # estimado conservador para Arial 9 en ese ancho (LibreOffice/Excel)
-PT_LINEA = 12.5
-
-
-def color_tag(t):
-    t = t.upper()
-    if t.startswith('BIEN'):
-        return TEAL
-    if t.startswith('OJO') or t.startswith('ERROR'):
-        return OXIDO
-    return MARINO
-
-
-def rico(lineas):
-    partes, n = [], 0
-    for i, (tag, txt) in enumerate(lineas):
-        sep = '' if i == 0 else '\n'
-        if i == 0 and not tag:
-            partes.append(TextBlock(InlineFont(rFont='Arial', sz=10, b=True, color=MARINO), txt))
-            n += 1
-            continue
-        if tag:
-            partes.append(TextBlock(InlineFont(rFont='Arial', sz=9, b=True, color=color_tag(tag)), sep + tag + ': '))
-            partes.append(TextBlock(InlineFont(rFont='Arial', sz=9, color='FF222222'), txt))
-        else:
-            partes.append(TextBlock(InlineFont(rFont='Arial', sz=9, color='FF222222'), sep + txt))
-        n += max(1, math.ceil((len(tag) + 2 + len(txt)) / CHARS_LINEA))
-    return CellRichText(*partes), n
+CHARS_LINEA = 44           # estimado conservador para Arial 9.5 en ese ancho
+PT_LINEA = 13.0
+FUENTE = Font(name='Arial', size=9.5, color='FF222222')
 
 
 def a_compartidas(ruta):
-    """Este openpyxl guarda todo el texto como inlineStr, y LibreOffice ignora el formato (negrita, color) del
-    texto enriquecido inline. Se pasa todo a xl/sharedStrings.xml, que leen bien Excel, Sheets y LibreOffice."""
-    import re
-    import shutil
-    import zipfile
+    """Este openpyxl guarda el texto como inlineStr; se pasa a sharedStrings, que leen bien Excel, Sheets y
+    LibreOffice (LibreOffice ignora el formato del texto inline)."""
     tmp = ruta + '.tmp'
     zin = zipfile.ZipFile(ruta)
     sis, salida = [], {}
@@ -83,75 +61,115 @@ def a_compartidas(ruta):
                                       'uniqueCount="%d">%s</sst>' % (len(sis), len(sis),
                                                                      ''.join('<si>%s</si>' % t for t in sis))
                                       ).encode('utf-8')
-    ct = salida['[Content_Types].xml'].decode('utf-8')
-    ct = ct.replace('</Types>', '<Override PartName="/xl/sharedStrings.xml" ContentType="application/vnd.'
-                    'openxmlformats-officedocument.spreadsheetml.sharedStrings+xml"/></Types>')
+    ct = salida['[Content_Types].xml'].decode('utf-8').replace(
+        '</Types>', '<Override PartName="/xl/sharedStrings.xml" ContentType="application/vnd.openxmlformats-'
+        'officedocument.spreadsheetml.sharedStrings+xml"/></Types>')
     salida['[Content_Types].xml'] = ct.encode('utf-8')
-    rl = salida['xl/_rels/workbook.xml.rels'].decode('utf-8')
-    rl = rl.replace('</Relationships>', '<Relationship Id="rIdSST" Type="http://schemas.openxmlformats.org/'
-                    'officeDocument/2006/relationships/sharedStrings" Target="sharedStrings.xml"/></Relationships>')
+    rl = salida['xl/_rels/workbook.xml.rels'].decode('utf-8').replace(
+        '</Relationships>', '<Relationship Id="rIdSST" Type="http://schemas.openxmlformats.org/officeDocument/'
+        '2006/relationships/sharedStrings" Target="sharedStrings.xml"/></Relationships>')
     salida['xl/_rels/workbook.xml.rels'] = rl.encode('utf-8')
     with zipfile.ZipFile(tmp, 'w', zipfile.ZIP_DEFLATED) as zout:
         for n in [i.filename for i in zin.infolist()] + ['xl/sharedStrings.xml']:
             zout.writestr(n, salida[n])
     zin.close()
     shutil.move(tmp, ruta)
-    print('textos a sharedStrings:', len(sis))
+
+
+def alto_texto(t):
+    return (math.ceil(len(t) / CHARS_LINEA) + 1) * PT_LINEA + 6
+
+
+def poner(ws, ref, d, carpeta, altos):
+    c = ws[ref]
+    c.value = d['t']
+    c.font = copy(FUENTE)
+    c.alignment = Alignment(wrap_text=True, vertical='top', horizontal='left')
+    h = alto_texto(d['t']) + (MINI_H * 0.75 + 12 if d.get('mini') else 0)
+    altos[c.row] = max(altos.get(c.row, 91.5), h)
+    if d.get('mini'):
+        return (c.row, c.column, os.path.join(carpeta, d['mini'] + '.png'))
+
+
+def anclar(ws, pendientes, altos):
+    for fila, col, png in pendientes:
+        im = XLImage(png)
+        im.width, im.height = MINI_W, MINI_H
+        off = int(altos[fila] * 4 / 3) - MINI_H - 8
+        im.anchor = OneCellAnchor(_from=AnchorMarker(col=col - 1, colOff=pixels_to_EMU(8), row=fila - 1,
+                                                     rowOff=pixels_to_EMU(off)),
+                                  ext=XDRPositiveSize2D(pixels_to_EMU(MINI_W), pixels_to_EMU(MINI_H)))
+        ws.add_image(im)
+    for fila, h in altos.items():
+        ws.row_dimensions[fila].height = h
 
 
 def main():
-    mapa, cj, carpeta, salida = sys.argv[1:5]
-    com = json.load(open(cj, encoding='utf-8'))
+    mapa, rj, carpeta, salida = sys.argv[1:5]
+    rev = json.load(open(rj, encoding='utf-8'))
     wb = openpyxl.load_workbook(mapa)
-    base = wb[com['hoja']]
-    ws = wb.copy_worksheet(base)
-    ws.title = (com['hoja'] + ' - revisión')[:31]
-    wb.move_sheet(ws, offset=wb.sheetnames.index(com['hoja']) + 1 - wb.sheetnames.index(ws.title))
-    ws.sheet_properties.tabColor = 'EE616B'
-    ultima = base.max_row
-    for fila in ws.iter_rows(min_row=2, max_row=ultima, min_col=2, max_col=base.max_column):
-        for c in fila:
-            c.value = None
-    col = com['columna']
-    ci = column_index_from_string(col)
-    ws.column_dimensions[col].width = ANCHO_COL
-    for ref, d in com['celdas'].items():
-        c = ws[ref]
-        r = c.row
-        if r > ultima:  # filas nuevas bajo la grilla: copiar estilo de la última fila
-            for k in range(1, base.max_column + 1):
-                o, n = ws.cell(ultima, k), ws.cell(r, k)
-                n.font, n.border, n.fill, n.alignment = copy(o.font), copy(o.border), copy(o.fill), copy(o.alignment)
-            a = ws.cell(r, 1)
-            a.value = d.get('rotulo', '')
-            a.font = copy(ws['A1'].font)
-        texto, n = rico(d['texto'])
-        c.value = texto
-        c.alignment = Alignment(wrap_text=True, vertical='top', horizontal='left')
-        c.font = Font(name='Arial', size=9, color='FF222222')  # base, por si un visor ignora los formatos del texto
-        alto_txt = (n + 1) * PT_LINEA + 6
-        alto = max(alto_txt + (MINI_H * 0.75 + 12 if d.get('mini') else 4), 91.5)
-        ws.row_dimensions[r].height = alto
-        if d.get('mini'):
-            png = os.path.join(carpeta, '%s%s.png' % (com.get('prefijo_png', ''), d['mini']))
-            im = XLImage(png)
-            im.width, im.height = MINI_W, MINI_H
-            off = int(alto * 4 / 3) - MINI_H - 8   # pegada al fondo de la celda: si sobra alto, sobra arriba
-            im.anchor = OneCellAnchor(_from=AnchorMarker(col=ci - 1, colOff=pixels_to_EMU(8), row=r - 1,
-                                                         rowOff=pixels_to_EMU(off)),
-                                      ext=XDRPositiveSize2D(pixels_to_EMU(MINI_W), pixels_to_EMU(MINI_H)))
-            ws.add_image(im)
-    wb.active = wb.sheetnames.index(ws.title)
+    primera = None
+    for h in rev['hojas']:
+        base = wb[h['hoja']]
+        ws = wb.copy_worksheet(base)
+        ws.title = (h['hoja'] + ' - revisión')[:31]
+        wb.move_sheet(ws, offset=wb.sheetnames.index(h['hoja']) + 1 - wb.sheetnames.index(ws.title))
+        ws.sheet_properties.tabColor = 'EE616B'
+        primera = primera or ws
+        for fila in ws.iter_rows(min_row=2, max_row=base.max_row, min_col=2, max_col=base.max_column):
+            for c in fila:
+                c.value = None
+        # Las hojas traen anchos agrupados (p. ej. A:D en la Unidad 3): se parten en una entrada por columna
+        # para poder ensanchar solo las de lección sin que el grupo las pise.
+        anchos = {}
+        for _k, v in list(ws.column_dimensions.items()):
+            for i in range(v.min or 1, (v.max or v.min or 1) + 1):
+                anchos[i] = v.width
+        for i, wv in anchos.items():
+            cd = ws.column_dimensions[get_column_letter(i)]
+            cd.min, cd.max, cd.width = i, i, wv
+        for i in range(2, base.max_column + 1):
+            ws.column_dimensions[get_column_letter(i)].width = ANCHO_COL
+        altos, pend = {}, []
+        for ref, d in h['celdas'].items():
+            r = poner(ws, ref, d, carpeta, altos)
+            if r:
+                pend.append(r)
+        anclar(ws, pend, altos)
+    if rev.get('generales'):
+        u1 = wb[rev['hojas'][0]['hoja']]
+        fin = wb.sheetnames.index('Desplegables') if 'Desplegables' in wb.sheetnames else len(wb.sheetnames)
+        ws = wb.create_sheet('Generales - revisión', index=fin)
+        ws.sheet_properties.tabColor = 'EE616B'
+        for k, v in (('A1', '#'), ('B1', 'Generales: lo que se repite en todo el curso')):
+            ws[k].value = v
+            o = u1['A1']
+            ws[k].font, ws[k].fill, ws[k].border = copy(o.font), copy(o.fill), copy(o.border)
+            ws[k].alignment = Alignment(wrap_text=True, vertical='center', horizontal='center')
+        ws.column_dimensions['A'].width = 8
+        ws.column_dimensions['B'].width = ANCHO_COL + 6
+        ws.row_dimensions[1].height = 30
+        altos, pend = {}, []
+        borde = copy(u1['B2'].border)
+        for i, d in enumerate(rev['generales']):
+            fila = i + 2
+            ws.cell(fila, 1, i + 1).alignment = Alignment(vertical='top', horizontal='center')
+            ws.cell(fila, 1).border = copy(borde)
+            ws.cell(fila, 2).border = copy(borde)
+            r = poner(ws, 'B%d' % fila, d, carpeta, altos)
+            if r:
+                pend.append(r)
+        anclar(ws, pend, altos)
     if not wb.views:
         from openpyxl.workbook.views import BookView
         wb.views.append(BookView())
-    wb.views[0].activeTab = wb.sheetnames.index(ws.title)
+    wb.active = wb.sheetnames.index(primera.title)
+    wb.views[0].activeTab = wb.sheetnames.index(primera.title)
     for h in wb.worksheets:
-        h.sheet_view.tabSelected = h is ws
+        h.sheet_view.tabSelected = h is primera
     wb.save(salida)
     a_compartidas(salida)
     print('hojas:', wb.sheetnames)
-    print('filas:', {k: round(v.height, 1) for k, v in ws.row_dimensions.items() if v.height})
 
 
 if __name__ == '__main__':

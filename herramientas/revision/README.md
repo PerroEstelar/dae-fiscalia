@@ -47,6 +47,27 @@ petición, U1 L1.1 (24 nov 2026).
 - **Botón a PDF descargable** (pedido de Sebastián, 24 nov) para bloques de texto pesado que no dan para volverse
   interactivos sin forzarlos, y para guías de actividad (preguntas de reflexión con espacio para responder).
 
+## Regla de texto (24 nov 2026)
+
+Sebastián vio el piloto y pidió **una sola frase por celda** que resuma propuesta y errores; las miniaturas se
+quedan. Donde no hay nada que cambiar: «Bien así.» Lo que se repite en todo el curso no se repite en cada celda:
+va en la hoja «Generales - revisión», una frase por asunto.
+
+## Cómo se hizo el curso completo (Derecho de petición, 16 lecciones)
+
+1. `analisis/crawl_escenas.py` (en el equipo): lee los JSON de Genially, baja todas las escenas HTML con su css, js,
+   fuentes e ilustraciones (`unidad-0N/comun/ilustraciones-tutela/`) y deja un zip.
+2. En la nube, servidor local sobre ese espejo y `analisis/render_escenas.py`: cada escena visible a 1113×448 con
+   texto fijo, captura, palabras, ítems y si pide scroll → `escenas.json`. `hoja_leccion.py` arma la hoja de
+   contacto de cada lección para mirarla de una.
+3. `analisis/cobertura_di.py` + `huecos_por_seccion.py`: frases del DI (cortado antes de «Recursos académicos»)
+   que no aparecen en las escenas, agrupadas por sección. Así salieron las secciones que faltan y los textos de
+   una versión anterior del DI. `ver.py` muestra DI y escena lado a lado.
+4. Comentarios y miniaturas en `dp/revision_dp.json` (las miniaturas por plantilla: `plantillas.py`), y
+   `mapa_revision.py` arma el Excel con las cuatro hojas de revisión y la de generales.
+
+Los scripts de `analisis/` tienen rutas de la sesión (`/tmp/claude-0/rev/…`); se ajustan para el próximo curso.
+
 ## Salida
 
 La salida es una copia del mapa con la hoja de la unidad duplicada, «Unidad N - revisión», con pestaña coral.
@@ -86,7 +107,11 @@ python3 mapa_revision.py mapa.xlsx dp_u1l1/comentarios.json png/ salida.xlsx
 
 ## Hecho
 
-- **Derecho de petición, U1 L1.1 (piloto, 24 nov 2026):**
+- **Derecho de petición, curso completo (v2, 24 nov 2026):** 16 lecciones, una frase por celda, 55 miniaturas
+  nuevas + las 12 del piloto, hoja de generales. Drive:
+  [VIRTUALIZACIÓN DERECHO DE PETICIÓN - revisión v2.xlsx](https://drive.google.com/file/d/1Mmrp7AEnJ4kqazIQpNPGW1674degAJmu/view);
+  local en `Revision\` con `miniaturas v2\`. El piloto quedó en `_anteriores` (Drive y disco).
+- **Derecho de petición, U1 L1.1 (piloto, 24 nov 2026, superado por la v2):**
   - 11 diapositivas, más los generales;
   - Drive: «Revisión Genially · Derecho de petición» →
     [VIRTUALIZACIÓN DERECHO DE PETICIÓN - revisión U1 L1.1.xlsx](https://drive.google.com/file/d/1FxhTO7MIQkl_-cRKab4fmaYelv4Zdq3z/view);

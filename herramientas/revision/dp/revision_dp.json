@@ -1,0 +1,1432 @@
+{
+ "curso": "Derecho de petición y acción de tutela",
+ "hojas": [
+  {
+   "hoja": "Unidad 1",
+   "celdas": {
+    "B2": {
+     "t": "Bien; solo que el objetivo salga completo de una, sin máquina de escribir, y en el mapa corregir «Onjetivo».",
+     "mini": "DP_U1_L1_E01"
+    },
+    "B3": {
+     "t": "Cambiar el camino 1-2-3 por el mapa conceptual que pide el mapa (son tres rasgos del mismo derecho, no pasos) y quitar el «Clic aquí» que tapa la tarjeta 1.",
+     "mini": "DP_U1_L1_E02"
+    },
+    "B4": {
+     "t": "Darle a cada caja su propio ícono, volver la caja 1 una línea de tiempo 2011 → 2015 y pasar las actuaciones del art. 13 a lista con viñetas.",
+     "mini": "DP_U1_L1_E03"
+    },
+    "B5": {
+     "t": "Bien; solo pasar a viñetas lo que revelan las peticiones en la tercera columna.",
+     "mini": "DP_U1_L1_E04"
+    },
+    "B6": {
+     "t": "Quitar la columna de íconos y armar el texto en dos bloques sin scroll («Se conecta con…» y «Pero no reemplaza…») con una franja de límites abajo.",
+     "mini": "DP_U1_L1_E05"
+    },
+    "B7": {
+     "t": "Hacerlo como pide el mapa, escenario con botones a, b y c en pop-up, y en c) mostrar los plazos de 15, 10 y 30 días como barras.",
+     "mini": "DP_U1_L1_E06"
+    },
+    "B8": {
+     "t": "Partir este scroll de 380 palabras en tres pestañas (Orientar, Trasladar, Enfoque diferencial), el traslado como flujo de 5 días y botón al PDF con el texto completo.",
+     "mini": "DP_U1_L1_E07"
+    },
+    "B9": {
+     "t": "Bien, pero el escudo de la tarjeta 3 tapa el botón «Cerrar»; de paso, poner en chips quiénes llegan a la Fiscalía.",
+     "mini": "DP_U1_L1_E08"
+    },
+    "B10": {
+     "t": "Se lee bien; quitar «baje con la barra» porque no hay scroll y poner arriba la frase fuerza, con PDF opcional.",
+     "mini": "DP_U1_L1_E09"
+    },
+    "B11": {
+     "t": "Dejar «Caso de aplicación» como dice el DI, la reflexión como guía descargable en PDF y la idea clave visible sin clic.",
+     "mini": "DP_U1_L1_E10"
+    },
+    "B12": {
+     "t": "Ojo, error del DI: anuncia la Política de Atención para la 1.2 y eso es de la 2.1 (preguntarle al autor); en el mapa esta fila es 11.0, no 10.0.",
+     "mini": "DP_U1_L1_E11"
+    },
+    "C2": {
+     "t": "Bien así (objetivo y problema jurídico-operativo)."
+    },
+    "C3": {
+     "t": "Falta el caso práctico de la petición particular (la víctima que en un mismo escrito pide un horario y algo de su proceso, §2.2 del DI) con el audio que pide el mapa; meterlo destacado en la caja 2.",
+     "mini": "U1C3"
+    },
+    "C4": {
+     "t": "Bien el recurso; subir las tres cajas, que dejan un hueco grande arriba, y quitar la columna de íconos para darles ancho.",
+     "mini": "U1C4"
+    },
+    "C5": {
+     "t": "El mapa pide mapa conceptual y quedó un camino de paradas; pasarlo a nodo con ramas (como la 3.2, E07) y dejar el botón de descarga como está.",
+     "mini": "U1C5"
+    },
+    "C6": {
+     "t": "Las cuatro tarjetas del camino se montan unas sobre otras; los términos se entienden mejor en tablita (15, 10, 30 días y prórroga) con el mapa descargable.",
+     "mini": "U1C6"
+    },
+    "C7": {
+     "t": "Tercer camino seguido; el traslado es un proceso, así que mejor una ruta: verificar competencia, remitir en 5 días con copia al peticionario y contar el término desde el competente.",
+     "mini": "U1C7"
+    },
+    "C8": {
+     "t": "El mapa pide línea de tiempo horizontal y quedó rejilla de 8 cajas; como la guía va en secuencia, pasarla a ruta paso a paso (como la 2.1, E06).",
+     "mini": "U1C8"
+    },
+    "D2": {
+     "t": "Bien así."
+    },
+    "D3": {
+     "t": "Camino de solo 2 paradas con medio lienzo vacío; mejor mapa conceptual con las cuatro exigencias y su descarga, y ojo que el DI vigente le agregó párrafos «en palabras sencillas» que no están.",
+     "mini": "U1D3"
+    },
+    "D4": {
+     "t": "Bien así."
+    },
+    "D5": {
+     "t": "Bien; dos pestañas en vez de dos cajas funciona igual."
+    },
+    "D6": {
+     "t": "Bien así."
+    },
+    "D7": {
+     "t": "Bien así."
+    },
+    "D8": {
+     "t": "El texto del caso no es el del DI vigente (ahora trae la carta de la ciudadana), falta el audio de la situación y el mapa pide escenario con pop-ups.",
+     "mini": "U1D8"
+    },
+    "E2": {
+     "t": "Bien así."
+    },
+    "E3": {
+     "t": "Toda la lección quedó en un camino de 5 paradas que se montan y la última se sale del borde; mejor mapa conceptual (problema arriba, los cuatro deberes como ramas) con su descarga.",
+     "mini": "U1E3"
+    }
+   }
+  },
+  {
+   "hoja": "Unidad 2",
+   "celdas": {
+    "B2": {
+     "t": "Bien así."
+    },
+    "B3": {
+     "t": "Bien, son las tres cajas con número y pop-up que pide el mapa."
+    },
+    "B4": {
+     "t": "Otro camino para un mapa conceptual; mejor nodo con ramas (virtual, telefónico, escrito, presencial) y la descarga como está.",
+     "mini": "U2B4"
+    },
+    "B5": {
+     "t": "Es la rejilla que pide el mapa, pero en dos columnas no cabe y pide scroll; pasarla a 4 × 2 para ver los 7 valores de una.",
+     "mini": "U2B5"
+    },
+    "B6": {
+     "t": "Bien así."
+    },
+    "B7": {
+     "t": "Bien, es la ruta con botones y pop-up que pide el mapa."
+    },
+    "B8": {
+     "t": "Otro camino para un mapa conceptual; pasarlo a nodo con ramas y dejar la descarga.",
+     "mini": "U2B8"
+    },
+    "B9": {
+     "t": "Falta el audio con la situación que pide el mapa; el análisis está bien.",
+     "mini": "U2B9"
+    },
+    "B10": {
+     "t": "El mapa pide persona presentando con pestañas para idea clave y conclusión, y quedaron dos cajas que esconden el texto detrás de un clic.",
+     "mini": "U2B10"
+    },
+    "C2": {
+     "t": "Bien así."
+    },
+    "C3": {
+     "t": "Bien así (tres tarjetas que giran)."
+    },
+    "C4": {
+     "t": "Camino de 3 paradas para un mapa conceptual; pasarlo a nodo con ramas y dejar la descarga.",
+     "mini": "U2C4"
+    },
+    "C5": {
+     "t": "Bien, cumple el mapa."
+    },
+    "C6": {
+     "t": "Bien así."
+    },
+    "C7": {
+     "t": "Falta el audio con la situación que pide el mapa.",
+     "mini": "U2C7"
+    },
+    "C8": {
+     "t": "Es un modelo de oficio: mostrarlo como documento y ponerle botón para descargarlo como plantilla en PDF.",
+     "mini": "U2C8"
+    },
+    "C9": {
+     "t": "Bien; aplicar lo de las listas (ver Generales)."
+    },
+    "C10": {
+     "t": "Bien así."
+    },
+    "D2": {
+     "t": "Bien así."
+    },
+    "D3": {
+     "t": "Bien así."
+    },
+    "D4": {
+     "t": "Camino de 5 paradas y la 5 se sale de su tarjeta de lo larga; pasarlo a mapa conceptual con su descarga.",
+     "mini": "U2D4"
+    },
+    "D5": {
+     "t": "Once categorías en dos pantallas con la misma ilustración; agruparlas (pública, datos personales, restringida, cómo se entrega) para que se vea la jerarquía.",
+     "mini": "U2D5"
+    },
+    "D6": {
+     "t": "Bien así."
+    },
+    "D7": {
+     "t": "Falta toda la 4.4 (eliminación, anonimización y ocultamiento): hacerla como pide el mapa, texto inicial, una pestaña por medida y los casos en cajas «Caso 1, Caso 2» con audio.",
+     "mini": "U2D7"
+    },
+    "D8": {
+     "t": "Bien, es la ruta paso a paso que pide el mapa."
+    },
+    "D9": {
+     "t": "Falta el audio con la situación que pide el mapa.",
+     "mini": "U2D9"
+    },
+    "D10": {
+     "t": "Bien; aplicar lo de las listas (ver Generales)."
+    },
+    "D11": {
+     "t": "Bien así."
+    },
+    "E2": {
+     "t": "Bien así."
+    },
+    "E3": {
+     "t": "Es la línea que pide el mapa, pero cada paso trae unas 235 palabras en un panel chiquito que arranca cortado; dejar en el paso solo lo clave y el texto completo en PDF.",
+     "mini": "U2E3"
+    },
+    "E4": {
+     "t": "El mapa pide mapa conceptual con títulos que se despliegan y quedó otro camino con unas 200 palabras por parada; pasarlo a nodo con ramas y dejar el detalle en las ventanas.",
+     "mini": "U2E4"
+    },
+    "E5": {
+     "t": "Falta el audio con la situación que pide el mapa.",
+     "mini": "U2E5"
+    },
+    "E6": {
+     "t": "Bien; aplicar lo de las listas (ver Generales)."
+    },
+    "E7": {
+     "t": "Bien así."
+    }
+   }
+  },
+  {
+   "hoja": "Unidad 3",
+   "celdas": {
+    "B2": {
+     "t": "Son dos láminas seguidas con el mismo escudo (introducción y objetivo); unirlas en una sola."
+    },
+    "B3": {
+     "t": "Camino de 4 paradas que tapa la escena; mejor mapa conceptual con la tutela arriba y art. 86, Decreto 2591, trámite preferente y la Fiscalía como ramas.",
+     "mini": "U3B3"
+    },
+    "B4": {
+     "t": "Bien así."
+    },
+    "B5": {
+     "t": "Bien así (dos fichas)."
+    },
+    "B6": {
+     "t": "Falta el audio con la situación que pide el mapa.",
+     "mini": "U3B6"
+    },
+    "B7": {
+     "t": "Bien; aplicar lo de las listas (ver Generales)."
+    },
+    "B8": {
+     "t": "Bien así."
+    },
+    "C2": {
+     "t": "Bien así."
+    },
+    "C3": {
+     "t": "Bien así."
+    },
+    "C4": {
+     "t": "El mapa pide tres cajas y hay dos, y el texto es de una versión anterior del DI (el vigente explica quién la presenta, el agente oficioso y que no hace falta abogado).",
+     "mini": "U3C4"
+    },
+    "C5": {
+     "t": "Texto de una versión anterior del DI; falta el ejemplo de la persona que no obtuvo respuesta a su petición."
+    },
+    "C6": {
+     "t": "Actualizar al texto vigente del DI (explica con preguntas por qué importa el tiempo) y destacar el ejemplo, como pide el mapa.",
+     "mini": "U3C6"
+    },
+    "C7": {
+     "t": "Camino de 3 paradas; hacerlo como el mapa conceptual de la pantalla siguiente (E07), que quedó muy bien, y actualizar el texto al DI.",
+     "mini": "U3C7"
+    },
+    "C8": {
+     "t": "Muy bien; este es el modelo de mapa conceptual para el resto del curso."
+    },
+    "C9": {
+     "t": "Bien así."
+    },
+    "C10": {
+     "t": "Bien; aplicar lo de las listas (ver Generales)."
+    },
+    "D2": {
+     "t": "Bien así."
+    },
+    "D3": {
+     "t": "Bien, son las tres cajas que pide el mapa."
+    },
+    "D4": {
+     "t": "Camino de 5 paradas; pasarlo a mapa conceptual con su descarga.",
+     "mini": "U3D4"
+    },
+    "D5": {
+     "t": "Los 7 requisitos generales y los defectos específicos quedan escondidos en un camino sin botón de descarga; mejor mapa conceptual con los 7 a la vista.",
+     "mini": "U3D5"
+    },
+    "D6": {
+     "t": "Bien las tres cajas; ojo, cosa juzgada y temeridad (E05 y E06) no están en el DI vigente de esta lección (van en la 3.4), confirmar si se quitan."
+    },
+    "D7": {
+     "t": "Falta el «Cierre de la lección» del DI (§8), y la pantalla de implicaciones (E08) no está en el DI vigente de la 3.3."
+    },
+    "D8": {
+     "t": "El caso está cambiado: es el de temeridad de la 3.4, y el DI de esta lección trae el de la grabación judicial con sus 4 preguntas; cambiarlo y sumar el audio.",
+     "mini": "U3D8"
+    },
+    "D9": {
+     "t": "Bien; aplicar lo de las listas (ver Generales)."
+    },
+    "D10": {
+     "t": "Bien así."
+    },
+    "E2": {
+     "t": "Bien así."
+    },
+    "E3": {
+     "t": "Camino de 3 paradas para un mapa conceptual, y el DI vigente reescribió este problema (qué es la improcedencia y qué no significa); actualizar el texto y pasarlo a nodo con ramas.",
+     "mini": "U3E3"
+    },
+    "E4": {
+     "t": "Son 1.170 palabras en un solo scroll; el mapa pide intro corta y un pop-up por causal del art. 6, con el texto completo en PDF.",
+     "mini": "U3E4"
+    },
+    "E5": {
+     "t": "Bien así."
+    },
+    "E6": {
+     "t": "Bien así."
+    },
+    "E7": {
+     "t": "Bien así (tres cajas)."
+    },
+    "E8": {
+     "t": "Bien así."
+    },
+    "E9": {
+     "t": "Muy bien, mapa conceptual con descarga."
+    },
+    "E10": {
+     "t": "Bien, es la ruta de 6 pasos que pide el mapa."
+    },
+    "E11": {
+     "t": "El caso sí es el del DI (temeridad); el que está mal es el título del mapa, que dice «grabación judicial», y falta el audio de la situación.",
+     "mini": "U3E11"
+    },
+    "E12": {
+     "t": "Los 17 ítems no son la lista del DI: la de la 3.4 es de reconocimiento y canalización de comunicaciones (despacho, referencia, plazo, remisión); cambiarlos.",
+     "mini": "U3E12"
+    },
+    "E13": {
+     "t": "Actualizar al DI vigente, que le agregó una síntesis (legitimación, inmediatez, subsidiariedad, improcedencia) y lo de canalizar la comunicación aunque parezca improcedente."
+    }
+   }
+  },
+  {
+   "hoja": "Unidad 4",
+   "celdas": {
+    "B2": {
+     "t": "Bien así."
+    },
+    "B3": {
+     "t": "Bien así."
+    },
+    "B4": {
+     "t": "Bien así."
+    },
+    "B5": {
+     "t": "Bien así."
+    },
+    "B6": {
+     "t": "Bien así (tres tarjetas que giran)."
+    },
+    "B7": {
+     "t": "El mapa pide línea de tiempo con los 7 elementos y quedó rejilla de 8 cajas que pide scroll; pasarla a ruta paso a paso con la intro arriba.",
+     "mini": "U4B7"
+    },
+    "B8": {
+     "t": "Bien así."
+    },
+    "B9": {
+     "t": "Falta el audio con la situación que pide el mapa.",
+     "mini": "U4B9"
+    },
+    "B10": {
+     "t": "Bien; aplicar lo de las listas (ver Generales)."
+    },
+    "B11": {
+     "t": "Bien así."
+    },
+    "C2": {
+     "t": "Bien así."
+    },
+    "C3": {
+     "t": "Bien así."
+    },
+    "C4": {
+     "t": "Camino de 3 paradas; pasarlo a mapa conceptual con su descarga.",
+     "mini": "U4C4"
+    },
+    "C5": {
+     "t": "El mapa pide línea de tiempo con botones numerados y quedó rejilla de 8 cajas con scroll; pasarla a ruta paso a paso.",
+     "mini": "U4C5"
+    },
+    "C6": {
+     "t": "Bien así."
+    },
+    "C7": {
+     "t": "Pasar el camino de medidas provisionales a mapa conceptual, y la matriz de seguimiento, que pide scroll, dejarla como tabla descargable.",
+     "mini": "U4C7"
+    },
+    "C8": {
+     "t": "Falta el audio con la situación que pide el mapa.",
+     "mini": "U4C8"
+    },
+    "C9": {
+     "t": "Bien; aplicar lo de las listas (ver Generales)."
+    },
+    "C10": {
+     "t": "Bien así."
+    },
+    "D2": {
+     "t": "Bien así."
+    },
+    "D4": {
+     "t": "El mapa pide línea de tiempo con botones y quedó rejilla de cajas con scroll; pasarla a ruta paso a paso.",
+     "mini": "U4D3"
+    },
+    "D5": {
+     "t": "Bien así."
+    },
+    "D6": {
+     "t": "Bien así."
+    },
+    "D7": {
+     "t": "Falta el caso práctico de la impugnación y el cumplimiento en paralelo (§5 del DI) con el audio que pide el mapa.",
+     "mini": "U4D6"
+    },
+    "D8": {
+     "t": "Bien así."
+    },
+    "D9": {
+     "t": "Bien como texto con scroll."
+    },
+    "D10": {
+     "t": "Faltan el cuadro comparativo (cumplimiento del fallo frente a desacato) y la advertencia pedagógica en pop-up que pide el mapa.",
+     "mini": "U4D9"
+    },
+    "D11": {
+     "t": "Camino de 4 paradas; pasarlo a mapa conceptual con su descarga.",
+     "mini": "U4D10"
+    },
+    "D12": {
+     "t": "Falta el audio con la situación que pide el mapa.",
+     "mini": "U4D11"
+    },
+    "D13": {
+     "t": "Bien; aplicar lo de las listas (ver Generales)."
+    },
+    "D14": {
+     "t": "Bien así."
+    },
+    "E2": {
+     "t": "Bien así."
+    },
+    "E4": {
+     "t": "El mapa pide línea de tiempo con botones y quedó rejilla de 8 cajas con scroll; pasarla a ruta paso a paso.",
+     "mini": "U4E3"
+    },
+    "E5": {
+     "t": "Falta el audio del caso, y las actuaciones (E05) van con viñetas cuando el mapa pide lista ordenada.",
+     "mini": "U4E4"
+    },
+    "E6": {
+     "t": "Falta el audio del caso que pide el mapa."
+    },
+    "E7": {
+     "t": "Numerar las actuaciones; el mapa pide lista ordenada."
+    },
+    "E8": {
+     "t": "Falta el audio del caso que pide el mapa."
+    },
+    "E9": {
+     "t": "Numerar las actuaciones; el mapa pide lista ordenada."
+    },
+    "E10": {
+     "t": "En el mapa falta la fila del caso 4 (persona investigada y datos, E10); en el Genially está, solo falta su audio y numerar estas actuaciones."
+    },
+    "E11": {
+     "t": "Falta el audio del caso; en el Genially se llama «Caso 5» y en el DI «8. Caso de análisis», unificar."
+    },
+    "E12": {
+     "t": "Numerar las actuaciones; el mapa pide lista ordenada."
+    },
+    "E13": {
+     "t": "Bien la tabla, pero pide scroll; sumarle botón para descargar la matriz en PDF.",
+     "mini": "U4E12"
+    },
+    "E14": {
+     "t": "Bien; aplicar lo de las listas (ver Generales)."
+    },
+    "E15": {
+     "t": "Bien así."
+    },
+    "D3": {
+     "t": "Bien así."
+    },
+    "E3": {
+     "t": "Bien así."
+    }
+   }
+  }
+ ],
+ "generales": [
+  {
+   "t": "Los 16 Genially se llaman «UNI N - LEC N - DERECHO DE PETICIÓN, ACCIÓN DE TUTELA Y DAÑO ANTIJURÍDICO»; el curso no lleva «daño antijurídico», corregir el nombre."
+  },
+  {
+   "t": "Los avisos «¡Tramo superado!», «¡Nuevo nivel!» y el confeti salen en la mitad, encima del texto, en casi todas las pantallas; pasarlos a una esquina o a la barra de abajo.",
+   "mini": "DP_U1_L1_GEN"
+  },
+  {
+   "t": "Casi todos los «mapa conceptual con imagen para descarga» quedaron como camino con paradas (unas 20 pantallas iguales, tapan la escena y las tarjetas se montan); usar el modelo de nodos con ramas de la 3.2 (E07) y la 3.4 (E08).",
+   "mini": "GEN_mapa"
+  },
+  {
+   "t": "Las rejillas de 8 cajas piden scroll (1.2 E08, 2.1 E04, 4.1 E06, 4.2 E04, 4.3 E03, 4.4 E03); donde el mapa pide línea de tiempo, usar la ruta paso a paso de la 2.1 (E06).",
+   "mini": "GEN_ruta"
+  },
+  {
+   "t": "Ningún caso trae el audio de la situación que pide el mapa; poner el botón de audio arriba de la situación.",
+   "mini": "GEN_caso"
+  },
+  {
+   "t": "Todo el curso usa las mismas 5 ilustraciones y en las rejillas se repite la misma en cada caja; mejor un ícono propio por caja.",
+   "mini": "GEN_cajas"
+  },
+  {
+   "t": "Las listas de verificación (9 a 17 ítems) piden scroll; partirlas en dos columnas y sumar botón para descargar la lista en PDF.",
+   "mini": "GEN_lista"
+  },
+  {
+   "t": "En las pantallas de texto, la columna de íconos de la derecha es pura decoración y le quita ancho al texto; quitarla."
+  },
+  {
+   "t": "En la 1.3, 3.2, 3.3 y 3.4 el Genially tiene texto de una versión anterior del DI; antes de tocar, confirmar con el autor cuál es la vigente."
+  },
+  {
+   "t": "En el Fin de la 1.1 se asoman los pies de la ilustración debajo del pie de página; revisarlo en todas las lecciones."
+  }
+ ],
+ "miniaturas": {
+  "U1C3": {
+   "tpl": "cajas",
+   "titulo": "E03 · Caso de la petición particular",
+   "cajas": [
+    {
+     "t": "De interés general"
+    },
+    {
+     "t": "De interés particular",
+     "chips": [
+      "▶ audio del caso",
+      "Caso práctico"
+     ]
+    },
+    {
+     "t": "Información y copias"
+    },
+    {
+     "t": "Consultas"
+    },
+    {
+     "t": "Varios objetos"
+    }
+   ],
+   "nota": "El caso del §2.2 va destacado en la caja 2"
+  },
+  "U1C4": {
+   "tpl": "cajas",
+   "titulo": "E04 · Tres cajas arriba, sin hueco",
+   "cajas": [
+    {
+     "t": "El contenido de las peticiones"
+    },
+    {
+     "t": "Requisitos: función instrumental"
+    },
+    {
+     "t": "En materia de idioma"
+    }
+   ],
+   "nota": "Sin columna de íconos: las cajas usan todo el ancho"
+  },
+  "U1C5": {
+   "tpl": "mapa",
+   "titulo": "E05 · Mapa conceptual, no camino",
+   "centro": "Peticiones especiales",
+   "sub": "incompletas, desistidas, irrespetuosas",
+   "nodos": [
+    "Incompleta",
+    "Desistimiento tácito",
+    "Irrespetuosa u oscura"
+   ],
+   "nota": "Cada nodo abre su ventana",
+   "pdf": "Descargar mapa"
+  },
+  "U1C6": {
+   "tpl": "tabla",
+   "titulo": "E06 · Tabla de términos",
+   "cols": [
+    "Petición",
+    "Término"
+   ],
+   "filas": [
+    [
+     "Regla general",
+     "15 días"
+    ],
+    [
+     "Documentos e información",
+     "10 días"
+    ],
+    [
+     "Consultas",
+     "30 días"
+    ],
+    [
+     "Si no alcanza",
+     "avisar antes; máximo el doble"
+    ]
+   ],
+   "pdf": "Descargar mapa"
+  },
+  "U1C7": {
+   "tpl": "linea",
+   "titulo": "E07 · Ruta del traslado",
+   "pasos": [
+    "Verificar competencia",
+    "Remitir en 5 días",
+    "Término desde el competente",
+    "Competencia parcial"
+   ],
+   "activa": 1,
+   "panel_t": "Remitir en 5 días",
+   "panel": [
+    "con copia del oficio al peticionario",
+    "si la piden verbalmente, avisar de una"
+   ],
+   "pdf": "Descargar mapa"
+  },
+  "U1C8": {
+   "tpl": "linea",
+   "titulo": "E08 · Guía en ruta paso a paso",
+   "pasos": [
+    "Es petición",
+    "Modalidad",
+    "Norma especial",
+    "Competencia",
+    "Término",
+    "Elementos",
+    "Restricciones",
+    "Evidencia"
+   ],
+   "activa": 0,
+   "panel_t": "1. ¿La comunicación constituye una petición?",
+   "panel": [
+    "un paso por pantalla",
+    "el 8 con sus tres subnumerales"
+   ]
+  },
+  "U1D3": {
+   "tpl": "mapa",
+   "titulo": "E02 · Mapa conceptual de la respuesta",
+   "centro": "La respuesta debe ser",
+   "nodos": [
+    "De fondo",
+    "Clara",
+    "Precisa",
+    "Congruente"
+   ],
+   "nota": "Sumar los párrafos nuevos del DI",
+   "pdf": "Descargar mapa"
+  },
+  "U1D8": {
+   "tpl": "caso",
+   "titulo": "E07 · Caso con audio y pop-ups",
+   "audio": true,
+   "cajas": [
+    "Situación (carta de la ciudadana)",
+    "Análisis"
+   ],
+   "idea": "texto vigente del DI"
+  },
+  "U1E3": {
+   "tpl": "mapa",
+   "titulo": "E02 · Deberes como mapa conceptual",
+   "centro": "Deberes institucionales",
+   "sub": "problema de la respuesta, arriba",
+   "nodos": [
+    "Recepción y radicación",
+    "Respuesta completa",
+    "Comunicación",
+    "Atención prioritaria"
+   ],
+   "pdf": "Descargar mapa"
+  },
+  "U2B4": {
+   "tpl": "mapa",
+   "titulo": "E03 · Canales como mapa conceptual",
+   "centro": "Canales de atención",
+   "nodos": [
+    "Virtual",
+    "Telefónico",
+    "Escrito",
+    "Presencial"
+   ],
+   "chips": [
+    "+ disponibilidad de varios canales"
+   ],
+   "pdf": "Descargar mapa"
+  },
+  "U2B5": {
+   "tpl": "cajas",
+   "titulo": "E04 · Los 7 valores sin scroll",
+   "cajas": [
+    {
+     "t": "Servicio al bien general"
+    },
+    {
+     "t": "Legalidad"
+    },
+    {
+     "t": "Respeto"
+    },
+    {
+     "t": "Confidencialidad"
+    },
+    {
+     "t": "Conocimiento"
+    },
+    {
+     "t": "Compromiso"
+    },
+    {
+     "t": "Calidad"
+    }
+   ]
+  },
+  "U2B8": {
+   "tpl": "mapa",
+   "titulo": "E07 · Enfoque diferencial en nodos",
+   "centro": "Enfoque diferencial",
+   "nodos": [
+    "Necesidades y contexto",
+    "Personas y comunidades",
+    "Barreras",
+    "No cambia competencia"
+   ],
+   "pdf": "Descargar mapa"
+  },
+  "U2B9": {
+   "tpl": "caso",
+   "titulo": "E08 · Situación con audio",
+   "audio": true,
+   "cajas": [
+    "Análisis"
+   ],
+   "idea": "visible sin clic"
+  },
+  "U2B10": {
+   "tpl": "pestanas",
+   "titulo": "E09 · Pestañas idea clave / conclusión",
+   "tabs": [
+    "Idea clave",
+    "Conclusión"
+   ],
+   "activa": 0,
+   "items": [
+    "el texto se ve al entrar, sin clic",
+    "persona presentando al lado",
+    "la conclusión en la segunda pestaña"
+   ]
+  },
+  "U2C4": {
+   "tpl": "mapa",
+   "titulo": "E03 · Estándar como mapa conceptual",
+   "centro": "Estándar de la respuesta",
+   "nodos": [
+    "Relación articulada",
+    "Términos del art. 14",
+    "Directiva 0001 de 2022"
+   ],
+   "pdf": "Descargar mapa"
+  },
+  "U2C7": {
+   "tpl": "caso",
+   "titulo": "E06 · Situación con audio",
+   "audio": true,
+   "cajas": [
+    "Análisis"
+   ]
+  },
+  "U2C8": {
+   "tpl": "texto_pdf",
+   "titulo": "E07 · Modelo de respuesta descargable",
+   "frase": "Modelo de respuesta a una petición (plantilla)",
+   "nota": "Se ve como oficio: asunto, solicitudes numeradas, cierre",
+   "pdf": "Descargar modelo (PDF)"
+  },
+  "U2D4": {
+   "tpl": "mapa",
+   "titulo": "E03 · Marco como mapa conceptual",
+   "centro": "Marco constitucional y legal",
+   "nodos": [
+    "Art. 15 C.P.",
+    "Ley 1581 de 2012",
+    "Ley 1712 de 2014",
+    "Ley 1755 de 2015"
+   ],
+   "chips": [
+    "conciliar petición, acceso a la información y autodeterminación"
+   ],
+   "pdf": "Descargar mapa"
+  },
+  "U2D5": {
+   "tpl": "tarjetas",
+   "titulo": "E04-E05 · Categorías agrupadas",
+   "cards": [
+    {
+     "t": "Pública",
+     "chips": [
+      "pública",
+      "administrativa",
+      "misional"
+     ]
+    },
+    {
+     "t": "Datos personales",
+     "chips": [
+      "privados",
+      "semiprivados",
+      "sensibles"
+     ]
+    },
+    {
+     "t": "Restringida",
+     "chips": [
+      "clasificada",
+      "reservada",
+      "actuaciones penales"
+     ]
+    },
+    {
+     "t": "Cómo se entrega",
+     "chips": [
+      "entrega parcial",
+      "versión pública",
+      "articulación"
+     ]
+    }
+   ]
+  },
+  "U2D7": {
+   "tpl": "pestanas",
+   "titulo": "4.4 · Una pestaña por medida",
+   "tabs": [
+    "Eliminación",
+    "Anonimización",
+    "Ocultamiento"
+   ],
+   "activa": 0,
+   "items": [
+    "texto inicial arriba",
+    "qué es y qué consecuencia jurídica y técnica tiene",
+    "casos en cajas «Caso 1», «Caso 2» con audio"
+   ]
+  },
+  "U2D9": {
+   "tpl": "caso",
+   "titulo": "E08 · Situación con audio",
+   "audio": true,
+   "cajas": [
+    "Análisis"
+   ]
+  },
+  "U2E3": {
+   "tpl": "linea",
+   "titulo": "E02 · Pasos cortos + PDF",
+   "pasos": [
+    "Problema",
+    "Marco",
+    "Comunicación",
+    "Trazabilidad",
+    "Control de términos"
+   ],
+   "activa": 2,
+   "panel_t": "La comunicación como elemento del derecho",
+   "panel": [
+    "solo la idea clave del paso",
+    "el texto completo, en el PDF"
+   ],
+   "pdf": "Texto completo (PDF)"
+  },
+  "U2E4": {
+   "tpl": "mapa",
+   "titulo": "E03 · Consecuencias en nodos",
+   "centro": "Consecuencias",
+   "sub": "del incumplimiento",
+   "nodos": [
+    "Derecho de petición",
+    "Disciplinarias",
+    "Institucionales",
+    "Documentos e info.",
+    "Otros riesgos"
+   ],
+   "nota": "Cada título despliega su texto"
+  },
+  "U2E5": {
+   "tpl": "caso",
+   "titulo": "E04 · Situación con audio",
+   "audio": true,
+   "cajas": [
+    "Análisis"
+   ]
+  },
+  "U3B3": {
+   "tpl": "mapa",
+   "titulo": "E03 · Naturaleza en nodos",
+   "centro": "Acción de tutela",
+   "sub": "naturaleza constitucional",
+   "nodos": [
+    "Art. 86 C.P.",
+    "Preferente y sumaria",
+    "Decreto 2591 de 1991",
+    "Para la Fiscalía"
+   ]
+  },
+  "U3B6": {
+   "tpl": "caso",
+   "titulo": "E07 · Situación con audio",
+   "audio": true,
+   "cajas": [
+    "Análisis"
+   ]
+  },
+  "U3C4": {
+   "tpl": "cajas",
+   "titulo": "E03 · Las tres cajas del mapa",
+   "cajas": [
+    {
+     "t": "Quien sufre la vulneración",
+     "items": [
+      "directamente o con representante"
+     ]
+    },
+    {
+     "t": "Agente oficioso",
+     "items": [
+      "cuando el titular no puede"
+     ]
+    },
+    {
+     "t": "Sin abogado",
+     "items": [
+      "por regla general"
+     ]
+    }
+   ],
+   "nota": "Texto vigente del DI"
+  },
+  "U3C6": {
+   "tpl": "dos_bloques",
+   "titulo": "E05 · Pop-ups + ejemplo destacado",
+   "izq": {
+    "t": "Inmediatez",
+    "items": [
+     "1. Un plazo razonable",
+     "2. Protección urgente",
+     "3. Cada caso concreto"
+    ]
+   },
+   "der": {
+    "t": "Ejemplo",
+    "items": [
+     "va destacado, como pide el mapa",
+     "con el texto vigente del DI"
+    ],
+    "alerta": true
+   }
+  },
+  "U3C7": {
+   "tpl": "mapa",
+   "titulo": "E06 · Como el mapa de E07",
+   "centro": "Subsidiariedad",
+   "nodos": [
+    "Condición de procedencia",
+    "Otro medio idóneo",
+    "Mecanismo transitorio"
+   ],
+   "pdf": "Descargar mapa"
+  },
+  "U3D4": {
+   "tpl": "mapa",
+   "titulo": "E03 · Tutela contra autoridades",
+   "centro": "Contra autoridades públicas",
+   "nodos": [
+    "Acciones u omisiones",
+    "Procedencia",
+    "Derecho de petición",
+    "Respuesta no favorable",
+    "No sustituye trámites"
+   ],
+   "pdf": "Descargar mapa"
+  },
+  "U3D5": {
+   "tpl": "mapa",
+   "titulo": "E04 · Los 7 requisitos a la vista",
+   "centro": "Tutela contra providencias",
+   "nodos": [
+    "Requisitos generales (7)",
+    "Defectos específicos"
+   ],
+   "chips": [
+    "Legitimación",
+    "Relevancia constitucional",
+    "Subsidiariedad",
+    "Inmediatez",
+    "Irregularidad procesal",
+    "Hechos y derechos",
+    "No contra fallos de tutela"
+   ],
+   "pdf": "Descargar mapa"
+  },
+  "U3D8": {
+   "tpl": "caso",
+   "titulo": "E09 · El caso del DI: grabación judicial",
+   "audio": true,
+   "cajas": [
+    "Análisis del caso",
+    "Preguntas (4)"
+   ],
+   "idea": "caso de la 3.3, no el de la 3.4"
+  },
+  "U3E3": {
+   "tpl": "mapa",
+   "titulo": "E02 · Problema en nodos",
+   "centro": "Improcedencia",
+   "sub": "texto vigente del DI",
+   "nodos": [
+    "Qué es",
+    "Qué no significa",
+    "Otra vía adecuada"
+   ],
+   "pdf": "Descargar mapa"
+  },
+  "U3E4": {
+   "tpl": "cajas",
+   "titulo": "E03 · Un pop-up por causal",
+   "cajas": [
+    {
+     "t": "Otros medios de defensa"
+    },
+    {
+     "t": "Hábeas corpus"
+    },
+    {
+     "t": "Derechos colectivos"
+    },
+    {
+     "t": "Daño consumado"
+    },
+    {
+     "t": "Actos generales"
+    }
+   ],
+   "nota": "Intro corta arriba",
+   "pdf": "Texto completo (PDF)"
+  },
+  "U3E11": {
+   "tpl": "caso",
+   "titulo": "E10 · Situación con audio",
+   "audio": true,
+   "cajas": [
+    "Análisis"
+   ],
+   "idea": "caso de temeridad (está bien)"
+  },
+  "U3E12": {
+   "tpl": "checklist",
+   "titulo": "E11 · La lista del DI",
+   "t": "Reconocer y canalizar comunicaciones de tutela",
+   "items": [
+    "¿Viene de un despacho judicial?",
+    "¿Despacho, referencia, fecha y hora?",
+    "¿Qué se pide y en qué plazo?",
+    "¿Hay medida provisional urgente?",
+    "¿Se conservó el mensaje original?",
+    "¿Se remitió a quien debe atenderla?",
+    "¿Se avisó la urgencia?",
+    "¿Se aportaron antecedentes?"
+   ],
+   "marcados": 3
+  },
+  "U4B7": {
+   "tpl": "linea",
+   "titulo": "E06 · Informe en ruta paso a paso",
+   "pasos": [
+    "Despacho y partes",
+    "Hechos",
+    "Cronología",
+    "Normas",
+    "Pronunciamiento",
+    "Medidas",
+    "Anexos"
+   ],
+   "activa": 0,
+   "panel_t": "1. Despacho, proceso y partes",
+   "panel": [
+    "la intro va arriba, antes del paso 1"
+   ]
+  },
+  "U4B9": {
+   "tpl": "caso",
+   "titulo": "E08 · Situación con audio",
+   "audio": true,
+   "cajas": [
+    "Análisis"
+   ]
+  },
+  "U4C4": {
+   "tpl": "mapa",
+   "titulo": "E03 · Términos en nodos",
+   "centro": "Control de términos",
+   "nodos": [
+    "Desde la notificación",
+    "Trámite preferente",
+    "Plazo del juez"
+   ],
+   "pdf": "Descargar mapa"
+  },
+  "U4C5": {
+   "tpl": "linea",
+   "titulo": "E04 · Registro en ruta paso a paso",
+   "pasos": [
+    "Despacho",
+    "Fecha y hora",
+    "Plazos",
+    "Responsables",
+    "Solicitudes",
+    "Informe",
+    "Órdenes",
+    "Comunicaciones"
+   ],
+   "activa": 0,
+   "panel_t": "1. Despacho, proceso y partes",
+   "panel": [
+    "un paso por botón numerado"
+   ]
+  },
+  "U4C7": {
+   "tpl": "tabla",
+   "titulo": "E07 · Matriz descargable",
+   "cols": [
+    "Elemento",
+    "Qué registrar"
+   ],
+   "filas": [
+    [
+     "Proceso judicial",
+     "despacho, expediente, partes"
+    ],
+    [
+     "Actuación recibida",
+     "tutela, medida, fallo…"
+    ],
+    [
+     "Fecha y plazo",
+     "recepción y término"
+    ],
+    [
+     "Hecho o asunto",
+     "situación relacionada"
+    ]
+   ],
+   "pdf": "Descargar matriz (PDF)"
+  },
+  "U4C8": {
+   "tpl": "caso",
+   "titulo": "E08 · Situación con audio",
+   "audio": true,
+   "cajas": [
+    "Análisis"
+   ]
+  },
+  "U4D3": {
+   "tpl": "linea",
+   "titulo": "E03 · Alcance de la orden, paso a paso",
+   "pasos": [
+    "Autoridad",
+    "Beneficiarios",
+    "Derecho y hechos",
+    "Acciones",
+    "Dependencias",
+    "Plazo",
+    "Evidencias"
+   ],
+   "activa": 0,
+   "panel_t": "1. Autoridad judicial y referencia",
+   "panel": [
+    "la intro va arriba, antes del paso 1"
+   ]
+  },
+  "U4D6": {
+   "tpl": "caso",
+   "titulo": "Caso práctico: impugnar y cumplir",
+   "audio": true,
+   "cajas": [
+    "Análisis",
+    "Qué hacer en paralelo"
+   ],
+   "idea": "impugnar no suspende el cumplimiento"
+  },
+  "U4D9": {
+   "tpl": "tabla",
+   "titulo": "Cuadro comparativo + advertencia",
+   "cols": [
+    "Aspecto",
+    "Cumplimiento",
+    "Desacato"
+   ],
+   "filas": [
+    [
+     "Finalidad",
+     "ejecutar la orden",
+     "inducir cumplimiento"
+    ],
+    [
+     "Pregunta",
+     "¿se hizo lo ordenado?",
+     "¿es atribuible?"
+    ],
+    [
+     "Examen",
+     "objetivo",
+     "objetivo y subjetivo"
+    ]
+   ],
+   "nota": "Advertencia pedagógica en pop-up especial",
+   "pdf": "Descargar cuadro"
+  },
+  "U4D10": {
+   "tpl": "mapa",
+   "titulo": "E08 · Lineamientos en nodos",
+   "centro": "Lineamientos típicos",
+   "sub": "tutelas contra la Fiscalía",
+   "nodos": [
+    "Derechos fundamentales",
+    "Derecho de petición",
+    "Víctimas",
+    "Datos y actuaciones"
+   ],
+   "pdf": "Descargar mapa"
+  },
+  "U4D11": {
+   "tpl": "caso",
+   "titulo": "E09 · Situación con audio",
+   "audio": true,
+   "cajas": [
+    "Análisis"
+   ]
+  },
+  "U4E3": {
+   "tpl": "linea",
+   "titulo": "E03 · Criterios en ruta paso a paso",
+   "pasos": [
+    "Hechos",
+    "Derecho",
+    "Dependencia",
+    "Radicados",
+    "Medidas",
+    "Informe",
+    "Actuaciones",
+    "Evidencias"
+   ],
+   "activa": 0,
+   "panel_t": "1. Hechos alegados y documentos",
+   "panel": [
+    "un paso por botón numerado"
+   ]
+  },
+  "U4E4": {
+   "tpl": "caso",
+   "titulo": "E04-E05 · Caso con audio + lista ordenada",
+   "audio": true,
+   "cajas": [
+    "Análisis",
+    "Actuaciones: 1, 2, 3…"
+   ]
+  },
+  "U4E12": {
+   "tpl": "tabla",
+   "titulo": "E14 · Matriz + descarga",
+   "cols": [
+    "Elemento",
+    "Pregunta",
+    "Actuación"
+   ],
+   "filas": [
+    [
+     "Hechos alegados",
+     "¿qué se atribuye?",
+     "ubicar antecedentes"
+    ],
+    [
+     "Derecho invocado",
+     "¿cuál se alega?",
+     "relacionar hechos"
+    ],
+    [
+     "Persona",
+     "¿víctima, testigo…?",
+     "ver vulnerabilidad"
+    ]
+   ],
+   "pdf": "Descargar matriz (PDF)"
+  },
+  "GEN_mapa": {
+   "tpl": "mapa",
+   "titulo": "Modelo: mapa conceptual (3.2 E07)",
+   "centro": "Tema de la pantalla",
+   "nodos": [
+    "Concepto 1",
+    "Concepto 2",
+    "Concepto 3",
+    "Concepto 4"
+   ],
+   "nota": "Nodos con línea; cada uno abre su ventana",
+   "pdf": "Descargar mapa"
+  },
+  "GEN_ruta": {
+   "tpl": "linea",
+   "titulo": "Modelo: ruta paso a paso (2.1 E06)",
+   "pasos": [
+    "Paso",
+    "Paso",
+    "Paso",
+    "Paso",
+    "Paso",
+    "Paso"
+   ],
+   "activa": 0,
+   "panel_t": "Paso 1 de 6",
+   "panel": [
+    "texto corto del paso",
+    "botón «Siguiente paso»"
+   ]
+  },
+  "GEN_caso": {
+   "tpl": "caso",
+   "titulo": "Modelo: caso con audio",
+   "audio": true,
+   "cajas": [
+    "Análisis",
+    "Actividad"
+   ],
+   "pdf": "Guía (PDF)"
+  },
+  "GEN_cajas": {
+   "tpl": "cajas",
+   "titulo": "Un ícono propio por caja",
+   "cajas": [
+    {
+     "t": "Claridad",
+     "chips": [
+      "ícono propio"
+     ]
+    },
+    {
+     "t": "Precisión",
+     "chips": [
+      "ícono propio"
+     ]
+    },
+    {
+     "t": "Congruencia",
+     "chips": [
+      "ícono propio"
+     ]
+    },
+    {
+     "t": "Motivación",
+     "chips": [
+      "ícono propio"
+     ]
+    },
+    {
+     "t": "Oportunidad",
+     "chips": [
+      "ícono propio"
+     ]
+    },
+    {
+     "t": "Trazabilidad",
+     "chips": [
+      "ícono propio"
+     ]
+    }
+   ]
+  },
+  "GEN_lista": {
+   "tpl": "checklist",
+   "titulo": "Listas en dos columnas + PDF",
+   "t": "Lista de verificación",
+   "items": [
+    "Ítem 1",
+    "Ítem 2",
+    "Ítem 3",
+    "Ítem 4",
+    "Ítem 5",
+    "Ítem 6",
+    "Ítem 7",
+    "Ítem 8"
+   ],
+   "marcados": 4
+  }
+ }
+}
