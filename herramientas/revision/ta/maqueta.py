@@ -261,6 +261,10 @@ def publicar(u, l, escenas):
     d['juego'] = {'clave': 'ta-juego-u%d-l%d' % (u, l), 'niveles': ['Observador', 'Investigador', 'Fiscal en formación', 'Referente en terminaciones']}
     d['retro'] = dict(d['retro'], rotulo='Unidad %d · Lección %d' % (u, l))
     d['scenes'] = [dict(e) for e in escenas]
+    # cada mapa con su propia lámina para descargar (antes todos apuntaban a «documentos/mapa.png», que no existía)
+    for n, e in enumerate(d['scenes'], 1):
+        if (e.get('descarga') or {}).get('href') == 'documentos/mapa.png':
+            e['descarga'] = dict(e['descarga'], href='documentos/mapa-u%d-l%d-p%02d.png' % (u, l, n))
     dirc = TA + 'unidad-%02d/' % u
     if not os.path.isdir(dirc + 'comun'):
         shutil.copytree(DP + 'unidad-01/comun', dirc + 'comun')

@@ -141,3 +141,15 @@ python3 mapa_revision.py mapa.xlsx dp_u1l1/comentarios.json png/ salida.xlsx
 Para Terminaciones anticipadas (24 nov 2026) no había virtualización: cada diapositiva se diseñó
 con el motor de las mediaciones y el marco Genially. Va en el mismo Excel, con «Propuesta:» fuera
 de la miniatura. Método y herramientas en `ta/README.md`.
+
+## Derecho de petición revisado y HTML por lección (24 nov 2026)
+
+- `dp2/`: el curso de Derecho de petición con toda la revisión aplicada, en 16 Genially nuevos sobre
+  `…/prueba-terminaciones-anticipadas/derecho-peticion/`, con los 23 casos en audio y el Excel v2 con la propuesta
+  real en cada celda. Detalle en `dp2/README.md`.
+- `html_leccion/`: un HTML autocontenido por lección (TA y DP) para subir a la plataforma de la Fiscalía. Detalle en
+  `html_leccion/README.md`.
+- Carpeta de Drive «Revisiones Sebastián» (Mi unidad): una subcarpeta por curso con su Excel y «Lecciones en HTML»,
+  y dos documentos con los enlaces a los Genially provisionales.
+- TA: cada mapa conceptual tiene ahora su lámina PNG (`documentos/mapa-uU-lL-pNN.png`); antes todos apuntaban a
+  `documentos/mapa.png`, que no existía.

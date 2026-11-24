@@ -204,20 +204,21 @@ def entradas_indice(escenas):
     return [(lab(i), i) for i in idx]
 
 
-def leccion(clave):
+def leccion(clave, esc=None, heading=None, base=None, sigla='TA'):
+    """esc/heading/base/sigla: para usar el mismo armado con otro curso (DP revisado: herramientas/revision/dp2)."""
     u, l = map(int, clave.split('.'))
-    mod = importlib.import_module('lecciones.l%d%d' % (u, l))
-    esc = mod.ESCENAS
-    heading = M.HEADINGS[clave]
-    url = BASE + 'unidad-%02d/leccion-%02d/' % (u, l)
-    pref = 'TA · U%d-L%d' % (u, l)
+    if esc is None:
+        esc = importlib.import_module('lecciones.l%d%d' % (u, l)).ESCENAS
+    heading = heading or M.HEADINGS[clave]
+    url = (base or BASE) + 'unidad-%02d/leccion-%02d/' % (u, l)
+    pref = '%s · U%d-L%d' % (sigla, u, l)
     acciones = {}
 
     # --- portada
     por = Diapo('DPT · U1-L1 · Portada', pref + ' · Portada')
     h = corto(heading)
     texto(por.por_z('Texts', 3), h, size=ajusta(len(h), 532, 288, [38, 34, 31, 28]))
-    texto(por.por_z('Texts', 18), 'Lección %d' % l)
+    texto(por.por_z('Texts', 18), 'Lección %d' % l, ancho=215, alto=41)   # a 179 px «Lección 4» partía en dos renglones (también en el DP original)
     texto(por.por_z('Texts', 15), M.CURSO)
     texto(por.por_z('Texts', 14), 'Unidad %d' % u)
     nu = M.UNIDADES[u]
@@ -321,7 +322,7 @@ def leccion(clave):
     buf = {'type': 'slides', 'importData': {'weave': None, 'slides': slides, 'interactivityActions': acciones,
                                              'dragAndDropRelationships': [], 'tasks': tasks, 'version': 24, 'config': {}},
            'slideIds': [s['Id'] for s in slides]}
-    meta = {'leccion': clave, 'titulo_genially': 'TA · U%d L%d · %s' % (u, l, corto(heading)), 'diapositivas': len(slides), 'indice': [e[0] for e in ent]}
+    meta = {'leccion': clave, 'titulo_genially': '%s · U%d L%d · %s' % (sigla, u, l, corto(heading)), 'diapositivas': len(slides), 'indice': [e[0] for e in ent]}
     return buf, meta, esc
 
 

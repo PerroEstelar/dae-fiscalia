@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caso con audio</title>
+<link rel="stylesheet" href="../assets/vendor/fontawesome.min.css">
+<link rel="stylesheet" href="../assets/vendor/solid.min.css">
+<style>
+@font-face{font-family:Montserrat;src:url('../assets/fonts/montserrat-latin.woff2') format('woff2');font-weight:400 800;font-display:swap}
+@font-face{font-family:Montserrat;src:url('../assets/fonts/montserrat-latin-ext.woff2') format('woff2');font-weight:400 800;font-display:swap;unicode-range:U+0100-02AF}
+:root{--marino:#002F46;--teal:#396B83;--oxido:#A75260;--coral:#EE616B;--crema:#F8F5C6;--niebla:#E5F1F1;--hielo:#F2F8F8}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--hielo);font-family:Montserrat,Arial,sans-serif;color:var(--marino)}
+main{height:100%;display:grid;grid-template-rows:auto auto 1fr;gap:10px;padding:14px 18px 12px}
+.cab{display:flex;align-items:center;gap:12px}
+.ico{flex:none;width:44px;height:44px;border-radius:50%;background:var(--marino);color:#fff;display:grid;place-items:center;font-size:19px}
+.etq{display:inline-block;background:var(--coral);color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:5px 5px 5px 0}
+h1{margin:4px 0 0;font-size:18px;line-height:1.2;font-weight:800}
+.audio{display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid color-mix(in srgb,var(--teal) 45%,transparent);border-radius:14px;padding:8px 12px}
+.audio button{flex:none;width:46px;height:46px;border:0;border-radius:50%;background:var(--oxido);color:#fff;font-size:18px;cursor:pointer}
+.audio button:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.audio .barra{flex:1;height:8px;border-radius:5px;background:var(--niebla);overflow:hidden;cursor:pointer}
+.audio .barra i{display:block;height:100%;width:0;background:var(--teal)}
+.audio output{flex:none;font-size:13px;font-weight:700;min-width:92px;text-align:right}
+.texto{overflow:auto;background:#fff;border-radius:14px;padding:12px 16px;font-size:15px;line-height:1.5;border:1.5px solid var(--niebla)}
+.texto p{margin:0 0 8px}
+.texto p:last-child{margin:0}
+.rot{font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--teal);margin:0 0 6px}
+</style>
+</head>
+<body>
+<main>
+  <div class="cab"><span class="ico" aria-hidden="true"><i class="fas fa-headphones"></i></span>
+    <div><span class="etq">Caso con audio</span><h1 id="titulo">Caso</h1></div></div>
+  <div class="audio"><button type="button" id="play" aria-label="Reproducir el audio del caso"><i class="fas fa-play"></i></button>
+    <span class="barra" id="barra" aria-hidden="true"><i></i></span><output id="tiempo">0:00</output>
+    <audio id="a" preload="auto"></audio></div>
+  <div class="texto" id="texto" tabindex="0" aria-label="Texto del caso"></div>
+</main>
+<script>
+(async function () {
+  var id = new URLSearchParams(location.search).get('caso'), a = document.getElementById('a'), b = document.getElementById('play');
+  var d = (await (await fetch('casos.json')).json())[id];
+  if (!d) { document.getElementById('titulo').textContent = 'Caso no encontrado'; return; }
+  document.title = d.titulo; document.getElementById('titulo').textContent = d.titulo;
+  document.getElementById('texto').innerHTML = '<p class="rot">Situación</p>' + d.texto.map(function (p) {
+    return '<p>' + p.replace(/[&<>]/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;'}[c]; }) + '</p>'; }).join('');
+  a.src = d.audio;
+  var mm = function (s) { s = Math.max(0, Math.round(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+  var pinta = function () { b.innerHTML = '<i class="fas fa-' + (a.paused ? 'play' : 'pause') + '"></i>'; b.setAttribute('aria-label', a.paused ? 'Reproducir el audio del caso' : 'Pausar el audio del caso'); };
+  a.addEventListener('timeupdate', function () { document.querySelector('#barra i').style.width = (a.duration ? a.currentTime / a.duration * 100 : 0) + '%';
+    document.getElementById('tiempo').textContent = mm(a.currentTime) + ' / ' + mm(a.duration); });
+  a.addEventListener('play', pinta); a.addEventListener('pause', pinta); a.addEventListener('ended', pinta);
+  b.addEventListener('click', function () { a.paused ? a.play() : a.pause(); });
+  document.getElementById('barra').addEventListener('click', function (e) { var r = this.getBoundingClientRect(); if (a.duration) a.currentTime = (e.clientX - r.left) / r.width * a.duration; });
+  a.play().catch(function () {});
+})();
+</script>
+</body>
+</html>

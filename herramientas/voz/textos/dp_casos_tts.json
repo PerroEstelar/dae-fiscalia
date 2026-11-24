@@ -1,0 +1,140 @@
+[
+ {
+  "id": "u1l1c1",
+  "titulo": "Caso de aplicación: la asociación comunitaria y los canales de atención",
+  "tts": "Caso de aplicación. La asociación comunitaria y los canales de atención.\n\nUna asociación comunitaria remite una comunicación a la Fiscalía General de la Nación. En ella expresa preocupación por las dificultades que enfrentan varias personas para obtener orientación sobre los canales institucionales de atención. La asociación solicita que se informe cuáles son dichos canales y propone que la Entidad utilice mensajes más claros y accesibles para la comunidad.",
+  "palabras": 57
+ },
+ {
+  "id": "u1l2c1",
+  "titulo": "Caso práctico: dos solicitudes en un mismo escrito",
+  "tts": "Caso práctico. Dos solicitudes en un mismo escrito.\n\nUna ciudadana presenta ante la Fiscalía General de la Nación un escrito titulado “Derecho de petición” con dos solicitudes. Primero, pide conocer el horario de atención y el canal para presentar una queja por el servicio recibido. Segundo, en su condición de víctima de unos hechos que son objeto de una indagación penal identificada con su número de noticia criminal, solicita que el fiscal que conoce el asunto entreviste a una persona que presenció los hechos.",
+  "palabras": 76
+ },
+ {
+  "id": "u1l2c2",
+  "titulo": "Caso de aplicación: una comunicación con cuatro solicitudes",
+  "tts": "Caso de aplicación. Una comunicación con cuatro solicitudes.\n\nUna persona presenta por el canal escrito de la Fiscalía General de la Nación una comunicación en la que solicita: primero, copia de un acto administrativo expedido por una dependencia de la Entidad; segundo, información sobre los canales institucionales para radicar una queja; tercero, concepto sobre la interpretación de una norma penal en un caso hipotético; y cuarto, la modificación de una decisión adoptada dentro de un proceso penal en curso.",
+  "palabras": 71
+ },
+ {
+  "id": "u1l3c1",
+  "titulo": "Caso de aplicación: la carta de la ciudadana",
+  "tts": "Caso de aplicación. La carta de la ciudadana.\n\nSeñores, Fiscalía General de la Nación. Asunto: Información sobre mi solicitud de protección y amenazas recientes.\n\nMi nombre es Elena Robles Zalcedo y soy víctima dentro de la actuación que, para efectos de este ejemplo, se identifica como caso ficticio A. El 20 de octubre de 2026 presenté una solicitud de medidas de protección, identificada en este caso como solicitud de protección B, porque Julián Argotes Veltrán me ha amenazado. No he recibido información sobre lo que ha ocurrido con esa solicitud. Les pido que me informen qué trámite le dieron, qué dependencia la está atendiendo y si ya se tomó alguna decisión. Si ya me respondieron, solicito copia de esa respuesta y que me indiquen cuándo y por qué medio me la enviaron. Las amenazas continúan. Ayer, 8 de noviembre de 2026, Julián Argotes Veltrán me envió un mensaje diciendo que me haría daño si seguía con la denuncia. Adjunto una copia y tengo miedo de que me agreda. Por eso, además de conocer el estado de mi solicitud, pido que se atienda con urgencia mi necesidad de protección y que dentro del proceso capturen inmediatamente a Julián Argotes Veltrán. Por mi seguridad, les pido que se comuniquen conmigo únicamente por el medio de contacto seguro que indiqué en mi solicitud de protección.\n\nAtentamente, Elena Robles Salcedo.\n\nLa dependencia responde únicamente: «Su escrito fue remitido al área competente». No identifica el destino de la remisión ni informa qué ocurrió con la solicitud anterior, no se pronuncia sobre la copia y no deja evidencia de haber canalizado de manera urgente la información sobre las nuevas amenazas.",
+  "palabras": 261
+ },
+ {
+  "id": "u2l1c1",
+  "titulo": "Caso de aplicación: la persona mayor que no usa canales virtuales",
+  "tts": "Caso de aplicación. La persona mayor que no usa canales virtuales.\n\nUna persona mayor acude a una sede de la Fiscalía General de la Nación para preguntar por el estado de una solicitud escrita presentada días antes. Manifiesta que no utiliza correo electrónico ni plataformas virtuales y que no comprende a qué dependencia debe dirigirse. La persona encargada de la atención le indica, sin revisar la información disponible, que consulte la página web y presente nuevamente la solicitud por Internet.",
+  "palabras": 69
+ },
+ {
+  "id": "u2l2c1",
+  "titulo": "Caso de aplicación: una petición con tres solicitudes",
+  "tts": "Caso de aplicación. Una petición con tres solicitudes.\n\nUna persona presenta una petición escrita en la que solicita: primero, copia de una respuesta emitida por la Fiscalía General de la Nación respecto de una comunicación anterior; segundo, información sobre la dependencia competente para recibir una queja relacionada con la atención recibida en una sede; y tercero, revisión de una decisión adoptada dentro de una actuación penal en curso.",
+  "palabras": 60
+ },
+ {
+  "id": "u2l3c2",
+  "titulo": "Caso 1: eliminación",
+  "tts": "Caso 1. Eliminación.\n\nUn Ciudadano escribe: “La investigación terminó y una orden judicial dispuso eliminar mi anotación del registro de consulta pública del ese pe o a. Solicito que se cumpla y que, además, se borre todo el expediente”.",
+  "palabras": 33
+ },
+ {
+  "id": "u2l3c3",
+  "titulo": "Caso 2: anonimización",
+  "tts": "Caso 2. Anonimización.\n\nLaura Vernal Acosta solicita: “Necesito estadísticas de denuncias por amenazas para un estudio. No requiero nombres, documentos de identidad ni números de casos”. El reporte disponible contiene, además de los nombres, edades exactas, ciudades de domiclio y relatos particulares.",
+  "palabras": 39
+ },
+ {
+  "id": "u2l3c4",
+  "titulo": "Caso 3: ocultamiento",
+  "tts": "Caso 3. Ocultamiento.\n\nInés Baldés Wora, víctima de amenazas, solicita: “Mi dirección y mi teléfono aparecen en un reporte del caso que reciben personas que no necesitan conocerlos. Pido que esos datos no queden visibles para ellas, pero que el despacho pueda seguir contactándome de forma segura”.",
+  "palabras": 44
+ },
+ {
+  "id": "u2l3c1",
+  "titulo": "Caso de aplicación: la copia de una carpeta de indagación",
+  "tts": "Caso de aplicación. La copia de una carpeta de indagación.\n\nUna persona solicita a la Fiscalía General de la Nación copia integral de una carpeta relacionada con una indagación penal en la que afirma haber sido mencionada. Además, solicita que se le informe si existen registros asociados a su nombre y que se elimine cualquier anotación que pueda afectarla en procesos de selección laboral. La comunicación no adjunta documentos que permitan establecer la calidad en la que interviene la persona en la actuación.",
+  "palabras": 73
+ },
+ {
+  "id": "u2l4c1",
+  "titulo": "Caso de aplicación: la ciudadana que pide una respuesta anterior",
+  "tts": "Caso de aplicación. La ciudadana que pide una respuesta anterior.\n\nUna ciudadana presenta una petición escrita ante la Fiscalía General de la Nación y solicita copia de una respuesta anterior, información sobre el estado de un trámite administrativo y orientación sobre la dependencia competente para atender un requerimiento adicional. La solicitud se radica y se remite internamente a dos dependencias. Una de ellas prepara un proyecto de respuesta dentro del término, pero no se consolida la información sobre todos los puntos solicitados ni se conserva evidencia de que el documento hubiera sido enviado a la ciudadana.",
+  "palabras": 86
+ },
+ {
+  "id": "u3l1c1",
+  "titulo": "Caso de aplicación: la petición sin respuesta que llega a tutela",
+  "tts": "Caso de aplicación. La petición sin respuesta que llega a tutela.\n\nUna persona presenta una petición escrita ante la Fiscalía General de la Nación solicitando información sobre el estado de una comunicación anterior. Transcurrido el término legal, no recibe respuesta ni evidencia de que la Entidad haya comunicado una decisión. Posteriormente, presenta acción de tutela y solicita el amparo de su derecho fundamental de petición.",
+  "palabras": 54
+ },
+ {
+  "id": "u3l3c1",
+  "titulo": "Caso de aplicación: la grabación judicial",
+  "tts": "Caso de aplicación. La grabación judicial.\n\nUna abogada representa a una víctima reconocida en un proceso penal. La abogada pide al juzgado una copia completa de la grabación de una audiencia. El juez niega la entrega porque la grabación contiene información que permite identificar y localizar a un testigo protegido.\n\nLa abogada presenta una tutela contra esa negativa. El juez de tutela niega el amparo. El expediente se remite a la Corte Constitucional, que no lo selecciona para revisión. Para este ejercicio, se entiende que la decisión ya es definitiva.\n\nMeses después, la oficina encargada de conservar la grabación informa que preparó una nueva versión. En ella se ocultaron los datos de identificación y ubicación del testigo, pero se conservaron las partes relacionadas con la intervención de la víctima. La abogada solicita al juzgado acceso únicamente a esa versión. El juez vuelve a negar el acceso. La abogada interpone recurso de reposición, pero el juez mantiene su decisión. Como explicación, se limita a mencionar la negativa anterior: no analiza el informe de la oficina ni la nueva versión solicitada. Para este caso hipotético, se supone que no existe otro recurso judicial disponible contra esa decisión.\n\nLa abogada presenta una segunda tutela. Esta vez cuestiona la nueva decisión del juzgado y pide que se examine su solicitud de acceso a la versión que oculta los datos del testigo. Informa que ya había presentado una tutela, pero aclara que ahora no solicita la grabación completa ni pretende cambiar el primer fallo de tutela. La Fiscalía es vinculada para que aporte la información que tenga sobre el caso.",
+  "palabras": 259
+ },
+ {
+  "id": "u3l4c1",
+  "titulo": "Caso de aplicación: la tutela contra el juzgado penal",
+  "tts": "Caso de aplicación. La tutela contra el juzgado penal.\n\nUna persona presenta una acción de tutela contra un juzgado penal y vincula a la Fiscalía General de la Nación. Afirma que se vulneró su derecho al debido proceso porque el juez negó una solicitud probatoria en una audiencia. La Fiscalía advierte que el accionante interpuso una tutela anterior contra el mismo juzgado, con fundamento en la misma audiencia, los mismos hechos y la misma pretensión. La primera tutela fue decidida negativamente y la providencia se encuentra ejecutoriada.",
+  "palabras": 78
+ },
+ {
+  "id": "u4l1c1",
+  "titulo": "Caso de aplicación: la tutela de la ciudadana y el informe",
+  "tts": "Caso de aplicación. La tutela de la ciudadana y el informe.\n\nUna ciudadana presenta una acción de tutela contra la Fiscalía General de la Nación. Afirma que solicitó copia de una respuesta anterior, información sobre el estado de un trámite administrativo y orientación sobre la dependencia competente para atender un requerimiento adicional. La tutela indica que la persona no recibió una respuesta dentro del término legal. El juez solicita informe a la Entidad y concede un plazo de cuarenta y ocho 48 horas para responder.",
+  "palabras": 74
+ },
+ {
+  "id": "u4l2c1",
+  "titulo": "Caso de aplicación: la orden de contactar a una mujer mayor",
+  "tts": "Caso de aplicación. La orden de contactar a una mujer mayor.\n\nUn juez de tutela ordena a la Fiscalía General de la Nación establecer contacto con una mujer mayor con discapacidad que afirma ser víctima de un delito, revisar una solicitud de información presentada ante la Entidad y remitir un informe sobre las actuaciones adelantadas dentro de las veinticuatro 24 horas siguientes. La orden se comunica a una dependencia que no posee toda la información requerida y que debe coordinar con un despacho que conoce una actuación penal y con un área de atención a víctimas.",
+  "palabras": 85
+ },
+ {
+  "id": "u4l3c2",
+  "titulo": "Caso práctico: Mariana Ríos y la certificación",
+  "tts": "Caso práctico. Mariana Ríos y la certificación.\n\nMariana Ríos presenta una tutela porque no ha recibido respuesta a una solicitud de certificación del tiempo que trabajó en la Fiscalía. El juez ampara su derecho de petición y ordena a la dependencia responsable responder de fondo y comunicar la respuesta dentro de las cuarenta y ocho horas siguientes a la notificación del fallo.\n\nEl equipo encargado de la defensa considera que el juez no valoró un documento aportado al proceso y prepara la impugnación. Mientras tanto, el área responsable ya dispone de la información necesaria para atender lo ordenado. Al coordinar las actuaciones, uno de los servidores propone: “Esperemos a que el superior decida; si cambia el fallo, no tendremos que enviar otra respuesta”. Con base en esa propuesta, la dependencia suspende el trámite de la elaboración y comunicación de la contestación.",
+  "palabras": 134
+ },
+ {
+  "id": "u4l3c1",
+  "titulo": "Caso de aplicación: la orden de responder en 48 horas",
+  "tts": "Caso de aplicación. La orden de responder en 48 horas.\n\nUn juez de tutela ordena a la Fiscalía General de la Nación responder de fondo una petición presentada por una ciudadana y comunicarle la respuesta dentro de las cuarenta y ocho 48 horas siguientes a la notificación de la providencia. La orden se dirige a la Entidad sin individualizar en la parte resolutiva la dependencia que debe elaborar la respuesta. La petición original contiene una solicitud de información institucional y una solicitud relacionada con una actuación penal en curso.",
+  "palabras": 79
+ },
+ {
+  "id": "u4l4c1",
+  "titulo": "Caso 1: demora y ausencia de comunicación de una respuesta",
+  "tts": "Caso 1. Demora y ausencia de comunicación de una respuesta.\n\nUna ciudadana solicita a la Fiscalía General de la Nación copias de documentos relacionados con una actuación y, adicionalmente, pregunta cuál es la dependencia responsable del trámite. La solicitud se radica por un canal institucional, pero es remitida internamente a dos dependencias. Diez días después, no existe respuesta comunicada a la peticionaria. Esta presenta una acción de tutela por presunta vulneración de su derecho fundamental de petición.",
+  "palabras": 67
+ },
+ {
+  "id": "u4l4c2",
+  "titulo": "Caso 2: falta de motivación y solicitud sometida a procedimiento especial",
+  "tts": "Caso 2. Falta de motivación y solicitud sometida a procedimiento especial.\n\nUna persona presenta una petición ante la Fiscalía General de la Nación en la que solicita que se modifique una decisión adoptada dentro de una actuación penal en curso. La dependencia responde que la petición es improcedente porque el asunto corresponde al proceso penal, pero no explica el mecanismo aplicable ni la razón por la cual la Entidad no puede resolver por la vía administrativa. La persona presenta tutela por presunta vulneración de sus derechos de petición y debido proceso.",
+  "palabras": 80
+ },
+ {
+  "id": "u4l4c3",
+  "titulo": "Caso 3: víctima, acceso a la justicia y corrección de datos personales",
+  "tts": "Caso 3. Víctima, acceso a la justicia y corrección de datos personales.\n\nUna persona, que afirma ser víctima de un delito, solicita información sobre el estado de una noticia criminal y pide que se corrija un dato personal que aparece registrado de manera errónea en una comunicación institucional. La solicitud es recibida por una dependencia de atención al usuario. Esta dependencia considera que el asunto corresponde exclusivamente al despacho que conoce la investigación y remite internamente el escrito sin informar a la persona solicitante. Transcurrido el término legal, la persona no recibe respuesta y presenta tutela por presunta vulneración de sus derechos de petición, acceso a la justicia, hábeas data y debido proceso.",
+  "palabras": 101
+ },
+ {
+  "id": "u4l4c4",
+  "titulo": "Caso 4: persona investigada, datos personales y acceso a información",
+  "tts": "Caso 4. Persona investigada, datos personales y acceso a información.\n\nUna persona solicita a la Fiscalía General de la Nación que le informe si existen registros asociados a su nombre en sistemas institucionales. Además, solicita copia integral de una carpeta de indagación y pide la eliminación de cualquier anotación que pueda afectarla en procesos de selección laboral. La comunicación no adjunta documentos que permitan establecer la calidad en la que interviene la persona en la actuación.",
+  "palabras": 66
+ },
+ {
+  "id": "u4l4c5",
+  "titulo": "Caso 5: medida provisional y enfoque diferencial",
+  "tts": "Caso 5. Medida provisional y enfoque diferencial.\n\nUna mujer mayor con discapacidad, manifiesta ser víctima de un delito y presenta una tutela contra la Fiscalía General de la Nación. Afirma que no ha recibido información comprensible sobre el estado de una solicitud y que requiere con urgencia orientación sobre las medidas institucionales disponibles para proteger su integridad. El juez admite la tutela y decreta una medida provisional para que la Entidad establezca contacto con la accionante, revise su solicitud y remita un informe sobre las actuaciones adelantadas dentro de las veinticuatro 24 horas siguientes.",
+  "palabras": 87
+ }
+]

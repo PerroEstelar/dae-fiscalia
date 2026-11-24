@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><!--TITULO--></title>
+<style>
+/*FUENTES*/
+html,body{margin:0;height:100%;overflow:hidden;background:#dfe9ec}
+body{font-family:Montserrat,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+#marco{position:fixed;inset:0}
+#lienzo{position:absolute;left:0;top:0;width:1200px;height:675px;transform-origin:0 0;overflow:hidden;box-shadow:0 6px 30px rgba(0,47,70,.18)}
+.diapo{position:absolute;inset:0;animation:entra .35s ease both}
+@keyframes entra{from{opacity:0}to{opacity:1}}
+.el{position:absolute;box-sizing:border-box}
+.el.t{display:flex;flex-direction:column;overflow:visible;word-wrap:break-word;overflow-wrap:break-word}
+.el.t.va-center{justify-content:center}.el.t.va-bottom{justify-content:flex-end}
+.el.t p{margin:0}
+.text-align-center{text-align:center}.text-align-right{text-align:right}.text-align-left{text-align:left}.text-align-justify{text-align:justify}
+.el.t>div{width:100%}
+.el.s>svg,.el.s>div{width:100%;height:100%;display:block}
+
+/* botón de Genially (dos medias lunas y el centro): el centro ocupa el resto y todo a la altura de la forma */
+.el.s .button-shape-group-container{display:flex;width:100%;height:100%}
+.el.s .button-shape-group-container>div{flex:none;height:100%}
+.el.s .button-shape-group-container>div>svg{height:100%;width:auto;display:block}
+.el.s .button-shape-group-container>svg{flex:1 1 auto;min-width:0;height:100%;display:block}
+.el.i img{width:100%;height:100%;display:block;object-fit:fill}
+.el.rc iframe{border:0;width:100%;height:100%;display:block;background:transparent}
+.el[data-a]{cursor:pointer}
+.el[data-a]:focus-visible{outline:3px solid #EE616B;outline-offset:3px;border-radius:8px}
+.fx{animation:aparece .7s ease both}
+@keyframes aparece{from{opacity:0}to{opacity:1}}
+/* ventana sobre la lección (instrucciones) */
+#ventana{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,30,45,.55);z-index:10}
+#ventana.abierta{display:flex}
+#ventana .caja{display:grid;grid-template-rows:auto 1fr;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+#ventana .cab{display:flex;align-items:center;gap:10px;background:#002F46;color:#fff;padding:8px 10px 8px 16px;font:700 15px Montserrat,Arial,sans-serif}
+#ventana .cab span{flex:1}
+#ventana button{border:0;border-radius:999px;background:#fff;color:#002F46;font:700 14px Montserrat,Arial,sans-serif;padding:7px 14px;cursor:pointer}
+#ventana button:focus-visible{outline:3px solid #EE616B;outline-offset:2px}
+#ventana iframe{border:0;width:100%;height:100%;display:block}
+#aviso{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);font:600 15px Montserrat,Arial,sans-serif;color:#002F46}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+<div id="marco" role="application" aria-roledescription="presentación"><div id="lienzo"></div></div>
+<p id="aviso">Cargando la lección…</p>
+<p class="sr" id="estado" aria-live="polite"></p>
+<div id="ventana" role="dialog" aria-modal="true" aria-labelledby="ventana-tit"><div class="caja"><div class="cab"><span id="ventana-tit"></span><button type="button" id="ventana-cerrar">Cerrar ✕</button></div><iframe title="Ventana"></iframe></div></div>
+<!--PLANTILLAS-->
+<!--RECURSOS-->
+<script>
+(function () {
+  'use strict';
+  var META = /*META*/null, DIAP = /*DIAP*/null, SVG = /*SVG*/null, IMG = /*IMG*/null, IDX = /*IDX*/null, CASOS = /*CASOS*/null;
+  var W = 1200, H = 675, actual = -1;
+  var lienzo = document.getElementById('lienzo'), ventana = document.getElementById('ventana');
+  var FAM = {'Montserrat-ExtraBold': "'g-mont-xb',Montserrat,Arial,sans-serif", 'Montserrat-Bold': "'g-mont-b',Montserrat,Arial,sans-serif",
+             'Montserrat': 'Montserrat,Arial,sans-serif', 'Roboto': 'Roboto,Arial,sans-serif'};
+
+  /* ---------- recursos: base64 dentro del archivo, Blob URL cuando se piden ---------- */
+  var urls = {};
+  function blobDe(k) {
+    var e = IDX[k];
+    if (!e) return null;
+    if (urls[k]) return urls[k];
+    var s = document.getElementById(e[0]).textContent, bin = atob(s), n = bin.length, a = new Uint8Array(n);
+    for (var i = 0; i < n; i++) a[i] = bin.charCodeAt(i);
+    urls[k] = URL.createObjectURL(new Blob([a], {type: e[1]}));
+    return urls[k];
+  }
+  var plantillas = {};
+  function plantilla(id) {
+    if (plantillas[id] !== undefined) return plantillas[id];
+    var s = document.getElementById(id), b = s ? atob(s.textContent.trim()) : '', a = new Uint8Array(b.length);
+    for (var i = 0; i < b.length; i++) a[i] = b.charCodeAt(i);
+    return (plantillas[id] = new TextDecoder('utf-8').decode(a));
+  }
+  var casosUrl = {};
+  function casoUrl(id) {
+    if (casosUrl[id]) return casosUrl[id];
+    var h = plantilla('p-casos').replace('<!--Q-->', '<script>window.__Q=' + JSON.stringify('?caso=' + id) + ';window.__CASOS=' +
+      JSON.stringify(CASOS).replace(/<\//g, '<\\/') + ';<\/script>');
+    casosUrl[id] = URL.createObjectURL(new Blob([h], {type: 'text/html'}));
+    return casosUrl[id];
+  }
+  window.__ovaDoc = function (u) {
+    u = String(u || '');
+    if (u.indexOf('../comun/casos/index.html?caso=') !== 0 || !CASOS) return null;
+    return plantilla('p-casos').replace('<!--Q-->', '<script>window.__Q=' + JSON.stringify('?caso=' + u.split('caso=')[1]) +
+      ';window.__CASOS=' + JSON.stringify(CASOS).replace(/<\//g, '<\\/') + ';<\/script>');
+  };
+  window.__ovaR = function (u) {
+    u = String(u || '');
+    if (/^(blob:|data:|https?:)/.test(u)) return u;
+    if (u.indexOf('../comun/casos/index.html?caso=') === 0) return casoUrl(u.split('caso=')[1]);
+    var k = u.replace(/^\.\//, '').split('#')[0];
+    return blobDe(k) || u;
+  };
+
+  /* ---------- páginas en línea (srcdoc) ---------- */
+  function srcdoc(id, q) {
+    return plantilla(id).replace('<!--Q-->', '<script>window.__Q=' + JSON.stringify(q) + ';<\/script>');
+  }
+
+  /* ---------- la lección ante el motor (contrato de app.js e instrucciones.html) ---------- */
+  function enPC() { return !!(document.fullscreenElement || document.webkitFullscreenElement); }
+  function pantallaCompleta() {
+    var d = document, el = d.documentElement;
+    if (enPC()) { (d.exitFullscreen || d.webkitExitFullscreen).call(d); return true; }
+    var pedir = el.requestFullscreen || el.webkitRequestFullscreen;
+    if (!pedir) return false;
+    try { var p = pedir.call(el); if (p && p.catch) p.catch(function () {}); } catch (e) { return false; }
+    return true;
+  }
+  var focoAntes = null;
+  function abrirVentana(titulo) {
+    focoAntes = document.activeElement;
+    document.getElementById('ventana-tit').textContent = titulo || 'Instrucciones de navegación';
+    var f = ventana.querySelector('iframe');
+    f.setAttribute('title', titulo || 'Instrucciones de navegación');
+    f.srcdoc = srcdoc('p-ins', '');
+    ventana.classList.add('abierta');
+    encajar();
+    document.getElementById('ventana-cerrar').focus();
+  }
+  function cerrarVentana() {
+    ventana.classList.remove('abierta');
+    ventana.querySelector('iframe').removeAttribute('srcdoc');
+    if (focoAntes && focoAntes.focus) try { focoAntes.focus(); } catch (e) {}
+  }
+  document.getElementById('ventana-cerrar').addEventListener('click', cerrarVentana);
+  ventana.addEventListener('click', function (e) { if (e.target === ventana) cerrarVentana(); });
+  window.ovaLeccion = {
+    pantallaCompleta: pantallaCompleta,
+    enPantallaCompleta: enPC,
+    ventana: function (url, titulo) { abrirVentana(titulo); },
+    cerrarVentana: cerrarVentana
+  };
+
+  /* ---------- dibujo de una diapositiva ---------- */
+  function px(v) { return v + 'px'; }
+  function nodo(e) {
+    var d = document.createElement('div');
+    d.className = 'el ' + ({t: 't', s: 's', i: 'i', g: 'g', e: 'rc', ins: 'rc', fin: 'rc'}[e.t] || '');
+    var st = d.style;
+    st.left = px(e.x); st.top = px(e.y); st.width = px(e.w); st.height = px(e.h);
+    if (e.r) st.transform = e.r;
+    if (e.o) st.opacity = e.o;
+    if (e.t === 't') {
+      st.fontFamily = FAM[e.ff] || (e.ff + ',Montserrat,Arial,sans-serif');
+      if (e.fs) st.fontSize = e.fs;
+      if (e.c) st.color = e.c;
+      if (e.lh) st.lineHeight = e.lh;
+      if (e.ls && e.ls !== '0') st.letterSpacing = /px|em/.test(e.ls) ? e.ls : e.ls + 'px';
+      if (e.pad) st.padding = e.pad;
+      if (e.bg) st.background = e.bg;
+      if (e.va && e.va !== 'top') d.classList.add('va-' + e.va);
+      if (e.cls) e.cls.split(' ').forEach(function (k) { if (k) d.classList.add(k); });
+      var c = document.createElement('div'); c.innerHTML = e.h_; d.appendChild(c);
+    } else if (e.t === 's') {
+      d.innerHTML = SVG[e.s] || '';
+      (e.col || []).forEach(function (col, i) {
+        d.querySelectorAll('.color' + (i + 1)).forEach(function (n) { n.style.fill = col; });
+      });
+    } else if (e.t === 'i') {
+      var im = document.createElement('img'); im.alt = ''; im.src = IMG[e.src] || ''; d.appendChild(im);
+    } else if (e.t === 'e' || e.t === 'ins' || e.t === 'fin') {
+      var f = document.createElement('iframe');
+      f.setAttribute('title', e.ti || 'Contenido de la lección');
+      f.setAttribute('allow', 'fullscreen; autoplay');
+            f.srcdoc = e.t === 'e' ? srcdoc('p-motor', '?escena=' + e.n) : e.t === 'ins' ? srcdoc('p-ins', '?modo=boton') : srcdoc('p-fin', '');
+      d.appendChild(f);
+    }
+    if (e.fx) d.classList.add('fx');
+    if (e.a !== undefined) {
+      d.dataset.a = String(e.a);
+      d.setAttribute('role', 'button'); d.tabIndex = 0;
+      var etq = e.a === 'n' ? 'Página siguiente' : e.a === 'p' ? 'Página anterior' : (textoDe(e) ||
+        (e.a === 0 ? 'Ir a la portada' : e.a === 1 ? 'Índice de la lección' : 'Ir a la página ' + (e.a + 1)));
+      d.setAttribute('aria-label', etq);
+    }
+    return d;
+  }
+  function textoDe(e) {
+    if (e.txt) return e.txt.replace(/\s+/g, ' ').trim();
+    var hijos = (DIAP[actualPintando] || {els: []}).els.filter(function (x) { return x.g === e.i && x.txt; });
+    return hijos.map(function (x) { return x.txt.replace(/\s+/g, ' ').trim(); }).filter(function (t) { return !/^\d+$/.test(t); }).join(' ');
+  }
+  var actualPintando = 0;
+  function pintar(k) {
+    actualPintando = k;
+    var s = DIAP[k], cont = document.createElement('div'), mapa = {};
+    cont.className = 'diapo'; cont.style.background = s.bg;
+    cont.setAttribute('aria-label', 'Página ' + (k + 1) + ' de ' + DIAP.length);
+    s.els.forEach(function (e) { mapa[e.i] = {e: e, d: nodo(e)}; });
+    s.els.forEach(function (e) {
+      var p = e.g && mapa[e.g] ? mapa[e.g].d : cont;
+      p.appendChild(mapa[e.i].d);
+    });
+    return cont;
+  }
+  function ir(k) {
+    if (k < 0 || k >= DIAP.length || k === actual) return;
+    var nueva = pintar(k), vieja = lienzo.firstChild;
+    lienzo.appendChild(nueva);
+    if (vieja) lienzo.removeChild(vieja);
+    actual = k;
+    document.getElementById('estado').textContent = 'Página ' + (k + 1) + ' de ' + DIAP.length;
+    try { history.replaceState(null, '', '#p' + (k + 1)); } catch (e) {}
+  }
+  lienzo.addEventListener('click', function (ev) {
+    var t = ev.target.closest('[data-a]');
+    if (!t) return;
+    var a = t.dataset.a;
+    ir(a === 'n' ? actual + 1 : a === 'p' ? actual - 1 : Number(a));
+  });
+  lienzo.addEventListener('keydown', function (ev) {
+    if ((ev.key === 'Enter' || ev.key === ' ') && ev.target.dataset && ev.target.dataset.a !== undefined) { ev.preventDefault(); ev.target.click(); }
+  });
+  document.addEventListener('keydown', function (ev) {
+    if (ventana.classList.contains('abierta')) { if (ev.key === 'Escape') cerrarVentana(); return; }
+    if (ev.target && ev.target.dataset && ev.target.dataset.a !== undefined && (ev.key === 'Enter' || ev.key === ' ')) return;
+    if (ev.key === 'ArrowRight' || ev.key === 'PageDown') ir(actual + 1);
+    else if (ev.key === 'ArrowLeft' || ev.key === 'PageUp') ir(actual - 1);
+    else if (ev.key === 'Home') ir(0);
+    else if (ev.key === 'End') ir(DIAP.length - 1);
+  });
+
+  /* ---------- encaje en la ventana (16:9, centrado) ---------- */
+  function encajar() {
+    var ww = innerWidth, hh = innerHeight, s = Math.min(ww / W, hh / H);
+    var ox = (ww - W * s) / 2, oy = (hh - H * s) / 2;
+    lienzo.style.transform = 'translate(' + ox + 'px,' + oy + 'px) scale(' + s + ')';
+    var caja = ventana.querySelector('.caja');
+    caja.style.width = Math.round(Math.min(ww - 24, 1000 * Math.max(s, .6))) + 'px';
+    caja.style.height = Math.round(Math.min(hh - 24, 600 * Math.max(s, .6))) + 'px';
+  }
+  addEventListener('resize', encajar);
+  document.addEventListener('fullscreenchange', encajar);
+  document.addEventListener('webkitfullscreenchange', encajar);
+
+  document.title = META.titulo;
+  document.getElementById('aviso').remove();
+  encajar();
+  var m = /^#p(\d+)$/.exec(location.hash || '');
+  ir(m ? Math.min(DIAP.length, Math.max(1, Number(m[1]))) - 1 : 0);
+})();
+</script>
+</body>
+</html>
