@@ -18,8 +18,12 @@ pedido por copia de servidor a «Mi unidad» y G:). El profe al centro, sobre el
 DAE/Fiscalía arriba a la izquierda (es parte del fondo: queda). Ya vienen editadas; dos tienen algo que sale (ver los
 planes de U2 inicio y U4 cierre).
 
-**Rótulo.** El profe no dice su nombre en ninguna. Sebastián lo confirmó (24 nov): «Humberto Suárez Gómez»; es
-coautor en la ficha («1.5 Autor: … Suárez Gómez Humberto …»). Cargo: «Coautor del curso». Abajo a la izquierda (en el
+**Sin rótulo (v2).** El profe no dice su nombre en ninguna. Sebastián primero respondió «Humberto Suárez Gómez» y la
+v1 salió con ese rótulo; después (24 nov): «por ahora no le pongamos rótulo al profesor porque no está confirmado que
+él sea» ese profe. Desde la v2 (v3 en la presentación del curso y el cierre de la U1, que ya tenían una v2) va sin
+rótulo (`ROTULO_CONFIRMADO = False`: `rotulo()` no devuelve nada) y el nombre de los archivos lleva «24NOV», por la
+carpeta de las grabaciones, en vez del apellido. La carpeta del repo (`profe_hs`) y las líneas («DI HS») quedan como
+estaban. Si se confirma, el rótulo era «Humberto / Suárez Gómez», «Coautor del curso», abajo a la izquierda (en el
 cierre del curso hace gestos con la mano derecha, del lado derecho del cuadro).
 
 **Audio (lo nuevo).** Vienen muy bajas (−38 a −42 LUFS), con el piso de ruido a unos 20 dB de la voz y un espectro
@@ -27,6 +31,9 @@ cargado de graves y medios graves (125–630 Hz, +5 a +9 dB sobre la voz de refe
 (−5 a −16 dB). Cada plan lleva su `AUDIO_CADENA`, medida en 2 min de su grabación con
 `herramientas/audio/voz_analisis.py` (`voz_hs.json`): ecualización por curva hacia la referencia, reducción de
 ruido suave, expansor, compresor de picos, de-esser y limitador; después, como siempre, loudnorm en dos pasadas.
+
+**Nombres.** Líneas `DI HS - …`; entregas `delitosinformaticos - <CURSO|Un> - <INICIO|CIERRE> - 24NOV-vN` (la v1
+llevaba el apellido).
 
 **Dónde.** `E:\DAE MASTER\PRIORIDAD 03\CURSO DELITOS INFORMATICOS - VIDEOS PROFE HS\<CURSO|UNIDAD n>\<INICIO|CIERRE>`.
 """
@@ -69,7 +76,8 @@ UNIDADES = {
     4: 'Evidencia digital',
 }
 LT = (44, 440)
-PROFE = ('Humberto\nSuárez Gómez', 'Coautor del curso', {})
+PROFE = ('Humberto\nSuárez Gómez', 'Coautor del curso', {})   # sin confirmar: no va (ver arriba)
+ROTULO_CONFIRMADO = False
 SUAVE = 6
 VOZ = json.load(open(os.path.join(AQUI, 'voz_hs.json'), encoding='utf-8'))
 
@@ -105,17 +113,19 @@ def armar(clave, carpeta, sub, linea, export, prefijo, fuente, tramos):
 def armar_unidad(clave, u, pieza, fuente, tramos):
     """Inicio o cierre de una unidad: el cartón de título lleva el nombre de la unidad."""
     return armar(clave, 'UNIDAD %d/%s' % (u, pieza), 'Unidad %d. %s' % (u, UNIDADES[u]),
-                 'DI HS - U%d - %s' % (u, pieza), 'delitosinformaticos - U%d - %s - SUAREZ' % (u, pieza),
+                 'DI HS - U%d - %s' % (u, pieza), 'delitosinformaticos - U%d - %s - 24NOV' % (u, pieza),
                  'DXU%d%s' % (u, pieza[0]), fuente, tramos)
 
 
 def armar_curso(clave, pieza, sub, fuente, tramos):
     return armar(clave, 'CURSO/%s' % pieza, sub, 'DI HS - CURSO - %s' % pieza,
-                 'delitosinformaticos - CURSO - %s - SUAREZ' % pieza, 'DXC%s' % pieza[0], fuente, tramos)
+                 'delitosinformaticos - CURSO - %s - 24NOV' % pieza, 'DXC%s' % pieza[0], fuente, tramos)
 
 
 def rotulo(t, dura=7.5):
-    """El lower third del profe desde el segundo `t` de la fuente."""
+    """El lower third del profe desde el segundo `t` de la fuente; nada mientras el nombre no esté confirmado."""
+    if not ROTULO_CONFIRMADO:
+        return []
     return [('lt01', 'lt', t, t + dura, PROFE)]
 
 

@@ -5,6 +5,9 @@ r"""Introducción de la unidad 1 de «Delitos informáticos», Humberto Suárez 
 Fuente: `Introducción Unidad 1.mov`.
 
 Entera: de «Bienvenido a la primera unidad del curso…» a «…Empecemos».
+
+**Sin rótulo (24 nov 2026):** el nombre del profe no está confirmado (ver `base_hs_profe`). La v2 va sin rótulo y
+con «24NOV» en el nombre del archivo.
 """
 import os
 import sys
@@ -16,4 +19,6 @@ from base_hs_profe import armar_curso, armar_unidad, rotulo  # noqa: E402,F401
 globals().update(armar_unidad('dxu1i', 1, 'INICIO', 'Introducción Unidad 1.mov',
                               [(3.97, 179.26)]))
 
-ITEMS = rotulo(T0 + 1.5)  # noqa: F821
+VERSION = 2
+NOMBRE_LINEA = 'DI HS - U1 - INICIO v2'
+ITEMS = rotulo(T0 + 1.5)  # noqa: F821   # vacío: sin rótulo

@@ -13,6 +13,9 @@ De «Bienvenido al curso de profundización en delitos informáticos…» a «�
   −44 dB, y en el silencio antes de «sobre», −51 dB).
 
 **v2 (24 nov 2026):** la v1 tenía solo el segundo corte; «Buda-» se oyó al revisar los subtítulos.
+
+**Sin rótulo (24 nov 2026):** el nombre del profe no está confirmado (ver `base_hs_profe`). La v3 va sin rótulo y
+con «24NOV» en el nombre del archivo.
 """
 import os
 import sys
@@ -24,8 +27,8 @@ from base_hs_profe import armar_curso, armar_unidad, rotulo  # noqa: E402,F401
 globals().update(armar_curso('dxci', 'INICIO', 'Inicio del curso', 'Bienvenida al Curso.mov',
                              [(1.81, 93.07), (93.78, 165.08), (165.44, 215.08)]))
 
-VERSION = 2
+VERSION = 3
 COMPUESTO = R + '/01 VIDEO/DXCI_compuesto_v2.mp4'  # noqa: F821
-NOMBRE_LINEA = 'DI HS - CURSO - INICIO v2'
+NOMBRE_LINEA = 'DI HS - CURSO - INICIO v3'
 
-ITEMS = rotulo(T0 + 1.5)  # noqa: F821
+ITEMS = rotulo(T0 + 1.5)  # noqa: F821   # vacío: sin rótulo
