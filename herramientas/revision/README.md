@@ -49,6 +49,11 @@ petición, U1 L1.1 (24 nov 2026).
 
 ## Regla de texto (24 nov 2026)
 
+**Solo cambios en el Genially.** Sebastián: «ojo, no mencionar en ninguna cambios en el mapa, solo cambios en
+Genially». El mapa se nombra solo para decir qué recurso pide para esa diapositiva («falta el audio que pide el
+mapa»); nunca «en el mapa corregir…», ni filas o títulos del mapa que estén mal. Lo que viene mal del DI se dice
+como cambio en la pantalla, con «confirmar con el autor».
+
 Sebastián vio el piloto y pidió **una sola frase por celda** que resuma propuesta y errores; las miniaturas se
 quedan. Donde no hay nada que cambiar: «Bien así.» Lo que se repite en todo el curso no se repite en cada celda:
 va en la hoja «Generales - revisión», una frase por asunto.
@@ -81,7 +86,6 @@ La salida es una copia del mapa con la hoja de la unidad duplicada, «Unidad N -
   - CAMBIAR / AJUSTE
   - OJO / ERROR
   - IDEA / OPCIÓN
-  - MAPA, que corrige el propio mapa.
 - **El tono:** frases cortas, español claro con un toque colombiano, informal. Nada de emojis ni guiones largos;
   no tiene que parecer hecho por IA.
 - **Las miniaturas:**
@@ -100,8 +104,8 @@ python3 mapa_revision.py mapa.xlsx dp_u1l1/comentarios.json png/ salida.xlsx
 - **El texto enriquecido no conservaba su formato.** Este openpyxl guarda todo el texto como `inlineStr`, y
   LibreOffice ignora la negrita y el color en ese formato. `mapa_revision.py` pasa todo a `sharedStrings`, que leen
   bien Excel, Sheets y LibreOffice.
-- **El alto de fila no se puede medir.** Se usa una estimación conservadora (40 caracteres por línea con Arial 14
-  en columnas de 72). La
+- **El alto de fila no se puede medir.** Se usa una estimación conservadora (38 caracteres por línea con Arial 16
+  en columnas de 80). La
   miniatura va anclada al fondo de la celda, así que si sobra alto queda aire y el texto no se tapa.
 - **La verificación es visual.** Se convierte la copia a PDF con LibreOffice, con las demás hojas ocultas, y se mira
   página por página.
@@ -109,11 +113,12 @@ python3 mapa_revision.py mapa.xlsx dp_u1l1/comentarios.json png/ salida.xlsx
 ## Hecho
 
 - **Derecho de petición, final (24 nov 2026):** solo las hojas de revisión (sin las originales, `"solo_revision": true`
-  en el json) y con el nombre que pidió Sebastián, «REVISION DERECHOS DE PETICION NOV 23.xlsx». Después pidió «más
-  grande la letra»: comentarios, títulos de lección y número de diapositiva a 14 (la nota de celda vacía a 12),
-  columnas de 72. Drive:
-  [REVISION DERECHOS DE PETICION NOV 23.xlsx](https://drive.google.com/file/d/1f16zSgTbC8sZsM-xxKP0bMovy66lvTSk/view);
-  la de letra 11 quedó en `_anteriores` como «… (letra 11).xlsx», en Drive y en `Revision\_anteriores\`.
+  en el json) y con el nombre que pidió Sebastián, «REVISION DERECHOS DE PETICION NOV 23.xlsx». Después pidió dos
+  veces «más grande la letra … del texto de cada celda»: el comentario va en Arial 16 (títulos de lección y número de
+  diapositiva en 14, la nota de celda vacía en 13), columnas de 80 y miniaturas de 420×178. Drive:
+  [REVISION DERECHOS DE PETICION NOV 23.xlsx](https://drive.google.com/file/d/1yhnZb-prCvj_zDjM_UZJAjJ-hQl-y__K/view);
+  las de letra 11 y 14 quedaron en `_anteriores` («… (letra 11).xlsx», «… (letra 14).xlsx»), en Drive y en
+  `Revision\_anteriores\`.
 - **Derecho de petición, v3 (24 nov 2026):** letra de 9,5 a 11 («está muy chiquita»), nota gris en las celdas sin
   diapositiva en el mapa («No hay diapositiva para esta fila en el mapa»; no es que falten por virtualizar) y una
   segunda pasada pedagógica a U3–U4, que tenían muchos «Bien así» por fidelidad. Drive:

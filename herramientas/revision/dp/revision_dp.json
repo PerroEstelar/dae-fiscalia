@@ -5,7 +5,7 @@
    "hoja": "Unidad 1",
    "celdas": {
     "B2": {
-     "t": "Bien; solo que el objetivo salga completo de una, sin máquina de escribir, y en el mapa corregir «Onjetivo».",
+     "t": "Bien; solo que el objetivo salga completo de una, sin máquina de escribir.",
      "mini": "DP_U1_L1_E01"
     },
     "B3": {
@@ -45,7 +45,7 @@
      "mini": "DP_U1_L1_E10"
     },
     "B12": {
-     "t": "Ojo, error del DI: anuncia la Política de Atención para la 1.2 y eso es de la 2.1 (preguntarle al autor); en el mapa esta fila es 11.0, no 10.0.",
+     "t": "La pantalla anuncia la Política de Atención para la 1.2, pero eso es de la 2.1 (viene así del DI: confirmar con el autor antes de cambiarlo).",
      "mini": "DP_U1_L1_E11"
     },
     "C2": {
@@ -348,7 +348,7 @@
      "t": "Bien, es la ruta de 6 pasos que pide el mapa."
     },
     "E11": {
-     "t": "El caso sí es el del DI (temeridad); el que está mal es el título del mapa, que dice «grabación judicial», y falta el audio de la situación.",
+     "t": "El caso sí es el del DI (temeridad); falta el audio de la situación.",
      "mini": "U3E11"
     },
     "E12": {
@@ -492,7 +492,7 @@
      "t": "Numerar las actuaciones; el mapa pide lista ordenada."
     },
     "E10": {
-     "t": "En el mapa falta la fila del caso 4 (persona investigada y datos, E10); en el Genially está, solo falta su audio y numerar estas actuaciones."
+     "t": "Falta el audio del caso 4 (persona investigada y datos) y numerar las actuaciones."
     },
     "E11": {
      "t": "Falta el audio del caso; en el Genially se llama «Caso 5» y en el DI «8. Caso de análisis», unificar."
