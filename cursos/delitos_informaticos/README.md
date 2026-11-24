@@ -12,7 +12,8 @@ documento de la U4.
 
 - `profe/`: los videos de profe de **Yefrin Garavito** (22 nov 2026): cinco piezas de la U3 y la U4 que él editó por
   su cuenta (bienvenida, intermedio y cierre).
-- `profe_hs/`: los diez videos del guion de la ficha, leídos por **Humberto Suárez Gómez** (24 nov 2026):
-  presentación y cierre del curso, e introducción y cierre de las cuatro unidades. Por eso la U3 y la U4 tienen dos
-  juegos, uno de cada coautor (ver `profe_hs/README.md`). Sebastián: «dejar ambos».
-- `subtitulos/`: los `.srt`.
+- `profe_hs/`: los diez videos del guion de la ficha, leídos por otro coautor (24 nov 2026; el nombre no está
+  confirmado y los videos van sin rótulo): presentación y cierre del curso, e introducción y cierre de las cuatro
+  unidades. Por eso la U3 y la U4 tienen dos juegos (ver `profe_hs/README.md`). Sebastián: «dejar ambos». Drive:
+  [VIDEOS PROFE - GRABACIONES 24 NOV](https://drive.google.com/drive/folders/1HX0c6ozxiOugKsaD9W2ktS5WUQlFuM0L).
+- `subtitulos/`: los `.srt` de los de Yefrin; `subtitulos_hs/`, los del 24 nov.

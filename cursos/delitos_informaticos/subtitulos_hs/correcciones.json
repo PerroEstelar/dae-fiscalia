@@ -1,0 +1,112 @@
+{
+ "_todos": [
+  [
+   "\\bfiscalía\\b",
+   "Fiscalía"
+  ],
+  [
+   "\\bFiscalía General de la Nación\\b",
+   "Fiscalía General de la Nación"
+  ],
+  [
+   "\\b[Ll]ey novecientos seis de dos mil cuatro\\b",
+   "Ley 906 de 2004"
+  ],
+  [
+   "\\b[Ll]ey mil doscientos setenta y tres de dos mil nueve\\b",
+   "Ley 1273 de 2009"
+  ],
+  [
+   "\\bvídeo\\b",
+   "video"
+  ],
+  [
+   "\\bhabeas data\\b",
+   "hábeas data"
+  ],
+  [
+   "\\bSHA uno\\b",
+   "SHA-1"
+  ],
+  [
+   "\\bSHA 256\\b",
+   "SHA-256"
+  ],
+  [
+   "\\bGoku Imager\\b",
+   "Guymager"
+  ],
+  [
+   "\\bCain\\b",
+   "CAINE"
+  ],
+  [
+   "\\blas cinco y 40\\b",
+   "las 5:40"
+  ],
+  [
+   "\\blas cinco y cuarenta\\b",
+   "las 5:40"
+  ],
+  [
+   "\\bsentencia C336\\b",
+   "sentencia C-336"
+  ],
+  [
+   "\\bartículo dos 44\\b",
+   "artículo 244"
+  ],
+  [
+   "\\bRFC treinta y dos veintisiete\\b",
+   "RFC 3227"
+  ],
+  [
+   "\\bISO 27000[- ]?0?37\\b",
+   "ISO/IEC 27037"
+  ],
+  [
+   "\\bISO 27037\\b",
+   "ISO/IEC 27037"
+  ],
+  [
+   "\\bCane\\b",
+   "CAINE"
+  ],
+  [
+   "\\bSHA-uno\\b",
+   "SHA-1"
+  ],
+  [
+   "\\bRFZ (\\d)",
+   "RFC \\1"
+  ],
+  [
+   "\\bHanoi\\b",
+   "Hanói"
+  ],
+  [
+   "\\bley 1273\\b",
+   "Ley 1273"
+  ],
+  [
+   "\\b[Cc]ódigo [Pp]enal\\b",
+   "Código Penal"
+  ],
+  [
+   "\\bconvenio de Budapest\\b",
+   "Convenio de Budapest"
+  ]
+ ],
+ "dxu4i": [
+  [
+   "\\bcondocumentada\\b",
+   "documentada"
+  ]
+ ],
+ "dxci": [
+  [
+   "\\bBuda-de Budapest\\b",
+   "Budapest"
+  ]
+ ]
+}

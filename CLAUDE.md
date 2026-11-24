@@ -3850,8 +3850,8 @@ no «máquina de escribir».
 
 ## La voz de un profe se mide y se ecualiza a su medida (Delitos informáticos, 24 nov 2026)
 
-Sebastián: «me recomendaron que mejorara los niveles y ecualización de estos videos». Las diez grabaciones de Humberto
-Suárez llegaron a −38/−42 LUFS, con el ruido a 20 dB de la voz y el espectro cargado entre 125 y 630 Hz (+5 a +9 dB) y
+Sebastián: «me recomendaron que mejorara los niveles y ecualización de estos videos». Las diez grabaciones del 24 nov
+(otro coautor; nombre sin confirmar) llegaron a −38/−42 LUFS, con el ruido a 20 dB de la voz y el espectro cargado entre 125 y 630 Hz (+5 a +9 dB) y
 apagado arriba de 2,5 kHz (−5 a −16), medido contra la voz media de referencia (LTASS de Byrne, 1994). La cadena fija
 de los profes (`srpa_audio.CADENA`: +3 dB en 3 kHz, −2 en 250 Hz) dejaba el desvío en ~7 dB.
 
@@ -3866,4 +3866,19 @@ más abajo.
   agudos, que en estas grabaciones están a solo 8–10 dB del ruido, y el desvío quedaba igual que sin ecualizar.
   `anlmdn` hizo lo mismo.
 - **Se escucha antes de aplicar.** Va un A/B de 20 s (original nivelado / cadena) en mp3 y el espectro en png.
+
+## Un rótulo con nombre sin confirmar no sale, y el nombre tampoco va en el archivo (Delitos informáticos, 24 nov 2026)
+
+Sebastián dio un nombre para el rótulo y después: «por ahora no le pongamos rótulo al profesor porque no está
+confirmado». Salió una versión nueva de las diez sin rótulo (`ROTULO_CONFIRMADO = False` en la base: `rotulo()` no
+devuelve nada) y con «24NOV» en el nombre del archivo y de la carpeta de Drive en vez del apellido. Sacar el rótulo no
+cambia el largo ni el sonido: el `.srt` es el mismo, con el nombre nuevo.
+
+## Un titubeo pegado a la palabra: el borde del corte sale de la energía, no del STT
+
+En el cierre de la U1, «pasamos a-- de comprender»: el STT de la fuente daba «pasamos» hasta 152,74 y el corte se
+puso en 152,60, en un bache de −47 dB que parecía el hueco entre palabras. Era el medio de «pasamos»: la entrega decía
+«pasa de comprender». Lo cazó Scribe sobre la entrega al hacer los subtítulos. Con dos sílabas pegadas, la energía en
+ventanas de 5 ms y una escucha del compuesto (`stt_tramo.py` sobre el tramo del corte) antes de rendir. Y se leen las
+transcripciones de las entregas buscando titubeos que el STT de la fuente juntó en una palabra («Buda-de Budapest»).
 
