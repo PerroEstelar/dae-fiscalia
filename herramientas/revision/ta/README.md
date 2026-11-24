@@ -80,3 +80,44 @@ python3 excel_ta.py salida.xlsx
 - **1.2:** la infografía dice «reviste las medidas de aseguramiento».
 - **4.3:** la lista de errores frecuentes salta del 7 al 9.
 - **Erratas de extracción** («proposiión», «argumenta ndo»…): se corrigen en `limpia()`.
+
+## Curso funcional en Genially nativo (24 nov)
+
+13 Genially, uno por lección, armados igual que los de Derecho de petición: portada, índice, una
+diapositiva por escena y «Fin». Cada escena es contenido enriquecido con un iframe de la
+mediación publicada en GitHub Pages.
+
+- **Sitio:** https://zwaard88-source.github.io/prueba-terminaciones-anticipadas/
+  - Repo `zwaard88-source/prueba-terminaciones-anticipadas`, rama `main`, raíz.
+  - Copia local en `D:\DAE\_sitios\terminaciones-anticipadas`.
+- **`sitio.py`:**
+  - publica las 13 lecciones en `out/sitio/`;
+  - los videos van en `../comun/videos/<clave>.mp4`, con el `.vtt` y el póster `.jpg`;
+  - `app.js` (copia TA) añade `poster` al video de la escena.
+- **`armar_sitio_equipo.py`** corre en el equipo:
+  - descomprime el sitio;
+  - escribe los `.vtt` a partir de los `.srt` finales;
+  - pasa los 19 videos finales a MP4 web: 540p, H.264 CRF 26, AAC 96k, `+faststart`, unos 300 MB
+    en total.
+- **`genially_ta.py`** copia el Genially de DP (U1-L1, JSON del visor):
+  - cambia textos (Content y TextMessage), iframes e interactividades: flechas `nextPage` y
+    `previousPage`, menú al índice, filas del índice a cada apartado;
+  - escribe `genially/lUL.json`, el `copyBuffer` del editor;
+  - escribe `fin.html` e `instrucciones.html` de cada lección.
+- **Pegado en el editor** (Chrome de Sebastián, sesión abierta):
+  - `genially/carga.html?l=UL` se abre en un iframe oculto y pasa el JSON por `postMessage`. La CSP
+    del editor no deja hacer `fetch` a github.io, pero sí embeber.
+  - Luego `$geniallyDebug.copyBuffer = datos; $geniallyDebug.pasteSlidesFromBuffer()`.
+  - Al final, `rootStore.slidesStore.deleteSlides([modelo])` borra la página en blanco inicial.
+  - Tipos de elemento en el buffer: `text`, `svg`, `image`, `group`, `rich-content`.
+  - Un SVG va como `https://$task/svg/SourceSvg;<hash>`, con `tasks[<ref>] = {value, finished}`.
+- **Índice:**
+  - con apartados (a., b.…), una fila por apartado más las pantallas clave (presentación, ruta,
+    cierre, síntesis);
+  - sin apartados y con más de 11 escenas, una muestra pareja.
+  - Máximo 11 filas más «Fin».
+- **Pendiente:**
+  - Los logos, el bombillo, las ilustraciones de portada y fin y las fuentes Montserrat-Bold y
+    ExtraBold se cargan desde el CDN de Genially de la cuenta de DP.
+  - Plan gratuito: la marca «Powered by genially».
+  - Publicar o compartir cada Genially lo hace Sebastián.

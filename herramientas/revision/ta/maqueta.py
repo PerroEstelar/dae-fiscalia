@@ -206,7 +206,8 @@ def compacta(titulo, flujo, ilus=None, objetos=('libros', 'personas', 'huella'),
         b['escenario'] = True
     e = _base('compacta', titulo, segs, [b], guia=guia or 'Lea el contenido.', ilustracion=ilus)
     if video:
-        e['video'] = {'src': 'videos/%s.mp4' % video[0], 'titulo': video[1]}
+        e['video'] = {'src': '../comun/videos/%s.mp4' % video[0], 'vtt': '../comun/videos/%s.vtt' % video[0],
+                      'poster': '../comun/videos/%s.jpg' % video[0], 'titulo': video[1]}
         e.poster = video[0]
     e.meta = meta
     return e
@@ -266,6 +267,7 @@ def publicar(u, l, escenas):
         os.makedirs(dirc + 'comun/videos', exist_ok=True)
         with open(dirc + 'comun/tema-curso.css', 'a', encoding='utf-8') as f:
             f.write(CSS_TA)
+    _parche_app(dirc + 'comun/app.js')
     for f in os.listdir(FRAMES):
         if f.endswith('_700.jpg'):
             shutil.copy(FRAMES + f, dirc + 'comun/videos/' + f.replace('_700', ''))
@@ -277,6 +279,16 @@ def publicar(u, l, escenas):
     h2 = h2.replace('aria-label="Mediación de la unidad 1, lección 1"', 'aria-label="Mediación de la unidad %d, lección %d"' % (u, l))
     open(out + 'index.html', 'w', encoding='utf-8').write(h2)
     return out
+
+
+def _parche_app(ruta):
+    """Copia TA del motor: el video de la escena lleva «poster» (cuadro fijo mientras no se reproduce). Idempotente."""
+    a = open(ruta, encoding='utf-8').read()
+    viejo = "'<figure class=\"escena-video\"><video controls preload=\"metadata\" playsinline src=\"' + esc(escena.video.src) + '\">'"
+    nuevo = "'<figure class=\"escena-video\"><video controls preload=\"metadata\" playsinline' + (escena.video.poster ? ' poster=\"' + esc(escena.video.poster) + '\"' : '') + ' src=\"' + esc(escena.video.src) + '\">'"
+    if nuevo not in a:
+        assert viejo in a, 'app.js: no encuentro el <video> de la escena'
+        open(ruta, 'w', encoding='utf-8').write(a.replace(viejo, nuevo))
 
 
 # Ajuste de tema del curso (propuesta): sin la columna de íconos decorativos en las pantallas de lectura.
