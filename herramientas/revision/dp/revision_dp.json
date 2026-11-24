@@ -111,7 +111,7 @@
    "hoja": "Unidad 2",
    "celdas": {
     "B2": {
-     "t": "Bien así."
+     "t": "Bien, pero es largo para ser el arranque (unas 290 palabras con scroll): resaltar arriba el objetivo de la lección y dejar el resto debajo."
     },
     "B3": {
      "t": "Bien, son las tres cajas con número y pop-up que pide el mapa."
@@ -327,16 +327,19 @@
      "mini": "U3E4"
     },
     "E5": {
-     "t": "Bien así."
+     "t": "Pide scroll con solo 170 palabras porque la ilustración se come medio lienzo; texto más ancho y la idea clave resaltada arriba.",
+     "mini": "U3E5"
     },
     "E6": {
-     "t": "Bien así."
+     "t": "Igual que la anterior: pide scroll por la ilustración; texto más ancho y resaltar que no hay un término fijo, se mira si el plazo fue razonable.",
+     "mini": "U3E6"
     },
     "E7": {
      "t": "Bien así (tres cajas)."
     },
     "E8": {
-     "t": "Bien así."
+     "t": "Pide scroll; resaltar arriba que la tutela no es una instancia adicional ni reemplaza los recursos ordinarios.",
+     "mini": "U3E8"
     },
     "E9": {
      "t": "Muy bien, mapa conceptual con descarga."
@@ -367,7 +370,7 @@
      "t": "Bien así."
     },
     "B4": {
-     "t": "Bien así."
+     "t": "Bien; sacar en un recuadro aparte los plazos del trámite (procedimiento preferente y sumario, fallo dentro de los diez días)."
     },
     "B5": {
      "t": "Bien así."
@@ -444,7 +447,8 @@
      "t": "Bien así."
     },
     "D9": {
-     "t": "Bien como texto con scroll."
+     "t": "Son 530 palabras en scroll: partirlas en dos pestañas (cumplimiento del fallo / incidente de desacato) que preparan el cuadro comparativo de la fila siguiente.",
+     "mini": "U4D9b"
     },
     "D10": {
      "t": "Faltan el cuadro comparativo (cumplimiento del fallo frente a desacato) y la advertencia pedagógica en pop-up que pide el mapa.",
@@ -1427,6 +1431,40 @@
     "Ítem 8"
    ],
    "marcados": 4
+  },
+  "U3E5": {
+   "tpl": "texto_pdf",
+   "titulo": "E04 · Texto ancho + idea clave",
+   "frase": "Sin amenaza o vulneración de un derecho fundamental, no procede",
+   "nota": "Ilustración chica o al fondo: el texto usa el ancho"
+  },
+  "U3E6": {
+   "tpl": "texto_pdf",
+   "titulo": "E05 · Texto ancho + idea clave",
+   "frase": "No hay término fijo: se mira si el plazo fue razonable",
+   "nota": "Ilustración chica o al fondo: el texto usa el ancho"
+  },
+  "U3E8": {
+   "tpl": "texto_pdf",
+   "titulo": "E07 · Texto ancho + idea clave",
+   "frase": "La tutela no es una instancia adicional",
+   "nota": "No reemplaza los recursos ordinarios"
+  },
+  "U4D9b": {
+   "tpl": "pestanas",
+   "titulo": "E07 · Dos pestañas antes del cuadro",
+   "tabs": [
+    "Cumplimiento del fallo",
+    "Incidente de desacato"
+   ],
+   "activa": 0,
+   "items": [
+    "art. 27 del Decreto 2591: cumplir sin demora",
+    "el juez de primera instancia conserva la competencia",
+    "la otra pestaña: trámite incidental y sanción (art. 52)"
+   ],
+   "nota": "Prepara el cuadro comparativo de la fila siguiente"
   }
- }
+ },
+ "vacias": "No hay diapositiva para esta fila en el mapa."
 }

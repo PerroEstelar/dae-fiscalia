@@ -14,7 +14,8 @@ revision.json:
 - «Generales - revisión»: una fila por asunto que se repite en todo el curso.
 - Las columnas de lección se ensanchan y las filas crecen para que quepan frase y miniatura.
 
-Pedido de Sebastián (24 nov 2026): poco texto, una frase por celda; las miniaturas se quedan.
+Pedido de Sebastián (24 nov 2026): poco texto, una frase por celda; las miniaturas se quedan; letra más grande
+(11); y en las celdas sin diapositiva en el mapa, una nota que lo diga.
 """
 import json
 import math
@@ -33,11 +34,12 @@ from openpyxl.styles import Alignment, Font
 from openpyxl.utils import get_column_letter
 from openpyxl.utils.units import pixels_to_EMU
 
-ANCHO_COL = 54             # caracteres
+ANCHO_COL = 60             # caracteres
 MINI_W, MINI_H = 360, 153  # px (proporción 400×170)
-CHARS_LINEA = 44           # estimado conservador para Arial 9.5 en ese ancho
-PT_LINEA = 13.0
-FUENTE = Font(name='Arial', size=9.5, color='FF222222')
+CHARS_LINEA = 42           # estimado conservador para Arial 11 en ese ancho
+PT_LINEA = 15.0
+FUENTE = Font(name='Arial', size=11, color='FF222222')  # Sebastián: «la letra está muy chiquita» (era 9,5)
+FUENTE_VACIA = Font(name='Arial', size=10, italic=True, color='FF8A9BA3')
 
 
 def a_compartidas(ruta):
@@ -135,6 +137,19 @@ def main():
             r = poner(ws, ref, d, carpeta, altos)
             if r:
                 pend.append(r)
+        if rev.get('vacias'):
+            # Celdas de la grilla sin diapositiva en el mapa (esa lección tiene menos filas): se dice, para que no
+            # parezca que falta la revisión. Solo en filas con alguna diapositiva.
+            for fila in range(2, base.max_row + 1):
+                cols = [get_column_letter(i) for i in range(2, base.max_column + 1)]
+                if not any(base['%s%d' % (c, fila)].value not in (None, '') for c in cols):
+                    continue
+                for c in cols:
+                    ref = '%s%d' % (c, fila)
+                    if ref not in h['celdas']:
+                        ws[ref].value = rev['vacias']
+                        ws[ref].font = copy(FUENTE_VACIA)
+                        ws[ref].alignment = Alignment(wrap_text=True, vertical='top', horizontal='left')
         anclar(ws, pend, altos)
     if rev.get('generales'):
         u1 = wb[rev['hojas'][0]['hoja']]

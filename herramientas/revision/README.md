@@ -107,6 +107,11 @@ python3 mapa_revision.py mapa.xlsx dp_u1l1/comentarios.json png/ salida.xlsx
 
 ## Hecho
 
+- **Derecho de petición, v3 (24 nov 2026):** letra de 9,5 a 11 («está muy chiquita»), nota gris en las celdas sin
+  diapositiva en el mapa («No hay diapositiva para esta fila en el mapa»; no es que falten por virtualizar) y una
+  segunda pasada pedagógica a U3–U4, que tenían muchos «Bien así» por fidelidad. Drive:
+  [VIRTUALIZACIÓN DERECHO DE PETICIÓN - revisión v3.xlsx](https://drive.google.com/file/d/1NULmzPHXqlpONU9jf8oTZnsazoC4POBa/view);
+  la v2 quedó en `_anteriores`.
 - **Derecho de petición, curso completo (v2, 24 nov 2026):** 16 lecciones, una frase por celda, 55 miniaturas
   nuevas + las 12 del piloto, hoja de generales. Drive:
   [VIRTUALIZACIÓN DERECHO DE PETICIÓN - revisión v2.xlsx](https://drive.google.com/file/d/1Mmrp7AEnJ4kqazIQpNPGW1674degAJmu/view);
