@@ -40,7 +40,11 @@ del usuario final como criterio.
    - el inicio y el cierre del curso y de cada unidad.
 
    Los cuadros están en `D:\DAE\_tmp\rev_ta\frames` y van como póster del video de la escena.
-5. `excel_ta.py` arma el Excel. Usa miniaturas de 560×315 y Arial 20 en las celdas.
+5. `excel_ta.py` arma el Excel con miniaturas de 560×315 y Arial 20 en las celdas.
+   - Las miniaturas van en PNG de 800 px con paleta de 256 colores.
+   - El texto va en `sharedStrings` (`a_compartidas`), como en Derecho de petición.
+   - La v1 iba en JPEG de 1120 px y con texto *inline*, y Sebastián no vio las miniaturas.
+   - El Excel pasó de 16 MB a 11 MB.
 
 ```
 python3 render.py 1.1            # publica y rinde la lección (servidor del espejo en :8765)

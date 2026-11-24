@@ -17,6 +17,8 @@ from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import maqueta as M
+sys.path.insert(0, '/home/claude/repo/herramientas/revision')
+from mapa_revision import a_compartidas
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(AQUI, 'out')
@@ -35,9 +37,12 @@ GENERALES = json.load(open(os.path.join(AQUI, 'generales.json'), encoding='utf-8
 
 def mini(clave):
     src = os.path.join(OUT, 'final', clave + '.png')
-    dst = os.path.join(OUT, 'mini', clave + '.jpg')
+    # PNG de 800 px, como las miniaturas del Excel de Derecho de petición, que sí se ven en Excel, Sheets y
+    # LibreOffice (la primera entrega iba en JPEG de 1120 px y Sebastián no vio las miniaturas).
+    os.makedirs(os.path.join(OUT, 'mini_pal'), exist_ok=True)
+    dst = os.path.join(OUT, 'mini_pal', clave + '.png')
     if not os.path.exists(dst) or os.path.getmtime(dst) < os.path.getmtime(src):
-        Image.open(src).convert('RGB').resize((MINI_W * 2, MINI_H * 2), Image.LANCZOS).save(dst, quality=82, optimize=True)
+        Image.open(src).convert('RGB').resize((800, 450), Image.LANCZOS).quantize(colors=256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.FLOYDSTEINBERG).save(dst, optimize=True)
     return dst
 
 
@@ -122,6 +127,7 @@ def main(salida):
         a.border = b.border = BORDE
         ws.row_dimensions[i].height = (math.ceil(len(t) / 105) + 0.5) * 24
     wb.save(salida)
+    a_compartidas(salida)
     print(salida)
 
 
