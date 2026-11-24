@@ -274,6 +274,7 @@ sincroniza, `update_file(parentId=VIDEOS)`.
 | C1 Édgar Molano, **re-entrega** (4 nov tarde, el vecino de la r03) | `ED_C1_v2.mp4` | 4964/4964 | −19,2 · −4,1 | 55 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 1 EDGAR MOLANO.mp4` · `1y73bAumsCauu1EpopufJZHYtp0wBoCPa` (la v1 a `VIDEOS/_versiones anteriores`, `1E5jbysh98ZfEXY_n0Nuh3-4XGbd86-a6`) |
 | C4 La niña del resguardo de Putumayo (4 nov, «export all 5 cases») | `ED_C4_v1.mp4` | 4422/4422 | −19,3 · −4,2 | 79 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 4 LA NIÑA DEL RESGUARDO DE PUTUMAYO.mp4` · `14W63d4YqaqSkyk-Fva7H0Hcz2Np6gKNn` |
 | C5 La denuncia de Valentina (4 nov, tras su revisión) | `ED_C5_v1.mp4` | 4181/4181 | −19,3 · −4,2 | 47 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 5 LA DENUNCIA DE VALENTINA.mp4` · `1fP0XJPaVtIvyk0mnHuL2C7aZyGsArCOP` |
+| C1 Édgar Molano, **re-entrega v3** (24 nov, «con incapacidad de resistir») | `ED_C1_v3.mp4` | 4964/4964 | −19,2 · −4,1 | 55 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 1 EDGAR MOLANO - v3.mp4` · `1bbSYiyj1631g77X1-G-GpUHl030vUwnW` (la v2, `1y73bAumsCauu1EpopufJZHYtp0wBoCPa`, sigue en `VIDEOS`: el conector no la deja mover; va a mano a `VIDEOS/_anteriores`) |
 
 El único «negro» de cada uno es el último cuadro del respiro (C1 194,44 s;
 C2 239,57 s; C3 210,42 s; C4 171,84 s; C5 161,79 s), el fundido horneado.
@@ -284,6 +285,27 @@ Sebastián corrió la cama 19 cuadros y la línea mide 4441, pero esos 19 cuadro
 son negro con la cola de la cama, que es silencio digital (medido);
 `ed_pieza.entregas` recorta a la pieza cuando el máster es más largo.
 `entregas=N` / `verificar=N` hacen una re-entrega con su número.
+
+## «Con incapacidad de resistir» en el caso 1 (24 nov 2026) — en SU línea v2, sin remontar
+
+Revisión de la Fiscalía, por Sebastián: «en vez de "con incapaz de resistir" por "con incapacidad de resistir", hay que
+ver si podemos ajustar el audio». Es el bloque a04 (Carlos), la imputación del artículo 210.
+
+- **Voz** (`herramientas/voz/incapacidad_c1.py`): toma nueva del a04 con el texto corregido y, en el máster, solo la
+  frase «con incapacidad de resistir,» reemplaza a la vieja. La nueva dura 0,29 s más; entra 80 ms antes (sin pisar
+  la respiración que sigue a «abusivo») y la respiración que había antes de «artículo» se va (la toma nueva tampoco
+  respira ahí): queda una pausa de 0,42 s. Nivel igualado por el RMS de la voz y las puntas acotadas al pico del a04
+  viejo (−5,0 dBFS; 48 ms de limitador). `ED_C1_NARRADOR_v2.wav` mide las mismas 8.636.506 muestras y fuera de
+  39,53-41,66 s es idéntico muestra a muestra. «resistir,» termina 0,10 s antes del corte de imagen de la r06.
+  STT del video entregado: «…acceso carnal abusivo con incapacidad de resistir, artículo doscientos diez…».
+- **Cartón p03**: `ED_C1_p03_carton_incapacidad.mov` (`cartones_ed.RENOMBRA`), mismos 310 cuadros y mismo lugar
+  (1167); tres renglones.
+- **Línea**: `cirugia_ed C1 v=2 cambiar` del cartón y del máster (salió 1 y entró 1 en cada uno). `.drt` reexportado;
+  el anterior en `10 TIMELINE SEBASTIAN/_descartes`.
+- **Entrega**: `ed_pieza C1 v=2 exportar entregas=3 verificar=3`. `ed_pieza.exportar` ahora fija `ExportVideo` y
+  `ExportAudio` (la trampa de la DA del 10 nov).
+- **Ojo**: el artículo 210 del Código Penal se titula «Acceso carnal o acto sexual abusivos con incapaz de resistir»;
+  el cambio lo pidió la revisión y se hizo tal cual.
 
 ## Estado
 

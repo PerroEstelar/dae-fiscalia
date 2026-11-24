@@ -3882,3 +3882,18 @@ puso en 152,60, en un bache de −47 dB que parecía el hueco entre palabras. Er
 ventanas de 5 ms y una escucha del compuesto (`stt_tramo.py` sobre el tramo del corte) antes de rendir. Y se leen las
 transcripciones de las entregas buscando titubeos que el STT de la fuente juntó en una palabra («Buda-de Budapest»).
 
+## Una palabra más larga se injerta con la frase entera y le quita aire a las pausas (ED C1, 24 nov 2026)
+
+«con incapaz de resistir» → «con incapacidad de resistir»: la palabra nueva tiene dos sílabas más y no cabe donde
+estaba la vieja (lo que sí pasaba con «Taita»). Se injerta la frase completa de pausa a pausa («abusivo ‖ con …
+resistir, ‖ artículo»), así los empalmes caen en silencio y la entonación es la de la toma nueva
+(`voz/incapacidad_c1.py`). Tres cosas medidas:
+
+- **Las pausas de ElevenLabs traen respiraciones** (−45 a −60 dB): un detector «primer y último tramo sobre el
+  umbral» en todo el hueco las toma por voz y devuelve el hueco entero. Los bordes se buscan en ventanas pegadas a las
+  palabras del STT (±60-100 ms). Los 0,29 s que sobran salen de quitar la respiración antes de «artículo» (la toma
+  nueva no respira ahí) y de entrar 80 ms antes; el máster mide exactamente lo mismo y la línea no se toca.
+- **Igualar por RMS de voz trae puntas**: la frase nueva llegaba a −1,2 dBFS en un máster cuyo pico es −5,0. Un
+  limitador con anticipación de 5 ms al pico del bloque viejo (48 ms de acción en total) y listo.
+- **Mirar dónde cae el corte de imagen**: la frase más larga termina más tarde; aquí 0,10 s antes del corte de la r06.
+

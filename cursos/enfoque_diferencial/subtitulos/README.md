@@ -17,7 +17,7 @@ Prioridad 4 de la lista de Esteban. Los 17 videos entregados: 12 de profe (Camil
 | `enfoquediferencial - U5 - INICIO-v2` | 11 | 1:11 | `165dEUaX4VHKIWVmb5hpp8FHzZbo30syq` |
 | `enfoquediferencial - U5 - CIERRE-v3` | 428 | 28:25 | `1FQHQ92nDNKrcWczbpHgqyA5qlanKa33R` |
 | `enfoquediferencial - CURSO - CONCLUSIONES-v2` | 31 | 2:34 | `1EfR3iFq9NJcJm0U6_5oPH9s_uJdTobHK` |
-| `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 1 EDGAR MOLANO` | 50 | 3:27 | `1yeURGJvtrN75CVYBYOTJNArVUb9uB_CB` |
+| `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 1 EDGAR MOLANO - v3` | 50 | 3:27 | `1NgeXjlYp8imdiXoMeJBjmlZpk6naKYWR` |
 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 2 JAIRO MONTERO SALAS` | 61 | 4:12 | `1sC3R7WkOxWX5oR0swn-gkN5thEqio0jN` |
 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 3 EL PATRULLERO WILMER` | 56 | 3:43 | `1IRow8Nv5oQFv7rjHU97Mygfyb87azyKW` |
 | `PRIO 2 - ENFOQUE DIFERENCIAL - CASO 4 LA NIÑA DEL RESGUARDO DE PUTUMAYO` | 41 | 3:04 | `16Au2RleDBm7-cNGkZACobPOpHjpMadVx` |
@@ -93,3 +93,14 @@ son los mismos.
 - Revisión del 24 nov, pedida por Sebastián: en los 12 `.srt` de profe y en los cinco de los casos no queda ningún
   «rom» suelto (en los de profe, cuatro «Rrom», en los cierres de U2, U3 y U4); en los planes y los textos de los casos
   tampoco.
+
+## «Con incapacidad de resistir» (caso 1, 24 nov 2026)
+
+Revisión de la Fiscalía: en el caso 1 la voz decía «acceso carnal abusivo con incapaz de resistir». La voz, el cartón
+p03 y el `.srt` pasan a «con incapacidad de resistir» (ver `../README.md`). En el `.srt` cambia solo el texto del
+subtítulo 11 (50,960-53,890), partido en dos renglones por el tope de 42 caracteres: «carnal abusivo con incapacidad /
+de resistir,». Los tiempos no cambian: la frase nueva termina en 53,78 s, antes del final del subtítulo.
+
+- Disco: `05 EXPORTS/PRIO 2 - ENFOQUE DIFERENCIAL - CASO 1 EDGAR MOLANO - v3.srt`; el anterior se queda con su nombre.
+- Drive: el `.srt` nuevo en `VIDEOS` (`1NgeXjlYp8imdiXoMeJBjmlZpk6naKYWR`); el anterior en `VIDEOS/_anteriores`
+  (`1ohPLiEhGgE9kaeNO9oLnjH4WVJIAljvK`).

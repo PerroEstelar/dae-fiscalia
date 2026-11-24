@@ -1140,7 +1140,10 @@ def exportar(L, destino=None, nm=None):
                                'CustomName': nm, 'FormatWidth': 1920,
                                'FormatHeight': 1080, 'VideoQuality': 80000,
                                'AudioCodec': 'lpcm', 'AudioBitDepth': 24,
-                               'AudioSampleRate': 48000})
+                               'AudioSampleRate': 48000,
+                               # 24 nov: explícitos (CLAUDE.md, DA 10 nov): los ajustes de render son del
+                               # proyecto y un render de control sin audio deja mudo al siguiente
+                               'ExportVideo': True, 'ExportAudio': True})
     pr.SetCurrentRenderFormatAndCodec('mp4', 'H264_NVIDIA')
     job = pr.AddRenderJob()
     w('render %s job %s settings %s' % (nm, job, ok))

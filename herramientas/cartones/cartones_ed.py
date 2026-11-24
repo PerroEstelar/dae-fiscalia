@@ -99,7 +99,7 @@ ELEGIDOS = {
   ('a03_la_historia_clinica', 'encuentra el diagnóstico de discapacidad '
    'cognitiva leve certificado por su EPS.'),
   ('a04_la_imputacion', 'formula la imputación por el delito de acceso carnal '
-   'abusivo con incapaz de resistir (artículo 210 del Código Penal),'),
+   'abusivo con incapacidad de resistir (artículo 210 del Código Penal),'),
   ('a05_no_ordena', 'No ordena entrevista psicológica forense centrada en la '
    'comprensión y voluntariedad de Yolanda'),
   ('a06_no_indaga', 'no indaga sobre la naturaleza de la relación entre ella y '
@@ -421,7 +421,10 @@ def calcula(clave):
 # va con otro nombre: el media pool cachea la duracion del archivo y un
 # carton reescrito en su sitio entraria con el largo viejo. El p01 del C4 se
 # corta donde entra el rotulo de Yaneth (236 -> 106 cuadros).
-RENOMBRA = {'C4': {1: 'ED_C4_p01_carton_rotulo.mov'}}
+# 24 nov (C1, revisión de la Fiscalía): «con incapaz de resistir» pasa a «con incapacidad de resistir» en la
+# voz (`voz/incapacidad_c1.py`) y en el p03; el cartón nuevo va con otro nombre por la misma razón.
+RENOMBRA = {'C4': {1: 'ED_C4_p01_carton_rotulo.mov'},
+            'C1': {3: 'ED_C1_p03_carton_incapacidad.mov'}}
 
 
 def renglones(t):

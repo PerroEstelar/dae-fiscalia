@@ -118,11 +118,11 @@ BLOQUES['C1'] = [
   PARRAFO),
  ('a04_la_imputacion', 'Carlos',
   'Con ese solo documento, formula la imputación por el delito de acceso '
-  'carnal abusivo con incapaz de resistir (artículo 210 del Código Penal), '
+  'carnal abusivo con incapacidad de resistir (artículo 210 del Código Penal), '
   'sustentando toda la hipótesis de incapacidad para consentir en el '
   'diagnóstico médico.',
   'Con ese solo documento, formula la imputación por el delito de acceso '
-  'carnal abusivo con incapaz de resistir, artículo doscientos diez del Código '
+  'carnal abusivo con incapacidad de resistir, artículo doscientos diez del Código '
   'Penal, sustentando toda la hipótesis de incapacidad para consentir en el '
   'diagnóstico médico.',
   NORMAL),
