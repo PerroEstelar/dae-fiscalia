@@ -1,0 +1,18 @@
+[
+ "Portada del curso al comienzo de las 24 lecciones: sacarla. El inicio y el cierre del curso son recursos aparte.",
+ "Portada de la unidad repetida en cada lección: va solo en la lección 1 de cada unidad.",
+ "Faltan los videos de inicio y de cierre de cada unidad que pide el DI (los de las unidades 1 a 4 ya existen).",
+ "Un mismo apartado repartido en dos a cuatro diapositivas «(1 de 3)»: una sola diapositiva con pestañas.",
+ "Índices con «(1 de 2)» y el título de la lección repetido: una entrada por apartado del DI.",
+ "Rótulos de paradas y fichas que son un pedazo de frase («Corte aclara», «Debido a que normalmente…»): título propio con la idea.",
+ "Lecturas de 300 a 500 palabras dentro de fichas o paradas: sumar el botón «Lectura en PDF».",
+ "Cuadros con pestañas «Fila 1», «Filas 2 y 3»…: cada pestaña con el nombre de lo que contiene.",
+ "Notas de una sola frase en diapositiva propia (1.5 y 2.1): al pie de la diapositiva a la que se refieren.",
+ "Listas partidas entre diapositivas (Ley 685 de 2001 en la 2.1, criterios en la 2.5, el ejemplo de inmunidad en la 5.1): juntarlas.",
+ "El objetivo comparte camino o fichas con doctrina en varias lecciones: va solo, como apertura con texto fijo.",
+ "El aviso «Clic aquí» tapa la tarjeta 1 de cada camino, y los avisos de puntos salen encima del texto: pasarlos a una esquina.",
+ "Escenas retiradas siguen ocultas dentro de los Genially (1.3 y 3.1): sacarlas para que no viajen en el SCORM.",
+ "16 de los 20 videos no tienen subtítulos, y el botón «con lengua de señas» lleva a un video que no existe.",
+ "Los recursos interactivos (SINA, principios, tipos penales, artículos 330, motores, mapa territorial, técnicas especiales, mapa normativo, ruta): bien resueltos, se dejan igual.",
+ "Para confirmar con el autor: las preguntas orientadoras de la 1.1; «de marea reiterada» (1.1); «artículo 1… (2001)» (1.2); la 4.3 sin objetivo y sin la característica c); la nota «caso tortugas, caso ingrid» (4.3); «b) Causal 13» sin a) (5.4)."
+]
