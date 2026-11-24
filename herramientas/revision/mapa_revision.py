@@ -34,15 +34,16 @@ from openpyxl.styles import Alignment, Font
 from openpyxl.utils import get_column_letter
 from openpyxl.utils.units import pixels_to_EMU
 
-ANCHO_COL = 80             # caracteres
-MINI_W, MINI_H = 420, 178  # px (proporción 400×170)
-CHARS_LINEA = 38           # estimado conservador para Arial 16 en ese ancho
-PT_LINEA = 21.5
+ANCHO_COL = 92             # caracteres
+MINI_W, MINI_H = 460, 196  # px (proporción 400×170)
+CHARS_LINEA = 35           # estimado conservador para Arial 20 en ese ancho
+PT_LINEA = 26.5
 # Sebastián: «la letra está muy chiquita» (9,5 → 11), «más grande la letra» (11 → 14) y «más grande el tamaño de la
-# letra del texto de cada celda» (14 → 16), 24 nov. Los títulos de lección y el número de diapositiva van a 14.
-FUENTE = Font(name='Arial', size=16, color='FF222222')
-TITULO_PT = 14
-FUENTE_VACIA = Font(name='Arial', size=13, italic=True, color='FF8A9BA3')
+# letra del texto de cada celda» (14 → 16) y «aún un poco más grande» (16 → 20), 24 nov. Los títulos de lección y el
+# número de diapositiva van a 16.
+FUENTE = Font(name='Arial', size=20, color='FF222222')
+TITULO_PT = 16
+FUENTE_VACIA = Font(name='Arial', size=15, italic=True, color='FF8A9BA3')
 
 
 def a_compartidas(ruta):
@@ -142,7 +143,7 @@ def main():
             c.font = Font(name=c.font.name or 'Arial', size=TITULO_PT, bold=True, color=copy(c.font.color))
             c.alignment = Alignment(wrap_text=True, vertical='center', horizontal='center')
             if i > 1 and c.value:
-                alto1 = max(alto1, math.ceil(len(str(c.value)) / 42) * 19 + 10)
+                alto1 = max(alto1, math.ceil(len(str(c.value)) / 44) * 21 + 10)
         ws.row_dimensions[1].height = alto1
         for fila in range(2, base.max_row + 1):
             c = ws.cell(fila, 1)

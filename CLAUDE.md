@@ -3844,8 +3844,9 @@ devolver al virtualizador comentarios cortos (tono colombiano, informal, sin pin
 celda, en una **copia** del mapa con la hoja de la unidad duplicada. El diseño visual de los Genially está aprobado:
 se propone distribución y recurso, nunca estilo. Para bloques de texto pesado vale proponer un botón a PDF
 descargable. Todo el método, los recursos de Genially y las trampas del Excel están en `herramientas/revision/README.md`.
-Dos reglas que pidió él: **una frase por celda**, en letra grande (16), y **solo cambios en el Genially**: nunca «en
-el mapa corregir…»; el mapa se nombra solo para decir qué recurso pide.
+Tres reglas que pidió él: **una frase por celda**, en letra grande (20); **solo cambios en el Genially**: nunca «en
+el mapa corregir…», el mapa se nombra solo para decir qué recurso pide; y **las palabras de Genially**: «animación»,
+no «máquina de escribir».
 
 ## La voz de un profe se mide y se ecualiza a su medida (Delitos informáticos, 24 nov 2026)
 

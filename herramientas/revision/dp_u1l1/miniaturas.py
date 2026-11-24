@@ -96,7 +96,7 @@ def e01():
     x = 24
     for c in ('Naturaleza constitucional', 'Persona ⇄ autoridad', 'Derechos y ESD'):
         x += s.chip(x, 102, c, 6.4) + 4
-    s.text(24, 146, 'Texto fijo, sale completo de una (sin máquina de escribir)', 7.5, T, 500, italic=True)
+    s.text(24, 146, 'Texto fijo, sale completo de una (sin animación)', 7.5, T, 500, italic=True)
     s.rect(286, 28, 102, 132, N, None, rx=8)
     s.persona(320, 82, 1.6, T)
     s.persona(355, 82, 1.6, O)
