@@ -135,3 +135,9 @@ python3 mapa_revision.py mapa.xlsx dp_u1l1/comentarios.json png/ salida.xlsx
   - Drive: «Revisión Genially · Derecho de petición» →
     [VIRTUALIZACIÓN DERECHO DE PETICIÓN - revisión U1 L1.1.xlsx](https://drive.google.com/file/d/1FxhTO7MIQkl_-cRKab4fmaYelv4Zdq3z/view);
   - copia local en `E:\DAE MASTER\CURSO DERECHOS DE PETICION\Revision\`.
+
+## Propuesta de diapositivas (cuando no hay Genially que revisar)
+
+Para Terminaciones anticipadas (24 nov 2026) no había virtualización: cada diapositiva se diseñó
+con el motor de las mediaciones y el marco Genially. Va en el mismo Excel, con «Propuesta:» fuera
+de la miniatura. Método y herramientas en `ta/README.md`.
