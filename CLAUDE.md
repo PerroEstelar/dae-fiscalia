@@ -3836,3 +3836,11 @@ medio. La comparación con la entrega anterior se hace también con el **audio**
 - El limitador de `mp4_entrega` (pico del máster sobre −1 dBTP) deja el audio 48 muestras (1 ms) corrido respecto
   del máster: inaudible, pero la diferencia contra la entrega vieja ya no da cero.
 
+
+## Revisión de los Genially (flujo «revisión», 24 nov 2026)
+
+Cuando Sebastián dice «revisión» no es video: es contrastar DI, mapa de virtualización y Genially por diapositiva, y
+devolver al virtualizador comentarios cortos (tono colombiano, informal, sin pinta de IA) con una miniatura SVG por
+celda, en una **copia** del mapa con la hoja de la unidad duplicada. El diseño visual de los Genially está aprobado:
+se propone distribución y recurso, nunca estilo. Para bloques de texto pesado vale proponer un botón a PDF
+descargable. Todo el método, los recursos de Genially y las trampas del Excel están en `herramientas/revision/README.md`.

@@ -1,0 +1,345 @@
+{
+ "hoja": "Unidad 1",
+ "columna": "B",
+ "prefijo_png": "DP_U1_L1_",
+ "celdas": {
+  "B2": {
+   "mini": "E01",
+   "texto": [
+    [
+     "",
+     "E01 · Objetivo"
+    ],
+    [
+     "BIEN",
+     "fiel al DI, cabe completo sin scroll."
+    ],
+    [
+     "CAMBIAR",
+     "que el texto salga completo de una, sin máquina de escribir. Son 50 palabras y la animación solo pone a esperar."
+    ],
+    [
+     "IDEA",
+     "resaltar «Reconocer» y poner debajo las tres partes del objetivo como chips."
+    ],
+    [
+     "MAPA",
+     "dice «Onjetivo», corregir."
+    ]
+   ]
+  },
+  "B3": {
+   "mini": "E02",
+   "texto": [
+    [
+     "",
+     "E02 · Derecho fundamental"
+    ],
+    [
+     "OJO",
+     "el mapa pide mapa conceptual y quedó un camino con paradas 1-2-3. El camino da idea de pasos en orden y acá son tres rasgos del mismo derecho."
+    ],
+    [
+     "OJO",
+     "las tarjetas tapan la ventana, el reloj y la biblioteca, y el globo «Clic aquí» se monta sobre la tarjeta 1."
+    ],
+    [
+     "CAMBIAR",
+     "nodo arriba «Derecho de petición» y tres ramas: Garantía fundamental · Doble vía · Valores del ESD. Cada una abre su ventana como ya está."
+    ],
+    [
+     "IDEA",
+     "en Valores, los seis valores como chips; en Doble vía, flecha persona ⇄ autoridad."
+    ]
+   ]
+  },
+  "B4": {
+   "mini": "E03",
+   "texto": [
+    [
+     "",
+     "E03 · Ley 1437 y Ley 1755"
+    ],
+    [
+     "BIEN",
+     "cuatro cajas como pide el mapa, ventanas legibles."
+    ],
+    [
+     "OJO",
+     "las cajas 2, 3 y 4 repiten casi la misma ilustración y no ayudan a distinguir cuál es cuál. Mejor un ícono propio por caja."
+    ],
+    [
+     "CAMBIAR caja 1",
+     "línea de tiempo corta: 2011 (CPACA) → 2015 (Ley 1755 sustituye arts. 13 a 33)."
+    ],
+    [
+     "CAMBIAR caja 4",
+     "las actuaciones del art. 13 están en una sola frase larguísima; pasarlas a lista con viñetas en dos columnas."
+    ],
+    [
+     "IDEA caja 3",
+     "«cuenta el contenido, no el nombre», con las etiquetas queja, reclamo, solicitud, requerimiento."
+    ]
+   ]
+  },
+  "B5": {
+   "mini": "E04",
+   "texto": [
+    [
+     "",
+     "E04 · Participación ciudadana"
+    ],
+    [
+     "BIEN",
+     "cumple el mapa: columnas que se abren al tocarlas. Las tres ideas quedan bien separadas."
+    ],
+    [
+     "AJUSTE",
+     "en la tercera columna, lo que revelan las peticiones (barreras, problemas recurrentes, orientación, riesgos, mejoras) ponerlo en viñetas."
+    ],
+    [
+     "IDEA",
+     "sacar como frase fuerza «no depende de una respuesta favorable»."
+    ]
+   ]
+  },
+  "B6": {
+   "mini": "E05",
+   "texto": [
+    [
+     "",
+     "E05 · Relación con otros derechos"
+    ],
+    [
+     "BIEN",
+     "es lo que pide el mapa (texto con scroll) y está fiel al DI."
+    ],
+    [
+     "OJO",
+     "la columna de íconos de la derecha es pura decoración y le quita ancho al texto."
+    ],
+    [
+     "CAMBIAR",
+     "el texto se arma solito en dos bloques: «Se conecta con…» (chips) y «Pero no reemplaza…» (procesos judiciales, administrativos, disciplinarios). Abajo una franja con los límites: competencia, reserva legal, datos personales, derechos de terceros."
+    ],
+    [
+     "",
+     "El texto completo queda en «Leer completo» (ventana)."
+    ]
+   ]
+  },
+  "B7": {
+   "mini": "E06",
+   "texto": [
+    [
+     "",
+     "E06 · Elementos a, b, c"
+    ],
+    [
+     "OJO",
+     "el mapa pide escenario con botones pop-up y personas presentando; quedó ilustración con acordeón."
+    ],
+    [
+     "CAMBIAR",
+     "escenario de atención (ventanilla) con los botones a), b) y c) encima; cada uno abre su ventana."
+    ],
+    [
+     "OJO en c)",
+     "los plazos (15 días regla general, 10 documentos e información, 30 consultas, prórroga máximo el doble) se pierden en el párrafo. Mostrarlos como barras o tablita dentro de la ventana."
+    ],
+    [
+     "IDEA en b)",
+     "resaltar que radicar no es responder."
+    ]
+   ]
+  },
+  "B8": {
+   "mini": "E07",
+   "texto": [
+    [
+     "",
+     "E07 · Atención al usuario"
+    ],
+    [
+     "BIEN",
+     "texto con scroll y ambiente con personas, como dice el mapa."
+    ],
+    [
+     "OJO",
+     "es la pantalla más pesada de la lección (unas 380 palabras) y mezcla tres temas en un solo scroll. Los plazos del traslado se pierden."
+    ],
+    [
+     "CAMBIAR",
+     "tres botones tipo pestaña: Orientar · Trasladar · Enfoque diferencial."
+    ],
+    [
+     "",
+     "En Trasladar, flujo corto: llega a quien no es competente → remite en 5 días con copia al peticionario → el término corre desde que lo recibe el competente."
+    ],
+    [
+     "OPCIÓN",
+     "botón «Descargar texto (PDF)» para quien lo quiera leer de corrido."
+    ]
+   ]
+  },
+  "B9": {
+   "mini": "E08",
+   "texto": [
+    [
+     "",
+     "E08 · Titularidad y accesibilidad"
+    ],
+    [
+     "BIEN",
+     "tres cajas como pide el mapa; cada una abre la ventana con el texto completo."
+    ],
+    [
+     "ERROR",
+     "en la ventana de la tarjeta 3 el escudo queda encima del botón «Cerrar»."
+    ],
+    [
+     "IDEA tarjeta 1",
+     "sello «gratis · sin abogado»."
+    ],
+    [
+     "IDEA tarjeta 3",
+     "quiénes llegan a la Fiscalía (víctimas, testigos, investigados, familiares, apoderados, organizaciones, servidores) en chips, y las barreras en otra fila."
+    ]
+   ]
+  },
+  "B10": {
+   "mini": "E09",
+   "texto": [
+    [
+     "",
+     "E09 · Calidad institucional"
+    ],
+    [
+     "BIEN",
+     "fiel al DI, cabe sin scroll y se lee bien."
+    ],
+    [
+     "OJO",
+     "el aviso gris «Puede activar el texto fijo…» sale encima del segundo párrafo y tapa la lectura (pasa también en E11)."
+    ],
+    [
+     "OJO",
+     "sobra la instrucción «baje con la barra», acá no hay scroll."
+    ],
+    [
+     "IDEA",
+     "es texto de reflexión; volverlo interactivo sería forzarlo. Dejarlo así, con una frase fuerza arriba (las solicitudes son oportunidades, no cargas) y, si se quiere, botón a PDF."
+    ]
+   ]
+  },
+  "B11": {
+   "mini": "E10",
+   "texto": [
+    [
+     "",
+     "E10 · Caso de aplicación"
+    ],
+    [
+     "BIEN",
+     "las cuatro cajas en orden y ventanas legibles."
+    ],
+    [
+     "OJO",
+     "el mapa dice «Caso de análisis»; el DI y el Genially dicen «Caso de aplicación». Se deja «aplicación»."
+    ],
+    [
+     "CAMBIAR",
+     "la actividad de reflexión trae 4 preguntas pero no hay dónde responder y la ventana pide scroll. Mejor botón «Guía de reflexión (PDF)» con las preguntas y espacio para escribir."
+    ],
+    [
+     "IDEA",
+     "mostrar la Situación como la carta de la asociación; así queda el escenario con contexto que pide el mapa."
+    ],
+    [
+     "IDEA",
+     "la Idea clave no esconderla detrás de un clic; dejarla visible como franja abajo."
+    ]
+   ]
+  },
+  "B12": {
+   "mini": "E11",
+   "texto": [
+    [
+     "",
+     "E11 · Conclusión"
+    ],
+    [
+     "BIEN",
+     "fiel al DI, cabe sin scroll."
+    ],
+    [
+     "OJO, viene del DI",
+     "dice que la siguiente lección profundiza en el fundamento constitucional y legal y en la Política de Atención al Ciudadano, pero la 1.2 es modalidades, requisitos y términos, y la Política se ve en la 2.1. Preguntarle al autor antes de tocarlo."
+    ],
+    [
+     "OJO",
+     "el mismo aviso gris encima del texto."
+    ],
+    [
+     "MAPA",
+     "esta fila dice 10.0, debería ser 11.0."
+    ]
+   ]
+  },
+  "B14": {
+   "mini": "GEN",
+   "rotulo": "Generales L1.1",
+   "texto": [
+    [
+     "",
+     "Generales de la lección"
+    ],
+    [
+     "ERROR",
+     "el título del Genially dice «…ACCIÓN DE TUTELA Y DAÑO ANTIJURÍDICO». El nombre del curso no lleva «daño antijurídico». Corregirlo en el Genially."
+    ],
+    [
+     "FIN",
+     "debajo del pie de página se asoman los pies de los muñequitos de la ilustración."
+    ],
+    [
+     "TEXTO (E05, E07, E09, E11)",
+     "quitar la columna de íconos de la derecha y darle ese ancho al texto."
+    ],
+    [
+     "AVISO TEXTO FIJO",
+     "pasarlo a la barra de abajo, al lado del botón, o mostrarlo solo la primera vez."
+    ],
+    [
+     "PDF",
+     "para bloques pesados que no dan para volverse interactivos, botón a PDF descargable (en Genially, botón con interactividad de enlace al PDF)."
+    ]
+   ]
+  },
+  "B15": {
+   "rotulo": "Convenciones",
+   "texto": [
+    [
+     "BIEN",
+     "se deja como está."
+    ],
+    [
+     "CAMBIAR / AJUSTE",
+     "propuesta concreta, ver miniatura."
+    ],
+    [
+     "OJO / ERROR",
+     "falla, omisión o incongruencia."
+    ],
+    [
+     "IDEA / OPCIÓN",
+     "mejora que suma, no obligatoria."
+    ],
+    [
+     "MAPA",
+     "corrección del propio mapa."
+    ]
+   ]
+  }
+ }
+}
