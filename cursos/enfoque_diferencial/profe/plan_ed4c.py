@@ -14,6 +14,11 @@ from base_ed_profe import armar  # noqa: E402
 globals().update(armar('ed_u4_contenido', 'UNIDAD 4/CONTENIDO', 'Unidad 4. Etnicidad',
                      'ED - U4 - CONTENIDO', 'enfoquediferencial - U4 - CONTENIDO', 'ED4C', 54, 46519))
 
+# «Rrom» (24 nov 2026): revisión de la Fiscalía (Tatiana López), «la forma correcta de escribir es Rrom» (grafía del
+# Decreto 2957 de 2010). El cartón corregido se rinde como «… v2.mov» y la entrega es la v3 (`reparchar.py`).
+VERSION = 3
+VERSIONES = {'c16_afro_rom': 2}
+
 ITEMS = [
     ('lt01', 'lt', 2.2, 8.2, PROFE),
     ('c01_jei', 'carton', 8.4, 19.9, c_tit(
@@ -74,7 +79,7 @@ ITEMS = [
         'Deberán respetarse los métodos a los que los pueblos recurren tradicionalmente para la represión de '
         'los delitos.')),
     ('c16_afro_rom', 'carton', 337.0, 350.8, cita(
-        'Las comunidades afrodescendientes y el pueblo rom esperan un reconocimiento pleno de su forma de '
+        'Las comunidades afrodescendientes y el pueblo Rrom esperan un reconocimiento pleno de su forma de '
         'tramitar conflictos.')),
     ('c17_t254', 'carton', 369.5, 381.8, c_ante(
         'Sentencia T-254 de 1994', 'La autonomía jurisdiccional',

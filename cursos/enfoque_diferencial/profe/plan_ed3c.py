@@ -22,6 +22,10 @@ globals().update(armar('ed_u3_contenido', 'UNIDAD 3/CONTENIDO',
 # Los cartones corregidos se rinden como «… v2.mov» y la entrega es la v3 (`reparchar.py`).
 VERSION = 3
 VERSIONES = {'c48_frontera': 2}
+# «Rrom» (24 nov 2026): revisión de la Fiscalía (Tatiana López), «la forma correcta de escribir es Rrom» (grafía del
+# Decreto 2957 de 2010); los .srt se corrigieron el 21 nov y quedaban estos dos cartones. Entrega v4.
+VERSION = 4
+VERSIONES = {'c48_frontera': 2, 'c35_rom': 2, 'c36_decreto': 2}
 
 ITEMS = [
     ('lt01', 'lt', 1.0, 7.0, PROFE),
@@ -165,10 +169,10 @@ ITEMS = [
         ('grupos', 'Condiciones sociales, culturales y económicas propias', 917.5),
         ('libro_ley', 'Una legislación especial, como la Ley 70', 929.4))),
     ('c35_rom', 'carton', 936.9, 946.2, c_tit(
-        'El pueblo gitano o rom',
+        'El pueblo gitano o Rrom',
         'Caso único en materia de grupos de inmigrantes.')),
     ('c36_decreto', 'carton', 963.8, 971.6, c_ante(
-        'Decreto 2957 de 2010', 'Protección integral del pueblo rom')),
+        'Decreto 2957 de 2010', 'Protección integral del pueblo Rrom')),
     ('c37_autorreconocimiento', 'carton', 979.8, 992.7, c_tit(
         'El autorreconocimiento',
         'El criterio básico para determinar la pertenencia a un grupo identificado étnicamente.')),
