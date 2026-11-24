@@ -108,8 +108,14 @@ def base_audio():
     medir: un clip mono en una línea estéreo suena solo por la izquierda, y duplicar el canal
     después de normalizar sube 3 dB la medida."""
     import srpa_audio as A
-    dual = 'pan=stereo|c0=c0|c1=c0,' if canales(P.ORIGINAL) == 1 else ''
-    return '[ac]aresample=48000,' + dual + A.CADENA
+    mono = canales(P.ORIGINAL) == 1
+    # AUDIO_CADENA: una cadena propia de la voz de esa grabación (`herramientas/audio/voz_analisis.py`, Delitos
+    # informáticos, 24 nov 2026). Se midió y se probó sobre la voz mono (su ganancia previa, el umbral del compresor
+    # y el del limitador cuentan con eso), así que va ANTES del dual-mono; el loudnorm de después mide ya en estéreo.
+    cad = getattr(P, 'AUDIO_CADENA', None)
+    if cad:
+        return '[ac]aresample=48000,' + cad + (',pan=stereo|c0=c0|c1=c0' if mono else '')
+    return '[ac]aresample=48000,' + ('pan=stereo|c0=c0|c1=c0,' if mono else '') + A.CADENA
 
 
 def tramos_vf(K, fin):

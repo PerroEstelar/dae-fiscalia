@@ -1466,5 +1466,6 @@
    "nota": "Prepara el cuadro comparativo de la fila siguiente"
   }
  },
- "vacias": "No hay diapositiva para esta fila en el mapa."
+ "vacias": "No hay diapositiva para esta fila en el mapa.",
+ "solo_revision": true
 }

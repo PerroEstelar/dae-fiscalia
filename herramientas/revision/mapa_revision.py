@@ -15,7 +15,7 @@ revision.json:
 - Las columnas de lección se ensanchan y las filas crecen para que quepan frase y miniatura.
 
 Pedido de Sebastián (24 nov 2026): poco texto, una frase por celda; las miniaturas se quedan; letra más grande
-(11); y en las celdas sin diapositiva en el mapa, una nota que lo diga.
+(11, y después 14); y en las celdas sin diapositiva en el mapa, una nota que lo diga.
 """
 import json
 import math
@@ -34,12 +34,13 @@ from openpyxl.styles import Alignment, Font
 from openpyxl.utils import get_column_letter
 from openpyxl.utils.units import pixels_to_EMU
 
-ANCHO_COL = 60             # caracteres
+ANCHO_COL = 72             # caracteres
 MINI_W, MINI_H = 360, 153  # px (proporción 400×170)
-CHARS_LINEA = 42           # estimado conservador para Arial 11 en ese ancho
-PT_LINEA = 15.0
-FUENTE = Font(name='Arial', size=11, color='FF222222')  # Sebastián: «la letra está muy chiquita» (era 9,5)
-FUENTE_VACIA = Font(name='Arial', size=10, italic=True, color='FF8A9BA3')
+CHARS_LINEA = 40           # estimado conservador para Arial 14 en ese ancho
+PT_LINEA = 19.0
+# Sebastián: «la letra está muy chiquita» (9,5 → 11) y otra vez «más grande la letra» (11 → 14), 24 nov
+FUENTE = Font(name='Arial', size=14, color='FF222222')
+FUENTE_VACIA = Font(name='Arial', size=12, italic=True, color='FF8A9BA3')
 
 
 def a_compartidas(ruta):
@@ -132,6 +133,18 @@ def main():
             cd.min, cd.max, cd.width = i, i, wv
         for i in range(2, base.max_column + 1):
             ws.column_dimensions[get_column_letter(i)].width = ANCHO_COL
+        # Títulos de lección (fila 1) y número de diapositiva (columna A) al mismo tamaño que los comentarios
+        alto1 = ws.row_dimensions[1].height or 15
+        for i in range(1, base.max_column + 1):
+            c = ws.cell(1, i)
+            c.font = Font(name=c.font.name or 'Arial', size=FUENTE.sz, bold=True, color=copy(c.font.color))
+            c.alignment = Alignment(wrap_text=True, vertical='center', horizontal='center')
+            if i > 1 and c.value:
+                alto1 = max(alto1, math.ceil(len(str(c.value)) / (CHARS_LINEA - 4)) * PT_LINEA + 10)
+        ws.row_dimensions[1].height = alto1
+        for fila in range(2, base.max_row + 1):
+            c = ws.cell(fila, 1)
+            c.font = Font(name=c.font.name or 'Arial', size=FUENTE.sz, bold=True, color=copy(c.font.color))
         altos, pend = {}, []
         for ref, d in h['celdas'].items():
             r = poner(ws, ref, d, carpeta, altos)
@@ -159,22 +172,29 @@ def main():
         for k, v in (('A1', '#'), ('B1', 'Generales: lo que se repite en todo el curso')):
             ws[k].value = v
             o = u1['A1']
-            ws[k].font, ws[k].fill, ws[k].border = copy(o.font), copy(o.fill), copy(o.border)
+            ws[k].fill, ws[k].border = copy(o.fill), copy(o.border)
+            ws[k].font = Font(name=o.font.name or 'Arial', size=FUENTE.sz, bold=True, color=copy(o.font.color))
             ws[k].alignment = Alignment(wrap_text=True, vertical='center', horizontal='center')
         ws.column_dimensions['A'].width = 8
         ws.column_dimensions['B'].width = ANCHO_COL + 6
-        ws.row_dimensions[1].height = 30
+        ws.row_dimensions[1].height = 36
         altos, pend = {}, []
         borde = copy(u1['B2'].border)
         for i, d in enumerate(rev['generales']):
             fila = i + 2
             ws.cell(fila, 1, i + 1).alignment = Alignment(vertical='top', horizontal='center')
+            ws.cell(fila, 1).font = Font(name='Arial', size=FUENTE.sz, bold=True)
             ws.cell(fila, 1).border = copy(borde)
             ws.cell(fila, 2).border = copy(borde)
             r = poner(ws, 'B%d' % fila, d, carpeta, altos)
             if r:
                 pend.append(r)
         anclar(ws, pend, altos)
+    if rev.get('solo_revision'):
+        # Sebastián (24 nov): «solo deja las hojas que sean de revisión en el Excel, quita las originales»
+        for n in list(wb.sheetnames):
+            if 'revisión' not in n:
+                del wb[n]
     if not wb.views:
         from openpyxl.workbook.views import BookView
         wb.views.append(BookView())
