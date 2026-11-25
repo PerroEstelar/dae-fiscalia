@@ -104,8 +104,10 @@ fila(1, CUR, 'Curso', 'Cierre del curso', SL, 'bienes - CURSO - CIERRE-v1', '1q0
 CUR = 'Justicia restaurativa en la práctica del fiscal'
 M, T = man('justicia_restaurativa'), tabla('justicia_restaurativa')
 VM, VJM, VJ = 'Víctor Hugo Ospina Vargas y Martín Posada Martínez', 'Víctor Hugo Ospina Vargas, Martín Posada Martínez y Jhonatan Sandoval (invitado)', 'Víctor Hugo Ospina Vargas y Jhonatan Sandoval (invitado)'
+VCAM = 'Víctor Hugo Ospina Vargas'   # 25 nov: las dos grabaciones a cámara (v2) del inicio y del cierre del curso
 JR = [
     ('justiciarestaurativa - CURSO - INICIO-v1', 'Curso', 'Inicio del curso', VM, 'Lleva un corte de 30 s donde el profesor pide repetir.'),
+    ('justiciarestaurativa - CURSO - INICIO-v2', 'Curso', 'Inicio del curso (versión 2: profe a cámara)', VCAM, 'Grabación nueva del profesor solo, a cámara, sobre el fondo de la Fiscalía. Llegó como «TOMA 2» en la carpeta del cierre, pero es la bienvenida al curso. Lleva un corte de 58 s donde el profesor pide una pausa y retoma; el corte cambia de plano. La v1 (conversación de los dos coautores, 20:02) sigue en la carpeta: falta decidir cuál queda.'),
     ('justiciarestaurativa - U1 - INICIO-v1', 'Unidad 1', 'Inicio de la unidad', VJM, 'Sin cortes.'),
     ('justiciarestaurativa - U1 - CIERRE-v1', 'Unidad 1', 'Cierre de la unidad', VJM, 'Lleva un corte de 46 s donde un profesor se traba y vuelve a empezar.'),
     ('justiciarestaurativa - U2 - INICIO-v1', 'Unidad 2', 'Inicio de la unidad', VJ, 'Sin cortes.'),
@@ -115,6 +117,7 @@ JR = [
     ('justiciarestaurativa - U4 - INICIO-v1', 'Unidad 4', 'Inicio de la unidad', VJM, 'Sin cortes; no entra el arranque de frase que la grabación deja cortado al final («Es un—»).'),
     ('justiciarestaurativa - U4 - CIERRE-v1', 'Unidad 4', 'Cierre de la unidad', VJM, 'Sin cortes. La grabación termina sin despedida.'),
     ('justiciarestaurativa - CURSO - CIERRE-v1', 'Curso', 'Cierre del curso', VM, ''),
+    ('justiciarestaurativa - CURSO - CIERRE-v2', 'Curso', 'Cierre del curso (versión 2: profe a cámara)', VCAM, 'Grabación nueva del profesor solo, a cámara, sobre el fondo de la Fiscalía. Lleva cuatro cortes donde el profesor se equivoca y retoma (el arranque en falso, la primera pasada de la unidad 2, la primera frase de la unidad 3 y un tropiezo); cada corte cambia de plano. La v1 (conversación de los dos coautores, 44:49) sigue en la carpeta: falta decidir cuál queda.'),
 ]
 RAYA = ' Tiene una raya negra de 1 px en el borde de arriba durante el cuerpo (viene en la grabación); pendiente decidir si sale una v2.'
 for nombre, uni, pieza, profe, nota in JR:
@@ -123,7 +126,7 @@ for nombre, uni, pieza, profe, nota in JR:
     m, t = M[nombre], T[nombre]
     if nombre in ('justiciarestaurativa - CURSO - INICIO-v1', 'justiciarestaurativa - U1 - INICIO-v1', 'justiciarestaurativa - U1 - CIERRE-v1', 'justiciarestaurativa - U2 - INICIO-v1'):
         nota = (nota + RAYA).strip()
-    fila(1, CUR, uni, pieza, profe, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '19 nov' if ('U4' in nombre or 'U2 - CIERRE' in nombre or 'U3 - CIERRE' in nombre) else '18 nov', nota, n_srt=t[0])
+    fila(1, CUR, uni, pieza, profe, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '25 nov' if nombre.endswith('-v2') else '19 nov' if ('U4' in nombre or 'U2 - CIERRE' in nombre or 'U3 - CIERRE' in nombre) else '18 nov', nota, n_srt=t[0])
 
 # ---------- Prioridad 1 · Ley 1826 (19 nov 2026: los diez de profe, recortados sobre el fondo de la Fiscalía)
 CUR = 'Ley 1826 de 2017: procedimiento penal especial abreviado y acusador privado'
@@ -205,8 +208,8 @@ for nombre, uni, pieza in [
     ('enfoquediferencial - CURSO - INICIO-v3', 'Curso', 'Inicio del curso'),
     ('enfoquediferencial - U1 - INICIO-v2', 'Unidad 1', 'Inicio de la unidad'), ('enfoquediferencial - U1 - CIERRE-v3', 'Unidad 1', 'Cierre de la unidad (clase)'),
     ('enfoquediferencial - U2 - INICIO-v2', 'Unidad 2', 'Inicio de la unidad'), ('enfoquediferencial - U2 - CIERRE-v3', 'Unidad 2', 'Cierre de la unidad (clase)'),
-    ('enfoquediferencial - U3 - INICIO-v2', 'Unidad 3', 'Inicio de la unidad'), ('enfoquediferencial - U3 - CIERRE-v3', 'Unidad 3', 'Cierre de la unidad (clase)'),
-    ('enfoquediferencial - U4 - INICIO-v2', 'Unidad 4', 'Inicio de la unidad'), ('enfoquediferencial - U4 - CIERRE-v2', 'Unidad 4', 'Cierre de la unidad (clase)'),
+    ('enfoquediferencial - U3 - INICIO-v2', 'Unidad 3', 'Inicio de la unidad'), ('enfoquediferencial - U3 - CIERRE-v4', 'Unidad 3', 'Cierre de la unidad (clase)'),
+    ('enfoquediferencial - U4 - INICIO-v2', 'Unidad 4', 'Inicio de la unidad'), ('enfoquediferencial - U4 - CIERRE-v3', 'Unidad 4', 'Cierre de la unidad (clase)'),
     ('enfoquediferencial - U5 - INICIO-v2', 'Unidad 5', 'Inicio de la unidad'), ('enfoquediferencial - U5 - CIERRE-v3', 'Unidad 5', 'Cierre de la unidad (clase)'),
     ('enfoquediferencial - CURSO - CONCLUSIONES-v2', 'Curso', 'Conclusiones del curso'),
 ]:

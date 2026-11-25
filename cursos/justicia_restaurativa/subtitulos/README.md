@@ -12,6 +12,8 @@
 | `justiciarestaurativa - U4 - CIERRE-v1` | 159 | 11:36 | `1Biajmt8kUdwHFIUg5ZcxrfNdfkG4qXwV` |
 | `justiciarestaurativa - U2 - CIERRE-v1` | 281 | 20:43 | `1RHKfB6vdei1fdvJBbpeLJNODpXwY52_8` |
 | `justiciarestaurativa - U3 - CIERRE-v1` | 217 | 16:38 | `1CHiIwsw0fnyy1XRHJ667xZ8ibnM2mSgC` |
+| `justiciarestaurativa - CURSO - INICIO-v2` | 138 | 11:55 | `1k1NPI1vZBqL_K4uK8ELmCXFItdyb76NE` |
+| `justiciarestaurativa - CURSO - CIERRE-v2` | 125 | 10:43 | `1Ic1xYvXwo-gmebMfzzTiv4VoRBfVzGyF` |
 
 Carpeta de Drive: VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`), al lado del video. Copia junto al
 video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
