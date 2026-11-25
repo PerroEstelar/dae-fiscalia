@@ -172,3 +172,21 @@ video en disco. Método y criterio: `herramientas/subtitulos/README.md`.
 - **Una regla con comillas se escribe con « »**: las reglas de `_todos` corren antes que las del video y ya cambiaron
   las comillas rectas de Scribe. Las dos reglas de este video que las llevaban no se aplicaban hasta corregirlas.
 
+## Cierre y bienvenida del curso, profe a cámara (25 nov 2026)
+
+- Se transcribieron las dos entregas v2 (un hablante, lee un guion). `jrcc2`: 125 subtítulos (0:17 a 10:26). `jrci2`: 138
+  (0:17 a 11:37). Renglón más largo, 42; ninguno de más de dos renglones, de menos de 1 s ni de más de 20 caracteres por
+  segundo.
+- **5 reglas a mano en `jrcc2`:** el nombre del curso entre comillas («Justicia restaurativa en la práctica del fiscal»),
+  «de modo, ah, específico» → «de modo específico», «de lis— delicividad» → «de lesividad», «lineamientos Y mecanismos» →
+  «y» y «en claro reparación» → «en, claro, reparación».
+- **8 reglas en `jrci2`:** los dos nombres de curso entre comillas (este y «Determinaciones anticipadas del proceso
+  penal»), cuatro arranques en falso («mecanismo de modalidad del principio— de modalidad de suspensión», «a través de,
+  del trabajo», «la lesividad y confli— la lesividad y conflictividad», «se concentra— esta se concentra»), punto antes de
+  «También» y «Implementación de la justicia restaurativa exige» → «La implementación…»: el artículo no sale en la
+  transcripción. Decisión de redacción, no certeza.
+- «conflictos penales en común» (0:30 del cierre) queda como se oye.
+- Lo que el profesor pide cortar (ver `../profe/plan_jrcc2.py` y `plan_jrci2.py`) no está en el video, así que tampoco en
+  el `.srt`.
+- Los `.srt` se subieron con tipo `application/x-subrip`, como los demás del curso, y hay copia junto a cada video en
+  `05 EXPORTS`.

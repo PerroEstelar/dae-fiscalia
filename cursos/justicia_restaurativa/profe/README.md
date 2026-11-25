@@ -413,3 +413,41 @@ Verificada en Drive byte a byte («OK jru3c 669509786»).
 - **Cadena:** la misma; componer 817 s, render 111 s. Con estos dos quedan entregados los diez videos de profe del
   curso.
 
+## Cierre y bienvenida del curso, profe a cámara (25 nov 2026, madrugada) — entregas provisionales, versión 2
+
+Sebastián (24 nov): «continuemos con el video de cierre de justicia restaurativa, profe mirando a cámara, gráfica
+provisional». El 25: «continúa con videos de profe a cámara de justicia restaurativa, me dejas los enlaces». En la carpeta
+`CIERRE DEL CURSO` del disco llegaron dos grabaciones de Víctor Hugo Ospina Vargas solo, a cámara, ya puestas sobre el
+fondo de la Fiscalía. **La «TOMA 2» no es otra toma del cierre: es la bienvenida al curso.** Las dos van como **v2**; las
+v1 (la conversación de los coautores) siguen en la carpeta de Drive y no se tocaron: cuál queda la decide Sebastián.
+
+| | cierre del curso | bienvenida (inicio del curso) |
+|---|---|---|
+| entrega | `justiciarestaurativa - CURSO - CIERRE-v2.mp4` · `127SnEbJ2KKax-IOtej-DIHfAmOB7wx6U` | `justiciarestaurativa - CURSO - INICIO-v2.mp4` · `1MyTk_GILGaRGh0av0IklOgbASGjRMfkZ` |
+| carpeta de Drive | VIDEOS › VIDEOS FINALIZADOS (`11XMZRms3FGeaPvLepeYoM9z0qZO0uB5o`) | la misma |
+| subtítulos | `justiciarestaurativa - CURSO - CIERRE-v2.srt` · `1Ic1xYvXwo-gmebMfzzTiv4VoRBfVzGyF` (125; ver `../subtitulos/`) | `justiciarestaurativa - CURSO - INICIO-v2.srt` · `1k1NPI1vZBqL_K4uK8ELmCXFItdyb76NE` (138) |
+| medidas | 10:43,7 · 15.432 cuadros = línea · 432.605.130 bytes · H.264 a 5,38 Mb/s · −16,1 LUFS, pico −2,9 dBFS | 11:55,1 · 17.146 cuadros = línea · 480.559.429 bytes · H.264 a 5,38 Mb/s · −16,0 LUFS, pico −3,0 dBFS |
+| línea | `JR - CURSO - CIERRE - V2` (proyecto `DAE MASTER - CURSOS`) | `JR - CURSO - INICIO - V2` |
+| disco | `E:\DAE MASTER\PRIORIDAD 1\CURSO - JUSTICIA RESTAURATIVA\CIERRE DEL CURSO\` | `E:\DAE MASTER\PRIORIDAD 1\CURSO - JUSTICIA RESTAURATIVA\INICIO DEL CURSO\` |
+| fuente | `01 VIDEO\jr_cierre_curso2_toma1_fuente.mp4`, enlace duro de «VIDEO 2 CIERRE DE TODO EL CURSO JUSTICIA RESTAURATIVA TOMA 1.mp4» (13:50,7) | `01 VIDEO\jr_inicio_curso2_fuente.mp4`, enlace duro de «VIDEO JUSTICIA RESTAURATIVA TOMA 2.mp4» (12:24,4) |
+
+Verificadas en Drive byte a byte («OK jrcc2 432605130», «OK jrci2 480559429»).
+
+- **Planes:** `base_jr_camara.py` (lo común), `plan_jrcc2.py` y `plan_jrci2.py`. Llevan intro, cartón de título, un lower
+  third, cartón de cierre y outro; el cuerpo va sin gráficos.
+- **Color de la fuente:** 1920×1080 a 30 cuadros, sin etiqueta de color. Se midió el rojo y el azul del panel de logos
+  decodificando en BT.601 y en BT.709 contra `FONDO 4 V2.png`: BT.601 queda más cerca. No llevan `MATRIZ_FUENTE`.
+- **Cortes del cierre** (los pide el profesor al equivocarse): el arranque en falso («No, me equivoqué…»), la primera
+  pasada entera de la unidad 2 («no, me enredé. Voy a retomar»: salen 158,95 s), la primera frase de la unidad 3 («ahí
+  quedó redundante. Retomo»: 12,65 s) y un tropiezo de 4,15 s («para cons— para contrastar»). De 13:50 quedan 10:09,6.
+- **Corte de la bienvenida:** uno, en la unidad 2 («una pausa, por favor, que aquí me equivoqué»: salen 58,05 s y
+  retoma desde «Partiremos del sustento constitucional…»). De 12:24 quedan 11:21,0.
+- **Cada corte cambia de plano** (entero ↔ cerrado, `CERRADO = (110, 30, 1728, 972)`), como en Ley 1826: a cámara fija, el
+  salto de la persona se lee como cambio de plano. El plano cerrado deja entero el panel de logos.
+- **Lower third:** el de la serie, abajo a la izquierda y angosto (`LT = (44, 470)`, `LT_TOP = 800`) para no tocar el
+  saco. En el cierre, al empezar a hablar; en la bienvenida, cuando dice «Mi nombre es Víctor Hugo Ospina Vargas».
+- **Cadena:** `profe_cadena.py plan_jrcc2 componer titulo cartones` (y `plan_jrci2`), `lote/entrega_gpu.py 5000` (render
+  75 s y 81 s). Revisión de cuadros de cada entrega: intro, cartón de título, lower third, el cambio de plano de cada
+  corte, cartón de cierre y outro, bien.
+- **Verificación:** la carpeta que se le pasa a `verificar_drive.py` termina en `/`. Sin la barra el script esperaba un
+  archivo que no existe; desde hoy la pone él si falta.

@@ -27,6 +27,8 @@ import time
 mapa = json.load(open(sys.argv[1], encoding='utf-8'))
 log = open(sys.argv[2], 'w', encoding='utf-8')
 V = sys.argv[3] if len(sys.argv) > 3 else 'G:/My Drive/_MA subidas/_verif entregas/'
+if not V.endswith(('/', '\\')):   # sin la barra, la copia se buscaba pegada al nombre de la carpeta (25 nov)
+    V += '/'
 CH = 1 << 20
 pend = dict(mapa)
 t0 = time.time()
