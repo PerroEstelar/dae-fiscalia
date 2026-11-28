@@ -68,3 +68,12 @@ lleva el nombre, como lo arma `hoja.py` desde `datos.py`.
 entregada y se subió junto a los otros cierres (143, con `moveDimension`), como queda en `datos.py`. Leído de vuelta:
 Derecho de petición 9 videos, 140 min, 2 pendientes (cierre de la U4 y retroalimentaciones); total 139 entregados,
 1410 min, 125 con subtítulos.
+
+**27 nov 2026: Gerencia judicial.** Diez filas (`datos.py`, bloque de Prioridad 2, después de Enfoques diferenciales) en
+`Videos de profe` (92–101, entre Enfoques diferenciales y Delitos ambientales): las nueve entregas, con los enlaces como
+formato de celda, y el cierre del curso como «Sin grabación». Una fila en `Resumen` (la 10) con las mismas fórmulas,
+rangos hasta la 174; el curso sale de «Cursos sin videos de profe», que queda en «ninguno» (en `hoja.py`, `SIN` queda vacía:
+Desaparición forzada ya tenía videos desde el 20 nov). Leído de vuelta: Gerencia judicial 9 videos, 49 min, 9 con
+subtítulos, 9 provisionales, 1 pendiente; total 167 entregados, 1558 min, 167 con subtítulos, 111 provisionales, 6
+pendientes. En el informe (Inventario_videos_17 NOV › Resumen): la fila de la producción del 27 nov (32) con su celda de
+carpetas, y la fila de la carpeta en «Carpetas en Drive».

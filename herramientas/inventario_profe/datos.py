@@ -217,6 +217,30 @@ for nombre, uni, pieza in [
     fila(2, CUR, uni, pieza, CB, nombre, m['video_id'], t[1], t[2], m['carpeta'], 'Completa', '15–17 nov',
          'Grabado con teléfono, en vertical; va recompuesto a 16:9.', n_srt=t[0])
 
+# ---------- Prioridad 2 · Gerencia judicial (27 nov 2026: tres grabaciones de cámara web, entrega provisional)
+CUR = 'Gerencia judicial'
+M, T = man('gerencia_judicial'), tabla('gerencia_judicial')
+JA = 'Jairo Ignacio Acosta Aristizábal'
+for nombre, uni, pieza, nota in [
+    ('gerenciajudicial - CURSO - INICIO-v1', 'Curso', 'Bienvenida al curso',
+     'Dura 24 min (la ficha pide hasta 8): se entrega completa. 18 cortes (rótulos leídos y arranques en falso). '
+     'Para revisar: en 16:17 dice «Esta sensación es un problema de esfuerzo» (falta el «no») y en 18:45 «discreción funcional» '
+     '(el subtítulo dice «dirección funcional»).'),
+    ('gerenciajudicial - U1 - INICIO-v1', 'Unidad 1', 'Inicio de la unidad', 'Compuesto entre dos tomas: la frase de la evaluación sale de la otra toma.'),
+    ('gerenciajudicial - U1 - CIERRE-v1', 'Unidad 1', 'Cierre de la unidad', 'Sin cortes.'),
+    ('gerenciajudicial - U2 - INICIO-v1', 'Unidad 2', 'Inicio de la unidad', 'Un corte (rótulo leído).'),
+    ('gerenciajudicial - U2 - CIERRE-v1', 'Unidad 2', 'Cierre de la unidad', 'Dos cortes.'),
+    ('gerenciajudicial - U3 - INICIO-v1', 'Unidad 3', 'Inicio de la unidad', 'Un corte (rótulo leído).'),
+    ('gerenciajudicial - U3 - CIERRE-v1', 'Unidad 3', 'Cierre de la unidad',
+     'Tres cortes. Para revisar: en 1:10 presenta «Mejoraremos la investigación de delitos complejos» como un buen objetivo.'),
+    ('gerenciajudicial - U4 - INICIO-v1', 'Unidad 4', 'Inicio de la unidad', 'Un corte (rótulo leído).'),
+    ('gerenciajudicial - U4 - CIERRE-v1', 'Unidad 4', 'Cierre de la unidad', 'Dos cortes. Invita al video de cierre del curso, que no se grabó.'),
+]:
+    m, t = M[nombre], T[nombre]
+    fila(2, CUR, uni, pieza, JA, nombre, m['video_id'], t[1], t[2], m['carpeta'], PROV, '27 nov', nota + FONDO, n_srt=t[0])
+fila(2, CUR, 'Curso', 'Cierre del curso', JA, '(sin grabación)', None, '', None, None, '', '',
+     'No está en las grabaciones del 27 nov (el cierre de la U4 lo anuncia).', estado='Sin grabación')
+
 # ---------- Prioridad 3 · Delitos ambientales
 CUR = 'Investigación y judicialización de delitos contra el medio ambiente y los recursos naturales'
 DC = 'Diana Carolina Florez Vallona'

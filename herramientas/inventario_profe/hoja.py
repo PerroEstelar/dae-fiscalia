@@ -60,8 +60,8 @@ wr.row_dimensions[1].height = 34
 cursos = []
 for f in D.F:
     if (f['pri'], f['curso']) not in cursos: cursos.append((f['pri'], f['curso']))
-SIN = [(2, 'Gerencia judicial', 'No hay grabaciones de profe en la carpeta del curso.'),
-       (3, 'Investigación judicial y forense de la desaparición forzada', 'No hay grabaciones de profe en la carpeta del curso.')]
+SIN = [  # 27 nov: sale Gerencia judicial (ya tiene videos); Desaparición forzada ya tenía desde el 20 nov
+       ]
 R = "'Videos de profe'!"
 i = 2
 for p, cu in cursos:
