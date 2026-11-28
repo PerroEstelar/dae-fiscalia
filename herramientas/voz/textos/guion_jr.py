@@ -515,11 +515,11 @@ BLOQUES['U3'] = [
 BLOQUES['U4'] = [
  ('d01_el_agua', 'Carlos',
   'Usted sigue en su oficina, Juana también. Se da cuenta de que ella ya se '
-  'terminó su agua. Juana sigue pensando en su respuesta sobre el perdón… '
-  'Usted le ofrece otro agua o café. Ella le agradece, pero no quiere nada.',
+  'tomó su agua. Juana sigue pensando en su respuesta sobre el perdón… '
+  'Usted le ofrece otra agua o café. Ella le agradece, pero no quiere nada.',
   'Usted sigue en su oficina, Juana también. Se da cuenta de que ella ya se '
-  'terminó su agua. Juana sigue pensando en su respuesta sobre el perdón... '
-  'Usted le ofrece otro agua o café. Ella le agradece, pero no quiere nada.',
+  'tomó su agua. Juana sigue pensando en su respuesta sobre el perdón... '
+  'Usted le ofrece otra agua o café. Ella le agradece, pero no quiere nada.',
   0.0),
  ('d02_aprovecha', 'Carlos',
   'Por el contrario, todavía dubitativa sobre la justicia restaurativa, '
@@ -559,7 +559,7 @@ BLOQUES['U4'] = [
   None, NORMAL),
  ('d09_las_palabras', 'Carlos',
   'Las palabras, pues, permiten nombrar los dolores y las penas y permiten '
-  'comprenderlas como daños, como aquello que debe ser atendido y, cuando '
+  'comprenderlos como daños, como aquello que debe ser atendido y, cuando '
   'posible sea, como aquello que debe ser evitado.',
   None, CARTON),
  ('d10_mas_practico', 'Carlos',

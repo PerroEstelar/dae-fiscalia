@@ -226,7 +226,7 @@ ELEGIDOS = {
   ('d08_una_imagen', 'quienes están junto al doliente pueden llegar a verse '
    'concernidos por ese dolor'),
   ('d09_las_palabras', 'Las palabras, pues, permiten nombrar los dolores y '
-   'las penas y permiten comprenderlas como daños,'),
+   'las penas y permiten comprenderlos como daños,'),
   ('d11_a_punta', '«¿Cómo es que a punta de palabras la justicia '
    'restaurativa puede ayudar a mi primo?»'),
   ('d13_acciones', 'Pero el daño no solo reclama palabras. Demanda también '
